@@ -294,7 +294,7 @@ namespace sool
 				Mask = 3
 			};
 #endif
-
+		
 			struct PinConfig
 			{
 				Mode mode:2;
@@ -691,7 +691,7 @@ namespace sool
 			struct IDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				uint32_t ID0                  :1;
 				uint32_t ID1                  :1;
 				uint32_t ID2                  :1;
@@ -718,7 +718,7 @@ namespace sool
 			struct LCKR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				uint32_t LCK0                 :1;
 				uint32_t LCK1                 :1;
 				uint32_t LCK2                 :1;
@@ -773,7 +773,7 @@ namespace sool
 			struct ODR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				uint32_t OD0                  :1;
 				uint32_t OD1                  :1;
 				uint32_t OD2                  :1;
@@ -1375,6 +1375,8 @@ namespace sool
 			RCC->AHB2ENR |= bit;
 #elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
 			RCC->AHBENR |= bit;
+#elif defined(RCC_IOPENR)
+			RCC->IOPENR |= bit;
 #elif defined(RCC_AHB4ENR)
 			RCC->AHB4ENR |= bit;
 #endif
@@ -1391,6 +1393,8 @@ namespace sool
 			RCC->AHB2ENR &= mask;
 #elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
 			RCC->AHBENR &= mask;
+#elif defined(RCC_IOPENR)
+			RCC->IOPENR &= mask;
 #elif defined(RCC_AHB4ENR)
 			RCC->AHB4ENR &= mask;
 #endif
@@ -1407,6 +1411,8 @@ namespace sool
 			return (RCC->AHB2ENR & bit) == bit;
 #elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
 			return (RCC->AHBENR & bit) == bit;
+#elif defined(RCC_IOPENR)
+			return (RCC->IOPENR & bit) == bit;
 #elif defined(RCC_AHB4ENR)
 			return (RCC->AHB4ENR & bit) == bit;
 #endif
