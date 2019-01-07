@@ -1,3 +1,20 @@
+/**
+ * Copyright (c) 2019 FAUCHER Julien & FRANCE Loic
+ * This file is part of SooL core Library.
+ *
+ *  SooL core Library is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation, either version 3
+ *  of the License, or (at your option) any later version.
+ *
+ *  SooL core Library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef __SOOL_PWR_H
 #define __SOOL_PWR_H
 
@@ -86,7 +103,7 @@
 #define PWR_CPUCR_SBF_D2
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define PWR_CR
 #define PWR_CSR
@@ -97,17 +114,17 @@
 #define PWR_MAP0_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     )
 #define PWR_CR_0_LPDS        LPDS                 // 1 bits @ 0
 #else
 #define PWR_CR_0_LPDS
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F042x6 ) || defined(STM32F051x8 ) || defined(STM32F071xB ) || \
-    defined(STM32F072xB ) || defined(STM32F091xC ) || defined(STM32F1     ) || defined(STM32F2     ) || \
-    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) || \
+#if defined(STM32F031x6 ) || defined(STM32F042x6 ) || defined(STM32F051x8 ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F091xC ) || defined(STM32F1     ) || defined(STM32F2     ) ||\
+    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) ||\
     defined(STM32F373xC ) || defined(STM32F4     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define PWR_CR_0_PVDE        PVDE                 // 1 bits @ 4
 #define PWR_CR_0_PLS         PLS                  // 3 bits @ 5
@@ -144,10 +161,10 @@
 #define PWR_CR_2_SDADC1EN
 #endif
 
-#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || \
-    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || \
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) || \
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
+#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
+    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
+    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) ||\
+    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define PWR_CR_0_ADCDC1      ADCDC1               // 1 bits @ 13
 #define PWR_CR_0_VOS         VOS                  // 2 bits @ 14
@@ -160,7 +177,7 @@
 #define PWR_CR_2_MRLVDS
 #endif
 
-#if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
+#if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define PWR_CR_0_ODEN        ODEN                 // 1 bits @ 16
 #define PWR_CR_0_ODSWEN      ODSWEN               // 1 bits @ 17
@@ -183,8 +200,8 @@
 #define PWR_CSR_1_UDSWRDY
 #endif
 
-#if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) || \
-    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || \
+#if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) ||\
+    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx )
 #define PWR_CR_0_FMSSR       FMSSR                // 1 bits @ 20
 #define PWR_CR_0_FISSR       FISSR                // 1 bits @ 21
@@ -193,11 +210,11 @@
 #define PWR_CR_0_FISSR
 #endif
 
-#if defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F401xC ) || defined(STM32F401xE ) || \
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || \
-    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F415xx ) || defined(STM32F417xx ) || \
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32L0     ) || \
+#if defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F401xC ) || defined(STM32F401xE ) ||\
+    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
+    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
+    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32L0     ) ||\
     defined(STM32L1     )
 #define PWR_CR_1
 #endif
@@ -223,10 +240,10 @@
 #define PWR_CR_1_DSEEKOFF
 #endif
 
-#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || \
-    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) || \
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || \
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || \
+#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) ||\
+    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
     defined(STM32F479xx )
 #define PWR_CR_1_PMODE       PMODE                // 2 bits @ 14
 #define PWR_CSR_2
@@ -250,8 +267,8 @@
 #define PWR_CR_2_VOS
 #endif
 
-#if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32L0     ) || \
+#if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32L0     ) ||\
     defined(STM32L1     )
 #define PWR_CR_3
 #endif
@@ -443,7 +460,7 @@
 #define PWR_MAP0_CR5 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L431xx ) || defined(STM32L432xx ) || \
+#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L431xx ) || defined(STM32L432xx ) ||\
     defined(STM32L442xx ) || defined(STM32L451xx )
 #define PWR_CR2_0
 #endif
@@ -454,7 +471,7 @@
 #define PWR_CR2_0_PVME
 #endif
 
-#if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || \
+#if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
     defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define PWR_CR2_1_PVME2      PVME2                // 1 bits @ 5
 #define PWR_CR2_1_IOSV       IOSV                 // 1 bits @ 9
@@ -477,17 +494,17 @@
 #define PWR_MAP0_PDCRG __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || \
-    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || \
+#if defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) ||\
+    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
     defined(STM32L4P    )
 #define PWR_CR2_1_USV        USV                  // 1 bits @ 10
 #else
 #define PWR_CR2_1_USV
 #endif
 
-#if defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || \
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || \
+#if defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
+    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
     defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define PWR_CR2_2_PVME1      PVME1                // 1 bits @ 4
 #define PWR_SR2_PVMO1        PVMO1                // 1 bits @ 12
@@ -502,16 +519,16 @@
 #define PWR_CR2_2_PVME
 #endif
 
-#if defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || \
+#if defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
     defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define PWR_CR2_3
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) || \
-    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || \
-    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F373xC ) || \
+#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) ||\
+    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
     defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L1     )
 #define PWR_CSR_0_VREFINTRDYF VREFINTRDYF          // 1 bits @ 3
 #else
@@ -524,7 +541,7 @@
 #define PWR_CSR_0_WUPP
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F446xx ) || defined(STM32L0     ) || \
+#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F446xx ) || defined(STM32L0     ) ||\
     defined(STM32L1     )
 #define PWR_CSR_0_EWUP1      EWUP1                // 1 bits @ 8
 #else
@@ -537,18 +554,18 @@
 #define PWR_CSR_0_EWUP2
 #endif
 
-#if defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || \
-    defined(STM32F098xx ) || defined(STM32F3     ) || defined(STM32L011xx ) || defined(STM32L021xx ) || \
-    defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || \
-    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || \
+#if defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F3     ) || defined(STM32L011xx ) || defined(STM32L021xx ) ||\
+    defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
     defined(STM32L1     )
 #define PWR_CSR_0_EWUP3      EWUP3                // 1 bits @ 10
 #else
 #define PWR_CSR_0_EWUP3
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070xB ) || \
-    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || \
+#if defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx )
 #define PWR_CSR_0_EWUP4      EWUP4                // 1 bits @ 11
 #define PWR_CSR_0_EWUP6      EWUP6                // 1 bits @ 13
@@ -559,14 +576,14 @@
 #define PWR_CSR_0_EWUP7
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
+#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
     defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx )
 #define PWR_CSR_0_EWUP5      EWUP5                // 1 bits @ 12
 #else
 #define PWR_CSR_0_EWUP5
 #endif
 
-#if defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || \
+#if defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx )
 #define PWR_CSR_0_EWUP8      EWUP8                // 1 bits @ 15
 #else
@@ -583,11 +600,11 @@
 #define PWR_CSR_1_EWUP2
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) || \
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || \
-    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || \
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || \
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || \
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) ||\
+    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
+    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
+    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define PWR_CSR_1_EWUP       EWUP                 // 1 bits @ 8
 #else
@@ -610,9 +627,9 @@
 #define PWR_CSR1_1_UDSWRDY
 #endif
 
-#if defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) || \
-    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || \
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || \
+#if defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
+    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
+    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
     defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define PWR_PDCRB_PB2        PB2                  // 1 bits @ 2
 #define PWR_PDCRB_PB8        PB8                  // 1 bits @ 8
@@ -779,7 +796,7 @@
 #define PWR_MAP0_PDCRI __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || \
+#if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define PWR_PDCRH_PH3        PH3                  // 1 bits @ 3
 #define PWR_PUCRH_PH3        PH3                  // 1 bits @ 3
@@ -799,7 +816,7 @@ namespace sool
 		{
 
 
-			__SOOL_LL_ACCESS :
+		public :
 
 #ifdef PWR_CPUCR
 			struct CPUCR_TypeDef : public Reg32_t
@@ -819,7 +836,7 @@ namespace sool
 				uint32_t RUN_D3               :1;
 				uint32_t                      :20;
 
-			
+
 		};
 #endif
 
@@ -852,7 +869,7 @@ namespace sool
 					uint32_t PWR_CR_0_FISSR       :1;
 					uint32_t                      :10;
 				};
-#ifdef PWR_CR_1
+				#ifdef PWR_CR_1
 				struct
 				{
 					uint32_t PWR_CR_1_LPSDSR      :1;
@@ -866,8 +883,8 @@ namespace sool
 					uint32_t PWR_CR_1_LPDS        :1;
 					uint32_t                      :15;
 				};
-#endif
-#ifdef PWR_CR_2
+				#endif
+				#ifdef PWR_CR_2
 				struct
 				{
 					uint32_t                      :9;
@@ -878,8 +895,8 @@ namespace sool
 					uint32_t PWR_CR_2_VOS         :1;
 					uint32_t                      :17;
 				};
-#endif
-#ifdef PWR_CR_3
+				#endif
+				#ifdef PWR_CR_3
 				struct
 				{
 					uint32_t                      :9;
@@ -890,8 +907,8 @@ namespace sool
 					uint32_t PWR_CR_3_LPRUN       :1;
 					uint32_t                      :17;
 				};
-#endif
-#ifdef PWR_CR_4
+				#endif
+				#ifdef PWR_CR_4
 				struct
 				{
 					uint32_t                      :10;
@@ -899,9 +916,9 @@ namespace sool
 					uint32_t VOS                  :2;
 					uint32_t                      :19;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -932,7 +949,7 @@ namespace sool
 					uint32_t PWR_CR1_0_UDEN       :2;
 					uint32_t                      :12;
 				};
-#ifdef PWR_CR1_1
+				#ifdef PWR_CR1_1
 				struct
 				{
 					uint32_t PWR_CR1_1_LPMS       :3;
@@ -947,8 +964,8 @@ namespace sool
 					uint32_t PWR_CR1_1_ALS        :2;
 					uint32_t                      :13;
 				};
-#endif
-#ifdef PWR_CR1_2
+				#endif
+				#ifdef PWR_CR1_2
 				struct
 				{
 					uint32_t                      :4;
@@ -959,9 +976,9 @@ namespace sool
 					uint32_t LPR                  :1;
 					uint32_t                      :17;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -972,7 +989,7 @@ namespace sool
 
 			union
 			{
-#ifdef PWR_CR2_0
+				#ifdef PWR_CR2_0
 				struct
 				{
 					uint32_t PWR_CR2_0_CWUPF1     :1;
@@ -997,8 +1014,8 @@ namespace sool
 					uint32_t PWR_CR2_0_TEMPH      :1;
 					uint32_t                      :8;
 				};
-#endif
-#ifdef PWR_CR2_1
+				#endif
+				#ifdef PWR_CR2_1
 				struct
 				{
 					uint32_t PWR_CR2_1_BREN       :1;
@@ -1012,8 +1029,8 @@ namespace sool
 					uint32_t PWR_CR2_1_USV        :1;
 					uint32_t                      :21;
 				};
-#endif
-#ifdef PWR_CR2_2
+				#endif
+				#ifdef PWR_CR2_2
 				struct
 				{
 					uint32_t PVDE                 :1;
@@ -1022,17 +1039,17 @@ namespace sool
 					uint32_t PWR_CR2_2_PVME       :3;
 					uint32_t                      :24;
 				};
-#endif
-#ifdef PWR_CR2_3
+				#endif
+				#ifdef PWR_CR2_3
 				struct
 				{
 					uint32_t                      :4;
 					uint32_t PVME                 :4;
 					uint32_t                      :24;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -1064,7 +1081,7 @@ namespace sool
 					uint32_t PWR_CR3_0_USB33RDY   :1;
 					uint32_t                      :5;
 				};
-#ifdef PWR_CR3_1
+				#ifdef PWR_CR3_1
 				struct
 				{
 					uint32_t EWUP1                :1;
@@ -1076,16 +1093,16 @@ namespace sool
 					uint32_t EIWF                 :1;
 					uint32_t                      :16;
 				};
-#endif
-#ifdef PWR_CR3_2
+				#endif
+				#ifdef PWR_CR3_2
 				struct
 				{
 					uint32_t EWUP                 :5;
 					uint32_t                      :27;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -1104,7 +1121,7 @@ namespace sool
 				uint32_t VBRS                 :1;
 				uint32_t                      :22;
 
-			
+
 		};
 #endif
 
@@ -1117,7 +1134,7 @@ namespace sool
 				uint32_t R1MODE               :1;
 				uint32_t                      :23;
 
-			
+
 		};
 #endif
 
@@ -1151,7 +1168,7 @@ namespace sool
 					uint32_t PWR_CSR_0_UDRDY      :2;
 					uint32_t                      :12;
 				};
-#ifdef PWR_CSR_1
+				#ifdef PWR_CSR_1
 				struct
 				{
 					uint32_t                      :3;
@@ -1166,17 +1183,17 @@ namespace sool
 					uint32_t PWR_CSR_1_UDSWRDY    :2;
 					uint32_t                      :12;
 				};
-#endif
-#ifdef PWR_CSR_2
+				#endif
+				#ifdef PWR_CSR_2
 				struct
 				{
 					uint32_t                      :14;
 					uint32_t REGRDY               :1;
 					uint32_t                      :17;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -1205,7 +1222,7 @@ namespace sool
 					uint32_t PWR_CSR1_0_UDRDY     :2;
 					uint32_t                      :12;
 				};
-#ifdef PWR_CSR1_1
+				#ifdef PWR_CSR1_1
 				struct
 				{
 					uint32_t                      :4;
@@ -1217,9 +1234,9 @@ namespace sool
 					uint32_t PWR_CSR1_1_UDSWRDY   :2;
 					uint32_t                      :12;
 				};
-#endif
+				#endif
 			};
-			
+
 		};
 #endif
 
@@ -1243,7 +1260,7 @@ namespace sool
 				uint32_t EWUP6                :1;
 				uint32_t                      :18;
 
-			
+
 		};
 #endif
 
@@ -1257,7 +1274,7 @@ namespace sool
 				uint32_t VOS                  :2;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1283,7 +1300,7 @@ namespace sool
 				uint32_t PA14                 :1;
 				uint32_t                      :17;
 
-			
+
 		};
 #endif
 
@@ -1310,7 +1327,7 @@ namespace sool
 				uint32_t PWR_PDCRB_PB15       :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1337,7 +1354,7 @@ namespace sool
 				uint32_t PC15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1364,7 +1381,7 @@ namespace sool
 				uint32_t PD15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1391,7 +1408,7 @@ namespace sool
 				uint32_t PE15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1418,7 +1435,7 @@ namespace sool
 				uint32_t PF15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1445,7 +1462,7 @@ namespace sool
 				uint32_t PG15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1472,7 +1489,7 @@ namespace sool
 				uint32_t PWR_PDCRH_PH15       :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1495,7 +1512,7 @@ namespace sool
 				uint32_t PI11                 :1;
 				uint32_t                      :20;
 
-			
+
 		};
 #endif
 
@@ -1522,7 +1539,7 @@ namespace sool
 				uint32_t PA15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1549,7 +1566,7 @@ namespace sool
 				uint32_t PWR_PUCRB_PB15       :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1576,7 +1593,7 @@ namespace sool
 				uint32_t PC15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1603,7 +1620,7 @@ namespace sool
 				uint32_t PD15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1630,7 +1647,7 @@ namespace sool
 				uint32_t PE15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1657,7 +1674,7 @@ namespace sool
 				uint32_t PF15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1684,7 +1701,7 @@ namespace sool
 				uint32_t PG15                 :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1711,7 +1728,7 @@ namespace sool
 				uint32_t PWR_PUCRH_PH15       :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1734,7 +1751,7 @@ namespace sool
 				uint32_t PI11                 :1;
 				uint32_t                      :20;
 
-			
+
 		};
 #endif
 
@@ -1762,7 +1779,7 @@ namespace sool
 					uint32_t                      :27;
 				};
 			};
-			
+
 		};
 #endif
 
@@ -1792,7 +1809,7 @@ namespace sool
 					uint32_t                      :27;
 				};
 			};
-			
+
 		};
 #endif
 
@@ -1812,7 +1829,7 @@ namespace sool
 				uint32_t PVMO4                :1;
 				uint32_t                      :16;
 
-			
+
 		};
 #endif
 
@@ -1829,7 +1846,7 @@ namespace sool
 				uint32_t WKUPC6               :1;
 				uint32_t                      :26;
 
-			
+
 		};
 #endif
 
@@ -1860,7 +1877,7 @@ namespace sool
 				uint32_t WKUPPUPD6            :2;
 				uint32_t                      :4;
 
-			
+
 		};
 #endif
 
@@ -1877,7 +1894,7 @@ namespace sool
 				uint32_t WKUPF6               :1;
 				uint32_t                      :26;
 
-			
+
 		};
 #endif
 
@@ -1947,12 +1964,18 @@ namespace sool
 			};
 		private:
 			PWR() = delete;
+		public:
+			void enable_clock() volatile;
+
+			void disable_clock() volatile;
+
+			bool is_clock_enabled() const volatile;
 
 		};
 
 		//region instances
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) || \
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
     defined(STM32L4     ) || defined(STM32L4P    )
 #define PWR_BASE_ADDR ((uint32_t)0x40007000U)
 #endif
@@ -1975,7 +1998,6 @@ namespace sool
 			RCC->APB1ENR1.PWREN = 1;
 #endif
 		}
-
 		inline void PWR::disable_clock() volatile
 		{
 #if defined(RCC_APB1ENR)
@@ -1984,7 +2006,6 @@ namespace sool
 			RCC->APB1ENR1.PWREN = 0;
 #endif
 		}
-
 		inline bool PWR::is_clock_enabled() const volatile
 		{
 #if defined(RCC_APB1ENR)
