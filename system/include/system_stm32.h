@@ -91,14 +91,16 @@ extern const uint8_t APBPrescTable[8];        // APB prescalers table values
 #endif
 #if defined(STM32L0) || defined(STM32L1)
 extern const uint8_t PLLMulTable[9];
-#elif defined(STM32L4) || defined(STM32LAP)
+#elif defined(STM32L4) || defined(STM32L4P)
 extern const uint32_t MSIRangeTable[12];
 #endif
-extern "C"
-{
+#ifdef __cplusplus
+extern "C" {
+#endif
 void SystemInit(void);
+#ifdef __cplusplus
 }
-
+#endif
 void SystemCoreClockUpdate(void);
 
 #endif //__SYSTEM_STM32F0XX_H
