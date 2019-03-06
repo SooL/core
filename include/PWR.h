@@ -18,7 +18,7 @@
 #ifndef __SOOL_PWR_H
 #define __SOOL_PWR_H
 
-#include "peripheral_include.h"
+#include "lib_utils/peripheral_include.h"
 #include "RCC.h"
 
 

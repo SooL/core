@@ -102,7 +102,7 @@ const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
 
 static void _SystemInit(void)
 {
-	using namespace sool::ll;
+	using namespace sool::core;
   // FPU settings ------------------------------------------------------------
 #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
 	SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  // set CP10 and CP11 Full Access
@@ -189,7 +189,7 @@ extern "C" {
   */
 void SystemCoreClockUpdate(void)
 {
-	using namespace sool::ll;
+	using namespace sool::core;
   uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
 
   // Get SYSCLK source -------------------------------------------------------

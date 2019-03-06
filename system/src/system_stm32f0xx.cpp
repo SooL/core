@@ -94,7 +94,7 @@ const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
 static void _SystemInit()
 {
 	// Reset the RCC clock configuration to the default reset state
-	using namespace sool::ll;
+	using namespace sool::core;
 	RCC->CR.HSION = 1;
 
 #if defined (STM32F051x8) || defined (STM32F058x8)
@@ -194,7 +194,7 @@ extern "C"
 
 void SystemCoreClockUpdate (void)
 {
-  using namespace sool::ll;
+  using namespace sool::core;
   uint32_t tmp = 0, pllmull = 0, pllsource = 0, predivfactor = 0;
 
   // Get SYSCLK source -------------------------------------------------------

@@ -1,20 +1,3 @@
-/**
- * Copyright (c) 2018 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL core Library.
- *
- *  SooL core Library is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License
- *  as published by the Free Software Foundation, either version 3
- *  of the License, or (at your option) any later version.
- *
- *  SooL core Library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
- */
 #ifndef __SOOL_ADC_H
 #define __SOOL_ADC_H
 
@@ -23,10 +6,10 @@
 
 //region defines
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_AWD2CR
 #define ADC_AWD3CR
 #define ADC_CFGR
@@ -139,10 +122,10 @@
 #define ADC_MAP0_AWD3CR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_AWD2CR_0
 #define ADC_AWD3CR_0
 #define ADC_CALFACT_0
@@ -203,7 +186,7 @@
 #define ADC_MAP0_DIFSEL __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32H7     )
+#if defined(STM32H7     ) 
 #define ADC_AWD2CR_1
 #define ADC_AWD3CR_1
 #define ADC_CALFACT_1
@@ -307,14 +290,14 @@
 #define ADC_MAP0_CALFACT2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_CALFACT
 #endif
 
-#if defined(STM32L0     )
+#if defined(STM32L0     ) 
 #define ADC_CALFACT_2
 #define ADC_CFGR2_1_OVSE     OVSE                 // 1 bits @ 0
 #define ADC_CFGR2_1_TOVS     TOVS                 // 1 bits @ 9
@@ -336,8 +319,8 @@
 #define ADC34_CCR_0_LFMEN
 #endif
 
-#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || \
-    defined(STM32L4A6xx ) || defined(STM32L4P    )
+#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) ||\
+    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
 #define ADC_CFGR_0_DFSDMCFG  DFSDMCFG             // 1 bits @ 2
 #define ADC_SMPR1_0_SMPPLUS  SMPPLUS              // 1 bits @ 31
 #else
@@ -345,9 +328,9 @@
 #define ADC_SMPR1_0_SMPPLUS
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
 #define ADC_CFGR_0_AUTOFF    AUTOFF               // 1 bits @ 15
 #define ADC_CR_0_ADVREGEN    ADVREGEN             // 2 bits @ 28
 #else
@@ -355,7 +338,7 @@
 #define ADC_CR_0_ADVREGEN
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_CFGR_0_JQDIS     JQDIS                // 1 bits @ 31
 #define ADC_CFGR2_0_ROVSE    ROVSE                // 1 bits @ 0
 #define ADC_CFGR2_0_JOVSE    JOVSE                // 1 bits @ 1
@@ -371,7 +354,7 @@
 #define ADC_CR_1_DEEPPWD
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L0     )
+#if defined(STM32F0     ) || defined(STM32L0     ) 
 #define ADC_CFGR1
 #define ADC_CFGR2_0_CKMODE   CKMODE               // 2 bits @ 30
 #define ADC_CHSELR
@@ -399,7 +382,7 @@
 #define ADC_MAP0_CHSELR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     )
+#if defined(STM32F0     ) 
 #define ADC_CFGR1_0_AWD1SGL  AWD1SGL              // 1 bits @ 22
 #define ADC_CFGR1_0_AWD1EN   AWD1EN               // 1 bits @ 23
 #define ADC_CFGR1_0_AWD1CH   AWD1CH               // 5 bits @ 26
@@ -414,21 +397,21 @@
 #define ADC_SMPR1_0_SMPR
 #endif
 
-#if defined(STM32F0     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define ADC_CFGR2
 #define ADC_MAP0_CFGR2       CFGR2_TypeDef CFGR2
 #else
 #define ADC_MAP0_CFGR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_CFGR2_0_OVSR     OVSR                 // 3 bits @ 2
 #else
 #define ADC_CFGR2_0_OVSR
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_CFGR2_0_OVSS     OVSS                 // 4 bits @ 5
 #define ADC_CR_1
 #define ADC_Common_CCR_0_PRESC PRESC                // 4 bits @ 18
@@ -443,22 +426,22 @@
 #define ADC34_CCR_0_PRESC
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L0     )
+#if defined(STM32H7     ) || defined(STM32L0     ) 
 #define ADC_CFGR2_1
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || \
-    defined(STM32L083xx )
+#if defined(STM32F0     ) || defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) ||\
+    defined(STM32L083xx ) 
 #define ADC_CHSELR_1_CHSEL16 CHSEL16              // 1 bits @ 16
 #else
 #define ADC_CHSELR_1_CHSEL16
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define ADC_CR
 #define ADC_IER
 #define ADC_ISR
@@ -489,8 +472,8 @@
 #define ADC_MAP0_DR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || \
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
 #define ADC_CR1
 #define ADC_CR2
 #define ADC_HTR
@@ -514,7 +497,7 @@
 #define ADC_MAP1_SMPR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F1     )
+#if defined(STM32F1     ) 
 #define ADC_CR1_0_EOSIE      EOSIE                // 1 bits @ 5
 #define ADC_SR_0_EOS         EOS                  // 1 bits @ 1
 #else
@@ -522,7 +505,7 @@
 #define ADC_SR_0_EOS
 #endif
 
-#if defined(STM32F1     ) || defined(STM32L1     )
+#if defined(STM32F1     ) || defined(STM32L1     ) 
 #define ADC_CR1_0_JEOSIE     JEOSIE               // 1 bits @ 7
 #define ADC_SR_0_JEOS        JEOS                 // 1 bits @ 2
 #else
@@ -530,14 +513,14 @@
 #define ADC_SR_0_JEOS
 #endif
 
-#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || \
-    defined(STM32F105xC ) || defined(STM32F107xC )
+#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
+    defined(STM32F105xC ) || defined(STM32F107xC ) 
 #define ADC_CR1_0_DUALMOD    DUALMOD              // 4 bits @ 16
 #else
 #define ADC_CR1_0_DUALMOD
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
 #define ADC_CR1_0_RES        RES                  // 2 bits @ 24
 #define ADC_CR1_0_OVRIE      OVRIE                // 1 bits @ 26
 #define ADC_CR2_0_DDS        DDS                  // 1 bits @ 9
@@ -622,7 +605,7 @@
 #define ADC34_CCR_1_TSVREFE
 #endif
 
-#if defined(STM32L1     )
+#if defined(STM32L1     ) 
 #define ADC_CR1_1_PDD        PDD                  // 1 bits @ 16
 #define ADC_CR1_1_PDI        PDI                  // 1 bits @ 17
 #define ADC_CR1_2
@@ -723,7 +706,7 @@
 #define ADC_MAP2_DR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx )
+#if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) 
 #define ADC_CR2_0_CAL        CAL                  // 1 bits @ 2
 #define ADC_CR2_0_RSTCAL     RSTCAL               // 1 bits @ 3
 #define ADC_CR2_0_JEXTSEL    JEXTSEL              // 3 bits @ 12
@@ -757,10 +740,10 @@
 #define ADC_Common_MAP0_DR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) || \
-    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || \
-    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || \
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
+#if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
+    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
+    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
 #define ADC_CR2_1_CFG        CFG                  // 1 bits @ 2
 #define ADC_SQR1_2_SQ28      SQ28                 // 5 bits @ 15
 #else
@@ -770,34 +753,34 @@
 
 #define ADC_DR
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) || \
-    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || \
-    defined(STM32L1     )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) ||\
+    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     ) 
 #define ADC_DR_0
 #endif
 
-#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || \
-    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F4     ) || \
-    defined(STM32F7     )
+#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
+    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) 
 #define ADC_DR_0_ADC2DATA    ADC2DATA             // 16 bits @ 16
 #else
 #define ADC_DR_0_ADC2DATA
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_IER_0
 #define ADC_ISR_0_ADRDY      ADRDY                // 1 bits @ 0
 #else
 #define ADC_ISR_0_ADRDY
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_IER_0_EOSIE      EOSIE                // 1 bits @ 3
 #define ADC_IER_0_AWD1IE     AWD1IE               // 1 bits @ 7
 #else
@@ -805,10 +788,10 @@
 #define ADC_IER_0_AWD1IE
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32H7     )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32H7     ) 
 #define ADC_IER_1_RDY        RDY                  // 1 bits @ 0
 #define ADC_ISR_1_ADRD       ADRD                 // 1 bits @ 0
 #else
@@ -816,16 +799,16 @@
 #define ADC_ISR_1_ADRD
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_IER_2_ADRDY      ADRDY                // 1 bits @ 0
 #else
 #define ADC_IER_2_ADRDY
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_ISR_0_EOS        EOS                  // 1 bits @ 3
 #define ADC_ISR_0_AWD1       AWD1                 // 1 bits @ 7
 #else
@@ -833,16 +816,16 @@
 #define ADC_ISR_0_AWD1
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L0     )
+#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32H7     ) || defined(STM32L0     ) 
 #define ADC_ISR_1
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define ADC_JDR1
 #define ADC_JDR2
 #define ADC_JDR3
@@ -855,17 +838,17 @@
 #define ADC_SQR3
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || \
-    defined(STM32F7     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_JDR1_0
 #define ADC_JDR2_0
 #define ADC_JDR3_0
 #define ADC_JDR4_0
 #endif
 
-#if defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || \
-    defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || \
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
+#if defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
+    defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
 #define ADC_SMPR0
 #define ADC_SMPR1_1_SMP29    SMP29                // 3 bits @ 27
 #define ADC_SMPR1_2_SMP27    SMP27                // 3 bits @ 21
@@ -878,14 +861,14 @@
 #define ADC_MAP0_SMPR0 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define ADC_SMPR1_0
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || \
-    defined(STM32F4     ) || defined(STM32F7     )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) 
 #define ADC_SMPR1_0_SMP11    SMP11                // 3 bits @ 3
 #define ADC_SMPR1_0_SMP12    SMP12                // 3 bits @ 6
 #define ADC_SMPR1_0_SMP13    SMP13                // 3 bits @ 9
@@ -948,25 +931,25 @@
 #define ADC_MAP1_DR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F4     ) || \
-    defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) 
 #define ADC_SMPR1_0_SMP18    SMP18                // 3 bits @ 24
 #else
 #define ADC_SMPR1_0_SMP18
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L151xCA) || defined(STM32L151xD ) || \
-    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xCA) || defined(STM32L152xD ) || \
-    defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xCA) || defined(STM32L162xD ) || \
-    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
+    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
+    defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
+    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_SMPR1_1
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_SMPR1_2
 #define ADC_SMPR2_1
 #define ADC_SQR4
@@ -981,30 +964,30 @@
 #define ADC_MAP1_SQR4 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L1     )
+#if defined(STM32H7     ) || defined(STM32L1     ) 
 #define ADC_SMPR2_1_SMP19    SMP19                // 3 bits @ 27
 #else
 #define ADC_SMPR2_1_SMP19
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_SQR1_0
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || \
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || \
-    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || \
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
+    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) ||\
+    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define ADC_Common_CCR
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) 
 #define ADC_Common_CCR_0_MULTI MULTI                // 5 bits @ 0
 #define ADC1_CCR_0_MULTI     MULTI                // 5 bits @ 0
 #define ADC12_CCR_0_MULTI    MULTI                // 5 bits @ 0
@@ -1016,12 +999,12 @@
 #define ADC34_CCR_0_MULTI
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || \
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CCR_0_DELAY DELAY                // 4 bits @ 8
 #define ADC_Common_CDR
 #define ADC1_CCR_0_DELAY     DELAY                // 4 bits @ 8
@@ -1034,7 +1017,7 @@
 #define ADC34_CCR_0_DELAY
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
 #define ADC_Common_CCR_0_DDS DDS                  // 1 bits @ 13
 #define ADC_Common_CCR_0_DMA DMA                  // 2 bits @ 14
 #define ADC_Common_CCR_1_VBATE VBATE                // 1 bits @ 22
@@ -1079,13 +1062,13 @@
 #define ADC123_CSR_2_DOVR1
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) || \
-    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || \
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || \
-    defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32H7     ) || \
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) ||\
+    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) ||\
+    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) ||\
+    defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32H7     ) ||\
+    defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_Common_CCR_0_VBATEN VBATEN               // 1 bits @ 24
 #define ADC1_CCR_0_VBATEN    VBATEN               // 1 bits @ 24
 #define ADC12_CCR_0_VBATEN   VBATEN               // 1 bits @ 24
@@ -1097,20 +1080,20 @@
 #define ADC34_CCR_0_VBATEN
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) || \
-    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) ||\
+    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_Common_CCR_1
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CCR_1_DUAL DUAL                 // 5 bits @ 0
 #define ADC_Common_MAP0_CDR  typename plugin::CDR_TypeDef CDR
 #define ADC1_CCR_1_DUAL      DUAL                 // 5 bits @ 0
@@ -1156,11 +1139,11 @@
 #define ADC123_CSR_0_JQOVF_SLV
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || \
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CCR_1_DMACFG DMACFG               // 1 bits @ 13
 #define ADC_Common_CCR_1_MDMA MDMA                 // 2 bits @ 14
 #define ADC_Common_CSR_0_JEOS_MST JEOS_MST             // 1 bits @ 6
@@ -1308,7 +1291,7 @@
 #define ADC34_CCR_0_MDMA
 #endif
 
-#if defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx )
+#if defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) 
 #define ADC_Common_CCR_1_VLCDEN VLCDEN               // 1 bits @ 24
 #define ADC1_CCR_1_VLCDEN    VLCDEN               // 1 bits @ 24
 #define ADC12_CCR_1_VLCDEN   VLCDEN               // 1 bits @ 24
@@ -1320,36 +1303,36 @@
 #define ADC34_CCR_1_VLCDEN
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L471xx ) || \
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || \
-    defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L471xx ) ||\
+    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CDR_1
 #define ADC1_CDR_0
 #define ADC12_CDR_0
 #define ADC34_CDR_0
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CSR
 #define ADC_Common_MAP2_CSR  typename plugin::CSR_TypeDef CSR
 #else
 #define ADC_Common_MAP2_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) || \
-    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || \
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) ||\
+    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CSR_0
 #define ADC_Common_CSR_1
 #define ADC1_CSR_1
@@ -1360,10 +1343,10 @@
 #define ADC34_CSR_2
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) || \
-    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || \
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
+    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) 
 #define ADC_Common_CSR_0_AWD2 AWD2                 // 1 bits @ 8
 #define ADC_Common_CSR_0_EOC2 EOC2                 // 1 bits @ 9
 #define ADC_Common_CSR_0_JEOC2 JEOC2                // 1 bits @ 10
@@ -1507,31 +1490,31 @@
 #define ADC123_CSR_2_DOVR3
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC_Common_CSR_2
 #define ADC1_CSR_3
 #define ADC12_CSR_3
 #define ADC34_CSR_3
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) || \
-    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || \
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
+    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC1_CSR_0
 #define ADC12_CSR_0
 #define ADC34_CSR_0
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx ) 
 #define ADC1_CSR_0_ADRDY_EOSMP_MST ADRDY_EOSMP_MST      // 1 bits @ 1
 #define ADC1_CSR_0_ADRDY_EOC_MST ADRDY_EOC_MST        // 1 bits @ 2
 #define ADC1_CSR_0_ADRDY_EOS_MST ADRDY_EOS_MST        // 1 bits @ 3
@@ -1571,31 +1554,31 @@
 #define ADC1_CSR_0_AWD3_SLV
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || \
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || \
-    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || \
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
+    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) ||\
+    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC1_CCR_0
 #define ADC12_CCR_0
 #define ADC34_CCR_0
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) || \
-    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) ||\
+    defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC1_CCR_1
 #define ADC12_CCR_1
 #define ADC34_CCR_1
 #endif
 
-#if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || \
-    defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx )
+#if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) 
 #define ADC12_CSR_0_ADRDY_EOSMP_MST ADRDY_EOSMP_MST      // 1 bits @ 1
 #define ADC12_CSR_0_ADRDY_EOC_MST ADRDY_EOC_MST        // 1 bits @ 2
 #define ADC12_CSR_0_ADRDY_EOS_MST ADRDY_EOS_MST        // 1 bits @ 3
@@ -1635,8 +1618,8 @@
 #define ADC12_CSR_0_AWD3_SLV
 #endif
 
-#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx )
+#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) 
 #define ADC34_CSR_0_ADRDY_EOSMP_MST ADRDY_EOSMP_MST      // 1 bits @ 1
 #define ADC34_CSR_0_ADRDY_EOC_MST ADRDY_EOC_MST        // 1 bits @ 2
 #define ADC34_CSR_0_ADRDY_EOS_MST ADRDY_EOS_MST        // 1 bits @ 3
@@ -1674,22 +1657,22 @@
 #define ADC34_CSR_0_AWD3_SLV
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) || \
-    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || \
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || \
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || \
-    defined(STM32L4A6xx )
+#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
+    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
+    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
+    defined(STM32L4A6xx ) 
 #define ADC123_CSR_0
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || \
-    defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
+    defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC_MAP0_CALFACT     CALFACT_TypeDef CALFACT
 #else
 #define ADC_MAP0_CALFACT __SOOL_PERIPH_PADDING_4
@@ -1699,75 +1682,74 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
-
 		class ADC
 		{
-
-
-		public :
-
-#ifdef ADC_AWD2CR
+			
+			
+			public :
+			
+			#ifdef ADC_AWD2CR
 			struct AWD2CR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_AWD2CR_0
+					#ifdef ADC_AWD2CR_0
 					struct
 					{
 						uint32_t AWD2CH               :19;
 						uint32_t                      :13;
 					};
-#endif
-#ifdef ADC_AWD2CR_1
+					#endif
+					#ifdef ADC_AWD2CR_1
 					struct
 					{
 						uint32_t AWD2CH               :20;
 						uint32_t                      :12;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_AWD3CR
+			#endif
+			
+			#ifdef ADC_AWD3CR
 			struct AWD3CR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_AWD3CR_0
+					#ifdef ADC_AWD3CR_0
 					struct
 					{
 						uint32_t AWD3CH               :19;
 						uint32_t                      :13;
 					};
-#endif
-#ifdef ADC_AWD3CR_1
+					#endif
+					#ifdef ADC_AWD3CR_1
 					struct
 					{
 						uint32_t AWD3CH               :20;
 						uint32_t                      :12;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CALFACT
+			#endif
+			
+			#ifdef ADC_CALFACT
 			struct CALFACT_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_CALFACT_0
+					#ifdef ADC_CALFACT_0
 					struct
 					{
 						uint32_t S                    :7;
@@ -1775,8 +1757,8 @@ namespace sool
 						uint32_t D                    :7;
 						uint32_t                      :9;
 					};
-#endif
-#ifdef ADC_CALFACT_1
+					#endif
+					#ifdef ADC_CALFACT_1
 					struct
 					{
 						uint32_t S                    :11;
@@ -1784,36 +1766,36 @@ namespace sool
 						uint32_t D                    :11;
 						uint32_t                      :5;
 					};
-#endif
-#ifdef ADC_CALFACT_2
+					#endif
+					#ifdef ADC_CALFACT_2
 					struct
 					{
 						uint32_t CALFACT              :7;
 						uint32_t                      :25;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CALFACT2
+			#endif
+			
+			#ifdef ADC_CALFACT2
 			struct CALFACT2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LINCALFACT           :30;
 					uint32_t                      :2;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_CFGR
+			#endif
+			
+			#ifdef ADC_CFGR
 			struct CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -1840,7 +1822,7 @@ namespace sool
 						uint32_t AWD1CH               :5;
 						uint32_t ADC_CFGR_0_JQDIS     :1;
 					};
-#ifdef ADC_CFGR_1
+					#ifdef ADC_CFGR_1
 					struct
 					{
 						uint32_t DMNGT                :2;
@@ -1848,17 +1830,17 @@ namespace sool
 						uint32_t EXTSEL               :5;
 						uint32_t                      :22;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CFGR1
+			#endif
+			
+			#ifdef ADC_CFGR1
 			struct CFGR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -1895,15 +1877,15 @@ namespace sool
 						uint32_t                      :1;
 					};
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CFGR2
+			#endif
+			
+			#ifdef ADC_CFGR2
 			struct CFGR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -1923,7 +1905,7 @@ namespace sool
 						uint32_t                      :4;
 						uint32_t ADC_CFGR2_0_CKMODE   :2;
 					};
-#ifdef ADC_CFGR2_1
+					#ifdef ADC_CFGR2_1
 					struct
 					{
 						uint32_t ADC_CFGR2_1_OVSE     :1;
@@ -1932,17 +1914,17 @@ namespace sool
 						uint32_t                      :18;
 						uint32_t ADC_CFGR2_1_LSHIFT   :4;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CHSELR
+			#endif
+			
+			#ifdef ADC_CHSELR
 			struct CHSELR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -1974,15 +1956,15 @@ namespace sool
 						uint32_t                      :13;
 					};
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CR
+			#endif
+			
+			#ifdef ADC_CR
 			struct CR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2008,7 +1990,7 @@ namespace sool
 						uint32_t ADC_CR_0_ADCALDIF    :1;
 						uint32_t ADCAL                :1;
 					};
-#ifdef ADC_CR_1
+					#ifdef ADC_CR_1
 					struct
 					{
 						uint32_t                      :28;
@@ -2016,17 +1998,17 @@ namespace sool
 						uint32_t ADC_CR_1_DEEPPWD     :1;
 						uint32_t                      :2;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CR1
+			#endif
+			
+			#ifdef ADC_CR1
 			struct CR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2060,24 +2042,24 @@ namespace sool
 						uint32_t ADC_CR1_1_PDI        :1;
 						uint32_t                      :14;
 					};
-#ifdef ADC_CR1_2
+					#ifdef ADC_CR1_2
 					struct
 					{
 						uint32_t                      :5;
 						uint32_t EOCSIE               :1;
 						uint32_t                      :26;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_CR2
+			#endif
+			
+			#ifdef ADC_CR2
 			struct CR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2104,7 +2086,7 @@ namespace sool
 						uint32_t ADC_CR2_0_EXTEN      :2;
 						uint32_t                      :2;
 					};
-#ifdef ADC_CR2_1
+					#ifdef ADC_CR2_1
 					struct
 					{
 						uint32_t                      :2;
@@ -2119,17 +2101,17 @@ namespace sool
 						uint32_t SWSTART              :1;
 						uint32_t                      :1;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_DIFSEL
+			#endif
+			
+			#ifdef ADC_DIFSEL
 			struct DIFSEL_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2161,119 +2143,119 @@ namespace sool
 						uint32_t DIFSEL18             :1;
 						uint32_t                      :13;
 					};
-#ifdef ADC_DIFSEL_2
+					#ifdef ADC_DIFSEL_2
 					struct
 					{
 						uint32_t DIFSEL               :20;
 						uint32_t                      :12;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_DR
+			#endif
+			
+			#ifdef ADC_DR
 			struct DR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_DR_0
+					#ifdef ADC_DR_0
 					struct
 					{
 						uint32_t DATA                 :16;
 						uint32_t ADC_DR_0_ADC2DATA    :16;
 					};
-#endif
-#ifdef ADC_DR_1
+					#endif
+					#ifdef ADC_DR_1
 					struct
 					{
 						uint32_t RDATA                :16;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef ADC_DR_2
+					#endif
+					#ifdef ADC_DR_2
 					struct
 					{
 						uint32_t RDATA                :32;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_HTR
+			#endif
+			
+			#ifdef ADC_HTR
 			struct HTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_HTR_0
+					#ifdef ADC_HTR_0
 					struct
 					{
 						uint32_t                      :16;
 						uint32_t HT                   :12;
 						uint32_t                      :4;
 					};
-#endif
+					#endif
 					struct
 					{
 						uint32_t HT                   :12;
 						uint32_t                      :20;
 					};
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_HTR1
+			#endif
+			
+			#ifdef ADC_HTR1
 			struct HTR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t HT1                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_HTR2
+			#endif
+			
+			#ifdef ADC_HTR2
 			struct HTR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t HT2                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_HTR3
+			#endif
+			
+			#ifdef ADC_HTR3
 			struct HTR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t HT3                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_IER
+			#endif
+			
+			#ifdef ADC_IER
 			struct IER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_IER_0
+					#ifdef ADC_IER_0
 					struct
 					{
 						uint32_t ADRDYIE              :1;
@@ -2290,7 +2272,7 @@ namespace sool
 						uint32_t ADC_IER_0_EOCALIE    :1;
 						uint32_t                      :20;
 					};
-#endif
+					#endif
 					struct
 					{
 						uint32_t ADC_IER_1_RDY        :1;
@@ -2306,7 +2288,7 @@ namespace sool
 						uint32_t ADC_IER_1_JQOVF      :1;
 						uint32_t                      :21;
 					};
-#ifdef ADC_IER_2
+					#ifdef ADC_IER_2
 					struct
 					{
 						uint32_t ADC_IER_2_ADRDY      :1;
@@ -2316,17 +2298,17 @@ namespace sool
 						uint32_t AWD1                 :1;
 						uint32_t                      :24;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_ISR
+			#endif
+			
+			#ifdef ADC_ISR
 			struct ISR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2345,7 +2327,7 @@ namespace sool
 						uint32_t ADC_ISR_0_EOCAL      :1;
 						uint32_t                      :20;
 					};
-#ifdef ADC_ISR_1
+					#ifdef ADC_ISR_1
 					struct
 					{
 						uint32_t ADC_ISR_1_ADRD       :1;
@@ -2355,168 +2337,168 @@ namespace sool
 						uint32_t ADC_ISR_1_AWD        :1;
 						uint32_t                      :24;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_JDR1
+			#endif
+			
+			#ifdef ADC_JDR1
 			struct JDR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_JDR1_0
+					#ifdef ADC_JDR1_0
 					struct
 					{
 						uint32_t JDATA                :16;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef ADC_JDR1_1
+					#endif
+					#ifdef ADC_JDR1_1
 					struct
 					{
 						uint32_t JDATA                :32;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_JDR2
+			#endif
+			
+			#ifdef ADC_JDR2
 			struct JDR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_JDR2_0
+					#ifdef ADC_JDR2_0
 					struct
 					{
 						uint32_t JDATA                :16;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef ADC_JDR2_1
+					#endif
+					#ifdef ADC_JDR2_1
 					struct
 					{
 						uint32_t JDATA                :32;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_JDR3
+			#endif
+			
+			#ifdef ADC_JDR3
 			struct JDR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_JDR3_0
+					#ifdef ADC_JDR3_0
 					struct
 					{
 						uint32_t JDATA                :16;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef ADC_JDR3_1
+					#endif
+					#ifdef ADC_JDR3_1
 					struct
 					{
 						uint32_t JDATA                :32;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_JDR4
+			#endif
+			
+			#ifdef ADC_JDR4
 			struct JDR4_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_JDR4_0
+					#ifdef ADC_JDR4_0
 					struct
 					{
 						uint32_t JDATA                :16;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef ADC_JDR4_1
+					#endif
+					#ifdef ADC_JDR4_1
 					struct
 					{
 						uint32_t JDATA                :32;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_JOFR1
+			#endif
+			
+			#ifdef ADC_JOFR1
 			struct JOFR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t JOFFSET1             :12;
 					uint32_t                      :20;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_JOFR2
+			#endif
+			
+			#ifdef ADC_JOFR2
 			struct JOFR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t JOFFSET2             :12;
 					uint32_t                      :20;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_JOFR3
+			#endif
+			
+			#ifdef ADC_JOFR3
 			struct JOFR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t JOFFSET3             :12;
 					uint32_t                      :20;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_JOFR4
+			#endif
+			
+			#ifdef ADC_JOFR4
 			struct JOFR4_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t JOFFSET4             :12;
 					uint32_t                      :20;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_JSQR
+			#endif
+			
+			#ifdef ADC_JSQR
 			struct JSQR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_JSQR_0
+					#ifdef ADC_JSQR_0
 					struct
 					{
 						uint32_t JSQ1                 :5;
@@ -2526,8 +2508,8 @@ namespace sool
 						uint32_t JL                   :2;
 						uint32_t                      :10;
 					};
-#endif
-#ifdef ADC_JSQR_1
+					#endif
+					#ifdef ADC_JSQR_1
 					struct
 					{
 						uint32_t JL                   :2;
@@ -2542,8 +2524,8 @@ namespace sool
 						uint32_t ADC_JSQR_1_JSQ4      :5;
 						uint32_t                      :1;
 					};
-#endif
-#ifdef ADC_JSQR_2
+					#endif
+					#ifdef ADC_JSQR_2
 					struct
 					{
 						uint32_t                      :2;
@@ -2557,65 +2539,65 @@ namespace sool
 						uint32_t                      :1;
 						uint32_t JSQ4                 :5;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_LTR
+			#endif
+			
+			#ifdef ADC_LTR
 			struct LTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT                   :12;
 					uint32_t                      :20;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_LTR1
+			#endif
+			
+			#ifdef ADC_LTR1
 			struct LTR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT1                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_LTR2
+			#endif
+			
+			#ifdef ADC_LTR2
 			struct LTR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT2                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_LTR3
+			#endif
+			
+			#ifdef ADC_LTR3
 			struct LTR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT3                  :26;
 					uint32_t                      :6;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_OFR1
+			#endif
+			
+			#ifdef ADC_OFR1
 			struct OFR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2624,23 +2606,23 @@ namespace sool
 						uint32_t                      :19;
 						uint32_t ADC_OFR1_0_SSATE     :1;
 					};
-#ifdef ADC_OFR1_1
+					#ifdef ADC_OFR1_1
 					struct
 					{
 						uint32_t OFFSET1              :26;
 						uint32_t                      :6;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_OFR2
+			#endif
+			
+			#ifdef ADC_OFR2
 			struct OFR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2649,23 +2631,23 @@ namespace sool
 						uint32_t                      :19;
 						uint32_t ADC_OFR2_0_SSATE     :1;
 					};
-#ifdef ADC_OFR2_1
+					#ifdef ADC_OFR2_1
 					struct
 					{
 						uint32_t OFFSET2              :26;
 						uint32_t                      :6;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_OFR3
+			#endif
+			
+			#ifdef ADC_OFR3
 			struct OFR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2674,23 +2656,23 @@ namespace sool
 						uint32_t                      :19;
 						uint32_t ADC_OFR3_0_SSATE     :1;
 					};
-#ifdef ADC_OFR3_1
+					#ifdef ADC_OFR3_1
 					struct
 					{
 						uint32_t OFFSET3              :26;
 						uint32_t                      :6;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_OFR4
+			#endif
+			
+			#ifdef ADC_OFR4
 			struct OFR4_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2699,23 +2681,23 @@ namespace sool
 						uint32_t                      :19;
 						uint32_t ADC_OFR4_0_SSATE     :1;
 					};
-#ifdef ADC_OFR4_1
+					#ifdef ADC_OFR4_1
 					struct
 					{
 						uint32_t OFFSET4              :26;
 						uint32_t                      :6;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_PCSEL
+			#endif
+			
+			#ifdef ADC_PCSEL
 			struct PCSEL_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2748,15 +2730,15 @@ namespace sool
 						uint32_t                      :12;
 					};
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SMPR
+			#endif
+			
+			#ifdef ADC_SMPR
 			struct SMPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -2764,39 +2746,39 @@ namespace sool
 						uint32_t SMP                  :3;
 						uint32_t                      :29;
 					};
-#ifdef ADC_SMPR_1
+					#ifdef ADC_SMPR_1
 					struct
 					{
 						uint32_t SMPR                 :3;
 						uint32_t                      :29;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SMPR0
+			#endif
+			
+			#ifdef ADC_SMPR0
 			struct SMPR0_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t SMP30                :3;
 					uint32_t SMP31                :3;
 					uint32_t                      :26;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_SMPR1
+			#endif
+			
+			#ifdef ADC_SMPR1
 			struct SMPR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_SMPR1_0
+					#ifdef ADC_SMPR1_0
 					struct
 					{
 						uint32_t ADC_SMPR1_0_SMPR     :3;
@@ -2812,8 +2794,8 @@ namespace sool
 						uint32_t                      :1;
 						uint32_t ADC_SMPR1_0_SMPPLUS  :1;
 					};
-#endif
-#ifdef ADC_SMPR1_1
+					#endif
+					#ifdef ADC_SMPR1_1
 					struct
 					{
 						uint32_t ADC_SMPR1_1_SMP10    :3;
@@ -2828,8 +2810,8 @@ namespace sool
 						uint32_t ADC_SMPR1_1_SMP29    :3;
 						uint32_t                      :2;
 					};
-#endif
-#ifdef ADC_SMPR1_2
+					#endif
+					#ifdef ADC_SMPR1_2
 					struct
 					{
 						uint32_t ADC_SMPR1_2_SMP0     :3;
@@ -2843,27 +2825,27 @@ namespace sool
 						uint32_t ADC_SMPR1_2_SMP28    :3;
 						uint32_t                      :5;
 					};
-#endif
-#ifdef ADC_SMPR1_3
+					#endif
+					#ifdef ADC_SMPR1_3
 					struct
 					{
 						uint32_t SMP20                :3;
 						uint32_t                      :29;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SMPR2
+			#endif
+			
+			#ifdef ADC_SMPR2
 			struct SMPR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_SMPR2_0
+					#ifdef ADC_SMPR2_0
 					struct
 					{
 						uint32_t SMP0                 :3;
@@ -2878,8 +2860,8 @@ namespace sool
 						uint32_t SMP9                 :3;
 						uint32_t                      :2;
 					};
-#endif
-#ifdef ADC_SMPR2_1
+					#endif
+					#ifdef ADC_SMPR2_1
 					struct
 					{
 						uint32_t SMP10                :3;
@@ -2894,17 +2876,17 @@ namespace sool
 						uint32_t ADC_SMPR2_1_SMP19    :3;
 						uint32_t                      :2;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SMPR3
+			#endif
+			
+			#ifdef ADC_SMPR3
 			struct SMPR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t SMP0                 :3;
 					uint32_t SMP1                 :3;
 					uint32_t SMP2                 :3;
@@ -2916,19 +2898,19 @@ namespace sool
 					uint32_t SMP8                 :3;
 					uint32_t SMP9                 :3;
 					uint32_t                      :2;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_SQR1
+			#endif
+			
+			#ifdef ADC_SQR1
 			struct SQR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_SQR1_0
+					#ifdef ADC_SQR1_0
 					struct
 					{
 						uint32_t ADC_SQR1_0_SQ13      :5;
@@ -2939,8 +2921,8 @@ namespace sool
 						uint32_t ADC_SQR1_0_SQ4       :5;
 						uint32_t                      :3;
 					};
-#endif
-#ifdef ADC_SQR1_1
+					#endif
+					#ifdef ADC_SQR1_1
 					struct
 					{
 						uint32_t L                    :4;
@@ -2952,8 +2934,8 @@ namespace sool
 						uint32_t SQ3                  :5;
 						uint32_t                      :9;
 					};
-#endif
-#ifdef ADC_SQR1_2
+					#endif
+					#ifdef ADC_SQR1_2
 					struct
 					{
 						uint32_t SQ25                 :5;
@@ -2963,20 +2945,20 @@ namespace sool
 						uint32_t L                    :5;
 						uint32_t                      :7;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SQR2
+			#endif
+			
+			#ifdef ADC_SQR2
 			struct SQR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_SQR2_0
+					#ifdef ADC_SQR2_0
 					struct
 					{
 						uint32_t SQ7                  :5;
@@ -2987,8 +2969,8 @@ namespace sool
 						uint32_t SQ12                 :5;
 						uint32_t                      :2;
 					};
-#endif
-#ifdef ADC_SQR2_1
+					#endif
+					#ifdef ADC_SQR2_1
 					struct
 					{
 						uint32_t SQ5                  :5;
@@ -3002,8 +2984,8 @@ namespace sool
 						uint32_t SQ9                  :5;
 						uint32_t                      :3;
 					};
-#endif
-#ifdef ADC_SQR2_2
+					#endif
+					#ifdef ADC_SQR2_2
 					struct
 					{
 						uint32_t SQ19                 :5;
@@ -3014,20 +2996,20 @@ namespace sool
 						uint32_t SQ24                 :5;
 						uint32_t                      :2;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SQR3
+			#endif
+			
+			#ifdef ADC_SQR3
 			struct SQR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_SQR3_0
+					#ifdef ADC_SQR3_0
 					struct
 					{
 						uint32_t SQ1                  :5;
@@ -3038,8 +3020,8 @@ namespace sool
 						uint32_t SQ6                  :5;
 						uint32_t                      :2;
 					};
-#endif
-#ifdef ADC_SQR3_1
+					#endif
+					#ifdef ADC_SQR3_1
 					struct
 					{
 						uint32_t SQ10                 :5;
@@ -3053,8 +3035,8 @@ namespace sool
 						uint32_t SQ14                 :5;
 						uint32_t                      :3;
 					};
-#endif
-#ifdef ADC_SQR3_2
+					#endif
+					#ifdef ADC_SQR3_2
 					struct
 					{
 						uint32_t SQ13                 :5;
@@ -3065,17 +3047,17 @@ namespace sool
 						uint32_t SQ18                 :5;
 						uint32_t                      :2;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SQR4
+			#endif
+			
+			#ifdef ADC_SQR4
 			struct SQR4_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -3089,7 +3071,7 @@ namespace sool
 						uint32_t ADC_SQR4_0_SQ12      :5;
 						uint32_t                      :2;
 					};
-#ifdef ADC_SQR4_1
+					#ifdef ADC_SQR4_1
 					struct
 					{
 						uint32_t SQ7                  :5;
@@ -3097,17 +3079,17 @@ namespace sool
 						uint32_t SQ9                  :5;
 						uint32_t                      :17;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_SQR5
+			#endif
+			
+			#ifdef ADC_SQR5
 			struct SQR5_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t SQ1                  :5;
 					uint32_t SQ2                  :5;
 					uint32_t SQ3                  :5;
@@ -3115,16 +3097,16 @@ namespace sool
 					uint32_t SQ5                  :5;
 					uint32_t SQ6                  :5;
 					uint32_t                      :2;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_SR
+			#endif
+			
+			#ifdef ADC_SR
 			struct SR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -3148,78 +3130,78 @@ namespace sool
 						uint32_t JEOC                 :1;
 						uint32_t                      :29;
 					};
-#ifdef ADC_SR_2
+					#ifdef ADC_SR_2
 					struct
 					{
 						uint32_t                      :1;
 						uint32_t EOCS                 :1;
 						uint32_t                      :30;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_TR
+			#endif
+			
+			#ifdef ADC_TR
 			struct TR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT                   :12;
 					uint32_t                      :4;
 					uint32_t HT                   :12;
 					uint32_t                      :4;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_TR1
+			#endif
+			
+			#ifdef ADC_TR1
 			struct TR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT1                  :12;
 					uint32_t                      :4;
 					uint32_t HT1                  :12;
 					uint32_t                      :4;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_TR2
+			#endif
+			
+			#ifdef ADC_TR2
 			struct TR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT2                  :8;
 					uint32_t                      :8;
 					uint32_t HT2                  :8;
 					uint32_t                      :8;
-
-
+			
+				
 			};
-#endif
-
-#ifdef ADC_TR3
+			#endif
+			
+			#ifdef ADC_TR3
 			struct TR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t LT3                  :8;
 					uint32_t                      :8;
 					uint32_t HT3                  :8;
 					uint32_t                      :8;
-
-
+			
+				
 			};
-#endif
-
+			#endif
+			
 			union
 			{
-
+				
 				struct
 				{
 					ADC_MAP0_ISR;        // @0x000
@@ -3347,37 +3329,36 @@ namespace sool
 					__SOOL_PERIPH_PADDING_8;
 				};
 			};
-		private:
+			private:
 			ADC() = delete;
-
-		private:
+			private:
 			static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
-
-			static constexpr volatile Reg32_t &get_clock_enable_reg(const uint32_t addr);
-
-		public:
+			
+			static constexpr volatile Reg32_t& get_clock_enable_reg(const uint32_t addr);
+			
+			public:
 			void enable_clock() volatile;
-
+			
 			void disable_clock() volatile;
-
+			
 			bool is_clock_enabled() const volatile;
-
-#ifdef ADC_SQR1
+			
+			#ifdef ADC_SQR1
 			void set_acquisition_sequence_length(const unsigned int length) volatile;
-#endif
-
+			#endif
+			
 			void set_sequence_value(const unsigned int position, const unsigned int channel) volatile;
-
+			
 		};
-
+		
 		struct ADC_Common_base_plugin
 		{
-
-#ifdef ADC_Common_CCR
+		
+			#ifdef ADC_Common_CCR
 			struct CCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -3396,7 +3377,7 @@ namespace sool
 						uint32_t ADC_Common_CCR_0_LFMEN :1;
 						uint32_t                      :6;
 					};
-#ifdef ADC_Common_CCR_1
+					#ifdef ADC_Common_CCR_1
 					struct
 					{
 						uint32_t ADC_Common_CCR_1_DUAL :5;
@@ -3410,64 +3391,64 @@ namespace sool
 						uint32_t ADC_Common_CCR_1_VLCDEN :1;
 						uint32_t                      :7;
 					};
-#endif
-#ifdef ADC_Common_CCR_2
+					#endif
+					#ifdef ADC_Common_CCR_2
 					struct
 					{
 						uint32_t                      :14;
 						uint32_t DAMDF                :2;
 						uint32_t                      :16;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_Common_CDR
+			#endif
+			
+			#ifdef ADC_Common_CDR
 			struct CDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_Common_CDR_0
+					#ifdef ADC_Common_CDR_0
 					struct
 					{
 						uint32_t DATA1                :16;
 						uint32_t DATA2                :16;
 					};
-#endif
-#ifdef ADC_Common_CDR_1
+					#endif
+					#ifdef ADC_Common_CDR_1
 					struct
 					{
 						uint32_t RDATA_MST            :16;
 						uint32_t RDATA_SLV            :16;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef ADC_Common_CDR2
+			#endif
+			
+			#ifdef ADC_Common_CDR2
 			struct CDR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
-
-
+				
+			
+				
 			};
-#endif
-
-#ifdef ADC_Common_CSR
+			#endif
+			
+			#ifdef ADC_Common_CSR
 			struct CSR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef ADC_Common_CSR_0
+					#ifdef ADC_Common_CSR_0
 					struct
 					{
 						uint32_t ADC_Common_CSR_0_AWD1 :1;
@@ -3496,8 +3477,8 @@ namespace sool
 						uint32_t ADC_Common_CSR_0_JQOVF_SLV :1;
 						uint32_t                      :5;
 					};
-#endif
-#ifdef ADC_Common_CSR_1
+					#endif
+					#ifdef ADC_Common_CSR_1
 					struct
 					{
 						uint32_t ADC_Common_CSR_1_ADRDY_MST :1;
@@ -3520,8 +3501,8 @@ namespace sool
 						uint32_t ADC_Common_CSR_1_DOVR3 :1;
 						uint32_t                      :10;
 					};
-#endif
-#ifdef ADC_Common_CSR_2
+					#endif
+					#ifdef ADC_Common_CSR_2
 					struct
 					{
 						uint32_t                      :1;
@@ -3533,23 +3514,22 @@ namespace sool
 						uint32_t ADC_Common_CSR_2_JEOC_SLV :1;
 						uint32_t                      :10;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-		};
-
+			#endif
+			};
 		template<typename plugin=ADC_Common_base_plugin>
 		class ADC_Common
 		{
-
-
-		public :
-
+			
+			
+			public :
+			
 			union
 			{
-
+				
 				struct
 				{
 					ADC_Common_MAP0_CCR; // @0x000
@@ -3579,28 +3559,28 @@ namespace sool
 					__SOOL_PERIPH_PADDING_4;
 				};
 			};
-		private:
+			private:
 			ADC_Common() = delete;
-
+			
 		};
-
+		
 		//region instances
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || \
-    defined(STM32L0     ) || defined(STM32L1     )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
+    defined(STM32L0     ) || defined(STM32L1     ) 
 #define ADC1_BASE_ADDR ((uint32_t)0x40012400U)
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
 #define ADC1_BASE_ADDR ((uint32_t)0x40012000U)
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || \
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
 #define ADC1_BASE_ADDR ((uint32_t)0x50000000U)
 #endif
 
-#if defined(STM32H7     )
+#if defined(STM32H7     ) 
 #define ADC1_BASE_ADDR ((uint32_t)0x40022000U)
 #define ADC2_BASE_ADDR ((uint32_t)0x40022100U)
 #define ADC3_BASE_ADDR ((uint32_t)0x58026000U)
@@ -3608,932 +3588,934 @@ namespace sool
 #define ADC3_COMMON_BASE_ADDR ((uint32_t)0x58026300U)
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32L4     ) || defined(STM32L4P    ) 
 #define ADC1_BASE_ADDR ((uint32_t)0x50040000U)
 #endif
 
-#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || \
-    defined(STM32F105xC ) || defined(STM32F107xC )
+#if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
+    defined(STM32F105xC ) || defined(STM32F107xC ) 
 #define ADC2_BASE_ADDR ((uint32_t)0x40012800U)
 #define ADC12_COMMON_BASE_ADDR ((uint32_t)0x40012400U)
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) || \
-    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || \
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     )
+#if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
+    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) 
 #define ADC2_BASE_ADDR ((uint32_t)0x40012100U)
 #define ADC3_BASE_ADDR ((uint32_t)0x40012200U)
 #define ADC123_COMMON_BASE_ADDR ((uint32_t)0x40012300U)
 #endif
 
-#if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || \
-    defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || \
-    defined(STM32F398xx )
+#if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
+    defined(STM32F398xx ) 
 #define ADC2_BASE_ADDR ((uint32_t)0x50000100U)
 #define ADC12_COMMON_BASE_ADDR ((uint32_t)0x50000300U)
 #endif
 
-#if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || \
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
+#if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
 #define ADC2_BASE_ADDR ((uint32_t)0x50040100U)
 #define ADC3_BASE_ADDR ((uint32_t)0x50040200U)
 #define ADC123_COMMON_BASE_ADDR ((uint32_t)0x50040300U)
 #endif
 
-#if defined(STM32F103xE ) || defined(STM32F103xG )
+#if defined(STM32F103xE ) || defined(STM32F103xG ) 
 #define ADC3_BASE_ADDR ((uint32_t)0x40013C00U)
 #endif
 
-#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F398xx )
+#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
 #define ADC3_BASE_ADDR ((uint32_t)0x50000400U)
 #define ADC4_BASE_ADDR ((uint32_t)0x50000500U)
 #define ADC34_COMMON_BASE_ADDR ((uint32_t)0x50000700U)
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L0     )
+#if defined(STM32F0     ) || defined(STM32L0     ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x40012708U)
 #endif
 
-#if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101x6 ) || defined(STM32F101xB ) || \
-    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102x6 ) || defined(STM32F102xB ) || \
-    defined(STM32F373xC ) || defined(STM32F378xx )
+#if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101x6 ) || defined(STM32F101xB ) ||\
+    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102x6 ) || defined(STM32F102xB ) ||\
+    defined(STM32F373xC ) || defined(STM32F378xx ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x40012400U)
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx )
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x50000300U)
 #endif
 
-#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || \
-    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || \
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx )
+#if defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
+    defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
+    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x40012300U)
 #endif
 
-#if defined(STM32L1     )
+#if defined(STM32L1     ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x40012700U)
 #endif
 
-#if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || \
-    defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || \
-    defined(STM32L4P    )
+#if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
+    defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
+    defined(STM32L4P    ) 
 #define ADC1_COMMON_BASE_ADDR ((uint32_t)0x50040300U)
 #endif
 
-#if defined(STM32F0     )
+#if defined(STM32F0     ) 
 #define ADC_BASE_ADDR ((uint32_t)0x40012708U)
 #endif
 
-#if defined(STM32F7     )
+#if defined(STM32F7     ) 
 #define ADC_BASE_ADDR ((uint32_t)0x40012300U)
 #endif
 
 #ifdef ADC1_BASE_ADDR
-		volatile class ADC * const ADC1 = reinterpret_cast<class ADC* const>(ADC1_BASE_ADDR);
+volatile class ADC * const ADC1 = reinterpret_cast<class ADC* const>(ADC1_BASE_ADDR);
 #endif
 #ifdef ADC2_BASE_ADDR
-		volatile class ADC * const ADC2 = reinterpret_cast<class ADC* const>(ADC2_BASE_ADDR);
+volatile class ADC * const ADC2 = reinterpret_cast<class ADC* const>(ADC2_BASE_ADDR);
 #endif
 #ifdef ADC3_BASE_ADDR
-		volatile class ADC * const ADC3 = reinterpret_cast<class ADC* const>(ADC3_BASE_ADDR);
+volatile class ADC * const ADC3 = reinterpret_cast<class ADC* const>(ADC3_BASE_ADDR);
 #endif
 #ifdef ADC12_COMMON_BASE_ADDR
-		struct ADC12_COMMON_plugin: ADC_Common_base_plugin {
-
-#ifdef ADC_Common_CSR
-			struct CSR_TypeDef : public Reg32_t
+struct ADC12_COMMON_plugin: ADC_Common_base_plugin {
+	
+	#ifdef ADC_Common_CSR
+	struct CSR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC12_COMMON_CSR_0
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC12_COMMON_CSR_0
-					struct
-					{
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOC_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOS_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_OVR_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOC_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOS_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD1_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD2_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD3_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_JQOVF_MST :1;
-						uint32_t ADC12_COMMON_CSR_0_JSTRT2 :1;
-						uint32_t ADC12_COMMON_CSR_0_STRT2 :1;
-						uint32_t ADC12_COMMON_CSR_0_OVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOC_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_EOS_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_OVR_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD1_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD2_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_AWD3_SLV :1;
-						uint32_t ADC12_COMMON_CSR_0_JQOVF_SLV :1;
-						uint32_t                      :5;
-					};
-#endif
-#ifdef ADC12_COMMON_CSR_1
-					struct
-					{
-						uint32_t ADC12_COMMON_CSR_1_AWD1 :1;
-						uint32_t ADC12_COMMON_CSR_1_EOC1 :1;
-						uint32_t ADC12_COMMON_CSR_1_JEOC1 :1;
-						uint32_t ADC12_COMMON_CSR_1_JSTRT1 :1;
-						uint32_t ADC12_COMMON_CSR_1_STRT1 :1;
-						uint32_t ADC12_COMMON_CSR_1_OVR1 :1;
-						uint32_t ADC12_COMMON_CSR_1_JEOS_MST :1;
-						uint32_t                      :1;
-						uint32_t ADC12_COMMON_CSR_1_AWD2 :1;
-						uint32_t ADC12_COMMON_CSR_1_EOC2 :1;
-						uint32_t ADC12_COMMON_CSR_1_JEOC2 :1;
-						uint32_t                      :2;
-						uint32_t ADC12_COMMON_CSR_1_DOVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC12_COMMON_CSR_1_AWD3 :1;
-						uint32_t ADC12_COMMON_CSR_1_EOC3 :1;
-						uint32_t ADC12_COMMON_CSR_1_JEOC3 :1;
-						uint32_t ADC12_COMMON_CSR_1_JSTRT3 :1;
-						uint32_t ADC12_COMMON_CSR_1_STRT3 :1;
-						uint32_t ADC12_COMMON_CSR_1_OVR3 :1;
-						uint32_t ADC12_COMMON_CSR_1_JEOS_SLV :1;
-						uint32_t                      :9;
-					};
-#endif
-#ifdef ADC12_COMMON_CSR_2
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC12_COMMON_CSR_2_EOSMP_MST :1;
-						uint32_t ADC12_COMMON_CSR_2_EOC_MST :1;
-						uint32_t ADC12_COMMON_CSR_2_EOS_MST :1;
-						uint32_t ADC12_COMMON_CSR_2_OVR_MST :1;
-						uint32_t ADC12_COMMON_CSR_2_DOVR1 :1;
-						uint32_t ADC12_COMMON_CSR_2_ADONS1 :1;
-						uint32_t                      :10;
-						uint32_t ADC12_COMMON_CSR_2_EOSMP_SLV :1;
-						uint32_t ADC12_COMMON_CSR_2_EOC_SLV :1;
-						uint32_t ADC12_COMMON_CSR_2_EOS_SLV :1;
-						uint32_t ADC12_COMMON_CSR_2_OVR_SLV :1;
-						uint32_t ADC12_COMMON_CSR_2_DOVR3 :1;
-						uint32_t                      :10;
-					};
-#endif
-#ifdef ADC12_COMMON_CSR_3
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC12_COMMON_CSR_3_EOCS1 :1;
-						uint32_t ADC12_COMMON_CSR_3_JEOS1 :1;
-						uint32_t                      :2;
-						uint32_t ADC12_COMMON_CSR_3_JEOC_MST :1;
-						uint32_t                      :15;
-						uint32_t ADC12_COMMON_CSR_3_JEOC_SLV :1;
-						uint32_t                      :10;
-					};
-#endif
-				};
-
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOC_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOS_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_OVR_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOC_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOS_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD1_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD2_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD3_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_JQOVF_MST :1;
+				uint32_t ADC12_COMMON_CSR_0_JSTRT2 :1;
+				uint32_t ADC12_COMMON_CSR_0_STRT2 :1;
+				uint32_t ADC12_COMMON_CSR_0_OVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOC_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_EOS_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_OVR_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD1_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD2_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_AWD3_SLV :1;
+				uint32_t ADC12_COMMON_CSR_0_JQOVF_SLV :1;
+				uint32_t                      :5;
 			};
-#endif
-
-#ifdef ADC_Common_CCR
-			struct CCR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC12_COMMON_CSR_1
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC12_COMMON_CCR_0
-					struct
-					{
-						uint32_t ADC12_COMMON_CCR_0_MULTI :5;
-						uint32_t                      :3;
-						uint32_t ADC12_COMMON_CCR_0_DELAY :4;
-						uint32_t                      :1;
-						uint32_t ADC12_COMMON_CCR_0_DMACFG :1;
-						uint32_t ADC12_COMMON_CCR_0_MDMA :2;
-						uint32_t ADC12_COMMON_CCR_0_CKMODE :2;
-						uint32_t ADC12_COMMON_CCR_0_PRESC :4;
-						uint32_t ADC12_COMMON_CCR_0_VREFEN :1;
-						uint32_t ADC12_COMMON_CCR_0_TSEN :1;
-						uint32_t ADC12_COMMON_CCR_0_VBATEN :1;
-						uint32_t ADC12_COMMON_CCR_0_LFMEN :1;
-						uint32_t                      :6;
-					};
-#endif
-#ifdef ADC12_COMMON_CCR_1
-					struct
-					{
-						uint32_t ADC12_COMMON_CCR_1_DUAL :5;
-						uint32_t                      :8;
-						uint32_t ADC12_COMMON_CCR_1_DDS :1;
-						uint32_t ADC12_COMMON_CCR_1_DMA :2;
-						uint32_t ADC12_COMMON_CCR_1_ADCPRE :2;
-						uint32_t                      :4;
-						uint32_t ADC12_COMMON_CCR_1_VBATE :1;
-						uint32_t ADC12_COMMON_CCR_1_TSVREFE :1;
-						uint32_t ADC12_COMMON_CCR_1_VLCDEN :1;
-						uint32_t                      :7;
-					};
-#endif
-#ifdef ADC12_COMMON_CCR_2
-					struct
-					{
-						uint32_t                      :14;
-						uint32_t DAMDF                :2;
-						uint32_t                      :16;
-					};
-#endif
-				};
-
+				uint32_t ADC12_COMMON_CSR_1_AWD1 :1;
+				uint32_t ADC12_COMMON_CSR_1_EOC1 :1;
+				uint32_t ADC12_COMMON_CSR_1_JEOC1 :1;
+				uint32_t ADC12_COMMON_CSR_1_JSTRT1 :1;
+				uint32_t ADC12_COMMON_CSR_1_STRT1 :1;
+				uint32_t ADC12_COMMON_CSR_1_OVR1 :1;
+				uint32_t ADC12_COMMON_CSR_1_JEOS_MST :1;
+				uint32_t                      :1;
+				uint32_t ADC12_COMMON_CSR_1_AWD2 :1;
+				uint32_t ADC12_COMMON_CSR_1_EOC2 :1;
+				uint32_t ADC12_COMMON_CSR_1_JEOC2 :1;
+				uint32_t                      :2;
+				uint32_t ADC12_COMMON_CSR_1_DOVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC12_COMMON_CSR_1_AWD3 :1;
+				uint32_t ADC12_COMMON_CSR_1_EOC3 :1;
+				uint32_t ADC12_COMMON_CSR_1_JEOC3 :1;
+				uint32_t ADC12_COMMON_CSR_1_JSTRT3 :1;
+				uint32_t ADC12_COMMON_CSR_1_STRT3 :1;
+				uint32_t ADC12_COMMON_CSR_1_OVR3 :1;
+				uint32_t ADC12_COMMON_CSR_1_JEOS_SLV :1;
+				uint32_t                      :9;
 			};
-#endif
-
-#ifdef ADC_Common_CDR
-			struct CDR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC12_COMMON_CSR_2
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC12_COMMON_CDR_0
-					struct
-					{
-						uint32_t RDATA_MST            :16;
-						uint32_t RDATA_SLV            :16;
-					};
-#endif
-#ifdef ADC12_COMMON_CDR_1
-					struct
-					{
-						uint32_t DATA1                :16;
-						uint32_t DATA2                :16;
-					};
-#endif
-				};
-
+				uint32_t                      :1;
+				uint32_t ADC12_COMMON_CSR_2_EOSMP_MST :1;
+				uint32_t ADC12_COMMON_CSR_2_EOC_MST :1;
+				uint32_t ADC12_COMMON_CSR_2_EOS_MST :1;
+				uint32_t ADC12_COMMON_CSR_2_OVR_MST :1;
+				uint32_t ADC12_COMMON_CSR_2_DOVR1 :1;
+				uint32_t ADC12_COMMON_CSR_2_ADONS1 :1;
+				uint32_t                      :10;
+				uint32_t ADC12_COMMON_CSR_2_EOSMP_SLV :1;
+				uint32_t ADC12_COMMON_CSR_2_EOC_SLV :1;
+				uint32_t ADC12_COMMON_CSR_2_EOS_SLV :1;
+				uint32_t ADC12_COMMON_CSR_2_OVR_SLV :1;
+				uint32_t ADC12_COMMON_CSR_2_DOVR3 :1;
+				uint32_t                      :10;
 			};
-#endif
-
+			#endif
+			#ifdef ADC12_COMMON_CSR_3
+			struct
+			{
+				uint32_t                      :1;
+				uint32_t ADC12_COMMON_CSR_3_EOCS1 :1;
+				uint32_t ADC12_COMMON_CSR_3_JEOS1 :1;
+				uint32_t                      :2;
+				uint32_t ADC12_COMMON_CSR_3_JEOC_MST :1;
+				uint32_t                      :15;
+				uint32_t ADC12_COMMON_CSR_3_JEOC_SLV :1;
+				uint32_t                      :10;
+			};
+			#endif
 		};
-		volatile class ADC_Common<ADC12_COMMON_plugin>* const ADC12_COMMON =reinterpret_cast<class ADC_Common<ADC12_COMMON_plugin>* const>(ADC12_COMMON_BASE_ADDR);
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CCR
+	struct CCR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC12_COMMON_CCR_0
+			struct
+			{
+				uint32_t ADC12_COMMON_CCR_0_MULTI :5;
+				uint32_t                      :3;
+				uint32_t ADC12_COMMON_CCR_0_DELAY :4;
+				uint32_t                      :1;
+				uint32_t ADC12_COMMON_CCR_0_DMACFG :1;
+				uint32_t ADC12_COMMON_CCR_0_MDMA :2;
+				uint32_t ADC12_COMMON_CCR_0_CKMODE :2;
+				uint32_t ADC12_COMMON_CCR_0_PRESC :4;
+				uint32_t ADC12_COMMON_CCR_0_VREFEN :1;
+				uint32_t ADC12_COMMON_CCR_0_TSEN :1;
+				uint32_t ADC12_COMMON_CCR_0_VBATEN :1;
+				uint32_t ADC12_COMMON_CCR_0_LFMEN :1;
+				uint32_t                      :6;
+			};
+			#endif
+			#ifdef ADC12_COMMON_CCR_1
+			struct
+			{
+				uint32_t ADC12_COMMON_CCR_1_DUAL :5;
+				uint32_t                      :8;
+				uint32_t ADC12_COMMON_CCR_1_DDS :1;
+				uint32_t ADC12_COMMON_CCR_1_DMA :2;
+				uint32_t ADC12_COMMON_CCR_1_ADCPRE :2;
+				uint32_t                      :4;
+				uint32_t ADC12_COMMON_CCR_1_VBATE :1;
+				uint32_t ADC12_COMMON_CCR_1_TSVREFE :1;
+				uint32_t ADC12_COMMON_CCR_1_VLCDEN :1;
+				uint32_t                      :7;
+			};
+			#endif
+			#ifdef ADC12_COMMON_CCR_2
+			struct
+			{
+				uint32_t                      :14;
+				uint32_t DAMDF                :2;
+				uint32_t                      :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CDR
+	struct CDR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC12_COMMON_CDR_0
+			struct
+			{
+				uint32_t RDATA_MST            :16;
+				uint32_t RDATA_SLV            :16;
+			};
+			#endif
+			#ifdef ADC12_COMMON_CDR_1
+			struct
+			{
+				uint32_t DATA1                :16;
+				uint32_t DATA2                :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+};
+volatile class ADC_Common<ADC12_COMMON_plugin>* const ADC12_COMMON =reinterpret_cast<class ADC_Common<ADC12_COMMON_plugin>* const>(ADC12_COMMON_BASE_ADDR);
 #endif
 #ifdef ADC3_COMMON_BASE_ADDR
-		volatile class ADC_Common<>* const ADC3_COMMON =reinterpret_cast<class ADC_Common<>* const>(ADC3_COMMON_BASE_ADDR);
+volatile class ADC_Common<>* const ADC3_COMMON =reinterpret_cast<class ADC_Common<>* const>(ADC3_COMMON_BASE_ADDR);
 #endif
 #ifdef ADC123_COMMON_BASE_ADDR
-		struct ADC123_COMMON_plugin: ADC_Common_base_plugin {
-
-#ifdef ADC_Common_CSR
-			struct CSR_TypeDef : public Reg32_t
+struct ADC123_COMMON_plugin: ADC_Common_base_plugin {
+	
+	#ifdef ADC_Common_CSR
+	struct CSR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC123_COMMON_CSR_0
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC123_COMMON_CSR_0
-					struct
-					{
-						uint32_t ADC123_COMMON_CSR_0_ADRDY_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_EOSMP_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_EOC_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_EOS_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_OVR_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_JEOC_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_JEOS_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD1_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD2_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD3_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_JQOVF_MST :1;
-						uint32_t ADC123_COMMON_CSR_0_JSTRT2 :1;
-						uint32_t ADC123_COMMON_CSR_0_STRT2 :1;
-						uint32_t ADC123_COMMON_CSR_0_OVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC123_COMMON_CSR_0_ADRDY_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_EOSMP_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_EOC_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_EOS_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_OVR_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_JEOC_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_JEOS_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD1_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD2_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_AWD3_SLV :1;
-						uint32_t ADC123_COMMON_CSR_0_JQOVF_SLV :1;
-						uint32_t                      :5;
-					};
-#endif
-#ifdef ADC123_COMMON_CSR_1
-					struct
-					{
-						uint32_t AWD1                 :1;
-						uint32_t EOC1                 :1;
-						uint32_t JEOC1                :1;
-						uint32_t JSTRT1               :1;
-						uint32_t STRT1                :1;
-						uint32_t OVR1                 :1;
-						uint32_t ADC123_COMMON_CSR_1_ADONS1 :1;
-						uint32_t                      :1;
-						uint32_t ADC123_COMMON_CSR_1_AWD2 :1;
-						uint32_t ADC123_COMMON_CSR_1_EOC2 :1;
-						uint32_t ADC123_COMMON_CSR_1_JEOC2 :1;
-						uint32_t                      :2;
-						uint32_t ADC123_COMMON_CSR_1_DOVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC123_COMMON_CSR_1_AWD3 :1;
-						uint32_t ADC123_COMMON_CSR_1_EOC3 :1;
-						uint32_t ADC123_COMMON_CSR_1_JEOC3 :1;
-						uint32_t ADC123_COMMON_CSR_1_JSTRT3 :1;
-						uint32_t ADC123_COMMON_CSR_1_STRT3 :1;
-						uint32_t ADC123_COMMON_CSR_1_OVR3 :1;
-						uint32_t                      :10;
-					};
-#endif
-#ifdef ADC123_COMMON_CSR_2
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC123_COMMON_CSR_2_EOCS1 :1;
-						uint32_t ADC123_COMMON_CSR_2_JEOS1 :1;
-						uint32_t                      :2;
-						uint32_t ADC123_COMMON_CSR_2_DOVR1 :1;
-						uint32_t                      :15;
-						uint32_t ADC123_COMMON_CSR_2_DOVR3 :1;
-						uint32_t                      :10;
-					};
-#endif
-				};
-
+				uint32_t ADC123_COMMON_CSR_0_ADRDY_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_EOSMP_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_EOC_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_EOS_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_OVR_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_JEOC_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_JEOS_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD1_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD2_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD3_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_JQOVF_MST :1;
+				uint32_t ADC123_COMMON_CSR_0_JSTRT2 :1;
+				uint32_t ADC123_COMMON_CSR_0_STRT2 :1;
+				uint32_t ADC123_COMMON_CSR_0_OVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC123_COMMON_CSR_0_ADRDY_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_EOSMP_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_EOC_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_EOS_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_OVR_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_JEOC_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_JEOS_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD1_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD2_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_AWD3_SLV :1;
+				uint32_t ADC123_COMMON_CSR_0_JQOVF_SLV :1;
+				uint32_t                      :5;
 			};
-#endif
-
-#ifdef ADC_Common_CDR
-			struct CDR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC123_COMMON_CSR_1
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-					struct
-					{
-						uint32_t RDATA_MST            :16;
-						uint32_t RDATA_SLV            :16;
-					};
-#ifdef ADC123_COMMON_CDR_1
-					struct
-					{
-						uint32_t DATA1                :16;
-						uint32_t DATA2                :16;
-					};
-#endif
-				};
-
+				uint32_t AWD1                 :1;
+				uint32_t EOC1                 :1;
+				uint32_t JEOC1                :1;
+				uint32_t JSTRT1               :1;
+				uint32_t STRT1                :1;
+				uint32_t OVR1                 :1;
+				uint32_t ADC123_COMMON_CSR_1_ADONS1 :1;
+				uint32_t                      :1;
+				uint32_t ADC123_COMMON_CSR_1_AWD2 :1;
+				uint32_t ADC123_COMMON_CSR_1_EOC2 :1;
+				uint32_t ADC123_COMMON_CSR_1_JEOC2 :1;
+				uint32_t                      :2;
+				uint32_t ADC123_COMMON_CSR_1_DOVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC123_COMMON_CSR_1_AWD3 :1;
+				uint32_t ADC123_COMMON_CSR_1_EOC3 :1;
+				uint32_t ADC123_COMMON_CSR_1_JEOC3 :1;
+				uint32_t ADC123_COMMON_CSR_1_JSTRT3 :1;
+				uint32_t ADC123_COMMON_CSR_1_STRT3 :1;
+				uint32_t ADC123_COMMON_CSR_1_OVR3 :1;
+				uint32_t                      :10;
 			};
-#endif
-
-#ifdef ADC_Common_CDR2
-			struct CDR2_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC123_COMMON_CSR_2
+			struct
 			{
-				using Reg32_t::operator=;
-
-					uint32_t RDATA_ALT            :32;
-
-
+				uint32_t                      :1;
+				uint32_t ADC123_COMMON_CSR_2_EOCS1 :1;
+				uint32_t ADC123_COMMON_CSR_2_JEOS1 :1;
+				uint32_t                      :2;
+				uint32_t ADC123_COMMON_CSR_2_DOVR1 :1;
+				uint32_t                      :15;
+				uint32_t ADC123_COMMON_CSR_2_DOVR3 :1;
+				uint32_t                      :10;
 			};
-#endif
-
+			#endif
 		};
-		volatile class ADC_Common<ADC123_COMMON_plugin>* const ADC123_COMMON =reinterpret_cast<class ADC_Common<ADC123_COMMON_plugin>* const>(ADC123_COMMON_BASE_ADDR);
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CDR
+	struct CDR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			struct
+			{
+				uint32_t RDATA_MST            :16;
+				uint32_t RDATA_SLV            :16;
+			};
+			#ifdef ADC123_COMMON_CDR_1
+			struct
+			{
+				uint32_t DATA1                :16;
+				uint32_t DATA2                :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CDR2
+	struct CDR2_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+		
+			uint32_t RDATA_ALT            :32;
+	
+		
+	};
+	#endif
+	
+};
+volatile class ADC_Common<ADC123_COMMON_plugin>* const ADC123_COMMON =reinterpret_cast<class ADC_Common<ADC123_COMMON_plugin>* const>(ADC123_COMMON_BASE_ADDR);
 #endif
 #ifdef ADC4_BASE_ADDR
-		volatile class ADC * const ADC4 = reinterpret_cast<class ADC* const>(ADC4_BASE_ADDR);
+volatile class ADC * const ADC4 = reinterpret_cast<class ADC* const>(ADC4_BASE_ADDR);
 #endif
 #ifdef ADC34_COMMON_BASE_ADDR
-		struct ADC34_COMMON_plugin: ADC_Common_base_plugin {
-
-#ifdef ADC_Common_CSR
-			struct CSR_TypeDef : public Reg32_t
+struct ADC34_COMMON_plugin: ADC_Common_base_plugin {
+	
+	#ifdef ADC_Common_CSR
+	struct CSR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC34_COMMON_CSR_0
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC34_COMMON_CSR_0
-					struct
-					{
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOC_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOS_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_OVR_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOC_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOS_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD1_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD2_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD3_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_JQOVF_MST :1;
-						uint32_t ADC34_COMMON_CSR_0_JSTRT2 :1;
-						uint32_t ADC34_COMMON_CSR_0_STRT2 :1;
-						uint32_t ADC34_COMMON_CSR_0_OVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOC_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_EOS_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_STRT3 :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD1_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD2_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_AWD3_SLV :1;
-						uint32_t ADC34_COMMON_CSR_0_JQOVF_SLV :1;
-						uint32_t                      :5;
-					};
-#endif
-#ifdef ADC34_COMMON_CSR_1
-					struct
-					{
-						uint32_t ADC34_COMMON_CSR_1_AWD1 :1;
-						uint32_t ADC34_COMMON_CSR_1_EOC1 :1;
-						uint32_t ADC34_COMMON_CSR_1_JEOC1 :1;
-						uint32_t ADC34_COMMON_CSR_1_JSTRT1 :1;
-						uint32_t ADC34_COMMON_CSR_1_STRT1 :1;
-						uint32_t ADC34_COMMON_CSR_1_OVR1 :1;
-						uint32_t ADC34_COMMON_CSR_1_JEOS_MST :1;
-						uint32_t                      :1;
-						uint32_t ADC34_COMMON_CSR_1_AWD2 :1;
-						uint32_t ADC34_COMMON_CSR_1_EOC2 :1;
-						uint32_t ADC34_COMMON_CSR_1_JEOC2 :1;
-						uint32_t                      :2;
-						uint32_t ADC34_COMMON_CSR_1_DOVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC34_COMMON_CSR_1_AWD3 :1;
-						uint32_t ADC34_COMMON_CSR_1_EOC3 :1;
-						uint32_t ADC34_COMMON_CSR_1_JEOC3 :1;
-						uint32_t ADC34_COMMON_CSR_1_JSTRT3 :1;
-						uint32_t ADC34_COMMON_CSR_1_OVR_SLV :1;
-						uint32_t ADC34_COMMON_CSR_1_OVR3 :1;
-						uint32_t ADC34_COMMON_CSR_1_JEOS_SLV :1;
-						uint32_t                      :9;
-					};
-#endif
-#ifdef ADC34_COMMON_CSR_2
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC34_COMMON_CSR_2_EOSMP_MST :1;
-						uint32_t ADC34_COMMON_CSR_2_EOC_MST :1;
-						uint32_t ADC34_COMMON_CSR_2_EOS_MST :1;
-						uint32_t ADC34_COMMON_CSR_2_OVR_MST :1;
-						uint32_t ADC34_COMMON_CSR_2_DOVR1 :1;
-						uint32_t ADC34_COMMON_CSR_2_ADONS1 :1;
-						uint32_t                      :10;
-						uint32_t ADC34_COMMON_CSR_2_EOSMP_SLV :1;
-						uint32_t ADC34_COMMON_CSR_2_EOC_SLV :1;
-						uint32_t ADC34_COMMON_CSR_2_EOS_SLV :1;
-						uint32_t                      :1;
-						uint32_t ADC34_COMMON_CSR_2_DOVR3 :1;
-						uint32_t                      :10;
-					};
-#endif
-#ifdef ADC34_COMMON_CSR_3
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC34_COMMON_CSR_3_EOCS1 :1;
-						uint32_t ADC34_COMMON_CSR_3_JEOS1 :1;
-						uint32_t                      :2;
-						uint32_t ADC34_COMMON_CSR_3_JEOC_MST :1;
-						uint32_t                      :15;
-						uint32_t ADC34_COMMON_CSR_3_JEOC_SLV :1;
-						uint32_t                      :10;
-					};
-#endif
-				};
-
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOC_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOS_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_OVR_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOC_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOS_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD1_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD2_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD3_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_JQOVF_MST :1;
+				uint32_t ADC34_COMMON_CSR_0_JSTRT2 :1;
+				uint32_t ADC34_COMMON_CSR_0_STRT2 :1;
+				uint32_t ADC34_COMMON_CSR_0_OVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOC_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_EOS_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_STRT3 :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD1_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD2_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_AWD3_SLV :1;
+				uint32_t ADC34_COMMON_CSR_0_JQOVF_SLV :1;
+				uint32_t                      :5;
 			};
-#endif
-
-#ifdef ADC_Common_CCR
-			struct CCR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC34_COMMON_CSR_1
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC34_COMMON_CCR_0
-					struct
-					{
-						uint32_t ADC34_COMMON_CCR_0_MULTI :5;
-						uint32_t                      :3;
-						uint32_t ADC34_COMMON_CCR_0_DELAY :4;
-						uint32_t                      :1;
-						uint32_t ADC34_COMMON_CCR_0_DMACFG :1;
-						uint32_t ADC34_COMMON_CCR_0_MDMA :2;
-						uint32_t ADC34_COMMON_CCR_0_CKMODE :2;
-						uint32_t ADC34_COMMON_CCR_0_PRESC :4;
-						uint32_t ADC34_COMMON_CCR_0_VREFEN :1;
-						uint32_t ADC34_COMMON_CCR_0_TSEN :1;
-						uint32_t ADC34_COMMON_CCR_0_VBATEN :1;
-						uint32_t ADC34_COMMON_CCR_0_LFMEN :1;
-						uint32_t                      :6;
-					};
-#endif
-#ifdef ADC34_COMMON_CCR_1
-					struct
-					{
-						uint32_t ADC34_COMMON_CCR_1_DUAL :5;
-						uint32_t                      :8;
-						uint32_t ADC34_COMMON_CCR_1_DDS :1;
-						uint32_t ADC34_COMMON_CCR_1_DMA :2;
-						uint32_t ADC34_COMMON_CCR_1_ADCPRE :2;
-						uint32_t                      :4;
-						uint32_t ADC34_COMMON_CCR_1_VBATE :1;
-						uint32_t ADC34_COMMON_CCR_1_TSVREFE :1;
-						uint32_t ADC34_COMMON_CCR_1_VLCDEN :1;
-						uint32_t                      :7;
-					};
-#endif
-#ifdef ADC34_COMMON_CCR_2
-					struct
-					{
-						uint32_t                      :14;
-						uint32_t DAMDF                :2;
-						uint32_t                      :16;
-					};
-#endif
-				};
-
+				uint32_t ADC34_COMMON_CSR_1_AWD1 :1;
+				uint32_t ADC34_COMMON_CSR_1_EOC1 :1;
+				uint32_t ADC34_COMMON_CSR_1_JEOC1 :1;
+				uint32_t ADC34_COMMON_CSR_1_JSTRT1 :1;
+				uint32_t ADC34_COMMON_CSR_1_STRT1 :1;
+				uint32_t ADC34_COMMON_CSR_1_OVR1 :1;
+				uint32_t ADC34_COMMON_CSR_1_JEOS_MST :1;
+				uint32_t                      :1;
+				uint32_t ADC34_COMMON_CSR_1_AWD2 :1;
+				uint32_t ADC34_COMMON_CSR_1_EOC2 :1;
+				uint32_t ADC34_COMMON_CSR_1_JEOC2 :1;
+				uint32_t                      :2;
+				uint32_t ADC34_COMMON_CSR_1_DOVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC34_COMMON_CSR_1_AWD3 :1;
+				uint32_t ADC34_COMMON_CSR_1_EOC3 :1;
+				uint32_t ADC34_COMMON_CSR_1_JEOC3 :1;
+				uint32_t ADC34_COMMON_CSR_1_JSTRT3 :1;
+				uint32_t ADC34_COMMON_CSR_1_OVR_SLV :1;
+				uint32_t ADC34_COMMON_CSR_1_OVR3 :1;
+				uint32_t ADC34_COMMON_CSR_1_JEOS_SLV :1;
+				uint32_t                      :9;
 			};
-#endif
-
-#ifdef ADC_Common_CDR
-			struct CDR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC34_COMMON_CSR_2
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC34_COMMON_CDR_0
-					struct
-					{
-						uint32_t RDATA_MST            :16;
-						uint32_t RDATA_SLV            :16;
-					};
-#endif
-#ifdef ADC34_COMMON_CDR_1
-					struct
-					{
-						uint32_t DATA1                :16;
-						uint32_t DATA2                :16;
-					};
-#endif
-				};
-
+				uint32_t                      :1;
+				uint32_t ADC34_COMMON_CSR_2_EOSMP_MST :1;
+				uint32_t ADC34_COMMON_CSR_2_EOC_MST :1;
+				uint32_t ADC34_COMMON_CSR_2_EOS_MST :1;
+				uint32_t ADC34_COMMON_CSR_2_OVR_MST :1;
+				uint32_t ADC34_COMMON_CSR_2_DOVR1 :1;
+				uint32_t ADC34_COMMON_CSR_2_ADONS1 :1;
+				uint32_t                      :10;
+				uint32_t ADC34_COMMON_CSR_2_EOSMP_SLV :1;
+				uint32_t ADC34_COMMON_CSR_2_EOC_SLV :1;
+				uint32_t ADC34_COMMON_CSR_2_EOS_SLV :1;
+				uint32_t                      :1;
+				uint32_t ADC34_COMMON_CSR_2_DOVR3 :1;
+				uint32_t                      :10;
 			};
-#endif
-
+			#endif
+			#ifdef ADC34_COMMON_CSR_3
+			struct
+			{
+				uint32_t                      :1;
+				uint32_t ADC34_COMMON_CSR_3_EOCS1 :1;
+				uint32_t ADC34_COMMON_CSR_3_JEOS1 :1;
+				uint32_t                      :2;
+				uint32_t ADC34_COMMON_CSR_3_JEOC_MST :1;
+				uint32_t                      :15;
+				uint32_t ADC34_COMMON_CSR_3_JEOC_SLV :1;
+				uint32_t                      :10;
+			};
+			#endif
 		};
-		volatile class ADC_Common<ADC34_COMMON_plugin>* const ADC34_COMMON =reinterpret_cast<class ADC_Common<ADC34_COMMON_plugin>* const>(ADC34_COMMON_BASE_ADDR);
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CCR
+	struct CCR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC34_COMMON_CCR_0
+			struct
+			{
+				uint32_t ADC34_COMMON_CCR_0_MULTI :5;
+				uint32_t                      :3;
+				uint32_t ADC34_COMMON_CCR_0_DELAY :4;
+				uint32_t                      :1;
+				uint32_t ADC34_COMMON_CCR_0_DMACFG :1;
+				uint32_t ADC34_COMMON_CCR_0_MDMA :2;
+				uint32_t ADC34_COMMON_CCR_0_CKMODE :2;
+				uint32_t ADC34_COMMON_CCR_0_PRESC :4;
+				uint32_t ADC34_COMMON_CCR_0_VREFEN :1;
+				uint32_t ADC34_COMMON_CCR_0_TSEN :1;
+				uint32_t ADC34_COMMON_CCR_0_VBATEN :1;
+				uint32_t ADC34_COMMON_CCR_0_LFMEN :1;
+				uint32_t                      :6;
+			};
+			#endif
+			#ifdef ADC34_COMMON_CCR_1
+			struct
+			{
+				uint32_t ADC34_COMMON_CCR_1_DUAL :5;
+				uint32_t                      :8;
+				uint32_t ADC34_COMMON_CCR_1_DDS :1;
+				uint32_t ADC34_COMMON_CCR_1_DMA :2;
+				uint32_t ADC34_COMMON_CCR_1_ADCPRE :2;
+				uint32_t                      :4;
+				uint32_t ADC34_COMMON_CCR_1_VBATE :1;
+				uint32_t ADC34_COMMON_CCR_1_TSVREFE :1;
+				uint32_t ADC34_COMMON_CCR_1_VLCDEN :1;
+				uint32_t                      :7;
+			};
+			#endif
+			#ifdef ADC34_COMMON_CCR_2
+			struct
+			{
+				uint32_t                      :14;
+				uint32_t DAMDF                :2;
+				uint32_t                      :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CDR
+	struct CDR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC34_COMMON_CDR_0
+			struct
+			{
+				uint32_t RDATA_MST            :16;
+				uint32_t RDATA_SLV            :16;
+			};
+			#endif
+			#ifdef ADC34_COMMON_CDR_1
+			struct
+			{
+				uint32_t DATA1                :16;
+				uint32_t DATA2                :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+};
+volatile class ADC_Common<ADC34_COMMON_plugin>* const ADC34_COMMON =reinterpret_cast<class ADC_Common<ADC34_COMMON_plugin>* const>(ADC34_COMMON_BASE_ADDR);
 #endif
 #ifdef ADC1_COMMON_BASE_ADDR
-		struct ADC1_COMMON_plugin: ADC_Common_base_plugin {
-
-#ifdef ADC_Common_CSR
-			struct CSR_TypeDef : public Reg32_t
+struct ADC1_COMMON_plugin: ADC_Common_base_plugin {
+	
+	#ifdef ADC_Common_CSR
+	struct CSR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC1_COMMON_CSR_0
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC1_COMMON_CSR_0
-					struct
-					{
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOC_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOS_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_OVR_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOC_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOS_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD1_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD2_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD3_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_JQOVF_MST :1;
-						uint32_t ADC1_COMMON_CSR_0_JSTRT2 :1;
-						uint32_t ADC1_COMMON_CSR_0_STRT2 :1;
-						uint32_t ADC1_COMMON_CSR_0_OVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOC_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_EOS_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_OVR_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD1_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD2_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_AWD3_SLV :1;
-						uint32_t ADC1_COMMON_CSR_0_JQOVF_SLV :1;
-						uint32_t                      :5;
-					};
-#endif
-#ifdef ADC1_COMMON_CSR_1
-					struct
-					{
-						uint32_t ADC1_COMMON_CSR_1_AWD1 :1;
-						uint32_t ADC1_COMMON_CSR_1_EOC1 :1;
-						uint32_t ADC1_COMMON_CSR_1_JEOC1 :1;
-						uint32_t ADC1_COMMON_CSR_1_JSTRT1 :1;
-						uint32_t ADC1_COMMON_CSR_1_STRT1 :1;
-						uint32_t ADC1_COMMON_CSR_1_OVR1 :1;
-						uint32_t ADC1_COMMON_CSR_1_JEOS_MST :1;
-						uint32_t                      :1;
-						uint32_t ADC1_COMMON_CSR_1_AWD2 :1;
-						uint32_t ADC1_COMMON_CSR_1_EOC2 :1;
-						uint32_t ADC1_COMMON_CSR_1_JEOC2 :1;
-						uint32_t                      :2;
-						uint32_t ADC1_COMMON_CSR_1_DOVR2 :1;
-						uint32_t                      :2;
-						uint32_t ADC1_COMMON_CSR_1_AWD3 :1;
-						uint32_t ADC1_COMMON_CSR_1_EOC3 :1;
-						uint32_t ADC1_COMMON_CSR_1_JEOC3 :1;
-						uint32_t ADC1_COMMON_CSR_1_JSTRT3 :1;
-						uint32_t ADC1_COMMON_CSR_1_STRT3 :1;
-						uint32_t ADC1_COMMON_CSR_1_OVR3 :1;
-						uint32_t ADC1_COMMON_CSR_1_JEOS_SLV :1;
-						uint32_t                      :9;
-					};
-#endif
-#ifdef ADC1_COMMON_CSR_2
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC1_COMMON_CSR_2_EOSMP_MST :1;
-						uint32_t ADC1_COMMON_CSR_2_EOC_MST :1;
-						uint32_t ADC1_COMMON_CSR_2_EOS_MST :1;
-						uint32_t ADC1_COMMON_CSR_2_OVR_MST :1;
-						uint32_t ADC1_COMMON_CSR_2_DOVR1 :1;
-						uint32_t ADC1_COMMON_CSR_2_ADONS1 :1;
-						uint32_t                      :10;
-						uint32_t ADC1_COMMON_CSR_2_EOSMP_SLV :1;
-						uint32_t ADC1_COMMON_CSR_2_EOC_SLV :1;
-						uint32_t ADC1_COMMON_CSR_2_EOS_SLV :1;
-						uint32_t ADC1_COMMON_CSR_2_OVR_SLV :1;
-						uint32_t ADC1_COMMON_CSR_2_DOVR3 :1;
-						uint32_t                      :10;
-					};
-#endif
-#ifdef ADC1_COMMON_CSR_3
-					struct
-					{
-						uint32_t                      :1;
-						uint32_t ADC1_COMMON_CSR_3_EOCS1 :1;
-						uint32_t ADC1_COMMON_CSR_3_JEOS1 :1;
-						uint32_t                      :2;
-						uint32_t ADC1_COMMON_CSR_3_JEOC_MST :1;
-						uint32_t                      :15;
-						uint32_t ADC1_COMMON_CSR_3_JEOC_SLV :1;
-						uint32_t                      :10;
-					};
-#endif
-				};
-
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOSMP_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOC_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOS_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_OVR_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOC_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOS_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD1_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD2_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD3_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_JQOVF_MST :1;
+				uint32_t ADC1_COMMON_CSR_0_JSTRT2 :1;
+				uint32_t ADC1_COMMON_CSR_0_STRT2 :1;
+				uint32_t ADC1_COMMON_CSR_0_OVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOSMP_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOC_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_EOS_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_OVR_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOC_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_ADRDY_JEOS_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD1_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD2_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_AWD3_SLV :1;
+				uint32_t ADC1_COMMON_CSR_0_JQOVF_SLV :1;
+				uint32_t                      :5;
 			};
-#endif
-
-#ifdef ADC_Common_CCR
-			struct CCR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC1_COMMON_CSR_1
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC1_COMMON_CCR_0
-					struct
-					{
-						uint32_t ADC1_COMMON_CCR_0_MULTI :5;
-						uint32_t                      :3;
-						uint32_t ADC1_COMMON_CCR_0_DELAY :4;
-						uint32_t                      :1;
-						uint32_t ADC1_COMMON_CCR_0_DMACFG :1;
-						uint32_t ADC1_COMMON_CCR_0_MDMA :2;
-						uint32_t ADC1_COMMON_CCR_0_CKMODE :2;
-						uint32_t ADC1_COMMON_CCR_0_PRESC :4;
-						uint32_t ADC1_COMMON_CCR_0_VREFEN :1;
-						uint32_t ADC1_COMMON_CCR_0_TSEN :1;
-						uint32_t ADC1_COMMON_CCR_0_VBATEN :1;
-						uint32_t ADC1_COMMON_CCR_0_LFMEN :1;
-						uint32_t                      :6;
-					};
-#endif
-#ifdef ADC1_COMMON_CCR_1
-					struct
-					{
-						uint32_t ADC1_COMMON_CCR_1_DUAL :5;
-						uint32_t                      :8;
-						uint32_t ADC1_COMMON_CCR_1_DDS :1;
-						uint32_t ADC1_COMMON_CCR_1_DMA :2;
-						uint32_t ADC1_COMMON_CCR_1_ADCPRE :2;
-						uint32_t                      :4;
-						uint32_t ADC1_COMMON_CCR_1_VBATE :1;
-						uint32_t ADC1_COMMON_CCR_1_TSVREFE :1;
-						uint32_t ADC1_COMMON_CCR_1_VLCDEN :1;
-						uint32_t                      :7;
-					};
-#endif
-#ifdef ADC1_COMMON_CCR_2
-					struct
-					{
-						uint32_t                      :14;
-						uint32_t DAMDF                :2;
-						uint32_t                      :16;
-					};
-#endif
-				};
-
+				uint32_t ADC1_COMMON_CSR_1_AWD1 :1;
+				uint32_t ADC1_COMMON_CSR_1_EOC1 :1;
+				uint32_t ADC1_COMMON_CSR_1_JEOC1 :1;
+				uint32_t ADC1_COMMON_CSR_1_JSTRT1 :1;
+				uint32_t ADC1_COMMON_CSR_1_STRT1 :1;
+				uint32_t ADC1_COMMON_CSR_1_OVR1 :1;
+				uint32_t ADC1_COMMON_CSR_1_JEOS_MST :1;
+				uint32_t                      :1;
+				uint32_t ADC1_COMMON_CSR_1_AWD2 :1;
+				uint32_t ADC1_COMMON_CSR_1_EOC2 :1;
+				uint32_t ADC1_COMMON_CSR_1_JEOC2 :1;
+				uint32_t                      :2;
+				uint32_t ADC1_COMMON_CSR_1_DOVR2 :1;
+				uint32_t                      :2;
+				uint32_t ADC1_COMMON_CSR_1_AWD3 :1;
+				uint32_t ADC1_COMMON_CSR_1_EOC3 :1;
+				uint32_t ADC1_COMMON_CSR_1_JEOC3 :1;
+				uint32_t ADC1_COMMON_CSR_1_JSTRT3 :1;
+				uint32_t ADC1_COMMON_CSR_1_STRT3 :1;
+				uint32_t ADC1_COMMON_CSR_1_OVR3 :1;
+				uint32_t ADC1_COMMON_CSR_1_JEOS_SLV :1;
+				uint32_t                      :9;
 			};
-#endif
-
-#ifdef ADC_Common_CDR
-			struct CDR_TypeDef : public Reg32_t
+			#endif
+			#ifdef ADC1_COMMON_CSR_2
+			struct
 			{
-				using Reg32_t::operator=;
-
-				union
-				{
-#ifdef ADC1_COMMON_CDR_0
-					struct
-					{
-						uint32_t RDATA_MST            :16;
-						uint32_t RDATA_SLV            :16;
-					};
-#endif
-#ifdef ADC1_COMMON_CDR_1
-					struct
-					{
-						uint32_t DATA1                :16;
-						uint32_t DATA2                :16;
-					};
-#endif
-				};
-
+				uint32_t                      :1;
+				uint32_t ADC1_COMMON_CSR_2_EOSMP_MST :1;
+				uint32_t ADC1_COMMON_CSR_2_EOC_MST :1;
+				uint32_t ADC1_COMMON_CSR_2_EOS_MST :1;
+				uint32_t ADC1_COMMON_CSR_2_OVR_MST :1;
+				uint32_t ADC1_COMMON_CSR_2_DOVR1 :1;
+				uint32_t ADC1_COMMON_CSR_2_ADONS1 :1;
+				uint32_t                      :10;
+				uint32_t ADC1_COMMON_CSR_2_EOSMP_SLV :1;
+				uint32_t ADC1_COMMON_CSR_2_EOC_SLV :1;
+				uint32_t ADC1_COMMON_CSR_2_EOS_SLV :1;
+				uint32_t ADC1_COMMON_CSR_2_OVR_SLV :1;
+				uint32_t ADC1_COMMON_CSR_2_DOVR3 :1;
+				uint32_t                      :10;
 			};
-#endif
-
+			#endif
+			#ifdef ADC1_COMMON_CSR_3
+			struct
+			{
+				uint32_t                      :1;
+				uint32_t ADC1_COMMON_CSR_3_EOCS1 :1;
+				uint32_t ADC1_COMMON_CSR_3_JEOS1 :1;
+				uint32_t                      :2;
+				uint32_t ADC1_COMMON_CSR_3_JEOC_MST :1;
+				uint32_t                      :15;
+				uint32_t ADC1_COMMON_CSR_3_JEOC_SLV :1;
+				uint32_t                      :10;
+			};
+			#endif
 		};
-		volatile class ADC_Common<ADC1_COMMON_plugin>* const ADC1_COMMON =reinterpret_cast<class ADC_Common<ADC1_COMMON_plugin>* const>(ADC1_COMMON_BASE_ADDR);
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CCR
+	struct CCR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC1_COMMON_CCR_0
+			struct
+			{
+				uint32_t ADC1_COMMON_CCR_0_MULTI :5;
+				uint32_t                      :3;
+				uint32_t ADC1_COMMON_CCR_0_DELAY :4;
+				uint32_t                      :1;
+				uint32_t ADC1_COMMON_CCR_0_DMACFG :1;
+				uint32_t ADC1_COMMON_CCR_0_MDMA :2;
+				uint32_t ADC1_COMMON_CCR_0_CKMODE :2;
+				uint32_t ADC1_COMMON_CCR_0_PRESC :4;
+				uint32_t ADC1_COMMON_CCR_0_VREFEN :1;
+				uint32_t ADC1_COMMON_CCR_0_TSEN :1;
+				uint32_t ADC1_COMMON_CCR_0_VBATEN :1;
+				uint32_t ADC1_COMMON_CCR_0_LFMEN :1;
+				uint32_t                      :6;
+			};
+			#endif
+			#ifdef ADC1_COMMON_CCR_1
+			struct
+			{
+				uint32_t ADC1_COMMON_CCR_1_DUAL :5;
+				uint32_t                      :8;
+				uint32_t ADC1_COMMON_CCR_1_DDS :1;
+				uint32_t ADC1_COMMON_CCR_1_DMA :2;
+				uint32_t ADC1_COMMON_CCR_1_ADCPRE :2;
+				uint32_t                      :4;
+				uint32_t ADC1_COMMON_CCR_1_VBATE :1;
+				uint32_t ADC1_COMMON_CCR_1_TSVREFE :1;
+				uint32_t ADC1_COMMON_CCR_1_VLCDEN :1;
+				uint32_t                      :7;
+			};
+			#endif
+			#ifdef ADC1_COMMON_CCR_2
+			struct
+			{
+				uint32_t                      :14;
+				uint32_t DAMDF                :2;
+				uint32_t                      :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+	#ifdef ADC_Common_CDR
+	struct CDR_TypeDef : public Reg32_t
+	{
+		using Reg32_t::operator=;
+	
+		union
+		{
+			#ifdef ADC1_COMMON_CDR_0
+			struct
+			{
+				uint32_t RDATA_MST            :16;
+				uint32_t RDATA_SLV            :16;
+			};
+			#endif
+			#ifdef ADC1_COMMON_CDR_1
+			struct
+			{
+				uint32_t DATA1                :16;
+				uint32_t DATA2                :16;
+			};
+			#endif
+		};
+		
+	};
+	#endif
+	
+};
+volatile class ADC_Common<ADC1_COMMON_plugin>* const ADC1_COMMON =reinterpret_cast<class ADC_Common<ADC1_COMMON_plugin>* const>(ADC1_COMMON_BASE_ADDR);
 #endif
 #ifdef ADC_BASE_ADDR
-		volatile class ADC_Common<>* const ADC =reinterpret_cast<class ADC_Common<>* const>(ADC_BASE_ADDR);
+volatile class ADC_Common<>* const ADC =reinterpret_cast<class ADC_Common<>* const>(ADC_BASE_ADDR);
 #endif
 //endregion
 
 
 
 
-		inline constexpr uint32_t ADC::get_clock_enable_bit(const uint32_t addr)
-		{
-			switch (addr) {
+inline constexpr uint32_t ADC::get_clock_enable_bit(const uint32_t addr)
+{
+	switch (addr) {
 #ifdef ADC1_BASE_ADDR
-				case ADC1_BASE_ADDR :
+		case ADC1_BASE_ADDR :
 #if defined(STM32F1) || defined(STM32L1) || defined(STM32F0) || defined(STM32L0) || defined(STM32F373xC) || defined(STM32F378xx)
-							return 1 << 9;
+					return 1 << 9;
 #elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
-							return 1 << 8;
+					return 1 << 8;
 #elif defined(STM32L4) || defined(STM32L4P)
-							return 1 << 13;
+					return 1 << 13;
 #elif defined(STM32H7)
-							return 1 << 5;
+					return 1 << 5;
 #else //F3
-							return 1 << 28;
+					return 1 << 28;
 #endif
 #endif
 #ifdef ADC2_BASE_ADDR
-				case ADC2_BASE_ADDR :
+		case ADC2_BASE_ADDR :
 #if defined(STM32F1)
-							return 1 << 10;
+					return 1 << 10;
 #elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
-							return 1 << 9;
+					return 1 << 9;
 #elif defined(STM32L4) || defined(STM32L4P)
-							return 1 << 13;
+					return 1 << 13;
 #elif defined(STM32H7)
-							return 1 << 5;
+					return 1 << 5;
 #else //F3
-							return 1 << 28;
+					return 1 << 28;
 #endif
 #endif
 #ifdef ADC3_BASE_ADDR
-				case ADC3_BASE_ADDR :
+		case ADC3_BASE_ADDR :
 #if defined(STM32F1)
-							return 1 << 15;
+					return 1 << 15;
 #elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
-							return 1 << 10;
+					return 1 << 10;
 #elif defined(STM32L4) || defined(STM32L4P)
-							return 1 << 13;
+					return 1 << 13;
 #elif defined(STM32H7)
-							return 1 << 24;
+					return 1 << 24;
 #else //F3
-							return 1 << 29;
+					return 1 << 29;
 #endif
 #endif
 #ifdef ADC4_BASE_ADDR
-				case ADC4_BASE_ADDR :
-						return 1 << 29;
+		case ADC4_BASE_ADDR :
+				return 1 << 29;
 #endif
-				default :
-					return 0;
+		default :
+			return 0;
 
 
-			}
-		}
+	}
+}
 
-		inline constexpr volatile Reg32_t &ADC::get_clock_enable_reg(const uint32_t addr)
-		{
-			switch (addr) {
+inline constexpr volatile Reg32_t &ADC::get_clock_enable_reg(const uint32_t addr)
+{
+	switch (addr) {
 #ifdef ADC1_BASE_ADDR
-				case ADC1_BASE_ADDR :
+		case ADC1_BASE_ADDR :
 #if defined(STM32L4) || defined(STM32L4P)
-							return RCC->AHB2ENR;
+					return RCC->AHB2ENR;
 #elif 	defined(STM32F3) && !(defined(STM32F373xC) || defined(STM32F378xx))
-							return RCC->AHBENR;
+					return RCC->AHBENR;
 #elif defined(STM32H7)
-							return RCC->AHB1ENR
+					return RCC->AHB1ENR
 #else
-							return RCC->APB2ENR;
+					return RCC->APB2ENR;
 #endif
 #endif
 #ifdef ADC2_BASE_ADDR
-				case ADC2_BASE_ADDR :
+		case ADC2_BASE_ADDR :
 #if defined(STM32L4) || defined(STM32L4P)
-							return RCC->AHB2ENR;
+					return RCC->AHB2ENR;
 #elif 	defined(STM32F3)
-							return RCC->AHBENR;
+					return RCC->AHBENR;
 #elif defined(STM32H7)
-							return RCC->AHB1ENR
+					return RCC->AHB1ENR
 #else
-							return RCC->APB2ENR;
+					return RCC->APB2ENR;
 #endif
 #endif
 #ifdef ADC3_BASE_ADDR
-				case ADC3_BASE_ADDR :
+		case ADC3_BASE_ADDR :
 #if defined(STM32L4) || defined(STM32L4P)
-							return RCC->AHB2ENR;
+					return RCC->AHB2ENR;
 #elif 	defined(STM32F3)
-							return RCC->AHBENR;
+					return RCC->AHBENR;
 #elif defined(STM32H7)
-							return RCC->AHB4ENR
+					return RCC->AHB4ENR
 #else
-							return RCC->APB2ENR;
+					return RCC->APB2ENR;
 #endif
 #endif
 #ifdef ADC4_BASE_ADDR
-				case ADC4_BASE_ADDR :
-						return RCC->AHBENR;
+		case ADC4_BASE_ADDR :
+				return RCC->AHBENR;
 #endif
-				default :
-					return *reinterpret_cast<volatile Reg32_t *>(0);
-			}
-		}
+		default :
+			return *reinterpret_cast<volatile Reg32_t *>(0);
+	}
+}
 
-		inline void ADC::enable_clock() volatile
-		{
-			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-					|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline void ADC::enable_clock() volatile
+{
+	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+			|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
-		inline void ADC::disable_clock() volatile
-		{
-			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-					&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline void ADC::disable_clock() volatile
+{
+	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+			&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
-		inline bool ADC::is_clock_enabled() const volatile
-		{
-			return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-					& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
-				   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline bool ADC::is_clock_enabled() const volatile
+{
+	return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+			& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
+		   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
 #ifdef ADC_SQR1
-		inline void ADC::set_acquisition_sequence_length(const unsigned int length) volatile
-		{
-			SQR1.L = length;
-		};
+inline void ADC::set_acquisition_sequence_length(const unsigned int length) volatile
+{
+	SQR1.L = length;
+};
 #endif
+
+
+
 
 
 	};
-};
-//region undef
+};//region undef
 #undef ADC_CR_0_JADSTART
 #undef ADC_CR_0_JADSTP
 #undef ADC_CR_0_ADCALDIF

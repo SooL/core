@@ -20,7 +20,7 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
 		void ADC::set_sequence_value(const unsigned int position, const unsigned int channel) volatile
 		{

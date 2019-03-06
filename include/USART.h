@@ -1,20 +1,3 @@
-/**
- * Copyright (c) 2018 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL core Library.
- *
- *  SooL core Library is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License
- *  as published by the Free Software Foundation, either version 3
- *  of the License, or (at your option) any later version.
- *
- *  SooL core Library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
- */
 #ifndef __SOOL_USART_H
 #define __SOOL_USART_H
 
@@ -30,17 +13,17 @@
 #define USART_CR3
 #define USART_GTPR
 
-#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_BRR_0
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     ) 
 #define USART_BRR_1
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_CR1_0_UE       UE                   // 1 bits @ 0
 #define USART_CR1_0_MME      MME                  // 1 bits @ 13
 #define USART_CR1_0_CMIE     CMIE                 // 1 bits @ 14
@@ -114,10 +97,10 @@
 #define USART_MAP0_TDR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F3     ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F3     ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_CR1_0_UESM     UESM                 // 1 bits @ 1
 #define USART_CR3_0_WUS      WUS                  // 2 bits @ 20
 #define USART_CR3_0_WUFIE    WUFIE                // 1 bits @ 22
@@ -131,9 +114,9 @@
 #define USART_ISR_0_WUF
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || \
-    defined(STM32L1     ) || defined(STM32L4     )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     ) || defined(STM32L4     ) 
 #define USART_CR1_0_RXNEIE   RXNEIE               // 1 bits @ 5
 #define USART_CR1_0_TXEIE    TXEIE                // 1 bits @ 7
 #else
@@ -141,18 +124,18 @@
 #define USART_CR1_0_TXEIE
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F1     ) || defined(STM32F2     ) || \
-    defined(STM32F302xC ) || defined(STM32F303xC ) || defined(STM32F358xx ) || defined(STM32F373xC ) || \
-    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32L1     )
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F1     ) || defined(STM32F2     ) ||\
+    defined(STM32F302xC ) || defined(STM32F303xC ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
+    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32L1     ) 
 #define USART_CR1_0_M        M                    // 1 bits @ 12
 #else
 #define USART_CR1_0_M
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F2     ) || \
-    defined(STM32F3     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F2     ) ||\
+    defined(STM32F3     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_CR1_0_OVER8    OVER8                // 1 bits @ 15
 #define USART_CR3_0_ONEBIT   ONEBIT               // 1 bits @ 11
 #else
@@ -160,18 +143,18 @@
 #define USART_CR3_0_ONEBIT
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070x6 ) || \
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || \
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || \
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xE ) || defined(STM32F318xx ) || \
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F398xx ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070x6 ) ||\
+    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
+    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
+    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F398xx ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_CR1_0_M1       M1                   // 1 bits @ 28
 #else
 #define USART_CR1_0_M1
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L4P    )
+#if defined(STM32H7     ) || defined(STM32L4P    ) 
 #define USART_CR1_0_FIFOEN   FIFOEN               // 1 bits @ 29
 #define USART_CR1_0_TXFEIE   TXFEIE               // 1 bits @ 30
 #define USART_CR1_0_RXFFIE   RXFFIE               // 1 bits @ 31
@@ -210,13 +193,13 @@
 #define USART_MAP0_PRESC __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F4     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || \
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F4     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
+    defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_CR1_1
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L1     )
+#if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L1     ) 
 #define USART_CR1_1_SBK      SBK                  // 1 bits @ 0
 #define USART_CR1_1_RWU      RWU                  // 1 bits @ 1
 #define USART_CR1_1_UE       UE                   // 1 bits @ 13
@@ -243,16 +226,16 @@
 #define USART_MAP1_GTPR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F7     )
+#if defined(STM32F7     ) 
 #define USART_CR1_2
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F1     ) || \
-    defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F1     ) ||\
+    defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define USART_CR2_0_LBDL     LBDL                 // 1 bits @ 5
 #define USART_CR2_0_LBDIE    LBDIE                // 1 bits @ 6
 #define USART_CR2_0_LINEN    LINEN                // 1 bits @ 14
@@ -270,11 +253,11 @@
 #define USART_CR3_0_SCEN
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F3     ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || \
-    defined(STM32L4P    )
+#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F3     ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    ) 
 #define USART_CR3_0_SCARCNT  SCARCNT              // 3 bits @ 17
 #define USART_ICR_0_LBDCF    LBDCF                // 1 bits @ 8
 #define USART_ICR_0_EOBCF    EOBCF                // 1 bits @ 12
@@ -290,11 +273,11 @@
 #define USART_RQR_TXFRQ
 #endif
 
-#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) || \
-    defined(STM32H7     ) || defined(STM32L011xx ) || defined(STM32L021xx ) || defined(STM32L431xx ) || \
-    defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || \
-    defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || \
-    defined(STM32L4A6xx ) || defined(STM32L4P    )
+#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
+    defined(STM32H7     ) || defined(STM32L011xx ) || defined(STM32L021xx ) || defined(STM32L431xx ) ||\
+    defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) ||\
+    defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) ||\
+    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
 #define USART_CR3_0_TCBGTIE  TCBGTIE              // 1 bits @ 24
 #define USART_ISR_0_TCBGT    TCBGT                // 1 bits @ 25
 #else
@@ -302,38 +285,38 @@
 #define USART_ISR_0_TCBGT
 #endif
 
-#if defined(STM32L0     )
+#if defined(STM32L0     ) 
 #define USART_CR3_1
 #endif
 
-#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) || \
-    defined(STM32L011xx ) || defined(STM32L021xx ) || defined(STM32L431xx ) || defined(STM32L432xx ) || \
-    defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) || \
-    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || \
-    defined(STM32L4P    )
+#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
+    defined(STM32L011xx ) || defined(STM32L021xx ) || defined(STM32L431xx ) || defined(STM32L432xx ) ||\
+    defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
+    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
+    defined(STM32L4P    ) 
 #define USART_ICR_0_TCBGTCF  TCBGTCF              // 1 bits @ 7
 #else
 #define USART_ICR_0_TCBGTCF
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_ICR_1
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_ICR_1_NECF     NECF                 // 1 bits @ 2
 #else
 #define USART_ICR_1_NECF
 #endif
 
-#if defined(STM32H7     )
+#if defined(STM32H7     ) 
 #define USART_ICR_1_TCBGT    TCBGT                // 1 bits @ 7
 #else
 #define USART_ICR_1_TCBGT
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) || \
-    defined(STM32L0     ) || defined(STM32L4     )
+#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L0     ) || defined(STM32L4     ) 
 #define USART_ISR_0_RXNE     RXNE                 // 1 bits @ 5
 #define USART_ISR_0_TXE      TXE                  // 1 bits @ 7
 #else
@@ -341,18 +324,18 @@
 #define USART_ISR_0_TXE
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L0     ) || \
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
+    defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART_ISR_0_REACK    REACK                // 1 bits @ 22
 #else
 #define USART_ISR_0_REACK
 #endif
 
-#if defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx )
+#if defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) 
 #define USART_ISR_1
 #endif
 
-#if defined(STM32L4P    )
+#if defined(STM32L4P    ) 
 #define USART_VERR
 #define USART_MAP0_VERR      VERR_TypeDef VERR
 #else
@@ -363,48 +346,47 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
-
 		class USART
 		{
-
-
-		public :
-
-#ifdef USART_BRR
+			
+			
+			public :
+			
+			#ifdef USART_BRR
 			struct BRR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
-#ifdef USART_BRR_0
+					#ifdef USART_BRR_0
 					struct
 					{
 						uint32_t DIV_FRACTION         :4;
 						uint32_t DIV_MANTISSA         :12;
 						uint32_t                      :16;
 					};
-#endif
-#ifdef USART_BRR_1
+					#endif
+					#ifdef USART_BRR_1
 					struct
 					{
 						uint32_t DIV_Fraction         :4;
 						uint32_t DIV_Mantissa         :12;
 						uint32_t                      :16;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_CR1
+			#endif
+			
+			#ifdef USART_CR1
 			struct CR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -434,7 +416,7 @@ namespace sool
 						uint32_t USART_CR1_0_TXFEIE   :1;
 						uint32_t USART_CR1_0_RXFFIE   :1;
 					};
-#ifdef USART_CR1_1
+					#ifdef USART_CR1_1
 					struct
 					{
 						uint32_t USART_CR1_1_SBK      :1;
@@ -444,24 +426,24 @@ namespace sool
 						uint32_t USART_CR1_1_UE       :1;
 						uint32_t                      :18;
 					};
-#endif
-#ifdef USART_CR1_2
+					#endif
+					#ifdef USART_CR1_2
 					struct
 					{
 						uint32_t M0                   :1;
 						uint32_t                      :31;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_CR2
+			#endif
+			
+			#ifdef USART_CR2
 			struct CR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -489,23 +471,23 @@ namespace sool
 						uint32_t USART_CR2_0_RTOEN    :1;
 						uint32_t USART_CR2_0_ADD      :8;
 					};
-#ifdef USART_CR2_1
+					#ifdef USART_CR2_1
 					struct
 					{
 						uint32_t ADD                  :4;
 						uint32_t                      :28;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_CR3
+			#endif
+			
+			#ifdef USART_CR3
 			struct CR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -536,49 +518,49 @@ namespace sool
 						uint32_t USART_CR3_0_RXFTIE   :1;
 						uint32_t USART_CR3_0_TXFTCFG  :3;
 					};
-#ifdef USART_CR3_1
+					#ifdef USART_CR3_1
 					struct
 					{
 						uint32_t                      :23;
 						uint32_t UCESM                :1;
 						uint32_t                      :8;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_DR
+			#endif
+			
+			#ifdef USART_DR
 			struct DR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t DR                   :9;
 					uint32_t                      :23;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_GTPR
+			#endif
+			
+			#ifdef USART_GTPR
 			struct GTPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
-				uint32_t PSC                  :8;
-				uint32_t GT                   :8;
-				uint32_t                      :16;
-
-
+				
+					uint32_t PSC                  :8;
+					uint32_t GT                   :8;
+					uint32_t                      :16;
+			
+				
 			};
-#endif
-
-#ifdef USART_ICR
+			#endif
+			
+			#ifdef USART_ICR
 			struct ICR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -603,7 +585,7 @@ namespace sool
 						uint32_t USART_ICR_0_WUCF     :1;
 						uint32_t                      :11;
 					};
-#ifdef USART_ICR_1
+					#ifdef USART_ICR_1
 					struct
 					{
 						uint32_t                      :2;
@@ -612,17 +594,17 @@ namespace sool
 						uint32_t USART_ICR_1_TCBGT    :1;
 						uint32_t                      :24;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_ISR
+			#endif
+			
+			#ifdef USART_ISR
 			struct ISR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+			
 				union
 				{
 					struct
@@ -657,76 +639,76 @@ namespace sool
 						uint32_t USART_ISR_0_TXFT     :1;
 						uint32_t                      :4;
 					};
-#ifdef USART_ISR_1
+					#ifdef USART_ISR_1
 					struct
 					{
 						uint32_t                      :8;
 						uint32_t LBD                  :1;
 						uint32_t                      :23;
 					};
-#endif
+					#endif
 				};
-
+				
 			};
-#endif
-
-#ifdef USART_PRESC
+			#endif
+			
+			#ifdef USART_PRESC
 			struct PRESC_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t PRESCALER            :4;
 					uint32_t                      :28;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_RDR
+			#endif
+			
+			#ifdef USART_RDR
 			struct RDR_TypeDef : public Reg16_t
 			{
 				using Reg16_t::operator=;
-
+				
 					uint32_t RDR                  :9;
 					uint32_t                      :23;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_RQR
+			#endif
+			
+			#ifdef USART_RQR
 			struct RQR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t ABRRQ                :1;
 					uint32_t SBKRQ                :1;
 					uint32_t MMRQ                 :1;
 					uint32_t RXFRQ                :1;
 					uint32_t USART_RQR_TXFRQ      :1;
 					uint32_t                      :27;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_RTOR
+			#endif
+			
+			#ifdef USART_RTOR
 			struct RTOR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t RTO                  :24;
 					uint32_t BLEN                 :8;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_SR
+			#endif
+			
+			#ifdef USART_SR
 			struct SR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t PE                   :1;
 					uint32_t FE                   :1;
 					uint32_t NE                   :1;
@@ -738,39 +720,39 @@ namespace sool
 					uint32_t LBD                  :1;
 					uint32_t CTS                  :1;
 					uint32_t                      :22;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_TDR
+			#endif
+			
+			#ifdef USART_TDR
 			struct TDR_TypeDef : public Reg16_t
 			{
 				using Reg16_t::operator=;
-
+				
 					uint32_t TDR                  :9;
 					uint32_t                      :23;
-
-
+			
+				
 			};
-#endif
-
-#ifdef USART_VERR
+			#endif
+			
+			#ifdef USART_VERR
 			struct VERR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-
+				
 					uint32_t MINREV               :4;
 					uint32_t MAJREV               :4;
 					uint32_t                      :24;
-
-
+			
+				
 			};
-#endif
-
+			#endif
+			
 			union
 			{
-
+				
 				struct
 				{
 					USART_MAP0_CR1;      // @0x000
@@ -810,376 +792,373 @@ namespace sool
 					__SOOL_PERIPH_PADDING_4;
 				};
 			};
-		private:
+			private:
 			USART() = delete;
-
-		private:
-			static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
-
-			static constexpr volatile Reg32_t &get_clock_enable_reg(const uint32_t addr);
-
-		public:
-			void enable_clock() volatile;
-
-			void disable_clock() volatile;
-
-			bool is_clock_enabled() const volatile;
-
-			void init();
-
-			const bool is_rx_not_empty() const;
-
-			const bool is_tx_empty() const;
-
-			const bool tx_sent() const;
-
-			USART &operator<<(const uint8_t value);
-
-			USART &operator<<(const uint16_t value);
-
-			USART &operator>>(uint8_t &variable);
-
-			USART &operator>>(uint16_t &variable);
-
+			private:
+				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
+			
+				static constexpr volatile Reg32_t& get_clock_enable_reg(const uint32_t addr);
+			
+			public:
+				void enable_clock() volatile;
+			
+				void disable_clock() volatile;
+			
+				bool is_clock_enabled() const volatile;
+			
+				void init();
+			
+				const bool is_rx_not_empty() const;
+			
+				const bool is_tx_empty() const;
+			
+				const bool tx_sent() const;
+			
+				USART& operator<<(const uint8_t value);
+			
+				USART& operator<<(const uint16_t value);
+			
+				USART& operator>>(uint8_t &variable);
+			
+				USART& operator>>(uint16_t &variable);
+			
 		};
-
+		
 		//region instances
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L051xx ) || \
-    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || \
-    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || \
-    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) || \
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L051xx ) ||\
+    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
+    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
+    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) ||\
+    defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART1_BASE_ADDR ((uint32_t)0x40013800U)
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     )
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) 
 #define USART1_BASE_ADDR ((uint32_t)0x40011000U)
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || \
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || \
-    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || \
-    defined(STM32F098xx ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || \
-    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
 #define USART2_BASE_ADDR ((uint32_t)0x40004400U)
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || \
-    defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) || defined(STM32F101xG ) || \
-    defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || \
-    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F3     ) || \
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || \
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || \
-    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || \
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L431xx ) || \
-    defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || \
-    defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || \
-    defined(STM32L4P    )
+#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) ||\
+    defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) || defined(STM32F101xG ) ||\
+    defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
+    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
+    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
+    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
+    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
+    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L431xx ) ||\
+    defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) ||\
+    defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
+    defined(STM32L4P    ) 
 #define USART3_BASE_ADDR ((uint32_t)0x40004800U)
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || \
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) || \
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || \
-    defined(STM32L083xx )
+#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) ||\
+    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
+    defined(STM32L083xx ) 
 #define USART4_BASE_ADDR ((uint32_t)0x40004C00U)
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) || \
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || \
-    defined(STM32L083xx )
+#if defined(STM32F030xC ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) ||\
+    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
+    defined(STM32L083xx ) 
 #define USART5_BASE_ADDR ((uint32_t)0x40005000U)
 #endif
 
-#if defined(STM32F030xC ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F2     ) || \
-    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || \
-    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || \
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || \
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || \
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || \
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
+#if defined(STM32F030xC ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F2     ) ||\
+    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) ||\
+    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
+    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
+    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
 #define USART6_BASE_ADDR ((uint32_t)0x40011400U)
 #endif
 
-#if defined(STM32F091xC ) || defined(STM32F098xx )
+#if defined(STM32F091xC ) || defined(STM32F098xx ) 
 #define USART7_BASE_ADDR ((uint32_t)0x40011800U)
 #define USART8_BASE_ADDR ((uint32_t)0x40011C00U)
 #endif
 
-#if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) || \
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || \
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || \
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || \
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || \
-    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) || \
-    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L451xx ) || defined(STM32L452xx ) || \
-    defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || \
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || \
-    defined(STM32L4P    )
+#if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
+    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
+    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
+    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
+    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) ||\
+    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L451xx ) || defined(STM32L452xx ) ||\
+    defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
+    defined(STM32L4P    ) 
 #define UART4_BASE_ADDR ((uint32_t)0x40004C00U)
 #endif
 
-#if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) || \
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || \
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || \
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || \
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || \
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || \
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || \
-    defined(STM32H7     ) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || \
-    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) || \
-    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L471xx ) || defined(STM32L475xx ) || \
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || \
-    defined(STM32L4A6xx ) || defined(STM32L4P    )
+#if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
+    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
+    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
+    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
+    defined(STM32H7     ) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
+    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) ||\
+    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
+    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
+    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
 #define UART5_BASE_ADDR ((uint32_t)0x40005000U)
 #endif
 
-#if defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || \
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || \
-    defined(STM32F7     ) || defined(STM32H7     )
+#if defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) 
 #define UART7_BASE_ADDR ((uint32_t)0x40007800U)
 #define UART8_BASE_ADDR ((uint32_t)0x40007C00U)
 #endif
 
-#if defined(STM32F413xx ) || defined(STM32F423xx )
+#if defined(STM32F413xx ) || defined(STM32F423xx ) 
 #define UART9_BASE_ADDR ((uint32_t)0x40011800U)
 #define UART10_BASE_ADDR ((uint32_t)0x40011C00U)
 #endif
 
-#if defined(STM32H7     )
+#if defined(STM32H7     ) 
 #define LPUART1_BASE_ADDR ((uint32_t)0x58000C00U)
 #endif
 
-#if defined(STM32L0     )
+#if defined(STM32L0     ) 
 #define LPUART1_BASE_ADDR ((uint32_t)0x40004800U)
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32L4     ) || defined(STM32L4P    ) 
 #define LPUART1_BASE_ADDR ((uint32_t)0x40008000U)
 #endif
 
 #ifdef USART1_BASE_ADDR
-		volatile class USART * const USART1 = reinterpret_cast<class USART* const>(USART1_BASE_ADDR);
+volatile class USART * const USART1 = reinterpret_cast<class USART* const>(USART1_BASE_ADDR);
 #endif
 #ifdef USART2_BASE_ADDR
-		volatile class USART * const USART2 = reinterpret_cast<class USART* const>(USART2_BASE_ADDR);
+volatile class USART * const USART2 = reinterpret_cast<class USART* const>(USART2_BASE_ADDR);
 #endif
 #ifdef USART3_BASE_ADDR
-		volatile class USART * const USART3 = reinterpret_cast<class USART* const>(USART3_BASE_ADDR);
+volatile class USART * const USART3 = reinterpret_cast<class USART* const>(USART3_BASE_ADDR);
 #endif
 #ifdef USART4_BASE_ADDR
-		volatile class USART * const USART4 = reinterpret_cast<class USART* const>(USART4_BASE_ADDR);
+volatile class USART * const USART4 = reinterpret_cast<class USART* const>(USART4_BASE_ADDR);
 #endif
 #ifdef USART5_BASE_ADDR
-		volatile class USART * const USART5 = reinterpret_cast<class USART* const>(USART5_BASE_ADDR);
+volatile class USART * const USART5 = reinterpret_cast<class USART* const>(USART5_BASE_ADDR);
 #endif
 #ifdef USART6_BASE_ADDR
-		volatile class USART * const USART6 = reinterpret_cast<class USART* const>(USART6_BASE_ADDR);
+volatile class USART * const USART6 = reinterpret_cast<class USART* const>(USART6_BASE_ADDR);
 #endif
 #ifdef USART7_BASE_ADDR
-		volatile class USART * const USART7 = reinterpret_cast<class USART* const>(USART7_BASE_ADDR);
+volatile class USART * const USART7 = reinterpret_cast<class USART* const>(USART7_BASE_ADDR);
 #endif
 #ifdef USART8_BASE_ADDR
-		volatile class USART * const USART8 = reinterpret_cast<class USART* const>(USART8_BASE_ADDR);
+volatile class USART * const USART8 = reinterpret_cast<class USART* const>(USART8_BASE_ADDR);
 #endif
 #ifdef UART4_BASE_ADDR
-		volatile class USART * const UART4 = reinterpret_cast<class USART* const>(UART4_BASE_ADDR);
+volatile class USART * const UART4 = reinterpret_cast<class USART* const>(UART4_BASE_ADDR);
 #endif
 #ifdef UART5_BASE_ADDR
-		volatile class USART * const UART5 = reinterpret_cast<class USART* const>(UART5_BASE_ADDR);
+volatile class USART * const UART5 = reinterpret_cast<class USART* const>(UART5_BASE_ADDR);
 #endif
 #ifdef UART7_BASE_ADDR
-		volatile class USART * const UART7 = reinterpret_cast<class USART* const>(UART7_BASE_ADDR);
+volatile class USART * const UART7 = reinterpret_cast<class USART* const>(UART7_BASE_ADDR);
 #endif
 #ifdef UART8_BASE_ADDR
-		volatile class USART * const UART8 = reinterpret_cast<class USART* const>(UART8_BASE_ADDR);
+volatile class USART * const UART8 = reinterpret_cast<class USART* const>(UART8_BASE_ADDR);
 #endif
 #ifdef UART9_BASE_ADDR
-		volatile class USART * const UART9 = reinterpret_cast<class USART* const>(UART9_BASE_ADDR);
+volatile class USART * const UART9 = reinterpret_cast<class USART* const>(UART9_BASE_ADDR);
 #endif
 #ifdef UART10_BASE_ADDR
-		volatile class USART * const UART10 = reinterpret_cast<class USART* const>(UART10_BASE_ADDR);
+volatile class USART * const UART10 = reinterpret_cast<class USART* const>(UART10_BASE_ADDR);
 #endif
 #ifdef LPUART1_BASE_ADDR
-		volatile class USART * const LPUART1 = reinterpret_cast<class USART* const>(LPUART1_BASE_ADDR);
+volatile class USART * const LPUART1 = reinterpret_cast<class USART* const>(LPUART1_BASE_ADDR);
 #endif
 //endregion
 
 
-		inline constexpr uint32_t USART::get_clock_enable_bit(const uint32_t addr)
-		{
-			switch (addr) {
+inline constexpr uint32_t USART::get_clock_enable_bit(const uint32_t addr)
+{
+	switch (addr) {
 #ifdef USART1_BASE_ADDR
-				case USART1_BASE_ADDR :
+		case USART1_BASE_ADDR :
 #if defined(STM32F2) || defined(STM32F4) || defined(STM32F7) || defined(STM32H7)
-						return 1 << 4;
+				return 1 << 4;
 #else
-						return 1 << 14;
+				return 1 << 14;
 #endif
 #endif
 #ifdef USART2_BASE_ADDR
-				case USART2_BASE_ADDR :
+		case USART2_BASE_ADDR :
 #ifdef RCC_APB1ENR1
-						return 1 << 14;
+				return 1 << 14;
 #else
-						return 1 << 17;
+				return 1 << 17;
 #endif
 #endif
 #ifdef USART3_BASE_ADDR
-				case USART3_BASE_ADDR :
-						return 1 << 18;
+		case USART3_BASE_ADDR :
+				return 1 << 18;
 #endif
 #ifdef USART4_BASE_ADDR
-				case USART4_BASE_ADDR : return 1 << 19;
+		case USART4_BASE_ADDR : return 1 << 19;
 #endif
 #ifdef USART5_BASE_ADDR
-				case USART5_BASE_ADDR : return 1 << 20;
+		case USART5_BASE_ADDR : return 1 << 20;
 #endif
 #ifdef USART6_BASE_ADDR
-				case USART6_BASE_ADDR : return 1 << 5;
+		case USART6_BASE_ADDR : return 1 << 5;
 #endif
 #ifdef USART7_BASE_ADDR
-				case USART7_BASE_ADDR :
+		case USART7_BASE_ADDR :
 #ifdef STM32F0
-						return 1 << 6;
+				return 1 << 6;
 #else
-						return 1 << 30;
+				return 1 << 30;
 #endif
 #endif
 #ifdef USART8_BASE_ADDR
-				case USART8_BASE_ADDR :
+		case USART8_BASE_ADDR :
 #ifdef STM32F0
-						return 1 << 7;
+				return 1 << 7;
 #else
-						return 1 << 31;
+				return 1 << 31;
 #endif
 #endif
-				default :
-					return 0;
-			}
-		}
+		default :
+			return 0;
+	}
+}
 
-		inline constexpr volatile Reg32_t &USART::get_clock_enable_reg(const uint32_t addr)
-		{
-			switch (addr) {
+inline constexpr volatile Reg32_t& USART::get_clock_enable_reg(const uint32_t addr)
+{
+	switch (addr) {
 #ifdef USART1_BASE_ADDR
-				case USART1_BASE_ADDR : return RCC->APB2ENR;
+		case USART1_BASE_ADDR : return RCC->APB2ENR;
 #endif
 #ifdef USART6_BASE_ADDR
-				case USART6_BASE_ADDR : return RCC->APB2ENR;
+		case USART6_BASE_ADDR : return RCC->APB2ENR;
 #endif
-				default:
+		default:
 #if defined(RCC_APB1ENR1)
-					return RCC->APB1ENR1;
+			return RCC->APB1ENR1;
 #elif defined(RCC_APB1LENR)
-					return RCC->APB1LENR;
+			return RCC->APB1LENR;
 #elif defined(RCC_APB1ENR)
-					return RCC->APB1ENR;
+			return RCC->APB1ENR;
 #else
-					return *reinterpret_cast<volatile Reg32_t *>(0);
+			return *reinterpret_cast<volatile Reg32_t *>(0);
 #endif
-			}
-		}
+	}
+}
 
-		inline void USART::enable_clock() volatile
-		{
-			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-					|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline void USART::enable_clock() volatile
+{
+	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+			|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
-		inline void USART::disable_clock() volatile
-		{
-			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-					&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline void USART::disable_clock() volatile
+{
+	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+			&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
-		inline bool USART::is_clock_enabled() const volatile
-		{
-			return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this)) &
-					get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
-				   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-		}
+inline bool USART::is_clock_enabled() const volatile
+{
+	return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this)) & get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
+	== get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+}
 
-		inline const bool USART::is_rx_not_empty() const
-		{
+inline const bool USART::is_rx_not_empty() const
+{
 #ifdef USART_ISR
-			return ISR.RXNE == 1;
+	return ISR.RXNE == 1;
 #elif defined(USART_SR)
-			return SR.RXNE == 1;
+	return SR.RXNE == 1;
 #endif
-		}
+}
 
-		inline const bool USART::is_tx_empty() const
-		{
+inline const bool USART::is_tx_empty() const
+{
 #ifdef USART_ISR
-			return ISR.TXE == 1;
+	return ISR.TXE == 1;
 #elif defined(USART_SR)
-			return SR.TXE == 1;
+	return SR.TXE == 1;
 #endif
 
-		}
+}
 
-		inline const bool USART::tx_sent() const
-		{
+inline const bool USART::tx_sent() const
+{
 #ifdef USART_ISR
-			return ISR.TC == 1;
+	return ISR.TC == 1;
 #elif defined(USART_SR)
-			return SR.TC == 1;
+	return SR.TC == 1;
 #endif
-		}
+}
 
-		inline USART &USART::operator<<(const uint8_t value)
-		{
+inline USART& USART::operator<<(const uint8_t value)
+{
 #ifdef USART_DR
-			DR = value;
+	DR = value;
 #else
-			TDR = value;
-			//TODO send
+	TDR = value;
+	//TODO send
 #endif
-			return *this;
-		}
+	return *this;
+}
 
-		inline USART &USART::operator<<(const uint16_t value)
-		{
+inline USART& USART::operator<<(const uint16_t value)
+{
 #ifdef USART_DR
-			DR = value;
+	DR = value;
 #else
-			TDR = value;
-			//TODO send
+	TDR = value;
+	//TODO send
 #endif
-			return *this;
-		}
+	return *this;
+}
 
-		inline USART &USART::operator>>(uint8_t &variable)
-		{
+inline USART& USART::operator>>(uint8_t &variable)
+{
 #ifdef USART_DR
-			variable = DR;
+	variable = DR;
 #else
-			variable = RDR;
+	variable = RDR;
 #endif
-			return *this;
-		}
+	return *this;
+}
 
-		inline USART &USART::operator>>(uint16_t &variable)
-		{
+inline USART& USART::operator>>(uint16_t &variable)
+{
 #ifdef USART_DR
-			variable = DR;
+	variable = DR;
 #else
-			variable = RDR;
+	variable = RDR;
 #endif
-			return *this;
-		}
+	return *this;
+}
 
 	};
-};
-//region undef
+};//region undef
 #undef USART_CR1_0_UE
 #undef USART_CR1_0_MME
 #undef USART_CR1_0_CMIE

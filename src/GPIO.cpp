@@ -20,7 +20,7 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
 
 #if defined(GPIO_MODER) && defined(GPIO_AFR)

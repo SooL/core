@@ -44,7 +44,7 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
 		template<typename T>
 		struct RegBase_t
@@ -150,13 +150,13 @@ inline unsignedType operator ++(volatile regType &a, int)      { unsignedType cp
 inline unsignedType operator --(volatile regType &a, int)      { unsignedType cpy = a; --a; return cpy; }      \
 
 
-_SOOL_SETUP_REG_OPERATORS(sool::ll::Reg8_t, uint8_t, int8_t)
+_SOOL_SETUP_REG_OPERATORS(sool::core::Reg8_t, uint8_t, int8_t)
 
-_SOOL_SETUP_REG_OPERATORS(sool::ll::Reg16_t, uint16_t, int16_t)
+_SOOL_SETUP_REG_OPERATORS(sool::core::Reg16_t, uint16_t, int16_t)
 
-_SOOL_SETUP_REG_OPERATORS(sool::ll::Reg32_t, uint32_t, int32_t)
+_SOOL_SETUP_REG_OPERATORS(sool::core::Reg32_t, uint32_t, int32_t)
 
-_SOOL_SETUP_REG_OPERATORS(sool::ll::Reg64_t, uint64_t, int64_t)
+_SOOL_SETUP_REG_OPERATORS(sool::core::Reg64_t, uint64_t, int64_t)
 
 #undef _SOOL_SETUP_REG_OPERATORS
 
