@@ -1,3 +1,20 @@
+/**
+ * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
+ * This file is part of SooL.
+ *
+ *  SooL is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation, either version 3
+ *  of the License, or (at your option) any later version.
+ *
+ *  SooL is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef __SOOL_TIM_H
 #define __SOOL_TIM_H
 
@@ -728,7 +745,8 @@
 namespace sool
 {
 	namespace core
-	{struct TIM_base_plugin
+	{
+		struct TIM_base_plugin
 		{
 		
 			#ifdef TIM_AF1
@@ -3007,7 +3025,8 @@ inline bool TIM<plugin>::is_clock_enabled() const volatile
 }
 
 	};
-};//region undef
+};
+//region undef
 #undef TIM_DIER_COMDE
 #undef TIM_CNT_1_CNT
 #undef TIM2_OR_0_ETR_RMP

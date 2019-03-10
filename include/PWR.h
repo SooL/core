@@ -1,19 +1,19 @@
 /**
- * Copyright (c) 2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL core Library.
+ * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
+ * This file is part of SooL.
  *
- *  SooL core Library is free software: you can redistribute it and/or modify
+ *  SooL is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL core Library is distributed in the hope that it will be useful,
+ *  SooL is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_PWR_H
 #define __SOOL_PWR_H
@@ -809,14 +809,13 @@
 
 namespace sool
 {
-	namespace ll
+	namespace core
 	{
-
 		class PWR
 		{
+			
 
-
-		public :
+			public :
 
 #ifdef PWR_CPUCR
 			struct CPUCR_TypeDef : public Reg32_t
@@ -836,7 +835,7 @@ namespace sool
 				uint32_t RUN_D3               :1;
 				uint32_t                      :20;
 
-
+			
 		};
 #endif
 
@@ -918,7 +917,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -978,7 +977,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -1049,7 +1048,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -1102,7 +1101,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -1121,7 +1120,7 @@ namespace sool
 				uint32_t VBRS                 :1;
 				uint32_t                      :22;
 
-
+			
 		};
 #endif
 
@@ -1134,7 +1133,7 @@ namespace sool
 				uint32_t R1MODE               :1;
 				uint32_t                      :23;
 
-
+			
 		};
 #endif
 
@@ -1193,7 +1192,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -1236,7 +1235,7 @@ namespace sool
 				};
 				#endif
 			};
-
+			
 		};
 #endif
 
@@ -1260,7 +1259,7 @@ namespace sool
 				uint32_t EWUP6                :1;
 				uint32_t                      :18;
 
-
+			
 		};
 #endif
 
@@ -1274,7 +1273,7 @@ namespace sool
 				uint32_t VOS                  :2;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1300,7 +1299,7 @@ namespace sool
 				uint32_t PA14                 :1;
 				uint32_t                      :17;
 
-
+			
 		};
 #endif
 
@@ -1327,7 +1326,7 @@ namespace sool
 				uint32_t PWR_PDCRB_PB15       :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1354,7 +1353,7 @@ namespace sool
 				uint32_t PC15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1381,7 +1380,7 @@ namespace sool
 				uint32_t PD15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1408,7 +1407,7 @@ namespace sool
 				uint32_t PE15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1435,7 +1434,7 @@ namespace sool
 				uint32_t PF15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1462,7 +1461,7 @@ namespace sool
 				uint32_t PG15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1489,7 +1488,7 @@ namespace sool
 				uint32_t PWR_PDCRH_PH15       :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1512,7 +1511,7 @@ namespace sool
 				uint32_t PI11                 :1;
 				uint32_t                      :20;
 
-
+			
 		};
 #endif
 
@@ -1539,7 +1538,7 @@ namespace sool
 				uint32_t PA15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1566,7 +1565,7 @@ namespace sool
 				uint32_t PWR_PUCRB_PB15       :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1593,7 +1592,7 @@ namespace sool
 				uint32_t PC15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1620,7 +1619,7 @@ namespace sool
 				uint32_t PD15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1647,7 +1646,7 @@ namespace sool
 				uint32_t PE15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1674,7 +1673,7 @@ namespace sool
 				uint32_t PF15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1701,7 +1700,7 @@ namespace sool
 				uint32_t PG15                 :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1728,7 +1727,7 @@ namespace sool
 				uint32_t PWR_PUCRH_PH15       :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1751,7 +1750,7 @@ namespace sool
 				uint32_t PI11                 :1;
 				uint32_t                      :20;
 
-
+			
 		};
 #endif
 
@@ -1779,7 +1778,7 @@ namespace sool
 					uint32_t                      :27;
 				};
 			};
-
+			
 		};
 #endif
 
@@ -1809,7 +1808,7 @@ namespace sool
 					uint32_t                      :27;
 				};
 			};
-
+			
 		};
 #endif
 
@@ -1829,7 +1828,7 @@ namespace sool
 				uint32_t PVMO4                :1;
 				uint32_t                      :16;
 
-
+			
 		};
 #endif
 
@@ -1846,7 +1845,7 @@ namespace sool
 				uint32_t WKUPC6               :1;
 				uint32_t                      :26;
 
-
+			
 		};
 #endif
 
@@ -1877,7 +1876,7 @@ namespace sool
 				uint32_t WKUPPUPD6            :2;
 				uint32_t                      :4;
 
-
+			
 		};
 #endif
 
@@ -1894,7 +1893,7 @@ namespace sool
 				uint32_t WKUPF6               :1;
 				uint32_t                      :26;
 
-
+			
 		};
 #endif
 
@@ -1964,13 +1963,13 @@ namespace sool
 			};
 		private:
 			PWR() = delete;
-		public:
-			void enable_clock() volatile;
-
-			void disable_clock() volatile;
-
-			bool is_clock_enabled() const volatile;
-
+			public:
+				void enable_clock() volatile;
+			
+				void disable_clock() volatile;
+			
+				bool is_clock_enabled() const volatile;
+			
 		};
 
 		//region instances
@@ -1990,30 +1989,30 @@ namespace sool
 //endregion
 
 
-		inline void PWR::enable_clock() volatile
-		{
+inline void PWR::enable_clock() volatile
+{
 #if defined(RCC_APB1ENR)
-			RCC->APB1ENR.PWREN = 1;
+	RCC->APB1ENR.PWREN = 1;
 #elif defined(RCC_APB1ENR1)
-			RCC->APB1ENR1.PWREN = 1;
+	RCC->APB1ENR1.PWREN = 1;
 #endif
-		}
-		inline void PWR::disable_clock() volatile
-		{
+}
+inline void PWR::disable_clock() volatile
+{
 #if defined(RCC_APB1ENR)
-			RCC->APB1ENR.PWREN = 0;
+	RCC->APB1ENR.PWREN = 0;
 #elif defined(RCC_APB1ENR1)
-			RCC->APB1ENR1.PWREN = 0;
+	RCC->APB1ENR1.PWREN = 0;
 #endif
-		}
-		inline bool PWR::is_clock_enabled() const volatile
-		{
+}
+inline bool PWR::is_clock_enabled() const volatile
+{
 #if defined(RCC_APB1ENR)
-			return RCC->APB1ENR.PWREN;
+	return RCC->APB1ENR.PWREN;
 #elif defined(RCC_APB1ENR1)
-			return RCC->APB1ENR1.PWREN;
+	return RCC->APB1ENR1.PWREN;
 #endif
-		}
+}
 
 	};
 };

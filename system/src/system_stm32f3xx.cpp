@@ -83,7 +83,7 @@
 #define HSE_VALUE    ((uint32_t)8000000)
 #endif
 
-#ifndef HSI_VALUE) // Internal oscillator frequency in Hz
+#ifndef HSI_VALUE // Internal oscillator frequency in Hz
 #define HSI_VALUE    ((uint32_t)8000000)
 #endif
 

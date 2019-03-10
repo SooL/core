@@ -1,3 +1,20 @@
+/**
+ * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
+ * This file is part of SooL.
+ *
+ *  SooL is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation, either version 3
+ *  of the License, or (at your option) any later version.
+ *
+ *  SooL is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef __SOOL_USART_H
 #define __SOOL_USART_H
 
@@ -1158,7 +1175,8 @@ inline USART& USART::operator>>(uint16_t &variable)
 }
 
 	};
-};//region undef
+};
+//region undef
 #undef USART_CR1_0_UE
 #undef USART_CR1_0_MME
 #undef USART_CR1_0_CMIE

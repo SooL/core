@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 FAUCHER Julien & FRANCE Loic
+ * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
  * This file is part of SooL core Library.
  *
  *  SooL core Library is free software: you can redistribute it and/or modify
