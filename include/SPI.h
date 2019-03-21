@@ -1,29 +1,31 @@
 /**
  * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL.
+ * This file is part of SooL core Library.
  *
- *  SooL is free software: you can redistribute it and/or modify
+ *  SooL core Library is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL is distributed in the hope that it will be useful,
+ *  SooL core Library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_SPI_H
 #define __SOOL_SPI_H
+
+
 
 #include "lib_utils/peripheral_include.h"
 #include "RCC.h"
 
 //region defines
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define SPI_CFG1
 #define SPI_CFG2
 #define SPI_CR1_0_IOLOCK     IOLOCK               // 1 bits @ 16
@@ -106,7 +108,7 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define SPI_CR1_0_CPHA       CPHA                 // 1 bits @ 0
 #define SPI_CR1_0_CPOL       CPOL                 // 1 bits @ 1
 #define SPI_CR1_0_MSTR       MSTR                 // 1 bits @ 2
@@ -173,7 +175,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define SPI_CR1_0_CRCL       CRCL                 // 1 bits @ 11
 #define SPI_CR2_0_NSSP       NSSP                 // 1 bits @ 3
 #define SPI_CR2_0_DS         DS                   // 4 bits @ 8
@@ -194,12 +196,12 @@
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32H7     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32L0     ) || defined(STM32L1     )
 #define SPI_CR1_1
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define SPI_CR1_1_DFF        DFF                  // 1 bits @ 11
 #else
 #define SPI_CR1_1_DFF
@@ -210,13 +212,13 @@
     defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
     defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L162xDx) || defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define SPI_CR2_0_FRF        FRF                  // 1 bits @ 4
 #else
 #define SPI_CR2_0_FRF
 #endif
 
-#if defined(STM32F0     ) 
+#if defined(STM32F0     )
 #define SPI_CRCPR_0
 #define SPI_DR_0
 #define SPI_RXCRCR_0
@@ -225,7 +227,7 @@
 
 #if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
     defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define SPI_CRCPR_1
 #define SPI_DR_1
 #define SPI_RXCRCR_1
@@ -245,25 +247,25 @@
     defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
     defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define SPI_I2SCFGR
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) ||\
-    defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) ||\
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) || defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) ||\
-    defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) ||\
-    defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
-    defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) 
+#if defined(STM32F030x4 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
+    defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
+    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
+    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
+    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L100xC ) || defined(STM32L151xC ) ||\
+    defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
+    defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
+    defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define SPI_I2SCFGR_0_CHLEN  CHLEN                // 1 bits @ 0
 #define SPI_I2SCFGR_0_DATLEN DATLEN               // 2 bits @ 1
 #define SPI_I2SCFGR_0_CKPOL  CKPOL                // 1 bits @ 3
@@ -280,21 +282,21 @@
 #define SPI_MAP0_I2SPR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
-    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L100xC ) || defined(STM32L151xC ) ||\
-    defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
-    defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
-    defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+#if defined(STM32F030x4 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
+    defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L051xx ) ||\
+    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
+    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
+    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L100xC ) ||\
+    defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) ||\
+    defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
+    defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define SPI_I2SCFGR_0_I2SSTD I2SSTD               // 2 bits @ 4
 #define SPI_I2SCFGR_0_PCMSYNC PCMSYNC              // 1 bits @ 7
 #else
@@ -315,7 +317,7 @@
     defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) ||\
     defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define SPI_I2SCFGR_0_I2SMOD I2SMOD               // 1 bits @ 11
 #define SPI_MAP0_I2SCFGR     I2SCFGR_TypeDef I2SCFGR
 #else
@@ -326,20 +328,20 @@
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
     defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
-    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define SPI_I2SCFGR_0_ASTRTEN ASTRTEN              // 1 bits @ 12
 #else
 #define SPI_I2SCFGR_0_ASTRTEN
 #endif
 
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F1     ) ||\
-    defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
-    defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F030x4 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
+    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
+    defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
+    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define SPI_SR_0_CHSIDE      CHSIDE               // 1 bits @ 2
 #define SPI_SR_0_UDR         UDR                  // 1 bits @ 3
 #else
@@ -349,13 +351,13 @@
 
 #if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
     defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define SPI_SR_0_FRE         FRE                  // 1 bits @ 8
 #else
 #define SPI_SR_0_FRE
 #endif
 
-#if defined(STM32L4P    ) 
+#if defined(STM32L4P    )
 #define SPI_VERR
 #define SPI_MAP0_VERR        VERR_TypeDef VERR
 #else
@@ -363,22 +365,26 @@
 #endif
 
 //endregion
-
 namespace sool
 {
 	namespace core
 	{
+//region related-types
+		
+//endregion
+//region peripheral-declaration
+
 		class SPI
 		{
 			
-			
-			public :
-			
-			#ifdef SPI_CFG1
+
+		public :
+
+#ifdef SPI_CFG1
 			struct CFG1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t DSIZE                :5;
 					uint32_t FTHLV                :4;
 					uint32_t UDRCFG               :2;
@@ -392,16 +398,16 @@ namespace sool
 					uint32_t                      :5;
 					uint32_t MBR                  :3;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_CFG2
+#endif
+
+#ifdef SPI_CFG2
 			struct CFG2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MSSI                 :4;
 					uint32_t MIDI                 :4;
 					uint32_t                      :7;
@@ -419,16 +425,16 @@ namespace sool
 					uint32_t SSOE                 :1;
 					uint32_t SSOM                 :1;
 					uint32_t AFCNTR               :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_CR1
-			struct CR1_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_CR1
+			struct CR1_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					struct
@@ -450,7 +456,7 @@ namespace sool
 						uint32_t SPI_CR1_0_IOLOCK     :1;
 						uint32_t                      :15;
 					};
-					#ifdef SPI_CR1_1
+#ifdef SPI_CR1_1
 					struct
 					{
 						uint32_t SPI_CR1_1_SPE        :1;
@@ -465,25 +471,25 @@ namespace sool
 						uint32_t SPI_CR1_1_TCRCINI    :1;
 						uint32_t                      :16;
 					};
-					#endif
-					#ifdef SPI_CR1_2
+#endif
+#ifdef SPI_CR1_2
 					struct
 					{
 						uint32_t                      :11;
 						uint32_t HDDIR                :1;
 						uint32_t                      :20;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_CR2
-			struct CR2_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_CR2
+			struct CR2_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					struct
@@ -503,34 +509,34 @@ namespace sool
 						uint32_t                      :1;
 						uint32_t SPI_CR2_0_TSER       :16;
 					};
-					#ifdef SPI_CR2_1
+#ifdef SPI_CR2_1
 					struct
 					{
 						uint32_t TSIZE                :16;
 						uint32_t                      :16;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_CRCPOLY
+#endif
+
+#ifdef SPI_CRCPOLY
 			struct CRCPOLY_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t CRCPOLY              :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_CRCPR
-			struct CRCPR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_CRCPR
+			struct CRCPR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					#ifdef SPI_CRCPR_0
@@ -549,13 +555,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_DR
-			struct DR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_DR
+			struct DR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					#ifdef SPI_DR_0
@@ -574,13 +580,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_I2SCFGR
-			struct I2SCFGR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_I2SCFGR
+			struct I2SCFGR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					struct
@@ -626,27 +632,27 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_I2SPR
-			struct I2SPR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_I2SPR
+			struct I2SPR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-				
+				using Reg16_t::operator=;
+
 					uint32_t I2SDIV               :8;
 					uint32_t ODD                  :1;
 					uint32_t MCKOE                :1;
 					uint32_t                      :22;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_IER
+#endif
+
+#ifdef SPI_IER
 			struct IER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t RXPIE                :1;
 					uint32_t TXPIE                :1;
 					uint32_t DXPIE                :1;
@@ -659,16 +665,16 @@ namespace sool
 					uint32_t MODFIE               :1;
 					uint32_t TSERIE               :1;
 					uint32_t                      :21;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_IFCR
+#endif
+
+#ifdef SPI_IFCR
 			struct IFCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t EOTC                 :1;
 					uint32_t TXTFC                :1;
@@ -680,16 +686,16 @@ namespace sool
 					uint32_t TSERFC               :1;
 					uint32_t SUSPC                :1;
 					uint32_t                      :20;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_RXCRCR
-			struct RXCRCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_RXCRCR
+			struct RXCRCR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					#ifdef SPI_RXCRCR_0
@@ -708,24 +714,24 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_RXDR
+#endif
+
+#ifdef SPI_RXDR
 			struct RXDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t RXDR                 :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_SR
-			struct SR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_SR
+			struct SR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					struct
@@ -745,7 +751,7 @@ namespace sool
 						uint32_t SPI_SR_0_RXWNE       :1;
 						uint32_t SPI_SR_0_CTSIZE      :16;
 					};
-					#ifdef SPI_SR_1
+#ifdef SPI_SR_1
 					struct
 					{
 						uint32_t RXP                  :1;
@@ -763,17 +769,17 @@ namespace sool
 						uint32_t TXC                  :1;
 						uint32_t                      :19;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_TXCRC
+#endif
+
+#ifdef SPI_TXCRC
 			struct TXCRC_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -787,13 +793,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_TXCRCR
-			struct TXCRCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef SPI_TXCRCR
+			struct TXCRCR_TypeDef : public Reg16_t
 			{
-				using Reg32_t::operator=;
-			
+				using Reg16_t::operator=;
+
 				union
 				{
 					#ifdef SPI_TXCRCR_0
@@ -812,46 +818,46 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef SPI_TXDR
+#endif
+
+#ifdef SPI_TXDR
 			struct TXDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t TXDR                 :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_UDRDR
+#endif
+
+#ifdef SPI_UDRDR
 			struct UDRDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t UDRDR                :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef SPI_VERR
+#endif
+
+#ifdef SPI_VERR
 			struct VERR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MINREV               :4;
 					uint32_t MAJREV               :4;
 					uint32_t                      :24;
-			
+
 				
 			};
-			#endif
-			
+#endif
+
 			union
 			{
-				
+
 				struct
 				{
 					CR1_TypeDef CR1;     // @0x000
@@ -900,7 +906,7 @@ namespace sool
 					__SOOL_PERIPH_PADDING_4;
 				};
 			};
-			private:
+		private:
 			SPI() = delete;
 			private:
 				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
@@ -915,40 +921,41 @@ namespace sool
 				bool is_clock_enabled() const volatile;
 			
 		};
-		
-		//region instances
+
+//endregion
+//region instances
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) ||\
+    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102xB ) || defined(STM32F103xB ) ||\
+    defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
+    defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
+    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) ||\
+    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
+    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
+    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
+    defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) ||\
+    defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
+    defined(STM32L1     ) || defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) ||\
+    defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
+    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
+#define SPI2_BASE_ADDR ((uint32_t)0x40003800U)
+#endif
+
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F302xC ) ||\
     defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
     defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
     defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
     defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define SPI1_BASE_ADDR ((uint32_t)0x40013000U)
-#endif
-
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
-    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
-    defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) ||\
-    defined(STM32F101xG ) || defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F401xC ) ||\
-    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) ||\
-    defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L051xx ) ||\
-    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
-    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
-    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) ||\
-    defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
-    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define SPI2_BASE_ADDR ((uint32_t)0x40003800U)
 #endif
 
 #if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
@@ -965,7 +972,7 @@ namespace sool
     defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) ||\
     defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
     defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L162xE ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define SPI3_BASE_ADDR ((uint32_t)0x40003C00U)
 #endif
 
@@ -975,12 +982,12 @@ namespace sool
     defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) 
-#define I2S2ext_BASE_ADDR ((uint32_t)0x40003400U)
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
+		#define I2S2ext_BASE_ADDR ((uint32_t)0x40003400U)
 #define I2S3ext_BASE_ADDR ((uint32_t)0x40004000U)
 #endif
 
-#if defined(STM32F302xE ) || defined(STM32F303xE ) || defined(STM32F398xx ) 
+#if defined(STM32F302xE ) || defined(STM32F303xE ) || defined(STM32F398xx )
 #define SPI4_BASE_ADDR ((uint32_t)0x40013C00U)
 #endif
 
@@ -988,7 +995,7 @@ namespace sool
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F7     ) || defined(STM32H7     )
 #define SPI4_BASE_ADDR ((uint32_t)0x40013400U)
 #endif
 
@@ -996,136 +1003,136 @@ namespace sool
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) 
+    defined(STM32H7     )
 #define SPI5_BASE_ADDR ((uint32_t)0x40015000U)
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F745xx ) || defined(STM32F746xx ) ||\
     defined(STM32F756xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F777xx ) || defined(STM32F779xx )
 #define SPI6_BASE_ADDR ((uint32_t)0x40015400U)
 #endif
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define SPI6_BASE_ADDR ((uint32_t)0x58001400U)
 #endif
 
-#ifdef SPI1_BASE_ADDR
-volatile class SPI * const SPI1 = reinterpret_cast<class SPI* const>(SPI1_BASE_ADDR);
-#endif
 #ifdef SPI2_BASE_ADDR
-volatile class SPI * const SPI2 = reinterpret_cast<class SPI* const>(SPI2_BASE_ADDR);
+		volatile class SPI * const SPI2 = reinterpret_cast<class SPI* const>(SPI2_BASE_ADDR);
+#endif
+#ifdef SPI1_BASE_ADDR
+		volatile class SPI * const SPI1 = reinterpret_cast<class SPI* const>(SPI1_BASE_ADDR);
 #endif
 #ifdef SPI3_BASE_ADDR
-volatile class SPI * const SPI3 = reinterpret_cast<class SPI* const>(SPI3_BASE_ADDR);
+		volatile class SPI * const SPI3 = reinterpret_cast<class SPI* const>(SPI3_BASE_ADDR);
 #endif
 #ifdef I2S2ext_BASE_ADDR
-volatile class SPI * const I2S2ext = reinterpret_cast<class SPI* const>(I2S2ext_BASE_ADDR);
+		volatile class SPI * const I2S2ext = reinterpret_cast<class SPI* const>(I2S2ext_BASE_ADDR);
 #endif
 #ifdef I2S3ext_BASE_ADDR
-volatile class SPI * const I2S3ext = reinterpret_cast<class SPI* const>(I2S3ext_BASE_ADDR);
+		volatile class SPI * const I2S3ext = reinterpret_cast<class SPI* const>(I2S3ext_BASE_ADDR);
 #endif
 #ifdef SPI4_BASE_ADDR
-volatile class SPI * const SPI4 = reinterpret_cast<class SPI* const>(SPI4_BASE_ADDR);
+		volatile class SPI * const SPI4 = reinterpret_cast<class SPI* const>(SPI4_BASE_ADDR);
 #endif
 #ifdef SPI5_BASE_ADDR
-volatile class SPI * const SPI5 = reinterpret_cast<class SPI* const>(SPI5_BASE_ADDR);
+		volatile class SPI * const SPI5 = reinterpret_cast<class SPI* const>(SPI5_BASE_ADDR);
 #endif
 #ifdef SPI6_BASE_ADDR
-volatile class SPI * const SPI6 = reinterpret_cast<class SPI* const>(SPI6_BASE_ADDR);
+		volatile class SPI * const SPI6 = reinterpret_cast<class SPI* const>(SPI6_BASE_ADDR);
 #endif
 //endregion
-
-
-constexpr uint32_t SPI::get_clock_enable_bit(const uint32_t addr)
-{
-	switch (addr) {
-#ifdef SPI1_BASE_ADDR
-		case SPI1_BASE_ADDR: return 1 << 12;
-#endif
-#ifdef SPI2_BASE_ADDR
-		case SPI2_BASE_ADDR: return 1 << 14;
-#endif
-#ifdef SPI3_BASE_ADDR
-		case SPI3_BASE_ADDR: return 1 << 15;
-#endif
-#ifdef SPI4_BASE_ADDR
-		case SPI4_BASE_ADDR:
-#ifdef STM32F3
-			return 1 << 15;
-#else
-			return 1 << 13;
-#endif
-#endif
-#ifdef SPI5_BASE_ADDR
-		case SPI5_BASE_ADDR: return 1 << 20;
-#endif
-#ifdef SPI6_BASE_ADDR
-		case SPI6_BASE_ADDR:
-#ifdef STM32H7
-			return 1 << 5;
-#else
-			return 1 << 21;
-#endif
-#endif
-		default:
-			return 0;
-	}
-}
-
-constexpr volatile Reg32_t &SPI::get_clock_enable_reg(const uint32_t addr)
-{
-	switch (addr) {
-#ifdef SPI1_BASE_ADDR
-		case SPI1_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef SPI4_BASE_ADDR
-		case SPI4_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef SPI5_BASE_ADDR
-		case SPI5_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef SPI6_BASE_ADDR
-		case SPI6_BASE_ADDR:
-#ifdef STM32H7
-			return RCC->APB4ENR;
-#else
-			return RCC->APB2ENR;
-#endif
-#endif
-		default:
-#if defined(RCC_APB1ENR1)
-			return RCC->APB1ENR1;
-#elif defined(RCC_APB1LENR)
-			return RCC->APB1LENR;
-#elif defined(RCC_APB1ENR)
-			return RCC->APB1ENR;
-#else
-			return *reinterpret_cast<volatile Reg32_t *>(0);
-#endif
-	}
-}
-
-inline void SPI::enable_clock() volatile
-{
-	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
-
-inline void SPI::disable_clock() volatile
-{
-	get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
-
-inline bool SPI::is_clock_enabled() const volatile
-{
-	return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
-		   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
-
+//region peripheral-definition
+		constexpr uint32_t SPI::get_clock_enable_bit(const uint32_t addr)
+		{
+			switch (addr) {
+		#ifdef SPI1_BASE_ADDR
+				case SPI1_BASE_ADDR: return 1 << 12;
+		#endif
+		#ifdef SPI2_BASE_ADDR
+				case SPI2_BASE_ADDR: return 1 << 14;
+		#endif
+		#ifdef SPI3_BASE_ADDR
+				case SPI3_BASE_ADDR: return 1 << 15;
+		#endif
+		#ifdef SPI4_BASE_ADDR
+				case SPI4_BASE_ADDR:
+		#ifdef STM32F3
+					return 1 << 15;
+		#else
+					return 1 << 13;
+		#endif
+		#endif
+		#ifdef SPI5_BASE_ADDR
+				case SPI5_BASE_ADDR: return 1 << 20;
+		#endif
+		#ifdef SPI6_BASE_ADDR
+				case SPI6_BASE_ADDR:
+		#ifdef STM32H7
+					return 1 << 5;
+		#else
+					return 1 << 21;
+		#endif
+		#endif
+				default:
+					return 0;
+			}
+		}
+		
+		constexpr volatile Reg32_t &SPI::get_clock_enable_reg(const uint32_t addr)
+		{
+			switch (addr) {
+		#ifdef SPI1_BASE_ADDR
+				case SPI1_BASE_ADDR: return RCC->APB2ENR;
+		#endif
+		#ifdef SPI4_BASE_ADDR
+				case SPI4_BASE_ADDR: return RCC->APB2ENR;
+		#endif
+		#ifdef SPI5_BASE_ADDR
+				case SPI5_BASE_ADDR: return RCC->APB2ENR;
+		#endif
+		#ifdef SPI6_BASE_ADDR
+				case SPI6_BASE_ADDR:
+		#ifdef STM32H7
+					return RCC->APB4ENR;
+		#else
+					return RCC->APB2ENR;
+		#endif
+		#endif
+				default:
+		#if defined(RCC_APB1ENR1)
+					return RCC->APB1ENR1;
+		#elif defined(RCC_APB1LENR)
+					return RCC->APB1LENR;
+		#elif defined(RCC_APB1ENR)
+					return RCC->APB1ENR;
+		#else
+					return *reinterpret_cast<volatile Reg32_t *>(0);
+		#endif
+			}
+		}
+		
+		inline void SPI::enable_clock() volatile
+		{
+			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+					|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+		}
+		
+		inline void SPI::disable_clock() volatile
+		{
+			get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+					&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+		}
+		
+		inline bool SPI::is_clock_enabled() const volatile
+		{
+			return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+					& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
+				   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+		}
+		
+//endregion
 	};
 };
 //region undef
@@ -1212,5 +1219,6 @@ inline bool SPI::is_clock_enabled() const volatile
 #undef SPI_SR_0_UDR
 #undef SPI_SR_0_FRE
 #undef SPI_MAP0_VERR
+
 //endregion
-#endif
+#endif //__SOOL_SPI_H

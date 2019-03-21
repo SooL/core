@@ -1,22 +1,24 @@
 /**
  * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL.
+ * This file is part of SooL core Library.
  *
- *  SooL is free software: you can redistribute it and/or modify
+ *  SooL core Library is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL is distributed in the hope that it will be useful,
+ *  SooL core Library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_PWR_H
 #define __SOOL_PWR_H
+
+
 
 #include "lib_utils/peripheral_include.h"
 #include "RCC.h"
@@ -806,1095 +808,1099 @@
 #endif
 
 //endregion
-
 namespace sool
 {
 	namespace core
 	{
+//region related-types
+		
+//endregion
+//region peripheral-declaration
+
 		class PWR
 		{
 			
 
-			public :
+		public :
 
 #ifdef PWR_CPUCR
 			struct CPUCR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PDDS_D1              :1;
-				uint32_t PDDS_D2              :1;
-				uint32_t PDDS_D3              :1;
-				uint32_t                      :2;
-				uint32_t STOPF                :1;
-				uint32_t SBF                  :1;
-				uint32_t PWR_CPUCR_SBF_D1     :1;
-				uint32_t PWR_CPUCR_SBF_D2     :1;
-				uint32_t CSSF                 :1;
-				uint32_t                      :1;
-				uint32_t RUN_D3               :1;
-				uint32_t                      :20;
+					uint32_t PDDS_D1              :1;
+					uint32_t PDDS_D2              :1;
+					uint32_t PDDS_D3              :1;
+					uint32_t                      :2;
+					uint32_t STOPF                :1;
+					uint32_t SBF                  :1;
+					uint32_t PWR_CPUCR_SBF_D1     :1;
+					uint32_t PWR_CPUCR_SBF_D2     :1;
+					uint32_t CSSF                 :1;
+					uint32_t                      :1;
+					uint32_t RUN_D3               :1;
+					uint32_t                      :20;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_CR
 			struct CR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t PWR_CR_0_LPDS        :1;
-					uint32_t PDDS                 :1;
-					uint32_t CWUF                 :1;
-					uint32_t CSBF                 :1;
-					uint32_t PWR_CR_0_PVDE        :1;
-					uint32_t PWR_CR_0_PLS         :3;
-					uint32_t DBP                  :1;
-					uint32_t PWR_CR_0_FPDS        :1;
-					uint32_t PWR_CR_0_ENSD2       :1;
-					uint32_t PWR_CR_0_ENSD3       :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR_0_ADCDC1      :1;
-					uint32_t PWR_CR_0_VOS         :2;
-					uint32_t PWR_CR_0_ODEN        :1;
-					uint32_t PWR_CR_0_ODSWEN      :1;
-					uint32_t PWR_CR_0_UDEN        :2;
-					uint32_t PWR_CR_0_FMSSR       :1;
-					uint32_t PWR_CR_0_FISSR       :1;
-					uint32_t                      :10;
+					struct
+					{
+						uint32_t PWR_CR_0_LPDS        :1;
+						uint32_t PDDS                 :1;
+						uint32_t CWUF                 :1;
+						uint32_t CSBF                 :1;
+						uint32_t PWR_CR_0_PVDE        :1;
+						uint32_t PWR_CR_0_PLS         :3;
+						uint32_t DBP                  :1;
+						uint32_t PWR_CR_0_FPDS        :1;
+						uint32_t PWR_CR_0_ENSD2       :1;
+						uint32_t PWR_CR_0_ENSD3       :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR_0_ADCDC1      :1;
+						uint32_t PWR_CR_0_VOS         :2;
+						uint32_t PWR_CR_0_ODEN        :1;
+						uint32_t PWR_CR_0_ODSWEN      :1;
+						uint32_t PWR_CR_0_UDEN        :2;
+						uint32_t PWR_CR_0_FMSSR       :1;
+						uint32_t PWR_CR_0_FISSR       :1;
+						uint32_t                      :10;
+					};
+					#ifdef PWR_CR_1
+					struct
+					{
+						uint32_t PWR_CR_1_LPSDSR      :1;
+						uint32_t                      :8;
+						uint32_t PWR_CR_1_ENSD1       :1;
+						uint32_t PWR_CR_1_SDADC2EN    :1;
+						uint32_t PWR_CR_1_SDADC3EN    :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR_1_DSEEKOFF    :1;
+						uint32_t PWR_CR_1_PMODE       :2;
+						uint32_t PWR_CR_1_LPDS        :1;
+						uint32_t                      :15;
+					};
+					#endif
+					#ifdef PWR_CR_2
+					struct
+					{
+						uint32_t                      :9;
+						uint32_t PWR_CR_2_SDADC1EN    :1;
+						uint32_t PWR_CR_2_LPLVDS      :1;
+						uint32_t PWR_CR_2_MRLVDS      :1;
+						uint32_t                      :2;
+						uint32_t PWR_CR_2_VOS         :1;
+						uint32_t                      :17;
+					};
+					#endif
+					#ifdef PWR_CR_3
+					struct
+					{
+						uint32_t                      :9;
+						uint32_t PWR_CR_3_ULP         :1;
+						uint32_t PWR_CR_3_LPUDS       :1;
+						uint32_t PWR_CR_3_MRUDS       :1;
+						uint32_t                      :2;
+						uint32_t PWR_CR_3_LPRUN       :1;
+						uint32_t                      :17;
+					};
+					#endif
+					#ifdef PWR_CR_4
+					struct
+					{
+						uint32_t                      :10;
+						uint32_t FWU                  :1;
+						uint32_t VOS                  :2;
+						uint32_t                      :19;
+					};
+					#endif
 				};
-				#ifdef PWR_CR_1
-				struct
-				{
-					uint32_t PWR_CR_1_LPSDSR      :1;
-					uint32_t                      :8;
-					uint32_t PWR_CR_1_ENSD1       :1;
-					uint32_t PWR_CR_1_SDADC2EN    :1;
-					uint32_t PWR_CR_1_SDADC3EN    :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR_1_DSEEKOFF    :1;
-					uint32_t PWR_CR_1_PMODE       :2;
-					uint32_t PWR_CR_1_LPDS        :1;
-					uint32_t                      :15;
-				};
-				#endif
-				#ifdef PWR_CR_2
-				struct
-				{
-					uint32_t                      :9;
-					uint32_t PWR_CR_2_SDADC1EN    :1;
-					uint32_t PWR_CR_2_LPLVDS      :1;
-					uint32_t PWR_CR_2_MRLVDS      :1;
-					uint32_t                      :2;
-					uint32_t PWR_CR_2_VOS         :1;
-					uint32_t                      :17;
-				};
-				#endif
-				#ifdef PWR_CR_3
-				struct
-				{
-					uint32_t                      :9;
-					uint32_t PWR_CR_3_ULP         :1;
-					uint32_t PWR_CR_3_LPUDS       :1;
-					uint32_t PWR_CR_3_MRUDS       :1;
-					uint32_t                      :2;
-					uint32_t PWR_CR_3_LPRUN       :1;
-					uint32_t                      :17;
-				};
-				#endif
-				#ifdef PWR_CR_4
-				struct
-				{
-					uint32_t                      :10;
-					uint32_t FWU                  :1;
-					uint32_t VOS                  :2;
-					uint32_t                      :19;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CR1
 			struct CR1_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t PWR_CR1_0_LPDS       :1;
-					uint32_t PWR_CR1_0_PDDS       :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR1_0_CSBF       :1;
-					uint32_t PWR_CR1_0_PVDE       :1;
-					uint32_t PWR_CR1_0_PLS        :3;
-					uint32_t DBP                  :1;
-					uint32_t PWR_CR1_0_FPDS       :1;
-					uint32_t PWR_CR1_0_LPUDS      :1;
-					uint32_t PWR_CR1_0_MRUDS      :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR1_0_ADCDC1     :1;
-					uint32_t PWR_CR1_0_VOS        :2;
-					uint32_t PWR_CR1_0_ODEN       :1;
-					uint32_t PWR_CR1_0_ODSWEN     :1;
-					uint32_t PWR_CR1_0_UDEN       :2;
-					uint32_t                      :12;
+					struct
+					{
+						uint32_t PWR_CR1_0_LPDS       :1;
+						uint32_t PWR_CR1_0_PDDS       :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR1_0_CSBF       :1;
+						uint32_t PWR_CR1_0_PVDE       :1;
+						uint32_t PWR_CR1_0_PLS        :3;
+						uint32_t DBP                  :1;
+						uint32_t PWR_CR1_0_FPDS       :1;
+						uint32_t PWR_CR1_0_LPUDS      :1;
+						uint32_t PWR_CR1_0_MRUDS      :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR1_0_ADCDC1     :1;
+						uint32_t PWR_CR1_0_VOS        :2;
+						uint32_t PWR_CR1_0_ODEN       :1;
+						uint32_t PWR_CR1_0_ODSWEN     :1;
+						uint32_t PWR_CR1_0_UDEN       :2;
+						uint32_t                      :12;
+					};
+					#ifdef PWR_CR1_1
+					struct
+					{
+						uint32_t PWR_CR1_1_LPMS       :3;
+						uint32_t                      :1;
+						uint32_t PWR_CR1_1_PVDEN      :1;
+						uint32_t                      :4;
+						uint32_t PWR_CR1_1_FLPS       :1;
+						uint32_t PWR_CR1_1_RLPSN      :1;
+						uint32_t                      :3;
+						uint32_t PWR_CR1_1_SVOS       :2;
+						uint32_t PWR_CR1_1_AVDEN      :1;
+						uint32_t PWR_CR1_1_ALS        :2;
+						uint32_t                      :13;
+					};
+					#endif
+					#ifdef PWR_CR1_2
+					struct
+					{
+						uint32_t                      :4;
+						uint32_t PWR_CR1_2_RRSTP      :1;
+						uint32_t                      :4;
+						uint32_t VOS                  :2;
+						uint32_t                      :3;
+						uint32_t LPR                  :1;
+						uint32_t                      :17;
+					};
+					#endif
 				};
-				#ifdef PWR_CR1_1
-				struct
-				{
-					uint32_t PWR_CR1_1_LPMS       :3;
-					uint32_t                      :1;
-					uint32_t PWR_CR1_1_PVDEN      :1;
-					uint32_t                      :4;
-					uint32_t PWR_CR1_1_FLPS       :1;
-					uint32_t PWR_CR1_1_RLPSN      :1;
-					uint32_t                      :3;
-					uint32_t PWR_CR1_1_SVOS       :2;
-					uint32_t PWR_CR1_1_AVDEN      :1;
-					uint32_t PWR_CR1_1_ALS        :2;
-					uint32_t                      :13;
-				};
-				#endif
-				#ifdef PWR_CR1_2
-				struct
-				{
-					uint32_t                      :4;
-					uint32_t PWR_CR1_2_RRSTP      :1;
-					uint32_t                      :4;
-					uint32_t VOS                  :2;
-					uint32_t                      :3;
-					uint32_t LPR                  :1;
-					uint32_t                      :17;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CR2
 			struct CR2_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				#ifdef PWR_CR2_0
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t PWR_CR2_0_CWUPF1     :1;
-					uint32_t PWR_CR2_0_CWUPF2     :1;
-					uint32_t PWR_CR2_0_CWUPF3     :1;
-					uint32_t PWR_CR2_0_CWUPF4     :1;
-					uint32_t PWR_CR2_0_CWUPF5     :1;
-					uint32_t PWR_CR2_0_CWUPF6     :1;
-					uint32_t PWR_CR2_0_PVME       :2;
-					uint32_t PWR_CR2_0_WUPP1      :1;
-					uint32_t PWR_CR2_0_WUPP2      :1;
-					uint32_t PWR_CR2_0_WUPP3      :1;
-					uint32_t PWR_CR2_0_WUPP4      :1;
-					uint32_t PWR_CR2_0_WUPP5      :1;
-					uint32_t PWR_CR2_0_WUPP6      :1;
-					uint32_t                      :2;
-					uint32_t PWR_CR2_0_BRRDY      :1;
-					uint32_t                      :3;
-					uint32_t PWR_CR2_0_VBATL      :1;
-					uint32_t PWR_CR2_0_VBATH      :1;
-					uint32_t PWR_CR2_0_TEMPL      :1;
-					uint32_t PWR_CR2_0_TEMPH      :1;
-					uint32_t                      :8;
+					#ifdef PWR_CR2_0
+					struct
+					{
+						uint32_t PWR_CR2_0_CWUPF1     :1;
+						uint32_t PWR_CR2_0_CWUPF2     :1;
+						uint32_t PWR_CR2_0_CWUPF3     :1;
+						uint32_t PWR_CR2_0_CWUPF4     :1;
+						uint32_t PWR_CR2_0_CWUPF5     :1;
+						uint32_t PWR_CR2_0_CWUPF6     :1;
+						uint32_t PWR_CR2_0_PVME       :2;
+						uint32_t PWR_CR2_0_WUPP1      :1;
+						uint32_t PWR_CR2_0_WUPP2      :1;
+						uint32_t PWR_CR2_0_WUPP3      :1;
+						uint32_t PWR_CR2_0_WUPP4      :1;
+						uint32_t PWR_CR2_0_WUPP5      :1;
+						uint32_t PWR_CR2_0_WUPP6      :1;
+						uint32_t                      :2;
+						uint32_t PWR_CR2_0_BRRDY      :1;
+						uint32_t                      :3;
+						uint32_t PWR_CR2_0_VBATL      :1;
+						uint32_t PWR_CR2_0_VBATH      :1;
+						uint32_t PWR_CR2_0_TEMPL      :1;
+						uint32_t PWR_CR2_0_TEMPH      :1;
+						uint32_t                      :8;
+					};
+					#endif
+					#ifdef PWR_CR2_1
+					struct
+					{
+						uint32_t PWR_CR2_1_BREN       :1;
+						uint32_t PWR_CR2_1_PLS        :3;
+						uint32_t PWR_CR2_1_MONEN      :1;
+						uint32_t PWR_CR2_1_PVME2      :1;
+						uint32_t PWR_CR2_1_PVME3      :1;
+						uint32_t PWR_CR2_1_PVME4      :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR2_1_IOSV       :1;
+						uint32_t PWR_CR2_1_USV        :1;
+						uint32_t                      :21;
+					};
+					#endif
+					#ifdef PWR_CR2_2
+					struct
+					{
+						uint32_t PVDE                 :1;
+						uint32_t                      :3;
+						uint32_t PWR_CR2_2_PVME1      :1;
+						uint32_t PWR_CR2_2_PVME       :3;
+						uint32_t                      :24;
+					};
+					#endif
+					#ifdef PWR_CR2_3
+					struct
+					{
+						uint32_t                      :4;
+						uint32_t PVME                 :4;
+						uint32_t                      :24;
+					};
+					#endif
 				};
-				#endif
-				#ifdef PWR_CR2_1
-				struct
-				{
-					uint32_t PWR_CR2_1_BREN       :1;
-					uint32_t PWR_CR2_1_PLS        :3;
-					uint32_t PWR_CR2_1_MONEN      :1;
-					uint32_t PWR_CR2_1_PVME2      :1;
-					uint32_t PWR_CR2_1_PVME3      :1;
-					uint32_t PWR_CR2_1_PVME4      :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR2_1_IOSV       :1;
-					uint32_t PWR_CR2_1_USV        :1;
-					uint32_t                      :21;
-				};
-				#endif
-				#ifdef PWR_CR2_2
-				struct
-				{
-					uint32_t PVDE                 :1;
-					uint32_t                      :3;
-					uint32_t PWR_CR2_2_PVME1      :1;
-					uint32_t PWR_CR2_2_PVME       :3;
-					uint32_t                      :24;
-				};
-				#endif
-				#ifdef PWR_CR2_3
-				struct
-				{
-					uint32_t                      :4;
-					uint32_t PVME                 :4;
-					uint32_t                      :24;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CR3
 			struct CR3_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t PWR_CR3_0_BYPASS     :1;
-					uint32_t PWR_CR3_0_LDOEN      :1;
-					uint32_t PWR_CR3_0_SCUEN      :1;
-					uint32_t PWR_CR3_0_EWUP4      :1;
-					uint32_t PWR_CR3_0_EWUP5      :1;
-					uint32_t                      :3;
-					uint32_t PWR_CR3_0_VBE        :1;
-					uint32_t PWR_CR3_0_VBRS       :1;
-					uint32_t PWR_CR3_0_APC        :1;
-					uint32_t                      :1;
-					uint32_t PWR_CR3_0_DSIPDEN    :1;
-					uint32_t                      :2;
-					uint32_t PWR_CR3_0_EIWUL      :1;
-					uint32_t                      :8;
-					uint32_t PWR_CR3_0_USB33DEN   :1;
-					uint32_t PWR_CR3_0_USBREGEN   :1;
-					uint32_t PWR_CR3_0_USB33RDY   :1;
-					uint32_t                      :5;
+					struct
+					{
+						uint32_t PWR_CR3_0_BYPASS     :1;
+						uint32_t PWR_CR3_0_LDOEN      :1;
+						uint32_t PWR_CR3_0_SCUEN      :1;
+						uint32_t PWR_CR3_0_EWUP4      :1;
+						uint32_t PWR_CR3_0_EWUP5      :1;
+						uint32_t                      :3;
+						uint32_t PWR_CR3_0_VBE        :1;
+						uint32_t PWR_CR3_0_VBRS       :1;
+						uint32_t PWR_CR3_0_APC        :1;
+						uint32_t                      :1;
+						uint32_t PWR_CR3_0_DSIPDEN    :1;
+						uint32_t                      :2;
+						uint32_t PWR_CR3_0_EIWUL      :1;
+						uint32_t                      :8;
+						uint32_t PWR_CR3_0_USB33DEN   :1;
+						uint32_t PWR_CR3_0_USBREGEN   :1;
+						uint32_t PWR_CR3_0_USB33RDY   :1;
+						uint32_t                      :5;
+					};
+					#ifdef PWR_CR3_1
+					struct
+					{
+						uint32_t EWUP1                :1;
+						uint32_t EWUP2                :1;
+						uint32_t EWUP3                :1;
+						uint32_t                      :5;
+						uint32_t RRS                  :1;
+						uint32_t                      :6;
+						uint32_t EIWF                 :1;
+						uint32_t                      :16;
+					};
+					#endif
+					#ifdef PWR_CR3_2
+					struct
+					{
+						uint32_t EWUP                 :5;
+						uint32_t                      :27;
+					};
+					#endif
 				};
-				#ifdef PWR_CR3_1
-				struct
-				{
-					uint32_t EWUP1                :1;
-					uint32_t EWUP2                :1;
-					uint32_t EWUP3                :1;
-					uint32_t                      :5;
-					uint32_t RRS                  :1;
-					uint32_t                      :6;
-					uint32_t EIWF                 :1;
-					uint32_t                      :16;
-				};
-				#endif
-				#ifdef PWR_CR3_2
-				struct
-				{
-					uint32_t EWUP                 :5;
-					uint32_t                      :27;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CR4
 			struct CR4_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t WP1                  :1;
-				uint32_t WP2                  :1;
-				uint32_t WP3                  :1;
-				uint32_t WP4                  :1;
-				uint32_t WP5                  :1;
-				uint32_t                      :3;
-				uint32_t VBE                  :1;
-				uint32_t VBRS                 :1;
-				uint32_t                      :22;
+					uint32_t WP1                  :1;
+					uint32_t WP2                  :1;
+					uint32_t WP3                  :1;
+					uint32_t WP4                  :1;
+					uint32_t WP5                  :1;
+					uint32_t                      :3;
+					uint32_t VBE                  :1;
+					uint32_t VBRS                 :1;
+					uint32_t                      :22;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_CR5
 			struct CR5_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t                      :8;
-				uint32_t R1MODE               :1;
-				uint32_t                      :23;
+					uint32_t                      :8;
+					uint32_t R1MODE               :1;
+					uint32_t                      :23;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_CSR
 			struct CSR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t WUF                  :1;
-					uint32_t SBF                  :1;
-					uint32_t PWR_CSR_0_PVDO       :1;
-					uint32_t PWR_CSR_0_VREFINTRDYF :1;
-					uint32_t PWR_CSR_0_VOSF       :1;
-					uint32_t PWR_CSR_0_REGLPF     :1;
-					uint32_t                      :1;
-					uint32_t PWR_CSR_0_WUPP       :1;
-					uint32_t PWR_CSR_0_EWUP1      :1;
-					uint32_t PWR_CSR_0_EWUP2      :1;
-					uint32_t PWR_CSR_0_EWUP3      :1;
-					uint32_t PWR_CSR_0_EWUP4      :1;
-					uint32_t PWR_CSR_0_EWUP5      :1;
-					uint32_t PWR_CSR_0_EWUP6      :1;
-					uint32_t PWR_CSR_0_EWUP7      :1;
-					uint32_t PWR_CSR_0_EWUP8      :1;
-					uint32_t PWR_CSR_0_ODRDY      :1;
-					uint32_t PWR_CSR_0_ODSWRDY    :1;
-					uint32_t PWR_CSR_0_UDRDY      :2;
-					uint32_t                      :12;
+					struct
+					{
+						uint32_t WUF                  :1;
+						uint32_t SBF                  :1;
+						uint32_t PWR_CSR_0_PVDO       :1;
+						uint32_t PWR_CSR_0_VREFINTRDYF :1;
+						uint32_t PWR_CSR_0_VOSF       :1;
+						uint32_t PWR_CSR_0_REGLPF     :1;
+						uint32_t                      :1;
+						uint32_t PWR_CSR_0_WUPP       :1;
+						uint32_t PWR_CSR_0_EWUP1      :1;
+						uint32_t PWR_CSR_0_EWUP2      :1;
+						uint32_t PWR_CSR_0_EWUP3      :1;
+						uint32_t PWR_CSR_0_EWUP4      :1;
+						uint32_t PWR_CSR_0_EWUP5      :1;
+						uint32_t PWR_CSR_0_EWUP6      :1;
+						uint32_t PWR_CSR_0_EWUP7      :1;
+						uint32_t PWR_CSR_0_EWUP8      :1;
+						uint32_t PWR_CSR_0_ODRDY      :1;
+						uint32_t PWR_CSR_0_ODSWRDY    :1;
+						uint32_t PWR_CSR_0_UDRDY      :2;
+						uint32_t                      :12;
+					};
+					#ifdef PWR_CSR_1
+					struct
+					{
+						uint32_t                      :3;
+						uint32_t PWR_CSR_1_BRR        :1;
+						uint32_t                      :3;
+						uint32_t PWR_CSR_1_EWUP2      :1;
+						uint32_t PWR_CSR_1_EWUP       :1;
+						uint32_t PWR_CSR_1_BRE        :1;
+						uint32_t                      :4;
+						uint32_t PWR_CSR_1_VOSRDY     :1;
+						uint32_t                      :3;
+						uint32_t PWR_CSR_1_UDSWRDY    :2;
+						uint32_t                      :12;
+					};
+					#endif
+					#ifdef PWR_CSR_2
+					struct
+					{
+						uint32_t                      :14;
+						uint32_t REGRDY               :1;
+						uint32_t                      :17;
+					};
+					#endif
 				};
-				#ifdef PWR_CSR_1
-				struct
-				{
-					uint32_t                      :3;
-					uint32_t PWR_CSR_1_BRR        :1;
-					uint32_t                      :3;
-					uint32_t PWR_CSR_1_EWUP2      :1;
-					uint32_t PWR_CSR_1_EWUP       :1;
-					uint32_t PWR_CSR_1_BRE        :1;
-					uint32_t                      :4;
-					uint32_t PWR_CSR_1_VOSRDY     :1;
-					uint32_t                      :3;
-					uint32_t PWR_CSR_1_UDSWRDY    :2;
-					uint32_t                      :12;
-				};
-				#endif
-				#ifdef PWR_CSR_2
-				struct
-				{
-					uint32_t                      :14;
-					uint32_t REGRDY               :1;
-					uint32_t                      :17;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CSR1
 			struct CSR1_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t PWR_CSR1_0_WUIF      :1;
-					uint32_t PWR_CSR1_0_SBF       :1;
-					uint32_t PWR_CSR1_0_PVDO      :1;
-					uint32_t PWR_CSR1_0_BRR       :1;
-					uint32_t                      :4;
-					uint32_t PWR_CSR1_0_EIWUP     :1;
-					uint32_t PWR_CSR1_0_BRE       :1;
-					uint32_t                      :3;
-					uint32_t PWR_CSR1_0_ACTVOSRDY :1;
-					uint32_t PWR_CSR1_0_VOSRDY    :1;
-					uint32_t                      :1;
-					uint32_t PWR_CSR1_0_ODRDY     :1;
-					uint32_t PWR_CSR1_0_ODSWRDY   :1;
-					uint32_t PWR_CSR1_0_UDRDY     :2;
-					uint32_t                      :12;
+					struct
+					{
+						uint32_t PWR_CSR1_0_WUIF      :1;
+						uint32_t PWR_CSR1_0_SBF       :1;
+						uint32_t PWR_CSR1_0_PVDO      :1;
+						uint32_t PWR_CSR1_0_BRR       :1;
+						uint32_t                      :4;
+						uint32_t PWR_CSR1_0_EIWUP     :1;
+						uint32_t PWR_CSR1_0_BRE       :1;
+						uint32_t                      :3;
+						uint32_t PWR_CSR1_0_ACTVOSRDY :1;
+						uint32_t PWR_CSR1_0_VOSRDY    :1;
+						uint32_t                      :1;
+						uint32_t PWR_CSR1_0_ODRDY     :1;
+						uint32_t PWR_CSR1_0_ODSWRDY   :1;
+						uint32_t PWR_CSR1_0_UDRDY     :2;
+						uint32_t                      :12;
+					};
+					#ifdef PWR_CSR1_1
+					struct
+					{
+						uint32_t                      :4;
+						uint32_t PWR_CSR1_1_PVDO      :1;
+						uint32_t                      :9;
+						uint32_t PWR_CSR1_1_ACTVOS    :2;
+						uint32_t PWR_CSR1_1_AVDO      :1;
+						uint32_t                      :1;
+						uint32_t PWR_CSR1_1_UDSWRDY   :2;
+						uint32_t                      :12;
+					};
+					#endif
 				};
-				#ifdef PWR_CSR1_1
-				struct
-				{
-					uint32_t                      :4;
-					uint32_t PWR_CSR1_1_PVDO      :1;
-					uint32_t                      :9;
-					uint32_t PWR_CSR1_1_ACTVOS    :2;
-					uint32_t PWR_CSR1_1_AVDO      :1;
-					uint32_t                      :1;
-					uint32_t PWR_CSR1_1_UDSWRDY   :2;
-					uint32_t                      :12;
-				};
-				#endif
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_CSR2
 			struct CSR2_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t WUPF1                :1;
-				uint32_t WUPF2                :1;
-				uint32_t WUPF3                :1;
-				uint32_t WUPF4                :1;
-				uint32_t WUPF5                :1;
-				uint32_t WUPF6                :1;
-				uint32_t                      :2;
-				uint32_t EWUP1                :1;
-				uint32_t EWUP2                :1;
-				uint32_t EWUP3                :1;
-				uint32_t EWUP4                :1;
-				uint32_t EWUP5                :1;
-				uint32_t EWUP6                :1;
-				uint32_t                      :18;
+					uint32_t WUPF1                :1;
+					uint32_t WUPF2                :1;
+					uint32_t WUPF3                :1;
+					uint32_t WUPF4                :1;
+					uint32_t WUPF5                :1;
+					uint32_t WUPF6                :1;
+					uint32_t                      :2;
+					uint32_t EWUP1                :1;
+					uint32_t EWUP2                :1;
+					uint32_t EWUP3                :1;
+					uint32_t EWUP4                :1;
+					uint32_t EWUP5                :1;
+					uint32_t EWUP6                :1;
+					uint32_t                      :18;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_D3CR
 			struct D3CR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t                      :13;
-				uint32_t VOSRDY               :1;
-				uint32_t VOS                  :2;
-				uint32_t                      :16;
+					uint32_t                      :13;
+					uint32_t VOSRDY               :1;
+					uint32_t VOS                  :2;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRA
 			struct PDCRA_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PA0                  :1;
-				uint32_t PA1                  :1;
-				uint32_t PA2                  :1;
-				uint32_t PA3                  :1;
-				uint32_t PA4                  :1;
-				uint32_t PA5                  :1;
-				uint32_t PA6                  :1;
-				uint32_t PA7                  :1;
-				uint32_t PA8                  :1;
-				uint32_t PA9                  :1;
-				uint32_t PA10                 :1;
-				uint32_t PA11                 :1;
-				uint32_t PA12                 :1;
-				uint32_t                      :1;
-				uint32_t PA14                 :1;
-				uint32_t                      :17;
+					uint32_t PA0                  :1;
+					uint32_t PA1                  :1;
+					uint32_t PA2                  :1;
+					uint32_t PA3                  :1;
+					uint32_t PA4                  :1;
+					uint32_t PA5                  :1;
+					uint32_t PA6                  :1;
+					uint32_t PA7                  :1;
+					uint32_t PA8                  :1;
+					uint32_t PA9                  :1;
+					uint32_t PA10                 :1;
+					uint32_t PA11                 :1;
+					uint32_t PA12                 :1;
+					uint32_t                      :1;
+					uint32_t PA14                 :1;
+					uint32_t                      :17;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRB
 			struct PDCRB_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PB0                  :1;
-				uint32_t PB1                  :1;
-				uint32_t PWR_PDCRB_PB2        :1;
-				uint32_t PB3                  :1;
-				uint32_t                      :1;
-				uint32_t PB5                  :1;
-				uint32_t PB6                  :1;
-				uint32_t PB7                  :1;
-				uint32_t PWR_PDCRB_PB8        :1;
-				uint32_t PWR_PDCRB_PB9        :1;
-				uint32_t PWR_PDCRB_PB10       :1;
-				uint32_t PWR_PDCRB_PB11       :1;
-				uint32_t PWR_PDCRB_PB12       :1;
-				uint32_t PWR_PDCRB_PB13       :1;
-				uint32_t PWR_PDCRB_PB14       :1;
-				uint32_t PWR_PDCRB_PB15       :1;
-				uint32_t                      :16;
+					uint32_t PB0                  :1;
+					uint32_t PB1                  :1;
+					uint32_t PWR_PDCRB_PB2        :1;
+					uint32_t PB3                  :1;
+					uint32_t                      :1;
+					uint32_t PB5                  :1;
+					uint32_t PB6                  :1;
+					uint32_t PB7                  :1;
+					uint32_t PWR_PDCRB_PB8        :1;
+					uint32_t PWR_PDCRB_PB9        :1;
+					uint32_t PWR_PDCRB_PB10       :1;
+					uint32_t PWR_PDCRB_PB11       :1;
+					uint32_t PWR_PDCRB_PB12       :1;
+					uint32_t PWR_PDCRB_PB13       :1;
+					uint32_t PWR_PDCRB_PB14       :1;
+					uint32_t PWR_PDCRB_PB15       :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRC
 			struct PDCRC_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PWR_PDCRC_PC0        :1;
-				uint32_t PWR_PDCRC_PC1        :1;
-				uint32_t PWR_PDCRC_PC2        :1;
-				uint32_t PWR_PDCRC_PC3        :1;
-				uint32_t PWR_PDCRC_PC4        :1;
-				uint32_t PWR_PDCRC_PC5        :1;
-				uint32_t PWR_PDCRC_PC6        :1;
-				uint32_t PWR_PDCRC_PC7        :1;
-				uint32_t PWR_PDCRC_PC8        :1;
-				uint32_t PWR_PDCRC_PC9        :1;
-				uint32_t PWR_PDCRC_PC10       :1;
-				uint32_t PWR_PDCRC_PC11       :1;
-				uint32_t PWR_PDCRC_PC12       :1;
-				uint32_t PWR_PDCRC_PC13       :1;
-				uint32_t PC14                 :1;
-				uint32_t PC15                 :1;
-				uint32_t                      :16;
+					uint32_t PWR_PDCRC_PC0        :1;
+					uint32_t PWR_PDCRC_PC1        :1;
+					uint32_t PWR_PDCRC_PC2        :1;
+					uint32_t PWR_PDCRC_PC3        :1;
+					uint32_t PWR_PDCRC_PC4        :1;
+					uint32_t PWR_PDCRC_PC5        :1;
+					uint32_t PWR_PDCRC_PC6        :1;
+					uint32_t PWR_PDCRC_PC7        :1;
+					uint32_t PWR_PDCRC_PC8        :1;
+					uint32_t PWR_PDCRC_PC9        :1;
+					uint32_t PWR_PDCRC_PC10       :1;
+					uint32_t PWR_PDCRC_PC11       :1;
+					uint32_t PWR_PDCRC_PC12       :1;
+					uint32_t PWR_PDCRC_PC13       :1;
+					uint32_t PC14                 :1;
+					uint32_t PC15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRD
 			struct PDCRD_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PD0                  :1;
-				uint32_t PD1                  :1;
-				uint32_t PD2                  :1;
-				uint32_t PD3                  :1;
-				uint32_t PD4                  :1;
-				uint32_t PD5                  :1;
-				uint32_t PD6                  :1;
-				uint32_t PD7                  :1;
-				uint32_t PD8                  :1;
-				uint32_t PD9                  :1;
-				uint32_t PD10                 :1;
-				uint32_t PD11                 :1;
-				uint32_t PD12                 :1;
-				uint32_t PD13                 :1;
-				uint32_t PD14                 :1;
-				uint32_t PD15                 :1;
-				uint32_t                      :16;
+					uint32_t PD0                  :1;
+					uint32_t PD1                  :1;
+					uint32_t PD2                  :1;
+					uint32_t PD3                  :1;
+					uint32_t PD4                  :1;
+					uint32_t PD5                  :1;
+					uint32_t PD6                  :1;
+					uint32_t PD7                  :1;
+					uint32_t PD8                  :1;
+					uint32_t PD9                  :1;
+					uint32_t PD10                 :1;
+					uint32_t PD11                 :1;
+					uint32_t PD12                 :1;
+					uint32_t PD13                 :1;
+					uint32_t PD14                 :1;
+					uint32_t PD15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRE
 			struct PDCRE_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PE0                  :1;
-				uint32_t PE1                  :1;
-				uint32_t PE2                  :1;
-				uint32_t PE3                  :1;
-				uint32_t PE4                  :1;
-				uint32_t PE5                  :1;
-				uint32_t PE6                  :1;
-				uint32_t PE7                  :1;
-				uint32_t PE8                  :1;
-				uint32_t PE9                  :1;
-				uint32_t PE10                 :1;
-				uint32_t PE11                 :1;
-				uint32_t PE12                 :1;
-				uint32_t PE13                 :1;
-				uint32_t PE14                 :1;
-				uint32_t PE15                 :1;
-				uint32_t                      :16;
+					uint32_t PE0                  :1;
+					uint32_t PE1                  :1;
+					uint32_t PE2                  :1;
+					uint32_t PE3                  :1;
+					uint32_t PE4                  :1;
+					uint32_t PE5                  :1;
+					uint32_t PE6                  :1;
+					uint32_t PE7                  :1;
+					uint32_t PE8                  :1;
+					uint32_t PE9                  :1;
+					uint32_t PE10                 :1;
+					uint32_t PE11                 :1;
+					uint32_t PE12                 :1;
+					uint32_t PE13                 :1;
+					uint32_t PE14                 :1;
+					uint32_t PE15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRF
 			struct PDCRF_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PF0                  :1;
-				uint32_t PF1                  :1;
-				uint32_t PF2                  :1;
-				uint32_t PF3                  :1;
-				uint32_t PF4                  :1;
-				uint32_t PF5                  :1;
-				uint32_t PF6                  :1;
-				uint32_t PF7                  :1;
-				uint32_t PF8                  :1;
-				uint32_t PF9                  :1;
-				uint32_t PF10                 :1;
-				uint32_t PF11                 :1;
-				uint32_t PF12                 :1;
-				uint32_t PF13                 :1;
-				uint32_t PF14                 :1;
-				uint32_t PF15                 :1;
-				uint32_t                      :16;
+					uint32_t PF0                  :1;
+					uint32_t PF1                  :1;
+					uint32_t PF2                  :1;
+					uint32_t PF3                  :1;
+					uint32_t PF4                  :1;
+					uint32_t PF5                  :1;
+					uint32_t PF6                  :1;
+					uint32_t PF7                  :1;
+					uint32_t PF8                  :1;
+					uint32_t PF9                  :1;
+					uint32_t PF10                 :1;
+					uint32_t PF11                 :1;
+					uint32_t PF12                 :1;
+					uint32_t PF13                 :1;
+					uint32_t PF14                 :1;
+					uint32_t PF15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRG
 			struct PDCRG_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PG0                  :1;
-				uint32_t PG1                  :1;
-				uint32_t PG2                  :1;
-				uint32_t PG3                  :1;
-				uint32_t PG4                  :1;
-				uint32_t PG5                  :1;
-				uint32_t PG6                  :1;
-				uint32_t PG7                  :1;
-				uint32_t PG8                  :1;
-				uint32_t PG9                  :1;
-				uint32_t PG10                 :1;
-				uint32_t PG11                 :1;
-				uint32_t PG12                 :1;
-				uint32_t PG13                 :1;
-				uint32_t PG14                 :1;
-				uint32_t PG15                 :1;
-				uint32_t                      :16;
+					uint32_t PG0                  :1;
+					uint32_t PG1                  :1;
+					uint32_t PG2                  :1;
+					uint32_t PG3                  :1;
+					uint32_t PG4                  :1;
+					uint32_t PG5                  :1;
+					uint32_t PG6                  :1;
+					uint32_t PG7                  :1;
+					uint32_t PG8                  :1;
+					uint32_t PG9                  :1;
+					uint32_t PG10                 :1;
+					uint32_t PG11                 :1;
+					uint32_t PG12                 :1;
+					uint32_t PG13                 :1;
+					uint32_t PG14                 :1;
+					uint32_t PG15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRH
 			struct PDCRH_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PWR_PDCRH_PH0        :1;
-				uint32_t PWR_PDCRH_PH1        :1;
-				uint32_t PWR_PDCRH_PH2        :1;
-				uint32_t PWR_PDCRH_PH3        :1;
-				uint32_t PWR_PDCRH_PH4        :1;
-				uint32_t PWR_PDCRH_PH5        :1;
-				uint32_t PWR_PDCRH_PH6        :1;
-				uint32_t PWR_PDCRH_PH7        :1;
-				uint32_t PWR_PDCRH_PH8        :1;
-				uint32_t PWR_PDCRH_PH9        :1;
-				uint32_t PWR_PDCRH_PH10       :1;
-				uint32_t PWR_PDCRH_PH11       :1;
-				uint32_t PWR_PDCRH_PH12       :1;
-				uint32_t PWR_PDCRH_PH13       :1;
-				uint32_t PWR_PDCRH_PH14       :1;
-				uint32_t PWR_PDCRH_PH15       :1;
-				uint32_t                      :16;
+					uint32_t PWR_PDCRH_PH0        :1;
+					uint32_t PWR_PDCRH_PH1        :1;
+					uint32_t PWR_PDCRH_PH2        :1;
+					uint32_t PWR_PDCRH_PH3        :1;
+					uint32_t PWR_PDCRH_PH4        :1;
+					uint32_t PWR_PDCRH_PH5        :1;
+					uint32_t PWR_PDCRH_PH6        :1;
+					uint32_t PWR_PDCRH_PH7        :1;
+					uint32_t PWR_PDCRH_PH8        :1;
+					uint32_t PWR_PDCRH_PH9        :1;
+					uint32_t PWR_PDCRH_PH10       :1;
+					uint32_t PWR_PDCRH_PH11       :1;
+					uint32_t PWR_PDCRH_PH12       :1;
+					uint32_t PWR_PDCRH_PH13       :1;
+					uint32_t PWR_PDCRH_PH14       :1;
+					uint32_t PWR_PDCRH_PH15       :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PDCRI
 			struct PDCRI_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PI0                  :1;
-				uint32_t PI1                  :1;
-				uint32_t PI2                  :1;
-				uint32_t PI3                  :1;
-				uint32_t PI4                  :1;
-				uint32_t PI5                  :1;
-				uint32_t PI6                  :1;
-				uint32_t PI7                  :1;
-				uint32_t PI8                  :1;
-				uint32_t PI9                  :1;
-				uint32_t PI10                 :1;
-				uint32_t PI11                 :1;
-				uint32_t                      :20;
+					uint32_t PI0                  :1;
+					uint32_t PI1                  :1;
+					uint32_t PI2                  :1;
+					uint32_t PI3                  :1;
+					uint32_t PI4                  :1;
+					uint32_t PI5                  :1;
+					uint32_t PI6                  :1;
+					uint32_t PI7                  :1;
+					uint32_t PI8                  :1;
+					uint32_t PI9                  :1;
+					uint32_t PI10                 :1;
+					uint32_t PI11                 :1;
+					uint32_t                      :20;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRA
 			struct PUCRA_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PA0                  :1;
-				uint32_t PA1                  :1;
-				uint32_t PA2                  :1;
-				uint32_t PA3                  :1;
-				uint32_t PA4                  :1;
-				uint32_t PA5                  :1;
-				uint32_t PA6                  :1;
-				uint32_t PA7                  :1;
-				uint32_t PA8                  :1;
-				uint32_t PA9                  :1;
-				uint32_t PA10                 :1;
-				uint32_t PA11                 :1;
-				uint32_t PA12                 :1;
-				uint32_t PA13                 :1;
-				uint32_t                      :1;
-				uint32_t PA15                 :1;
-				uint32_t                      :16;
+					uint32_t PA0                  :1;
+					uint32_t PA1                  :1;
+					uint32_t PA2                  :1;
+					uint32_t PA3                  :1;
+					uint32_t PA4                  :1;
+					uint32_t PA5                  :1;
+					uint32_t PA6                  :1;
+					uint32_t PA7                  :1;
+					uint32_t PA8                  :1;
+					uint32_t PA9                  :1;
+					uint32_t PA10                 :1;
+					uint32_t PA11                 :1;
+					uint32_t PA12                 :1;
+					uint32_t PA13                 :1;
+					uint32_t                      :1;
+					uint32_t PA15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRB
 			struct PUCRB_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PB0                  :1;
-				uint32_t PB1                  :1;
-				uint32_t PWR_PUCRB_PB2        :1;
-				uint32_t PB3                  :1;
-				uint32_t PB4                  :1;
-				uint32_t PB5                  :1;
-				uint32_t PB6                  :1;
-				uint32_t PB7                  :1;
-				uint32_t PWR_PUCRB_PB8        :1;
-				uint32_t PWR_PUCRB_PB9        :1;
-				uint32_t PWR_PUCRB_PB10       :1;
-				uint32_t PWR_PUCRB_PB11       :1;
-				uint32_t PWR_PUCRB_PB12       :1;
-				uint32_t PWR_PUCRB_PB13       :1;
-				uint32_t PWR_PUCRB_PB14       :1;
-				uint32_t PWR_PUCRB_PB15       :1;
-				uint32_t                      :16;
+					uint32_t PB0                  :1;
+					uint32_t PB1                  :1;
+					uint32_t PWR_PUCRB_PB2        :1;
+					uint32_t PB3                  :1;
+					uint32_t PB4                  :1;
+					uint32_t PB5                  :1;
+					uint32_t PB6                  :1;
+					uint32_t PB7                  :1;
+					uint32_t PWR_PUCRB_PB8        :1;
+					uint32_t PWR_PUCRB_PB9        :1;
+					uint32_t PWR_PUCRB_PB10       :1;
+					uint32_t PWR_PUCRB_PB11       :1;
+					uint32_t PWR_PUCRB_PB12       :1;
+					uint32_t PWR_PUCRB_PB13       :1;
+					uint32_t PWR_PUCRB_PB14       :1;
+					uint32_t PWR_PUCRB_PB15       :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRC
 			struct PUCRC_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PWR_PUCRC_PC0        :1;
-				uint32_t PWR_PUCRC_PC1        :1;
-				uint32_t PWR_PUCRC_PC2        :1;
-				uint32_t PWR_PUCRC_PC3        :1;
-				uint32_t PWR_PUCRC_PC4        :1;
-				uint32_t PWR_PUCRC_PC5        :1;
-				uint32_t PWR_PUCRC_PC6        :1;
-				uint32_t PWR_PUCRC_PC7        :1;
-				uint32_t PWR_PUCRC_PC8        :1;
-				uint32_t PWR_PUCRC_PC9        :1;
-				uint32_t PWR_PUCRC_PC10       :1;
-				uint32_t PWR_PUCRC_PC11       :1;
-				uint32_t PWR_PUCRC_PC12       :1;
-				uint32_t PWR_PUCRC_PC13       :1;
-				uint32_t PC14                 :1;
-				uint32_t PC15                 :1;
-				uint32_t                      :16;
+					uint32_t PWR_PUCRC_PC0        :1;
+					uint32_t PWR_PUCRC_PC1        :1;
+					uint32_t PWR_PUCRC_PC2        :1;
+					uint32_t PWR_PUCRC_PC3        :1;
+					uint32_t PWR_PUCRC_PC4        :1;
+					uint32_t PWR_PUCRC_PC5        :1;
+					uint32_t PWR_PUCRC_PC6        :1;
+					uint32_t PWR_PUCRC_PC7        :1;
+					uint32_t PWR_PUCRC_PC8        :1;
+					uint32_t PWR_PUCRC_PC9        :1;
+					uint32_t PWR_PUCRC_PC10       :1;
+					uint32_t PWR_PUCRC_PC11       :1;
+					uint32_t PWR_PUCRC_PC12       :1;
+					uint32_t PWR_PUCRC_PC13       :1;
+					uint32_t PC14                 :1;
+					uint32_t PC15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRD
 			struct PUCRD_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PD0                  :1;
-				uint32_t PD1                  :1;
-				uint32_t PD2                  :1;
-				uint32_t PD3                  :1;
-				uint32_t PD4                  :1;
-				uint32_t PD5                  :1;
-				uint32_t PD6                  :1;
-				uint32_t PD7                  :1;
-				uint32_t PD8                  :1;
-				uint32_t PD9                  :1;
-				uint32_t PD10                 :1;
-				uint32_t PD11                 :1;
-				uint32_t PD12                 :1;
-				uint32_t PD13                 :1;
-				uint32_t PD14                 :1;
-				uint32_t PD15                 :1;
-				uint32_t                      :16;
+					uint32_t PD0                  :1;
+					uint32_t PD1                  :1;
+					uint32_t PD2                  :1;
+					uint32_t PD3                  :1;
+					uint32_t PD4                  :1;
+					uint32_t PD5                  :1;
+					uint32_t PD6                  :1;
+					uint32_t PD7                  :1;
+					uint32_t PD8                  :1;
+					uint32_t PD9                  :1;
+					uint32_t PD10                 :1;
+					uint32_t PD11                 :1;
+					uint32_t PD12                 :1;
+					uint32_t PD13                 :1;
+					uint32_t PD14                 :1;
+					uint32_t PD15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRE
 			struct PUCRE_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PE0                  :1;
-				uint32_t PE1                  :1;
-				uint32_t PE2                  :1;
-				uint32_t PE3                  :1;
-				uint32_t PE4                  :1;
-				uint32_t PE5                  :1;
-				uint32_t PE6                  :1;
-				uint32_t PE7                  :1;
-				uint32_t PE8                  :1;
-				uint32_t PE9                  :1;
-				uint32_t PE10                 :1;
-				uint32_t PE11                 :1;
-				uint32_t PE12                 :1;
-				uint32_t PE13                 :1;
-				uint32_t PE14                 :1;
-				uint32_t PE15                 :1;
-				uint32_t                      :16;
+					uint32_t PE0                  :1;
+					uint32_t PE1                  :1;
+					uint32_t PE2                  :1;
+					uint32_t PE3                  :1;
+					uint32_t PE4                  :1;
+					uint32_t PE5                  :1;
+					uint32_t PE6                  :1;
+					uint32_t PE7                  :1;
+					uint32_t PE8                  :1;
+					uint32_t PE9                  :1;
+					uint32_t PE10                 :1;
+					uint32_t PE11                 :1;
+					uint32_t PE12                 :1;
+					uint32_t PE13                 :1;
+					uint32_t PE14                 :1;
+					uint32_t PE15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRF
 			struct PUCRF_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PF0                  :1;
-				uint32_t PF1                  :1;
-				uint32_t PF2                  :1;
-				uint32_t PF3                  :1;
-				uint32_t PF4                  :1;
-				uint32_t PF5                  :1;
-				uint32_t PF6                  :1;
-				uint32_t PF7                  :1;
-				uint32_t PF8                  :1;
-				uint32_t PF9                  :1;
-				uint32_t PF10                 :1;
-				uint32_t PF11                 :1;
-				uint32_t PF12                 :1;
-				uint32_t PF13                 :1;
-				uint32_t PF14                 :1;
-				uint32_t PF15                 :1;
-				uint32_t                      :16;
+					uint32_t PF0                  :1;
+					uint32_t PF1                  :1;
+					uint32_t PF2                  :1;
+					uint32_t PF3                  :1;
+					uint32_t PF4                  :1;
+					uint32_t PF5                  :1;
+					uint32_t PF6                  :1;
+					uint32_t PF7                  :1;
+					uint32_t PF8                  :1;
+					uint32_t PF9                  :1;
+					uint32_t PF10                 :1;
+					uint32_t PF11                 :1;
+					uint32_t PF12                 :1;
+					uint32_t PF13                 :1;
+					uint32_t PF14                 :1;
+					uint32_t PF15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRG
 			struct PUCRG_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PG0                  :1;
-				uint32_t PG1                  :1;
-				uint32_t PG2                  :1;
-				uint32_t PG3                  :1;
-				uint32_t PG4                  :1;
-				uint32_t PG5                  :1;
-				uint32_t PG6                  :1;
-				uint32_t PG7                  :1;
-				uint32_t PG8                  :1;
-				uint32_t PG9                  :1;
-				uint32_t PG10                 :1;
-				uint32_t PG11                 :1;
-				uint32_t PG12                 :1;
-				uint32_t PG13                 :1;
-				uint32_t PG14                 :1;
-				uint32_t PG15                 :1;
-				uint32_t                      :16;
+					uint32_t PG0                  :1;
+					uint32_t PG1                  :1;
+					uint32_t PG2                  :1;
+					uint32_t PG3                  :1;
+					uint32_t PG4                  :1;
+					uint32_t PG5                  :1;
+					uint32_t PG6                  :1;
+					uint32_t PG7                  :1;
+					uint32_t PG8                  :1;
+					uint32_t PG9                  :1;
+					uint32_t PG10                 :1;
+					uint32_t PG11                 :1;
+					uint32_t PG12                 :1;
+					uint32_t PG13                 :1;
+					uint32_t PG14                 :1;
+					uint32_t PG15                 :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRH
 			struct PUCRH_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PWR_PUCRH_PH0        :1;
-				uint32_t PWR_PUCRH_PH1        :1;
-				uint32_t PWR_PUCRH_PH2        :1;
-				uint32_t PWR_PUCRH_PH3        :1;
-				uint32_t PWR_PUCRH_PH4        :1;
-				uint32_t PWR_PUCRH_PH5        :1;
-				uint32_t PWR_PUCRH_PH6        :1;
-				uint32_t PWR_PUCRH_PH7        :1;
-				uint32_t PWR_PUCRH_PH8        :1;
-				uint32_t PWR_PUCRH_PH9        :1;
-				uint32_t PWR_PUCRH_PH10       :1;
-				uint32_t PWR_PUCRH_PH11       :1;
-				uint32_t PWR_PUCRH_PH12       :1;
-				uint32_t PWR_PUCRH_PH13       :1;
-				uint32_t PWR_PUCRH_PH14       :1;
-				uint32_t PWR_PUCRH_PH15       :1;
-				uint32_t                      :16;
+					uint32_t PWR_PUCRH_PH0        :1;
+					uint32_t PWR_PUCRH_PH1        :1;
+					uint32_t PWR_PUCRH_PH2        :1;
+					uint32_t PWR_PUCRH_PH3        :1;
+					uint32_t PWR_PUCRH_PH4        :1;
+					uint32_t PWR_PUCRH_PH5        :1;
+					uint32_t PWR_PUCRH_PH6        :1;
+					uint32_t PWR_PUCRH_PH7        :1;
+					uint32_t PWR_PUCRH_PH8        :1;
+					uint32_t PWR_PUCRH_PH9        :1;
+					uint32_t PWR_PUCRH_PH10       :1;
+					uint32_t PWR_PUCRH_PH11       :1;
+					uint32_t PWR_PUCRH_PH12       :1;
+					uint32_t PWR_PUCRH_PH13       :1;
+					uint32_t PWR_PUCRH_PH14       :1;
+					uint32_t PWR_PUCRH_PH15       :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_PUCRI
 			struct PUCRI_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t PI0                  :1;
-				uint32_t PI1                  :1;
-				uint32_t PI2                  :1;
-				uint32_t PI3                  :1;
-				uint32_t PI4                  :1;
-				uint32_t PI5                  :1;
-				uint32_t PI6                  :1;
-				uint32_t PI7                  :1;
-				uint32_t PI8                  :1;
-				uint32_t PI9                  :1;
-				uint32_t PI10                 :1;
-				uint32_t PI11                 :1;
-				uint32_t                      :20;
+					uint32_t PI0                  :1;
+					uint32_t PI1                  :1;
+					uint32_t PI2                  :1;
+					uint32_t PI3                  :1;
+					uint32_t PI4                  :1;
+					uint32_t PI5                  :1;
+					uint32_t PI6                  :1;
+					uint32_t PI7                  :1;
+					uint32_t PI8                  :1;
+					uint32_t PI9                  :1;
+					uint32_t PI10                 :1;
+					uint32_t PI11                 :1;
+					uint32_t                      :20;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_SCR
 			struct SCR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t CWUF                 :5;
-					uint32_t                      :3;
-					uint32_t CSBF                 :1;
-					uint32_t                      :23;
+					struct
+					{
+						uint32_t CWUF                 :5;
+						uint32_t                      :3;
+						uint32_t CSBF                 :1;
+						uint32_t                      :23;
+					};
+					struct
+					{
+						uint32_t CWUF1                :1;
+						uint32_t CWUF2                :1;
+						uint32_t CWUF3                :1;
+						uint32_t CWUF4                :1;
+						uint32_t CWUF5                :1;
+						uint32_t                      :27;
+					};
 				};
-				struct
-				{
-					uint32_t CWUF1                :1;
-					uint32_t CWUF2                :1;
-					uint32_t CWUF3                :1;
-					uint32_t CWUF4                :1;
-					uint32_t CWUF5                :1;
-					uint32_t                      :27;
-				};
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_SR1
 			struct SR1_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
-
-			union
 			{
-				struct
+				using Reg32_t::operator=;
+
+				union
 				{
-					uint32_t WUF                  :5;
-					uint32_t                      :3;
-					uint32_t SBF                  :1;
-					uint32_t                      :6;
-					uint32_t WUFI                 :1;
-					uint32_t                      :16;
+					struct
+					{
+						uint32_t WUF                  :5;
+						uint32_t                      :3;
+						uint32_t SBF                  :1;
+						uint32_t                      :6;
+						uint32_t WUFI                 :1;
+						uint32_t                      :16;
+					};
+					struct
+					{
+						uint32_t WUF1                 :1;
+						uint32_t WUF2                 :1;
+						uint32_t WUF3                 :1;
+						uint32_t WUF4                 :1;
+						uint32_t WUF5                 :1;
+						uint32_t                      :27;
+					};
 				};
-				struct
-				{
-					uint32_t WUF1                 :1;
-					uint32_t WUF2                 :1;
-					uint32_t WUF3                 :1;
-					uint32_t WUF4                 :1;
-					uint32_t WUF5                 :1;
-					uint32_t                      :27;
-				};
+				
 			};
-			
-		};
 #endif
 
 #ifdef PWR_SR2
 			struct SR2_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t                      :8;
-				uint32_t REGLPS               :1;
-				uint32_t REGLPF               :1;
-				uint32_t VOSF                 :1;
-				uint32_t PVDO                 :1;
-				uint32_t PWR_SR2_PVMO1        :1;
-				uint32_t PWR_SR2_PVMO2        :1;
-				uint32_t PVMO3                :1;
-				uint32_t PVMO4                :1;
-				uint32_t                      :16;
+					uint32_t                      :8;
+					uint32_t REGLPS               :1;
+					uint32_t REGLPF               :1;
+					uint32_t VOSF                 :1;
+					uint32_t PVDO                 :1;
+					uint32_t PWR_SR2_PVMO1        :1;
+					uint32_t PWR_SR2_PVMO2        :1;
+					uint32_t PVMO3                :1;
+					uint32_t PVMO4                :1;
+					uint32_t                      :16;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_WKUPCR
 			struct WKUPCR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t WKUPC1               :1;
-				uint32_t WKUPC2               :1;
-				uint32_t WKUPC3               :1;
-				uint32_t WKUPC4               :1;
-				uint32_t WKUPC5               :1;
-				uint32_t WKUPC6               :1;
-				uint32_t                      :26;
+					uint32_t WKUPC1               :1;
+					uint32_t WKUPC2               :1;
+					uint32_t WKUPC3               :1;
+					uint32_t WKUPC4               :1;
+					uint32_t WKUPC5               :1;
+					uint32_t WKUPC6               :1;
+					uint32_t                      :26;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_WKUPEPR
 			struct WKUPEPR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t WKUPEN1              :1;
-				uint32_t WKUPEN2              :1;
-				uint32_t WKUPEN3              :1;
-				uint32_t WKUPEN4              :1;
-				uint32_t WKUPEN5              :1;
-				uint32_t WKUPEN6              :1;
-				uint32_t                      :2;
-				uint32_t WKUPP1               :1;
-				uint32_t WKUPP2               :1;
-				uint32_t WKUPP3               :1;
-				uint32_t WKUPP4               :1;
-				uint32_t WKUPP5               :1;
-				uint32_t WKUPP6               :1;
-				uint32_t                      :2;
-				uint32_t WKUPPUPD1            :2;
-				uint32_t WKUPPUPD2            :2;
-				uint32_t WKUPPUPD3            :2;
-				uint32_t WKUPPUPD4            :2;
-				uint32_t WKUPPUPD5            :2;
-				uint32_t WKUPPUPD6            :2;
-				uint32_t                      :4;
+					uint32_t WKUPEN1              :1;
+					uint32_t WKUPEN2              :1;
+					uint32_t WKUPEN3              :1;
+					uint32_t WKUPEN4              :1;
+					uint32_t WKUPEN5              :1;
+					uint32_t WKUPEN6              :1;
+					uint32_t                      :2;
+					uint32_t WKUPP1               :1;
+					uint32_t WKUPP2               :1;
+					uint32_t WKUPP3               :1;
+					uint32_t WKUPP4               :1;
+					uint32_t WKUPP5               :1;
+					uint32_t WKUPP6               :1;
+					uint32_t                      :2;
+					uint32_t WKUPPUPD1            :2;
+					uint32_t WKUPPUPD2            :2;
+					uint32_t WKUPPUPD3            :2;
+					uint32_t WKUPPUPD4            :2;
+					uint32_t WKUPPUPD5            :2;
+					uint32_t WKUPPUPD6            :2;
+					uint32_t                      :4;
 
-			
-		};
+				
+			};
 #endif
 
 #ifdef PWR_WKUPFR
 			struct WKUPFR_TypeDef : public Reg32_t
-		{
-			using Reg32_t::operator=;
+			{
+				using Reg32_t::operator=;
 
-				uint32_t WKUPF1               :1;
-				uint32_t WKUPF2               :1;
-				uint32_t WKUPF3               :1;
-				uint32_t WKUPF4               :1;
-				uint32_t WKUPF5               :1;
-				uint32_t WKUPF6               :1;
-				uint32_t                      :26;
+					uint32_t WKUPF1               :1;
+					uint32_t WKUPF2               :1;
+					uint32_t WKUPF3               :1;
+					uint32_t WKUPF4               :1;
+					uint32_t WKUPF5               :1;
+					uint32_t WKUPF6               :1;
+					uint32_t                      :26;
 
-			
-		};
+				
+			};
 #endif
 
 			union
@@ -1972,7 +1978,8 @@ namespace sool
 			
 		};
 
-		//region instances
+//endregion
+//region instances
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
     defined(STM32L4     ) || defined(STM32L4P    )
@@ -1987,33 +1994,33 @@ namespace sool
 		volatile class PWR * const PWR = reinterpret_cast<class PWR* const>(PWR_BASE_ADDR);
 #endif
 //endregion
-
-
-inline void PWR::enable_clock() volatile
-{
-#if defined(RCC_APB1ENR)
-	RCC->APB1ENR.PWREN = 1;
-#elif defined(RCC_APB1ENR1)
-	RCC->APB1ENR1.PWREN = 1;
-#endif
-}
-inline void PWR::disable_clock() volatile
-{
-#if defined(RCC_APB1ENR)
-	RCC->APB1ENR.PWREN = 0;
-#elif defined(RCC_APB1ENR1)
-	RCC->APB1ENR1.PWREN = 0;
-#endif
-}
-inline bool PWR::is_clock_enabled() const volatile
-{
-#if defined(RCC_APB1ENR)
-	return RCC->APB1ENR.PWREN;
-#elif defined(RCC_APB1ENR1)
-	return RCC->APB1ENR1.PWREN;
-#endif
-}
-
+//region peripheral-definition
+		inline void PWR::enable_clock() volatile
+		{
+		#if defined(RCC_APB1ENR)
+			RCC->APB1ENR.PWREN = 1;
+		#elif defined(RCC_APB1ENR1)
+			RCC->APB1ENR1.PWREN = 1;
+		#endif
+		}
+		inline void PWR::disable_clock() volatile
+		{
+		#if defined(RCC_APB1ENR)
+			RCC->APB1ENR.PWREN = 0;
+		#elif defined(RCC_APB1ENR1)
+			RCC->APB1ENR1.PWREN = 0;
+		#endif
+		}
+		inline bool PWR::is_clock_enabled() const volatile
+		{
+		#if defined(RCC_APB1ENR)
+			return RCC->APB1ENR.PWREN;
+		#elif defined(RCC_APB1ENR1)
+			return RCC->APB1ENR1.PWREN;
+		#endif
+		}
+		
+//endregion
 	};
 };
 //region undef
@@ -2263,5 +2270,7 @@ inline bool PWR::is_clock_enabled() const volatile
 #undef PWR_MAP0_PDCRI
 #undef PWR_PDCRH_PH3
 #undef PWR_PUCRH_PH3
+
 //endregion
-#endif
+#endif // chips selection
+#endif //__SOOL_PWR_H

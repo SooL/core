@@ -1,22 +1,24 @@
 /**
  * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL.
+ * This file is part of SooL core Library.
  *
- *  SooL is free software: you can redistribute it and/or modify
+ *  SooL core Library is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL is distributed in the hope that it will be useful,
+ *  SooL core Library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_GPIO_H
 #define __SOOL_GPIO_H
+
+
 
 #include "lib_utils/peripheral_include.h"
 #include "RCC.h"
@@ -57,15 +59,19 @@
 #define GPIO_MAP1_AFRH __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    )
+#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    )
 #define GPIO_AFR_0
 #define GPIO_AFRH_0
 #define GPIO_AFRL_0
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
     defined(STM32L4P    )
 #define GPIO_AFR_1
 #define GPIO_AFRH_1
@@ -177,11 +183,15 @@
 #endif
 
 //endregion
-
 namespace sool
 {
 	namespace core
 	{
+//region related-types
+		
+//endregion
+//region peripheral-declaration
+
 		class GPIO
 		{
 			public:
@@ -335,31 +345,10 @@ namespace sool
 			struct AFR_TypeDef : public ArrayRegBase_t<uint64_t, uint32_t>
 			{
 				using ArrayRegBase_t<uint64_t, uint32_t>::operator=;
-			
+
 				union
 				{
 					#ifdef GPIO_AFR_0
-					struct
-					{
-						uint32_t AFSEL0               :4;
-						uint32_t AFSEL1               :4;
-						uint32_t AFSEL2               :4;
-						uint32_t AFSEL3               :4;
-						uint32_t AFSEL4               :4;
-						uint32_t AFSEL5               :4;
-						uint32_t AFSEL6               :4;
-						uint32_t AFSEL7               :4;
-						uint32_t AFSEL8               :4;
-						uint32_t AFSEL9               :4;
-						uint32_t AFSEL10              :4;
-						uint32_t AFSEL11              :4;
-						uint32_t AFSEL12              :4;
-						uint32_t AFSEL13              :4;
-						uint32_t AFSEL14              :4;
-						uint32_t AFSEL15              :4;
-					};
-					#endif
-					#ifdef GPIO_AFR_1
 					struct
 					{
 						uint32_t AFRL0                :4;
@@ -378,6 +367,27 @@ namespace sool
 						uint32_t AFRH5                :4;
 						uint32_t AFRH6                :4;
 						uint32_t AFRH7                :4;
+					};
+					#endif
+					#ifdef GPIO_AFR_1
+					struct
+					{
+						uint32_t AFSEL0               :4;
+						uint32_t AFSEL1               :4;
+						uint32_t AFSEL2               :4;
+						uint32_t AFSEL3               :4;
+						uint32_t AFSEL4               :4;
+						uint32_t AFSEL5               :4;
+						uint32_t AFSEL6               :4;
+						uint32_t AFSEL7               :4;
+						uint32_t AFSEL8               :4;
+						uint32_t AFSEL9               :4;
+						uint32_t AFSEL10              :4;
+						uint32_t AFSEL11              :4;
+						uint32_t AFSEL12              :4;
+						uint32_t AFSEL13              :4;
+						uint32_t AFSEL14              :4;
+						uint32_t AFSEL15              :4;
 					};
 					#endif
 				};
@@ -389,23 +399,10 @@ namespace sool
 			struct AFRH_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef GPIO_AFRH_0
-					struct
-					{
-						uint32_t AFSEL8               :4;
-						uint32_t AFSEL9               :4;
-						uint32_t AFSEL10              :4;
-						uint32_t AFSEL11              :4;
-						uint32_t AFSEL12              :4;
-						uint32_t AFSEL13              :4;
-						uint32_t AFSEL14              :4;
-						uint32_t AFSEL15              :4;
-					};
-					#endif
-					#ifdef GPIO_AFRH_1
 					struct
 					{
 						uint32_t AFRH0                :4;
@@ -418,6 +415,19 @@ namespace sool
 						uint32_t AFRH7                :4;
 					};
 					#endif
+					#ifdef GPIO_AFRH_1
+					struct
+					{
+						uint32_t AFSEL8               :4;
+						uint32_t AFSEL9               :4;
+						uint32_t AFSEL10              :4;
+						uint32_t AFSEL11              :4;
+						uint32_t AFSEL12              :4;
+						uint32_t AFSEL13              :4;
+						uint32_t AFSEL14              :4;
+						uint32_t AFSEL15              :4;
+					};
+					#endif
 				};
 				
 			};
@@ -427,23 +437,10 @@ namespace sool
 			struct AFRL_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef GPIO_AFRL_0
-					struct
-					{
-						uint32_t AFSEL0               :4;
-						uint32_t AFSEL1               :4;
-						uint32_t AFSEL2               :4;
-						uint32_t AFSEL3               :4;
-						uint32_t AFSEL4               :4;
-						uint32_t AFSEL5               :4;
-						uint32_t AFSEL6               :4;
-						uint32_t AFSEL7               :4;
-					};
-					#endif
-					#ifdef GPIO_AFRL_1
 					struct
 					{
 						uint32_t AFRL0                :4;
@@ -456,6 +453,19 @@ namespace sool
 						uint32_t AFRL7                :4;
 					};
 					#endif
+					#ifdef GPIO_AFRL_1
+					struct
+					{
+						uint32_t AFSEL0               :4;
+						uint32_t AFSEL1               :4;
+						uint32_t AFSEL2               :4;
+						uint32_t AFSEL3               :4;
+						uint32_t AFSEL4               :4;
+						uint32_t AFSEL5               :4;
+						uint32_t AFSEL6               :4;
+						uint32_t AFSEL7               :4;
+					};
+					#endif
 				};
 				
 			};
@@ -465,7 +475,7 @@ namespace sool
 			struct ASCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -517,7 +527,7 @@ namespace sool
 			struct BRR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t BR0                  :1;
 					uint32_t BR1                  :1;
 					uint32_t BR2                  :1;
@@ -535,7 +545,7 @@ namespace sool
 					uint32_t BR14                 :1;
 					uint32_t BR15                 :1;
 					uint32_t                      :16;
-			
+
 				
 			};
 #endif
@@ -544,7 +554,7 @@ namespace sool
 			struct BSRR_TypeDef : public ArrayRegBase_t<uint32_t, uint16_t>
 			{
 				using ArrayRegBase_t<uint32_t, uint16_t>::operator=;
-				
+
 					uint32_t BS0                  :1;
 					uint32_t BS1                  :1;
 					uint32_t BS2                  :1;
@@ -577,7 +587,7 @@ namespace sool
 					uint32_t BR13                 :1;
 					uint32_t BR14                 :1;
 					uint32_t BR15                 :1;
-			
+
 				
 			};
 #endif
@@ -586,7 +596,7 @@ namespace sool
 			struct BSRRH_TypeDef : public Reg16_t
 			{
 				using Reg16_t::operator=;
-				
+
 					uint16_t BR0                  :1;
 					uint16_t BR1                  :1;
 					uint16_t BR2                  :1;
@@ -603,7 +613,7 @@ namespace sool
 					uint16_t BR13                 :1;
 					uint16_t BR14                 :1;
 					uint16_t BR15                 :1;
-			
+
 				
 			};
 #endif
@@ -612,7 +622,7 @@ namespace sool
 			struct BSRRL_TypeDef : public Reg16_t
 			{
 				using Reg16_t::operator=;
-				
+
 					uint16_t BS0                  :1;
 					uint16_t BS1                  :1;
 					uint16_t BS2                  :1;
@@ -629,7 +639,7 @@ namespace sool
 					uint16_t BS13                 :1;
 					uint16_t BS14                 :1;
 					uint16_t BS15                 :1;
-			
+
 				
 			};
 #endif
@@ -638,7 +648,7 @@ namespace sool
 			struct CRH_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MODE8                :2;
 					uint32_t CNF8                 :2;
 					uint32_t MODE9                :2;
@@ -655,7 +665,7 @@ namespace sool
 					uint32_t CNF14                :2;
 					uint32_t MODE15               :2;
 					uint32_t CNF15                :2;
-			
+
 				
 			};
 #endif
@@ -664,7 +674,7 @@ namespace sool
 			struct CRL_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MODE0                :2;
 					uint32_t CNF0                 :2;
 					uint32_t MODE1                :2;
@@ -681,7 +691,7 @@ namespace sool
 					uint32_t CNF6                 :2;
 					uint32_t MODE7                :2;
 					uint32_t CNF7                 :2;
-			
+
 				
 			};
 #endif
@@ -745,7 +755,7 @@ namespace sool
 			struct MODER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MODE0                :2;
 					uint32_t MODE1                :2;
 					uint32_t MODE2                :2;
@@ -762,7 +772,7 @@ namespace sool
 					uint32_t MODE13               :2;
 					uint32_t MODE14               :2;
 					uint32_t MODE15               :2;
-			
+
 				
 			};
 #endif
@@ -809,7 +819,7 @@ namespace sool
 			struct OSPEEDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef GPIO_OSPEEDR_0
@@ -863,7 +873,7 @@ namespace sool
 			struct OTYPER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -939,7 +949,7 @@ namespace sool
 			struct PUPDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PUPD0                :2;
 					uint32_t PUPD1                :2;
 					uint32_t PUPD2                :2;
@@ -956,7 +966,7 @@ namespace sool
 					uint32_t PUPD13               :2;
 					uint32_t PUPD14               :2;
 					uint32_t PUPD15               :2;
-			
+
 				
 			};
 #endif
@@ -1026,7 +1036,8 @@ namespace sool
 			
 		};
 
-		//region instances
+//endregion
+//region instances
 #if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L4     ) || defined(STM32L4P    )
 		#define GPIOA_BASE_ADDR ((uint32_t)0x48000000U)
 #define GPIOB_BASE_ADDR ((uint32_t)0x48000400U)
@@ -1066,13 +1077,13 @@ namespace sool
 #define GPIOC_BASE_ADDR ((uint32_t)0x50000800U)
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) ||\
-    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
-    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
-    defined(STM32F3     ) || defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) ||\
-    defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
+#if defined(STM32F030x4 ) || defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F3     ) || defined(STM32L431xx ) || defined(STM32L433xx ) ||\
+    defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
+    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define GPIOD_BASE_ADDR ((uint32_t)0x48000C00U)
 #endif
 
@@ -1232,680 +1243,680 @@ namespace sool
 		volatile class GPIO * const GPIOK = reinterpret_cast<class GPIO* const>(GPIOK_BASE_ADDR);
 #endif
 //endregion
-
-
-
-template<unsigned char num>
-struct StandAlone_Pin
-{
-#ifndef STM32F1
-	union
-	{
-		GPIO port;
-		struct
+//region peripheral-definition
+		
+		template<unsigned char num>
+		struct StandAlone_Pin
 		{
-			uint32_t : num * 2;
-			GPIO::Mode mode            : 2;
-			uint32_t :(32 - (num + 1) * 2);
-			uint32_t : num * 1;
-			GPIO::OutType outType    : 1;
-			uint32_t :(32 - (num + 1) * 1);
-			uint32_t : num * 2;
-			GPIO::Speed speed        : 2;
-			uint32_t :(32 - (num + 1) * 2);
-			uint32_t : num * 2;
-			GPIO::PuPd pupd            : 2;
-			uint32_t :(32 - (num + 1) * 2);
-			uint64_t : 64; // IDR,ODR
-			uint64_t : 64; // BSRR,LCKR
-			uint64_t : num * 4;
-			GPIO::AF af                : 4;
-			uint64_t :(64 - (num + 1) * 4);
-#ifdef GPIO_ASCR
-			uint32_t : 32; //BRR
-			uint32_t: num*1; GPIO::ASC asc			: 1; uint32_t :(32 - (num+1)*1);
-#endif
-		};
-	};
-
-	const GPIO::OutType &operator=(const GPIO::OutType &oType) volatile;
-
-	const GPIO::Speed &operator=(const GPIO::Speed &speed) volatile;
-
-	const GPIO::PuPd &operator=(const GPIO::PuPd &pupd) volatile;
-
-	const GPIO::AF &operator=(const GPIO::AF &af) volatile;
-
-#ifdef GPIO_ASCR
-	const GPIO::ASC& operator=(const GPIO::ASC& asc);
-#endif
-
-#else
-	union
-	{
-		GPIO port;
-		struct
+		#ifndef STM32F1
+			union
+			{
+				GPIO port;
+				struct
+				{
+					uint32_t : num * 2;
+					GPIO::Mode mode            : 2;
+					uint32_t :(32 - (num + 1) * 2);
+					uint32_t : num * 1;
+					GPIO::OutType outType    : 1;
+					uint32_t :(32 - (num + 1) * 1);
+					uint32_t : num * 2;
+					GPIO::Speed speed        : 2;
+					uint32_t :(32 - (num + 1) * 2);
+					uint32_t : num * 2;
+					GPIO::PuPd pupd            : 2;
+					uint32_t :(32 - (num + 1) * 2);
+					uint64_t : 64; // IDR,ODR
+					uint64_t : 64; // BSRR,LCKR
+					uint64_t : num * 4;
+					GPIO::AF af                : 4;
+					uint64_t :(64 - (num + 1) * 4);
+		#ifdef GPIO_ASCR
+					uint32_t : 32; //BRR
+					uint32_t: num*1; GPIO::ASC asc			: 1; uint32_t :(32 - (num+1)*1);
+		#endif
+				};
+			};
+		
+			const GPIO::OutType &operator=(const GPIO::OutType &oType) volatile;
+		
+			const GPIO::Speed &operator=(const GPIO::Speed &speed) volatile;
+		
+			const GPIO::PuPd &operator=(const GPIO::PuPd &pupd) volatile;
+		
+			const GPIO::AF &operator=(const GPIO::AF &af) volatile;
+		
+		#ifdef GPIO_ASCR
+			const GPIO::ASC& operator=(const GPIO::ASC& asc);
+		#endif
+		
+		#else
+			union
+			{
+				GPIO port;
+				struct
+				{
+					uint32_t :num*4; GPIO::Mode mode :2; GPIO::CNF cnf :2; uint32_t : (64 - (num+1)*4);
+				};
+			};
+			const GPIO::CNF& operator=(const CNF& cnf);
+		#endif
+		
+			const GPIO::Mode &operator=(const GPIO::Mode &mode) volatile;
+		
+			const GPIO::PinConfig &operator=(const GPIO::PinConfig &config) volatile;
+		
+			operator GPIO::PinConfig const() volatile;
+		
+			bool read() volatile;
+		
+			void write(bool value) volatile;
+		
+			void toggle() volatile;
+		
+			const GPIO::Pin pin() volatile;
+		} __attribute__((__aligned__(4)));
+		//#################################################################################################
+		//#                                  GPIO methods and operators                                   #
+		//#################################################################################################
+		
+		inline constexpr const GPIO::Pin GPIO::pin(const unsigned int pin_num)
 		{
-			uint32_t :num*4; GPIO::Mode mode :2; GPIO::CNF cnf :2; uint32_t : (64 - (num+1)*4);
-		};
-	};
-	const GPIO::CNF& operator=(const CNF& cnf);
-#endif
-
-	const GPIO::Mode &operator=(const GPIO::Mode &mode) volatile;
-
-	const GPIO::PinConfig &operator=(const GPIO::PinConfig &config) volatile;
-
-	operator GPIO::PinConfig const() volatile;
-
-	bool read() volatile;
-
-	void write(bool value) volatile;
-
-	void toggle() volatile;
-
-	const GPIO::Pin pin() volatile;
-} __attribute__((__aligned__(4)));
-//#################################################################################################
-//#                                  GPIO methods and operators                                   #
-//#################################################################################################
-
-inline constexpr const GPIO::Pin GPIO::pin(const unsigned int pin_num)
-{
-	return static_cast<GPIO::Pin>(1 << pin_num);
-}
-
-inline constexpr uint32_t GPIO::get_clock_enable_bit(const uint32_t addr)
-{
-#if defined(STM32F0     ) || defined(STM32F3     )
-	unsigned int offset = 17u;
-#else
-	unsigned int offset = 0u;
-#endif
-	switch (addr) {
-#ifdef GPIOA_BASE_ADDR
-		case GPIOA_BASE_ADDR: return 1u << (offset + 0);
-#endif
-#ifdef GPIOB_BASE_ADDR
-		case GPIOB_BASE_ADDR: return 1u << (offset + 1);
-#endif
-#ifdef GPIOC_BASE_ADDR
-		case GPIOC_BASE_ADDR: return 1u << (offset + 2);
-#endif
-#ifdef GPIOD_BASE_ADDR
-		case GPIOD_BASE_ADDR: return 1u << (offset + 3);
-#endif
-#ifdef GPIOE_BASE_ADDR
-		case GPIOE_BASE_ADDR: return 1u << (offset + 4);
-#endif
-#ifdef GPIOF_BASE_ADDR
-		case GPIOF_BASE_ADDR: return 1u << (offset + 5);
-#endif
-#ifdef GPIOG_BASE_ADDR
-		case GPIOG_BASE_ADDR: return 1u << (offset + 6);
-#endif
-#ifdef GPIOH_BASE_ADDR
-		case GPIOH_BASE_ADDR: return 1u << (offset + 7);
-#endif
-#ifdef GPIOI_BASE_ADDR
-		case GPIOI_BASE_ADDR: return 1u << (offset + 8);
-#endif
-#ifdef GPIOJ_BASE_ADDR
-		case GPIOJ_BASE_ADDR: return 1u << (offset + 9);
-#endif
-#ifdef GPIOK_BASE_ADDR
-		case GPIOK_BASE_ADDR: return 1u << (offset + 10);
-#endif
-		default:
-			return 0;
-	}
-}
-
-inline void GPIO::enable_clock() volatile
-{
-	const unsigned int bit = GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
-
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
-	RCC->AHB1ENR |= bit;
-#elif defined(STM32L4     ) || defined(STM32L4P    )
-	RCC->AHB2ENR |= bit;
-#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
-	RCC->AHBENR |= bit;
-#elif defined(RCC_AHB4ENR)
-	RCC->AHB4ENR |= bit;
-#endif
-}
-
-inline void GPIO::disable_clock() volatile
-{
-	const unsigned int mask = ~GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
-
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
-	RCC->AHB1ENR &= mask;
-#elif defined(STM32L4     ) || defined(STM32L4P    )
-	RCC->AHB2ENR &= mask;
-#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
-	RCC->AHBENR &= mask;
-#elif defined(RCC_AHB4ENR)
-	RCC->AHB4ENR &= mask;
-#endif
-}
-
-inline bool GPIO::is_clock_enabled() const volatile
-{
-	const unsigned int bit = GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
-
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
-	return (RCC->AHB1ENR & bit) == bit;
-#elif defined(STM32L4     ) || defined(STM32L4P    )
-	return (RCC->AHB2ENR & bit) == bit;
-#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
-	return (RCC->AHBENR & bit) == bit;
-#elif defined(RCC_AHB4ENR)
-	return (RCC->AHB4ENR & bit) == bit;
-#endif
-}
-
-//##################################################################################################
-//#                                    Pin methods and operators                                   #
-//##################################################################################################
-inline constexpr GPIO::Pin operator|(const GPIO::Pin &a, const GPIO::Pin &b)
-{ return static_cast<GPIO::Pin>(static_cast<const uint32_t>(a) | static_cast<const uint32_t>(b)); }
-
-inline constexpr GPIO::Pin operator&(const GPIO::Pin &a, const GPIO::Pin &b)
-{ return static_cast<GPIO::Pin>(static_cast<const uint32_t>(a) & static_cast<const uint32_t>(b)); }
-
-inline constexpr GPIO::Pin operator~(const GPIO::Pin &a)
-{ return static_cast<GPIO::Pin>(~static_cast<const uint32_t>(a)); }
-
-inline constexpr GPIO::Pin operator+(const GPIO::Pin &a, const GPIO::Pin &b)
-{ return a | b; }
-
-inline constexpr GPIO::Pin operator-(const GPIO::Pin &a, const GPIO::Pin &b)
-{ return a & (~b); }
-
-inline constexpr GPIO::Pin &operator|=(GPIO::Pin &a, const GPIO::Pin &b)
-{ return a = a | b; }
-
-
-inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::Mode &mode)
-{
-	uint32_t v = 0, i = 16;
-	while (i--) {
-		if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
-			v |= static_cast<uint32_t>(mode) << (i * 2);
-	}
-	return v;
-}
-
-inline constexpr const uint32_t operator*(const GPIO::Mode &mode, const GPIO::Pin &pins)
-{ return pins * mode; }
-
-inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::OutType &type)
-{ return static_cast<uint32_t>(pins) * static_cast<uint32_t>(type); }
-
-inline constexpr const uint32_t operator*(const GPIO::OutType &type, const GPIO::Pin &pins)
-{ return pins * type; }
-
-inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::Speed &speed)
-{
-	uint32_t v = 0, i = 16;
-	while (i--) {
-		if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
-			v |= static_cast<uint32_t>(speed) << (i * 2);
-	}
-	return v;
-}
-
-inline constexpr const uint32_t operator*(const GPIO::Speed &speed, const GPIO::Pin &pins)
-{ return pins * speed; }
-
-inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::PuPd &pupd)
-{
-	uint32_t v = 0, i = 16;
-	while (i--) {
-		if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
-			v |= static_cast<uint32_t>(pupd) << (i * 2);
-	}
-	return v;
-}
-
-inline constexpr const uint32_t operator*(const GPIO::PuPd &pupd, const GPIO::Pin &pins)
-{ return pins * pupd; }
-
-inline constexpr const uint64_t operator*(const GPIO::Pin &pins, const GPIO::AF &af)
-{
-	uint64_t v = 0;
-	uint32_t i = 16;
-	while (i--) {
-		if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
-			v |= ((uint64_t)
-		static_cast<uint64_t>(af)) << (i * 4);
-	}
-	return v;
-}
-
-inline constexpr const uint64_t operator*(const GPIO::AF &af, const GPIO::Pin &pins)
-{ return pins * af; }
-
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator=(const GPIO::Pin &p) volatile
-{
-	*this = static_cast<uint32_t>(p);
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator&=(const GPIO::Pin &p) volatile
-{
-	*this &= static_cast<uint32_t>(p);
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator|=(const GPIO::Pin &p) volatile
-{
-	*reinterpret_cast<volatile uint32_t *>(this) |= static_cast<uint32_t>(p);
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator^=(const GPIO::Pin &p) volatile
-{
-	*this ^= static_cast<uint32_t>(p);
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator+=(const GPIO::Pin &p) volatile
-{
-	*this |= p;
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator-=(const GPIO::Pin &p) volatile
-{
-	*this &= ~p;
-	return *const_cast<const GPIO::ODR_TypeDef *>(this);
-}
-
-//region PinConfig operators
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::Mode &mode)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.mode = mode;
-	result.modif |= 1;
-	return result;
-}
-
-#ifndef STM32F1
-
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::OutType &oType)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.outType = oType;
-	result.modif |= 2;
-	return result;
-}
-
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::Speed &speed)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.speed = speed;
-	result.modif |= 4;
-	return result;
-}
-
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::PuPd &pupd)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.pupd = pupd;
-	result.modif |= 8;
-	return result;
-}
-
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::AF &af)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.af = af;
-	result.modif |= 16;
-	return result;
-}
-
-#ifdef GPIO_ASC
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig& pin_conf, const GPIO::ASC& asc)
-{
-	GPIO::PinConfig result = pin_config;
-	result.asc = asc;
-	result.modif |= 32;
-	return result;
-}
-#endif
-#else
-inline const GPIO::PinConfig operator|(const GPIO::PinConfig& pin_conf, const GPIO::CNF& cnf)
-{
-	GPIO::PinConfig result = pin_conf;
-	result.cnf = cnf;
-	result.modif |= 2;
-	return result;
-}
-#endif
-
+			return static_cast<GPIO::Pin>(1 << pin_num);
+		}
+		
+		inline constexpr uint32_t GPIO::get_clock_enable_bit(const uint32_t addr)
+		{
+		#if defined(STM32F0     ) || defined(STM32F3     )
+			unsigned int offset = 17u;
+		#else
+			unsigned int offset = 0u;
+		#endif
+			switch (addr) {
+		#ifdef GPIOA_BASE_ADDR
+				case GPIOA_BASE_ADDR: return 1u << (offset + 0);
+		#endif
+		#ifdef GPIOB_BASE_ADDR
+				case GPIOB_BASE_ADDR: return 1u << (offset + 1);
+		#endif
+		#ifdef GPIOC_BASE_ADDR
+				case GPIOC_BASE_ADDR: return 1u << (offset + 2);
+		#endif
+		#ifdef GPIOD_BASE_ADDR
+				case GPIOD_BASE_ADDR: return 1u << (offset + 3);
+		#endif
+		#ifdef GPIOE_BASE_ADDR
+				case GPIOE_BASE_ADDR: return 1u << (offset + 4);
+		#endif
+		#ifdef GPIOF_BASE_ADDR
+				case GPIOF_BASE_ADDR: return 1u << (offset + 5);
+		#endif
+		#ifdef GPIOG_BASE_ADDR
+				case GPIOG_BASE_ADDR: return 1u << (offset + 6);
+		#endif
+		#ifdef GPIOH_BASE_ADDR
+				case GPIOH_BASE_ADDR: return 1u << (offset + 7);
+		#endif
+		#ifdef GPIOI_BASE_ADDR
+				case GPIOI_BASE_ADDR: return 1u << (offset + 8);
+		#endif
+		#ifdef GPIOJ_BASE_ADDR
+				case GPIOJ_BASE_ADDR: return 1u << (offset + 9);
+		#endif
+		#ifdef GPIOK_BASE_ADDR
+				case GPIOK_BASE_ADDR: return 1u << (offset + 10);
+		#endif
+				default:
+					return 0;
+			}
+		}
+		
+		inline void GPIO::enable_clock() volatile
+		{
+			const unsigned int bit = GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
+		
+		#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
+			RCC->AHB1ENR |= bit;
+		#elif defined(STM32L4     ) || defined(STM32L4P    )
+			RCC->AHB2ENR |= bit;
+		#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
+			RCC->AHBENR |= bit;
+		#elif defined(RCC_AHB4ENR)
+			RCC->AHB4ENR |= bit;
+		#endif
+		}
+		
+		inline void GPIO::disable_clock() volatile
+		{
+			const unsigned int mask = ~GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
+		
+		#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
+			RCC->AHB1ENR &= mask;
+		#elif defined(STM32L4     ) || defined(STM32L4P    )
+			RCC->AHB2ENR &= mask;
+		#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
+			RCC->AHBENR &= mask;
+		#elif defined(RCC_AHB4ENR)
+			RCC->AHB4ENR &= mask;
+		#endif
+		}
+		
+		inline bool GPIO::is_clock_enabled() const volatile
+		{
+			const unsigned int bit = GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
+		
+		#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
+			return (RCC->AHB1ENR & bit) == bit;
+		#elif defined(STM32L4     ) || defined(STM32L4P    )
+			return (RCC->AHB2ENR & bit) == bit;
+		#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
+			return (RCC->AHBENR & bit) == bit;
+		#elif defined(RCC_AHB4ENR)
+			return (RCC->AHB4ENR & bit) == bit;
+		#endif
+		}
+		
+		//##################################################################################################
+		//#                                    Pin methods and operators                                   #
+		//##################################################################################################
+		inline constexpr GPIO::Pin operator|(const GPIO::Pin &a, const GPIO::Pin &b)
+		{ return static_cast<GPIO::Pin>(static_cast<const uint32_t>(a) | static_cast<const uint32_t>(b)); }
+		
+		inline constexpr GPIO::Pin operator&(const GPIO::Pin &a, const GPIO::Pin &b)
+		{ return static_cast<GPIO::Pin>(static_cast<const uint32_t>(a) & static_cast<const uint32_t>(b)); }
+		
+		inline constexpr GPIO::Pin operator~(const GPIO::Pin &a)
+		{ return static_cast<GPIO::Pin>(~static_cast<const uint32_t>(a)); }
+		
+		inline constexpr GPIO::Pin operator+(const GPIO::Pin &a, const GPIO::Pin &b)
+		{ return a | b; }
+		
+		inline constexpr GPIO::Pin operator-(const GPIO::Pin &a, const GPIO::Pin &b)
+		{ return a & (~b); }
+		
+		inline constexpr GPIO::Pin &operator|=(GPIO::Pin &a, const GPIO::Pin &b)
+		{ return a = a | b; }
+		
+		
+		inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::Mode &mode)
+		{
+			uint32_t v = 0, i = 16;
+			while (i--) {
+				if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
+					v |= static_cast<uint32_t>(mode) << (i * 2);
+			}
+			return v;
+		}
+		
+		inline constexpr const uint32_t operator*(const GPIO::Mode &mode, const GPIO::Pin &pins)
+		{ return pins * mode; }
+		
+		inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::OutType &type)
+		{ return static_cast<uint32_t>(pins) * static_cast<uint32_t>(type); }
+		
+		inline constexpr const uint32_t operator*(const GPIO::OutType &type, const GPIO::Pin &pins)
+		{ return pins * type; }
+		
+		inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::Speed &speed)
+		{
+			uint32_t v = 0, i = 16;
+			while (i--) {
+				if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
+					v |= static_cast<uint32_t>(speed) << (i * 2);
+			}
+			return v;
+		}
+		
+		inline constexpr const uint32_t operator*(const GPIO::Speed &speed, const GPIO::Pin &pins)
+		{ return pins * speed; }
+		
+		inline constexpr const uint32_t operator*(const GPIO::Pin &pins, const GPIO::PuPd &pupd)
+		{
+			uint32_t v = 0, i = 16;
+			while (i--) {
+				if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
+					v |= static_cast<uint32_t>(pupd) << (i * 2);
+			}
+			return v;
+		}
+		
+		inline constexpr const uint32_t operator*(const GPIO::PuPd &pupd, const GPIO::Pin &pins)
+		{ return pins * pupd; }
+		
+		inline constexpr const uint64_t operator*(const GPIO::Pin &pins, const GPIO::AF &af)
+		{
+			uint64_t v = 0;
+			uint32_t i = 16;
+			while (i--) {
+				if ((pins & GPIO::pin(i)) != GPIO::Pin::None)
+					v |= ((uint64_t)
+				static_cast<uint64_t>(af)) << (i * 4);
+			}
+			return v;
+		}
+		
+		inline constexpr const uint64_t operator*(const GPIO::AF &af, const GPIO::Pin &pins)
+		{ return pins * af; }
+		
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator=(const GPIO::Pin &p) volatile
+		{
+			*this = static_cast<uint32_t>(p);
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator&=(const GPIO::Pin &p) volatile
+		{
+			*this &= static_cast<uint32_t>(p);
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator|=(const GPIO::Pin &p) volatile
+		{
+			*reinterpret_cast<volatile uint32_t *>(this) |= static_cast<uint32_t>(p);
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator^=(const GPIO::Pin &p) volatile
+		{
+			*this ^= static_cast<uint32_t>(p);
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator+=(const GPIO::Pin &p) volatile
+		{
+			*this |= p;
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		inline const GPIO::ODR_TypeDef &GPIO::ODR_TypeDef::operator-=(const GPIO::Pin &p) volatile
+		{
+			*this &= ~p;
+			return *const_cast<const GPIO::ODR_TypeDef *>(this);
+		}
+		
+		//region PinConfig operators
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::Mode &mode)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.mode = mode;
+			result.modif |= 1;
+			return result;
+		}
+		
+		#ifndef STM32F1
+		
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::OutType &oType)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.outType = oType;
+			result.modif |= 2;
+			return result;
+		}
+		
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::Speed &speed)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.speed = speed;
+			result.modif |= 4;
+			return result;
+		}
+		
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::PuPd &pupd)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.pupd = pupd;
+			result.modif |= 8;
+			return result;
+		}
+		
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig &pin_conf, const GPIO::AF &af)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.af = af;
+			result.modif |= 16;
+			return result;
+		}
+		
+		#ifdef GPIO_ASC
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig& pin_conf, const GPIO::ASC& asc)
+		{
+			GPIO::PinConfig result = pin_config;
+			result.asc = asc;
+			result.modif |= 32;
+			return result;
+		}
+		#endif
+		#else
+		inline const GPIO::PinConfig operator|(const GPIO::PinConfig& pin_conf, const GPIO::CNF& cnf)
+		{
+			GPIO::PinConfig result = pin_conf;
+			result.cnf = cnf;
+			result.modif |= 2;
+			return result;
+		}
+		#endif
+		
+		//endregion
+		template<unsigned char num>
+		inline const GPIO::PinConfig &StandAlone_Pin<num>::operator=(const GPIO::PinConfig &config) volatile
+		{
+			if (config.modif & 1) this->mode = config.mode;
+		#ifndef STM32F1
+			if (config.modif & 2)this->outType = config.outType;
+			if (config.modif & 4)this->speed = config.speed;
+			if (config.modif & 8)this->pupd = config.pupd;
+			if (config.modif & 16)this->af = config.af;
+		#ifdef GPIO_ASCR
+			if(config.modif & 32)this->asc = config.asc;
+		#endif
+		#else
+			if(config.modif & 2)this->cnf = config.cnf;
+		#endif
+			return config;
+		}
+		
+		template<unsigned char num>
+		inline const GPIO::Mode &StandAlone_Pin<num>::operator=(const GPIO::Mode &mode) volatile
+		{
+			this->mode = mode;
+			return mode;
+		}
+		
+		#ifndef STM32F1
+		
+		template<unsigned char num>
+		inline const GPIO::OutType &StandAlone_Pin<num>::operator=(const GPIO::OutType &oType) volatile
+		{
+			this->outType = oType;
+			return oType;
+		}
+		
+		template<unsigned char num>
+		inline const GPIO::Speed &StandAlone_Pin<num>::operator=(const GPIO::Speed &speed) volatile
+		{
+			this->speed = speed;
+			return speed;
+		}
+		
+		template<unsigned char num>
+		inline const GPIO::PuPd &StandAlone_Pin<num>::operator=(const GPIO::PuPd &pupd) volatile
+		{
+			this->pupd = pupd;
+			return pupd;
+		}
+		
+		template<unsigned char num>
+		inline const GPIO::AF &StandAlone_Pin<num>::operator=(const GPIO::AF &af) volatile
+		{
+			this->af = af;
+			return af;
+		}
+		
+		template<unsigned char num>
+		inline StandAlone_Pin<num>::operator GPIO::PinConfig const() volatile
+		{
+			const GPIO::Mode mode = this->mode;
+			GPIO::PinConfig config(mode);
+		#ifndef STM32F1
+			config.modif = 0b11111;
+			config.outType = this->outType;
+			config.speed = this->speed;
+			config.pupd = this->pupd;
+			config.af = this->af;
+		#ifdef GPIO_ASCR
+			config.asc = this->asc;
+		#endif
+		#else
+			config.modif = 0b11;
+			config.cnf = this->cnf;
+		#endif
+			return config;
+		}
+		
+		#ifdef GPIO_ASCR
+		template<unsigned char num>
+		inline const GPIO::ASC& StandAlone_Pin<num>::operator=(const GPIO::ASC& asc)
+		{
+			this->asc = asc;
+			return asc;
+		}
+		#endif
+		#else // STM32F1
+		template<unsigned char num>
+		inline const GPIO::CNF& StandAlone_Pin<num>::operator=(const GPIO::CNF& cnf)
+		{
+			this->cnf = cnf;
+			return cnf;
+		}
+		#endif
+		
+		template<unsigned char num>
+		inline bool StandAlone_Pin<num>::read() volatile
+		{
+			return (bool) ((reinterpret_cast<volatile GPIO *>(this))->IDR & (1 << num));
+		}
+		
+		template<unsigned char num>
+		inline void StandAlone_Pin<num>::write(bool value) volatile
+		{
+			(reinterpret_cast<volatile GPIO *>(this))->BSRR = value ? (1 << num) : (1 << (num + 16));
+		}
+		
+		template<unsigned char num>
+		inline void StandAlone_Pin<num>::toggle() volatile
+		{
+			(reinterpret_cast<volatile GPIO *>(this))->ODR ^= (1 << num);
+		}
+		
+		template<unsigned char num>
+		inline const GPIO::Pin StandAlone_Pin<num>::pin() volatile
+		{
+			return GPIO::Pin(num);
+		}
+		
+		//region PXn definitions
+		#ifdef GPIOA_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PA0 ;
+		extern volatile StandAlone_Pin< 1>& PA1 ;
+		extern volatile StandAlone_Pin< 2>& PA2 ;
+		extern volatile StandAlone_Pin< 3>& PA3 ;
+		extern volatile StandAlone_Pin< 4>& PA4 ;
+		extern volatile StandAlone_Pin< 5>& PA5 ;
+		extern volatile StandAlone_Pin< 6>& PA6 ;
+		extern volatile StandAlone_Pin< 7>& PA7 ;
+		extern volatile StandAlone_Pin< 8>& PA8 ;
+		extern volatile StandAlone_Pin< 9>& PA9 ;
+		extern volatile StandAlone_Pin<10>& PA10;
+		extern volatile StandAlone_Pin<11>& PA11;
+		extern volatile StandAlone_Pin<12>& PA12;
+		extern volatile StandAlone_Pin<13>& PA13;
+		extern volatile StandAlone_Pin<14>& PA14;
+		extern volatile StandAlone_Pin<15>& PA15;
+		#endif
+		#ifdef GPIOB_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PB0 ;
+		extern volatile StandAlone_Pin< 1>& PB1 ;
+		extern volatile StandAlone_Pin< 2>& PB2 ;
+		extern volatile StandAlone_Pin< 3>& PB3 ;
+		extern volatile StandAlone_Pin< 4>& PB4 ;
+		extern volatile StandAlone_Pin< 5>& PB5 ;
+		extern volatile StandAlone_Pin< 6>& PB6 ;
+		extern volatile StandAlone_Pin< 7>& PB7 ;
+		extern volatile StandAlone_Pin< 8>& PB8 ;
+		extern volatile StandAlone_Pin< 9>& PB9 ;
+		extern volatile StandAlone_Pin<10>& PB10;
+		extern volatile StandAlone_Pin<11>& PB11;
+		extern volatile StandAlone_Pin<12>& PB12;
+		extern volatile StandAlone_Pin<13>& PB13;
+		extern volatile StandAlone_Pin<14>& PB14;
+		extern volatile StandAlone_Pin<15>& PB15;
+		#endif
+		#ifdef GPIOC_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PC0 ;
+		extern volatile StandAlone_Pin< 1>& PC1 ;
+		extern volatile StandAlone_Pin< 2>& PC2 ;
+		extern volatile StandAlone_Pin< 3>& PC3 ;
+		extern volatile StandAlone_Pin< 4>& PC4 ;
+		extern volatile StandAlone_Pin< 5>& PC5 ;
+		extern volatile StandAlone_Pin< 6>& PC6 ;
+		extern volatile StandAlone_Pin< 7>& PC7 ;
+		extern volatile StandAlone_Pin< 8>& PC8 ;
+		extern volatile StandAlone_Pin< 9>& PC9 ;
+		extern volatile StandAlone_Pin<10>& PC10;
+		extern volatile StandAlone_Pin<11>& PC11;
+		extern volatile StandAlone_Pin<12>& PC12;
+		extern volatile StandAlone_Pin<13>& PC13;
+		extern volatile StandAlone_Pin<14>& PC14;
+		extern volatile StandAlone_Pin<15>& PC15;
+		#endif
+		#ifdef GPIOD_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PD0 ;
+		extern volatile StandAlone_Pin< 1>& PD1 ;
+		extern volatile StandAlone_Pin< 2>& PD2 ;
+		extern volatile StandAlone_Pin< 3>& PD3 ;
+		extern volatile StandAlone_Pin< 4>& PD4 ;
+		extern volatile StandAlone_Pin< 5>& PD5 ;
+		extern volatile StandAlone_Pin< 6>& PD6 ;
+		extern volatile StandAlone_Pin< 7>& PD7 ;
+		extern volatile StandAlone_Pin< 8>& PD8 ;
+		extern volatile StandAlone_Pin< 9>& PD9 ;
+		extern volatile StandAlone_Pin<10>& PD10;
+		extern volatile StandAlone_Pin<11>& PD11;
+		extern volatile StandAlone_Pin<12>& PD12;
+		extern volatile StandAlone_Pin<13>& PD13;
+		extern volatile StandAlone_Pin<14>& PD14;
+		extern volatile StandAlone_Pin<15>& PD15;
+		#endif
+		#ifdef GPIOE_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PE0 ;
+		extern volatile StandAlone_Pin< 1>& PE1 ;
+		extern volatile StandAlone_Pin< 2>& PE2 ;
+		extern volatile StandAlone_Pin< 3>& PE3 ;
+		extern volatile StandAlone_Pin< 4>& PE4 ;
+		extern volatile StandAlone_Pin< 5>& PE5 ;
+		extern volatile StandAlone_Pin< 6>& PE6 ;
+		extern volatile StandAlone_Pin< 7>& PE7 ;
+		extern volatile StandAlone_Pin< 8>& PE8 ;
+		extern volatile StandAlone_Pin< 9>& PE9 ;
+		extern volatile StandAlone_Pin<10>& PE10;
+		extern volatile StandAlone_Pin<11>& PE11;
+		extern volatile StandAlone_Pin<12>& PE12;
+		extern volatile StandAlone_Pin<13>& PE13;
+		extern volatile StandAlone_Pin<14>& PE14;
+		extern volatile StandAlone_Pin<15>& PE15;
+		#endif
+		#ifdef GPIOF_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PF0 ;
+		extern volatile StandAlone_Pin< 1>& PF1 ;
+		extern volatile StandAlone_Pin< 2>& PF2 ;
+		extern volatile StandAlone_Pin< 3>& PF3 ;
+		extern volatile StandAlone_Pin< 4>& PF4 ;
+		extern volatile StandAlone_Pin< 5>& PF5 ;
+		extern volatile StandAlone_Pin< 6>& PF6 ;
+		extern volatile StandAlone_Pin< 7>& PF7 ;
+		extern volatile StandAlone_Pin< 8>& PF8 ;
+		extern volatile StandAlone_Pin< 9>& PF9 ;
+		extern volatile StandAlone_Pin<10>& PF10;
+		extern volatile StandAlone_Pin<11>& PF11;
+		extern volatile StandAlone_Pin<12>& PF12;
+		extern volatile StandAlone_Pin<13>& PF13;
+		extern volatile StandAlone_Pin<14>& PF14;
+		extern volatile StandAlone_Pin<15>& PF15;
+		#endif
+		#ifdef GPIOG_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PG0 ;
+		extern volatile StandAlone_Pin< 1>& PG1 ;
+		extern volatile StandAlone_Pin< 2>& PG2 ;
+		extern volatile StandAlone_Pin< 3>& PG3 ;
+		extern volatile StandAlone_Pin< 4>& PG4 ;
+		extern volatile StandAlone_Pin< 5>& PG5 ;
+		extern volatile StandAlone_Pin< 6>& PG6 ;
+		extern volatile StandAlone_Pin< 7>& PG7 ;
+		extern volatile StandAlone_Pin< 8>& PG8 ;
+		extern volatile StandAlone_Pin< 9>& PG9 ;
+		extern volatile StandAlone_Pin<10>& PG10;
+		extern volatile StandAlone_Pin<11>& PG11;
+		extern volatile StandAlone_Pin<12>& PG12;
+		extern volatile StandAlone_Pin<13>& PG13;
+		extern volatile StandAlone_Pin<14>& PG14;
+		extern volatile StandAlone_Pin<15>& PG15;
+		#endif
+		#ifdef GPIOH_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PH0 ;
+		extern volatile StandAlone_Pin< 1>& PH1 ;
+		extern volatile StandAlone_Pin< 2>& PH2 ;
+		extern volatile StandAlone_Pin< 3>& PH3 ;
+		extern volatile StandAlone_Pin< 4>& PH4 ;
+		extern volatile StandAlone_Pin< 5>& PH5 ;
+		extern volatile StandAlone_Pin< 6>& PH6 ;
+		extern volatile StandAlone_Pin< 7>& PH7 ;
+		extern volatile StandAlone_Pin< 8>& PH8 ;
+		extern volatile StandAlone_Pin< 9>& PH9 ;
+		extern volatile StandAlone_Pin<10>& PH10;
+		extern volatile StandAlone_Pin<11>& PH11;
+		extern volatile StandAlone_Pin<12>& PH12;
+		extern volatile StandAlone_Pin<13>& PH13;
+		extern volatile StandAlone_Pin<14>& PH14;
+		extern volatile StandAlone_Pin<15>& PH15;
+		#endif
+		#ifdef GPIOI_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PI0 ;
+		extern volatile StandAlone_Pin< 1>& PI1 ;
+		extern volatile StandAlone_Pin< 2>& PI2 ;
+		extern volatile StandAlone_Pin< 3>& PI3 ;
+		extern volatile StandAlone_Pin< 4>& PI4 ;
+		extern volatile StandAlone_Pin< 5>& PI5 ;
+		extern volatile StandAlone_Pin< 6>& PI6 ;
+		extern volatile StandAlone_Pin< 7>& PI7 ;
+		extern volatile StandAlone_Pin< 8>& PI8 ;
+		extern volatile StandAlone_Pin< 9>& PI9 ;
+		extern volatile StandAlone_Pin<10>& PI10;
+		extern volatile StandAlone_Pin<11>& PI11;
+		extern volatile StandAlone_Pin<12>& PI12;
+		extern volatile StandAlone_Pin<13>& PI13;
+		extern volatile StandAlone_Pin<14>& PI14;
+		extern volatile StandAlone_Pin<15>& PI15;
+		#endif
+		#ifdef GPIOJ_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PJ0 ;
+		extern volatile StandAlone_Pin< 1>& PJ1 ;
+		extern volatile StandAlone_Pin< 2>& PJ2 ;
+		extern volatile StandAlone_Pin< 3>& PJ3 ;
+		extern volatile StandAlone_Pin< 4>& PJ4 ;
+		extern volatile StandAlone_Pin< 5>& PJ5 ;
+		extern volatile StandAlone_Pin< 6>& PJ6 ;
+		extern volatile StandAlone_Pin< 7>& PJ7 ;
+		extern volatile StandAlone_Pin< 8>& PJ8 ;
+		extern volatile StandAlone_Pin< 9>& PJ9 ;
+		extern volatile StandAlone_Pin<10>& PJ10;
+		extern volatile StandAlone_Pin<11>& PJ11;
+		extern volatile StandAlone_Pin<12>& PJ12;
+		extern volatile StandAlone_Pin<13>& PJ13;
+		extern volatile StandAlone_Pin<14>& PJ14;
+		extern volatile StandAlone_Pin<15>& PJ15;
+		#endif
+		#ifdef GPIOK_BASE_ADDR
+		extern volatile StandAlone_Pin< 0>& PK0 ;
+		extern volatile StandAlone_Pin< 1>& PK1 ;
+		extern volatile StandAlone_Pin< 2>& PK2 ;
+		extern volatile StandAlone_Pin< 3>& PK3 ;
+		extern volatile StandAlone_Pin< 4>& PK4 ;
+		extern volatile StandAlone_Pin< 5>& PK5 ;
+		extern volatile StandAlone_Pin< 6>& PK6 ;
+		extern volatile StandAlone_Pin< 7>& PK7 ;
+		extern volatile StandAlone_Pin< 8>& PK8 ;
+		extern volatile StandAlone_Pin< 9>& PK9 ;
+		extern volatile StandAlone_Pin<10>& PK10;
+		extern volatile StandAlone_Pin<11>& PK11;
+		extern volatile StandAlone_Pin<12>& PK12;
+		extern volatile StandAlone_Pin<13>& PK13;
+		extern volatile StandAlone_Pin<14>& PK14;
+		extern volatile StandAlone_Pin<15>& PK15;
+		#endif
+		//endregion
+		
 //endregion
-template<unsigned char num>
-inline const GPIO::PinConfig &StandAlone_Pin<num>::operator=(const GPIO::PinConfig &config) volatile
-{
-	if (config.modif & 1) this->mode = config.mode;
-#ifndef STM32F1
-	if (config.modif & 2)this->outType = config.outType;
-	if (config.modif & 4)this->speed = config.speed;
-	if (config.modif & 8)this->pupd = config.pupd;
-	if (config.modif & 16)this->af = config.af;
-#ifdef GPIO_ASCR
-	if(config.modif & 32)this->asc = config.asc;
-#endif
-#else
-	if(config.modif & 2)this->cnf = config.cnf;
-#endif
-	return config;
-}
-
-template<unsigned char num>
-inline const GPIO::Mode &StandAlone_Pin<num>::operator=(const GPIO::Mode &mode) volatile
-{
-	this->mode = mode;
-	return mode;
-}
-
-#ifndef STM32F1
-
-template<unsigned char num>
-inline const GPIO::OutType &StandAlone_Pin<num>::operator=(const GPIO::OutType &oType) volatile
-{
-	this->outType = oType;
-	return oType;
-}
-
-template<unsigned char num>
-inline const GPIO::Speed &StandAlone_Pin<num>::operator=(const GPIO::Speed &speed) volatile
-{
-	this->speed = speed;
-	return speed;
-}
-
-template<unsigned char num>
-inline const GPIO::PuPd &StandAlone_Pin<num>::operator=(const GPIO::PuPd &pupd) volatile
-{
-	this->pupd = pupd;
-	return pupd;
-}
-
-template<unsigned char num>
-inline const GPIO::AF &StandAlone_Pin<num>::operator=(const GPIO::AF &af) volatile
-{
-	this->af = af;
-	return af;
-}
-
-template<unsigned char num>
-inline StandAlone_Pin<num>::operator GPIO::PinConfig const() volatile
-{
-	const GPIO::Mode mode = this->mode;
-	GPIO::PinConfig config(mode);
-#ifndef STM32F1
-	config.modif = 0b11111;
-	config.outType = this->outType;
-	config.speed = this->speed;
-	config.pupd = this->pupd;
-	config.af = this->af;
-#ifdef GPIO_ASCR
-	config.asc = this->asc;
-#endif
-#else
-	config.modif = 0b11;
-	config.cnf = this->cnf;
-#endif
-	return config;
-}
-
-#ifdef GPIO_ASCR
-template<unsigned char num>
-inline const GPIO::ASC& StandAlone_Pin<num>::operator=(const GPIO::ASC& asc)
-{
-	this->asc = asc;
-	return asc;
-}
-#endif
-#else // STM32F1
-template<unsigned char num>
-inline const GPIO::CNF& StandAlone_Pin<num>::operator=(const GPIO::CNF& cnf)
-{
-	this->cnf = cnf;
-	return cnf;
-}
-#endif
-
-template<unsigned char num>
-inline bool StandAlone_Pin<num>::read() volatile
-{
-	return (bool) ((reinterpret_cast<volatile GPIO *>(this))->IDR & (1 << num));
-}
-
-template<unsigned char num>
-inline void StandAlone_Pin<num>::write(bool value) volatile
-{
-	(reinterpret_cast<volatile GPIO *>(this))->BSRR = value ? (1 << num) : (1 << (num + 16));
-}
-
-template<unsigned char num>
-inline void StandAlone_Pin<num>::toggle() volatile
-{
-	(reinterpret_cast<volatile GPIO *>(this))->ODR ^= (1 << num);
-}
-
-template<unsigned char num>
-inline const GPIO::Pin StandAlone_Pin<num>::pin() volatile
-{
-	return GPIO::Pin(num);
-}
-
-//region PXn definitions
-#ifdef GPIOA_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PA0 ;
-extern volatile StandAlone_Pin< 1>& PA1 ;
-extern volatile StandAlone_Pin< 2>& PA2 ;
-extern volatile StandAlone_Pin< 3>& PA3 ;
-extern volatile StandAlone_Pin< 4>& PA4 ;
-extern volatile StandAlone_Pin< 5>& PA5 ;
-extern volatile StandAlone_Pin< 6>& PA6 ;
-extern volatile StandAlone_Pin< 7>& PA7 ;
-extern volatile StandAlone_Pin< 8>& PA8 ;
-extern volatile StandAlone_Pin< 9>& PA9 ;
-extern volatile StandAlone_Pin<10>& PA10;
-extern volatile StandAlone_Pin<11>& PA11;
-extern volatile StandAlone_Pin<12>& PA12;
-extern volatile StandAlone_Pin<13>& PA13;
-extern volatile StandAlone_Pin<14>& PA14;
-extern volatile StandAlone_Pin<15>& PA15;
-#endif
-#ifdef GPIOB_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PB0 ;
-extern volatile StandAlone_Pin< 1>& PB1 ;
-extern volatile StandAlone_Pin< 2>& PB2 ;
-extern volatile StandAlone_Pin< 3>& PB3 ;
-extern volatile StandAlone_Pin< 4>& PB4 ;
-extern volatile StandAlone_Pin< 5>& PB5 ;
-extern volatile StandAlone_Pin< 6>& PB6 ;
-extern volatile StandAlone_Pin< 7>& PB7 ;
-extern volatile StandAlone_Pin< 8>& PB8 ;
-extern volatile StandAlone_Pin< 9>& PB9 ;
-extern volatile StandAlone_Pin<10>& PB10;
-extern volatile StandAlone_Pin<11>& PB11;
-extern volatile StandAlone_Pin<12>& PB12;
-extern volatile StandAlone_Pin<13>& PB13;
-extern volatile StandAlone_Pin<14>& PB14;
-extern volatile StandAlone_Pin<15>& PB15;
-#endif
-#ifdef GPIOC_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PC0 ;
-extern volatile StandAlone_Pin< 1>& PC1 ;
-extern volatile StandAlone_Pin< 2>& PC2 ;
-extern volatile StandAlone_Pin< 3>& PC3 ;
-extern volatile StandAlone_Pin< 4>& PC4 ;
-extern volatile StandAlone_Pin< 5>& PC5 ;
-extern volatile StandAlone_Pin< 6>& PC6 ;
-extern volatile StandAlone_Pin< 7>& PC7 ;
-extern volatile StandAlone_Pin< 8>& PC8 ;
-extern volatile StandAlone_Pin< 9>& PC9 ;
-extern volatile StandAlone_Pin<10>& PC10;
-extern volatile StandAlone_Pin<11>& PC11;
-extern volatile StandAlone_Pin<12>& PC12;
-extern volatile StandAlone_Pin<13>& PC13;
-extern volatile StandAlone_Pin<14>& PC14;
-extern volatile StandAlone_Pin<15>& PC15;
-#endif
-#ifdef GPIOD_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PD0 ;
-extern volatile StandAlone_Pin< 1>& PD1 ;
-extern volatile StandAlone_Pin< 2>& PD2 ;
-extern volatile StandAlone_Pin< 3>& PD3 ;
-extern volatile StandAlone_Pin< 4>& PD4 ;
-extern volatile StandAlone_Pin< 5>& PD5 ;
-extern volatile StandAlone_Pin< 6>& PD6 ;
-extern volatile StandAlone_Pin< 7>& PD7 ;
-extern volatile StandAlone_Pin< 8>& PD8 ;
-extern volatile StandAlone_Pin< 9>& PD9 ;
-extern volatile StandAlone_Pin<10>& PD10;
-extern volatile StandAlone_Pin<11>& PD11;
-extern volatile StandAlone_Pin<12>& PD12;
-extern volatile StandAlone_Pin<13>& PD13;
-extern volatile StandAlone_Pin<14>& PD14;
-extern volatile StandAlone_Pin<15>& PD15;
-#endif
-#ifdef GPIOE_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PE0 ;
-extern volatile StandAlone_Pin< 1>& PE1 ;
-extern volatile StandAlone_Pin< 2>& PE2 ;
-extern volatile StandAlone_Pin< 3>& PE3 ;
-extern volatile StandAlone_Pin< 4>& PE4 ;
-extern volatile StandAlone_Pin< 5>& PE5 ;
-extern volatile StandAlone_Pin< 6>& PE6 ;
-extern volatile StandAlone_Pin< 7>& PE7 ;
-extern volatile StandAlone_Pin< 8>& PE8 ;
-extern volatile StandAlone_Pin< 9>& PE9 ;
-extern volatile StandAlone_Pin<10>& PE10;
-extern volatile StandAlone_Pin<11>& PE11;
-extern volatile StandAlone_Pin<12>& PE12;
-extern volatile StandAlone_Pin<13>& PE13;
-extern volatile StandAlone_Pin<14>& PE14;
-extern volatile StandAlone_Pin<15>& PE15;
-#endif
-#ifdef GPIOF_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PF0 ;
-extern volatile StandAlone_Pin< 1>& PF1 ;
-extern volatile StandAlone_Pin< 2>& PF2 ;
-extern volatile StandAlone_Pin< 3>& PF3 ;
-extern volatile StandAlone_Pin< 4>& PF4 ;
-extern volatile StandAlone_Pin< 5>& PF5 ;
-extern volatile StandAlone_Pin< 6>& PF6 ;
-extern volatile StandAlone_Pin< 7>& PF7 ;
-extern volatile StandAlone_Pin< 8>& PF8 ;
-extern volatile StandAlone_Pin< 9>& PF9 ;
-extern volatile StandAlone_Pin<10>& PF10;
-extern volatile StandAlone_Pin<11>& PF11;
-extern volatile StandAlone_Pin<12>& PF12;
-extern volatile StandAlone_Pin<13>& PF13;
-extern volatile StandAlone_Pin<14>& PF14;
-extern volatile StandAlone_Pin<15>& PF15;
-#endif
-#ifdef GPIOG_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PG0 ;
-extern volatile StandAlone_Pin< 1>& PG1 ;
-extern volatile StandAlone_Pin< 2>& PG2 ;
-extern volatile StandAlone_Pin< 3>& PG3 ;
-extern volatile StandAlone_Pin< 4>& PG4 ;
-extern volatile StandAlone_Pin< 5>& PG5 ;
-extern volatile StandAlone_Pin< 6>& PG6 ;
-extern volatile StandAlone_Pin< 7>& PG7 ;
-extern volatile StandAlone_Pin< 8>& PG8 ;
-extern volatile StandAlone_Pin< 9>& PG9 ;
-extern volatile StandAlone_Pin<10>& PG10;
-extern volatile StandAlone_Pin<11>& PG11;
-extern volatile StandAlone_Pin<12>& PG12;
-extern volatile StandAlone_Pin<13>& PG13;
-extern volatile StandAlone_Pin<14>& PG14;
-extern volatile StandAlone_Pin<15>& PG15;
-#endif
-#ifdef GPIOH_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PH0 ;
-extern volatile StandAlone_Pin< 1>& PH1 ;
-extern volatile StandAlone_Pin< 2>& PH2 ;
-extern volatile StandAlone_Pin< 3>& PH3 ;
-extern volatile StandAlone_Pin< 4>& PH4 ;
-extern volatile StandAlone_Pin< 5>& PH5 ;
-extern volatile StandAlone_Pin< 6>& PH6 ;
-extern volatile StandAlone_Pin< 7>& PH7 ;
-extern volatile StandAlone_Pin< 8>& PH8 ;
-extern volatile StandAlone_Pin< 9>& PH9 ;
-extern volatile StandAlone_Pin<10>& PH10;
-extern volatile StandAlone_Pin<11>& PH11;
-extern volatile StandAlone_Pin<12>& PH12;
-extern volatile StandAlone_Pin<13>& PH13;
-extern volatile StandAlone_Pin<14>& PH14;
-extern volatile StandAlone_Pin<15>& PH15;
-#endif
-#ifdef GPIOI_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PI0 ;
-extern volatile StandAlone_Pin< 1>& PI1 ;
-extern volatile StandAlone_Pin< 2>& PI2 ;
-extern volatile StandAlone_Pin< 3>& PI3 ;
-extern volatile StandAlone_Pin< 4>& PI4 ;
-extern volatile StandAlone_Pin< 5>& PI5 ;
-extern volatile StandAlone_Pin< 6>& PI6 ;
-extern volatile StandAlone_Pin< 7>& PI7 ;
-extern volatile StandAlone_Pin< 8>& PI8 ;
-extern volatile StandAlone_Pin< 9>& PI9 ;
-extern volatile StandAlone_Pin<10>& PI10;
-extern volatile StandAlone_Pin<11>& PI11;
-extern volatile StandAlone_Pin<12>& PI12;
-extern volatile StandAlone_Pin<13>& PI13;
-extern volatile StandAlone_Pin<14>& PI14;
-extern volatile StandAlone_Pin<15>& PI15;
-#endif
-#ifdef GPIOJ_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PJ0 ;
-extern volatile StandAlone_Pin< 1>& PJ1 ;
-extern volatile StandAlone_Pin< 2>& PJ2 ;
-extern volatile StandAlone_Pin< 3>& PJ3 ;
-extern volatile StandAlone_Pin< 4>& PJ4 ;
-extern volatile StandAlone_Pin< 5>& PJ5 ;
-extern volatile StandAlone_Pin< 6>& PJ6 ;
-extern volatile StandAlone_Pin< 7>& PJ7 ;
-extern volatile StandAlone_Pin< 8>& PJ8 ;
-extern volatile StandAlone_Pin< 9>& PJ9 ;
-extern volatile StandAlone_Pin<10>& PJ10;
-extern volatile StandAlone_Pin<11>& PJ11;
-extern volatile StandAlone_Pin<12>& PJ12;
-extern volatile StandAlone_Pin<13>& PJ13;
-extern volatile StandAlone_Pin<14>& PJ14;
-extern volatile StandAlone_Pin<15>& PJ15;
-#endif
-#ifdef GPIOK_BASE_ADDR
-extern volatile StandAlone_Pin< 0>& PK0 ;
-extern volatile StandAlone_Pin< 1>& PK1 ;
-extern volatile StandAlone_Pin< 2>& PK2 ;
-extern volatile StandAlone_Pin< 3>& PK3 ;
-extern volatile StandAlone_Pin< 4>& PK4 ;
-extern volatile StandAlone_Pin< 5>& PK5 ;
-extern volatile StandAlone_Pin< 6>& PK6 ;
-extern volatile StandAlone_Pin< 7>& PK7 ;
-extern volatile StandAlone_Pin< 8>& PK8 ;
-extern volatile StandAlone_Pin< 9>& PK9 ;
-extern volatile StandAlone_Pin<10>& PK10;
-extern volatile StandAlone_Pin<11>& PK11;
-extern volatile StandAlone_Pin<12>& PK12;
-extern volatile StandAlone_Pin<13>& PK13;
-extern volatile StandAlone_Pin<14>& PK14;
-extern volatile StandAlone_Pin<15>& PK15;
-#endif
-//endregion
-
 	};
 };
 //region undef
@@ -1932,5 +1943,7 @@ extern volatile StandAlone_Pin<15>& PK15;
 #undef GPIO_OSPEEDR_1_OSPEEDR0
 #undef GPIO_MAP0_BSRR
 #undef GPIO_MAP0_BRR
+
 //endregion
-#endif
+
+#endif //__SOOL_GPIO_H

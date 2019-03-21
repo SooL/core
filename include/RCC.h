@@ -1,35 +1,37 @@
 /**
  * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL.
+ * This file is part of SooL core Library.
  *
- *  SooL is free software: you can redistribute it and/or modify
+ *  SooL core Library is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL is distributed in the hope that it will be useful,
+ *  SooL core Library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_RCC_H
 #define __SOOL_RCC_H
+
+
 
 #include "lib_utils/peripheral_include.h"
 
 //region defines
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_AHB1ENR
 #define RCC_AHB1RSTR
 #define RCC_PLLCFGR
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
 #define RCC_AHB1ENR_0_GPIOAEN GPIOAEN              // 1 bits @ 0
 #define RCC_AHB1ENR_0_GPIOBEN GPIOBEN              // 1 bits @ 1
 #define RCC_AHB1ENR_0_GPIOCEN GPIOCEN              // 1 bits @ 2
@@ -128,7 +130,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_AHB1ENR_0_GPIODEN GPIODEN              // 1 bits @ 3
 #define RCC_AHB1ENR_0_GPIOEEN GPIOEEN              // 1 bits @ 4
 #define RCC_AHB1LPENR_0_GPIODLPEN GPIODLPEN            // 1 bits @ 3
@@ -180,7 +182,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_AHB1ENR_0_GPIOFEN GPIOFEN              // 1 bits @ 5
 #define RCC_AHB1ENR_0_GPIOGEN GPIOGEN              // 1 bits @ 6
 #define RCC_AHB1LPENR_0_GPIOFLPEN GPIOFLPEN            // 1 bits @ 5
@@ -206,7 +208,7 @@
 
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_AHB1ENR_0_GPIOIEN GPIOIEN              // 1 bits @ 8
 #define RCC_AHB1LPENR_0_GPIOILPEN GPIOILPEN            // 1 bits @ 8
 #define RCC_AHB1RSTR_0_GPIOIRST GPIOIRST             // 1 bits @ 8
@@ -219,7 +221,7 @@
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F745xx ) || defined(STM32F746xx ) ||\
     defined(STM32F756xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_AHB1ENR_0_GPIOJEN GPIOJEN              // 1 bits @ 9
 #define RCC_AHB1ENR_0_GPIOKEN GPIOKEN              // 1 bits @ 10
 #define RCC_AHB1ENR_0_DMA2DEN DMA2DEN              // 1 bits @ 23
@@ -250,7 +252,7 @@
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_AHB1ENR_0_CRCEN  CRCEN                // 1 bits @ 12
 #define RCC_AHB1RSTR_0_CRCRST CRCRST               // 1 bits @ 12
 #else
@@ -258,7 +260,7 @@
 #define RCC_AHB1RSTR_0_CRCRST
 #endif
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define RCC_AHB1ENR_0_ETH1MACEN ETH1MACEN            // 1 bits @ 15
 #define RCC_AHB1ENR_0_ETH1TXEN ETH1TXEN             // 1 bits @ 16
 #define RCC_AHB1ENR_0_ETH1RXEN ETH1RXEN             // 1 bits @ 17
@@ -621,7 +623,7 @@
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_AHB1ENR_0_BKPSRAMEN BKPSRAMEN            // 1 bits @ 18
 #define RCC_AHB1ENR_0_OTGHSEN OTGHSEN              // 1 bits @ 29
 #define RCC_AHB1ENR_0_OTGHSULPIEN OTGHSULPIEN          // 1 bits @ 30
@@ -649,7 +651,7 @@
 
 #if defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_AHB1ENR_0_CCMDATARAMEN CCMDATARAMEN         // 1 bits @ 20
 #else
 #define RCC_AHB1ENR_0_CCMDATARAMEN
@@ -659,7 +661,7 @@
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F745xx ) || defined(STM32F746xx ) ||\
     defined(STM32F756xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_AHB1ENR_0_ETHMACEN ETHMACEN             // 1 bits @ 25
 #define RCC_AHB1ENR_0_ETHMACTXEN ETHMACTXEN           // 1 bits @ 26
 #define RCC_AHB1ENR_0_ETHMACRXEN ETHMACRXEN           // 1 bits @ 27
@@ -681,7 +683,7 @@
 #define RCC_AHB1RSTR_0_ETHMACRST
 #endif
 
-#if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) 
+#if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx )
 #define RCC_AHB1ENR_0_RNGEN  RNGEN                // 1 bits @ 31
 #define RCC_AHB1LPENR_0_RNGLPEN RNGLPEN              // 1 bits @ 31
 #define RCC_AHB1RSTR_0_RNGRST RNGRST               // 1 bits @ 31
@@ -695,11 +697,11 @@
 #define RCC_DCKCFGR_0_I2SSRC
 #endif
 
-#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_AHB1ENR_1
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_AHB1ENR_1_DMA1EN DMA1EN               // 1 bits @ 0
 #define RCC_AHB1ENR_1_DMA2EN DMA2EN               // 1 bits @ 1
 #define RCC_AHB1RSTR_1
@@ -719,7 +721,7 @@
 #define RCC_CIFR_0_LSECSSF
 #endif
 
-#if defined(STM32L4P    ) 
+#if defined(STM32L4P    )
 #define RCC_AHB1ENR_1_DMAMUX1EN DMAMUX1EN            // 1 bits @ 2
 #define RCC_AHB1RSTR_1_DMAMUX1RST DMAMUX1RST           // 1 bits @ 2
 #define RCC_AHB1SMENR_DMAMUX1SMEN DMAMUX1SMEN          // 1 bits @ 2
@@ -777,7 +779,7 @@
 #define RCC_PLLSAI2CFGR_PLLSAI2Q
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_AHB1ENR_1_FLASHEN FLASHEN              // 1 bits @ 8
 #define RCC_AHB1ENR_1_TSCEN  TSCEN                // 1 bits @ 16
 #define RCC_AHB1RSTR_0_TSCRST TSCRST               // 1 bits @ 16
@@ -949,7 +951,7 @@
 #define RCC_MAP3_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+#if defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_AHB1ENR_1_DMA2DEN DMA2DEN              // 1 bits @ 17
 #define RCC_AHB1RSTR_1_DMA2DRST DMA2DRST             // 1 bits @ 17
 #define RCC_AHB1SMENR_DMA2DSMEN DMA2DSMEN            // 1 bits @ 17
@@ -973,7 +975,7 @@
 #define RCC_PLLSAI2CFGR_PLLSAI2PDIV
 #endif
 
-#if defined(STM32L4R7xx ) || defined(STM32L4R9xx ) || defined(STM32L4S7xx ) || defined(STM32L4S9xx ) 
+#if defined(STM32L4R7xx ) || defined(STM32L4R9xx ) || defined(STM32L4S7xx ) || defined(STM32L4S9xx )
 #define RCC_AHB1ENR_1_GFXMMUEN GFXMMUEN             // 1 bits @ 18
 #define RCC_AHB1RSTR_0_GFXMMURST GFXMMURST            // 1 bits @ 18
 #define RCC_AHB1SMENR_GFXMMUSMEN GFXMMUSMEN           // 1 bits @ 18
@@ -985,7 +987,7 @@
 #define RCC_APB2SMENR_0_LTDCSMEN
 #endif
 
-#if defined(STM32F7     ) 
+#if defined(STM32F7     )
 #define RCC_AHB1ENR_1_DTCMRAMEN DTCMRAMEN            // 1 bits @ 20
 #define RCC_AHB1LPENR_0_AXILPEN AXILPEN              // 1 bits @ 13
 #define RCC_AHB1LPENR_0_DTCMLPEN DTCMLPEN             // 1 bits @ 20
@@ -1029,7 +1031,7 @@
 #define RCC_MAP1_DCKCFGR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_AHB1LPENR
 #define RCC_APB2ENR_1_USART1EN USART1EN             // 1 bits @ 4
 #define RCC_APB2ENR_2_TIM1EN TIM1EN               // 1 bits @ 0
@@ -1054,14 +1056,14 @@
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_AHB1LPENR_0_SRAM2LPEN SRAM2LPEN            // 1 bits @ 17
 #else
 #define RCC_AHB1LPENR_0_SRAM2LPEN
 #endif
 
 #if defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) 
+    defined(STM32F479xx )
 #define RCC_AHB1LPENR_0_SRAM3LPEN SRAM3LPEN            // 1 bits @ 19
 #else
 #define RCC_AHB1LPENR_0_SRAM3LPEN
@@ -1073,7 +1075,7 @@
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
     defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_AHB2ENR
 #define RCC_AHB2RSTR
 #endif
@@ -1082,7 +1084,7 @@
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F745xx ) ||\
     defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) ||\
-    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32H7     ) 
+    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32H7     )
 #define RCC_AHB2ENR_0_DCMIEN DCMIEN               // 1 bits @ 0
 #define RCC_AHB2LPENR_0_DCMILPEN DCMILPEN             // 1 bits @ 0
 #define RCC_AHB2RSTR_0_DCMIRST DCMIRST              // 1 bits @ 0
@@ -1092,7 +1094,7 @@
 #define RCC_AHB2RSTR_0_DCMIRST
 #endif
 
-#if defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) 
+#if defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_AHB2ENR_0_JPEGEN JPEGEN               // 1 bits @ 1
 #define RCC_AHB2LPENR_0_JPEGLPEN JPEGLPEN             // 1 bits @ 1
 #define RCC_AHB2RSTR_0_JPEGRST JPEGRST              // 1 bits @ 1
@@ -1105,7 +1107,7 @@
 #if defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
     defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
     defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_AHB2ENR_0_GPIODEN GPIODEN              // 1 bits @ 3
 #define RCC_AHB2ENR_2
 #define RCC_AHB2RSTR_0_GPIODRST GPIODRST             // 1 bits @ 3
@@ -1143,7 +1145,7 @@
 
 #if defined(STM32F215xx ) || defined(STM32F217xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F479xx ) || defined(STM32F756xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32H7     ) 
+    defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32H7     )
 #define RCC_AHB2ENR_0_CRYPEN CRYPEN               // 1 bits @ 4
 #define RCC_AHB2ENR_0_HASHEN HASHEN               // 1 bits @ 5
 #define RCC_AHB2LPENR_0_CRYPLPEN CRYPLPEN             // 1 bits @ 4
@@ -1163,7 +1165,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_AHB2ENR_0_RNGEN  RNGEN                // 1 bits @ 6
 #define RCC_AHB2LPENR_0_RNGLPEN RNGLPEN              // 1 bits @ 6
 #define RCC_AHB2RSTR_0_RNGRST RNGRST               // 1 bits @ 6
@@ -1175,7 +1177,7 @@
 
 #if defined(STM32L442xx ) || defined(STM32L443xx ) || defined(STM32L462xx ) || defined(STM32L485xx ) ||\
     defined(STM32L486xx ) || defined(STM32L4A6xx ) || defined(STM32L4S5xx ) || defined(STM32L4S7xx ) ||\
-    defined(STM32L4S9xx ) 
+    defined(STM32L4S9xx )
 #define RCC_AHB2ENR_0_AESEN  AESEN                // 1 bits @ 16
 #define RCC_AHB2RSTR_0_AESRST AESRST               // 1 bits @ 16
 #define RCC_AHB2SMENR_AESSMEN AESSMEN              // 1 bits @ 16
@@ -1186,12 +1188,12 @@
 #endif
 
 #if defined(STM32F423xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_AHB2ENR_1
 #define RCC_AHB2RSTR_1
 #endif
 
-#if defined(STM32F423xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) 
+#if defined(STM32F423xx ) || defined(STM32F732xx ) || defined(STM32F733xx )
 #define RCC_AHB2ENR_1_AESEN  AESEN                // 1 bits @ 4
 #define RCC_AHB2LPENR_1_AESLPEN AESLPEN              // 1 bits @ 4
 #define RCC_AHB2RSTR_1_AESRST AESRST               // 1 bits @ 4
@@ -1202,7 +1204,7 @@
 #endif
 
 #if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_AHB2ENR_1_GPIOFEN GPIOFEN              // 1 bits @ 5
 #define RCC_AHB2ENR_1_GPIOGEN GPIOGEN              // 1 bits @ 6
 #define RCC_AHB2ENR_1_OTGFSEN OTGFSEN              // 1 bits @ 12
@@ -1265,7 +1267,7 @@
 #define RCC_MAP4_PLLSAI2CFGR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L4A6xx ) || defined(STM32L4S5xx ) || defined(STM32L4S7xx ) || defined(STM32L4S9xx ) 
+#if defined(STM32L4A6xx ) || defined(STM32L4S5xx ) || defined(STM32L4S7xx ) || defined(STM32L4S9xx )
 #define RCC_AHB2ENR_1_HASHEN HASHEN               // 1 bits @ 17
 #define RCC_AHB2RSTR_1_HASHRST HASHRST              // 1 bits @ 17
 #define RCC_AHB2SMENR_HASHSMEN HASHSMEN             // 1 bits @ 17
@@ -1280,11 +1282,11 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_AHB2LPENR
 #endif
 
-#if defined(STM32F423xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) || defined(STM32H7     ) 
+#if defined(STM32F423xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) || defined(STM32H7     )
 #define RCC_AHB2LPENR_1
 #endif
 
@@ -1293,7 +1295,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_AHB3ENR
 #define RCC_AHB3RSTR
 #endif
@@ -1301,14 +1303,14 @@
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4P    ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4P    )
 #define RCC_AHB3ENR_0
 #define RCC_AHB3RSTR_0
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) 
+    defined(STM32F417xx ) || defined(STM32F423xx )
 #define RCC_AHB3ENR_0_FSMCEN FSMCEN               // 1 bits @ 0
 #define RCC_AHB3LPENR_0_FSMCLPEN FSMCLPEN             // 1 bits @ 0
 #define RCC_AHB3RSTR_0_FSMCRST FSMCRST              // 1 bits @ 0
@@ -1320,7 +1322,7 @@
 
 #if defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_AHB3ENR_0_QSPIEN QSPIEN               // 1 bits @ 1
 #define RCC_AHB3LPENR_0_QSPILPEN QSPILPEN             // 1 bits @ 1
 #define RCC_AHB3RSTR_0_QSPIRST QSPIRST              // 1 bits @ 1
@@ -1334,7 +1336,7 @@
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
     defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
     defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_AHB3ENR_1
 #define RCC_AHB3RSTR_1
 #endif
@@ -1342,7 +1344,7 @@
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
     defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_AHB3ENR_1_FMCEN  FMCEN                // 1 bits @ 0
 #define RCC_AHB3RSTR_1_FMCRST FMCRST               // 1 bits @ 0
 #else
@@ -1350,12 +1352,12 @@
 #define RCC_AHB3RSTR_1_FMCRST
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L4     ) 
+#if defined(STM32H7     ) || defined(STM32L4     )
 #define RCC_AHB3ENR_2
 #define RCC_AHB3RSTR_2
 #endif
 
-#if defined(STM32L4     ) 
+#if defined(STM32L4     )
 #define RCC_AHB3ENR_2_QSPIEN QSPIEN               // 1 bits @ 8
 #define RCC_AHB3RSTR_2_QSPIRST QSPIRST              // 1 bits @ 8
 #define RCC_AHB3SMENR_0_QSPISMEN QSPISMEN             // 1 bits @ 8
@@ -1374,25 +1376,25 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_AHB3LPENR
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_AHB3LPENR_0
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) 
+    defined(STM32H7     )
 #define RCC_AHB3LPENR_1
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_AHB3LPENR_1_FMCLPEN FMCLPEN              // 1 bits @ 0
 #define RCC_CIR_2_PLLSAIRDYF PLLSAIRDYF           // 1 bits @ 6
 #define RCC_CIR_2_PLLSAIRDYIE PLLSAIRDYIE          // 1 bits @ 14
@@ -1412,7 +1414,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_AHBENR
 #define RCC_CFGR_0_PLLMUL    PLLMUL               // 4 bits @ 18
 #else
@@ -1421,11 +1423,11 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
     defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) 
+    defined(STM32L162xE )
 #define RCC_AHBENR_0
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L0     ) 
+#if defined(STM32F0     ) || defined(STM32L0     )
 #define RCC_AHBENR_0_DMAEN   DMAEN                // 1 bits @ 0
 #define RCC_APB2ENR_0_ADCEN  ADCEN                // 1 bits @ 9
 #define RCC_APB2ENR_0_DBGMCUEN DBGMCUEN             // 1 bits @ 22
@@ -1443,13 +1445,13 @@
     defined(STM32F101xG ) || defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) ||\
     defined(STM32F107xC ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define RCC_AHBENR_0_DMA2EN  DMA2EN               // 1 bits @ 1
 #else
 #define RCC_AHBENR_0_DMA2EN
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) 
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     )
 #define RCC_AHBENR_0_SRAMEN  SRAMEN               // 1 bits @ 2
 #define RCC_AHBENR_0_FLITFEN FLITFEN              // 1 bits @ 4
 #define RCC_AHBENR_0_CRCEN   CRCEN                // 1 bits @ 6
@@ -1479,7 +1481,7 @@
 #define RCC_MAP0_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F302xE ) || defined(STM32F303xE ) || defined(STM32F398xx ) 
+#if defined(STM32F302xE ) || defined(STM32F303xE ) || defined(STM32F398xx )
 #define RCC_AHBENR_0_FMCEN   FMCEN                // 1 bits @ 5
 #define RCC_AHBENR_0_GPIOGEN GPIOGEN              // 1 bits @ 23
 #define RCC_AHBENR_1_GPIOHEN GPIOHEN              // 1 bits @ 16
@@ -1504,7 +1506,7 @@
 #endif
 
 #if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) 
+    defined(STM32F103xG )
 #define RCC_AHBENR_0_FSMCEN  FSMCEN               // 1 bits @ 8
 #define RCC_APB2ENR_0_IOPGEN IOPGEN               // 1 bits @ 8
 #define RCC_APB2ENR_1_IOPFEN IOPFEN               // 1 bits @ 7
@@ -1518,7 +1520,7 @@
 #define RCC_APB2RSTR_1_IOPFRST
 #endif
 
-#if defined(STM32F103xE ) || defined(STM32F103xG ) 
+#if defined(STM32F103xE ) || defined(STM32F103xG )
 #define RCC_AHBENR_0_SDIOEN  SDIOEN               // 1 bits @ 10
 #define RCC_APB2ENR_0_ADC3EN ADC3EN               // 1 bits @ 15
 #define RCC_APB2RSTR_0_ADC3RST ADC3RST              // 1 bits @ 15
@@ -1528,7 +1530,7 @@
 #define RCC_APB2RSTR_0_ADC3RST
 #endif
 
-#if defined(STM32F105xC ) || defined(STM32F107xC ) 
+#if defined(STM32F105xC ) || defined(STM32F107xC )
 #define RCC_AHBENR_0_OTGFSEN OTGFSEN              // 1 bits @ 12
 #define RCC_AHBRSTR_0_OTGFSRST OTGFSRST             // 1 bits @ 12
 #define RCC_CFGR_1_OTGFSPRE  OTGFSPRE             // 1 bits @ 22
@@ -1551,7 +1553,7 @@
 #define RCC_CFGR2_0_I2S3SRC
 #endif
 
-#if defined(STM32F107xC ) 
+#if defined(STM32F107xC )
 #define RCC_AHBENR_0_ETHMACEN ETHMACEN             // 1 bits @ 14
 #define RCC_AHBENR_0_ETHMACTXEN ETHMACTXEN           // 1 bits @ 15
 #define RCC_AHBENR_0_ETHMACRXEN ETHMACRXEN           // 1 bits @ 16
@@ -1563,7 +1565,7 @@
 #define RCC_AHBRSTR_0_ETHMACRST
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) 
+#if defined(STM32F0     ) || defined(STM32F3     )
 #define RCC_AHBENR_0_GPIOAEN GPIOAEN              // 1 bits @ 17
 #define RCC_AHBENR_0_GPIOBEN GPIOBEN              // 1 bits @ 18
 #define RCC_AHBENR_0_GPIOCEN GPIOCEN              // 1 bits @ 19
@@ -1588,10 +1590,10 @@
 #define RCC_MAP0_CFGR3 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) ||\
-    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
-    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
-    defined(STM32F3     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) ||\
+    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F3     )
 #define RCC_AHBENR_0_GPIODEN GPIODEN              // 1 bits @ 20
 #define RCC_AHBRSTR_0_GPIODRST GPIODRST             // 1 bits @ 20
 #else
@@ -1602,19 +1604,17 @@
 #if defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define RCC_AHBENR_0_GPIOEEN GPIOEEN              // 1 bits @ 21
 #define RCC_AHBRSTR_0_GPIOERST GPIOERST             // 1 bits @ 21
-#define RCC_CFGR3_0_USART2SW USART2SW             // 2 bits @ 16
 #else
 #define RCC_AHBENR_0_GPIOEEN
 #define RCC_AHBRSTR_0_GPIOERST
-#define RCC_CFGR3_0_USART2SW
 #endif
 
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
-    defined(STM32F098xx ) || defined(STM32F3     ) 
+    defined(STM32F098xx ) || defined(STM32F3     )
 #define RCC_AHBENR_0_TSCEN   TSCEN                // 1 bits @ 24
 #define RCC_AHBRSTR_0_TSCRST TSCRST               // 1 bits @ 24
 #else
@@ -1623,7 +1623,7 @@
 #endif
 
 #if defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) 
+    defined(STM32L162xE )
 #define RCC_AHBENR_0_AESEN   AESEN                // 1 bits @ 27
 #define RCC_AHBLPENR_AESLPEN AESLPEN              // 1 bits @ 27
 #define RCC_AHBRSTR_0_AESRST AESRST               // 1 bits @ 27
@@ -1633,7 +1633,7 @@
 #define RCC_AHBRSTR_0_AESRST
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx ) 
+#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F318xx )
 #define RCC_AHBENR_0_ADC1EN  ADC1EN               // 1 bits @ 28
 #define RCC_AHBRSTR_0_ADC1RST ADC1RST              // 1 bits @ 28
 #define RCC_CFGR2_1_ADC1PRES ADC1PRES             // 5 bits @ 4
@@ -1644,7 +1644,7 @@
 #endif
 
 #if defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define RCC_AHBENR_0_ADC34EN ADC34EN              // 1 bits @ 29
 #define RCC_AHBRSTR_0_ADC34RST ADC34RST             // 1 bits @ 29
 #else
@@ -1655,17 +1655,17 @@
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_AHBENR_1
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) 
+#if defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     )
 #define RCC_AHBENR_1_DMA1EN  DMA1EN               // 1 bits @ 0
 #else
 #define RCC_AHBENR_1_DMA1EN
 #endif
 
-#if defined(STM32L1     ) 
+#if defined(STM32L1     )
 #define RCC_AHBENR_1_GPIOBEN GPIOBEN              // 1 bits @ 1
 #define RCC_AHBENR_1_GPIOCEN GPIOCEN              // 1 bits @ 2
 #define RCC_AHBENR_1_GPIODEN GPIODEN              // 1 bits @ 3
@@ -1758,7 +1758,7 @@
     defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xB ) ||\
     defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_AHBENR_1_GPIOEEN GPIOEEN              // 1 bits @ 4
 #define RCC_AHBLPENR_GPIOELPEN GPIOELPEN            // 1 bits @ 4
 #define RCC_AHBRSTR_1_GPIOERST GPIOERST             // 1 bits @ 4
@@ -1770,7 +1770,7 @@
 
 #if defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_AHBENR_1_GPIOFEN GPIOFEN              // 1 bits @ 6
 #define RCC_AHBENR_1_GPIOGEN GPIOGEN              // 1 bits @ 7
 #define RCC_AHBLPENR_GPIOFLPEN GPIOFLPEN            // 1 bits @ 6
@@ -1786,7 +1786,7 @@
 #define RCC_AHBRSTR_1_GPIOGRST
 #endif
 
-#if defined(STM32L0     ) 
+#if defined(STM32L0     )
 #define RCC_AHBENR_1_MIFEN   MIFEN                // 1 bits @ 8
 #define RCC_AHBRSTR_0_DMARST DMARST               // 1 bits @ 0
 #define RCC_AHBRSTR_0_MIFRST MIFRST               // 1 bits @ 8
@@ -1903,7 +1903,7 @@
 #define RCC_MAP2_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L1     ) 
+#if defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_AHBENR_1_CRCEN   CRCEN                // 1 bits @ 12
 #define RCC_AHBRSTR_1_CRCRST CRCRST               // 1 bits @ 12
 #define RCC_CFGR_3_PLLDIV    PLLDIV               // 2 bits @ 22
@@ -1927,7 +1927,7 @@
 #endif
 
 #if defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_AHBENR_1_RNGEN   RNGEN                // 1 bits @ 20
 #define RCC_AHBENR_2_TSCEN   TSCEN                // 1 bits @ 16
 #define RCC_AHBRSTR_1_TSCRST TSCRST               // 1 bits @ 16
@@ -1962,7 +1962,7 @@
 
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
-    defined(STM32F098xx ) 
+    defined(STM32F098xx )
 #define RCC_AHBENR_1_TSEN    TSEN                 // 1 bits @ 24
 #else
 #define RCC_AHBENR_1_TSEN
@@ -1971,7 +1971,7 @@
 #if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
     defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_AHBENR_1_DMA2EN  DMA2EN               // 1 bits @ 25
 #define RCC_AHBLPENR_DMA2LPEN DMA2LPEN             // 1 bits @ 25
 #define RCC_AHBRSTR_0_DMA2RST DMA2RST              // 1 bits @ 25
@@ -1983,7 +1983,7 @@
 
 #if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define RCC_AHBENR_1_ADC12EN ADC12EN              // 1 bits @ 28
 #define RCC_AHBRSTR_1_ADC12RST ADC12RST             // 1 bits @ 28
 #define RCC_CFGR2_2
@@ -1992,7 +1992,7 @@
 #define RCC_AHBRSTR_1_ADC12RST
 #endif
 
-#if defined(STM32L151xD ) || defined(STM32L152xD ) || defined(STM32L162xD ) 
+#if defined(STM32L151xD ) || defined(STM32L152xD ) || defined(STM32L162xD )
 #define RCC_AHBENR_1_FSMCEN  FSMCEN               // 1 bits @ 30
 #define RCC_AHBLPENR_FSMCLPEN FSMCLPEN             // 1 bits @ 30
 #define RCC_AHBRSTR_0_FSMCRST FSMCRST              // 1 bits @ 30
@@ -2005,12 +2005,12 @@
 #if defined(STM32L021xx ) || defined(STM32L041xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) ||\
     defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L072xx ) ||\
     defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_AHBENR_2
 #endif
 
 #if defined(STM32L021xx ) || defined(STM32L041xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
-    defined(STM32L063xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L063xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_AHBENR_2_CRYPEN  CRYPEN               // 1 bits @ 24
 #define RCC_AHBRSTR_1_CRYPRST CRYPRST              // 1 bits @ 24
 #define RCC_AHBSMENR_0_CRYPSMEN CRYPSMEN             // 1 bits @ 24
@@ -2021,18 +2021,18 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F3     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_AHBRSTR
 #endif
 
 #if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_AHBRSTR_1
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_APB1ENR
 #define RCC_APB1RSTR
 #define RCC_CSR_0_PORRSTF    PORRSTF              // 1 bits @ 27
@@ -2049,7 +2049,7 @@
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_APB1ENR_0_TIM2EN TIM2EN               // 1 bits @ 0
 #define RCC_APB1RSTR_0_TIM2RST TIM2RST              // 1 bits @ 0
 #else
@@ -2067,7 +2067,7 @@
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L071xx ) ||\
     defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) || defined(STM32L1     ) 
+    defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_TIM3EN TIM3EN               // 1 bits @ 1
 #define RCC_APB1RSTR_0_TIM3RST TIM3RST              // 1 bits @ 1
 #else
@@ -2085,7 +2085,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_TIM4EN TIM4EN               // 1 bits @ 2
 #define RCC_APB1RSTR_0_TIM4RST TIM4RST              // 1 bits @ 2
 #else
@@ -2099,7 +2099,7 @@
     defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) ||\
     defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1ENR_0_TIM5EN TIM5EN               // 1 bits @ 3
 #define RCC_APB1RSTR_0_TIM5RST TIM5RST              // 1 bits @ 3
 #else
@@ -2107,20 +2107,20 @@
 #define RCC_APB1RSTR_0_TIM5RST
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) ||\
-    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
-    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
-    defined(STM32F410Tx ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) ||\
-    defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) ||\
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) || defined(STM32L1     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) ||\
+    defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
+    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
+    defined(STM32F3     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) ||\
+    defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
+    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
+    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
+    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
+    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_TIM6EN TIM6EN               // 1 bits @ 4
 #define RCC_APB1RSTR_0_TIM6RST TIM6RST              // 1 bits @ 4
 #else
@@ -2140,7 +2140,7 @@
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L071xx ) ||\
     defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) || defined(STM32L1     ) 
+    defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_TIM7EN TIM7EN               // 1 bits @ 5
 #define RCC_APB1RSTR_0_TIM7RST TIM7RST              // 1 bits @ 5
 #else
@@ -2153,7 +2153,7 @@
     defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_APB1ENR_0_TIM12EN TIM12EN              // 1 bits @ 6
 #define RCC_APB1ENR_0_TIM13EN TIM13EN              // 1 bits @ 7
 #define RCC_APB1RSTR_0_TIM12RST TIM12RST             // 1 bits @ 6
@@ -2171,7 +2171,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_APB1ENR_0_TIM14EN TIM14EN              // 1 bits @ 8
 #define RCC_APB1RSTR_0_TIM14RST TIM14RST             // 1 bits @ 8
 #else
@@ -2179,7 +2179,7 @@
 #define RCC_APB1RSTR_0_TIM14RST
 #endif
 
-#if defined(STM32F373xC ) || defined(STM32F378xx ) 
+#if defined(STM32F373xC ) || defined(STM32F378xx )
 #define RCC_APB1ENR_0_TIM18EN TIM18EN              // 1 bits @ 9
 #define RCC_APB1RSTR_0_TIM18RST TIM18RST             // 1 bits @ 9
 #define RCC_APB2ENR_0_SDADC1EN SDADC1EN             // 1 bits @ 24
@@ -2209,7 +2209,7 @@
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F412Cx ) ||\
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F423xx ) 
+    defined(STM32F423xx )
 #define RCC_APB1ENR_0_RTCAPBEN RTCAPBEN             // 1 bits @ 10
 #define RCC_APB1LPENR_0_RTCAPBLPEN RTCAPBLPEN           // 1 bits @ 10
 #define RCC_APB2ENR_2_EXTITEN EXTITEN              // 1 bits @ 15
@@ -2222,7 +2222,7 @@
 #endif
 
 #if defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
+    defined(STM32F779xx )
 #define RCC_APB1ENR_0_CAN3EN CAN3EN               // 1 bits @ 13
 #define RCC_APB1LPENR_1_CAN3LPEN CAN3LPEN             // 1 bits @ 13
 #define RCC_APB1RSTR_0_CAN3RST CAN3RST              // 1 bits @ 13
@@ -2248,24 +2248,24 @@
 #define RCC_DCKCFGR1_ADFSDM1SEL
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
-    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
-    defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) ||\
-    defined(STM32F101xG ) || defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F401xC ) ||\
-    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) ||\
-    defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
-    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070xB ) ||\
+    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
+    defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) ||\
+    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102xB ) || defined(STM32F103xB ) ||\
+    defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
+    defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
+    defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
+    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
+    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
+    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) ||\
+    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
+    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
+    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L051xx ) ||\
+    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
+    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
+    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_SPI2EN SPI2EN               // 1 bits @ 14
 #define RCC_APB1RSTR_0_SPI2RST SPI2RST              // 1 bits @ 14
 #else
@@ -2286,7 +2286,7 @@
     defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
     defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1ENR_0_SPI3EN SPI3EN               // 1 bits @ 15
 #define RCC_APB1RSTR_0_SPI3RST SPI3RST              // 1 bits @ 15
 #else
@@ -2296,7 +2296,7 @@
 
 #if defined(STM32F446xx ) || defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) ||\
     defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
+    defined(STM32F779xx )
 #define RCC_APB1ENR_0_SPDIFRXEN SPDIFRXEN            // 1 bits @ 16
 #define RCC_APB1ENR_3
 #define RCC_APB1LPENR_0_SPDIFRXLPEN SPDIFRXLPEN          // 1 bits @ 16
@@ -2314,11 +2314,12 @@
 #define RCC_PLLI2SCFGR_PLLI2SP
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
-    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
-    defined(STM32F098xx ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F042x6 ) ||\
+    defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F070x6 ) ||\
+    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
+    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F1     ) || defined(STM32F2     ) ||\
+    defined(STM32F3     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     )
 #define RCC_APB1ENR_0_USART2EN USART2EN             // 1 bits @ 17
 #define RCC_APB1RSTR_0_USART2RST USART2RST            // 1 bits @ 17
 #else
@@ -2335,7 +2336,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_USART3EN USART3EN             // 1 bits @ 18
 #define RCC_APB1RSTR_0_USART3RST USART3RST            // 1 bits @ 18
 #else
@@ -2346,7 +2347,7 @@
 #if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
     defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) ||\
     defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) 
+    defined(STM32L083xx )
 #define RCC_APB1ENR_0_USART4EN USART4EN             // 1 bits @ 19
 #define RCC_APB1RSTR_0_USART4RST USART4RST            // 1 bits @ 19
 #else
@@ -2356,7 +2357,7 @@
 
 #if defined(STM32F030xC ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L071xx ) ||\
     defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) 
+    defined(STM32L083xx )
 #define RCC_APB1ENR_0_USART5EN USART5EN             // 1 bits @ 20
 #define RCC_APB1RSTR_0_USART5RST USART5RST            // 1 bits @ 20
 #else
@@ -2364,18 +2365,19 @@
 #define RCC_APB1RSTR_0_USART5RST
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) ||\
-    defined(STM32F101xB ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102xB ) ||\
-    defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) ||\
-    defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L051xx ) ||\
-    defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
-    defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
-    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) ||\
+    defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) || defined(STM32F101xG ) ||\
+    defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
+    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F301x8 ) ||\
+    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
+    defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
+    defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
+    defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) ||\
+    defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
+    defined(STM32L1     )
 #define RCC_APB1ENR_0_I2C2EN I2C2EN               // 1 bits @ 22
 #define RCC_APB1RSTR_0_I2C2RST I2C2RST              // 1 bits @ 22
 #else
@@ -2389,7 +2391,7 @@
     defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F373xC ) || defined(STM32L052xx ) || defined(STM32L053xx ) ||\
     defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) 
+    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_USBEN  USBEN                // 1 bits @ 23
 #define RCC_APB1RSTR_0_USBRST USBRST               // 1 bits @ 23
 #else
@@ -2399,7 +2401,7 @@
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F412Cx ) ||\
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F446xx ) 
+    defined(STM32F423xx ) || defined(STM32F446xx )
 #define RCC_APB1ENR_0_FMPI2C1EN FMPI2C1EN            // 1 bits @ 24
 #define RCC_APB1RSTR_0_FMPI2C1RST FMPI2C1RST           // 1 bits @ 24
 #define RCC_CKGATENR
@@ -2418,7 +2420,7 @@
     defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
     defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
     defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F398xx ) 
+    defined(STM32F378xx ) || defined(STM32F398xx )
 #define RCC_APB1ENR_0_CANEN  CANEN                // 1 bits @ 25
 #define RCC_APB1RSTR_0_CANRST CANRST               // 1 bits @ 25
 #else
@@ -2432,7 +2434,7 @@
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
     defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32F765xx ) ||\
-    defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_APB1ENR_0_CAN2EN CAN2EN               // 1 bits @ 26
 #define RCC_APB1RSTR_0_CAN2RST CAN2RST              // 1 bits @ 26
 #else
@@ -2443,7 +2445,7 @@
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
     defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32L052xx ) ||\
     defined(STM32L053xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L072xx ) ||\
-    defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_APB1ENR_0_CRSEN  CRSEN                // 1 bits @ 27
 #define RCC_APB1RSTR_0_CRSRST CRSRST               // 1 bits @ 27
 #else
@@ -2461,7 +2463,7 @@
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
     defined(STM32F7     ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L062xx ) ||\
     defined(STM32L063xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) || defined(STM32L1     ) 
+    defined(STM32L083xx ) || defined(STM32L1     )
 #define RCC_APB1ENR_0_DACEN  DACEN                // 1 bits @ 29
 #define RCC_APB1RSTR_0_DACRST DACRST               // 1 bits @ 29
 #else
@@ -2472,7 +2474,7 @@
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) 
+    defined(STM32F378xx )
 #define RCC_APB1ENR_0_CECEN  CECEN                // 1 bits @ 30
 #define RCC_APB1RSTR_0_CECRST CECRST               // 1 bits @ 30
 #else
@@ -2482,7 +2484,7 @@
 
 #if defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_APB1ENR_0_UART8EN UART8EN              // 1 bits @ 31
 #define RCC_APB1ENR_1_UART7EN UART7EN              // 1 bits @ 30
 #define RCC_APB1LPENR_0_UART7LPEN UART7LPEN            // 1 bits @ 30
@@ -2499,13 +2501,13 @@
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_APB1ENR_1
 #define RCC_APB1RSTR_1
 #endif
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F413xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F7     ) 
+    defined(STM32F423xx ) || defined(STM32F7     )
 #define RCC_APB1ENR_1_LPTIM1EN LPTIM1EN             // 1 bits @ 9
 #define RCC_APB1LPENR_0_LPTIM1LPEN LPTIM1LPEN           // 1 bits @ 9
 #define RCC_APB1RSTR_1_LPTIM1RST LPTIM1RST            // 1 bits @ 9
@@ -2517,7 +2519,7 @@
 
 #if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
     defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
+    defined(STM32F779xx )
 #define RCC_APB1ENR_1_RTCEN  RTCEN                // 1 bits @ 10
 #define RCC_APB1LPENR_1_RTCLPEN RTCLPEN              // 1 bits @ 10
 #define RCC_APB2ENR_3_SDMMC2EN SDMMC2EN             // 1 bits @ 7
@@ -2542,7 +2544,7 @@
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
     defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) 
+    defined(STM32L162xE )
 #define RCC_APB1ENR_1_UART4EN UART4EN              // 1 bits @ 19
 #define RCC_APB1ENR_1_UART5EN UART5EN              // 1 bits @ 20
 #define RCC_APB1RSTR_1_UART4RST UART4RST             // 1 bits @ 19
@@ -2555,7 +2557,7 @@
 #endif
 
 #if defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32F765xx ) ||\
-    defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_APB1ENR_1_I2C4EN I2C4EN               // 1 bits @ 24
 #define RCC_APB1LPENR_1_I2C4LPEN I2C4LPEN             // 1 bits @ 24
 #define RCC_APB1RSTR_1_I2C4RST I2C4RST              // 1 bits @ 24
@@ -2575,7 +2577,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_APB1ENR_1_CAN1EN CAN1EN               // 1 bits @ 25
 #define RCC_APB1RSTR_1_CAN1RST CAN1RST              // 1 bits @ 25
 #else
@@ -2584,7 +2586,7 @@
 #endif
 
 #if defined(STM32F303x8 ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) 
+    defined(STM32F378xx )
 #define RCC_APB1ENR_1_DAC2EN DAC2EN               // 1 bits @ 26
 #define RCC_APB1RSTR_1_DAC2RST DAC2RST              // 1 bits @ 26
 #else
@@ -2592,7 +2594,7 @@
 #define RCC_APB1RSTR_1_DAC2RST
 #endif
 
-#if defined(STM32F1     ) 
+#if defined(STM32F1     )
 #define RCC_APB1ENR_1_BKPEN  BKPEN                // 1 bits @ 27
 #define RCC_APB1RSTR_1_BKPRST BKPRST               // 1 bits @ 27
 #define RCC_APB2ENR_0_IOPAEN IOPAEN               // 1 bits @ 2
@@ -2620,7 +2622,7 @@
 #define RCC_APB2RSTR_1_IOPDRST
 #endif
 
-#if defined(STM32F3     ) 
+#if defined(STM32F3     )
 #define RCC_APB1ENR_1_DAC1EN DAC1EN               // 1 bits @ 29
 #define RCC_APB1RSTR_1_DAC1RST DAC1RST              // 1 bits @ 29
 #define RCC_BDCR_1_LSE       LSE                  // 3 bits @ 0
@@ -2636,7 +2638,7 @@
     defined(STM32L0     ) || defined(STM32L100xB ) || defined(STM32L100xBA) || defined(STM32L100xC ) ||\
     defined(STM32L152xB ) || defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
     defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1ENR_2
 #define RCC_APB1RSTR_2
 #endif
@@ -2645,7 +2647,7 @@
     defined(STM32L100xB ) || defined(STM32L100xBA) || defined(STM32L100xC ) || defined(STM32L152xB ) ||\
     defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1ENR_2_LCDEN  LCDEN                // 1 bits @ 9
 #define RCC_APB1RSTR_2_LCDRST LCDRST               // 1 bits @ 9
 #else
@@ -2653,7 +2655,7 @@
 #define RCC_APB1RSTR_2_LCDRST
 #endif
 
-#if defined(STM32F413xx ) || defined(STM32F423xx ) 
+#if defined(STM32F413xx ) || defined(STM32F423xx )
 #define RCC_APB1ENR_2_CAN3EN CAN3EN               // 1 bits @ 27
 #define RCC_APB1LPENR_0_CAN3LPEN CAN3LPEN             // 1 bits @ 27
 #define RCC_APB1RSTR_2_CAN3RST CAN3RST              // 1 bits @ 27
@@ -2689,7 +2691,7 @@
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xE ) || defined(STM32F303xE ) ||\
     defined(STM32F318xx ) || defined(STM32F398xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
-    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_APB1ENR_2_I2C3EN I2C3EN               // 1 bits @ 30
 #define RCC_APB1RSTR_2_I2C3RST I2C3RST              // 1 bits @ 30
 #else
@@ -2699,7 +2701,7 @@
 
 #if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
     defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB1ENR1_0_TIM3EN TIM3EN               // 1 bits @ 1
 #define RCC_APB1ENR1_0_UART4EN UART4EN              // 1 bits @ 19
 #define RCC_APB1RSTR1_0_TIM3RST TIM3RST              // 1 bits @ 1
@@ -2722,7 +2724,7 @@
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
     defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB1ENR1_0_TIM7EN TIM7EN               // 1 bits @ 5
 #define RCC_APB1RSTR1_0_TIM7RST TIM7RST              // 1 bits @ 5
 #define RCC_APB1SMENR1_0_TIM7SMEN TIM7SMEN             // 1 bits @ 5
@@ -2733,7 +2735,7 @@
 #endif
 
 #if defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L476xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define RCC_APB1ENR1_0_LCDEN LCDEN                // 1 bits @ 9
 #define RCC_APB1RSTR1_0_LCDRST LCDRST               // 1 bits @ 9
 #define RCC_APB1SMENR1_0_LCDSMEN LCDSMEN              // 1 bits @ 9
@@ -2745,7 +2747,7 @@
 
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB1ENR1_0_RTCAPBEN RTCAPBEN             // 1 bits @ 10
 #define RCC_APB1ENR1_0_CRSEN CRSEN                // 1 bits @ 24
 #define RCC_APB1RSTR1_0_CRSRST CRSRST               // 1 bits @ 24
@@ -2773,7 +2775,7 @@
 #endif
 
 #if defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) ||\
-    defined(STM32L452xx ) || defined(STM32L462xx ) 
+    defined(STM32L452xx ) || defined(STM32L462xx )
 #define RCC_APB1ENR1_0_USBFSEN USBFSEN              // 1 bits @ 26
 #define RCC_APB1RSTR1_0_USBFSRST USBFSRST             // 1 bits @ 26
 #define RCC_APB1SMENR1_0_USBFSSMEN USBFSSMEN            // 1 bits @ 26
@@ -2783,14 +2785,14 @@
 #define RCC_APB1SMENR1_0_USBFSSMEN
 #endif
 
-#if defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+#if defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define RCC_APB1ENR1_1
 #define RCC_APB1RSTR1_1
 #define RCC_APB1SMENR1_1
 #endif
 
 #if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB1ENR2_I2C4EN  I2C4EN               // 1 bits @ 1
 #define RCC_APB1RSTR2_I2C4RST I2C4RST              // 1 bits @ 1
 #define RCC_APB1SMENR2_I2C4SMEN I2C4SMEN             // 1 bits @ 1
@@ -2806,7 +2808,7 @@
 
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define RCC_APB1ENR2_SWPMI1EN SWPMI1EN             // 1 bits @ 2
 #define RCC_APB1RSTR2_SWPMI1RST SWPMI1RST            // 1 bits @ 2
 #define RCC_APB1SMENR2_SWPMI1SMEN SWPMI1SMEN           // 1 bits @ 2
@@ -2818,7 +2820,7 @@
 #define RCC_CCIPR_0_SWPMI1SEL
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR
 #define RCC_MAP1_CIR         CIR_TypeDef CIR
 #else
@@ -2830,7 +2832,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_0_TIM2LPEN TIM2LPEN             // 1 bits @ 0
 #define RCC_APB1LPENR_0_TIM3LPEN TIM3LPEN             // 1 bits @ 1
 #define RCC_APB1LPENR_0_TIM4LPEN TIM4LPEN             // 1 bits @ 2
@@ -2844,7 +2846,7 @@
     defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
     defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1LPENR_0_TIM5LPEN TIM5LPEN             // 1 bits @ 3
 #else
 #define RCC_APB1LPENR_0_TIM5LPEN
@@ -2855,7 +2857,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_0_TIM6LPEN TIM6LPEN             // 1 bits @ 4
 #else
 #define RCC_APB1LPENR_0_TIM6LPEN
@@ -2865,7 +2867,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_0_TIM7LPEN TIM7LPEN             // 1 bits @ 5
 #else
 #define RCC_APB1LPENR_0_TIM7LPEN
@@ -2877,7 +2879,7 @@
     defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_APB1LPENR_0_SPI2LPEN SPI2LPEN             // 1 bits @ 14
 #else
 #define RCC_APB1LPENR_0_SPI2LPEN
@@ -2892,7 +2894,7 @@
     defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
     defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1LPENR_0_SPI3LPEN SPI3LPEN             // 1 bits @ 15
 #else
 #define RCC_APB1LPENR_0_SPI3LPEN
@@ -2902,7 +2904,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_0_USART3LPEN USART3LPEN           // 1 bits @ 18
 #else
 #define RCC_APB1LPENR_0_USART3LPEN
@@ -2913,7 +2915,7 @@
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
-    defined(STM32L152xE ) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L152xE ) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1LPENR_0_UART4LPEN UART4LPEN            // 1 bits @ 19
 #define RCC_APB1LPENR_0_UART5LPEN UART5LPEN            // 1 bits @ 20
 #else
@@ -2923,7 +2925,7 @@
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) ||\
-    defined(STM32F446xx ) 
+    defined(STM32F446xx )
 #define RCC_APB1LPENR_0_FMPI2C1LPEN FMPI2C1LPEN          // 1 bits @ 24
 #else
 #define RCC_APB1LPENR_0_FMPI2C1LPEN
@@ -2935,7 +2937,7 @@
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F745xx ) || defined(STM32F746xx ) ||\
     defined(STM32F756xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_APB1LPENR_0_CAN2LPEN CAN2LPEN             // 1 bits @ 26
 #else
 #define RCC_APB1LPENR_0_CAN2LPEN
@@ -2945,27 +2947,27 @@
     defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_0_DACLPEN DACLPEN              // 1 bits @ 29
 #else
 #define RCC_APB1LPENR_0_DACLPEN
 #endif
 
-#if defined(STM32F446xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
+#if defined(STM32F446xx ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_APB1LPENR_1
 #endif
 
 #if defined(STM32L100xB ) || defined(STM32L100xBA) || defined(STM32L100xC ) || defined(STM32L152xB ) ||\
     defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_APB1LPENR_1_LCDLPEN LCDLPEN              // 1 bits @ 9
 #else
 #define RCC_APB1LPENR_1_LCDLPEN
 #endif
 
 #if defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_APB1SMENR_TIM3SMEN TIM3SMEN             // 1 bits @ 1
 #define RCC_APB1SMENR_TIM7SMEN TIM7SMEN             // 1 bits @ 5
 #define RCC_APB1SMENR_USART4SMEN USART4SMEN           // 1 bits @ 19
@@ -2993,7 +2995,7 @@
 
 #if defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) ||\
     defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
-    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_APB1SMENR_TIM6SMEN TIM6SMEN             // 1 bits @ 4
 #define RCC_APB1SMENR_SPI2SMEN SPI2SMEN             // 1 bits @ 14
 #define RCC_APB1SMENR_I2C2SMEN I2C2SMEN             // 1 bits @ 22
@@ -3015,7 +3017,7 @@
 #define RCC_IOPSMENR_1_GPIODSMEN
 #endif
 
-#if defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx ) 
+#if defined(STM32L053xx ) || defined(STM32L063xx ) || defined(STM32L073xx ) || defined(STM32L083xx )
 #define RCC_APB1SMENR_LCDSMEN LCDSMEN              // 1 bits @ 9
 #else
 #define RCC_APB1SMENR_LCDSMEN
@@ -3027,7 +3029,7 @@
 #define RCC_CR
 #define RCC_CSR
 
-#if defined(STM32F0     ) 
+#if defined(STM32F0     )
 #define RCC_APB2ENR_0_SYSCFGCOMPEN SYSCFGCOMPEN         // 1 bits @ 0
 #define RCC_CFGR_0_PPRE      PPRE                 // 3 bits @ 8
 #define RCC_CFGR3_3_ADCSW    ADCSW                // 1 bits @ 8
@@ -3052,7 +3054,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_APB2ENR_0_USART6EN USART6EN             // 1 bits @ 5
 #define RCC_APB2RSTR_0_USART6RST USART6RST            // 1 bits @ 5
 #else
@@ -3060,7 +3062,7 @@
 #define RCC_APB2RSTR_0_USART6RST
 #endif
 
-#if defined(STM32F091xC ) || defined(STM32F098xx ) 
+#if defined(STM32F091xC ) || defined(STM32F098xx )
 #define RCC_APB2ENR_0_USART7EN USART7EN             // 1 bits @ 6
 #define RCC_APB2ENR_0_USART8EN USART8EN             // 1 bits @ 7
 #define RCC_APB2RSTR_0_USART7RST USART7RST            // 1 bits @ 6
@@ -3073,7 +3075,7 @@
 #endif
 
 #if defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
-    defined(STM32F105xC ) || defined(STM32F107xC ) 
+    defined(STM32F105xC ) || defined(STM32F107xC )
 #define RCC_APB2ENR_0_ADC2EN ADC2EN               // 1 bits @ 10
 #define RCC_APB2RSTR_0_ADC2RST ADC2RST              // 1 bits @ 10
 #else
@@ -3084,7 +3086,7 @@
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) ||\
     defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
     defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) ||\
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_0_TIM1EN TIM1EN               // 1 bits @ 11
 #define RCC_APB2RSTR_0_TIM1RST TIM1RST              // 1 bits @ 11
 #else
@@ -3097,7 +3099,7 @@
     defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
     defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
     defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB2ENR_0_SPI1EN SPI1EN               // 1 bits @ 12
 #define RCC_APB2RSTR_0_SPI1RST SPI1RST              // 1 bits @ 12
 #else
@@ -3108,7 +3110,7 @@
 #if defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
     defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
     defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB2ENR_0_TIM8EN TIM8EN               // 1 bits @ 13
 #define RCC_APB2RSTR_0_TIM8RST TIM8RST              // 1 bits @ 13
 #else
@@ -3120,7 +3122,7 @@
     defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
     defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
     defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_0_USART1EN USART1EN             // 1 bits @ 14
 #define RCC_APB2RSTR_0_USART1RST USART1RST            // 1 bits @ 14
 #else
@@ -3128,10 +3130,11 @@
 #define RCC_APB2RSTR_0_USART1RST
 #endif
 
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) ||\
-    defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) ||\
+    defined(STM32F100xE ) || defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
+    defined(STM32L4P    )
 #define RCC_APB2ENR_0_TIM15EN TIM15EN              // 1 bits @ 16
 #define RCC_APB2RSTR_0_TIM15RST TIM15RST             // 1 bits @ 16
 #else
@@ -3140,7 +3143,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F3     ) ||\
-    defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_0_TIM16EN TIM16EN              // 1 bits @ 17
 #define RCC_APB2RSTR_0_TIM16RST TIM16RST             // 1 bits @ 17
 #else
@@ -3151,7 +3154,7 @@
 #if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F3     ) ||\
     defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
     defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB2ENR_0_TIM17EN TIM17EN              // 1 bits @ 18
 #define RCC_APB2RSTR_0_TIM17RST TIM17RST             // 1 bits @ 18
 #else
@@ -3159,7 +3162,7 @@
 #define RCC_APB2RSTR_0_TIM17RST
 #endif
 
-#if defined(STM32F101xG ) || defined(STM32F103xG ) 
+#if defined(STM32F101xG ) || defined(STM32F103xG )
 #define RCC_APB2ENR_0_TIM9EN TIM9EN               // 1 bits @ 19
 #define RCC_APB2ENR_0_TIM10EN TIM10EN              // 1 bits @ 20
 #define RCC_APB2ENR_0_TIM11EN TIM11EN              // 1 bits @ 21
@@ -3175,7 +3178,7 @@
 #define RCC_APB2RSTR_0_TIM11RST
 #endif
 
-#if defined(STM32F446xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+#if defined(STM32F446xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_APB2ENR_0_SAI2EN SAI2EN               // 1 bits @ 23
 #define RCC_APB2LPENR_0_SAI2LPEN SAI2LPEN             // 1 bits @ 23
 #define RCC_APB2RSTR_0_SAI2RST SAI2RST              // 1 bits @ 23
@@ -3186,7 +3189,7 @@
 #endif
 
 #if defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F769xx ) || defined(STM32F779xx ) ||\
-    defined(STM32L4R9xx ) || defined(STM32L4S9xx ) 
+    defined(STM32L4R9xx ) || defined(STM32L4S9xx )
 #define RCC_APB2ENR_0_DSIEN  DSIEN                // 1 bits @ 27
 #define RCC_APB2RSTR_0_DSIRST DSIRST               // 1 bits @ 27
 #else
@@ -3194,7 +3197,7 @@
 #define RCC_APB2RSTR_0_DSIRST
 #endif
 
-#if defined(STM32F334x8 ) 
+#if defined(STM32F334x8 )
 #define RCC_APB2ENR_0_HRTIM1EN HRTIM1EN             // 1 bits @ 29
 #define RCC_APB2RSTR_0_HRTIM1RST HRTIM1RST            // 1 bits @ 29
 #define RCC_CFGR3_0_HRTIMSW  HRTIMSW              // 1 bits @ 12
@@ -3206,7 +3209,7 @@
 #define RCC_CFGR3_1_HRTIM1SW
 #endif
 
-#if defined(STM32F723xx ) || defined(STM32F733xx ) 
+#if defined(STM32F723xx ) || defined(STM32F733xx )
 #define RCC_APB2ENR_0_OTGPHYCEN OTGPHYCEN            // 1 bits @ 31
 #define RCC_APB2RSTR_0_OTGPHYCRST OTGPHYCRST           // 1 bits @ 31
 #else
@@ -3219,7 +3222,7 @@
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
     defined(STM32L1     ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
     defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB2ENR_1
 #endif
 
@@ -3227,7 +3230,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_APB2ENR_1_TIM8EN TIM8EN               // 1 bits @ 1
 #define RCC_APB2LPENR_0_TIM8LPEN TIM8LPEN             // 1 bits @ 1
 #define RCC_APB2RSTR_1_TIM8RST TIM8RST              // 1 bits @ 1
@@ -3239,7 +3242,7 @@
 
 #if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) ||\
     defined(STM32F101xG ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
-    defined(STM32F105xC ) || defined(STM32F107xC ) 
+    defined(STM32F105xC ) || defined(STM32F107xC )
 #define RCC_APB2ENR_1_IOPEEN IOPEEN               // 1 bits @ 6
 #define RCC_APB2RSTR_1_IOPERST IOPERST              // 1 bits @ 6
 #else
@@ -3248,7 +3251,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_APB2ENR_1_ADC1EN ADC1EN               // 1 bits @ 9
 #else
 #define RCC_APB2ENR_1_ADC1EN
@@ -3259,7 +3262,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32L151xD ) || defined(STM32L152xD ) || defined(STM32L162xD ) 
+    defined(STM32F479xx ) || defined(STM32L151xD ) || defined(STM32L152xD ) || defined(STM32L162xD )
 #define RCC_APB2ENR_1_SDIOEN SDIOEN               // 1 bits @ 11
 #define RCC_APB2LPENR_0_SDIOLPEN SDIOLPEN             // 1 bits @ 11
 #define RCC_APB2RSTR_1_SDIORST SDIORST              // 1 bits @ 11
@@ -3269,7 +3272,7 @@
 #define RCC_APB2RSTR_1_SDIORST
 #endif
 
-#if defined(STM32F303xE ) || defined(STM32F398xx ) 
+#if defined(STM32F303xE ) || defined(STM32F398xx )
 #define RCC_APB2ENR_1_TIM20EN TIM20EN              // 1 bits @ 20
 #define RCC_APB2RSTR_1_TIM20RST TIM20RST             // 1 bits @ 20
 #define RCC_CFGR3_0_TIM20SW  TIM20SW              // 1 bits @ 15
@@ -3281,7 +3284,7 @@
 
 #if defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_APB2ENR_1_SAI1EN SAI1EN               // 1 bits @ 22
 #define RCC_APB2LPENR_0_SAI1LPEN SAI1LPEN             // 1 bits @ 22
 #define RCC_APB2RSTR_1_SAI1RST SAI1RST              // 1 bits @ 22
@@ -3295,7 +3298,7 @@
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) ||\
     defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
     defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB2ENR_1_DFSDM1EN DFSDM1EN             // 1 bits @ 24
 #define RCC_APB2RSTR_1_DFSDM1RST DFSDM1RST            // 1 bits @ 24
 #else
@@ -3306,7 +3309,7 @@
 #if defined(STM32F429xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
     defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
     defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32L4R7xx ) || defined(STM32L4R9xx ) ||\
-    defined(STM32L4S7xx ) || defined(STM32L4S9xx ) 
+    defined(STM32L4S7xx ) || defined(STM32L4S9xx )
 #define RCC_APB2ENR_1_LTDCEN LTDCEN               // 1 bits @ 26
 #define RCC_APB2RSTR_1_LTDCRST LTDCRST              // 1 bits @ 26
 #else
@@ -3315,7 +3318,7 @@
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_2
 #define RCC_APB2RSTR_2
 #endif
@@ -3323,7 +3326,7 @@
 #if defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
     defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
     defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_APB2ENR_2_TIM22EN TIM22EN              // 1 bits @ 5
 #define RCC_APB2RSTR_2_TIM22RST TIM22RST             // 1 bits @ 5
 #define RCC_APB2SMENR_0_TIM22SMEN TIM22SMEN            // 1 bits @ 5
@@ -3353,7 +3356,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F7     ) || defined(STM32H7     )
 #define RCC_APB2ENR_2_SPI4EN SPI4EN               // 1 bits @ 13
 #define RCC_APB2LPENR_0_SPI4LPEN SPI4LPEN             // 1 bits @ 13
 #define RCC_APB2RSTR_2_SPI4RST SPI4RST              // 1 bits @ 13
@@ -3367,7 +3370,7 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) 
+    defined(STM32H7     )
 #define RCC_APB2ENR_2_SPI5EN SPI5EN               // 1 bits @ 20
 #define RCC_APB2LPENR_0_SPI5LPEN SPI5LPEN             // 1 bits @ 20
 #define RCC_APB2RSTR_2_SPI5RST SPI5RST              // 1 bits @ 20
@@ -3380,12 +3383,12 @@
 #if defined(STM32F3     ) || defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) ||\
     defined(STM32F733xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
     defined(STM32F777xx ) || defined(STM32F779xx ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_3
 #endif
 
 #if defined(STM32F3     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB2ENR_3_SYSCFGEN SYSCFGEN             // 1 bits @ 0
 #else
 #define RCC_APB2ENR_3_SYSCFGEN
@@ -3394,7 +3397,7 @@
 #if defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
     defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
     defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) 
+    defined(STM32L4A6xx )
 #define RCC_APB2ENR_3_SDMMC1EN SDMMC1EN             // 1 bits @ 10
 #define RCC_APB2RSTR_1_SDMMC1RST SDMMC1RST            // 1 bits @ 10
 #define RCC_APB2SMENR_0_SDMMC1SMEN SDMMC1SMEN           // 1 bits @ 10
@@ -3404,7 +3407,7 @@
 #define RCC_APB2SMENR_0_SDMMC1SMEN
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2ENR_4
 #define RCC_APB2SMENR
 #define RCC_CCIPR
@@ -3421,7 +3424,7 @@
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_APB2LPENR
 #endif
 
@@ -3431,14 +3434,14 @@
     defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) 
+    defined(STM32H7     )
 #define RCC_APB2LPENR_0_USART6LPEN USART6LPEN           // 1 bits @ 5
 #else
 #define RCC_APB2LPENR_0_USART6LPEN
 #endif
 
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F423xx ) 
+    defined(STM32F413xx ) || defined(STM32F423xx )
 #define RCC_APB2LPENR_0_DFSDM1LPEN DFSDM1LPEN           // 1 bits @ 24
 #define RCC_CKGATENR_RCC_EVTCTL RCC_EVTCTL           // 1 bits @ 7
 #define RCC_DCKCFGR_0_CKDFSDM1ASEL CKDFSDM1ASEL         // 1 bits @ 15
@@ -3454,24 +3457,24 @@
 
 #if defined(STM32F429xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
     defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) ||\
-    defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F777xx ) || defined(STM32F779xx )
 #define RCC_APB2LPENR_0_LTDCLPEN LTDCLPEN             // 1 bits @ 26
 #else
 #define RCC_APB2LPENR_0_LTDCLPEN
 #endif
 
-#if defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F769xx ) || defined(STM32F779xx ) 
+#if defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F769xx ) || defined(STM32F779xx )
 #define RCC_APB2LPENR_0_DSILPEN DSILPEN              // 1 bits @ 27
 #else
 #define RCC_APB2LPENR_0_DSILPEN
 #endif
 
-#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) 
+#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     )
 #define RCC_APB2LPENR_1
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2RSTR_0_SYSCFGRST SYSCFGRST            // 1 bits @ 0
 #define RCC_CSR_0_OBLRSTF    OBLRSTF              // 1 bits @ 25
 #else
@@ -3485,12 +3488,12 @@
     defined(STM32L431xx ) || defined(STM32L433xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
     defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
     defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_APB2RSTR_1
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_APB2RSTR_1_ADC1RST ADC1RST              // 1 bits @ 9
 #else
 #define RCC_APB2RSTR_1_ADC1RST
@@ -3500,14 +3503,14 @@
     defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
     defined(STM32F779xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
     defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_APB2RSTR_3
 #endif
 
 #if defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) ||\
     defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
     defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_APB2SMENR_0_USART1SMEN USART1SMEN           // 1 bits @ 14
 #define RCC_CCIPR_0_USART1SEL USART1SEL            // 2 bits @ 0
 #else
@@ -3515,7 +3518,7 @@
 #define RCC_CCIPR_0_USART1SEL
 #endif
 
-#if defined(STM32L4R9xx ) || defined(STM32L4S9xx ) 
+#if defined(STM32L4R9xx ) || defined(STM32L4S9xx )
 #define RCC_APB2SMENR_0_DSISMEN DSISMEN              // 1 bits @ 27
 #define RCC_CCIPR2_DSISEL    DSISEL               // 1 bits @ 12
 #else
@@ -3525,12 +3528,12 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_BDCR
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_BDCR_0_LSEDRV    LSEDRV               // 2 bits @ 3
 #else
 #define RCC_BDCR_0_LSEDRV
@@ -3539,28 +3542,28 @@
 #if defined(STM32F3     ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) ||\
     defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_BDCR_1
 #endif
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) ||\
     defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) 
+    defined(STM32F479xx )
 #define RCC_BDCR_1_LSEMOD    LSEMOD               // 1 bits @ 3
 #else
 #define RCC_BDCR_1_LSEMOD
 #endif
 
 #if defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CCIPR_0_I2C3SEL  I2C3SEL              // 2 bits @ 16
 #else
 #define RCC_CCIPR_0_I2C3SEL
 #endif
 
 #if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define RCC_CCIPR_0_SAI2SEL  SAI2SEL              // 2 bits @ 24
 #else
 #define RCC_CCIPR_0_SAI2SEL
@@ -3568,7 +3571,7 @@
 
 #if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
     defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define RCC_CCIPR_0_DFSDM1SEL DFSDM1SEL            // 1 bits @ 31
 #else
 #define RCC_CCIPR_0_DFSDM1SEL
@@ -3576,7 +3579,7 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CFGR_0_SW        SW                   // 2 bits @ 0
 #define RCC_CFGR_0_SWS       SWS                  // 2 bits @ 2
 #define RCC_CFGR_0_HPRE      HPRE                 // 4 bits @ 4
@@ -3597,7 +3600,7 @@
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CFGR_0_PPRE2     PPRE2                // 3 bits @ 11
 #define RCC_CFGR_1_PPRE1     PPRE1                // 3 bits @ 8
 #else
@@ -3605,20 +3608,21 @@
 #define RCC_CFGR_1_PPRE1
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) ||\
-    defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx )
 #define RCC_CFGR_0_ADCPRE    ADCPRE               // 1 bits @ 14
 #else
 #define RCC_CFGR_0_ADCPRE
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) || defined(STM32F038xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F1     ) || defined(STM32F301x8 ) ||\
-    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F303x8 ) || defined(STM32F303xC ) ||\
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L0     ) || defined(STM32L1     ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F1     ) ||\
+    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F303x8 ) ||\
+    defined(STM32F303xC ) || defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) ||\
+    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L0     ) ||\
+    defined(STM32L1     )
 #define RCC_CFGR_0_PLLSRC    PLLSRC               // 1 bits @ 16
 #else
 #define RCC_CFGR_0_PLLSRC
@@ -3628,7 +3632,7 @@
     defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F102x6 ) || defined(STM32F102xB ) ||\
     defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
     defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
-    defined(STM32F303xE ) || defined(STM32F373xC ) 
+    defined(STM32F303xE ) || defined(STM32F373xC )
 #define RCC_CFGR_0_USBPRE    USBPRE               // 1 bits @ 22
 #else
 #define RCC_CFGR_0_USBPRE
@@ -3639,13 +3643,13 @@
     defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F401xC ) || defined(STM32F401xE ) ||\
     defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F415xx ) ||\
     defined(STM32F417xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_CFGR_0_I2SSRC    I2SSRC               // 1 bits @ 23
 #else
 #define RCC_CFGR_0_I2SSRC
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F105xC ) || defined(STM32F107xC ) 
+#if defined(STM32F0     ) || defined(STM32F105xC ) || defined(STM32F107xC )
 #define RCC_CFGR_0_MCO       MCO                  // 4 bits @ 24
 #else
 #define RCC_CFGR_0_MCO
@@ -3657,7 +3661,7 @@
     defined(STM32F098xx ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xE ) ||\
     defined(STM32F303x8 ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) ||\
     defined(STM32F334x8 ) || defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CFGR_0_MCOPRE    MCOPRE               // 3 bits @ 28
 #else
 #define RCC_CFGR_0_MCOPRE
@@ -3668,42 +3672,50 @@
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
     defined(STM32F098xx ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xE ) ||\
     defined(STM32F303x8 ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) ||\
-    defined(STM32F334x8 ) || defined(STM32F398xx ) 
+    defined(STM32F334x8 ) || defined(STM32F398xx )
 #define RCC_CFGR_0_PLLNODIV  PLLNODIV             // 1 bits @ 31
 #else
 #define RCC_CFGR_0_PLLNODIV
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
-    defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) ||\
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F401xC ) ||\
+    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) ||\
+    defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Rx ) ||\
+    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
+    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
+    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
+    defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CFGR_1
 #endif
 
 #if defined(STM32F030xC ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070x6 ) ||\
     defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
     defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F302xE ) || defined(STM32F303xE ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define RCC_CFGR_1_PLLSRC    PLLSRC               // 2 bits @ 15
 #else
 #define RCC_CFGR_1_PLLSRC
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
-    defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) || defined(STM32L431xx ) ||\
+    defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) ||\
+    defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) ||\
+    defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_CFGR_1_MCOSEL    MCOSEL               // 4 bits @ 24
 #else
 #define RCC_CFGR_1_MCOSEL
 #endif
 
-#if defined(STM32F302xC ) || defined(STM32F303xC ) || defined(STM32F358xx ) 
+#if defined(STM32F302xC ) || defined(STM32F303xC ) || defined(STM32F358xx )
 #define RCC_CFGR_1_MCOF      MCOF                 // 1 bits @ 28
 #define RCC_CFGR3_1_TIMSW    TIMSW                // 2 bits @ 8
 #else
@@ -3716,7 +3728,7 @@
     defined(STM32F411xE ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_CFGR_1_MCO2      MCO2                 // 2 bits @ 30
 #define RCC_CFGR_2_MCO2PRE   MCO2PRE              // 3 bits @ 27
 #else
@@ -3725,17 +3737,17 @@
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_CFGR_2
 #endif
 
-#if defined(STM32F410Rx ) 
+#if defined(STM32F410Rx )
 #define RCC_CFGR_2_MCO2EN    MCO2EN               // 1 bits @ 9
 #else
 #define RCC_CFGR_2_MCO2EN
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) 
+#if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx )
 #define RCC_CFGR_2_ADCPRE    ADCPRE               // 2 bits @ 14
 #else
 #define RCC_CFGR_2_ADCPRE
@@ -3744,36 +3756,36 @@
 #if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101x6 ) || defined(STM32F101xB ) ||\
     defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F102x6 ) || defined(STM32F102xB ) ||\
     defined(STM32F103x6 ) || defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
-    defined(STM32F3     ) 
+    defined(STM32F3     )
 #define RCC_CFGR_2_MCO       MCO                  // 3 bits @ 24
 #else
 #define RCC_CFGR_2_MCO
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define RCC_CFGR_3
 #endif
 
 #if defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CFGR_4
 #endif
 
 #if defined(STM32L1     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
-    defined(STM32L485xx ) || defined(STM32L486xx ) 
+    defined(STM32L485xx ) || defined(STM32L486xx )
 #define RCC_CFGR_6
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F105xC ) ||\
-    defined(STM32F107xC ) || defined(STM32F3     ) 
+    defined(STM32F107xC ) || defined(STM32F3     )
 #define RCC_CFGR2
 #define RCC_MAP0_CFGR2       CFGR2_TypeDef CFGR2
 #else
 #define RCC_MAP0_CFGR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F3     ) 
+#if defined(STM32F0     ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F3     )
 #define RCC_CFGR2_0
 #define RCC_MAP0_AHBRSTR     AHBRSTR_TypeDef AHBRSTR
 #else
@@ -3782,17 +3794,17 @@
 
 #if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
     defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
+    defined(STM32F318xx ) || defined(STM32F358xx ) || defined(STM32F398xx )
 #define RCC_CFGR2_1
 #endif
 
-#if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F105xC ) || defined(STM32F107xC ) 
+#if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F105xC ) || defined(STM32F107xC )
 #define RCC_CFGR2_1_PREDIV1  PREDIV1              // 4 bits @ 0
 #else
 #define RCC_CFGR2_1_PREDIV1
 #endif
 
-#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
+#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F398xx )
 #define RCC_CFGR2_1_ADCPRE34 ADCPRE34             // 5 bits @ 9
 #define RCC_CFGR3_0_TIM8SW   TIM8SW               // 1 bits @ 9
 #else
@@ -3802,7 +3814,7 @@
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
     defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F358xx ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) 
+    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_0_I2C2SW   I2C2SW               // 1 bits @ 5
 #else
 #define RCC_CFGR3_0_I2C2SW
@@ -3810,14 +3822,14 @@
 
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
     defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) ||\
-    defined(STM32F098xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) 
+    defined(STM32F098xx ) || defined(STM32F373xC ) || defined(STM32F378xx )
 #define RCC_CFGR3_0_CECSW    CECSW                // 1 bits @ 6
 #else
 #define RCC_CFGR3_0_CECSW
 #endif
 
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
-    defined(STM32F072xB ) || defined(STM32F078xx ) 
+    defined(STM32F072xB ) || defined(STM32F078xx )
 #define RCC_CFGR3_0_USBSW    USBSW                // 1 bits @ 7
 #else
 #define RCC_CFGR3_0_USBSW
@@ -3825,14 +3837,14 @@
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
     defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_0_TIM1SW   TIM1SW               // 1 bits @ 8
 #else
 #define RCC_CFGR3_0_TIM1SW
 #endif
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xE ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F398xx ) 
+    defined(STM32F318xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_0_TIM15SW  TIM15SW              // 1 bits @ 10
 #define RCC_CFGR3_0_TIM16SW  TIM16SW              // 1 bits @ 11
 #define RCC_CFGR3_0_TIM17SW  TIM17SW              // 1 bits @ 13
@@ -3846,16 +3858,25 @@
 #define RCC_CFGR3_2_I2C3SW
 #endif
 
+#if defined(STM32F030x4 ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
+    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
+    defined(STM32F378xx ) || defined(STM32F398xx )
+#define RCC_CFGR3_0_USART2SW USART2SW             // 2 bits @ 16
+#else
+#define RCC_CFGR3_0_USART2SW
+#endif
+
 #if defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
     defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F398xx ) 
+    defined(STM32F378xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_0_USART3SW USART3SW             // 2 bits @ 18
 #else
 #define RCC_CFGR3_0_USART3SW
 #endif
 
 #if defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F358xx ) || defined(STM32F398xx ) 
+    defined(STM32F358xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_0_UART4SW  UART4SW              // 2 bits @ 20
 #define RCC_CFGR3_0_UART5SW  UART5SW              // 2 bits @ 22
 #else
@@ -3865,18 +3886,18 @@
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
     defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F334x8 ) ||\
-    defined(STM32F358xx ) || defined(STM32F398xx ) 
+    defined(STM32F358xx ) || defined(STM32F398xx )
 #define RCC_CFGR3_1
 #endif
 
 #if defined(STM32F302xC ) || defined(STM32F303xC ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) 
+    defined(STM32F378xx )
 #define RCC_CFGR3_2_I2CSW    I2CSW                // 2 bits @ 4
 #else
 #define RCC_CFGR3_2_I2CSW
 #endif
 
-#if defined(STM32F303x8 ) || defined(STM32F328xx ) || defined(STM32F334x8 ) 
+#if defined(STM32F303x8 ) || defined(STM32F328xx ) || defined(STM32F334x8 )
 #define RCC_CFGR3_2_TIMSW    TIMSW                // 1 bits @ 8
 #define RCC_CFGR3_3_I2CSW    I2CSW                // 1 bits @ 4
 #else
@@ -3884,17 +3905,17 @@
 #define RCC_CFGR3_3_I2CSW
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F303x8 ) || defined(STM32F328xx ) || defined(STM32F334x8 ) 
+#if defined(STM32F0     ) || defined(STM32F303x8 ) || defined(STM32F328xx ) || defined(STM32F334x8 )
 #define RCC_CFGR3_3
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CICR
 #define RCC_CIER
 #define RCC_CIFR
 #endif
 
-#if defined(STM32H7     ) || defined(STM32L0     ) 
+#if defined(STM32H7     ) || defined(STM32L0     )
 #define RCC_CICR_0_HSIRDYC   HSIRDYC              // 1 bits @ 2
 #define RCC_CICR_0_HSERDYC   HSERDYC              // 1 bits @ 3
 #define RCC_CIER_0_HSIRDYIE  HSIRDYIE             // 1 bits @ 2
@@ -3919,7 +3940,7 @@
 #if defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
     defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
     defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CICR_2_CSSC      CSSC                 // 1 bits @ 8
 #define RCC_CIFR_2_CSSF      CSSF                 // 1 bits @ 8
 #define RCC_CSR_1_FWRSTF     FWRSTF               // 1 bits @ 24
@@ -3930,7 +3951,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_CIR
 #define RCC_CR_0_HSIRDY      HSIRDY               // 1 bits @ 1
 #define RCC_CSR_0_RMVF       RMVF                 // 1 bits @ 24
@@ -3940,7 +3961,7 @@
 #endif
 
 #if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) 
+    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx )
 #define RCC_CIR_0_HSI48RDYF  HSI48RDYF            // 1 bits @ 6
 #define RCC_CIR_0_HSI48RDYIE HSI48RDYIE           // 1 bits @ 14
 #define RCC_CIR_0_HSI48RDYC  HSI48RDYC            // 1 bits @ 22
@@ -3960,7 +3981,7 @@
     defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define RCC_CIR_3_LSECSSF    LSECSSF              // 1 bits @ 6
 #define RCC_CIR_3_LSECSSIE   LSECSSIE             // 1 bits @ 14
 #define RCC_CIR_3_LSECSSC    LSECSSC              // 1 bits @ 22
@@ -3976,14 +3997,14 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define RCC_CR_0_HSION       HSION                // 1 bits @ 0
 #else
 #define RCC_CR_0_HSION
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) 
+    defined(STM32F4     ) || defined(STM32F7     )
 #define RCC_CR_0_HSITRIM     HSITRIM              // 5 bits @ 3
 #define RCC_CR_0_HSICAL      HSICAL               // 8 bits @ 8
 #else
@@ -3996,13 +4017,13 @@
     defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) ||\
     defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
     defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CR_0_CSSON       CSSON                // 1 bits @ 19
 #else
 #define RCC_CR_0_CSSON
 #endif
 
-#if defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32H7     ) 
+#if defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32H7     )
 #define RCC_CR_0_PLL2ON      PLL2ON               // 1 bits @ 26
 #define RCC_CR_0_PLL2RDY     PLL2RDY              // 1 bits @ 27
 #define RCC_CR_0_PLL3ON      PLL3ON               // 1 bits @ 28
@@ -4020,26 +4041,26 @@
     defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
     defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CR_1
 #endif
 
 #if defined(STM32H7     ) || defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L051xx ) ||\
     defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
     defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
-    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_CR_1_CSSHSEON    CSSHSEON             // 1 bits @ 19
 #else
 #define RCC_CR_1_CSSHSEON
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CR_2
 #endif
 
 #if defined(STM32L011xx ) || defined(STM32L021xx ) || defined(STM32L031xx ) || defined(STM32L041xx ) ||\
     defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_CR_2_HSIOUTEN    HSIOUTEN             // 1 bits @ 5
 #else
 #define RCC_CR_2_HSIOUTEN
@@ -4048,7 +4069,7 @@
 #if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L431xx ) || defined(STM32L432xx ) ||\
     defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
     defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_CRRCR
 #endif
 
@@ -4056,21 +4077,22 @@
     defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) ||\
     defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define RCC_CRRCR_1
 #endif
 
-#if defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
+#if defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L082xx ) || defined(STM32L083xx )
 #define RCC_CRRCR_1_HSI48DIV6OUTEN HSI48DIV6OUTEN       // 1 bits @ 2
 #else
 #define RCC_CRRCR_1_HSI48DIV6OUTEN
 #endif
 
-#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
-    defined(STM32F042x6 ) || defined(STM32F051x8 ) || defined(STM32F070x6 ) || defined(STM32F070xB ) ||\
-    defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F091xC ) || defined(STM32F301x8 ) ||\
-    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) || defined(STM32F373xC ) 
+#if defined(STM32F030x4 ) || defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) ||\
+    defined(STM32F031x6 ) || defined(STM32F042x6 ) || defined(STM32F051x8 ) || defined(STM32F070x6 ) ||\
+    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F091xC ) ||\
+    defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
+    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F334x8 ) ||\
+    defined(STM32F373xC )
 #define RCC_CSR_0_V18PWRRSTF V18PWRRSTF           // 1 bits @ 23
 #else
 #define RCC_CSR_0_V18PWRRSTF
@@ -4081,11 +4103,11 @@
     defined(STM32L052xx ) || defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) ||\
     defined(STM32L063xx ) || defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) ||\
     defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_CSR_1
 #endif
 
-#if defined(STM32F303xC ) || defined(STM32F303xE ) 
+#if defined(STM32F303xC ) || defined(STM32F303xE )
 #define RCC_CSR_1_VREGRSTF   VREGRSTF             // 1 bits @ 23
 #else
 #define RCC_CSR_1_VREGRSTF
@@ -4095,13 +4117,13 @@
     defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) ||\
     defined(STM32F411xE ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_CSR_1_BORRSTF    BORRSTF              // 1 bits @ 25
 #else
 #define RCC_CSR_1_BORRSTF
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) 
+#if defined(STM32F2     ) || defined(STM32F4     )
 #define RCC_CSR_1_PADRSTF    PADRSTF              // 1 bits @ 26
 #define RCC_CSR_1_WDGRSTF    WDGRSTF              // 1 bits @ 29
 #else
@@ -4113,7 +4135,7 @@
     defined(STM32F410Tx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_DCKCFGR
 #define RCC_MAP0_DCKCFGR     DCKCFGR_TypeDef DCKCFGR
 #else
@@ -4121,14 +4143,14 @@
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_DCKCFGR_0_PLLSAIDIVR PLLSAIDIVR           // 2 bits @ 16
 #else
 #define RCC_DCKCFGR_0_PLLSAIDIVR
 #endif
 
 #if defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_DCKCFGR_0_SAI1ASRC SAI1ASRC             // 2 bits @ 20
 #define RCC_DCKCFGR_0_SAI1BSRC SAI1BSRC             // 2 bits @ 22
 #else
@@ -4137,7 +4159,7 @@
 #endif
 
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) 
+    defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx )
 #define RCC_DCKCFGR_0_I2S2SRC I2S2SRC              // 2 bits @ 27
 #define RCC_DCKCFGR_1_I2S1SRC I2S1SRC              // 2 bits @ 25
 #define RCC_DCKCFGR2_0_SDIOSEL SDIOSEL              // 1 bits @ 28
@@ -4147,7 +4169,7 @@
 #define RCC_DCKCFGR2_0_SDIOSEL
 #endif
 
-#if defined(STM32F469xx ) || defined(STM32F479xx ) 
+#if defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_DCKCFGR_0_DSISEL DSISEL               // 1 bits @ 29
 #define RCC_DCKCFGR_1_CK48MSEL CK48MSEL             // 1 bits @ 27
 #define RCC_DCKCFGR_1_SDIOSEL SDIOSEL              // 1 bits @ 28
@@ -4160,12 +4182,12 @@
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) 
+    defined(STM32F479xx )
 #define RCC_DCKCFGR_1
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define RCC_DCKCFGR_1_PLLI2SDIVQ PLLI2SDIVQ           // 5 bits @ 0
 #define RCC_DCKCFGR_1_PLLSAIDIVQ PLLSAIDIVQ           // 5 bits @ 8
 #else
@@ -4173,7 +4195,7 @@
 #define RCC_DCKCFGR_1_PLLSAIDIVQ
 #endif
 
-#if defined(STM32F446xx ) 
+#if defined(STM32F446xx )
 #define RCC_DCKCFGR_1_SAI1SRC SAI1SRC              // 2 bits @ 20
 #define RCC_DCKCFGR_1_SAI2SRC SAI2SRC              // 2 bits @ 22
 #define RCC_DCKCFGR2_0_SPDIFRXSEL SPDIFRXSEL           // 1 bits @ 29
@@ -4187,32 +4209,32 @@
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F412Cx ) ||\
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F7     ) 
+    defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F7     )
 #define RCC_DCKCFGR2
 #endif
 
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F7     ) 
+    defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F7     )
 #define RCC_DCKCFGR2_0_CK48MSEL CK48MSEL             // 1 bits @ 27
 #else
 #define RCC_DCKCFGR2_0_CK48MSEL
 #endif
 
 #if defined(STM32F410Cx ) || defined(STM32F410Rx ) || defined(STM32F410Tx ) || defined(STM32F413xx ) ||\
-    defined(STM32F423xx ) 
+    defined(STM32F423xx )
 #define RCC_DCKCFGR2_0_LPTIM1SEL LPTIM1SEL            // 2 bits @ 30
 #else
 #define RCC_DCKCFGR2_0_LPTIM1SEL
 #endif
 
-#if defined(STM32F769xx ) || defined(STM32F779xx ) 
+#if defined(STM32F769xx ) || defined(STM32F779xx )
 #define RCC_DCKCFGR2_1_DSISEL DSISEL               // 1 bits @ 30
 #else
 #define RCC_DCKCFGR2_1_DSISEL
 #endif
 
 #if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define RCC_ICSCR
 #define RCC_MAP2_ICSCR       ICSCR_TypeDef ICSCR
 #else
@@ -4221,7 +4243,7 @@
 
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
-    defined(STM32L485xx ) || defined(STM32L486xx ) 
+    defined(STM32L485xx ) || defined(STM32L486xx )
 #define RCC_ICSCR_2_HSITRIM  HSITRIM              // 5 bits @ 24
 #else
 #define RCC_ICSCR_2_HSITRIM
@@ -4231,14 +4253,14 @@
     defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
     defined(STM32F423xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
     defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
+    defined(STM32F779xx )
 #define RCC_PLLCFGR_0_PLLR   PLLR                 // 3 bits @ 28
 #else
 #define RCC_PLLCFGR_0_PLLR
 #endif
 
 #if defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx ) 
+    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F446xx )
 #define RCC_PLLI2SCFGR_PLLI2SM PLLI2SM              // 6 bits @ 0
 #else
 #define RCC_PLLI2SCFGR_PLLI2SM
@@ -4247,20 +4269,20 @@
 #if defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
     defined(STM32F413xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
     defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) 
+    defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_PLLI2SCFGR_PLLI2SQ PLLI2SQ              // 4 bits @ 24
 #else
 #define RCC_PLLI2SCFGR_PLLI2SQ
 #endif
 
-#if defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
+#if defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     )
 #define RCC_PLLSAICFGR_PLLSAIP PLLSAIP              // 2 bits @ 16
 #else
 #define RCC_PLLSAICFGR_PLLSAIP
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_MAP1_CFGR        CFGR_TypeDef CFGR
 #else
 #define RCC_MAP1_CFGR __SOOL_PERIPH_PADDING_4
@@ -4271,7 +4293,7 @@
     defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
     defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
     defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) 
+    defined(STM32F7     )
 #define RCC_MAP1_AHB3RSTR    AHB3RSTR_TypeDef AHB3RSTR
 #define RCC_MAP0_AHB3ENR     AHB3ENR_TypeDef AHB3ENR
 #define RCC_MAP0_AHB3LPENR   AHB3LPENR_TypeDef AHB3LPENR
@@ -4281,29 +4303,62 @@
 #define RCC_MAP0_AHB3LPENR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     )
 #define RCC_MAP1_APB2RSTR    APB2RSTR_TypeDef APB2RSTR
 #else
 #define RCC_MAP1_APB2RSTR __SOOL_PERIPH_PADDING_4
 #endif
 
 //endregion
-
 namespace sool
 {
 	namespace core
 	{
+//region related-types
+		enum class ClockDomain
+		{
+		#if defined(STM32F0)
+			HSI,
+			HSE,
+			LSI,
+			LSE,
+			HSI14,
+			Cortex_System_Timer,
+			PLLCLK,
+			SYSCLK,
+			HCLK,
+			RTCCLKK,
+			MCO,
+			PCLK,
+			#if defined(STM32F030x4) || defined(STM32F030x6) || defined(STM32F030x8)
+				FHCLK,
+			#else
+				FCLK,
+			#endif
+			#if defined(STM32F04x) || defined(STM32F07x) || defined(STM32F09x)
+				HSI48,
+			#endif
+			#if defined(STM32F0x0)
+				FLITFCLK,
+			#endif
+		#endif
+		
+		};
+		
+//endregion
+//region peripheral-declaration
+
 		class RCC
 		{
 			
-			
-			public :
-			
-			#ifdef RCC_AHB1ENR
+
+		public :
+
+#ifdef RCC_AHB1ENR
 			struct AHB1ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4367,13 +4422,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB1LPENR
+#endif
+
+#ifdef RCC_AHB1LPENR
 			struct AHB1LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_AHB1LPENR_0
@@ -4435,13 +4490,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB1RSTR
+#endif
+
+#ifdef RCC_AHB1RSTR
 			struct AHB1RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4497,13 +4552,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB1SMENR
+#endif
+
+#ifdef RCC_AHB1SMENR
 			struct AHB1SMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t DMA1SMEN             :1;
 					uint32_t DMA2SMEN             :1;
 					uint32_t RCC_AHB1SMENR_DMAMUX1SMEN :1;
@@ -4517,16 +4572,16 @@ namespace sool
 					uint32_t RCC_AHB1SMENR_DMA2DSMEN :1;
 					uint32_t RCC_AHB1SMENR_GFXMMUSMEN :1;
 					uint32_t                      :13;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB2ENR
+#endif
+
+#ifdef RCC_AHB2ENR
 			struct AHB2ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4585,13 +4640,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB2LPENR
+#endif
+
+#ifdef RCC_AHB2LPENR
 			struct AHB2LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4622,13 +4677,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB2RSTR
+#endif
+
+#ifdef RCC_AHB2RSTR
 			struct AHB2RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4684,13 +4739,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB2SMENR
+#endif
+
+#ifdef RCC_AHB2SMENR
 			struct AHB2SMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t GPIOASMEN            :1;
 					uint32_t GPIOBSMEN            :1;
 					uint32_t GPIOCSMEN            :1;
@@ -4715,16 +4770,16 @@ namespace sool
 					uint32_t                      :1;
 					uint32_t RCC_AHB2SMENR_SDMMC1SMEN :1;
 					uint32_t                      :9;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB3ENR
+#endif
+
+#ifdef RCC_AHB3ENR
 			struct AHB3ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_AHB3ENR_0
@@ -4766,13 +4821,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB3LPENR
+#endif
+
+#ifdef RCC_AHB3LPENR
 			struct AHB3LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_AHB3LPENR_0
@@ -4815,13 +4870,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB3RSTR
+#endif
+
+#ifdef RCC_AHB3RSTR
 			struct AHB3RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_AHB3RSTR_0
@@ -4864,13 +4919,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB3SMENR
+#endif
+
+#ifdef RCC_AHB3SMENR
 			struct AHB3SMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -4892,13 +4947,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB4ENR
+#endif
+
+#ifdef RCC_AHB4ENR
 			struct AHB4ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t GPIOAEN              :1;
 					uint32_t GPIOBEN              :1;
 					uint32_t GPIOCEN              :1;
@@ -4921,16 +4976,16 @@ namespace sool
 					uint32_t BKPRAMEN             :1;
 					uint32_t D3SRAM1EN            :1;
 					uint32_t                      :2;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB4LPENR
+#endif
+
+#ifdef RCC_AHB4LPENR
 			struct AHB4LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t GPIOALPEN            :1;
 					uint32_t GPIOBLPEN            :1;
 					uint32_t GPIOCLPEN            :1;
@@ -4952,16 +5007,16 @@ namespace sool
 					uint32_t BKPRAMLPEN           :1;
 					uint32_t D3SRAM1LPEN          :1;
 					uint32_t                      :2;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHB4RSTR
+#endif
+
+#ifdef RCC_AHB4RSTR
 			struct AHB4RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t GPIOARST             :1;
 					uint32_t GPIOBRST             :1;
 					uint32_t GPIOCRST             :1;
@@ -4981,16 +5036,16 @@ namespace sool
 					uint32_t ADC3RST              :1;
 					uint32_t HSEMRST              :1;
 					uint32_t                      :6;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHBENR
+#endif
+
+#ifdef RCC_AHBENR
 			struct AHBENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_AHBENR_0
@@ -5081,13 +5136,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHBLPENR
+#endif
+
+#ifdef RCC_AHBLPENR
 			struct AHBLPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t GPIOALPEN            :1;
 					uint32_t GPIOBLPEN            :1;
 					uint32_t GPIOCLPEN            :1;
@@ -5109,16 +5164,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t RCC_AHBLPENR_FSMCLPEN :1;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHBRSTR
+#endif
+
+#ifdef RCC_AHBRSTR
 			struct AHBRSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5186,13 +5241,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_AHBSMENR
+#endif
+
+#ifdef RCC_AHBSMENR
 			struct AHBSMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5219,13 +5274,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1ENR
+#endif
+
+#ifdef RCC_APB1ENR
 			struct APB1ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5308,13 +5363,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1ENR1
+#endif
+
+#ifdef RCC_APB1ENR1
 			struct APB1ENR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5360,29 +5415,29 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1ENR2
+#endif
+
+#ifdef RCC_APB1ENR2
 			struct APB1ENR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t LPUART1EN            :1;
 					uint32_t RCC_APB1ENR2_I2C4EN  :1;
 					uint32_t RCC_APB1ENR2_SWPMI1EN :1;
 					uint32_t                      :2;
 					uint32_t LPTIM2EN             :1;
 					uint32_t                      :26;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1HENR
+#endif
+
+#ifdef RCC_APB1HENR
 			struct APB1HENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t CRSEN                :1;
 					uint32_t SWPMIEN              :1;
@@ -5392,16 +5447,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t FDCANEN              :1;
 					uint32_t                      :23;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1HLPENR
+#endif
+
+#ifdef RCC_APB1HLPENR
 			struct APB1HLPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t CRSLPEN              :1;
 					uint32_t SWPMILPEN            :1;
@@ -5411,16 +5466,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t FDCANLPEN            :1;
 					uint32_t                      :23;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1HRSTR
+#endif
+
+#ifdef RCC_APB1HRSTR
 			struct APB1HRSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t CRSRST               :1;
 					uint32_t SWPMIRST             :1;
@@ -5430,16 +5485,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t FDCANRST             :1;
 					uint32_t                      :23;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1LENR
+#endif
+
+#ifdef RCC_APB1LENR
 			struct APB1LENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t TIM2EN               :1;
 					uint32_t TIM3EN               :1;
 					uint32_t TIM4EN               :1;
@@ -5467,16 +5522,16 @@ namespace sool
 					uint32_t DAC12EN              :1;
 					uint32_t UART7EN              :1;
 					uint32_t UART8EN              :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1LLPENR
+#endif
+
+#ifdef RCC_APB1LLPENR
 			struct APB1LLPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t TIM2LPEN             :1;
 					uint32_t TIM3LPEN             :1;
 					uint32_t TIM4LPEN             :1;
@@ -5504,16 +5559,16 @@ namespace sool
 					uint32_t DAC12LPEN            :1;
 					uint32_t UART7LPEN            :1;
 					uint32_t UART8LPEN            :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1LPENR
+#endif
+
+#ifdef RCC_APB1LPENR
 			struct APB1LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5570,13 +5625,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1LRSTR
+#endif
+
+#ifdef RCC_APB1LRSTR
 			struct APB1LRSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t TIM2RST              :1;
 					uint32_t TIM3RST              :1;
 					uint32_t TIM4RST              :1;
@@ -5604,16 +5659,16 @@ namespace sool
 					uint32_t DAC12RST             :1;
 					uint32_t UART7RST             :1;
 					uint32_t UART8RST             :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1RSTR
+#endif
+
+#ifdef RCC_APB1RSTR
 			struct APB1RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5695,13 +5750,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1RSTR1
+#endif
+
+#ifdef RCC_APB1RSTR1
 			struct APB1RSTR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5745,29 +5800,29 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1RSTR2
+#endif
+
+#ifdef RCC_APB1RSTR2
 			struct APB1RSTR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t LPUART1RST           :1;
 					uint32_t RCC_APB1RSTR2_I2C4RST :1;
 					uint32_t RCC_APB1RSTR2_SWPMI1RST :1;
 					uint32_t                      :2;
 					uint32_t LPTIM2RST            :1;
 					uint32_t                      :26;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1SMENR
+#endif
+
+#ifdef RCC_APB1SMENR
 			struct APB1SMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t TIM2SMEN             :1;
 					uint32_t RCC_APB1SMENR_TIM3SMEN :1;
 					uint32_t                      :2;
@@ -5793,16 +5848,16 @@ namespace sool
 					uint32_t RCC_APB1SMENR_DACSMEN :1;
 					uint32_t RCC_APB1SMENR_I2C3SMEN :1;
 					uint32_t LPTIM1SMEN           :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1SMENR1
+#endif
+
+#ifdef RCC_APB1SMENR1
 			struct APB1SMENR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5848,29 +5903,29 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB1SMENR2
+#endif
+
+#ifdef RCC_APB1SMENR2
 			struct APB1SMENR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t LPUART1SMEN          :1;
 					uint32_t RCC_APB1SMENR2_I2C4SMEN :1;
 					uint32_t RCC_APB1SMENR2_SWPMI1SMEN :1;
 					uint32_t                      :2;
 					uint32_t LPTIM2SMEN           :1;
 					uint32_t                      :26;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB2ENR
+#endif
+
+#ifdef RCC_APB2ENR
 			struct APB2ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -5908,7 +5963,7 @@ namespace sool
 						uint32_t RCC_APB2ENR_0_MDIOEN :1;
 						uint32_t RCC_APB2ENR_0_OTGPHYCEN :1;
 					};
-					#ifdef RCC_APB2ENR_1
+#ifdef RCC_APB2ENR_1
 					struct
 					{
 						uint32_t RCC_APB2ENR_1_AFIOEN :1;
@@ -5941,8 +5996,8 @@ namespace sool
 						uint32_t RCC_APB2ENR_1_HRTIMEN :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_APB2ENR_2
+#endif
+#ifdef RCC_APB2ENR_2
 					struct
 					{
 						uint32_t RCC_APB2ENR_2_TIM1EN :1;
@@ -5971,8 +6026,8 @@ namespace sool
 						uint32_t RCC_APB2ENR_2_DFSDM1EN :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_APB2ENR_3
+#endif
+#ifdef RCC_APB2ENR_3
 					struct
 					{
 						uint32_t RCC_APB2ENR_3_SYSCFGEN :1;
@@ -5984,33 +6039,33 @@ namespace sool
 						uint32_t RCC_APB2ENR_3_SAI2EN :1;
 						uint32_t                      :9;
 					};
-					#endif
-					#ifdef RCC_APB2ENR_4
+#endif
+#ifdef RCC_APB2ENR_4
 					struct
 					{
 						uint32_t                      :7;
 						uint32_t FWEN                 :1;
 						uint32_t                      :24;
 					};
-					#endif
-					#ifdef RCC_APB2ENR_5
+#endif
+#ifdef RCC_APB2ENR_5
 					struct
 					{
 						uint32_t                      :7;
 						uint32_t MIFIEN               :1;
 						uint32_t                      :24;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB2LPENR
+#endif
+
+#ifdef RCC_APB2LPENR
 			struct APB2LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6085,13 +6140,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB2RSTR
+#endif
+
+#ifdef RCC_APB2RSTR
 			struct APB2RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6129,7 +6184,7 @@ namespace sool
 						uint32_t RCC_APB2RSTR_0_MDIORST :1;
 						uint32_t RCC_APB2RSTR_0_OTGPHYCRST :1;
 					};
-					#ifdef RCC_APB2RSTR_1
+#ifdef RCC_APB2RSTR_1
 					struct
 					{
 						uint32_t RCC_APB2RSTR_1_AFIORST :1;
@@ -6162,8 +6217,8 @@ namespace sool
 						uint32_t RCC_APB2RSTR_1_HRTIMRST :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_APB2RSTR_2
+#endif
+#ifdef RCC_APB2RSTR_2
 					struct
 					{
 						uint32_t RCC_APB2RSTR_2_TIM1RST :1;
@@ -6188,8 +6243,8 @@ namespace sool
 						uint32_t RCC_APB2RSTR_2_DFSDM1RST :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_APB2RSTR_3
+#endif
+#ifdef RCC_APB2RSTR_3
 					struct
 					{
 						uint32_t                      :7;
@@ -6198,17 +6253,17 @@ namespace sool
 						uint32_t RCC_APB2RSTR_3_SAI2RST :1;
 						uint32_t                      :9;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB2SMENR
+#endif
+
+#ifdef RCC_APB2SMENR
 			struct APB2SMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6260,56 +6315,56 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB3ENR
+#endif
+
+#ifdef RCC_APB3ENR
 			struct APB3ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t LTDCEN               :1;
 					uint32_t                      :2;
 					uint32_t WWDG1EN              :1;
 					uint32_t                      :25;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB3LPENR
+#endif
+
+#ifdef RCC_APB3LPENR
 			struct APB3LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t LTDCLPEN             :1;
 					uint32_t                      :2;
 					uint32_t WWDG1LPEN            :1;
 					uint32_t                      :25;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB3RSTR
+#endif
+
+#ifdef RCC_APB3RSTR
 			struct APB3RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t LTDCRST              :1;
 					uint32_t                      :28;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB4ENR
+#endif
+
+#ifdef RCC_APB4ENR
 			struct APB4ENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t SYSCFGEN             :1;
 					uint32_t                      :1;
@@ -6330,16 +6385,16 @@ namespace sool
 					uint32_t                      :4;
 					uint32_t SAI4EN               :1;
 					uint32_t                      :10;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB4LPENR
+#endif
+
+#ifdef RCC_APB4LPENR
 			struct APB4LPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t SYSCFGLPEN           :1;
 					uint32_t                      :1;
@@ -6360,16 +6415,16 @@ namespace sool
 					uint32_t                      :4;
 					uint32_t SAI4LPEN             :1;
 					uint32_t                      :10;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_APB4RSTR
+#endif
+
+#ifdef RCC_APB4RSTR
 			struct APB4RSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :1;
 					uint32_t SYSCFGRST            :1;
 					uint32_t                      :1;
@@ -6389,16 +6444,16 @@ namespace sool
 					uint32_t                      :5;
 					uint32_t SAI4RST              :1;
 					uint32_t                      :10;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_BDCR
+#endif
+
+#ifdef RCC_BDCR
 			struct BDCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6430,13 +6485,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CCIPR
+#endif
+
+#ifdef RCC_CCIPR
 			struct CCIPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6479,13 +6534,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CCIPR2
+#endif
+
+#ifdef RCC_CCIPR2
 			struct CCIPR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t I2C4SEL              :2;
 					uint32_t RCC_CCIPR2_DFSDM1SEL :1;
 					uint32_t RCC_CCIPR2_ADFSDM1SEL :2;
@@ -6500,16 +6555,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t RCC_CCIPR2_OSPISEL   :2;
 					uint32_t                      :10;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_CFGR
+#endif
+
+#ifdef RCC_CFGR
 			struct CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6530,7 +6585,7 @@ namespace sool
 						uint32_t RCC_CFGR_0_MCOPRE    :3;
 						uint32_t RCC_CFGR_0_PLLNODIV  :1;
 					};
-					#ifdef RCC_CFGR_1
+#ifdef RCC_CFGR_1
 					struct
 					{
 						uint32_t RCC_CFGR_1_SW        :3;
@@ -6550,8 +6605,8 @@ namespace sool
 						uint32_t                      :1;
 						uint32_t RCC_CFGR_1_MCO2      :2;
 					};
-					#endif
-					#ifdef RCC_CFGR_2
+#endif
+#ifdef RCC_CFGR_2
 					struct
 					{
 						uint32_t                      :8;
@@ -6567,8 +6622,8 @@ namespace sool
 						uint32_t RCC_CFGR_2_MCO2PRE   :3;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_CFGR_3
+#endif
+#ifdef RCC_CFGR_3
 					struct
 					{
 						uint32_t                      :13;
@@ -6578,8 +6633,8 @@ namespace sool
 						uint32_t RCC_CFGR_3_MCO1PRE   :3;
 						uint32_t RCC_CFGR_3_SDPRE     :5;
 					};
-					#endif
-					#ifdef RCC_CFGR_4
+#endif
+#ifdef RCC_CFGR_4
 					struct
 					{
 						uint32_t                      :8;
@@ -6591,33 +6646,33 @@ namespace sool
 						uint32_t                      :2;
 						uint32_t RCC_CFGR_4_SDADCPRE  :5;
 					};
-					#endif
-					#ifdef RCC_CFGR_5
+#endif
+#ifdef RCC_CFGR_5
 					struct
 					{
 						uint32_t                      :25;
 						uint32_t MCO2PRE              :4;
 						uint32_t MCO2                 :3;
 					};
-					#endif
-					#ifdef RCC_CFGR_6
+#endif
+#ifdef RCC_CFGR_6
 					struct
 					{
 						uint32_t                      :24;
 						uint32_t MCOSEL               :3;
 						uint32_t                      :5;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CFGR2
+#endif
+
+#ifdef RCC_CFGR2
 			struct CFGR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_CFGR2_0
@@ -6653,13 +6708,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CFGR3
+#endif
+
+#ifdef RCC_CFGR3
 			struct CFGR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6722,13 +6777,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CICR
+#endif
+
+#ifdef RCC_CICR
 			struct CICR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6786,13 +6841,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CIER
+#endif
+
+#ifdef RCC_CIER
 			struct CIER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6847,13 +6902,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CIFR
+#endif
+
+#ifdef RCC_CIFR
 			struct CIFR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6911,13 +6966,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CIR
+#endif
+
+#ifdef RCC_CIR
 			struct CIR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -6996,13 +7051,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CKGATENR
+#endif
+
+#ifdef RCC_CKGATENR
 			struct CKGATENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t AHB2APB1_CKEN        :1;
 					uint32_t AHB2APB2_CKEN        :1;
 					uint32_t CM4DBG_CKEN          :1;
@@ -7012,16 +7067,16 @@ namespace sool
 					uint32_t RCC_CKEN             :1;
 					uint32_t RCC_CKGATENR_RCC_EVTCTL :1;
 					uint32_t                      :24;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_CR
+#endif
+
+#ifdef RCC_CR
 			struct CR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7045,7 +7100,7 @@ namespace sool
 						uint32_t RCC_CR_0_PLL3RDY     :1;
 						uint32_t                      :2;
 					};
-					#ifdef RCC_CR_1
+#ifdef RCC_CR_1
 					struct
 					{
 						uint32_t RCC_CR_1_MSION       :1;
@@ -7074,8 +7129,8 @@ namespace sool
 						uint32_t RCC_CR_1_PLLSAIRDY   :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_CR_2
+#endif
+#ifdef RCC_CR_2
 					struct
 					{
 						uint32_t                      :3;
@@ -7093,8 +7148,8 @@ namespace sool
 						uint32_t RCC_CR_2_RTCPRE      :2;
 						uint32_t                      :1;
 					};
-					#endif
-					#ifdef RCC_CR_3
+#endif
+#ifdef RCC_CR_3
 					struct
 					{
 						uint32_t                      :1;
@@ -7109,17 +7164,17 @@ namespace sool
 						uint32_t RCC_CR_3_PLLSAI2RDY  :1;
 						uint32_t                      :2;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CR2
+#endif
+
+#ifdef RCC_CR2
 			struct CR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t HSI14ON              :1;
 					uint32_t HSI14RDY             :1;
 					uint32_t HSI14DIS             :1;
@@ -7129,16 +7184,16 @@ namespace sool
 					uint32_t RCC_CR2_HSI48RDY     :1;
 					uint32_t                      :6;
 					uint32_t RCC_CR2_HSI48CAL     :8;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_CRRCR
+#endif
+
+#ifdef RCC_CRRCR
 			struct CRRCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_CRRCR_0
@@ -7170,13 +7225,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_CSR
+#endif
+
+#ifdef RCC_CSR
 			struct CSR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7205,7 +7260,7 @@ namespace sool
 						uint32_t RCC_CSR_0_WWDGRSTF   :1;
 						uint32_t RCC_CSR_0_LPWRRSTF   :1;
 					};
-					#ifdef RCC_CSR_1
+#ifdef RCC_CSR_1
 					struct
 					{
 						uint32_t                      :11;
@@ -7221,8 +7276,8 @@ namespace sool
 						uint32_t RCC_CSR_1_WDGRSTF    :1;
 						uint32_t                      :2;
 					};
-					#endif
-					#ifdef RCC_CSR_2
+#endif
+#ifdef RCC_CSR_2
 					struct
 					{
 						uint32_t                      :8;
@@ -7235,25 +7290,25 @@ namespace sool
 						uint32_t RCC_CSR_2_BORRSTF    :1;
 						uint32_t                      :4;
 					};
-					#endif
-					#ifdef RCC_CSR_3
+#endif
+#ifdef RCC_CSR_3
 					struct
 					{
 						uint32_t                      :23;
 						uint32_t RTCRST               :1;
 						uint32_t                      :8;
 					};
-					#endif
+#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_D1CCIPR
+#endif
+
+#ifdef RCC_D1CCIPR
 			struct D1CCIPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t FMCSEL               :2;
 					uint32_t                      :2;
 					uint32_t QSPISEL              :2;
@@ -7262,31 +7317,31 @@ namespace sool
 					uint32_t                      :11;
 					uint32_t CKPERSEL             :2;
 					uint32_t                      :2;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D1CFGR
+#endif
+
+#ifdef RCC_D1CFGR
 			struct D1CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t HPRE                 :4;
 					uint32_t D1PPRE               :3;
 					uint32_t                      :1;
 					uint32_t D1CPRE               :4;
 					uint32_t                      :20;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D2CCIP1R
+#endif
+
+#ifdef RCC_D2CCIP1R
 			struct D2CCIP1R_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t SAI1SEL              :3;
 					uint32_t                      :3;
 					uint32_t SAI23SEL             :3;
@@ -7302,16 +7357,16 @@ namespace sool
 					uint32_t FDCANSEL             :2;
 					uint32_t                      :1;
 					uint32_t SWPSEL               :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D2CCIP2R
+#endif
+
+#ifdef RCC_D2CCIP2R
 			struct D2CCIP2R_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t USART28SEL           :3;
 					uint32_t USART16SEL           :3;
 					uint32_t                      :2;
@@ -7324,31 +7379,31 @@ namespace sool
 					uint32_t                      :4;
 					uint32_t LPTIM1SEL            :3;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D2CFGR
+#endif
+
+#ifdef RCC_D2CFGR
 			struct D2CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :4;
 					uint32_t D2PPRE1              :3;
 					uint32_t                      :1;
 					uint32_t D2PPRE2              :3;
 					uint32_t                      :21;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D3AMR
+#endif
+
+#ifdef RCC_D3AMR
 			struct D3AMR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t BDMAAMEN             :1;
 					uint32_t                      :2;
 					uint32_t LPUART1AMEN          :1;
@@ -7375,16 +7430,16 @@ namespace sool
 					uint32_t BKPRAMAMEN           :1;
 					uint32_t SRAM4AMEN            :1;
 					uint32_t                      :2;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D3CCIPR
+#endif
+
+#ifdef RCC_D3CCIPR
 			struct D3CCIPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t LPUART1SEL           :3;
 					uint32_t                      :5;
 					uint32_t I2C4SEL              :2;
@@ -7397,29 +7452,29 @@ namespace sool
 					uint32_t                      :1;
 					uint32_t SPI6SEL              :3;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_D3CFGR
+#endif
+
+#ifdef RCC_D3CFGR
 			struct D3CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :4;
 					uint32_t D3PPRE               :3;
 					uint32_t                      :25;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_DCKCFGR
+#endif
+
+#ifdef RCC_DCKCFGR
 			struct DCKCFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7460,13 +7515,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_DCKCFGR1
+#endif
+
+#ifdef RCC_DCKCFGR1
 			struct DCKCFGR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PLLI2SDIVQ           :5;
 					uint32_t                      :3;
 					uint32_t PLLSAIDIVQ           :5;
@@ -7479,16 +7534,16 @@ namespace sool
 					uint32_t RCC_DCKCFGR1_DFSDM1SEL :1;
 					uint32_t RCC_DCKCFGR1_ADFSDM1SEL :1;
 					uint32_t                      :5;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_DCKCFGR2
+#endif
+
+#ifdef RCC_DCKCFGR2
 			struct DCKCFGR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7528,25 +7583,25 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_GCR
+#endif
+
+#ifdef RCC_GCR
 			struct GCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WW1RSC               :1;
 					uint32_t                      :31;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_ICSCR
+#endif
+
+#ifdef RCC_ICSCR
 			struct ICSCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_ICSCR_0
@@ -7590,13 +7645,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_IOPENR
+#endif
+
+#ifdef RCC_IOPENR
 			struct IOPENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7624,13 +7679,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_IOPRSTR
+#endif
+
+#ifdef RCC_IOPRSTR
 			struct IOPRSTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7658,13 +7713,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_IOPSMENR
+#endif
+
+#ifdef RCC_IOPSMENR
 			struct IOPSMENR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -7692,100 +7747,100 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL1DIVR
+#endif
+
+#ifdef RCC_PLL1DIVR
 			struct PLL1DIVR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t N1                   :9;
 					uint32_t P1                   :7;
 					uint32_t Q1                   :7;
 					uint32_t                      :1;
 					uint32_t R1                   :7;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL1FRACR
+#endif
+
+#ifdef RCC_PLL1FRACR
 			struct PLL1FRACR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t FRACN1               :13;
 					uint32_t                      :16;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL2DIVR
+#endif
+
+#ifdef RCC_PLL2DIVR
 			struct PLL2DIVR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t N2                   :9;
 					uint32_t P2                   :7;
 					uint32_t Q2                   :7;
 					uint32_t                      :1;
 					uint32_t R2                   :7;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL2FRACR
+#endif
+
+#ifdef RCC_PLL2FRACR
 			struct PLL2FRACR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t FRACN2               :13;
 					uint32_t                      :16;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL3DIVR
+#endif
+
+#ifdef RCC_PLL3DIVR
 			struct PLL3DIVR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t N3                   :9;
 					uint32_t P3                   :7;
 					uint32_t Q3                   :7;
 					uint32_t                      :1;
 					uint32_t R3                   :7;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLL3FRACR
+#endif
+
+#ifdef RCC_PLL3FRACR
 			struct PLL3FRACR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :3;
 					uint32_t FRACN3               :13;
 					uint32_t                      :16;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLCFGR
+#endif
+
+#ifdef RCC_PLLCFGR
 			struct PLLCFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef RCC_PLLCFGR_0
@@ -7860,13 +7915,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLCKSELR
+#endif
+
+#ifdef RCC_PLLCKSELR
 			struct PLLCKSELR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PLLSRC               :2;
 					uint32_t                      :2;
 					uint32_t DIVM1                :6;
@@ -7875,16 +7930,16 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t DIVM3                :6;
 					uint32_t                      :6;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLI2SCFGR
+#endif
+
+#ifdef RCC_PLLI2SCFGR
 			struct PLLI2SCFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t RCC_PLLI2SCFGR_PLLI2SM :6;
 					uint32_t PLLI2SN              :9;
 					uint32_t                      :1;
@@ -7895,16 +7950,16 @@ namespace sool
 					uint32_t RCC_PLLI2SCFGR_PLLI2SQ :4;
 					uint32_t PLLI2SR              :3;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLSAI1CFGR
+#endif
+
+#ifdef RCC_PLLSAI1CFGR
 			struct PLLSAI1CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :4;
 					uint32_t RCC_PLLSAI1CFGR_PLLSAI1M :4;
 					uint32_t PLLSAI1N             :7;
@@ -7918,16 +7973,16 @@ namespace sool
 					uint32_t PLLSAI1REN           :1;
 					uint32_t PLLSAI1R             :2;
 					uint32_t RCC_PLLSAI1CFGR_PLLSAI1PDIV :5;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLSAI2CFGR
+#endif
+
+#ifdef RCC_PLLSAI2CFGR
 			struct PLLSAI2CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :4;
 					uint32_t RCC_PLLSAI2CFGR_PLLSAI2M :4;
 					uint32_t PLLSAI2N             :7;
@@ -7941,16 +7996,16 @@ namespace sool
 					uint32_t PLLSAI2REN           :1;
 					uint32_t PLLSAI2R             :2;
 					uint32_t RCC_PLLSAI2CFGR_PLLSAI2PDIV :5;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_PLLSAICFGR
+#endif
+
+#ifdef RCC_PLLSAICFGR
 			struct PLLSAICFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t RCC_PLLSAICFGR_PLLSAIM :6;
 					uint32_t PLLSAIN              :9;
 					uint32_t                      :1;
@@ -7959,16 +8014,16 @@ namespace sool
 					uint32_t PLLSAIQ              :4;
 					uint32_t RCC_PLLSAICFGR_PLLSAIR :3;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_RSR
+#endif
+
+#ifdef RCC_RSR
 			struct RSR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :16;
 					uint32_t RMVF                 :1;
 					uint32_t CPURSTF              :1;
@@ -7986,29 +8041,29 @@ namespace sool
 					uint32_t                      :1;
 					uint32_t LPWRRSTF             :1;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef RCC_SSCGR
+#endif
+
+#ifdef RCC_SSCGR
 			struct SSCGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t MODPER               :13;
 					uint32_t INCSTEP              :15;
 					uint32_t                      :2;
 					uint32_t SPREADSEL            :1;
 					uint32_t SSCGEN               :1;
-			
+
 				
 			};
-			#endif
-			
+#endif
+
 			union
 			{
-				
+
 				struct
 				{
 					CR_TypeDef CR;       // @0x000
@@ -8240,47 +8295,35 @@ namespace sool
 					__SOOL_PERIPH_PADDING_4;
 				};
 			};
-			private:
+		private:
 			RCC() = delete;
 			public:
-				get_clock_frequency(ClockDomain domain);
-				get_clock_frequency()
+				uint32_t get_clock_frequency(ClockDomain domain) volatile;
 			
 		};
-		
-		//region instances
+
+//endregion
+//region instances
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define RCC_BASE_ADDR ((uint32_t)0x40021000U)
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
 #define RCC_BASE_ADDR ((uint32_t)0x40023800U)
 #endif
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define RCC_BASE_ADDR ((uint32_t)0x58024400U)
 #endif
 
 #ifdef RCC_BASE_ADDR
-volatile class RCC * const RCC = reinterpret_cast<class RCC* const>(RCC_BASE_ADDR);
+		volatile class RCC * const RCC = reinterpret_cast<class RCC* const>(RCC_BASE_ADDR);
 #endif
 //endregion
-
-
-
-enum class ClockDomain
-{
-	HSI,
-	LSE,
-	LSI,
-	HSE
-};
-
-class ClockTreeNode {
-
-};
-
+//region peripheral-definition
+		
+//endregion
 	};
 };
 //region undef
@@ -8866,7 +8909,6 @@ class ClockTreeNode {
 #undef RCC_AHBRSTR_0_GPIODRST
 #undef RCC_AHBENR_0_GPIOEEN
 #undef RCC_AHBRSTR_0_GPIOERST
-#undef RCC_CFGR3_0_USART2SW
 #undef RCC_AHBENR_0_TSCEN
 #undef RCC_AHBRSTR_0_TSCRST
 #undef RCC_AHBENR_0_AESEN
@@ -9380,6 +9422,7 @@ class ClockTreeNode {
 #undef RCC_CFGR3_0_TIM17SW
 #undef RCC_CFGR3_1_I2CSW
 #undef RCC_CFGR3_2_I2C3SW
+#undef RCC_CFGR3_0_USART2SW
 #undef RCC_CFGR3_0_USART3SW
 #undef RCC_CFGR3_0_UART4SW
 #undef RCC_CFGR3_0_UART5SW
@@ -9457,5 +9500,7 @@ class ClockTreeNode {
 #undef RCC_MAP0_AHB3ENR
 #undef RCC_MAP0_AHB3LPENR
 #undef RCC_MAP1_APB2RSTR
+
 //endregion
-#endif
+
+#endif //__SOOL_RCC_H

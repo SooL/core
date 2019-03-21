@@ -1,22 +1,24 @@
 /**
  * Copyright (c) 2018-2019 FAUCHER Julien & FRANCE Loic
- * This file is part of SooL.
+ * This file is part of SooL core Library.
  *
- *  SooL is free software: you can redistribute it and/or modify
+ *  SooL core Library is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License
  *  as published by the Free Software Foundation, either version 3
  *  of the License, or (at your option) any later version.
  *
- *  SooL is distributed in the hope that it will be useful,
+ *  SooL core Library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *  GNU Lesser General Public License for more details.
  *
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with SooL. If not, see <https://www.gnu.org/licenses/>.
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
  */
 #ifndef __SOOL_FLASH_H
 #define __SOOL_FLASH_H
+
+
 
 #include "lib_utils/peripheral_include.h"
 
@@ -27,40 +29,40 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_ACR_0
 #define FLASH_SR
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L0     ) || defined(STM32L1     ) 
+#if defined(STM32F0     ) || defined(STM32L0     ) || defined(STM32L1     )
 #define FLASH_ACR_0_LATENCY  LATENCY              // 1 bits @ 0
 #else
 #define FLASH_ACR_0_LATENCY
 #endif
 
-#if defined(STM32L1     ) 
+#if defined(STM32L1     )
 #define FLASH_ACR_0_ACC64    ACC64                // 1 bits @ 2
-#define FLASH_OBR_2_IWDG_SW  IWDG_SW              // 1 bits @ 20
+#define FLASH_OBR_2_BOR_LEV  BOR_LEV              // 4 bits @ 16
 #define FLASH_OBR_2_nRST_STOP nRST_STOP            // 1 bits @ 21
 #define FLASH_OBR_2_nRST_STDBY nRST_STDBY           // 1 bits @ 22
-#define FLASH_OBR_3_BOR_LEV  BOR_LEV              // 4 bits @ 16
+#define FLASH_OBR_3_IWDG_SW  IWDG_SW              // 1 bits @ 20
 #define FLASH_OBR_6
 #define FLASH_PECR_1
 #define FLASH_WRPR1
 #define FLASH_MAP2_WRPR1     WRPR1_TypeDef WRPR1
 #else
 #define FLASH_ACR_0_ACC64
-#define FLASH_OBR_2_IWDG_SW
+#define FLASH_OBR_2_BOR_LEV
 #define FLASH_OBR_2_nRST_STOP
 #define FLASH_OBR_2_nRST_STDBY
-#define FLASH_OBR_3_BOR_LEV
+#define FLASH_OBR_3_IWDG_SW
 #define FLASH_MAP2_WRPR1 __SOOL_PERIPH_PADDING_4
 #endif
 
 #if defined(STM32F1     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
     defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
     defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) 
+    defined(STM32F398xx )
 #define FLASH_ACR_0_HLFCYA   HLFCYA               // 1 bits @ 3
 #else
 #define FLASH_ACR_0_HLFCYA
@@ -69,7 +71,7 @@
 #if defined(STM32F0     ) || defined(STM32F101x6 ) || defined(STM32F101xB ) || defined(STM32F101xE ) ||\
     defined(STM32F101xG ) || defined(STM32F102x6 ) || defined(STM32F102xB ) || defined(STM32F103x6 ) ||\
     defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) ||\
-    defined(STM32F107xC ) || defined(STM32F3     ) 
+    defined(STM32F107xC ) || defined(STM32F3     )
 #define FLASH_ACR_0_PRFTBE   PRFTBE               // 1 bits @ 4
 #define FLASH_ACR_0_PRFTBS   PRFTBS               // 1 bits @ 5
 #else
@@ -77,7 +79,7 @@
 #define FLASH_ACR_0_PRFTBS
 #endif
 
-#if defined(STM32L0     ) 
+#if defined(STM32L0     )
 #define FLASH_ACR_0_PRE_READ PRE_READ             // 1 bits @ 6
 #define FLASH_ACR_2_DISAB_BUF DISAB_BUF            // 1 bits @ 5
 #define FLASH_OPTR_0_RDPROT  RDPROT               // 8 bits @ 0
@@ -118,7 +120,7 @@
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define FLASH_ACR_0_PRFTEN   PRFTEN               // 1 bits @ 8
 #define FLASH_CR_1_STRT      STRT                 // 1 bits @ 16
 #define FLASH_CR_1_EOPIE     EOPIE                // 1 bits @ 24
@@ -136,7 +138,7 @@
 #define FLASH_SR_1_BSY
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_ACR_0_ICEN     ICEN                 // 1 bits @ 9
 #define FLASH_ACR_0_DCEN     DCEN                 // 1 bits @ 10
 #define FLASH_ACR_0_ICRST    ICRST                // 1 bits @ 11
@@ -150,7 +152,7 @@
 #define FLASH_SR_0_PGSERR
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_ACR_0_RUN_PD   RUN_PD               // 1 bits @ 13
 #define FLASH_ACR_0_SLEEP_PD SLEEP_PD             // 1 bits @ 14
 #define FLASH_CR_0_OPTLOCK   OPTLOCK              // 1 bits @ 30
@@ -234,20 +236,20 @@
     defined(STM32F102x6 ) || defined(STM32F102xB ) || defined(STM32F103x6 ) || defined(STM32F103xB ) ||\
     defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
     defined(STM32F3     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) || defined(STM32L4     ) 
+    defined(STM32L1     ) || defined(STM32L4     )
 #define FLASH_ACR_1
 #endif
 
 #if defined(STM32F101x6 ) || defined(STM32F101xB ) || defined(STM32F101xE ) || defined(STM32F101xG ) ||\
     defined(STM32F102x6 ) || defined(STM32F102xB ) || defined(STM32F103x6 ) || defined(STM32F103xB ) ||\
     defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) ||\
-    defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L4     ) 
+    defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L4     )
 #define FLASH_ACR_1_LATENCY  LATENCY              // 3 bits @ 0
 #else
 #define FLASH_ACR_1_LATENCY
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L1     ) 
+#if defined(STM32L0     ) || defined(STM32L1     )
 #define FLASH_ACR_1_SLEEP_PD SLEEP_PD             // 1 bits @ 3
 #define FLASH_ACR_2_RUN_PD   RUN_PD               // 1 bits @ 4
 #define FLASH_ACR_3
@@ -284,7 +286,7 @@
 #define FLASH_MAP1_SR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define FLASH_ACR_1_WRHIGHFREQ WRHIGHFREQ           // 2 bits @ 4
 #define FLASH_BOOT
 #define FLASH_CCR
@@ -448,7 +450,7 @@
 #define FLASH_MAP0_ECC_FA2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F7     ) 
+#if defined(STM32F7     )
 #define FLASH_ACR_1_ARTEN    ARTEN                // 1 bits @ 9
 #define FLASH_ACR_1_ARTRST   ARTRST               // 1 bits @ 11
 #define FLASH_OPTCR_1_WWDG_SW WWDG_SW              // 1 bits @ 4
@@ -470,17 +472,17 @@
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) || defined(STM32L4P    ) 
+    defined(STM32L1     ) || defined(STM32L4P    )
 #define FLASH_ACR_2
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4P    ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4P    )
 #define FLASH_ACR_2_LATENCY  LATENCY              // 4 bits @ 0
 #else
 #define FLASH_ACR_2_LATENCY
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) 
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     )
 #define FLASH_AR
 #define FLASH_CR_0_OPTPG     OPTPG                // 1 bits @ 4
 #define FLASH_CR_0_OPTER     OPTER                // 1 bits @ 5
@@ -490,6 +492,7 @@
 #define FLASH_CR_0_ERRIE     ERRIE                // 1 bits @ 10
 #define FLASH_CR_0_EOPIE     EOPIE                // 1 bits @ 12
 #define FLASH_OBR_0
+#define FLASH_OBR_1
 #define FLASH_SR_0_PGERR     PGERR                // 1 bits @ 2
 #define FLASH_SR_0_EOP       EOP                  // 1 bits @ 5
 #define FLASH_MAP0_AR        AR_TypeDef AR
@@ -506,7 +509,7 @@
 #define FLASH_MAP0_AR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F101xG ) || defined(STM32F103xG ) 
+#if defined(STM32F101xG ) || defined(STM32F103xG )
 #define FLASH_AR_1
 #define FLASH_AR2
 #define FLASH_OBR_0_BFB2     BFB2                 // 1 bits @ 5
@@ -525,7 +528,7 @@
 #define FLASH_MAP0_AR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L4P    ) 
+#if defined(STM32L4P    )
 #define FLASH_CFGR
 #define FLASH_ECCR_0_ECCC2   ECCC2                // 1 bits @ 28
 #define FLASH_ECCR_0_ECCD2   ECCD2                // 1 bits @ 29
@@ -545,7 +548,7 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_CR
 #define FLASH_CR_0_PG        PG                   // 1 bits @ 0
 #define FLASH_KEYR
@@ -555,19 +558,19 @@
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
     defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define FLASH_CR_0
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define FLASH_CR_0_PER       PER                  // 1 bits @ 1
 #else
 #define FLASH_CR_0_PER
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) 
+    defined(STM32F4     ) || defined(STM32F7     )
 #define FLASH_CR_0_MER       MER                  // 1 bits @ 2
 #define FLASH_MAP0_KEYR      KEYR_TypeDef KEYR
 #define FLASH_MAP0_SR        SR_TypeDef SR
@@ -580,7 +583,7 @@
 #endif
 
 #if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define FLASH_CR_0_BKER      BKER                 // 1 bits @ 11
 #define FLASH_OPTR_2
 #define FLASH_PCROP2ER
@@ -599,49 +602,45 @@
 #define FLASH_MAP2_WRP2BR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F3     ) 
+#if defined(STM32F0     ) || defined(STM32F3     )
 #define FLASH_CR_0_OBL_LAUNCH OBL_LAUNCH           // 1 bits @ 13
-#define FLASH_OBR_0_IWDG_SW  IWDG_SW              // 1 bits @ 8
-#define FLASH_OBR_0_nRST_STOP nRST_STOP            // 1 bits @ 9
-#define FLASH_OBR_0_nRST_STDBY nRST_STDBY           // 1 bits @ 10
-#define FLASH_OBR_0_nBOOT1   nBOOT1               // 1 bits @ 12
-#define FLASH_OBR_0_VDDA_MONITOR VDDA_MONITOR         // 1 bits @ 13
-#define FLASH_OBR_0_DATA0    DATA0                // 8 bits @ 16
-#define FLASH_OBR_0_DATA1    DATA1                // 8 bits @ 24
+#define FLASH_OBR_1_IWDG_SW  IWDG_SW              // 1 bits @ 8
+#define FLASH_OBR_1_nRST_STOP nRST_STOP            // 1 bits @ 9
+#define FLASH_OBR_1_nRST_STDBY nRST_STDBY           // 1 bits @ 10
+#define FLASH_OBR_1_nBOOT1   nBOOT1               // 1 bits @ 12
+#define FLASH_OBR_1_VDDA_MONITOR VDDA_MONITOR         // 1 bits @ 13
 #else
 #define FLASH_CR_0_OBL_LAUNCH
-#define FLASH_OBR_0_IWDG_SW
-#define FLASH_OBR_0_nRST_STOP
-#define FLASH_OBR_0_nRST_STDBY
-#define FLASH_OBR_0_nBOOT1
-#define FLASH_OBR_0_VDDA_MONITOR
-#define FLASH_OBR_0_DATA0
-#define FLASH_OBR_0_DATA1
+#define FLASH_OBR_1_IWDG_SW
+#define FLASH_OBR_1_nRST_STOP
+#define FLASH_OBR_1_nRST_STDBY
+#define FLASH_OBR_1_nBOOT1
+#define FLASH_OBR_1_VDDA_MONITOR
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F765xx ) ||\
     defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) ||\
     defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define FLASH_CR_0_MER2      MER2                 // 1 bits @ 15
 #else
 #define FLASH_CR_0_MER2
 #endif
 
 #if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_CR_0_RDERRIE   RDERRIE              // 1 bits @ 26
 #else
 #define FLASH_CR_0_RDERRIE
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_CR_1
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
 #define FLASH_CR_1_SER       SER                  // 1 bits @ 1
 #define FLASH_CR_1_PSIZE     PSIZE                // 2 bits @ 8
 #define FLASH_OPTCR_0_OPTSTRT OPTSTRT              // 1 bits @ 1
@@ -666,20 +665,20 @@
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F765xx ) ||\
     defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_CR_1_MER1      MER1                 // 1 bits @ 2
 #else
 #define FLASH_CR_1_MER1
 #endif
 
 #if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F765xx ) || defined(STM32F767xx ) ||\
-    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx )
 #define FLASH_CR_1_SNB       SNB                  // 5 bits @ 3
 #else
 #define FLASH_CR_1_SNB
 #endif
 
-#if defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_CR_1_ERRIE     ERRIE                // 1 bits @ 25
 #define FLASH_SR_1_OPERR     OPERR                // 1 bits @ 1
 #else
@@ -688,12 +687,12 @@
 #endif
 
 #if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
-    defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32H7     ) 
+    defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) || defined(STM32H7     )
 #define FLASH_CR_2
 #endif
 
 #if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) ||\
-    defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx ) 
+    defined(STM32F745xx ) || defined(STM32F746xx ) || defined(STM32F756xx )
 #define FLASH_CR_2_SNB       SNB                  // 4 bits @ 3
 #define FLASH_OPTCR_2_nWRP   nWRP                 // 8 bits @ 16
 #else
@@ -701,13 +700,13 @@
 #define FLASH_OPTCR_2_nWRP
 #endif
 
-#if defined(STM32F101xG ) || defined(STM32F103xG ) || defined(STM32H7     ) 
+#if defined(STM32F101xG ) || defined(STM32F103xG ) || defined(STM32H7     )
 #define FLASH_CR2
 #define FLASH_KEYR2
 #define FLASH_SR2
 #endif
 
-#if defined(STM32L4     ) 
+#if defined(STM32L4     )
 #define FLASH_ECCR_0_ADDR_ECC ADDR_ECC             // 19 bits @ 0
 #define FLASH_ECCR_0_SYSF_ECC SYSF_ECC             // 1 bits @ 20
 #else
@@ -716,7 +715,7 @@
 #endif
 
 #if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define FLASH_ECCR_0_BK_ECC  BK_ECC               // 1 bits @ 19
 #define FLASH_OPTR_2_DUALBANK DUALBANK             // 1 bits @ 21
 #define FLASH_PCROP2ER_0
@@ -726,86 +725,106 @@
 #define FLASH_OPTR_2_DUALBANK
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L1     ) 
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L1     )
 #define FLASH_OBR
 #define FLASH_MAP0_OBR       OBR_TypeDef OBR
 #else
 #define FLASH_MAP0_OBR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) 
+#if defined(STM32F0     )
 #define FLASH_OBR_0_RDPRT1   RDPRT1               // 1 bits @ 1
 #define FLASH_OBR_0_RDPRT2   RDPRT2               // 1 bits @ 2
-#define FLASH_OBR_0_RAM_PARITY_CHECK RAM_PARITY_CHECK     // 1 bits @ 14
 #else
 #define FLASH_OBR_0_RDPRT1
 #define FLASH_OBR_0_RDPRT2
+#endif
+
+#if defined(STM32F1     )
+#define FLASH_OBR_0_nRST_STOP nRST_STOP            // 1 bits @ 3
+#define FLASH_OBR_0_nRST_STDBY nRST_STDBY           // 1 bits @ 4
+#define FLASH_OBR_1_RDPRT    RDPRT                // 1 bits @ 1
+#define FLASH_OBR_1_DATA1    DATA1                // 8 bits @ 18
+#define FLASH_OBR_2_IWDG_SW  IWDG_SW              // 1 bits @ 2
+#define FLASH_OBR_3_DATA0    DATA0                // 8 bits @ 10
+#else
+#define FLASH_OBR_0_nRST_STOP
+#define FLASH_OBR_0_nRST_STDBY
+#define FLASH_OBR_1_RDPRT
+#define FLASH_OBR_1_DATA1
+#define FLASH_OBR_2_IWDG_SW
+#define FLASH_OBR_3_DATA0
+#endif
+
+#if defined(STM32F030x4 )
+#define FLASH_OBR_0_USER     USER                 // 6 bits @ 8
+#else
+#define FLASH_OBR_0_USER
+#endif
+
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx )
+#define FLASH_OBR_0_RAM_PARITY_CHECK RAM_PARITY_CHECK     // 1 bits @ 14
+#else
 #define FLASH_OBR_0_RAM_PARITY_CHECK
 #endif
 
-#if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) 
-#define FLASH_OBR_0_nBOOT0   nBOOT0               // 1 bits @ 11
+#if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F091xC ) || defined(STM32F098xx )
 #define FLASH_OBR_0_BOOT_SEL BOOT_SEL             // 1 bits @ 15
-#define FLASH_OBR_1_USER     USER                 // 8 bits @ 8
+#define FLASH_OBR_1_nBOOT0   nBOOT0               // 1 bits @ 11
+#define FLASH_OBR_2_USER     USER                 // 8 bits @ 8
 #else
-#define FLASH_OBR_0_nBOOT0
 #define FLASH_OBR_0_BOOT_SEL
-#define FLASH_OBR_1_USER
+#define FLASH_OBR_1_nBOOT0
+#define FLASH_OBR_2_USER
 #endif
 
-#if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
-    defined(STM32F1     ) 
-#define FLASH_OBR_1
-#endif
-
-#if defined(STM32F1     ) 
-#define FLASH_OBR_1_RDPRT    RDPRT                // 1 bits @ 1
-#define FLASH_OBR_1_IWDG_SW  IWDG_SW              // 1 bits @ 2
-#define FLASH_OBR_1_nRST_STOP nRST_STOP            // 1 bits @ 3
-#define FLASH_OBR_1_nRST_STDBY nRST_STDBY           // 1 bits @ 4
-#define FLASH_OBR_1_DATA1    DATA1                // 8 bits @ 18
-#define FLASH_OBR_2_DATA0    DATA0                // 8 bits @ 10
+#if defined(STM32F030x6 ) || defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F031x6 ) ||\
+    defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F051x8 ) ||\
+    defined(STM32F058xx ) || defined(STM32F070x6 ) || defined(STM32F070xB ) || defined(STM32F071xB ) ||\
+    defined(STM32F072xB ) || defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F3     )
+#define FLASH_OBR_0_DATA0    DATA0                // 8 bits @ 16
+#define FLASH_OBR_0_DATA1    DATA1                // 8 bits @ 24
 #else
-#define FLASH_OBR_1_RDPRT
-#define FLASH_OBR_1_IWDG_SW
-#define FLASH_OBR_1_nRST_STOP
-#define FLASH_OBR_1_nRST_STDBY
-#define FLASH_OBR_1_DATA1
-#define FLASH_OBR_2_DATA0
-#endif
-
-#if defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L1     ) 
-#define FLASH_OBR_2
-#endif
-
-#if defined(STM32F373xC ) || defined(STM32F378xx ) 
-#define FLASH_OBR_2_LEVEL1_PROT LEVEL1_PROT          // 1 bits @ 1
-#define FLASH_OBR_3_SDADC12_VDD_MONITOR SDADC12_VDD_MONITOR  // 1 bits @ 15
-#define FLASH_OBR_5_LEVEL2_PROT LEVEL2_PROT          // 1 bits @ 2
-#else
-#define FLASH_OBR_2_LEVEL1_PROT
-#define FLASH_OBR_3_SDADC12_VDD_MONITOR
-#define FLASH_OBR_5_LEVEL2_PROT
+#define FLASH_OBR_0_DATA0
+#define FLASH_OBR_0_DATA1
 #endif
 
 #if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101x6 ) || defined(STM32F101xB ) ||\
     defined(STM32F101xE ) || defined(STM32F102x6 ) || defined(STM32F102xB ) || defined(STM32F103x6 ) ||\
-    defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F105xC ) || defined(STM32F107xC ) 
-#define FLASH_OBR_2_USER     USER                 // 3 bits @ 2
+    defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F105xC ) || defined(STM32F107xC )
+#define FLASH_OBR_1_USER     USER                 // 3 bits @ 2
 #else
-#define FLASH_OBR_2_USER
+#define FLASH_OBR_1_USER
 #endif
 
-#if defined(STM32L151xBA) || defined(STM32L151xC ) || defined(STM32L152xBA) || defined(STM32L152xC ) ||\
-    defined(STM32L162xC ) 
-#define FLASH_OBR_2_SPRMOD   SPRMOD               // 1 bits @ 8
+#if defined(STM32F3     )
+#define FLASH_OBR_1_SRAM_PE  SRAM_PE              // 1 bits @ 14
 #else
-#define FLASH_OBR_2_SPRMOD
+#define FLASH_OBR_1_SRAM_PE
+#endif
+
+#if defined(STM32F373xC ) || defined(STM32F378xx )
+#define FLASH_OBR_1_SDADC12_VDD_MONITOR SDADC12_VDD_MONITOR  // 1 bits @ 15
+#define FLASH_OBR_2_LEVEL1_PROT LEVEL1_PROT          // 1 bits @ 1
+#define FLASH_OBR_5_LEVEL2_PROT LEVEL2_PROT          // 1 bits @ 2
+#else
+#define FLASH_OBR_1_SDADC12_VDD_MONITOR
+#define FLASH_OBR_2_LEVEL1_PROT
+#define FLASH_OBR_5_LEVEL2_PROT
+#endif
+
+#if defined(STM32F042x6 ) || defined(STM32F048xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) ||\
+    defined(STM32F1     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L1     )
+#define FLASH_OBR_2
 #endif
 
 #if defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xD ) || defined(STM32L162xDx) ||\
-    defined(STM32L162xE ) 
+    defined(STM32L162xE )
 #define FLASH_OBR_2_nRST_BFB2 nRST_BFB2            // 1 bits @ 23
 #define FLASH_WRPR3
 #define FLASH_MAP0_WRPR3     WRPR3_TypeDef WRPR3
@@ -814,14 +833,15 @@
 #define FLASH_MAP0_WRPR3 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F101xG ) || defined(STM32F103xG ) || defined(STM32F3     ) || defined(STM32L1     ) 
+#if defined(STM32F1     ) || defined(STM32L1     )
 #define FLASH_OBR_3
 #endif
 
-#if defined(STM32F3     ) 
-#define FLASH_OBR_3_SRAM_PE  SRAM_PE              // 1 bits @ 14
+#if defined(STM32L151xBA) || defined(STM32L151xC ) || defined(STM32L152xBA) || defined(STM32L152xC ) ||\
+    defined(STM32L162xC )
+#define FLASH_OBR_3_SPRMOD   SPRMOD               // 1 bits @ 8
 #else
-#define FLASH_OBR_3_SRAM_PE
+#define FLASH_OBR_3_SPRMOD
 #endif
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
@@ -829,13 +849,13 @@
     defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
     defined(STM32L100xB ) || defined(STM32L100xBA) || defined(STM32L100xC ) || defined(STM32L151xB ) ||\
     defined(STM32L151xBA) || defined(STM32L151xC ) || defined(STM32L152xB ) || defined(STM32L152xBA) ||\
-    defined(STM32L152xC ) || defined(STM32L162xC ) 
+    defined(STM32L152xC ) || defined(STM32L162xC )
 #define FLASH_OBR_4
 #endif
 
 #if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
     defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
+    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx )
 #define FLASH_OBR_4_RDPRT    RDPRT                // 2 bits @ 1
 #else
 #define FLASH_OBR_4_RDPRT
@@ -843,7 +863,7 @@
 
 #if defined(STM32L100xB ) || defined(STM32L100xBA) || defined(STM32L100xC ) || defined(STM32L151xB ) ||\
     defined(STM32L151xBA) || defined(STM32L151xC ) || defined(STM32L152xB ) || defined(STM32L152xBA) ||\
-    defined(STM32L152xC ) || defined(STM32L162xC ) 
+    defined(STM32L152xC ) || defined(STM32L162xC )
 #define FLASH_OBR_4_USER     USER                 // 3 bits @ 20
 #else
 #define FLASH_OBR_4_USER
@@ -852,30 +872,30 @@
 #if defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_OBR_5
 #endif
 
 #if defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_OBR_5_USER     USER                 // 4 bits @ 20
 #else
 #define FLASH_OBR_5_USER
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     )
 #define FLASH_OPTCR
 #endif
 
-#if defined(STM32F205xx ) 
+#if defined(STM32F205xx )
 #define FLASH_OPTCR_0_BOR_LEV BOR_LEV              // 1 bits @ 2
 #else
 #define FLASH_OPTCR_0_BOR_LEV
 #endif
 
 #if defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) 
+    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx )
 #define FLASH_OPTCR_0_BFB2   BFB2                 // 1 bits @ 4
 #define FLASH_OPTCR_0_DB1M   DB1M                 // 1 bits @ 30
 #define FLASH_OPTCR_0_SPRMOD SPRMOD               // 1 bits @ 31
@@ -885,7 +905,7 @@
 #define FLASH_OPTCR_0_SPRMOD
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) 
+#if defined(STM32F2     ) || defined(STM32F4     )
 #define FLASH_OPTCR_0_WDG_SW WDG_SW               // 1 bits @ 5
 #define FLASH_SR_0_SOP       SOP                  // 1 bits @ 1
 #else
@@ -899,14 +919,14 @@
     defined(STM32F412Zx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F427xx ) ||\
     defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
     defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F765xx ) || defined(STM32F767xx ) ||\
-    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx ) 
+    defined(STM32F769xx ) || defined(STM32F777xx ) || defined(STM32F779xx )
 #define FLASH_OPTCR_0_nWRP   nWRP                 // 12 bits @ 16
 #else
 #define FLASH_OPTCR_0_nWRP
 #endif
 
 #if defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
+    defined(STM32F779xx )
 #define FLASH_OPTCR_0_nDBOOT nDBOOT               // 1 bits @ 28
 #define FLASH_OPTCR_0_nDBANK nDBANK               // 1 bits @ 29
 #else
@@ -914,30 +934,30 @@
 #define FLASH_OPTCR_0_nDBANK
 #endif
 
-#if defined(STM32F413xx ) || defined(STM32F423xx ) 
+#if defined(STM32F413xx ) || defined(STM32F423xx )
 #define FLASH_OPTCR_1_nWRP   nWRP                 // 15 bits @ 16
 #else
 #define FLASH_OPTCR_1_nWRP
 #endif
 
-#if defined(STM32F7     ) || defined(STM32H7     ) 
+#if defined(STM32F7     ) || defined(STM32H7     )
 #define FLASH_OPTCR_2
 #endif
 
-#if defined(STM32F4     ) || defined(STM32F7     ) 
+#if defined(STM32F4     ) || defined(STM32F7     )
 #define FLASH_OPTCR1
 #define FLASH_MAP0_OPTCR1    OPTCR1_TypeDef OPTCR1
 #else
 #define FLASH_MAP0_OPTCR1 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F4     ) 
+#if defined(STM32F4     )
 #define FLASH_OPTCR1_0_nWRP  nWRP                 // 12 bits @ 16
 #else
 #define FLASH_OPTCR1_0_nWRP
 #endif
 
-#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) 
+#if defined(STM32F722xx ) || defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx )
 #define FLASH_OPTCR2
 #define FLASH_MAP1_OPTCR2    OPTCR2_TypeDef OPTCR2
 #else
@@ -945,16 +965,16 @@
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
+    defined(STM32L1     )
 #define FLASH_OPTKEYR_0
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L0     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_OPTR
 #endif
 
 #if defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
+    defined(STM32L082xx ) || defined(STM32L083xx )
 #define FLASH_OPTR_0_BFB2    BFB2                 // 1 bits @ 23
 #define FLASH_PECR_0_NZDISABLE NZDISABLE            // 1 bits @ 22
 #else
@@ -964,7 +984,7 @@
 
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    )
 #define FLASH_OPTR_0_nSWBOOT0 nSWBOOT0             // 1 bits @ 26
 #define FLASH_OPTR_0_nBOOT0  nBOOT0               // 1 bits @ 27
 #define FLASH_SR_3_PEMPTY    PEMPTY               // 1 bits @ 17
@@ -976,39 +996,39 @@
 
 #if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
     defined(STM32L443xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
+    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx )
 #define FLASH_PCROP1ER_0_PCROP1_END PCROP1_END           // 16 bits @ 0
 #define FLASH_PCROP1SR_0
 #else
 #define FLASH_PCROP1ER_0_PCROP1_END
 #endif
 
-#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) 
+#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx )
 #define FLASH_PCROP1ER_1
 #define FLASH_PCROP1SR_1
 #endif
 
-#if defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_PDKEYR
 #endif
 
 #if defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
     defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L151xD ) || defined(STM32L151xDx) ||\
     defined(STM32L151xE ) || defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_PECR_0_PARALLBANK PARALLBANK           // 1 bits @ 15
 #else
 #define FLASH_PECR_0_PARALLBANK
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32H7     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) 
+    defined(STM32L0     ) || defined(STM32L1     )
 #define FLASH_SR_0_BSY       BSY                  // 1 bits @ 0
 #else
 #define FLASH_SR_0_BSY
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) 
+#if defined(STM32F0     ) || defined(STM32F1     )
 #define FLASH_SR_0_WRPRTERR  WRPRTERR             // 1 bits @ 4
 #else
 #define FLASH_SR_0_WRPRTERR
@@ -1019,7 +1039,7 @@
     defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F423xx ) ||\
     defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
     defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F722xx ) ||\
-    defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx ) 
+    defined(STM32F723xx ) || defined(STM32F732xx ) || defined(STM32F733xx )
 #define FLASH_SR_0_RDERR     RDERR                // 1 bits @ 8
 #else
 #define FLASH_SR_0_RDERR
@@ -1028,7 +1048,7 @@
 #if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
     defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_SR_0_OPTVERRUSR OPTVERRUSR           // 1 bits @ 12
 #else
 #define FLASH_SR_0_OPTVERRUSR
@@ -1036,48 +1056,48 @@
 
 #if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
     defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_SR_1
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_SR_1_WRPERR    WRPERR               // 1 bits @ 4
 #else
 #define FLASH_SR_1_WRPERR
 #endif
 
 #if defined(STM32L0     ) || defined(STM32L100xBA) || defined(STM32L100xC ) || defined(STM32L151xBA) ||\
-    defined(STM32L151xC ) || defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L162xC ) 
+    defined(STM32L151xC ) || defined(STM32L152xBA) || defined(STM32L152xC ) || defined(STM32L162xC )
 #define FLASH_SR_1_RDERR     RDERR                // 1 bits @ 13
 #else
 #define FLASH_SR_1_RDERR
 #endif
 
 #if defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define FLASH_SR_2
 #endif
 
 #if defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L431xx ) || defined(STM32L432xx ) ||\
     defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) || defined(STM32L451xx ) ||\
     defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
+    defined(STM32L4P    )
 #define FLASH_SR_3
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) 
+#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     )
 #define FLASH_WRPR
 #define FLASH_MAP0_WRPR      WRPR_TypeDef WRPR
 #else
 #define FLASH_MAP0_WRPR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32L0     ) 
+#if defined(STM32F0     ) || defined(STM32L0     )
 #define FLASH_WRPR_0
 #endif
 
-#if defined(STM32F1     ) || defined(STM32F3     ) 
+#if defined(STM32F1     ) || defined(STM32F3     )
 #define FLASH_WRPR_1
 #endif
 
@@ -1086,7 +1106,7 @@
     defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) || defined(STM32L151xE ) ||\
     defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) || defined(STM32L152xDx) ||\
     defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_WRPR2
 #define FLASH_MAP0_WRPR2     WRPR2_TypeDef WRPR2
 #else
@@ -1096,55 +1116,59 @@
 #if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
     defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
     defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) || defined(STM32L162xD ) ||\
-    defined(STM32L162xE ) 
+    defined(STM32L162xE )
 #define FLASH_WRPR2_0
 #endif
 
-#if defined(STM32L151xDx) || defined(STM32L152xDx) || defined(STM32L162xDx) 
+#if defined(STM32L151xDx) || defined(STM32L152xDx) || defined(STM32L162xDx)
 #define FLASH_WRPR2_1
 #define FLASH_WRPR4_0
 #endif
 
 #if defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xDx) || defined(STM32L152xE ) ||\
-    defined(STM32L162xDx) || defined(STM32L162xE ) 
+    defined(STM32L162xDx) || defined(STM32L162xE )
 #define FLASH_WRPR4
 #define FLASH_MAP0_WRPR4     WRPR4_TypeDef WRPR4
 #else
 #define FLASH_MAP0_WRPR4 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L151xE ) || defined(STM32L152xE ) || defined(STM32L162xE ) 
+#if defined(STM32L151xE ) || defined(STM32L152xE ) || defined(STM32L162xE )
 #define FLASH_WRPR4_1
 #endif
 
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) 
+    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     )
 #define FLASH_MAP0_OPTKEYR   OPTKEYR_TypeDef OPTKEYR
 #else
 #define FLASH_MAP0_OPTKEYR __SOOL_PERIPH_PADDING_4
 #endif
 
 //endregion
-
 namespace sool
 {
-	namespace core
-	{
-		class FLASH
-		{
-			
-			
-			public :
-			
-			#ifdef FLASH_ACR
-			struct ACR_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
-				union
-				{
-					#ifdef FLASH_ACR_0
-					struct
+    namespace core
+    {
+//region related-types
+        
+//endregion
+//region peripheral-declaration
+
+        class FLASH
+        {
+            
+
+        public :
+
+#ifdef FLASH_ACR
+            struct ACR_TypeDef : public Reg32_t
+            {
+                using Reg32_t::operator=;
+
+                union
+                {
+#ifdef FLASH_ACR_0
+                    struct
 					{
 						uint32_t FLASH_ACR_0_LATENCY  :1;
 						uint32_t                      :1;
@@ -1163,9 +1187,9 @@ namespace sool
 						uint32_t FLASH_ACR_0_SLEEP_PD :1;
 						uint32_t                      :17;
 					};
-					#endif
-					#ifdef FLASH_ACR_1
-					struct
+#endif
+#ifdef FLASH_ACR_1
+                    struct
 					{
 						uint32_t FLASH_ACR_1_LATENCY  :3;
 						uint32_t FLASH_ACR_1_SLEEP_PD :1;
@@ -1176,34 +1200,34 @@ namespace sool
 						uint32_t FLASH_ACR_1_ARTRST   :1;
 						uint32_t                      :20;
 					};
-					#endif
-					#ifdef FLASH_ACR_2
-					struct
+#endif
+#ifdef FLASH_ACR_2
+                    struct
 					{
 						uint32_t FLASH_ACR_2_LATENCY  :4;
 						uint32_t FLASH_ACR_2_RUN_PD   :1;
 						uint32_t FLASH_ACR_2_DISAB_BUF :1;
 						uint32_t                      :26;
 					};
-					#endif
-					#ifdef FLASH_ACR_3
-					struct
+#endif
+#ifdef FLASH_ACR_3
+                    struct
 					{
 						uint32_t                      :1;
 						uint32_t PRFTEN               :1;
 						uint32_t                      :30;
 					};
-					#endif
-				};
-				
-			};
-			#endif
-			
-			#ifdef FLASH_AR
-			struct AR_TypeDef : public Reg32_t
+#endif
+                };
+                
+            };
+#endif
+
+#ifdef FLASH_AR
+            struct AR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1219,25 +1243,25 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_BOOT
-			struct BOOT_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_BOOT
+            struct BOOT_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t ADD0                 :16;
 					uint32_t ADD1                 :16;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CCR
-			struct CCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CCR
+            struct CCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :16;
 					uint32_t CLR_EOP              :1;
 					uint32_t CLR_WRPERR           :1;
@@ -1252,28 +1276,28 @@ namespace sool
 					uint32_t CLR_DBECCERR         :1;
 					uint32_t CLR_CRCEND           :1;
 					uint32_t                      :4;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CFGR
-			struct CFGR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CFGR
+            struct CFGR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t LVEN                 :1;
 					uint32_t                      :31;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CR
-			struct CR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CR
+            struct CR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_CR_0
@@ -1369,13 +1393,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CR2
-			struct CR2_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CR2
+            struct CR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PG                   :1;
 					uint32_t PER                  :1;
 					uint32_t MER                  :1;
@@ -1387,16 +1411,16 @@ namespace sool
 					uint32_t                      :1;
 					uint32_t EOPIE                :1;
 					uint32_t                      :19;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CRCCR
-			struct CRCCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CRCCR
+            struct CRCCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t CRC_SECT             :3;
 					uint32_t                      :4;
 					uint32_t ALL_BANK             :1;
@@ -1409,49 +1433,49 @@ namespace sool
 					uint32_t                      :2;
 					uint32_t CRC_BURST            :2;
 					uint32_t                      :10;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CRCDATA
-			struct CRCDATA_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CRCDATA
+            struct CRCDATA_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t CRC_DATA             :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CRCEADDR
-			struct CRCEADDR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CRCEADDR
+            struct CRCEADDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t CRC_END_ADDR         :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_CRCSADDR
-			struct CRCSADDR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_CRCSADDR
+            struct CRCSADDR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t CRC_START_ADDR       :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_ECCR
-			struct ECCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_ECCR
+            struct ECCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1480,36 +1504,36 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_ECC_FA
-			struct ECC_FA_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_ECC_FA
+            struct ECC_FA_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t FAIL_ECC_ADDR        :15;
 					uint32_t                      :17;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_KEYR
-			struct KEYR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_KEYR
+            struct KEYR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t FKEYR                :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OBR
-			struct OBR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OBR
+            struct OBR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_OBR_0
@@ -1518,15 +1542,11 @@ namespace sool
 						uint32_t OPTERR               :1;
 						uint32_t FLASH_OBR_0_RDPRT1   :1;
 						uint32_t FLASH_OBR_0_RDPRT2   :1;
-						uint32_t                      :2;
-						uint32_t FLASH_OBR_0_BFB2     :1;
-						uint32_t                      :2;
-						uint32_t FLASH_OBR_0_IWDG_SW  :1;
 						uint32_t FLASH_OBR_0_nRST_STOP :1;
 						uint32_t FLASH_OBR_0_nRST_STDBY :1;
-						uint32_t FLASH_OBR_0_nBOOT0   :1;
-						uint32_t FLASH_OBR_0_nBOOT1   :1;
-						uint32_t FLASH_OBR_0_VDDA_MONITOR :1;
+						uint32_t FLASH_OBR_0_BFB2     :1;
+						uint32_t                      :2;
+						uint32_t FLASH_OBR_0_USER     :6;
 						uint32_t FLASH_OBR_0_RAM_PARITY_CHECK :1;
 						uint32_t FLASH_OBR_0_BOOT_SEL :1;
 						uint32_t FLASH_OBR_0_DATA0    :8;
@@ -1538,11 +1558,16 @@ namespace sool
 					{
 						uint32_t                      :1;
 						uint32_t FLASH_OBR_1_RDPRT    :1;
+						uint32_t FLASH_OBR_1_USER     :3;
+						uint32_t                      :3;
 						uint32_t FLASH_OBR_1_IWDG_SW  :1;
 						uint32_t FLASH_OBR_1_nRST_STOP :1;
 						uint32_t FLASH_OBR_1_nRST_STDBY :1;
-						uint32_t                      :3;
-						uint32_t FLASH_OBR_1_USER     :8;
+						uint32_t FLASH_OBR_1_nBOOT0   :1;
+						uint32_t FLASH_OBR_1_nBOOT1   :1;
+						uint32_t FLASH_OBR_1_VDDA_MONITOR :1;
+						uint32_t FLASH_OBR_1_SRAM_PE  :1;
+						uint32_t FLASH_OBR_1_SDADC12_VDD_MONITOR :1;
 						uint32_t                      :2;
 						uint32_t FLASH_OBR_1_DATA1    :8;
 						uint32_t                      :6;
@@ -1553,13 +1578,11 @@ namespace sool
 					{
 						uint32_t                      :1;
 						uint32_t FLASH_OBR_2_LEVEL1_PROT :1;
-						uint32_t FLASH_OBR_2_USER     :3;
-						uint32_t                      :3;
-						uint32_t FLASH_OBR_2_SPRMOD   :1;
-						uint32_t                      :1;
-						uint32_t FLASH_OBR_2_DATA0    :8;
-						uint32_t                      :2;
 						uint32_t FLASH_OBR_2_IWDG_SW  :1;
+						uint32_t                      :5;
+						uint32_t FLASH_OBR_2_USER     :8;
+						uint32_t FLASH_OBR_2_BOR_LEV  :4;
+						uint32_t                      :1;
 						uint32_t FLASH_OBR_2_nRST_STOP :1;
 						uint32_t FLASH_OBR_2_nRST_STDBY :1;
 						uint32_t FLASH_OBR_2_nRST_BFB2 :1;
@@ -1571,11 +1594,13 @@ namespace sool
 					{
 						uint32_t                      :2;
 						uint32_t FLASH_OBR_3_USER     :4;
-						uint32_t                      :8;
-						uint32_t FLASH_OBR_3_SRAM_PE  :1;
-						uint32_t FLASH_OBR_3_SDADC12_VDD_MONITOR :1;
-						uint32_t FLASH_OBR_3_BOR_LEV  :4;
-						uint32_t                      :12;
+						uint32_t                      :2;
+						uint32_t FLASH_OBR_3_SPRMOD   :1;
+						uint32_t                      :1;
+						uint32_t FLASH_OBR_3_DATA0    :8;
+						uint32_t                      :2;
+						uint32_t FLASH_OBR_3_IWDG_SW  :1;
+						uint32_t                      :11;
 					};
 					#endif
 					#ifdef FLASH_OBR_4
@@ -1608,26 +1633,26 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTCCR
-			struct OPTCCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OPTCCR
+            struct OPTCCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t                      :30;
 					uint32_t CLR_OPTCHANGEERR     :1;
 					uint32_t                      :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTCR
-			struct OPTCR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OPTCR
+            struct OPTCR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1679,13 +1704,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTCR1
-			struct OPTCR1_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OPTCR1
+            struct OPTCR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1704,49 +1729,49 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTCR2
-			struct OPTCR2_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OPTCR2
+            struct OPTCR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PCROP                :8;
 					uint32_t                      :24;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTKEYR
-			struct OPTKEYR_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
-				union
-				{
-					#ifdef FLASH_OPTKEYR_0
-					struct
+#endif
+
+#ifdef FLASH_OPTKEYR
+            struct OPTKEYR_TypeDef : public Reg32_t
+            {
+                using Reg32_t::operator=;
+
+                union
+                {
+#ifdef FLASH_OPTKEYR_0
+                    struct
 					{
 						uint32_t OPTKEYR              :32;
 					};
-					#endif
-					#ifdef FLASH_OPTKEYR_1
-					struct
+#endif
+#ifdef FLASH_OPTKEYR_1
+                    struct
 					{
 						uint32_t OPTKEY2              :32;
 					};
-					#endif
-				};
-				
-			};
-			#endif
-			
-			#ifdef FLASH_OPTR
-			struct OPTR_TypeDef : public Reg32_t
+#endif
+                };
+                
+            };
+#endif
+
+#ifdef FLASH_OPTR
+            struct OPTR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1805,13 +1830,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_OPTSR
-			struct OPTSR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_OPTSR
+            struct OPTSR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t OPT_BUSY             :1;
 					uint32_t                      :1;
 					uint32_t BOR_LEV              :2;
@@ -1832,16 +1857,16 @@ namespace sool
 					uint32_t IO_HSLV              :1;
 					uint32_t OPTCHANGEERR         :1;
 					uint32_t SWAP_BANK_OPT        :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PCROP1ER
-			struct PCROP1ER_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PCROP1ER
+            struct PCROP1ER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -1867,13 +1892,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PCROP1SR
-			struct PCROP1SR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PCROP1SR
+            struct PCROP1SR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_PCROP1SR_0
@@ -1900,13 +1925,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PCROP2ER
-			struct PCROP2ER_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PCROP2ER
+            struct PCROP2ER_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_PCROP2ER_0
@@ -1926,13 +1951,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PCROP2SR
-			struct PCROP2SR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PCROP2SR
+            struct PCROP2SR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_PCROP2SR_0
@@ -1952,24 +1977,24 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PDKEYR
-			struct PDKEYR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PDKEYR
+            struct PDKEYR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PDKEYR               :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PECR
-			struct PECR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PECR
+            struct PECR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -2004,65 +2029,65 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PEKEYR
-			struct PEKEYR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PEKEYR
+            struct PEKEYR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PEKEYR               :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PRAR
-			struct PRAR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PRAR
+            struct PRAR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PROT_AREA_START      :12;
 					uint32_t                      :4;
 					uint32_t PROT_AREA_END        :12;
 					uint32_t                      :3;
 					uint32_t DMEP                 :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_PRGKEYR
-			struct PRGKEYR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_PRGKEYR
+            struct PRGKEYR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t PRGKEYR              :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_SCAR
-			struct SCAR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_SCAR
+            struct SCAR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t SEC_AREA_START       :12;
 					uint32_t                      :4;
 					uint32_t SEC_AREA_END         :12;
 					uint32_t                      :3;
 					uint32_t DMES                 :1;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_SR
-			struct SR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_SR
+            struct SR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					struct
@@ -2157,13 +2182,13 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_SR2
-			struct SR2_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_SR2
+            struct SR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t BSY                  :1;
 					uint32_t                      :1;
 					uint32_t PGERR                :1;
@@ -2171,84 +2196,84 @@ namespace sool
 					uint32_t WRPRTERR             :1;
 					uint32_t EOP                  :1;
 					uint32_t                      :26;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WPSN
-			struct WPSN_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WPSN
+            struct WPSN_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRPSN                :8;
 					uint32_t                      :24;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRP1AR
-			struct WRP1AR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRP1AR
+            struct WRP1AR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP1A_STRT           :8;
 					uint32_t                      :8;
 					uint32_t WRP1A_END            :8;
 					uint32_t                      :8;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRP1BR
-			struct WRP1BR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRP1BR
+            struct WRP1BR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP1B_STRT           :8;
 					uint32_t                      :8;
 					uint32_t WRP1B_END            :8;
 					uint32_t                      :8;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRP2AR
-			struct WRP2AR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRP2AR
+            struct WRP2AR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP2A_STRT           :8;
 					uint32_t                      :8;
 					uint32_t WRP2A_END            :8;
 					uint32_t                      :8;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRP2BR
-			struct WRP2BR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRP2BR
+            struct WRP2BR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP2B_STRT           :8;
 					uint32_t                      :8;
 					uint32_t WRP2B_END            :8;
 					uint32_t                      :8;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRPR
-			struct WRPR_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRPR
+            struct WRPR_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_WRPR_0
@@ -2267,24 +2292,24 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRPR1
-			struct WRPR1_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRPR1
+            struct WRPR1_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP                  :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRPR2
-			struct WRPR2_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRPR2
+            struct WRPR2_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_WRPR2_0
@@ -2303,24 +2328,24 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRPR3
-			struct WRPR3_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRPR3
+            struct WRPR3_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-				
+
 					uint32_t WRP                  :32;
-			
+
 				
 			};
-			#endif
-			
-			#ifdef FLASH_WRPR4
-			struct WRPR4_TypeDef : public Reg32_t
+#endif
+
+#ifdef FLASH_WRPR4
+            struct WRPR4_TypeDef : public Reg32_t
 			{
 				using Reg32_t::operator=;
-			
+
 				union
 				{
 					#ifdef FLASH_WRPR4_0
@@ -2339,175 +2364,176 @@ namespace sool
 				};
 				
 			};
-			#endif
-			
-			union
-			{
-				
-				struct
-				{
-					ACR_TypeDef ACR;     // @0x000
-					FLASH_MAP0_KEYR;     // @0x004
-					FLASH_MAP0_OPTKEYR;  // @0x008
-					FLASH_MAP0_SR;       // @0x00c
-					FLASH_MAP0_CR;       // @0x010
-					FLASH_MAP0_AR;       // @0x014
-					FLASH_MAP0_OPTCR1;   // @0x018
-					FLASH_MAP0_OBR;      // @0x01c
-					FLASH_MAP0_WRPR;     // @0x020
-					FLASH_MAP0_OPTCCR;   // @0x024
-					FLASH_MAP0_PRAR_CUR1; // @0x028
-					FLASH_MAP0_PRAR_PRG1; // @0x02c
-					FLASH_MAP0_SCAR_CUR1; // @0x030
-					FLASH_MAP0_SCAR_PRG1; // @0x034
-					FLASH_MAP0_WPSN_CUR1; // @0x038
-					FLASH_MAP0_WPSN_PRG1; // @0x03c
-					FLASH_MAP0_BOOT_CUR; // @0x040
-					FLASH_MAP0_KEYR2;    // @0x044
-					FLASH_MAP0_PCROP2ER; // @0x048
-					FLASH_MAP0_SR2;      // @0x04c
-					FLASH_MAP0_CR2;      // @0x050
-					FLASH_MAP0_AR2;      // @0x054
-					FLASH_MAP0_CRCEADD1; // @0x058
-					FLASH_MAP0_CRCDATA;  // @0x05c
-					FLASH_MAP0_ECC_FA1;  // @0x060
-					__SOOL_PERIPH_PADDING_16;
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP0_WRPR2;    // @0x080
-					FLASH_MAP0_WRPR3;    // @0x084
-					FLASH_MAP0_WRPR4;    // @0x088
-					__SOOL_PERIPH_PADDING_128;
-					__SOOL_PERIPH_PADDING_8;
-					FLASH_MAP0_CCR2;     // @0x114
-					__SOOL_PERIPH_PADDING_16;
-					FLASH_MAP0_PRAR_CUR2; // @0x128
-					FLASH_MAP0_PRAR_PRG2; // @0x12c
-					FLASH_MAP0_SCAR_CUR2; // @0x130
-					FLASH_MAP0_SCAR_PRG2; // @0x134
-					FLASH_MAP0_WPSN_CUR2; // @0x138
-					FLASH_MAP0_WPSN_PRG2; // @0x13c
-					__SOOL_PERIPH_PADDING_16;
-					FLASH_MAP0_CRCCR2;   // @0x150
-					FLASH_MAP0_CRCSADD2; // @0x154
-					FLASH_MAP0_CRCEADD2; // @0x158
-					FLASH_MAP0_CRCDATA2; // @0x15c
-					FLASH_MAP0_ECC_FA2;  // @0x160
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP1_KEYR1;    // @0x004
-					FLASH_MAP1_PDKEYR;   // @0x008
-					FLASH_MAP1_CR1;      // @0x00c
-					FLASH_MAP1_SR1;      // @0x010
-					FLASH_MAP1_OPTCR;    // @0x014
-					FLASH_MAP1_SR;       // @0x018
-					FLASH_MAP1_OPTCR2;   // @0x01c
-					FLASH_MAP1_OPTSR_PRG; // @0x020
-					FLASH_MAP1_PCROP1SR; // @0x024
-					FLASH_MAP1_PCROP1ER; // @0x028
-					FLASH_MAP1_WRP1AR;   // @0x02c
-					FLASH_MAP1_WRP1BR;   // @0x030
-					__SOOL_PERIPH_PADDING_16;
-					FLASH_MAP1_BOOT_PRG; // @0x044
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP1_WRP2AR;   // @0x04c
-					FLASH_MAP1_CRCCR1;   // @0x050
-					FLASH_MAP1_CRCSADD1; // @0x054
-					__SOOL_PERIPH_PADDING_128;
-					__SOOL_PERIPH_PADDING_32;
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP1_KEYR2;    // @0x104
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP1_CR2;      // @0x10c
-					FLASH_MAP1_SR2;      // @0x110
-					__SOOL_PERIPH_PADDING_16;
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP1_CFGR;     // @0x130
-					__SOOL_PERIPH_PADDING_32;
-					__SOOL_PERIPH_PADDING_16;
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP2_PECR;     // @0x004
-					FLASH_MAP2_KEYR;     // @0x008
-					FLASH_MAP2_PEKEYR;   // @0x00c
-					FLASH_MAP2_PRGKEYR;  // @0x010
-					FLASH_MAP2_CCR1;     // @0x014
-					FLASH_MAP2_OPTCR;    // @0x018
-					FLASH_MAP2_OPTSR_CUR; // @0x01c
-					FLASH_MAP2_WRPR1;    // @0x020
-					__SOOL_PERIPH_PADDING_32;
-					FLASH_MAP2_PCROP2SR; // @0x044
-					__SOOL_PERIPH_PADDING_8;
-					FLASH_MAP2_WRP2BR;   // @0x050
-					__SOOL_PERIPH_PADDING_256;
-					__SOOL_PERIPH_PADDING_16;
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP3_PDKEYR;   // @0x004
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP3_OPTKEYR;  // @0x00c
-					FLASH_MAP3_SR;       // @0x010
-					FLASH_MAP3_CR;       // @0x014
-					FLASH_MAP3_ECCR;     // @0x018
-					FLASH_MAP3_OPTR;     // @0x01c
-					__SOOL_PERIPH_PADDING_256;
-					__SOOL_PERIPH_PADDING_64;
-					__SOOL_PERIPH_PADDING_4;
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_16;
-					__SOOL_PERIPH_PADDING_4;
-					FLASH_MAP4_OPTKEYR;  // @0x014
-					__SOOL_PERIPH_PADDING_8;
-					FLASH_MAP4_OPTR;     // @0x020
-					__SOOL_PERIPH_PADDING_256;
-					__SOOL_PERIPH_PADDING_64;
-				};
-			};
-			private:
-			FLASH() = delete;
-			
-		};
-		
-		//region instances
+#endif
+
+            union
+            {
+
+                struct
+                {
+                    ACR_TypeDef ACR;     // @0x000
+                    FLASH_MAP0_KEYR;     // @0x004
+                    FLASH_MAP0_OPTKEYR;  // @0x008
+                    FLASH_MAP0_SR;       // @0x00c
+                    FLASH_MAP0_CR;       // @0x010
+                    FLASH_MAP0_AR;       // @0x014
+                    FLASH_MAP0_OPTCR1;   // @0x018
+                    FLASH_MAP0_OBR;      // @0x01c
+                    FLASH_MAP0_WRPR;     // @0x020
+                    FLASH_MAP0_OPTCCR;   // @0x024
+                    FLASH_MAP0_PRAR_CUR1; // @0x028
+                    FLASH_MAP0_PRAR_PRG1; // @0x02c
+                    FLASH_MAP0_SCAR_CUR1; // @0x030
+                    FLASH_MAP0_SCAR_PRG1; // @0x034
+                    FLASH_MAP0_WPSN_CUR1; // @0x038
+                    FLASH_MAP0_WPSN_PRG1; // @0x03c
+                    FLASH_MAP0_BOOT_CUR; // @0x040
+                    FLASH_MAP0_KEYR2;    // @0x044
+                    FLASH_MAP0_PCROP2ER; // @0x048
+                    FLASH_MAP0_SR2;      // @0x04c
+                    FLASH_MAP0_CR2;      // @0x050
+                    FLASH_MAP0_AR2;      // @0x054
+                    FLASH_MAP0_CRCEADD1; // @0x058
+                    FLASH_MAP0_CRCDATA;  // @0x05c
+                    FLASH_MAP0_ECC_FA1;  // @0x060
+                    __SOOL_PERIPH_PADDING_16;
+                    __SOOL_PERIPH_PADDING_8;
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP0_WRPR2;    // @0x080
+                    FLASH_MAP0_WRPR3;    // @0x084
+                    FLASH_MAP0_WRPR4;    // @0x088
+                    __SOOL_PERIPH_PADDING_128;
+                    __SOOL_PERIPH_PADDING_8;
+                    FLASH_MAP0_CCR2;     // @0x114
+                    __SOOL_PERIPH_PADDING_16;
+                    FLASH_MAP0_PRAR_CUR2; // @0x128
+                    FLASH_MAP0_PRAR_PRG2; // @0x12c
+                    FLASH_MAP0_SCAR_CUR2; // @0x130
+                    FLASH_MAP0_SCAR_PRG2; // @0x134
+                    FLASH_MAP0_WPSN_CUR2; // @0x138
+                    FLASH_MAP0_WPSN_PRG2; // @0x13c
+                    __SOOL_PERIPH_PADDING_16;
+                    FLASH_MAP0_CRCCR2;   // @0x150
+                    FLASH_MAP0_CRCSADD2; // @0x154
+                    FLASH_MAP0_CRCEADD2; // @0x158
+                    FLASH_MAP0_CRCDATA2; // @0x15c
+                    FLASH_MAP0_ECC_FA2;  // @0x160
+                };
+                struct
+                {
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP1_KEYR1;    // @0x004
+                    FLASH_MAP1_PDKEYR;   // @0x008
+                    FLASH_MAP1_CR1;      // @0x00c
+                    FLASH_MAP1_SR1;      // @0x010
+                    FLASH_MAP1_OPTCR;    // @0x014
+                    FLASH_MAP1_SR;       // @0x018
+                    FLASH_MAP1_OPTCR2;   // @0x01c
+                    FLASH_MAP1_OPTSR_PRG; // @0x020
+                    FLASH_MAP1_PCROP1SR; // @0x024
+                    FLASH_MAP1_PCROP1ER; // @0x028
+                    FLASH_MAP1_WRP1AR;   // @0x02c
+                    FLASH_MAP1_WRP1BR;   // @0x030
+                    __SOOL_PERIPH_PADDING_16;
+                    FLASH_MAP1_BOOT_PRG; // @0x044
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP1_WRP2AR;   // @0x04c
+                    FLASH_MAP1_CRCCR1;   // @0x050
+                    FLASH_MAP1_CRCSADD1; // @0x054
+                    __SOOL_PERIPH_PADDING_128;
+                    __SOOL_PERIPH_PADDING_32;
+                    __SOOL_PERIPH_PADDING_8;
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP1_KEYR2;    // @0x104
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP1_CR2;      // @0x10c
+                    FLASH_MAP1_SR2;      // @0x110
+                    __SOOL_PERIPH_PADDING_16;
+                    __SOOL_PERIPH_PADDING_8;
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP1_CFGR;     // @0x130
+                    __SOOL_PERIPH_PADDING_32;
+                    __SOOL_PERIPH_PADDING_16;
+                };
+                struct
+                {
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP2_PECR;     // @0x004
+                    FLASH_MAP2_KEYR;     // @0x008
+                    FLASH_MAP2_PEKEYR;   // @0x00c
+                    FLASH_MAP2_PRGKEYR;  // @0x010
+                    FLASH_MAP2_CCR1;     // @0x014
+                    FLASH_MAP2_OPTCR;    // @0x018
+                    FLASH_MAP2_OPTSR_CUR; // @0x01c
+                    FLASH_MAP2_WRPR1;    // @0x020
+                    __SOOL_PERIPH_PADDING_32;
+                    FLASH_MAP2_PCROP2SR; // @0x044
+                    __SOOL_PERIPH_PADDING_8;
+                    FLASH_MAP2_WRP2BR;   // @0x050
+                    __SOOL_PERIPH_PADDING_256;
+                    __SOOL_PERIPH_PADDING_16;
+                };
+                struct
+                {
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP3_PDKEYR;   // @0x004
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP3_OPTKEYR;  // @0x00c
+                    FLASH_MAP3_SR;       // @0x010
+                    FLASH_MAP3_CR;       // @0x014
+                    FLASH_MAP3_ECCR;     // @0x018
+                    FLASH_MAP3_OPTR;     // @0x01c
+                    __SOOL_PERIPH_PADDING_256;
+                    __SOOL_PERIPH_PADDING_64;
+                    __SOOL_PERIPH_PADDING_4;
+                };
+                struct
+                {
+                    __SOOL_PERIPH_PADDING_16;
+                    __SOOL_PERIPH_PADDING_4;
+                    FLASH_MAP4_OPTKEYR;  // @0x014
+                    __SOOL_PERIPH_PADDING_8;
+                    FLASH_MAP4_OPTR;     // @0x020
+                    __SOOL_PERIPH_PADDING_256;
+                    __SOOL_PERIPH_PADDING_64;
+                };
+            };
+        private:
+            FLASH() = delete;
+            
+        };
+
+//endregion
+//region instances
 #if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F3     ) || defined(STM32L0     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
+    defined(STM32L4     ) || defined(STM32L4P    )
 #define FLASH_BASE_ADDR ((uint32_t)0x40022000U)
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
+#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     )
 #define FLASH_BASE_ADDR ((uint32_t)0x40023C00U)
 #endif
 
-#if defined(STM32H7     ) 
+#if defined(STM32H7     )
 #define FLASH_BASE_ADDR ((uint32_t)0x52002000U)
 #endif
 
 #ifdef FLASH_BASE_ADDR
-volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_BASE_ADDR);
+        volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_BASE_ADDR);
 #endif
 //endregion
-
-
-
-	};
+//region peripheral-definition
+        
+//endregion
+    };
 };
 //region undef
 #undef FLASH_ACR_0_LATENCY
 #undef FLASH_ACR_0_ACC64
-#undef FLASH_OBR_2_IWDG_SW
+#undef FLASH_OBR_2_BOR_LEV
 #undef FLASH_OBR_2_nRST_STOP
 #undef FLASH_OBR_2_nRST_STDBY
-#undef FLASH_OBR_3_BOR_LEV
+#undef FLASH_OBR_3_IWDG_SW
 #undef FLASH_MAP2_WRPR1
 #undef FLASH_ACR_0_HLFCYA
 #undef FLASH_ACR_0_PRFTBE
@@ -2704,13 +2730,11 @@ volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_
 #undef FLASH_MAP1_WRP2AR
 #undef FLASH_MAP2_WRP2BR
 #undef FLASH_CR_0_OBL_LAUNCH
-#undef FLASH_OBR_0_IWDG_SW
-#undef FLASH_OBR_0_nRST_STOP
-#undef FLASH_OBR_0_nRST_STDBY
-#undef FLASH_OBR_0_nBOOT1
-#undef FLASH_OBR_0_VDDA_MONITOR
-#undef FLASH_OBR_0_DATA0
-#undef FLASH_OBR_0_DATA1
+#undef FLASH_OBR_1_IWDG_SW
+#undef FLASH_OBR_1_nRST_STOP
+#undef FLASH_OBR_1_nRST_STDBY
+#undef FLASH_OBR_1_nBOOT1
+#undef FLASH_OBR_1_VDDA_MONITOR
 #undef FLASH_CR_0_MER2
 #undef FLASH_CR_0_RDERRIE
 #undef FLASH_CR_1_SER
@@ -2735,24 +2759,27 @@ volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_
 #undef FLASH_MAP0_OBR
 #undef FLASH_OBR_0_RDPRT1
 #undef FLASH_OBR_0_RDPRT2
-#undef FLASH_OBR_0_RAM_PARITY_CHECK
-#undef FLASH_OBR_0_nBOOT0
-#undef FLASH_OBR_0_BOOT_SEL
-#undef FLASH_OBR_1_USER
+#undef FLASH_OBR_0_nRST_STOP
+#undef FLASH_OBR_0_nRST_STDBY
 #undef FLASH_OBR_1_RDPRT
-#undef FLASH_OBR_1_IWDG_SW
-#undef FLASH_OBR_1_nRST_STOP
-#undef FLASH_OBR_1_nRST_STDBY
 #undef FLASH_OBR_1_DATA1
-#undef FLASH_OBR_2_DATA0
-#undef FLASH_OBR_2_LEVEL1_PROT
-#undef FLASH_OBR_3_SDADC12_VDD_MONITOR
-#undef FLASH_OBR_5_LEVEL2_PROT
+#undef FLASH_OBR_2_IWDG_SW
+#undef FLASH_OBR_3_DATA0
+#undef FLASH_OBR_0_USER
+#undef FLASH_OBR_0_RAM_PARITY_CHECK
+#undef FLASH_OBR_0_BOOT_SEL
+#undef FLASH_OBR_1_nBOOT0
 #undef FLASH_OBR_2_USER
-#undef FLASH_OBR_2_SPRMOD
+#undef FLASH_OBR_0_DATA0
+#undef FLASH_OBR_0_DATA1
+#undef FLASH_OBR_1_USER
+#undef FLASH_OBR_1_SRAM_PE
+#undef FLASH_OBR_1_SDADC12_VDD_MONITOR
+#undef FLASH_OBR_2_LEVEL1_PROT
+#undef FLASH_OBR_5_LEVEL2_PROT
 #undef FLASH_OBR_2_nRST_BFB2
 #undef FLASH_MAP0_WRPR3
-#undef FLASH_OBR_3_SRAM_PE
+#undef FLASH_OBR_3_SPRMOD
 #undef FLASH_OBR_4_RDPRT
 #undef FLASH_OBR_4_USER
 #undef FLASH_OBR_5_USER
@@ -2786,5 +2813,7 @@ volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_
 #undef FLASH_MAP0_WRPR2
 #undef FLASH_MAP0_WRPR4
 #undef FLASH_MAP0_OPTKEYR
+
 //endregion
-#endif
+
+#endif //__SOOL_FLASH_H
