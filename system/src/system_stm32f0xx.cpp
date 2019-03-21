@@ -74,18 +74,6 @@
 
 #ifdef STM32F0
 
-#ifndef HSE_VALUE // External oscillator frequency in Hz.
-#define HSE_VALUE		((uint32_t)8000000)
-#endif
-
-#ifndef HSI_VALUE // Internal oscillator frequency in Hz.
-#define HSI_VALUE		((uint32_t)8000000)
-#endif
-
-#ifndef HSI48_VALUE // HSI48 Internal oscillator frequency in Hz.
-#define HSI48_VALUE		((uint32_t)48000000)
-#endif
-
 uint32_t SystemCoreClock = 8000000;
 
 const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};

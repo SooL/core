@@ -115,23 +115,6 @@
 #ifdef STM32L4
 
 #define FLASH_BASE ((uint32_t)0x40022000U)
-#if !defined  (HSE_VALUE)
-#define HSE_VALUE    8000000U  /*!< Value of the External oscillator in Hz */
-#endif /* HSE_VALUE */
-
-#ifndef HSE_VALUE // External oscillator frequency, in Hz
-#define HSE_VALUE    8000000U
-#endif
-
-#ifndef MSI_VALUE // Internal oscillator frequency, in Hz
-#define MSI_VALUE    4000000U
-#endif
-
-#ifndef HSI_VALUE // Internal oscillator frequency, in Hz
-#define HSI_VALUE    16000000U
-#endif
-
-
 
 //Uncomment the following line if you need to relocate your vector Table in Internal SRAM.
 // #define VECT_TAB_SRAM

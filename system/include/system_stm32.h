@@ -39,31 +39,87 @@
 #include "../../sool_setup.h"
 #include "../../sool_chip_setup.h"
 
+//#############################################################################
+//#         define used ARM CORTEX and default oscillator frequencies         #
+//#############################################################################
+
 #ifdef STM32F0
-#define CORTEX_M0
+#	define CORTEX_M0
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE		((uint32_t)8000000)
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE		((uint32_t)8000000)
+#	endif
+#	ifndef HSI48_VALUE // HSI48 Internal oscillator frequency in Hz.
+#	define HSI48_VALUE		((uint32_t)48000000)
+#	endif
 #elif defined(STM32F1)
-#define CORTEX_M3
+#	define CORTEX_M3
 #elif defined(STM32F2)
-#define CORTEX_M3
+#	define CORTEX_M3
 #elif defined(STM32F3)
-#define CORTEX_M4
+#	define CORTEX_M4
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE    ((uint32_t)8000000)
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE    ((uint32_t)8000000)
+#	endif
 #elif defined(STM32F4)
-#define CORTEX_M4
+#	define CORTEX_M4
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE    ((uint32_t)25000000)
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE    ((uint32_t)16000000)
+#	endif
 #elif defined(STM32F7)
 #define CORTEX_M7
 #elif defined(STM32H7)
-#define CORTEX_M7
+#	define CORTEX_M7
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE    ((uint32_t)25000000)
+#	endif
+#	ifndef CSI_VALUE // Internal oscillator frequency in Hz
+#		define CSI_VALUE    ((uint32_t)4000000)
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE    ((uint32_t)64000000)
+#	endif
 #elif defined(STM32L0)
-#define CORTEX_M0PLUS
+#	define CORTEX_M0PLUS
 #elif defined(STM32L1)
-#define CORTEX_M3
+#	define CORTEX_M3
 #elif defined(STM32L4)
-#define CORTEX_M4
+#	define CORTEX_M4
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE    8000000U
+#	endif
+#	ifndef MSI_VALUE // Internal oscillator frequency in Hz
+#		define MSI_VALUE    4000000U
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE    16000000U
+#	endif
 #elif defined(STM32L4P)
-#define CORTEX_M4
+#	define CORTEX_M4
+#	ifndef HSE_VALUE // External oscillator frequency, in Hz
+#		define HSE_VALUE    8000000U
+#	endif
+#	ifndef MSI_VALUE // Internal oscillator frequency, in Hz
+#		define MSI_VALUE    4000000U
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency, in Hz
+#		define HSI_VALUE    16000000U
+#	endif
 #else
-#error chip family not defined
+#	error chip family not defined
 #endif
+
+//#############################################################################
+//#                           include cortex header                           #
+//#############################################################################
 #if defined(CORTEX_M0)
 #include "../cmsis/core_cm0.h"
 #elif defined(CORTEX_M0PLUS)
@@ -76,18 +132,19 @@
 #include "../cmsis/core_cm4.h"
 #endif
 
-/* This variable is updated by calling CMSIS function SystemCoreClockUpdate()
-     Note: If you use this function to configure the System clock; then there
-           is no need to call the 2 first functions listed above, since SystemCoreClock
-           variable is updated automatically.
-*/
-extern uint32_t SystemCoreClock;            // System Clock Frequency (Core Clock)
+//#############################################################################
+//#                declare clock variables and prescaler tables               #
+//#############################################################################
+/*
+ * This variable is updated by calling CMSIS function SystemCoreClockUpdate()
+ */
+extern uint32_t SystemCoreClock;			// System Clock Frequency (Core Clock)
 #ifdef STM32H7
-extern uint32_t SystemD2Clock;			// System Domain2 Clock Frequency  */
-extern const  uint8_t D1CorePrescTable[16]; //D1CorePrescTable prescalers table values */
+extern uint32_t SystemD2Clock;				// System Domain2 Clock Frequency  */
+extern const  uint8_t D1CorePrescTable[16];// D1CorePrescTable prescalers table values */
 #else
-extern const uint8_t AHBPrescTable[16];    // AHB prescalers table values
-extern const uint8_t APBPrescTable[8];        // APB prescalers table values
+extern const uint8_t AHBPrescTable[16];	// AHB prescalers table values
+extern const uint8_t APBPrescTable[8];		// APB prescalers table values
 #endif
 #if defined(STM32L0) || defined(STM32L1)
 extern const uint8_t PLLMulTable[9];
