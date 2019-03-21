@@ -1999,55 +1999,42 @@ volatile class SYSCFG * const SYSCFG = reinterpret_cast<class SYSCFG* const>(SYS
 #endif
 //endregion
 //region peripheral-definition
-		void SYSCFG::enable_clock() volatile
-		{
-		#if defined(STM32F0)
-			RCC->APB2ENR.SYSCFGCOMPEN = 1;
-		#elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
-			RCC->APB2ENR.SYSCFGEN = 1;
-		#elif defined(STM32F3) || defined(STM32L0) || defined(STM32L1)
-			|| defined(STM32L4) || defined(STM32L4P)
-			RCC->APB2ENR.SYSCFGEN = 1;
-		#elif defined(STM32H7)
-			RCC->APB4ENR.SYSCFGEN = 1;
-		#endif
-		}
 		
 		#if defined(STM32F0)
-		void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGCOMPEN = 1; }
-		void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGCOMPEN = 0; }
-		bool SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGCOMPEN; }
+		inline void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGCOMPEN = 1; }
+		inline void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGCOMPEN = 0; }
+		inline bool SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGCOMPEN; }
 		
 		#elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
-		void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
-		void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
-		void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
+		inline void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
+		inline void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
+		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
 		
 		#elif defined(STM32F3) || defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32L4P)
-		void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
-		void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
-		void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
+		inline void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
+		inline void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
+		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
 		
 		#elif defined(STM32H7)
-		void SYSCFG::enable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 1; }
-		void SYSCFG::disable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 0; }
-		void SYSCFG::is_clock_enabled() const volatile { return RCC->APB4ENR.SYSCFGEN; }
-		void SYSCFG::enable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 1; }
-		void SYSCFG::disable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 0; }
-		bool SYSCFG::is_low_power_clock_enabled() const volatile { RCC->APB4LPENR.SYSCFGLPEN; }
+		inline void SYSCFG::enable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 1; }
+		inline void SYSCFG::disable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 0; }
+		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB4ENR.SYSCFGEN; }
+		inline void SYSCFG::enable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 1; }
+		inline void SYSCFG::disable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 0; }
+		inline bool SYSCFG::is_low_power_clock_enabled() const volatile { RCC->APB4LPENR.SYSCFGLPEN; }
 		
 		#endif
 		
 		#if defined(STM32L0) || defined(STM32L4) || defined(STM32L4P)
-		void SYSCFG::enable_sleep_clock() volatile { RCC->APB2SMENR.SYSCFGSMENR = 1; }
-		void SYSCFG::disable_sleep_clock() volatile { RCC->APB2SMENR.SYSCFGSMENR = 1; }
-		bool SYSCFG::is_sleep_clock_enabled() const volatile { return RCC->APB2SMENR.SYSCFGSMENR; }
+		inline void SYSCFG::enable_sleep_clock() volatile { RCC->APB2SMENR.SYSCFGSMENR = 1; }
+		inline void SYSCFG::disable_sleep_clock() volatile { RCC->APB2SMENR.SYSCFGSMENR = 1; }
+		inline bool SYSCFG::is_sleep_clock_enabled() const volatile { return RCC->APB2SMENR.SYSCFGSMENR; }
 		#endif
 		
 		#if defined(STM32F2) || defined(STM32F4) || defined(STM32F7) || defined(STM32L1)
-		void SYSCFG::enable_low_power_clock() volatile { RCC->APB2LPENR.SYSCFGLPEN = 1; }
-		void SYSCFG::disable_low_power_clock() volatile { RCC->APB2LPENR.SYSCFGLPEN = 0; }
-		bool SYSCFG::is_low_power_clock_enabled() const volatile { RCC->APB2LPENR.SYSCFGLPEN; }
+		inline void SYSCFG::enable_low_power_clock() volatile { RCC->APB2LPENR.SYSCFGLPEN = 1; }
+		inline void SYSCFG::disable_low_power_clock() volatile { RCC->APB2LPENR.SYSCFGLPEN = 0; }
+		inline bool SYSCFG::is_low_power_clock_enabled() const volatile { RCC->APB2LPENR.SYSCFGLPEN; }
 		#endif
 		
 		
