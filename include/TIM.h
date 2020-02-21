@@ -1,3180 +1,6974 @@
-#ifndef __SOOL_TIM_H
-#define __SOOL_TIM_H
+/**
+ * Copyright (c) 2018-2020 FAUCHER Julien & FRANCE Loic
+ * This file is part of SooL core Library.
+ *
+ *  SooL core Library is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation, either version 3
+ *  of the License, or (at your option) any later version.
+ *
+ *  SooL core Library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with SooL core Library. If not, see <https://www.gnu.org/licenses/>.
+ */
 
+
+//Generated 2020-02-21T22:51:46.761924
+
+#ifndef __SOOL_CORE_TIM_H
+#define __SOOL_CORE_TIM_H
 #include "lib_utils/peripheral_include.h"
 #include "RCC.h"
 
 
-//region defines
 
-#if defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) || defined(STM32H7     ) 
-#define TIM_AF1
-#define TIM_AF2
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || \
+    defined(STM32L4      ) || defined(STM32W1      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  )
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || \
+    defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define PERIPH_TIM_GENERAL_1
 #endif
 
-#define TIM_ARR
-#define TIM_CCER
-#define TIM_CCMR1
-#define TIM_CCMR2
-#define TIM_CCR1
-#define TIM_CCR2
-#define TIM_CCR3
-#define TIM_CCR4
-#define TIM_CNT
-#define TIM_CR1
-#define TIM_CR2
-#define TIM_DCR
-#define TIM_DIER
-#define TIM_DMAR
-#define TIM_EGR
-#define TIM_PSC
-#define TIM_SMCR
-#define TIM_SR
+#if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_CR1_0
+#define TIM_GENERAL_1_CR1_1
+#define TIM_GENERAL_1_CNT_0
+#define TIM_GENERAL_1_CNT_1
+#endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_ARR_0
-#define TIM_CNT_0
-#define TIM_DIER_COMDE       COMDE                // 1 bits @ 13
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
+    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
+#define TIM_GENERAL_1_CR1_2
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || \
+    defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
+    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_CR1_2_UIFREMAP UIFREMAP
 #else
-#define TIM_DIER_COMDE
+#define TIM_GENERAL_1_CR1_2_UIFREMAP
 #endif
 
-#if defined(STM32L0     ) 
-#define TIM_ARR_1
-#define TIM_CNT_1_CNT        CNT                  // 16 bits @ 0
-#define TIM2_OR_0_ETR_RMP    ETR_RMP              // 3 bits @ 0
-#define TIM2_OR_0_TI4_RMP    TI4_RMP              // 2 bits @ 3
-#define TIM21_OR_0_ETR_RMP   ETR_RMP              // 2 bits @ 0
-#define TIM21_OR_0_TI1_RMP   TI1_RMP              // 3 bits @ 2
-#define TIM21_OR_0_TI2_RMP   TI2_RMP              // 1 bits @ 5
+#if	defined(STM32G0      ) || defined(STM32L1      ) || defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_SMCR_OCCS OCCS
 #else
-#define TIM_CNT_1_CNT
-#define TIM2_OR_0_ETR_RMP
-#define TIM2_OR_0_TI4_RMP
-#define TIM21_OR_0_ETR_RMP
-#define TIM21_OR_0_TI1_RMP
-#define TIM21_OR_0_TI2_RMP
+#define TIM_GENERAL_1_SMCR_OCCS
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
-#define TIM_BDTR
-#define TIM_CCER_CC1NE       CC1NE                // 1 bits @ 2
-#define TIM_CCER_CC2NE       CC2NE                // 1 bits @ 6
-#define TIM_CCER_CC3NE       CC3NE                // 1 bits @ 10
-#define TIM_CR2_0_CCPC       CCPC                 // 1 bits @ 0
-#define TIM_CR2_0_CCUS       CCUS                 // 1 bits @ 2
-#define TIM_CR2_0_OIS1       OIS1                 // 1 bits @ 8
-#define TIM_CR2_0_OIS1N      OIS1N                // 1 bits @ 9
-#define TIM_CR2_0_OIS2       OIS2                 // 1 bits @ 10
-#define TIM_DIER_COMIE       COMIE                // 1 bits @ 5
-#define TIM_DIER_BIE         BIE                  // 1 bits @ 7
-#define TIM_EGR_COMG         COMG                 // 1 bits @ 5
-#define TIM_EGR_BG           BG                   // 1 bits @ 7
-#define TIM_RCR
-#define TIM_SR_COMIF         COMIF                // 1 bits @ 5
-#define TIM_SR_BIF           BIF                  // 1 bits @ 7
-#define TIM_MAP0_RCR         RCR_TypeDef RCR
-#define TIM_MAP0_BDTR        BDTR_TypeDef BDTR
+#if	defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || \
+    defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_SMCR_SMS_3 SMS_3
 #else
-#define TIM_CCER_CC1NE
-#define TIM_CCER_CC2NE
-#define TIM_CCER_CC3NE
-#define TIM_CR2_0_CCPC
-#define TIM_CR2_0_CCUS
-#define TIM_CR2_0_OIS1
-#define TIM_CR2_0_OIS1N
-#define TIM_CR2_0_OIS2
-#define TIM_DIER_COMIE
-#define TIM_DIER_BIE
-#define TIM_EGR_COMG
-#define TIM_EGR_BG
-#define TIM_SR_COMIF
-#define TIM_SR_BIF
-#define TIM_MAP0_RCR __SOOL_PERIPH_PADDING_4
-#define TIM_MAP0_BDTR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_SMCR_SMS_3
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_BDTR_BKF         BKF                  // 4 bits @ 16
-#define TIM_BDTR_BK2F        BK2F                 // 4 bits @ 20
-#define TIM_BDTR_BK2E        BK2E                 // 1 bits @ 24
-#define TIM_BDTR_BK2P        BK2P                 // 1 bits @ 25
-#define TIM_CCER_CC5E        CC5E                 // 1 bits @ 16
-#define TIM_CCER_CC5P        CC5P                 // 1 bits @ 17
-#define TIM_CCER_CC6E        CC6E                 // 1 bits @ 20
-#define TIM_CCER_CC6P        CC6P                 // 1 bits @ 21
-#define TIM_CCMR3
-#define TIM_CCR5
-#define TIM_CCR6
-#define TIM_CNT_1_UIFCPY     UIFCPY               // 1 bits @ 31
-#define TIM_CR1_UIFREMAP     UIFREMAP             // 1 bits @ 11
-#define TIM_CR2_0_OIS5       OIS5                 // 1 bits @ 16
-#define TIM_CR2_0_MMS2       MMS2                 // 4 bits @ 20
-#define TIM_EGR_B2G          B2G                  // 1 bits @ 8
-#define TIM_SR_B2IF          B2IF                 // 1 bits @ 8
-#define TIM_SR_CC5IF         CC5IF                // 1 bits @ 16
-#define TIM_SR_CC6IF         CC6IF                // 1 bits @ 17
+#if	defined(STM32G0      ) || defined(STM32H7      )
+#define TIM_GENERAL_1_SMCR_TS_4_3 TS_4_3
+#define TIM_GENERAL_1_AF1
+#define TIM_GENERAL_1_TISEL
+#define TIM_GENERAL_1_MAP1_AF1 AF1_t AF1
+#define TIM_GENERAL_1_MAP1_TISEL TISEL_t TISEL
 #else
-#define TIM_BDTR_BKF
-#define TIM_BDTR_BK2F
-#define TIM_BDTR_BK2E
-#define TIM_BDTR_BK2P
-#define TIM_CCER_CC5E
-#define TIM_CCER_CC5P
-#define TIM_CCER_CC6E
-#define TIM_CCER_CC6P
-#define TIM_CNT_1_UIFCPY
-#define TIM_CR1_UIFREMAP
-#define TIM_CR2_0_OIS5
-#define TIM_CR2_0_MMS2
-#define TIM_EGR_B2G
-#define TIM_SR_B2IF
-#define TIM_SR_CC5IF
-#define TIM_SR_CC6IF
+#define TIM_GENERAL_1_SMCR_TS_4_3
+#define TIM_GENERAL_1_MAP1_AF1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_MAP1_TISEL __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_CCER_CC4NP       CC4NP                // 1 bits @ 15
+#if	defined(STM32F0      ) || defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || \
+    defined(STM32L051xx  ) || defined(STM32L052xx  ) || defined(STM32L053xx  ) || defined(STM32L062xx  ) || defined(STM32L063xx  ) || \
+    defined(STM32L071xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || \
+    defined(STM32L083xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || \
+    defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_1_DIER_COMDE COMDE
 #else
-#define TIM_CCER_CC4NP
+#define TIM_GENERAL_1_DIER_COMDE
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32L0     ) || defined(STM32L1     ) 
-#define TIM_CCMR1_0_OC1M     OC1M                 // 3 bits @ 4
-#define TIM_CCMR1_0_OC2M     OC2M                 // 3 bits @ 12
-#define TIM_SMCR_SMS         SMS                  // 3 bits @ 0
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_1_DIER_TDE TDE
 #else
-#define TIM_CCMR1_0_OC1M
-#define TIM_CCMR1_0_OC2M
-#define TIM_SMCR_SMS
+#define TIM_GENERAL_1_DIER_TDE
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32H7     ) || defined(STM32L0     ) ||\
-    defined(STM32L1     ) 
-#define TIM_CCMR2_0_OC3M     OC3M                 // 3 bits @ 4
-#define TIM_CCMR2_0_OC4M     OC4M                 // 3 bits @ 12
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_1_CCMR1_Output_0_CC2S CC2S
+#define TIM_GENERAL_1_CCMR2_Output_0_CC4S CC4S
+#define TIM_GENERAL_1_CCR1
+#define TIM_GENERAL_1_CCR3
+#define TIM_GENERAL_1_MAP1_CCR1 CCR1_t CCR1
+#define TIM_GENERAL_1_MAP1_CCR3 CCR3_t CCR3
 #else
-#define TIM_CCMR2_0_OC3M
-#define TIM_CCMR2_0_OC4M
+#define TIM_GENERAL_1_CCMR1_Output_0_CC2S
+#define TIM_GENERAL_1_CCMR2_Output_0_CC4S
+#define TIM_GENERAL_1_MAP1_CCR1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_MAP1_CCR3 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F7     ) 
-#define TIM_CCMR3_0_OC5M0    OC5M0                // 1 bits @ 0
-#define TIM_CCMR3_0_OC5M1    OC5M1                // 1 bits @ 1
-#define TIM_CCMR3_0_OC5M3    OC5M3                // 1 bits @ 12
-#define TIM_CCMR3_1
-#define TIM_CCMR3_2_OC6M2    OC6M2                // 1 bits @ 2
+#if	defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3 OC1M_3
+#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3 OC2M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3 OC3M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3 OC4M_3
 #else
-#define TIM_CCMR3_0_OC5M0
-#define TIM_CCMR3_0_OC5M1
-#define TIM_CCMR3_0_OC5M3
-#define TIM_CCMR3_2_OC6M2
+#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
+#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
 #endif
 
-#if defined(STM32H7     ) 
-#define TIM_CCMR3_0_OC5M     OC5M                 // 3 bits @ 4
-#define TIM_CCMR3_2_OC6M     OC6M                 // 3 bits @ 12
-#define TIM_CR2_1
-#define TIM_TISEL
-#define TIM_MAP2_CCMR3       CCMR3_TypeDef CCMR3
-#define TIM_MAP1_CCR5        CCR5_TypeDef CCR5
-#define TIM_MAP1_CCR6        CCR6_TypeDef CCR6
-#define TIM_MAP1_AF1         typename plugin::AF1_TypeDef AF1
-#define TIM_MAP1_AF2         typename plugin::AF2_TypeDef AF2
-#define TIM_MAP1_TISEL       typename plugin::TISEL_TypeDef TISEL
-#define TIM1_AF1_0_BKCMP1E   BKCMP1E              // 1 bits @ 1
-#define TIM1_AF1_0_BKCMP2E   BKCMP2E              // 1 bits @ 2
-#define TIM1_AF1_0_BKCMP1P   BKCMP1P              // 1 bits @ 10
-#define TIM1_AF1_0_BKCMP2P   BKCMP2P              // 1 bits @ 11
-#define TIM1_AF1_0_ETR_SEL   ETR_SEL              // 4 bits @ 14
-#define TIM1_AF1_1
-#define TIM1_AF2_0_BK2CMP1E  BK2CMP1E             // 1 bits @ 1
-#define TIM1_AF2_0_BK2CMP2E  BK2CMP2E             // 1 bits @ 2
-#define TIM1_AF2_0_BK2CMP1P  BK2CMP1P             // 1 bits @ 10
-#define TIM1_AF2_0_BK2CMP2P  BK2CMP2P             // 1 bits @ 11
-#define TIM1_AF2_1
-#define TIM8_AF1_0_BKCMP1E   BKCMP1E              // 1 bits @ 1
-#define TIM8_AF1_0_BKCMP2E   BKCMP2E              // 1 bits @ 2
-#define TIM8_AF1_0_BKCMP1P   BKCMP1P              // 1 bits @ 10
-#define TIM8_AF1_0_BKCMP2P   BKCMP2P              // 1 bits @ 11
-#define TIM8_AF1_0_ETR_SEL   ETR_SEL              // 4 bits @ 14
-#define TIM8_AF1_1
-#define TIM8_AF2_0_BK2CMP1E  BK2CMP1E             // 1 bits @ 1
-#define TIM8_AF2_0_BK2CMP2E  BK2CMP2E             // 1 bits @ 2
-#define TIM8_AF2_0_BK2CMP1P  BK2CMP1P             // 1 bits @ 10
-#define TIM8_AF2_0_BK2CMP2P  BK2CMP2P             // 1 bits @ 11
-#define TIM8_AF2_1
+#if	defined(STM32L1      )
+#define TIM_GENERAL_1_CCMR1_Output_1
+#define TIM_GENERAL_1_CCMR2_Output_1_CC4S CC4S
+#define TIM_GENERAL_1_CNT_3_CNT CNT
+#define TIM_GENERAL_1_ARR_3
+#define TIM_GENERAL_1_CCR2_3
+#define TIM_GENERAL_1_CCR4_3
+#define TIM_GENERAL_1_CCRx
+#define TIM_GENERAL_1_MAP3_CCR1 CCRx_t CCR1
+#define TIM_GENERAL_1_MAP3_CCR3 CCRx_t CCR3
+#define TIM_GENERAL_4_CR1_1
+#define TIM_GENERAL_4_CCMR1_Output_0_OC1CE OC1CE
+#define TIM_GENERAL_4_CCMR1_Output_0_OC2CE OC2CE
+#define TIM_GENERAL_4_CCMR1_Output_1
+#define TIM_GENERAL_4_OR_2
 #else
-#define TIM_CCMR3_0_OC5M
-#define TIM_CCMR3_2_OC6M
-#define TIM_MAP2_CCMR3 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP1_CCR5 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP1_CCR6 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP1_AF1 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP1_AF2 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP1_TISEL __SOOL_PERIPH_PADDING_4
-#define TIM1_AF1_0_BKCMP1E
-#define TIM1_AF1_0_BKCMP2E
-#define TIM1_AF1_0_BKCMP1P
-#define TIM1_AF1_0_BKCMP2P
-#define TIM1_AF1_0_ETR_SEL
-#define TIM1_AF2_0_BK2CMP1E
-#define TIM1_AF2_0_BK2CMP2E
-#define TIM1_AF2_0_BK2CMP1P
-#define TIM1_AF2_0_BK2CMP2P
-#define TIM8_AF1_0_BKCMP1E
-#define TIM8_AF1_0_BKCMP2E
-#define TIM8_AF1_0_BKCMP1P
-#define TIM8_AF1_0_BKCMP2P
-#define TIM8_AF1_0_ETR_SEL
-#define TIM8_AF2_0_BK2CMP1E
-#define TIM8_AF2_0_BK2CMP2E
-#define TIM8_AF2_0_BK2CMP1P
-#define TIM8_AF2_0_BK2CMP2P
+#define TIM_GENERAL_1_CCMR2_Output_1_CC4S
+#define TIM_GENERAL_1_CNT_3_CNT
+#define TIM_GENERAL_1_MAP3_CCR1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_MAP3_CCR3 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_4_CCMR1_Output_0_OC1CE
+#define TIM_GENERAL_4_CCMR1_Output_0_OC2CE
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) 
-#define TIM_CCMR3_2
-#endif
-
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L0     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
-#define TIM_CNT_1
-#endif
-
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F301x8 ) ||\
-    defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303x8 ) ||\
-    defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) || defined(STM32F328xx ) ||\
-    defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_CR2_0_OIS2N      OIS2N                // 1 bits @ 11
-#define TIM_CR2_0_OIS3       OIS3                 // 1 bits @ 12
-#define TIM_CR2_0_OIS3N      OIS3N                // 1 bits @ 13
-#define TIM_CR2_0_OIS4       OIS4                 // 1 bits @ 14
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_1_CCMR1_Input_0_ICPCS ICPCS
+#define TIM_GENERAL_1_CCMR1_Input_0_IC2PCS IC2PCS
 #else
-#define TIM_CR2_0_OIS2N
-#define TIM_CR2_0_OIS3
-#define TIM_CR2_0_OIS3N
-#define TIM_CR2_0_OIS4
+#define TIM_GENERAL_1_CCMR1_Input_0_ICPCS
+#define TIM_GENERAL_1_CCMR1_Input_0_IC2PCS
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_CR2_0_OIS6       OIS6                 // 1 bits @ 18
-#define TIM_RCR_1
-#define TIM_MAP0_CCMR3       CCMR3_TypeDef CCMR3
-#define TIM_MAP0_CCR5        CCR5_TypeDef CCR5
-#define TIM_MAP0_CCR6        CCR6_TypeDef CCR6
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L4      ) || \
+    defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  )
+#define TIM_GENERAL_1_CCMR1_Input_1
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
+    defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
+    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
+    defined(STM32F479xx  )
+#define TIM_GENERAL_1_CCMR2_Output_0_O24CE O24CE
 #else
-#define TIM_CR2_0_OIS6
-#define TIM_MAP0_CCMR3 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP0_CCR5 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP0_CCR6 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_CCMR2_Output_0_O24CE
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) 
-#define TIM_OR
-#define TIM_MAP0_OR          typename plugin::OR_TypeDef OR
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      ) || \
+    defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_GENERAL_1_CCMR2_Output_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || \
+    defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || \
+    defined(STM32H755xx_CORE_CM7)
+#define TIM_GENERAL_1_CNT_2
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L0      ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || \
+    defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_1_CNT_2_CNT_H CNT_H
 #else
-#define TIM_MAP0_OR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_CNT_2_CNT_H
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
-#define TIM_OR_0
-#define TIM2_OR_1
-#define TIM5_OR_0
-#define TIM11_OR_0
-#define TIM3_OR_1
+#if	defined(STM32L1      ) || defined(STM32WB      )
+#define TIM_GENERAL_1_CNT_3
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) 
-#define TIM_OR_0_TI1_RMP     TI1_RMP              // 2 bits @ 0
-#define TIM1_OR_1_TI1_RMP    TI1_RMP              // 2 bits @ 0
-#define TIM8_OR_1_TI1_RMP    TI1_RMP              // 2 bits @ 0
-#define TIM20_OR_1_TI1_RMP   TI1_RMP              // 2 bits @ 0
-#define TIM2_OR_2
-#define TIM5_OR_0_TI1_RMP    TI1_RMP              // 2 bits @ 0
-#define TIM3_OR_2
-#define TIM21_OR_1_TI1_RMP   TI1_RMP              // 2 bits @ 0
-#define TIM22_OR_1_TI1_RMP   TI1_RMP              // 2 bits @ 0
-#define TIM9_OR_0_TI1_RMP    TI1_RMP              // 2 bits @ 0
+#if	defined(STM32WB      )
+#define TIM_GENERAL_1_CNT_3_CNT_H CNT_H
+#define TIM_GENERAL_1_CNT_3_UIFCPY UIFCPY
+#define TIM_GENERAL_1_OR_4
+#define TIM_GENERAL_1_AF
+#define TIM_GENERAL_1_MAP3_AF AF_t AF
+#define TIM_ADVANCED_CCMR1_Input_1_C1F C1F
+#define TIM_ADVANCED_CCMR2_Input_1_C3PSC C3PSC
+#define TIM_ADVANCED_OR
+#define TIM_ADVANCED_MAP0_OR OR_t OR
+#define TIM_GENERAL_3_CR1_1
+#define TIM_GENERAL_3_CR1_2
+#define TIM_GENERAL_3_DIER_1
+#define TIM_GENERAL_3_OR
+#define TIM_GENERAL_3_MAP0_CCER CCER_t CCER
+#define TIM_GENERAL_3_MAP0_CNT CNT_t CNT
+#define TIM_GENERAL_3_MAP0_PSC PSC_t PSC
+#define TIM_GENERAL_3_MAP0_ARR ARR_t ARR
+#define TIM_GENERAL_3_MAP0_RCR RCR_t RCR
+#define TIM_GENERAL_3_MAP0_CCR1 CCR1_t CCR1
+#define TIM_GENERAL_3_MAP0_BDTR BDTR_t BDTR
+#define TIM_GENERAL_3_MAP0_OR OR_t OR
+#define TIM_GENERAL_3_MAP1_DIER CR1_t DIER
+#define TIM_GENERAL_3_MAP2
+#define TIM_GENERAL_3_MAP3_DIER DIER_t DIER
+#define TIM_GENERAL_3_MAP3_SR SR_t SR
+#define TIM_GENERAL_3_MAP3_EGR EGR_t EGR
+#define TIM_GENERAL_3_MAP3_CCMR1_Output CCMR1_Output_t CCMR1_Output
+#define TIM_GENERAL_3_MAP3_AF1 CR1_t AF1
 #else
-#define TIM_OR_0_TI1_RMP
-#define TIM1_OR_1_TI1_RMP
-#define TIM8_OR_1_TI1_RMP
-#define TIM20_OR_1_TI1_RMP
-#define TIM5_OR_0_TI1_RMP
-#define TIM21_OR_1_TI1_RMP
-#define TIM22_OR_1_TI1_RMP
-#define TIM9_OR_0_TI1_RMP
+#define TIM_GENERAL_1_CNT_3_CNT_H
+#define TIM_GENERAL_1_CNT_3_UIFCPY
+#define TIM_GENERAL_1_MAP3_AF __SOOL_PERIPH_PADDING_4
+#define TIM_ADVANCED_CCMR1_Input_1_C1F
+#define TIM_ADVANCED_CCMR2_Input_1_C3PSC
+#define TIM_ADVANCED_MAP0_OR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_CCER __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_CNT __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_PSC __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_ARR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_RCR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_CCR1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_BDTR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_OR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_DIER __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_DIER __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_SR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_EGR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_CCMR1_Output __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_AF1 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L1     ) 
-#define TIM_OR_0_ETR_RMP     ETR_RMP              // 1 bits @ 2
-#define TIM_OR_1
-#define TIM14_OR_0_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM14_OR_1
-#define TIM16_OR_0_TI1RMP    TI1RMP               // 2 bits @ 0
-#define TIM16_OR_0_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM1_OR_1_ETR_RMP    ETR_RMP              // 1 bits @ 2
-#define TIM1_OR_2
-#define TIM8_OR_1_ETR_RMP    ETR_RMP              // 1 bits @ 2
-#define TIM8_OR_2
-#define TIM20_OR_1_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM20_OR_2
-#define TIM2_OR_1_ETR_RMP    ETR_RMP              // 1 bits @ 2
-#define TIM2_OR_3
-#define TIM5_OR_0_ETR_RMP    ETR_RMP              // 1 bits @ 2
-#define TIM5_OR_1
-#define TIM11_OR_0_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM11_OR_1
-#define TIM3_OR_1_ETR_RMP    ETR_RMP              // 1 bits @ 2
-#define TIM3_OR_3
-#define TIM21_OR_1_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM21_OR_2
-#define TIM22_OR_1_ETR_RMP   ETR_RMP              // 1 bits @ 2
-#define TIM22_OR_2
-#define TIM9_OR_1_TI1RMP     TI1RMP               // 2 bits @ 0
-#define TIM9_OR_1_ETR_RMP    ETR_RMP              // 1 bits @ 2
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_1_CNT_4
+#define TIM_GENERAL_1_CNT_5
+#define TIM_GENERAL_1_ARR_1
+#define TIM_GENERAL_1_ARR_2
+#define TIM_GENERAL_1_CCR1_1
+#define TIM_GENERAL_1_CCR1_2
+#define TIM_GENERAL_1_CCR2_1
+#define TIM_GENERAL_1_CCR2_2
+#define TIM_GENERAL_1_CCR3_1
+#define TIM_GENERAL_1_CCR3_2
+#define TIM_GENERAL_1_CCR4_1
+#define TIM_GENERAL_1_CCR4_2
+#endif
+
+#if	defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_CNT_6
+#define TIM_GENERAL_1_OR1_2
+#define TIM_GENERAL_1_OR2_1
+#define TIM_GENERAL_2_CR2_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_GENERAL_1_ARR_0
+#define TIM_GENERAL_1_CCR1_0
+#define TIM_GENERAL_1_CCR2_0
+#define TIM_GENERAL_1_CCR3_0
+#define TIM_GENERAL_1_CCR4_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || \
+    defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_1_DMAR_0
+#endif
+
+#if	defined(STM32F0      )
+#define TIM_GENERAL_1_DMAR_1
+#define TIM_ADVANCED_CCMR1_Input_3
+#endif
+
+#if	defined(STM32H7      )
+#define TIM_GENERAL_1_TISEL_TI3SEL TI3SEL
+#define TIM_GENERAL_1_TISEL_TI4SEL TI4SEL
+#define TIM_ADVANCED_CCMR2_Output_0_OC4M_4 OC4M_4
+#define TIM_ADVANCED_AF1_0_BKDF1BK0E BKDF1BK0E
+#define TIM_ADVANCED_AF2_0_BK2DF1BK1E BK2DF1BK1E
 #else
-#define TIM_OR_0_ETR_RMP
-#define TIM14_OR_0_ETR_RMP
-#define TIM16_OR_0_TI1RMP
-#define TIM16_OR_0_ETR_RMP
-#define TIM1_OR_1_ETR_RMP
-#define TIM8_OR_1_ETR_RMP
-#define TIM20_OR_1_ETR_RMP
-#define TIM2_OR_1_ETR_RMP
-#define TIM5_OR_0_ETR_RMP
-#define TIM11_OR_0_ETR_RMP
-#define TIM3_OR_1_ETR_RMP
-#define TIM21_OR_1_ETR_RMP
-#define TIM22_OR_1_ETR_RMP
-#define TIM9_OR_1_TI1RMP
-#define TIM9_OR_1_ETR_RMP
+#define TIM_GENERAL_1_TISEL_TI3SEL
+#define TIM_GENERAL_1_TISEL_TI4SEL
+#define TIM_ADVANCED_CCMR2_Output_0_OC4M_4
+#define TIM_ADVANCED_AF1_0_BKDF1BK0E
+#define TIM_ADVANCED_AF2_0_BK2DF1BK1E
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
-#define TIM_OR_0_TI4_RMP     TI4_RMP              // 2 bits @ 6
-#define TIM14_OR_0_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM16_OR_1_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM1_OR_0_TI4_RMP    TI4_RMP              // 2 bits @ 6
-#define TIM8_OR_0_TI4_RMP    TI4_RMP              // 2 bits @ 6
-#define TIM20_OR_0_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM2_OR_1_TI4_RMP    TI4_RMP              // 2 bits @ 6
-#define TIM5_OR_0_TI4_RMP    TI4_RMP              // 2 bits @ 6
-#define TIM11_OR_0_TI1_RMP   TI1_RMP              // 2 bits @ 0
-#define TIM11_OR_0_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM3_OR_1_TI4_RMP    TI4_RMP              // 2 bits @ 6
-#define TIM21_OR_0_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM22_OR_0_TI4_RMP   TI4_RMP              // 2 bits @ 6
-#define TIM9_OR_0_TI4_RMP    TI4_RMP              // 2 bits @ 6
+#if	defined(STM32F4      ) || defined(STM32L0      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || \
+    defined(STM32F733xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || \
+    defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_1_OR
+#define TIM_GENERAL_1_MAP1_OR OR_t OR
 #else
-#define TIM_OR_0_TI4_RMP
-#define TIM14_OR_0_TI4_RMP
-#define TIM16_OR_1_TI4_RMP
-#define TIM1_OR_0_TI4_RMP
-#define TIM8_OR_0_TI4_RMP
-#define TIM20_OR_0_TI4_RMP
-#define TIM2_OR_1_TI4_RMP
-#define TIM5_OR_0_TI4_RMP
-#define TIM11_OR_0_TI1_RMP
-#define TIM11_OR_0_TI4_RMP
-#define TIM3_OR_1_TI4_RMP
-#define TIM21_OR_0_TI4_RMP
-#define TIM22_OR_0_TI4_RMP
-#define TIM9_OR_0_TI4_RMP
+#define TIM_GENERAL_1_MAP1_OR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) ||\
-    defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) 
-#define TIM_OR_0_ITR1_RMP    ITR1_RMP             // 2 bits @ 10
-#define TIM14_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM16_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM1_OR_0_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
-#define TIM8_OR_0_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
-#define TIM20_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM5_OR_0_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
-#define TIM11_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM3_OR_0_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
-#define TIM21_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM22_OR_0_ITR1_RMP  ITR1_RMP             // 2 bits @ 10
-#define TIM9_OR_1_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
+#if	defined(STM32L0      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_1_OR_0
+#endif
+
+#if	defined(STM32L0      ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || \
+    defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_1_OR_0_ETR_RMP ETR_RMP
+#define TIM_GENERAL_1_OR_0_TI4_RMP TI4_RMP
 #else
-#define TIM_OR_0_ITR1_RMP
-#define TIM14_OR_0_ITR1_RMP
-#define TIM16_OR_0_ITR1_RMP
-#define TIM1_OR_0_ITR1_RMP
-#define TIM8_OR_0_ITR1_RMP
-#define TIM20_OR_0_ITR1_RMP
-#define TIM5_OR_0_ITR1_RMP
-#define TIM11_OR_0_ITR1_RMP
-#define TIM3_OR_0_ITR1_RMP
-#define TIM21_OR_0_ITR1_RMP
-#define TIM22_OR_0_ITR1_RMP
-#define TIM9_OR_1_ITR1_RMP
+#define TIM_GENERAL_1_OR_0_ETR_RMP
+#define TIM_GENERAL_1_OR_0_TI4_RMP
 #endif
 
-#if defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_OR1
-#define TIM_OR2
-#define TIM_OR3
-#define TIM_MAP1_OR1         typename plugin::OR1_TypeDef OR1
-#define TIM_MAP2_OR2         typename plugin::OR2_TypeDef OR2
-#define TIM_MAP2_OR3         typename plugin::OR3_TypeDef OR3
+#if	defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  )
+#define TIM_GENERAL_1_OR_0_IT4_RMP IT4_RMP
 #else
-#define TIM_MAP1_OR1 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP2_OR2 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP2_OR3 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_1_OR_0_IT4_RMP
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32H7     ) 
-#define TIM_RCR_0
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
+#define TIM_GENERAL_1_OR_1
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) || defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
-#define TIM_SMCR_OCCS        OCCS                 // 1 bits @ 3
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_1_OR_2
+#endif
+
+#if	defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
+#define TIM_GENERAL_1_OR_3
+#define TIM_GENERAL_5_CCMR1_Output_OC1M_3 OC1M_3
+#define TIM_GENERAL_5_CCMR1_Output_OC2M_3 OC2M_3
+#define TIM_GENERAL_6_SMCR_1
 #else
-#define TIM_SMCR_OCCS
+#define TIM_GENERAL_5_CCMR1_Output_OC1M_3
+#define TIM_GENERAL_5_CCMR1_Output_OC2M_3
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) || defined(STM32L1     ) ||\
-    defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_SMCR_TS          TS                   // 3 bits @ 4
+#if	defined(STM32G0      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
+    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_OR1
+#define TIM_GENERAL_1_MAP0_OR1 OR1_t OR1
 #else
-#define TIM_SMCR_TS
+#define TIM_GENERAL_1_MAP0_OR1 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM_SR_SBIF          SBIF                 // 1 bits @ 13
+#if	defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
+    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
+#define TIM_GENERAL_1_OR1_0
+#define TIM_GENERAL_1_OR1_1
+#define TIM_GENERAL_1_OR2_0
+#define TIM_GENERAL_6_SMCR_0
+#endif
+
+#if	defined(STM32G0      )
+#define TIM_GENERAL_1_OR1_3
+#define TIM_ADVANCED_SMCR_1
+#define TIM_ADVANCED_CCMR1_Input_1_OC2M OC2M
+#define TIM_ADVANCED_CCMR1_Input_1_OC2CE OC2CE
+#define TIM_ADVANCED_CCMR1_Input_2_OC1M OC1M
+#define TIM_ADVANCED_CCMR1_Input_2_OC1CE OC1CE
+#define TIM_ADVANCED_CCMR1_Input_2_OC2FE OC2FE
+#define TIM_ADVANCED_CCMR1_Input_2_OC2PE OC2PE
+#define TIM_ADVANCED_CCMR1_Input_4
+#define TIM_ADVANCED_CCMR2_Input_1_OC3M OC3M
+#define TIM_ADVANCED_CCMR2_Input_1_OC3CE OC3CE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4FE OC4FE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4PE OC4PE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4M OC4M
+#define TIM_ADVANCED_CCMR2_Input_1_OC4CE OC4CE
+#define TIM_ADVANCED_CCMR2_Input_2
+#define TIM_ADVANCED_OR1_3
+#define TIM_GENERAL_3_AF1_BKDFBK1E BKDFBK1E
+#define TIM_GENERAL_3_MAP3_TISEL TISEL_t TISEL
+#define TIM_GENERAL_6_CR1_UIFREMAP UIFREMAP
+#define TIM_GENERAL_6_CCMR1_Output_OC1CE OC1CE
+#define TIM_GENERAL_6_CNT_UIFCPY UIFCPY
+#define TIM_GENERAL_6_TISEL
+#define TIM_GENERAL_6_MAP1_TISEL TISEL_t TISEL
 #else
-#define TIM_SR_SBIF
+#define TIM_ADVANCED_CCMR1_Input_1_OC2M
+#define TIM_ADVANCED_CCMR1_Input_1_OC2CE
+#define TIM_ADVANCED_CCMR1_Input_2_OC1M
+#define TIM_ADVANCED_CCMR1_Input_2_OC1CE
+#define TIM_ADVANCED_CCMR1_Input_2_OC2FE
+#define TIM_ADVANCED_CCMR1_Input_2_OC2PE
+#define TIM_ADVANCED_CCMR2_Input_1_OC3M
+#define TIM_ADVANCED_CCMR2_Input_1_OC3CE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4FE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4PE
+#define TIM_ADVANCED_CCMR2_Input_1_OC4M
+#define TIM_ADVANCED_CCMR2_Input_1_OC4CE
+#define TIM_GENERAL_3_AF1_BKDFBK1E
+#define TIM_GENERAL_3_MAP3_TISEL __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_CR1_UIFREMAP
+#define TIM_GENERAL_6_CCMR1_Output_OC1CE
+#define TIM_GENERAL_6_CNT_UIFCPY
+#define TIM_GENERAL_6_MAP1_TISEL __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F765xx ) || defined(STM32F767xx ) || defined(STM32F769xx ) || defined(STM32F777xx ) ||\
-    defined(STM32F779xx ) 
-#define TIM_MAP0_AF1         typename plugin::AF1_TypeDef AF1
-#define TIM_MAP0_AF2         typename plugin::AF2_TypeDef AF2
-#define TIM1_AF1_0_BKDF1BKE  BKDF1BKE             // 1 bits @ 8
-#define TIM1_AF2_0_BK2DF1BKE BK2DF1BKE            // 1 bits @ 8
-#define TIM8_AF1_0_BKDF1BKE  BKDF1BKE             // 1 bits @ 8
-#define TIM8_AF2_0_BK2DF1BKE BK2DF1BKE            // 1 bits @ 8
+#if	defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
+    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  )
+#define TIM_GENERAL_1_OR2
+#define TIM_GENERAL_1_MAP0_OR2 OR2_t OR2
 #else
-#define TIM_MAP0_AF1 __SOOL_PERIPH_PADDING_4
-#define TIM_MAP0_AF2 __SOOL_PERIPH_PADDING_4
-#define TIM1_AF1_0_BKDF1BKE
-#define TIM1_AF2_0_BK2DF1BKE
-#define TIM8_AF1_0_BKDF1BKE
-#define TIM8_AF2_0_BK2DF1BKE
+#define TIM_GENERAL_1_MAP0_OR2 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L1     ) 
-#define TIM14_OR_0
-#endif
-
-#if defined(STM32F0     ) || defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F4     ) 
-#define TIM14_OR_0_TI1_RMP   TI1_RMP              // 2 bits @ 0
+#if	defined(STM32F2      )
+#define TIM_GENERAL_1_TIMx_OR
+#define TIM_GENERAL_1_MAP2
+#define TIM_GENERAL_1_MAP3_TIM2_OR TIMx_OR_t TIM2_OR
 #else
-#define TIM14_OR_0_TI1_RMP
+#define TIM_GENERAL_1_MAP3_TIM2_OR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302xC ) || defined(STM32F303x8 ) ||\
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F358xx ) || defined(STM32F401xC ) ||\
-    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) ||\
-    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32L1     ) 
-#define TIM16_OR_0
+#if	defined(STM32F2      ) || defined(STM32L1      ) || defined(STM32WB      )
+#define TIM_GENERAL_1_MAP3
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302xC ) || defined(STM32F303x8 ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F358xx ) 
-#define TIM16_OR_0_TI1_RMP   TI1_RMP              // 2 bits @ 6
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || \
+    defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || \
+    defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || \
+    defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || \
+    defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || \
+    defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || \
+    defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+    defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
+    defined(STM32F410Tx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
+    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
+    defined(STM32F479xx  ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L011xx  ) || \
+    defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L051xx  ) || defined(STM32L052xx  ) || \
+    defined(STM32L053xx  ) || defined(STM32L062xx  ) || defined(STM32L063xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || \
+    defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
+#define PERIPH_TIM_BASIC
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32G070xx  ) || \
+    defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_BASIC_CR1_UIFREMAP UIFREMAP
 #else
-#define TIM16_OR_0_TI1_RMP
+#define TIM_BASIC_CR1_UIFREMAP
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F302x8 ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
-    defined(STM32F303xE ) || defined(STM32F334x8 ) || defined(STM32F398xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) 
-#define TIM16_OR_1
-#endif
-
-#if defined(STM32F2     ) || defined(STM32F302x8 ) || defined(STM32F302xE ) || defined(STM32F303xC ) ||\
-    defined(STM32F303xE ) || defined(STM32F334x8 ) || defined(STM32F398xx ) || defined(STM32F4     ) 
-#define TIM16_OR_1_TI1_RMP   TI1_RMP              // 2 bits @ 0
+#if	defined(STM32G4      ) || defined(STM32GB      )
+#define TIM_BASIC_CR1_DITHEN DITHEN
+#define TIM_ADVANCED_CR1_DITHEN DITHEN
+#define TIM_ADVANCED_CR2_OIS4N OIS4N
+#define TIM_ADVANCED_CR2_MMS_3 MMS_3
+#define TIM_ADVANCED_SMCR_0_SMSPE SMSPE
+#define TIM_ADVANCED_SMCR_0_SMSPS SMSPS
+#define TIM_ADVANCED_DIER_IDXIE IDXIE
+#define TIM_ADVANCED_DIER_DIRIE DIRIE
+#define TIM_ADVANCED_DIER_IERRIE IERRIE
+#define TIM_ADVANCED_DIER_TERRIE TERRIE
+#define TIM_ADVANCED_SR_IDXF IDXF
+#define TIM_ADVANCED_SR_DIRF DIRF
+#define TIM_ADVANCED_SR_IERRF IERRF
+#define TIM_ADVANCED_SR_TERRF TERRF
+#define TIM_ADVANCED_CCER_CC4NE CC4NE
+#define TIM_ADVANCED_AF1_0_BKCMP3E BKCMP3E
+#define TIM_ADVANCED_AF1_0_BKCMP4E BKCMP4E
+#define TIM_ADVANCED_AF1_0_BKCMP5E BKCMP5E
+#define TIM_ADVANCED_AF1_0_BKCMP6E BKCMP6E
+#define TIM_ADVANCED_AF1_0_BKCMP7E BKCMP7E
+#define TIM_ADVANCED_AF1_0_BKCMP3P BKCMP3P
+#define TIM_ADVANCED_AF1_0_BKCMP4P BKCMP4P
+#define TIM_ADVANCED_AF2_0_BK2CMP3E BK2CMP3E
+#define TIM_ADVANCED_AF2_0_BK2CMP4E BK2CMP4E
+#define TIM_ADVANCED_AF2_0_BK2CMP5E BK2CMP5E
+#define TIM_ADVANCED_AF2_0_BK2CMP6E BK2CMP6E
+#define TIM_ADVANCED_AF2_0_BK2CMP7E BK2CMP7E
+#define TIM_ADVANCED_AF2_0_BK2CMP3P BK2CMP3P
+#define TIM_ADVANCED_AF2_0_BK2CMP4P BK2CMP4P
+#define TIM_ADVANCED_AF2_0_OCRSEL OCRSEL
+#define TIM_ADVANCED_AF2_1_BKINE BKINE
+#define TIM_ADVANCED_DTR2
+#define TIM_ADVANCED_ECR
+#define TIM_ADVANCED_MAP0_CCR5 CCR5_t CCR5
+#define TIM_ADVANCED_MAP2
+#define TIM_GENERAL_3_CR1_0_DITHEN DITHEN
+#define TIM_GENERAL_3_DMAR_1
+#define TIM_GENERAL_3_DTR2
+#define TIM_GENERAL_3_AF1_BKCMP3E BKCMP3E
+#define TIM_GENERAL_3_AF1_BKCMP4E BKCMP4E
+#define TIM_GENERAL_3_AF1_BKCMP5E BKCMP5E
+#define TIM_GENERAL_3_AF1_BKCMP6E BKCMP6E
+#define TIM_GENERAL_3_AF1_BKCMP7E BKCMP7E
+#define TIM_GENERAL_3_AF1_BKCMP3P BKCMP3P
+#define TIM_GENERAL_3_AF1_BKCMP4P BKCMP4P
+#define TIM_GENERAL_3_AF2
+#define TIM_GENERAL_3_MAP0_DCR DCR_t DCR
+#define TIM_GENERAL_3_MAP0_DMAR DMAR_t DMAR
+#define TIM_GENERAL_3_MAP1_DTR2 DTR2_t DTR2
+#define TIM_GENERAL_3_MAP1_TISEL TISEL_t TISEL
+#define TIM_GENERAL_3_MAP1_AF2 AF2_t AF2
+#define TIM_GENERAL_2_CR1_DITHEN DITHEN
+#define TIM_GENERAL_2_SMCR_0_TS_4_3 TS_4_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC1CE OC1CE
+#define TIM_GENERAL_2_BDTR_BKDSRM BKDSRM
+#define TIM_GENERAL_2_BDTR_BKBID BKBID
+#define TIM_GENERAL_2_DTR2
+#define TIM_GENERAL_2_TISEL
+#define TIM_GENERAL_2_AF1
+#define TIM_GENERAL_2_AF2
+#define TIM_GENERAL_2_DMAR_0
+#define TIM_GENERAL_2_MAP1_DTR2 DTR2_t DTR2
+#define TIM_GENERAL_2_MAP1_TISEL TISEL_t TISEL
+#define TIM_GENERAL_2_MAP1_AF1 AF1_t AF1
+#define TIM_GENERAL_2_MAP1_AF2 AF2_t AF2
+#define TIM_GENERAL_2_MAP1_DCR DCR_t DCR
+#define TIM_GENERAL_2_MAP1_DMAR DMAR_t DMAR
 #else
-#define TIM16_OR_1_TI1_RMP
+#define TIM_BASIC_CR1_DITHEN
+#define TIM_ADVANCED_CR1_DITHEN
+#define TIM_ADVANCED_CR2_OIS4N
+#define TIM_ADVANCED_CR2_MMS_3
+#define TIM_ADVANCED_SMCR_0_SMSPE
+#define TIM_ADVANCED_SMCR_0_SMSPS
+#define TIM_ADVANCED_DIER_IDXIE
+#define TIM_ADVANCED_DIER_DIRIE
+#define TIM_ADVANCED_DIER_IERRIE
+#define TIM_ADVANCED_DIER_TERRIE
+#define TIM_ADVANCED_SR_IDXF
+#define TIM_ADVANCED_SR_DIRF
+#define TIM_ADVANCED_SR_IERRF
+#define TIM_ADVANCED_SR_TERRF
+#define TIM_ADVANCED_CCER_CC4NE
+#define TIM_ADVANCED_AF1_0_BKCMP3E
+#define TIM_ADVANCED_AF1_0_BKCMP4E
+#define TIM_ADVANCED_AF1_0_BKCMP5E
+#define TIM_ADVANCED_AF1_0_BKCMP6E
+#define TIM_ADVANCED_AF1_0_BKCMP7E
+#define TIM_ADVANCED_AF1_0_BKCMP3P
+#define TIM_ADVANCED_AF1_0_BKCMP4P
+#define TIM_ADVANCED_AF2_0_BK2CMP3E
+#define TIM_ADVANCED_AF2_0_BK2CMP4E
+#define TIM_ADVANCED_AF2_0_BK2CMP5E
+#define TIM_ADVANCED_AF2_0_BK2CMP6E
+#define TIM_ADVANCED_AF2_0_BK2CMP7E
+#define TIM_ADVANCED_AF2_0_BK2CMP3P
+#define TIM_ADVANCED_AF2_0_BK2CMP4P
+#define TIM_ADVANCED_AF2_0_OCRSEL
+#define TIM_ADVANCED_AF2_1_BKINE
+#define TIM_ADVANCED_MAP0_CCR5 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_CR1_0_DITHEN
+#define TIM_GENERAL_3_AF1_BKCMP3E
+#define TIM_GENERAL_3_AF1_BKCMP4E
+#define TIM_GENERAL_3_AF1_BKCMP5E
+#define TIM_GENERAL_3_AF1_BKCMP6E
+#define TIM_GENERAL_3_AF1_BKCMP7E
+#define TIM_GENERAL_3_AF1_BKCMP3P
+#define TIM_GENERAL_3_AF1_BKCMP4P
+#define TIM_GENERAL_3_MAP0_DCR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP0_DMAR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_DTR2 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_TISEL __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_AF2 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_CR1_DITHEN
+#define TIM_GENERAL_2_SMCR_0_TS_4_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC1CE
+#define TIM_GENERAL_2_BDTR_BKDSRM
+#define TIM_GENERAL_2_BDTR_BKBID
+#define TIM_GENERAL_2_MAP1_DTR2 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_TISEL __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_AF1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_AF2 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_DCR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_DMAR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if defined(STM32L431xx ) || defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) ||\
-    defined(STM32L443xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
-#define TIM16_OR1_0
-#endif
-
-#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L4P    ) 
-#define TIM16_OR1_1
-#endif
-
-#if defined(STM32L451xx ) || defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) ||\
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define TIM16_OR2_BKDF1BK1E  BKDF1BK1E            // 1 bits @ 8
-#define TIM1_OR2_BKDF1BK0E   BKDF1BK0E            // 1 bits @ 8
-#define TIM1_OR3_BK2DF1BK1E  BK2DF1BK1E           // 1 bits @ 8
-#define TIM15_OR2_BKDF1BK0E  BKDF1BK0E            // 1 bits @ 8
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32F722xx  ) || \
+    defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32G070xx  ) || \
+    defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_BASIC_CNT_UIFCPY UIFCPY
 #else
-#define TIM16_OR2_BKDF1BK1E
-#define TIM1_OR2_BKDF1BK0E
-#define TIM1_OR3_BK2DF1BK1E
-#define TIM15_OR2_BKDF1BK0E
+#define TIM_BASIC_CNT_UIFCPY
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) 
-#define TIM1_OR_0
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define PERIPH_TIM_ADVANCED
 #endif
 
-#if defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) || defined(STM32F302xE ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F318xx ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
-#define TIM1_OR_0_ETR_RMP    ETR_RMP              // 4 bits @ 0
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      ) || \
+    defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
+#define TIM_ADVANCED_CR1_UIFREMAP UIFREMAP
+#define TIM_ADVANCED_CR2_OIS5 OIS5
+#define TIM_ADVANCED_CR2_OIS6 OIS6
+#define TIM_ADVANCED_CR2_MMS2 MMS2
+#define TIM_ADVANCED_SR_B2IF B2IF
 #else
-#define TIM1_OR_0_ETR_RMP
+#define TIM_ADVANCED_CR1_UIFREMAP
+#define TIM_ADVANCED_CR2_OIS5
+#define TIM_ADVANCED_CR2_OIS6
+#define TIM_ADVANCED_CR2_MMS2
+#define TIM_ADVANCED_SR_B2IF
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32L1     ) 
-#define TIM1_OR_1
-#define TIM8_OR_1
-#define TIM20_OR_1
-#define TIM21_OR_1
-#define TIM22_OR_1
-#endif
-
-#if defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) 
-#define TIM1_OR1_ETR_ADC3_RMP ETR_ADC3_RMP         // 2 bits @ 2
-#define TIM8_OR1_ETR_ADC2_RMP ETR_ADC2_RMP         // 2 bits @ 0
-#define TIM8_OR1_ETR_ADC3_RMP ETR_ADC3_RMP         // 2 bits @ 2
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  )
+#define TIM_ADVANCED_SMCR_0_OCCS OCCS
 #else
-#define TIM1_OR1_ETR_ADC3_RMP
-#define TIM8_OR1_ETR_ADC2_RMP
-#define TIM8_OR1_ETR_ADC3_RMP
+#define TIM_ADVANCED_SMCR_0_OCCS
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) || defined(STM32F4     ) || defined(STM32F7     ) 
-#define TIM8_OR_0
-#endif
-
-#if defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F358xx ) || defined(STM32F398xx ) 
-#define TIM8_OR_0_ETR_RMP    ETR_RMP              // 4 bits @ 0
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || \
+    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_ADVANCED_SMCR_0_TS TS
+#define TIM_ADVANCED_CCMR1_Input_0_IC2F IC2F
+#define TIM_ADVANCED_CCMR2_Input_0_IC3F IC3F
+#define TIM_ADVANCED_CCMR2_Input_0_IC4PSC IC4PSC
+#define TIM_ADVANCED_CCMR2_Input_0_IC4F IC4F
 #else
-#define TIM8_OR_0_ETR_RMP
+#define TIM_ADVANCED_SMCR_0_TS
+#define TIM_ADVANCED_CCMR1_Input_0_IC2F
+#define TIM_ADVANCED_CCMR2_Input_0_IC3F
+#define TIM_ADVANCED_CCMR2_Input_0_IC4PSC
+#define TIM_ADVANCED_CCMR2_Input_0_IC4F
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F303xE ) || defined(STM32F398xx ) || defined(STM32F4     ) ||\
-    defined(STM32F7     ) 
-#define TIM20_OR_0
-#endif
-
-#if defined(STM32F303xE ) || defined(STM32F398xx ) 
-#define TIM20_OR_0_ETR_RMP   ETR_RMP              // 4 bits @ 0
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      ) || \
+    defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || \
+    defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  )
+#define TIM_ADVANCED_SMCR_0_SMS_3 SMS_3
 #else
-#define TIM20_OR_0_ETR_RMP
+#define TIM_ADVANCED_SMCR_0_SMS_3
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F401xC ) ||\
-    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) ||\
-    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32L0     ) 
-#define TIM2_OR_0
-#endif
-
-#if defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F401xC ) ||\
-    defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) ||\
-    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) 
-#define TIM2_OR_0_ITR1_RMP   ITR1_RMP             // 2 bits @ 10
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      )
+#define TIM_ADVANCED_SMCR_0_TS_4_3 TS_4_3
+#define TIM_ADVANCED_AF1_0_ETRSEL ETRSEL
+#define TIM_ADVANCED_TISEL_0
 #else
-#define TIM2_OR_0_ITR1_RMP
+#define TIM_ADVANCED_SMCR_0_TS_4_3
+#define TIM_ADVANCED_AF1_0_ETRSEL
 #endif
 
-#if defined(STM32L100xC ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
-    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
-    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
-#define TIM2_OR_1_ITR1_RMP   ITR1_RMP             // 1 bits @ 0
-#define TIM3_OR_1_ITR2_RMP   ITR2_RMP             // 1 bits @ 0
-#define TIM9_OR_0_ITR1_RMP   ITR1_RMP             // 1 bits @ 2
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_ADVANCED_SR_SBIF SBIF
+#define TIM_ADVANCED_SR_CC5IF CC5IF
+#define TIM_ADVANCED_SR_CC6IF CC6IF
 #else
-#define TIM2_OR_1_ITR1_RMP
-#define TIM3_OR_1_ITR2_RMP
-#define TIM9_OR_0_ITR1_RMP
+#define TIM_ADVANCED_SR_SBIF
+#define TIM_ADVANCED_SR_CC5IF
+#define TIM_ADVANCED_SR_CC6IF
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) ||\
-    defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L071xx ) || defined(STM32L072xx ) ||\
-    defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) || defined(STM32L083xx ) 
-#define TIM3_OR_0
-#endif
-
-#if defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
-#define TIM3_OR_0_ETR_RMP    ETR_RMP              // 2 bits @ 0
-#define TIM3_OR_0_TI1_RMP    TI1_RMP              // 1 bits @ 2
-#define TIM3_OR_0_TI2_RMP    TI2_RMP              // 1 bits @ 3
-#define TIM3_OR_0_TI4_RMP    TI4_RMP              // 1 bits @ 4
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      ) || \
+    defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_ADVANCED_EGR_B2G B2G
+#define TIM_ADVANCED_CCMR1_Output_OC1M_3 OC1M_3
+#define TIM_ADVANCED_CCMR1_Output_OC2M_3 OC2M_3
+#define TIM_ADVANCED_CCMR2_Output_0_OC3M_3 OC3M_3
+#define TIM_ADVANCED_CCER_CC4NP CC4NP
+#define TIM_ADVANCED_CCER_CC5E CC5E
+#define TIM_ADVANCED_CCER_CC5P CC5P
+#define TIM_ADVANCED_CCER_CC6E CC6E
+#define TIM_ADVANCED_CCER_CC6P CC6P
+#define TIM_ADVANCED_CNT_UIFCPY UIFCPY
+#define TIM_ADVANCED_BDTR_BKF BKF
+#define TIM_ADVANCED_BDTR_BK2F BK2F
+#define TIM_ADVANCED_BDTR_BK2E BK2E
+#define TIM_ADVANCED_BDTR_BK2P BK2P
 #else
-#define TIM3_OR_0_ETR_RMP
-#define TIM3_OR_0_TI1_RMP
-#define TIM3_OR_0_TI2_RMP
-#define TIM3_OR_0_TI4_RMP
+#define TIM_ADVANCED_EGR_B2G
+#define TIM_ADVANCED_CCMR1_Output_OC1M_3
+#define TIM_ADVANCED_CCMR1_Output_OC2M_3
+#define TIM_ADVANCED_CCMR2_Output_0_OC3M_3
+#define TIM_ADVANCED_CCER_CC4NP
+#define TIM_ADVANCED_CCER_CC5E
+#define TIM_ADVANCED_CCER_CC5P
+#define TIM_ADVANCED_CCER_CC6E
+#define TIM_ADVANCED_CCER_CC6P
+#define TIM_ADVANCED_CNT_UIFCPY
+#define TIM_ADVANCED_BDTR_BKF
+#define TIM_ADVANCED_BDTR_BK2F
+#define TIM_ADVANCED_BDTR_BK2E
+#define TIM_ADVANCED_BDTR_BK2P
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L0     ) 
-#define TIM21_OR_0
-#endif
-
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L031xx ) ||\
-    defined(STM32L041xx ) || defined(STM32L051xx ) || defined(STM32L052xx ) || defined(STM32L053xx ) ||\
-    defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) || defined(STM32L071xx ) ||\
-    defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) || defined(STM32L082xx ) ||\
-    defined(STM32L083xx ) 
-#define TIM22_OR_0
-#endif
-
-#if defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
-    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
-#define TIM22_OR_0_ETR_RMP   ETR_RMP              // 2 bits @ 0
-#define TIM22_OR_0_TI1_RMP   TI1_RMP              // 2 bits @ 2
+#if	defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L4      ) || \
+    defined(STM32F215xx  ) || defined(STM32F217xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || \
+    defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_ADVANCED_CCMR1_Input_0_ICPCS ICPCS
 #else
-#define TIM22_OR_0_ETR_RMP
-#define TIM22_OR_0_TI1_RMP
+#define TIM_ADVANCED_CCMR1_Input_0_ICPCS
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32L100xC ) ||\
-    defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) || defined(STM32L151xDx) ||\
-    defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) || defined(STM32L152xD ) ||\
-    defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) || defined(STM32L162xCA) ||\
-    defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) 
-#define TIM9_OR_0
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || \
+    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L4      )
+#define TIM_ADVANCED_CCMR1_Input_0_IC1F IC1F
+#define TIM_ADVANCED_CCMR2_Input_0_IC3PSC IC3PSC
+#else
+#define TIM_ADVANCED_CCMR1_Input_0_IC1F
+#define TIM_ADVANCED_CCMR2_Input_0_IC3PSC
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) ||\
-    defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32L1     ) 
-#define TIM9_OR_1
+#if	defined(STM32F0      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32F215xx  ) || \
+    defined(STM32F217xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
+    defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_ADVANCED_CCMR1_Input_0_IC2PCS IC2PCS
+#else
+#define TIM_ADVANCED_CCMR1_Input_0_IC2PCS
 #endif
 
-//endregion
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32F205xx  ) || \
+    defined(STM32F207xx  ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_ADVANCED_CCMR1_Input_1
+#endif
 
-namespace sool
-{
-	namespace core
-	{struct TIM_base_plugin
+#if	defined(STM32F205xx  ) || defined(STM32F207xx  )
+#define TIM_ADVANCED_CCMR1_Input_1_ICPSC ICPSC
+#else
+#define TIM_ADVANCED_CCMR1_Input_1_ICPSC
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32F205xx  ) || defined(STM32F207xx  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_ADVANCED_CCMR1_Input_1_IC2PSC IC2PSC
+#else
+#define TIM_ADVANCED_CCMR1_Input_1_IC2PSC
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_ADVANCED_CCMR1_Input_2
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_ADVANCED_CCMR1_Input_2_IC1PSC IC1PSC
+#else
+#define TIM_ADVANCED_CCMR1_Input_2_IC1PSC
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || \
+    defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  )
+#define TIM_ADVANCED_CCMR2_Output_1
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      )
+#define TIM_ADVANCED_CCMR2_Input_1
+#define TIM_ADVANCED_AF1_1
+#define TIM_ADVANCED_AF2_1_BK2DFBK0E BK2DFBK0E
+#define TIM_GENERAL_3_MAP3
+#else
+#define TIM_ADVANCED_AF2_1_BK2DFBK0E
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || \
+    defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || \
+    defined(STM32H757xx_CORE_CM7)
+#define TIM_ADVANCED_DMAR_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32G0      ) || defined(STM32L4      ) || \
+    defined(STM32WB      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
+    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || \
+    defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || \
+    defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
+#define TIM_ADVANCED_DMAR_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || \
+    defined(STM32L4      )
+#define TIM_ADVANCED_RCR_0
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      )
+#define TIM_ADVANCED_RCR_1
+#define TIM_ADVANCED_AF2_1
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      )
+#define TIM_ADVANCED_BDTR_BKDSRM BKDSRM
+#define TIM_ADVANCED_BDTR_BK2DSRM BK2DSRM
+#define TIM_ADVANCED_BDTR_BKBID BKBID
+#define TIM_ADVANCED_BDTR_BK2ID BK2ID
+#define TIM_GENERAL_3_BDTR_BKDSRM BKDSRM
+#define TIM_GENERAL_3_BDTR_BKBID BKBID
+#define TIM_GENERAL_3_TISEL
+#define TIM_GENERAL_3_AF1
+#define TIM_GENERAL_3_MAP0_AF1 AF1_t AF1
+#else
+#define TIM_ADVANCED_BDTR_BKDSRM
+#define TIM_ADVANCED_BDTR_BK2DSRM
+#define TIM_ADVANCED_BDTR_BKBID
+#define TIM_ADVANCED_BDTR_BK2ID
+#define TIM_GENERAL_3_BDTR_BKDSRM
+#define TIM_GENERAL_3_BDTR_BKBID
+#define TIM_GENERAL_3_MAP0_AF1 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+    defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_ADVANCED_CCMR3_Output
+#define TIM_ADVANCED_CCR5
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      )
+#define TIM_ADVANCED_CCMR3_Output_0_OC5M3 OC5M3
+#define TIM_ADVANCED_CCMR3_Output_0_OC6M3 OC6M3
+#else
+#define TIM_ADVANCED_CCMR3_Output_0_OC5M3
+#define TIM_ADVANCED_CCMR3_Output_0_OC6M3
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_ADVANCED_CCMR3_Output_1
+#define TIM_GENERAL_3_CNT_UIFCPY UIFCPY
+#else
+#define TIM_GENERAL_3_CNT_UIFCPY
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3 OC5M_bit3
+#else
+#define TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_ADVANCED_CCMR3_Output_2
+#endif
+
+#if	defined(STM32H7      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
+    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
+#define TIM_ADVANCED_CRR6
+#define TIM_ADVANCED_MAP1_CRR6 CRR6_t CRR6
+#else
+#define TIM_ADVANCED_MAP1_CRR6 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      )
+#define TIM_ADVANCED_AF1
+#define TIM_ADVANCED_AF2
+#define TIM_ADVANCED_MAP1_AF1 AF1_t AF1
+#define TIM_ADVANCED_MAP1_AF2 AF2_t AF2
+#else
+#define TIM_ADVANCED_MAP1_AF1 __SOOL_PERIPH_PADDING_4
+#define TIM_ADVANCED_MAP1_AF2 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32WB      )
+#define TIM_ADVANCED_AF2_0_BK2INE BK2INE
+#else
+#define TIM_ADVANCED_AF2_0_BK2INE
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32G030xx  ) || defined(STM32G031xx  ) || \
+    defined(STM32G041xx  )
+#define TIM_ADVANCED_TISEL
+#endif
+
+#if	defined(STM32G030xx  ) || defined(STM32G031xx  ) || defined(STM32G041xx  )
+#define TIM_ADVANCED_TISEL_1
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32L4      )
+#define TIM_ADVANCED_OR1
+#define TIM_ADVANCED_MAP1_OR1 OR1_t OR1
+#else
+#define TIM_ADVANCED_MAP1_OR1 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_ADVANCED_OR1_0
+#define TIM_ADVANCED_OR1_1
+#define TIM_ADVANCED_OR2_0
+#define TIM_ADVANCED_OR2_1
+#define TIM_ADVANCED_OR3_0
+#define TIM_ADVANCED_OR3_1
+#define TIM_ADVANCED_TIM_ADVANCED_tmpl_0
+#define TIM_ADVANCED_TIM_ADVANCED_tmpl_1
+#endif
+
+#if	defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  )
+#define TIM_ADVANCED_OR1_2
+#define TIM_ADVANCED_OR2_2
+#define TIM_ADVANCED_OR3_2
+#endif
+
+#if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM_ADVANCED_OR1_2_ETR_ADC3_RMP ETR_ADC3_RMP
+#define TIM_ADVANCED_OR3_2_BK2DFBK0E BK2DFBK0E
+#else
+#define TIM_ADVANCED_OR1_2_ETR_ADC3_RMP
+#define TIM_ADVANCED_OR3_2_BK2DFBK0E
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32WB      ) || \
+    defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
+#define TIM_ADVANCED_CCR6
+#endif
+
+#if	defined(STM32L4      )
+#define TIM_ADVANCED_OR2
+#define TIM_ADVANCED_OR3
+#define TIM_ADVANCED_MAP0_OR2 OR2_t OR2
+#define TIM_ADVANCED_MAP0_OR3 OR3_t OR3
+#define TIM_GENERAL_3_OR1
+#define TIM_GENERAL_3_OR2
+#define TIM_GENERAL_3_MAP1_OR1 OR1_t OR1
+#define TIM_GENERAL_3_MAP1_OR2 OR2_t OR2
+#else
+#define TIM_ADVANCED_MAP0_OR2 __SOOL_PERIPH_PADDING_4
+#define TIM_ADVANCED_MAP0_OR3 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_OR1 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_OR2 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
+#define TIM_ADVANCED_MAP0_CCR6 CCR6_t CCR6
+#else
+#define TIM_ADVANCED_MAP0_CCR6 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_ADVANCED_MAP1_DCR DCR_t DCR
+#define TIM_ADVANCED_MAP1_DMAR DMAR_t DMAR
+#else
+#define TIM_ADVANCED_MAP1_DCR __SOOL_PERIPH_PADDING_4
+#define TIM_ADVANCED_MAP1_DMAR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_ADVANCED_MAP1_CCMR3_Output CCMR3_Output_t CCMR3_Output
+#define TIM_ADVANCED_MAP1_CCR5 CCR5_t CCR5
+#else
+#define TIM_ADVANCED_MAP1_CCMR3_Output __SOOL_PERIPH_PADDING_4
+#define TIM_ADVANCED_MAP1_CCR5 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32H7      ) || defined(STM32G030xx  ) || defined(STM32G031xx  ) || defined(STM32G041xx  )
+#define TIM_ADVANCED_MAP1_TISEL TISEL_t TISEL
+#else
+#define TIM_ADVANCED_MAP1_TISEL __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
+    defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define PERIPH_TIM_GENERAL_3
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
+    defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_3_CR1_0
+#define TIM_GENERAL_3_DIER_0
+#define TIM_GENERAL_3_MAP0_DIER DIER_t DIER
+#else
+#define TIM_GENERAL_3_MAP0_DIER __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      )
+#define TIM_GENERAL_3_CR1_0_UIFREMAP UIFREMAP
+#define TIM_GENERAL_3_DIER_0_COMDE COMDE
+#else
+#define TIM_GENERAL_3_CR1_0_UIFREMAP
+#define TIM_GENERAL_3_DIER_0_COMDE
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_DIER_0_TIE TIE
+#define TIM_GENERAL_3_DIER_0_TDE TDE
+#else
+#define TIM_GENERAL_3_DIER_0_TIE
+#define TIM_GENERAL_3_DIER_0_TDE
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_SR_TIF TIF
+#define TIM_GENERAL_3_EGR_TG TG
+#else
+#define TIM_GENERAL_3_SR_TIF
+#define TIM_GENERAL_3_EGR_TG
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_CCMR1_Output_0_OC1M_2 OC1M_2
+#else
+#define TIM_GENERAL_3_CCMR1_Output_0_OC1M_2
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_3_CCMR1_Output_1
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_BDTR_BKF BKF
+#else
+#define TIM_GENERAL_3_BDTR_BKF
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_3_DMAR_0
+#define TIM_GENERAL_3_MAP1_DCR DCR_t DCR
+#define TIM_GENERAL_3_MAP1_DMAR DMAR_t DMAR
+#else
+#define TIM_GENERAL_3_MAP1_DCR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP1_DMAR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32L433xx  ) || defined(STM32L443xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
+    defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || \
+    defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
+    defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_OR1_0
+#define TIM_GENERAL_3_OR2_0
+#endif
+
+#if	defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L442xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM_GENERAL_3_OR1_1
+#define TIM_GENERAL_3_OR2_1
+#define TIM_GENERAL_2_OR1
+#define TIM_GENERAL_2_OR2
+#define TIM_GENERAL_2_MAP0_OR2 OR2_t OR2
+#define TIM_GENERAL_2_MAP1_OR1 OR1_t OR1
+#else
+#define TIM_GENERAL_2_MAP0_OR2 __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP1_OR1 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32L433xx  ) || defined(STM32L443xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
+#define TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define PERIPH_TIM_GENERAL_5
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_5_CCMR1_Input_0_ICPCS ICPCS
+#define TIM_GENERAL_5_CCMR1_Input_0_IC2PCS IC2PCS
+#define TIM_GENERAL_5_CCMR1_Input_0_IC2F IC2F
+#else
+#define TIM_GENERAL_5_CCMR1_Input_0_ICPCS
+#define TIM_GENERAL_5_CCMR1_Input_0_IC2PCS
+#define TIM_GENERAL_5_CCMR1_Input_0_IC2F
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  )
+#define TIM_GENERAL_5_CCMR1_Input_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L1      ) || defined(STM32W1      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define PERIPH_TIM_GENERAL_6
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L1      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM_GENERAL_6_CR1
+#define TIM_GENERAL_6_DIER
+#define TIM_GENERAL_6_SR
+#define TIM_GENERAL_6_EGR
+#define TIM_GENERAL_6_CCMR1_Output
+#define TIM_GENERAL_6_CCMR1_Input
+#define TIM_GENERAL_6_CCER
+#define TIM_GENERAL_6_CNT
+#define TIM_GENERAL_6_PSC
+#define TIM_GENERAL_6_ARR
+#define TIM_GENERAL_6_CCR1
+#define TIM_GENERAL_6_MAP0
+#define TIM_GENERAL_6_MAP1_CCMR1_Input CCMR1_Input_t CCMR1_Input
+#define TIM_GENERAL_6_MAP1_CCER CCER_t CCER
+#define TIM_GENERAL_6_MAP1_CNT CNT_t CNT
+#define TIM_GENERAL_6_MAP1_PSC PSC_t PSC
+#define TIM_GENERAL_6_MAP1_ARR ARR_t ARR
+#define TIM_GENERAL_6_MAP1_CCR1 CCR1_t CCR1
+#else
+#define TIM_GENERAL_6_MAP1_CCMR1_Input __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_CCER __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_CNT __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_PSC __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_ARR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_CCR1 __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || \
+    defined(STM32F733xx  )
+#define TIM_GENERAL_6_CR1_OPM OPM
+#define TIM_GENERAL_6_CCMR1_Output_OC1M_3 OC1M_3
+#else
+#define TIM_GENERAL_6_CR1_OPM
+#define TIM_GENERAL_6_CCMR1_Output_OC1M_3
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32L1      ) || \
+    defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
+    defined(STM32F411xE  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_6_CCMR1_Input_0
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_6_CCMR1_Input_0_ICPCS ICPCS
+#else
+#define TIM_GENERAL_6_CCMR1_Input_0_ICPCS
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_GENERAL_6_CCMR1_Input_1
+#endif
+
+#if	defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F423xx  )
+#define TIM_GENERAL_6_CCMR1_Input_2
+#define TIM_GENERAL_6_CCMR1_Input_3
+#endif
+
+#if	defined(STM32F7      )
+#define TIM_GENERAL_6_SMCR
+#define TIM_GENERAL_6_MAP1_SMCR SMCR_t SMCR
+#else
+#define TIM_GENERAL_6_MAP1_SMCR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32L1      )
+#define TIM_GENERAL_6_OR
+#define TIM_GENERAL_6_MAP1_OR OR_t OR
+#else
+#define TIM_GENERAL_6_MAP1_OR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32L1      )
+#define TIM_GENERAL_6_OR_0
+#endif
+
+#if	defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM_GENERAL_6_OR_1
+#define TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  )
+#define TIM_GENERAL_6_OR_2
+#endif
+
+#if	defined(STM32W1      )
+#define TIM_GENERAL_6_TIMx_ISR
+#define TIM_GENERAL_6_TIMx_MISSR
+#define TIM_GENERAL_6_TIMx_CR1
+#define TIM_GENERAL_6_TIMx_IER
+#define TIM_GENERAL_6_TIMx_CR2
+#define TIM_GENERAL_6_TIMx_SMCR
+#define TIM_GENERAL_6_TIMx_EGR
+#define TIM_GENERAL_6_TIMx_CCMR1_Input
+#define TIM_GENERAL_6_TIMx_CCMR1_Output
+#define TIM_GENERAL_6_TIMx_CCMR2_Input
+#define TIM_GENERAL_6_TIMx_CCMR2_Output
+#define TIM_GENERAL_6_TIMx_CCER
+#define TIM_GENERAL_6_TIMx_CNT
+#define TIM_GENERAL_6_TIMx_PSC
+#define TIM_GENERAL_6_TIMx_ARR
+#define TIM_GENERAL_6_TIMx_CCRx
+#define TIM_GENERAL_6_TIM1_OR
+#define TIM_GENERAL_6_TIM2_OR
+#define TIM_GENERAL_6_MAP1_TIM1_ISR TIMx_ISR_t TIM1_ISR
+#define TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output TIMx_CCMR1_Output_t TIM1_CCMR1_Output
+#define TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input TIMx_CCMR2_Input_t TIM1_CCMR2_Input
+#define TIM_GENERAL_6_MAP2
+#define TIM_GENERAL_6_MAP3
+#define PERIPH_MAC_TIM
+#else
+#define TIM_GENERAL_6_MAP1_TIM1_ISR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32W1      ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F423xx  )
+#define TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define PERIPH_TIM_GENERAL_2
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  )
+#define TIM_GENERAL_2_CR1_UIFREMAP UIFREMAP
+#define TIM_GENERAL_2_DIER_COMDE COMDE
+#define TIM_GENERAL_2_CNT_UIFCPY UIFCPY
+#else
+#define TIM_GENERAL_2_CR1_UIFREMAP
+#define TIM_GENERAL_2_DIER_COMDE
+#define TIM_GENERAL_2_CNT_UIFCPY
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  )
+#define TIM_GENERAL_2_CR2_0_MMS MMS
+#else
+#define TIM_GENERAL_2_CR2_0_MMS
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L471xx  )
+#define TIM_GENERAL_2_CR2_0_TI1S TI1S
+#define TIM_GENERAL_2_SMCR_0_SMS_3 SMS_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC1M_3 OC1M_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2M_3 OC2M_3
+#else
+#define TIM_GENERAL_2_CR2_0_TI1S
+#define TIM_GENERAL_2_SMCR_0_SMS_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC1M_3
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2M_3
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L471xx  )
+#define TIM_GENERAL_2_CR2_0_OIS2 OIS2
+#define TIM_GENERAL_2_DIER_CC2IE CC2IE
+#define TIM_GENERAL_2_DIER_CC2DE CC2DE
+#define TIM_GENERAL_2_SR_CC2IF CC2IF
+#define TIM_GENERAL_2_SR_CC2OF CC2OF
+#define TIM_GENERAL_2_EGR_CC2G CC2G
+#define TIM_GENERAL_2_CCMR1_Output_0_CC2S CC2S
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2FE OC2FE
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2PE OC2PE
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2M OC2M
+#define TIM_GENERAL_2_CCMR1_Input_CC2S CC2S
+#define TIM_GENERAL_2_CCMR1_Input_IC2PSC IC2PSC
+#define TIM_GENERAL_2_CCMR1_Input_IC2F IC2F
+#define TIM_GENERAL_2_CCER_CC2E CC2E
+#define TIM_GENERAL_2_CCER_CC2P CC2P
+#define TIM_GENERAL_2_CCER_CC2NP CC2NP
+#else
+#define TIM_GENERAL_2_CR2_0_OIS2
+#define TIM_GENERAL_2_DIER_CC2IE
+#define TIM_GENERAL_2_DIER_CC2DE
+#define TIM_GENERAL_2_SR_CC2IF
+#define TIM_GENERAL_2_SR_CC2OF
+#define TIM_GENERAL_2_EGR_CC2G
+#define TIM_GENERAL_2_CCMR1_Output_0_CC2S
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2FE
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2PE
+#define TIM_GENERAL_2_CCMR1_Output_0_OC2M
+#define TIM_GENERAL_2_CCMR1_Input_CC2S
+#define TIM_GENERAL_2_CCMR1_Input_IC2PSC
+#define TIM_GENERAL_2_CCMR1_Input_IC2F
+#define TIM_GENERAL_2_CCER_CC2E
+#define TIM_GENERAL_2_CCER_CC2P
+#define TIM_GENERAL_2_CCER_CC2NP
+#endif
+
+#if	defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  )
+#define TIM_GENERAL_2_SMCR_1
+#define TIM_GENERAL_2_CCMR1_Output_1
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L452xx  ) || \
+    defined(STM32L462xx  )
+#define TIM_GENERAL_2_BDTR_BKF BKF
+#else
+#define TIM_GENERAL_2_BDTR_BKF
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM_GENERAL_2_DMAR_1
+#define TIM_GENERAL_2_MAP0_DCR DCR_t DCR
+#define TIM_GENERAL_2_MAP0_DMAR DMAR_t DMAR
+#else
+#define TIM_GENERAL_2_MAP0_DCR __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_2_MAP0_DMAR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
+    defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
+    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define PERIPH_TIM_GENERAL_4
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32L0      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define TIM_GENERAL_4_CR1_0_OPM OPM
+#define TIM_GENERAL_4_CCMR1_Output_0_CC2S CC2S
+#define TIM_GENERAL_4_CCER
+#define TIM_GENERAL_4_MAP1_CCER CCER_t CCER
+#else
+#define TIM_GENERAL_4_CR1_0_OPM
+#define TIM_GENERAL_4_CCMR1_Output_0_CC2S
+#define TIM_GENERAL_4_MAP1_CCER __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32L0      )
+#define TIM_GENERAL_4_CR1_0_DIR DIR
+#define TIM_GENERAL_4_CR1_0_CMS CMS
+#define TIM_GENERAL_4_SMCR_ETF ETF
+#define TIM_GENERAL_4_SMCR_ETPS ETPS
+#define TIM_GENERAL_4_SMCR_ECE ECE
+#define TIM_GENERAL_4_SMCR_ETP ETP
+#define TIM_GENERAL_4_OR_0
+#define TIM_GENERAL_4_OR_1
+#define TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
+#define TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
+#else
+#define TIM_GENERAL_4_CR1_0_DIR
+#define TIM_GENERAL_4_CR1_0_CMS
+#define TIM_GENERAL_4_SMCR_ETF
+#define TIM_GENERAL_4_SMCR_ETPS
+#define TIM_GENERAL_4_SMCR_ECE
+#define TIM_GENERAL_4_SMCR_ETP
+#endif
+
+#if	defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
+    defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define TIM_GENERAL_4_CCMR1_Input_0_ICPCS ICPCS
+#define TIM_GENERAL_4_CCMR1_Input_0_IC2PCS IC2PCS
+#else
+#define TIM_GENERAL_4_CCMR1_Input_0_ICPCS
+#define TIM_GENERAL_4_CCMR1_Input_0_IC2PCS
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || \
+    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define TIM_GENERAL_4_CCMR1_Input_0_IC1F IC1F
+#define TIM_GENERAL_4_CCMR1_Input_0_IC2F IC2F
+#else
+#define TIM_GENERAL_4_CCMR1_Input_0_IC1F
+#define TIM_GENERAL_4_CCMR1_Input_0_IC2F
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_GENERAL_4_CCMR1_Input_1
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32L0      ) || defined(STM32F405xx  ) || defined(STM32F407xx  )
+#define TIM_GENERAL_4_CCMR1_Input_1_IC1PSC IC1PSC
+#define TIM_GENERAL_4_CCMR1_Input_1_IC2PSC IC2PSC
+#else
+#define TIM_GENERAL_4_CCMR1_Input_1_IC1PSC
+#define TIM_GENERAL_4_CCMR1_Input_1_IC2PSC
+#endif
+
+#if	defined(STM32L0      ) || defined(STM32L1      )
+#define TIM_GENERAL_4_CCMR1_Input_1_IC1F IC1F
+#define TIM_GENERAL_4_CCMR1_Input_1_IC2F IC2F
+#define TIM_GENERAL_4_OR
+#define TIM_GENERAL_4_MAP1_OR OR_t OR
+#else
+#define TIM_GENERAL_4_CCMR1_Input_1_IC1F
+#define TIM_GENERAL_4_CCMR1_Input_1_IC2F
+#define TIM_GENERAL_4_MAP1_OR __SOOL_PERIPH_PADDING_4
+#endif
+
+namespace sool {
+	namespace core {
+		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
+		struct TIM_GENERAL_1_tmpl_0 /// specific fields for TIM2 
 		{
-		
-			#ifdef TIM_AF1
-			struct AF1_TypeDef : public Reg32_t
+			struct CR1_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
+				#ifdef TIM_GENERAL_1_CR1_0
+				struct
+				{
+					uint32_t CEN              : 1; /// Counter enable
+					uint32_t UDIS             : 1; /// Update disable
+					uint32_t URS              : 1; /// Update request source
+					uint32_t OPM              : 1; /// One-pulse mode
+					uint32_t DIR              : 1; /// Direction
+					uint32_t CMS              : 2; /// Center-aligned mode selection
+					uint32_t ARPE             : 1; /// Auto-reload preload enable
+					uint32_t CKD              : 2; /// Clock division
+					uint32_t                  : 1;
+					uint32_t UIFREMAP         : 1; /// UIF status bit remapping
+					uint32_t                  : 20;
+				};
+				#endif
 			};
-			#endif
-			
-			#ifdef TIM_AF2
-			struct AF2_TypeDef : public Reg32_t
+			struct CNT_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_OR
-			struct OR_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
 				union
 				{
-					#ifdef TIM_OR_0
+					#ifdef TIM_GENERAL_1_CNT_0
 					struct
 					{
-						uint32_t TIM_OR_0_TI1_RMP     :2;
-						uint32_t TIM_OR_0_ETR_RMP     :1;
-						uint32_t                      :3;
-						uint32_t TIM_OR_0_TI4_RMP     :2;
-						uint32_t                      :2;
-						uint32_t TIM_OR_0_ITR1_RMP    :2;
-						uint32_t                      :20;
+						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t CNT_H            : 15; /// High counter value
+						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
 					};
 					#endif
-					#ifdef TIM_OR_1
+					#ifdef TIM_GENERAL_1_CNT_4
 					struct
 					{
-						uint32_t TI1RMP               :2;
-						uint32_t                      :30;
+						uint32_t CNTL             : 16; /// Low counter value
+						uint32_t CNTH             : 16; /// High counter value
 					};
 					#endif
 				};
-				
 			};
-			#endif
-			
-			#ifdef TIM_OR1
-			struct OR1_TypeDef : public Reg32_t
+			struct ARR_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
+				#ifdef TIM_GENERAL_1_ARR_1
+				struct
+				{
+					uint32_t ARRL             : 16; /// Low Auto-reload value
+					uint32_t ARRH             : 16; /// High Auto-reload value
+				};
+				#endif
 			};
-			#endif
-			
-			#ifdef TIM_OR2
-			struct OR2_TypeDef : public Reg32_t
+			struct CCR1_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
+				#ifdef TIM_GENERAL_1_CCR1_1
+				struct
+				{
+					uint32_t CCR1L            : 16; /// Low Capture/Compare 1 value
+					uint32_t CCR1H            : 16; /// High Capture/Compare 1 value
+				};
+				#endif
 			};
-			#endif
-			
-			#ifdef TIM_OR3
-			struct OR3_TypeDef : public Reg32_t
+			struct CCR2_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
+				#ifdef TIM_GENERAL_1_CCR2_1
+				struct
+				{
+					uint32_t CCR2L            : 16; /// Low Capture/Compare 2 value
+					uint32_t CCR2H            : 16; /// High Capture/Compare 2 value
+				};
+				#endif
 			};
-			#endif
-			
-			#ifdef TIM_TISEL
-			struct TISEL_TypeDef : public Reg32_t
+			struct CCR3_t
 			{
-				using Reg32_t::operator=;
-				
-			
-				
+				#ifdef TIM_GENERAL_1_CCR3_1
+				struct
+				{
+					uint32_t CCR3L            : 16; /// Low Capture/Compare value
+					uint32_t CCR3H            : 16; /// High Capture/Compare value
+				};
+				#endif
 			};
-			#endif
+			struct CCR4_t
+			{
+				#ifdef TIM_GENERAL_1_CCR4_1
+				struct
+				{
+					uint32_t CCR4L            : 16; /// Low Capture/Compare value
+					uint32_t CCR4H            : 16; /// High Capture/Compare value
+				};
+				#endif
 			};
-		template<typename plugin=TIM_base_plugin>
-		class TIM
+			struct OR_t
+			{
+				#ifdef TIM_GENERAL_1_OR_1
+				struct
+				{
+					uint32_t                  : 10;
+					uint32_t ITR1_RMP         : 2; /// Timer Input 4 remap
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct OR1_t
+			{
+				#ifdef TIM_GENERAL_1_OR1_0
+				struct
+				{
+					uint32_t ITR1_RMP         : 1; /// Internal trigger 1 remap
+					uint32_t ETR1_RMP         : 1; /// External trigger remap
+					uint32_t TI4_RMP          : 2; /// Input Capture 4 remap
+					uint32_t                  : 28;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_GENERAL_1_OR2_0
+				struct
+				{
+					uint32_t                  : 14;
+					uint32_t ETRSEL           : 3; /// ETR source selection
+					uint32_t                  : 15;
+				};
+				#endif
+			};
+			struct TIMx_OR_t
+			{
+				uint32_t                  : 6;
+				uint32_t IT4_RMP          : 2; /// Timer Input 4 remap
+				uint32_t                  : 24;
+			};
+		};
+		#endif
+		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
+		struct TIM_GENERAL_1_tmpl_1 /// specific fields for TIM3, TIM4 
+		{
+			struct CR1_t
+			{
+				#ifdef TIM_GENERAL_1_CR1_0
+				struct
+				{
+					uint32_t CEN              : 1; /// Counter enable
+					uint32_t UDIS             : 1; /// Update disable
+					uint32_t URS              : 1; /// Update request source
+					uint32_t OPM              : 1; /// One-pulse mode
+					uint32_t DIR              : 1; /// Direction
+					uint32_t CMS              : 2; /// Center-aligned mode selection
+					uint32_t ARPE             : 1; /// Auto-reload preload enable
+					uint32_t CKD              : 2; /// Clock division
+					uint32_t                  : 1;
+					uint32_t UIFREMAP         : 1; /// UIF status bit remapping
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct CNT_t
+			{
+				union
+				{
+					#ifdef TIM_GENERAL_1_CNT_0
+					struct
+					{
+						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t CNT_H            : 15; /// High counter value
+						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_5
+					struct
+					{
+						uint32_t CNT              : 16; /// counter value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+			};
+			struct ARR_t
+			{
+				#ifdef TIM_GENERAL_1_ARR_2
+				struct
+				{
+					uint32_t ARR              : 16; /// Auto-reload value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR1_t
+			{
+				#ifdef TIM_GENERAL_1_CCR1_2
+				struct
+				{
+					uint32_t CCR1             : 16; /// Capture/Compare 1 value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR2_t
+			{
+				#ifdef TIM_GENERAL_1_CCR2_2
+				struct
+				{
+					uint32_t CCR2             : 16; /// Capture/Compare 2 value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR3_t
+			{
+				#ifdef TIM_GENERAL_1_CCR3_2
+				struct
+				{
+					uint32_t CCR3             : 16; /// Capture/Compare value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR4_t
+			{
+				#ifdef TIM_GENERAL_1_CCR4_2
+				struct
+				{
+					uint32_t CCR4             : 16; /// Capture/Compare value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct OR_t { };
+			struct OR1_t
+			{
+				#ifdef TIM_GENERAL_1_OR1_1
+				struct
+				{
+					uint32_t TI1_RMP          : 2; /// Input Capture 1 remap
+					uint32_t                  : 30;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_GENERAL_1_OR2_0
+				struct
+				{
+					uint32_t                  : 14;
+					uint32_t ETRSEL           : 3; /// ETR source selection
+					uint32_t                  : 15;
+				};
+				#endif
+			};
+			struct TIMx_OR_t { };
+		};
+		#endif
+		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
+		struct TIM_GENERAL_1_tmpl_2 /// specific fields for TIM5, TIM14 
+		{
+			struct CR1_t
+			{
+				#ifdef TIM_GENERAL_1_CR1_0
+				struct
+				{
+					uint32_t CEN              : 1; /// Counter enable
+					uint32_t UDIS             : 1; /// Update disable
+					uint32_t URS              : 1; /// Update request source
+					uint32_t OPM              : 1; /// One-pulse mode
+					uint32_t DIR              : 1; /// Direction
+					uint32_t CMS              : 2; /// Center-aligned mode selection
+					uint32_t ARPE             : 1; /// Auto-reload preload enable
+					uint32_t CKD              : 2; /// Clock division
+					uint32_t                  : 1;
+					uint32_t UIFREMAP         : 1; /// UIF status bit remapping
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct CNT_t
+			{
+				union
+				{
+					#ifdef TIM_GENERAL_1_CNT_0
+					struct
+					{
+						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t CNT_H            : 15; /// High counter value
+						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_4
+					struct
+					{
+						uint32_t CNTL             : 16; /// Low counter value
+						uint32_t CNTH             : 16; /// High counter value
+					};
+					#endif
+				};
+			};
+			struct ARR_t
+			{
+				#ifdef TIM_GENERAL_1_ARR_1
+				struct
+				{
+					uint32_t ARRL             : 16; /// Low Auto-reload value
+					uint32_t ARRH             : 16; /// High Auto-reload value
+				};
+				#endif
+			};
+			struct CCR1_t
+			{
+				#ifdef TIM_GENERAL_1_CCR1_1
+				struct
+				{
+					uint32_t CCR1L            : 16; /// Low Capture/Compare 1 value
+					uint32_t CCR1H            : 16; /// High Capture/Compare 1 value
+				};
+				#endif
+			};
+			struct CCR2_t
+			{
+				#ifdef TIM_GENERAL_1_CCR2_1
+				struct
+				{
+					uint32_t CCR2L            : 16; /// Low Capture/Compare 2 value
+					uint32_t CCR2H            : 16; /// High Capture/Compare 2 value
+				};
+				#endif
+			};
+			struct CCR3_t
+			{
+				#ifdef TIM_GENERAL_1_CCR3_1
+				struct
+				{
+					uint32_t CCR3L            : 16; /// Low Capture/Compare value
+					uint32_t CCR3H            : 16; /// High Capture/Compare value
+				};
+				#endif
+			};
+			struct CCR4_t
+			{
+				#ifdef TIM_GENERAL_1_CCR4_1
+				struct
+				{
+					uint32_t CCR4L            : 16; /// Low Capture/Compare value
+					uint32_t CCR4H            : 16; /// High Capture/Compare value
+				};
+				#endif
+			};
+			struct OR_t
+			{
+				union
+				{
+					#ifdef TIM_GENERAL_1_OR_2
+					struct
+					{
+						uint32_t                  : 6;
+						uint32_t IT4_RMP          : 2; /// Timer Input 4 remap
+						uint32_t                  : 24;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_OR_3
+					struct
+					{
+						uint32_t                  : 6;
+						uint32_t TI4_RMP          : 2; /// Timer Input 4 remap
+						uint32_t                  : 24;
+					};
+					#endif
+				};
+			};
+			struct OR1_t { };
+			struct OR2_t { };
+			struct TIMx_OR_t { };
+		};
+		#endif
+		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
+		struct TIM_GENERAL_1_tmpl_3 /// specific fields for TIM13, TIM19, TIM12 
+		{
+			struct CR1_t
+			{
+				#ifdef TIM_GENERAL_1_CR1_1
+				struct
+				{
+					uint32_t CEN              : 1; /// Counter enable
+					uint32_t UDIS             : 1; /// Update disable
+					uint32_t URS              : 1; /// Update request source
+					uint32_t OPM              : 1; /// One-pulse mode
+					uint32_t                  : 3;
+					uint32_t ARPE             : 1; /// Auto-reload preload enable
+					uint32_t CKD              : 2; /// Clock division
+					uint32_t                  : 1;
+					uint32_t UIFREMAP         : 1; /// UIF status bit remapping
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct CNT_t
+			{
+				union
+				{
+					#ifdef TIM_GENERAL_1_CNT_1
+					struct
+					{
+						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t CNT_H            : 15; /// High counter value
+						uint32_t UIFCPY           : 1;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_5
+					struct
+					{
+						uint32_t CNT              : 16; /// counter value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+			};
+			struct ARR_t
+			{
+				#ifdef TIM_GENERAL_1_ARR_2
+				struct
+				{
+					uint32_t ARR              : 16; /// Auto-reload value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR1_t
+			{
+				#ifdef TIM_GENERAL_1_CCR1_2
+				struct
+				{
+					uint32_t CCR1             : 16; /// Capture/Compare 1 value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR2_t
+			{
+				#ifdef TIM_GENERAL_1_CCR2_2
+				struct
+				{
+					uint32_t CCR2             : 16; /// Capture/Compare 2 value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR3_t
+			{
+				#ifdef TIM_GENERAL_1_CCR3_2
+				struct
+				{
+					uint32_t CCR3             : 16; /// Capture/Compare value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct CCR4_t
+			{
+				#ifdef TIM_GENERAL_1_CCR4_2
+				struct
+				{
+					uint32_t CCR4             : 16; /// Capture/Compare value
+					uint32_t                  : 16;
+				};
+				#endif
+			};
+			struct OR_t { };
+			struct OR1_t { };
+			struct OR2_t { };
+			struct TIMx_OR_t { };
+		};
+		#endif
+		struct TIM_GENERAL_1_tmpl_default /// default template for TIM_GENERAL_1 
+		{
+			struct CR1_t { };
+			struct CNT_t { };
+			struct ARR_t { };
+			struct CCR1_t { };
+			struct CCR2_t { };
+			struct CCR3_t { };
+			struct CCR4_t { };
+			struct OR_t { };
+			struct OR1_t { };
+			struct OR2_t { };
+			struct TIMx_OR_t { };
+		};
+		#ifdef TIM_ADVANCED_TIM_ADVANCED_tmpl_0
+		struct TIM_ADVANCED_tmpl_0 /// specific fields for TIM1 
+		{
+			struct OR1_t
+			{
+				#ifdef TIM_ADVANCED_OR1_0
+				struct
+				{
+					uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
+					uint32_t ETR_ADC3_RMP     : 2; /// External trigger remap on ADC3 analog watchdog
+					uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
+					uint32_t                  : 27;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_ADVANCED_OR2_0
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+					uint32_t                  : 2;
+					uint32_t ETRSEL           : 3; /// ETR source selection
+					uint32_t                  : 15;
+				};
+				#endif
+			};
+			struct OR3_t
+			{
+				#ifdef TIM_ADVANCED_OR3_0
+				struct
+				{
+					uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
+					uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+					uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BK2DFBK0E        : 1; /// BRK2 DFSDM_BREAK0 enable
+					uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
+					uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
+					uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+		};
+		#endif
+		#ifdef TIM_ADVANCED_TIM_ADVANCED_tmpl_1
+		struct TIM_ADVANCED_tmpl_1 /// specific fields for TIM8 
+		{
+			struct OR1_t
+			{
+				#ifdef TIM_ADVANCED_OR1_1
+				struct
+				{
+					uint32_t ETR_ADC2_RMP     : 2; /// External trigger remap on ADC2 analog watchdog
+					uint32_t ETR_ADC3_RMP     : 2; /// External trigger remap on ADC3 analog watchdog
+					uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
+					uint32_t                  : 27;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_ADVANCED_OR2_1
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BKDFBK2E         : 1; /// BRK DFSDM_BREAK2 enable
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+					uint32_t                  : 2;
+					uint32_t ETRSEL           : 3; /// ETR source selection
+					uint32_t                  : 15;
+				};
+				#endif
+			};
+			struct OR3_t
+			{
+				#ifdef TIM_ADVANCED_OR3_1
+				struct
+				{
+					uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
+					uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+					uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BK2DFBK3E        : 1; /// BRK2 DFSDM_BREAK3 enable
+					uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
+					uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
+					uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+		};
+		#endif
+		struct TIM_ADVANCED_tmpl_default /// default template for TIM_ADVANCED 
+		{
+			struct OR1_t { };
+			struct OR2_t { };
+			struct OR3_t { };
+		};
+		#ifdef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
+		struct TIM_GENERAL_3_tmpl_0 /// specific fields for TIM16 
+		{
+			struct CR1_t
+			{
+				#ifdef TIM_GENERAL_3_CR1_1
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 6;
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct DIER_t { };
+			struct OR1_t
+			{
+				#ifdef TIM_GENERAL_3_OR1_0
+				struct
+				{
+					uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+					uint32_t                  : 30;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_GENERAL_3_OR2_0
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+		};
+		#endif
+		#ifdef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
+		struct TIM_GENERAL_3_tmpl_1 /// specific fields for TIM17 
+		{
+			struct CR1_t
+			{
+				#ifdef TIM_GENERAL_3_CR1_2
+				struct
+				{
+					uint32_t CEN              : 1; /// Counter enable
+					uint32_t UDIS             : 1; /// Update disable
+					uint32_t URS              : 1; /// Update request source
+					uint32_t OPM              : 1; /// One-pulse mode
+					uint32_t                  : 3;
+					uint32_t ARPE             : 1; /// Auto-reload preload enable
+					uint32_t CKD              : 2; /// Clock division
+					uint32_t                  : 1;
+					uint32_t UIFREMAP         : 1; /// UIF status bit remapping
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct DIER_t
+			{
+				#ifdef TIM_GENERAL_3_DIER_1
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 6;
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+			struct OR1_t
+			{
+				#ifdef TIM_GENERAL_3_OR1_0
+				struct
+				{
+					uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+					uint32_t                  : 30;
+				};
+				#endif
+			};
+			struct OR2_t
+			{
+				#ifdef TIM_GENERAL_3_OR2_0
+				struct
+				{
+					uint32_t BKINE            : 1; /// BRK BKIN input enable
+					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+					uint32_t                  : 5;
+					uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
+					uint32_t BKINP            : 1; /// BRK BKIN input polarity
+					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+					uint32_t                  : 20;
+				};
+				#endif
+			};
+		};
+		#endif
+		struct TIM_GENERAL_3_tmpl_default /// default template for TIM_GENERAL_3 
+		{
+			struct CR1_t { };
+			struct DIER_t { };
+			struct OR1_t { };
+			struct OR2_t { };
+		};
+		#ifdef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
+		struct TIM_GENERAL_6_tmpl_0 /// specific fields for TIM10, TIM11 
+		{
+			struct CCMR1_Input_t
+			{
+				#ifdef TIM_GENERAL_6_CCMR1_Input_2
+				struct
+				{
+					uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+					uint32_t ICPCS            : 2; /// Input capture 1 prescaler
+					uint32_t IC1F             : 4; /// Input capture 1 filter
+					uint32_t                  : 24;
+				};
+				#endif
+			};
+			struct OR_t
+			{
+				#ifdef TIM_GENERAL_6_OR_1
+				struct
+				{
+					uint32_t RMP              : 2; /// Input 1 remapping capability
+					uint32_t                  : 30;
+				};
+				#endif
+			};
+			struct TIM1_OR_t { };
+			struct TIM2_OR_t { };
+		};
+		#endif
+		#ifdef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
+		struct TIM_GENERAL_6_tmpl_1 /// specific fields for TIM13, TIM2, TIM14, TIM1 
+		{
+			struct CCMR1_Input_t
+			{
+				#ifdef TIM_GENERAL_6_CCMR1_Input_3
+				struct
+				{
+					uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+					uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+					uint32_t IC1F             : 4; /// Input capture 1 filter
+					uint32_t                  : 24;
+				};
+				#endif
+			};
+			struct OR_t { };
+			struct TIM1_OR_t
+			{
+				uint32_t EXTRIGSEL        : 2;
+				uint32_t CLKMSKEN         : 1;
+				uint32_t ORRSVD           : 1;
+				uint32_t                  : 28;
+			};
+			struct TIM2_OR_t
+			{
+				uint32_t EXTRIGSEL        : 2;
+				uint32_t CLKMSKEN         : 1;
+				uint32_t ORRSVD           : 1;
+				uint32_t REMAPC1          : 1;
+				uint32_t REMAPC2          : 1;
+				uint32_t REMAPC3          : 1;
+				uint32_t REMAPC4          : 1;
+				uint32_t                  : 24;
+			};
+		};
+		#endif
+		struct TIM_GENERAL_6_tmpl_default /// default template for TIM_GENERAL_6 
+		{
+			struct CCMR1_Input_t { };
+			struct OR_t { };
+			struct TIM1_OR_t { };
+			struct TIM2_OR_t { };
+		};
+		#ifdef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
+		struct TIM_GENERAL_4_tmpl_0 /// specific fields for TIM21 
+		{
+			struct OR_t
+			{
+				#ifdef TIM_GENERAL_4_OR_0
+				struct
+				{
+					uint32_t ETR_RMP          : 2; /// Timer21 ETR remap
+					uint32_t TI1_RMP          : 3; /// Timer21 TI1
+					uint32_t TI2_RMP          : 1; /// Timer21 TI2
+					uint32_t                  : 26;
+				};
+				#endif
+			};
+		};
+		#endif
+		#ifdef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
+		struct TIM_GENERAL_4_tmpl_1 /// specific fields for TIM22 
+		{
+			struct OR_t
+			{
+				#ifdef TIM_GENERAL_4_OR_1
+				struct
+				{
+					uint32_t ETR_RMP          : 2; /// Timer22 ETR remap
+					uint32_t TI1_RMP          : 2; /// Timer22 TI1
+					uint32_t                  : 28;
+				};
+				#endif
+			};
+		};
+		#endif
+		struct TIM_GENERAL_4_tmpl_default /// default template for TIM_GENERAL_4 
+		{
+			struct OR_t { };
+		};
+		#ifdef PERIPH_TIM_GENERAL_1
+		template<typename tmpl=TIM_GENERAL_1_tmpl_default>
+		class TIM_GENERAL_1 /// general purpose timers
 		{
 			
-			
-			public :
-			
-			#ifdef TIM_ARR
-			struct ARR_TypeDef : public Reg32_t
+			struct CR1_t: Reg32_t /// control register 1
 			{
 				using Reg32_t::operator=;
-			
 				union
 				{
-					#ifdef TIM_ARR_0
+					#ifdef TIM_GENERAL_1_CR1_2
 					struct
 					{
-						uint32_t ARR                  :32;
+						uint32_t CEN              : 1; /// Counter enable
+						uint32_t UDIS             : 1; /// Update disable
+						uint32_t URS              : 1; /// Update request source
+						uint32_t OPM              : 1; /// One-pulse mode
+						uint32_t DIR              : 1; /// Direction
+						uint32_t CMS              : 2; /// Center-aligned mode selection
+						uint32_t ARPE             : 1; /// Auto-reload preload enable
+						uint32_t CKD              : 2; /// Clock division
+						uint32_t                  : 1;
+						uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
+						uint32_t                  : 20;
 					};
 					#endif
-					#ifdef TIM_ARR_1
+					tmpl::CR1_t;
+				};
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 3;
+				uint32_t CCDS             : 1; /// Capture/compare DMA selection
+				uint32_t MMS              : 3; /// Master mode selection
+				uint32_t TI1S             : 1; /// TI1 selection
+				uint32_t                  : 24;
+				
+			};
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				uint32_t SMS              : 3; /// Slave mode selection
+				uint32_t TIM_GENERAL_1_SMCR_OCCS : 1; /// OCREF clear selection
+				uint32_t TS               : 3; /// Trigger selection
+				uint32_t MSM              : 1; /// Master/Slave mode
+				uint32_t ETF              : 4; /// External trigger filter
+				uint32_t ETPS             : 2; /// External trigger prescaler
+				uint32_t ECE              : 1; /// External clock enable
+				uint32_t ETP              : 1; /// External trigger polarity
+				uint32_t TIM_GENERAL_1_SMCR_SMS_3 : 1; /// Slave mode selection - bit 3
+				uint32_t                  : 3;
+				uint32_t TIM_GENERAL_1_SMCR_TS_4_3 : 2; /// Trigger selection
+				uint32_t                  : 10;
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t CC2IE            : 1; /// Capture/Compare 2 interrupt enable
+				uint32_t CC3IE            : 1; /// Capture/Compare 3 interrupt enable
+				uint32_t CC4IE            : 1; /// Capture/Compare 4 interrupt enable
+				uint32_t                  : 1;
+				uint32_t TIE              : 1; /// Trigger interrupt enable
+				uint32_t                  : 1;
+				uint32_t UDE              : 1; /// Update DMA request enable
+				uint32_t CC1DE            : 1; /// Capture/Compare 1 DMA request enable
+				uint32_t CC2DE            : 1; /// Capture/Compare 2 DMA request enable
+				uint32_t CC3DE            : 1; /// Capture/Compare 3 DMA request enable
+				uint32_t CC4DE            : 1; /// Capture/Compare 4 DMA request enable
+				uint32_t TIM_GENERAL_1_DIER_COMDE : 1; /// COM DMA request enable
+				uint32_t TIM_GENERAL_1_DIER_TDE : 1; /// Trigger DMA request enable
+				uint32_t                  : 17;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t CC2IF            : 1; /// Capture/Compare 2 interrupt flag
+				uint32_t CC3IF            : 1; /// Capture/Compare 3 interrupt flag
+				uint32_t CC4IF            : 1; /// Capture/Compare 4 interrupt flag
+				uint32_t                  : 1;
+				uint32_t TIF              : 1; /// Trigger interrupt flag
+				uint32_t                  : 2;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t CC2OF            : 1; /// Capture/compare 2 overcapture flag
+				uint32_t CC3OF            : 1; /// Capture/Compare 3 overcapture flag
+				uint32_t CC4OF            : 1; /// Capture/Compare 4 overcapture flag
+				uint32_t                  : 19;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t CC2G             : 1; /// Capture/compare 2 generation
+				uint32_t CC3G             : 1; /// Capture/compare 3 generation
+				uint32_t CC4G             : 1; /// Capture/compare 4 generation
+				uint32_t                  : 1;
+				uint32_t TG               : 1; /// Trigger generation
+				uint32_t                  : 25;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
 					struct
 					{
-						uint32_t ARR                  :16;
-						uint32_t                      :16;
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t OC1FE            : 1; /// Output compare 1 fast enable
+						uint32_t OC1PE            : 1; /// Output compare 1 preload enable
+						uint32_t OC1M             : 3; /// Output compare 1 mode
+						uint32_t OC1CE            : 1; /// Output compare 1 clear enable
+						uint32_t TIM_GENERAL_1_CCMR1_Output_0_CC2S : 2; /// Capture/Compare 2 selection
+						uint32_t OC2FE            : 1; /// Output compare 2 fast enable
+						uint32_t OC2PE            : 1; /// Output compare 2 preload enable
+						uint32_t OC2M             : 3; /// Output compare 2 mode
+						uint32_t OC2CE            : 1; /// Output compare 2 clear enable
+						uint32_t TIM_GENERAL_1_CCMR1_Output_0_OC1M_3 : 1; /// Output Compare 1 mode - bit 3
+						uint32_t                  : 7;
+						uint32_t TIM_GENERAL_1_CCMR1_Output_0_OC2M_3 : 1; /// Output Compare 2 mode - bit 3
+						uint32_t                  : 7;
+					};
+					#ifdef TIM_GENERAL_1_CCMR1_Output_1
+					struct
+					{
+						uint32_t                  : 8;
+						uint32_t CC2S             : 1; /// Capture/Compare 2 selection
+						uint32_t                  : 23;
 					};
 					#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef TIM_BDTR
-			struct BDTR_TypeDef : public Reg32_t
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t DTG                  :8;
-					uint32_t LOCK                 :2;
-					uint32_t OSSI                 :1;
-					uint32_t OSSR                 :1;
-					uint32_t BKE                  :1;
-					uint32_t BKP                  :1;
-					uint32_t AOE                  :1;
-					uint32_t MOE                  :1;
-					uint32_t TIM_BDTR_BKF         :4;
-					uint32_t TIM_BDTR_BK2F        :4;
-					uint32_t TIM_BDTR_BK2E        :1;
-					uint32_t TIM_BDTR_BK2P        :1;
-					uint32_t                      :6;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCER
-			struct CCER_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t CC1E                 :1;
-					uint32_t CC1P                 :1;
-					uint32_t TIM_CCER_CC1NE       :1;
-					uint32_t CC1NP                :1;
-					uint32_t CC2E                 :1;
-					uint32_t CC2P                 :1;
-					uint32_t TIM_CCER_CC2NE       :1;
-					uint32_t CC2NP                :1;
-					uint32_t CC3E                 :1;
-					uint32_t CC3P                 :1;
-					uint32_t TIM_CCER_CC3NE       :1;
-					uint32_t CC3NP                :1;
-					uint32_t CC4E                 :1;
-					uint32_t CC4P                 :1;
-					uint32_t                      :1;
-					uint32_t TIM_CCER_CC4NP       :1;
-					uint32_t TIM_CCER_CC5E        :1;
-					uint32_t TIM_CCER_CC5P        :1;
-					uint32_t                      :2;
-					uint32_t TIM_CCER_CC6E        :1;
-					uint32_t TIM_CCER_CC6P        :1;
-					uint32_t                      :10;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCMR1
-			struct CCMR1_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
 				union
 				{
 					struct
 					{
-						uint32_t CC1S                 :2;
-						uint32_t OC1FE                :1;
-						uint32_t OC1PE                :1;
-						uint32_t TIM_CCMR1_0_OC1M     :3;
-						uint32_t OC1CE                :1;
-						uint32_t CC2S                 :2;
-						uint32_t OC2FE                :1;
-						uint32_t OC2PE                :1;
-						uint32_t TIM_CCMR1_0_OC2M     :3;
-						uint32_t OC2CE                :1;
-						uint32_t                      :16;
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t TIM_GENERAL_1_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
+						uint32_t IC1F             : 4; /// Input capture 1 filter
+						uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+						uint32_t TIM_GENERAL_1_CCMR1_Input_0_IC2PCS : 2; /// Input capture 2 prescaler
+						uint32_t IC2F             : 4; /// Input capture 2 filter
+						uint32_t                  : 16;
 					};
+					#ifdef TIM_GENERAL_1_CCMR1_Input_1
 					struct
 					{
-						uint32_t                      :2;
-						uint32_t IC1PSC               :2;
-						uint32_t IC1F                 :4;
-						uint32_t                      :2;
-						uint32_t IC2PSC               :2;
-						uint32_t IC2F                 :4;
-						uint32_t                      :16;
-					};
-				};
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCMR2
-			struct CCMR2_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
-				union
-				{
-					struct
-					{
-						uint32_t CC3S                 :2;
-						uint32_t OC3FE                :1;
-						uint32_t OC3PE                :1;
-						uint32_t TIM_CCMR2_0_OC3M     :3;
-						uint32_t OC3CE                :1;
-						uint32_t CC4S                 :2;
-						uint32_t OC4FE                :1;
-						uint32_t OC4PE                :1;
-						uint32_t TIM_CCMR2_0_OC4M     :3;
-						uint32_t OC4CE                :1;
-						uint32_t                      :16;
-					};
-					struct
-					{
-						uint32_t                      :2;
-						uint32_t IC3PSC               :2;
-						uint32_t IC3F                 :4;
-						uint32_t                      :2;
-						uint32_t IC4PSC               :2;
-						uint32_t IC4F                 :4;
-						uint32_t                      :16;
-					};
-				};
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCMR3
-			struct CCMR3_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
-				union
-				{
-					struct
-					{
-						uint32_t TIM_CCMR3_0_OC5M0    :1;
-						uint32_t TIM_CCMR3_0_OC5M1    :1;
-						uint32_t OC5FE                :1;
-						uint32_t OC5PE                :1;
-						uint32_t TIM_CCMR3_0_OC5M     :3;
-						uint32_t OC5CE                :1;
-						uint32_t                      :2;
-						uint32_t OC6FE                :1;
-						uint32_t OC6PE                :1;
-						uint32_t TIM_CCMR3_0_OC5M3    :1;
-						uint32_t                      :2;
-						uint32_t OC6CE                :1;
-						uint32_t                      :16;
-					};
-					#ifdef TIM_CCMR3_1
-					struct
-					{
-						uint32_t OC6M0                :1;
-						uint32_t OC6M1                :1;
-						uint32_t OC5M2                :1;
-						uint32_t                      :9;
-						uint32_t OC6M3                :1;
-						uint32_t                      :19;
-					};
-					#endif
-					#ifdef TIM_CCMR3_2
-					struct
-					{
-						uint32_t                      :2;
-						uint32_t TIM_CCMR3_2_OC6M2    :1;
-						uint32_t                      :9;
-						uint32_t TIM_CCMR3_2_OC6M     :3;
-						uint32_t                      :17;
+						uint32_t                  : 2;
+						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+						uint32_t                  : 6;
+						uint32_t IC2PSC           : 2; /// Input capture 2 prescaler
+						uint32_t                  : 20;
 					};
 					#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef TIM_CCR1
-			struct CCR1_TypeDef : public Reg32_t
+			struct CCMR2_Output_t: Reg32_t /// capture/compare mode register 2 (output mode)
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t CCR1                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCR2
-			struct CCR2_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t CCR2                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCR3
-			struct CCR3_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t CCR3                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCR4
-			struct CCR4_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t CCR4                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCR5
-			struct CCR5_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
 				union
 				{
 					struct
 					{
-						uint32_t CCR5                 :32;
+						uint32_t CC3S             : 2; /// Capture/Compare 3 selection
+						uint32_t OC3FE            : 1; /// Output compare 3 fast enable
+						uint32_t OC3PE            : 1; /// Output compare 3 preload enable
+						uint32_t OC3M             : 3; /// Output compare 3 mode
+						uint32_t OC3CE            : 1; /// Output compare 3 clear enable
+						uint32_t TIM_GENERAL_1_CCMR2_Output_0_CC4S : 2; /// Capture/Compare 4 selection
+						uint32_t OC4FE            : 1; /// Output compare 4 fast enable
+						uint32_t OC4PE            : 1; /// Output compare 4 preload enable
+						uint32_t OC4M             : 3; /// Output compare 4 mode
+						uint32_t TIM_GENERAL_1_CCMR2_Output_0_O24CE : 1; /// Output compare 4 clear enable
+						uint32_t TIM_GENERAL_1_CCMR2_Output_0_OC3M_3 : 1; /// Output Compare 1 mode - bit 3
+						uint32_t                  : 7;
+						uint32_t TIM_GENERAL_1_CCMR2_Output_0_OC4M_3 : 1; /// Output Compare 2 mode - bit 3
+						uint32_t                  : 7;
 					};
+					#ifdef TIM_GENERAL_1_CCMR2_Output_1
 					struct
 					{
-						uint32_t                      :29;
-						uint32_t GC5C1                :1;
-						uint32_t GC5C2                :1;
-						uint32_t GC5C3                :1;
-					};
-				};
-				
-			};
-			#endif
-			
-			#ifdef TIM_CCR6
-			struct CCR6_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t CCR6                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_CNT
-			struct CNT_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
-				union
-				{
-					#ifdef TIM_CNT_0
-					struct
-					{
-						uint32_t CNT                  :32;
-					};
-					#endif
-					#ifdef TIM_CNT_1
-					struct
-					{
-						uint32_t TIM_CNT_1_CNT        :16;
-						uint32_t                      :15;
-						uint32_t TIM_CNT_1_UIFCPY     :1;
+						uint32_t                  : 8;
+						uint32_t TIM_GENERAL_1_CCMR2_Output_1_CC4S : 1; /// Capture/Compare 4 selection
+						uint32_t                  : 6;
+						uint32_t OC4CE            : 1; /// Output compare 4 clear enable
+						uint32_t                  : 16;
 					};
 					#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef TIM_CR1
-			struct CR1_TypeDef : public Reg32_t
+			struct CCMR2_Input_t: Reg32_t /// capture/compare mode register 2 (input mode)
 			{
 				using Reg32_t::operator=;
+				uint32_t CC3S             : 2; /// Capture/compare 3 selection
+				uint32_t IC3PSC           : 2; /// Input capture 3 prescaler
+				uint32_t IC3F             : 4; /// Input capture 3 filter
+				uint32_t CC4S             : 2; /// Capture/Compare 4 selection
+				uint32_t IC4PSC           : 2; /// Input capture 4 prescaler
+				uint32_t IC4F             : 4; /// Input capture 4 filter
+				uint32_t                  : 16;
 				
-					uint32_t CEN                  :1;
-					uint32_t UDIS                 :1;
-					uint32_t URS                  :1;
-					uint32_t OPM                  :1;
-					uint32_t DIR                  :1;
-					uint32_t CMS                  :2;
-					uint32_t ARPE                 :1;
-					uint32_t CKD                  :2;
-					uint32_t                      :1;
-					uint32_t TIM_CR1_UIFREMAP     :1;
-					uint32_t                      :20;
-			
+			};
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC2E             : 1; /// Capture/Compare 2 output enable
+				uint32_t CC2P             : 1; /// Capture/Compare 2 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC2NP            : 1; /// Capture/Compare 2 output Polarity
+				uint32_t CC3E             : 1; /// Capture/Compare 3 output enable
+				uint32_t CC3P             : 1; /// Capture/Compare 3 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC3NP            : 1; /// Capture/Compare 3 output Polarity
+				uint32_t CC4E             : 1; /// Capture/Compare 4 output enable
+				uint32_t CC4P             : 1; /// Capture/Compare 3 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC4NP            : 1; /// Capture/Compare 4 output Polarity
+				uint32_t                  : 16;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_CNT_2
+					struct
+					{
+						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_3
+					struct
+					{
+						uint32_t TIM_GENERAL_1_CNT_3_CNT : 16; /// TIM2 counter
+						uint32_t TIM_GENERAL_1_CNT_3_CNT_H : 15; /// High counter value (TIM2 only)
+						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_6
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t CNT_M            : 15; /// Most significant part counter value
+						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+					};
+					#endif
+					tmpl::CNT_t;
+				};
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_ARR_0
+					struct
+					{
+						uint32_t ARR_L            : 16; /// Low Auto-reload value
+						uint32_t ARR_H            : 16; /// High Auto-reload value
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_ARR_3
+					struct
+					{
+						uint32_t ARR              : 16; /// Auto-reload value
+						uint32_t                  : 16;
+					};
+					#endif
+					tmpl::ARR_t;
+				};
+				
+			};
+			#ifdef TIM_GENERAL_1_CCR1
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_CCR1_0
+					struct
+					{
+						uint32_t CCR1_L           : 16; /// Low Capture/Compare 1 value
+						uint32_t CCR1_H           : 16; /// High Capture/Compare 1 value
+					};
+					#endif
+					tmpl::CCR1_t;
+				};
 				
 			};
 			#endif
-			
-			#ifdef TIM_CR2
-			struct CR2_TypeDef : public Reg32_t
+			struct CCR2_t: Reg32_t /// capture/compare register 2
 			{
 				using Reg32_t::operator=;
-			
 				union
 				{
+					#ifdef TIM_GENERAL_1_CCR2_0
 					struct
 					{
-						uint32_t TIM_CR2_0_CCPC       :1;
-						uint32_t                      :1;
-						uint32_t TIM_CR2_0_CCUS       :1;
-						uint32_t CCDS                 :1;
-						uint32_t MMS                  :3;
-						uint32_t TI1S                 :1;
-						uint32_t TIM_CR2_0_OIS1       :1;
-						uint32_t TIM_CR2_0_OIS1N      :1;
-						uint32_t TIM_CR2_0_OIS2       :1;
-						uint32_t TIM_CR2_0_OIS2N      :1;
-						uint32_t TIM_CR2_0_OIS3       :1;
-						uint32_t TIM_CR2_0_OIS3N      :1;
-						uint32_t TIM_CR2_0_OIS4       :1;
-						uint32_t                      :1;
-						uint32_t TIM_CR2_0_OIS5       :1;
-						uint32_t                      :1;
-						uint32_t TIM_CR2_0_OIS6       :1;
-						uint32_t                      :1;
-						uint32_t TIM_CR2_0_MMS2       :4;
-						uint32_t                      :8;
+						uint32_t CCR2_L           : 16; /// Low Capture/Compare 2 value
+						uint32_t CCR2_H           : 16; /// High Capture/Compare 2 value
 					};
-					#ifdef TIM_CR2_1
+					#endif
+					#ifdef TIM_GENERAL_1_CCR2_3
 					struct
 					{
-						uint32_t                      :17;
-						uint32_t OIS6                 :1;
-						uint32_t                      :14;
+						uint32_t CCR2             : 16; /// Capture/Compare 2 value
+						uint32_t                  : 16;
+					};
+					#endif
+					tmpl::CCR2_t;
+				};
+				
+			};
+			#ifdef TIM_GENERAL_1_CCR3
+			struct CCR3_t: Reg32_t /// capture/compare register 3
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_CCR3_0
+					struct
+					{
+						uint32_t CCR3_L           : 16; /// Low Capture/Compare value
+						uint32_t CCR3_H           : 16; /// High Capture/Compare value
+					};
+					#endif
+					tmpl::CCR3_t;
+				};
+				
+			};
+			#endif
+			struct CCR4_t: Reg32_t /// capture/compare register 4
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_CCR4_0
+					struct
+					{
+						uint32_t CCR4_L           : 16; /// Low Capture/Compare value
+						uint32_t CCR4_H           : 16; /// High Capture/Compare value
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CCR4_3
+					struct
+					{
+						uint32_t CCR4             : 16; /// Capture/Compare 4 value
+						uint32_t                  : 16;
+					};
+					#endif
+					tmpl::CCR4_t;
+				};
+				
+			};
+			struct DCR_t: Reg32_t /// DMA control register
+			{
+				using Reg32_t::operator=;
+				uint32_t DBA              : 5; /// DMA base address
+				uint32_t                  : 3;
+				uint32_t DBL              : 5; /// DMA burst length
+				uint32_t                  : 19;
+				
+			};
+			struct DMAR_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_1_DMAR_0
+					struct
+					{
+						uint32_t DMAB             : 16; /// DMA register for burst accesses
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_DMAR_1
+					struct
+					{
+						uint32_t DMAR             : 16; /// DMA register for burst accesses
+						uint32_t                  : 16;
 					};
 					#endif
 				};
 				
 			};
-			#endif
-			
-			#ifdef TIM_DCR
-			struct DCR_TypeDef : public Reg32_t
+			#ifdef TIM_GENERAL_1_AF1
+			struct AF1_t: Reg32_t /// TIM alternate function option register 1
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t DBA                  :5;
-					uint32_t                      :3;
-					uint32_t DBL                  :5;
-					uint32_t                      :19;
-			
+				uint32_t                  : 14;
+				uint32_t ETRSEL           : 4; /// ETR source selection
+				uint32_t                  : 14;
 				
 			};
 			#endif
-			
-			#ifdef TIM_DIER
-			struct DIER_TypeDef : public Reg32_t
+			#ifdef TIM_GENERAL_1_TISEL
+			struct TISEL_t: Reg32_t /// TIM timer input selection register
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t UIE                  :1;
-					uint32_t CC1IE                :1;
-					uint32_t CC2IE                :1;
-					uint32_t CC3IE                :1;
-					uint32_t CC4IE                :1;
-					uint32_t TIM_DIER_COMIE       :1;
-					uint32_t TIE                  :1;
-					uint32_t TIM_DIER_BIE         :1;
-					uint32_t UDE                  :1;
-					uint32_t CC1DE                :1;
-					uint32_t CC2DE                :1;
-					uint32_t CC3DE                :1;
-					uint32_t CC4DE                :1;
-					uint32_t TIM_DIER_COMDE       :1;
-					uint32_t TDE                  :1;
-					uint32_t                      :17;
-			
+				uint32_t TI1SEL           : 4; /// TI1[0] to TI1[15] input selection
+				uint32_t                  : 4;
+				uint32_t TI2SEL           : 4; /// TI2[0] to TI2[15] input selection
+				uint32_t                  : 4;
+				uint32_t TIM_GENERAL_1_TISEL_TI3SEL : 4; /// TI3[0] to TI3[15] input selection
+				uint32_t                  : 4;
+				uint32_t TIM_GENERAL_1_TISEL_TI4SEL : 4; /// TI4[0] to TI4[15] input selection
+				uint32_t                  : 4;
 				
 			};
 			#endif
-			
-			#ifdef TIM_DMAR
-			struct DMAR_TypeDef : public Reg32_t
+			#ifdef TIM_GENERAL_1_OR
+			struct OR_t: Reg32_t /// TIM2 option register
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t DMAB                 :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_EGR
-			struct EGR_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t UG                   :1;
-					uint32_t CC1G                 :1;
-					uint32_t CC2G                 :1;
-					uint32_t CC3G                 :1;
-					uint32_t CC4G                 :1;
-					uint32_t TIM_EGR_COMG         :1;
-					uint32_t TG                   :1;
-					uint32_t TIM_EGR_BG           :1;
-					uint32_t TIM_EGR_B2G          :1;
-					uint32_t                      :23;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_PSC
-			struct PSC_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-				
-					uint32_t PSC                  :16;
-					uint32_t                      :16;
-			
-				
-			};
-			#endif
-			
-			#ifdef TIM_RCR
-			struct RCR_TypeDef : public Reg32_t
-			{
-				using Reg32_t::operator=;
-			
 				union
 				{
-					#ifdef TIM_RCR_0
+					#ifdef TIM_GENERAL_1_OR_0
 					struct
 					{
-						uint32_t REP                  :8;
-						uint32_t                      :24;
+						uint32_t TIM_GENERAL_1_OR_0_ETR_RMP : 3; /// Timer2 ETR remap
+						uint32_t TIM_GENERAL_1_OR_0_TI4_RMP : 2; /// Internal trigger
+						uint32_t                  : 1;
+						uint32_t TIM_GENERAL_1_OR_0_IT4_RMP : 2; /// Timer Input 4 remap
+						uint32_t                  : 24;
 					};
 					#endif
-					#ifdef TIM_RCR_1
+					#ifdef TIM_GENERAL_1_OR_4
 					struct
 					{
-						uint32_t REP                  :16;
-						uint32_t                      :16;
+						uint32_t ITR_RMP          : 1; /// Internal trigger remap
+						uint32_t ETR_RMP          : 1; /// External trigger remap
+						uint32_t TI4_RMP          : 2; /// Input capture 4 remap
+						uint32_t                  : 28;
 					};
 					#endif
+					tmpl::OR_t;
 				};
 				
 			};
 			#endif
-			
-			#ifdef TIM_SMCR
-			struct SMCR_TypeDef : public Reg32_t
+			#ifdef TIM_GENERAL_1_OR1
+			struct OR1_t: Reg32_t /// TIM2 option register 1
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t TIM_SMCR_SMS         :3;
-					uint32_t TIM_SMCR_OCCS        :1;
-					uint32_t TIM_SMCR_TS          :3;
-					uint32_t MSM                  :1;
-					uint32_t ETF                  :4;
-					uint32_t ETPS                 :2;
-					uint32_t ECE                  :1;
-					uint32_t ETP                  :1;
-					uint32_t                      :16;
-			
+				union
+				{
+					#ifdef TIM_GENERAL_1_OR1_2
+					struct
+					{
+						uint32_t ITR1_RMP         : 1; /// Internal trigger 1 remap
+						uint32_t ETR1_RMP         : 1; /// External trigger remap
+						uint32_t TI4_RMP          : 2; /// Input Capture 4 remap
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_OR1_3
+					struct
+					{
+						uint32_t IOCREF_CLR       : 1;
+						uint32_t                  : 31;
+					};
+					#endif
+					tmpl::OR1_t;
+				};
 				
 			};
 			#endif
-			
-			#ifdef TIM_SR
-			struct SR_TypeDef : public Reg32_t
+			#ifdef TIM_GENERAL_1_OR2
+			struct OR2_t: Reg32_t /// TIM2 option register 2
 			{
 				using Reg32_t::operator=;
-				
-					uint32_t UIF                  :1;
-					uint32_t CC1IF                :1;
-					uint32_t CC2IF                :1;
-					uint32_t CC3IF                :1;
-					uint32_t CC4IF                :1;
-					uint32_t TIM_SR_COMIF         :1;
-					uint32_t TIF                  :1;
-					uint32_t TIM_SR_BIF           :1;
-					uint32_t TIM_SR_B2IF          :1;
-					uint32_t CC1OF                :1;
-					uint32_t CC2OF                :1;
-					uint32_t CC3OF                :1;
-					uint32_t CC4OF                :1;
-					uint32_t TIM_SR_SBIF          :1;
-					uint32_t                      :2;
-					uint32_t TIM_SR_CC5IF         :1;
-					uint32_t TIM_SR_CC6IF         :1;
-					uint32_t                      :14;
-			
+				union
+				{
+					#ifdef TIM_GENERAL_1_OR2_1
+					struct
+					{
+						uint32_t                  : 14;
+						uint32_t ETRSEL           : 3; /// ETR source selection
+						uint32_t                  : 15;
+					};
+					#endif
+					tmpl::OR2_t;
+				};
 				
 			};
 			#endif
-			
+			#ifdef TIM_GENERAL_1_TIMx_OR
+			struct TIMx_OR_t: Reg32_t /// TIM2 option register
+			{
+				using Reg32_t::operator=;
+				tmpl::TIMx_OR_t;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_1_AF
+			struct AF_t: Reg32_t /// TIM2 alternate function option register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 14;
+				uint32_t ETRSEL           : 3; /// External trigger source selection
+				uint32_t                  : 15;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_1_CCRx
+			struct CCRx_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			#endif
 			union
 			{
-				
 				struct
 				{
-					CR1_TypeDef CR1;     // @0x000
-					CR2_TypeDef CR2;     // @0x004
-					SMCR_TypeDef SMCR;   // @0x008
-					DIER_TypeDef DIER;   // @0x00c
-					SR_TypeDef SR;       // @0x010
-					EGR_TypeDef EGR;     // @0x014
-					CCMR1_TypeDef CCMR1; // @0x018
-					CCMR2_TypeDef CCMR2; // @0x01c
-					CCER_TypeDef CCER;   // @0x020
-					CNT_TypeDef CNT;     // @0x024
-					PSC_TypeDef PSC;     // @0x028
-					ARR_TypeDef ARR;     // @0x02c
-					TIM_MAP0_RCR;        // @0x030
-					CCR1_TypeDef CCR1;   // @0x034
-					CCR2_TypeDef CCR2;   // @0x038
-					CCR3_TypeDef CCR3;   // @0x03c
-					CCR4_TypeDef CCR4;   // @0x040
-					TIM_MAP0_BDTR;       // @0x044
-					DCR_TypeDef DCR;     // @0x048
-					DMAR_TypeDef DMAR;   // @0x04c
-					TIM_MAP0_OR;         // @0x050
-					TIM_MAP0_CCMR3;      // @0x054
-					TIM_MAP0_CCR5;       // @0x058
-					TIM_MAP0_CCR6;       // @0x05c
-					TIM_MAP0_AF1;        // @0x060
-					TIM_MAP0_AF2;        // @0x064
-					__SOOL_PERIPH_PADDING_2;
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_64;
+					CR1_t CR1; /// control register 1
+					CR2_t CR2; /// control register 2
+					SMCR_t SMCR; /// slave mode control register
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					CCMR2_Input_t CCMR2_Input; /// capture/compare mode register 2 (input mode)
 					__SOOL_PERIPH_PADDING_16;
-					TIM_MAP1_OR1;        // @0x050
-					__SOOL_PERIPH_PADDING_2;
-					TIM_MAP1_CCR5;       // @0x056
-					TIM_MAP1_CCR6;       // @0x05a
-					TIM_MAP1_AF1;        // @0x05e
-					TIM_MAP1_AF2;        // @0x062
-					TIM_MAP1_TISEL;      // @0x066
-				};
-				struct
-				{
-					__SOOL_PERIPH_PADDING_64;
-					__SOOL_PERIPH_PADDING_16;
-					__SOOL_PERIPH_PADDING_2;
-					TIM_MAP2_CCMR3;      // @0x052
+					__SOOL_PERIPH_PADDING_32;
+					TIM_GENERAL_1_MAP0_OR1; /// TIM2 option register 1
+					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_2;
-					TIM_MAP2_OR2;        // @0x060
-					TIM_MAP2_OR3;        // @0x064
-					__SOOL_PERIPH_PADDING_2;
+					TIM_GENERAL_1_MAP0_OR2; /// TIM2 option register 2
+					__SOOL_PERIPH_PADDING_8;
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					CCMR2_Output_t CCMR2_Output; /// capture/compare mode register 2 (output mode)
+					CCER_t CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_1_MAP1_CCR1; /// capture/compare register 1
+					CCR2_t CCR2; /// capture/compare register 2
+					TIM_GENERAL_1_MAP1_CCR3; /// capture/compare register 3
+					CCR4_t CCR4; /// capture/compare register 4
+					__SOOL_PERIPH_PADDING_4;
+					DCR_t DCR; /// DMA control register
+					DMAR_t DMAR; /// DMA address for full transfer
+					TIM_GENERAL_1_MAP1_OR; /// TIM2 option register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_1_MAP1_AF1; /// TIM alternate function option register 1
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_1_MAP1_TISEL; /// TIM timer input selection register
+				};
+				#ifdef TIM_GENERAL_1_MAP2
+				struct
+				{
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_64;
+					TIMx_OR_t TIM5_OR; /// TIM5 option register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+				};
+				#endif
+				#ifdef TIM_GENERAL_1_MAP3
+				struct
+				{
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					TIM_GENERAL_1_MAP3_CCR1; /// capture/compare register 1
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_1_MAP3_CCR3; /// capture/compare register 1
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_1_MAP3_TIM2_OR; /// TIM2 option register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_1_MAP3_AF; /// TIM2 alternate function option register 1
+					__SOOL_PERIPH_PADDING_8;
+				};
+				#endif
+			};
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_1() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_BASIC
+		class TIM_BASIC /// basic timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t OPM              : 1; /// One-pulse mode
+				uint32_t                  : 3;
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t                  : 3;
+				uint32_t TIM_BASIC_CR1_UIFREMAP : 1; /// UIF status bit remapping
+				uint32_t TIM_BASIC_CR1_DITHEN : 1; /// Dithering Enable
+				uint32_t                  : 19;
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 4;
+				uint32_t MMS              : 3; /// Master mode selection
+				uint32_t                  : 25;
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t                  : 7;
+				uint32_t UDE              : 1; /// Update DMA request enable
+				uint32_t                  : 23;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t                  : 31;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t                  : 31;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// Low counter value
+				uint32_t                  : 15;
+				uint32_t TIM_BASIC_CNT_UIFCPY : 1; /// UIF Copy
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Low Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			CR1_t CR1; /// control register 1
+			CR2_t CR2; /// control register 2
+			__SOOL_PERIPH_PADDING_4;
+			DIER_t DIER; /// DMA/Interrupt enable register
+			SR_t SR; /// status register
+			EGR_t EGR; /// event generation register
+			__SOOL_PERIPH_PADDING_4;
+			__SOOL_PERIPH_PADDING_8;
+			CNT_t CNT; /// counter
+			PSC_t PSC; /// prescaler
+			ARR_t ARR; /// auto-reload register
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_BASIC() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_ADVANCED
+		template<typename tmpl=TIM_ADVANCED_tmpl_default>
+		class TIM_ADVANCED /// advanced timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t OPM              : 1; /// One-pulse mode
+				uint32_t DIR              : 1; /// Direction
+				uint32_t CMS              : 2; /// Center-aligned mode selection
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t CKD              : 2; /// Clock division
+				uint32_t                  : 1;
+				uint32_t TIM_ADVANCED_CR1_UIFREMAP : 1; /// UIF status bit remapping
+				uint32_t TIM_ADVANCED_CR1_DITHEN : 1; /// Dithering Enable
+				uint32_t                  : 19;
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCPC             : 1; /// Capture/compare preloaded control
+				uint32_t                  : 1;
+				uint32_t CCUS             : 1; /// Capture/compare control update selection
+				uint32_t CCDS             : 1; /// Capture/compare DMA selection
+				uint32_t MMS              : 3; /// Master mode selection
+				uint32_t TI1S             : 1; /// TI1 selection
+				uint32_t OIS1             : 1; /// Output Idle state 1
+				uint32_t OIS1N            : 1; /// Output Idle state 1
+				uint32_t OIS2             : 1; /// Output Idle state 2
+				uint32_t OIS2N            : 1; /// Output Idle state 2
+				uint32_t OIS3             : 1; /// Output Idle state 3
+				uint32_t OIS3N            : 1; /// Output Idle state 3
+				uint32_t OIS4             : 1; /// Output Idle state 4
+				uint32_t TIM_ADVANCED_CR2_OIS4N : 1; /// Output Idle state 4 (OC4N output)
+				uint32_t TIM_ADVANCED_CR2_OIS5 : 1; /// Output Idle state 5
+				uint32_t                  : 1;
+				uint32_t TIM_ADVANCED_CR2_OIS6 : 1; /// Output Idle state 6
+				uint32_t                  : 1;
+				uint32_t TIM_ADVANCED_CR2_MMS2 : 4; /// Master mode selection 2
+				uint32_t                  : 1;
+				uint32_t TIM_ADVANCED_CR2_MMS_3 : 1; /// Master mode selection - bit 3
+				uint32_t                  : 6;
+				
+			};
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t SMS              : 3; /// Slave mode selection
+						uint32_t TIM_ADVANCED_SMCR_0_OCCS : 1; /// OCREF clear selection
+						uint32_t TIM_ADVANCED_SMCR_0_TS : 3; /// Trigger selection
+						uint32_t MSM              : 1; /// Master/Slave mode
+						uint32_t ETF              : 4; /// External trigger filter
+						uint32_t ETPS             : 2; /// External trigger prescaler
+						uint32_t ECE              : 1; /// External clock enable
+						uint32_t ETP              : 1; /// External trigger polarity
+						uint32_t TIM_ADVANCED_SMCR_0_SMS_3 : 1; /// Slave mode selection - bit 3
+						uint32_t                  : 3;
+						uint32_t TIM_ADVANCED_SMCR_0_TS_4_3 : 2; /// Trigger selection - bit 4:3
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_SMCR_0_SMSPE : 1; /// SMS Preload Enable
+						uint32_t TIM_ADVANCED_SMCR_0_SMSPS : 1; /// SMS Preload Source
+						uint32_t                  : 6;
+					};
+					#ifdef TIM_ADVANCED_SMCR_1
+					struct
+					{
+						uint32_t                  : 4;
+						uint32_t TS_4             : 3; /// Trigger selection
+						uint32_t                  : 13;
+						uint32_t TS               : 2; /// Trigger selection
+						uint32_t                  : 10;
+					};
+					#endif
+				};
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t CC2IE            : 1; /// Capture/Compare 2 interrupt enable
+				uint32_t CC3IE            : 1; /// Capture/Compare 3 interrupt enable
+				uint32_t CC4IE            : 1; /// Capture/Compare 4 interrupt enable
+				uint32_t COMIE            : 1; /// COM interrupt enable
+				uint32_t TIE              : 1; /// Trigger interrupt enable
+				uint32_t BIE              : 1; /// Break interrupt enable
+				uint32_t UDE              : 1; /// Update DMA request enable
+				uint32_t CC1DE            : 1; /// Capture/Compare 1 DMA request enable
+				uint32_t CC2DE            : 1; /// Capture/Compare 2 DMA request enable
+				uint32_t CC3DE            : 1; /// Capture/Compare 3 DMA request enable
+				uint32_t CC4DE            : 1; /// Capture/Compare 4 DMA request enable
+				uint32_t COMDE            : 1; /// COM DMA request enable
+				uint32_t TDE              : 1; /// Trigger DMA request enable
+				uint32_t                  : 5;
+				uint32_t TIM_ADVANCED_DIER_IDXIE : 1; /// Index interrupt enable
+				uint32_t TIM_ADVANCED_DIER_DIRIE : 1; /// Direction Change interrupt enable
+				uint32_t TIM_ADVANCED_DIER_IERRIE : 1; /// Index Error interrupt enable
+				uint32_t TIM_ADVANCED_DIER_TERRIE : 1; /// Transition Error interrupt enable
+				uint32_t                  : 8;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t CC2IF            : 1; /// Capture/Compare 2 interrupt flag
+				uint32_t CC3IF            : 1; /// Capture/Compare 3 interrupt flag
+				uint32_t CC4IF            : 1; /// Capture/Compare 4 interrupt flag
+				uint32_t COMIF            : 1; /// COM interrupt flag
+				uint32_t TIF              : 1; /// Trigger interrupt flag
+				uint32_t BIF              : 1; /// Break interrupt flag
+				uint32_t TIM_ADVANCED_SR_B2IF : 1; /// Break 2 interrupt flag
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t CC2OF            : 1; /// Capture/compare 2 overcapture flag
+				uint32_t CC3OF            : 1; /// Capture/Compare 3 overcapture flag
+				uint32_t CC4OF            : 1; /// Capture/Compare 4 overcapture flag
+				uint32_t TIM_ADVANCED_SR_SBIF : 1; /// System Break interrupt flag
+				uint32_t                  : 2;
+				uint32_t TIM_ADVANCED_SR_CC5IF : 1; /// Compare 5 interrupt flag
+				uint32_t TIM_ADVANCED_SR_CC6IF : 1; /// Compare 6 interrupt flag
+				uint32_t                  : 2;
+				uint32_t TIM_ADVANCED_SR_IDXF : 1; /// Index interrupt flag
+				uint32_t TIM_ADVANCED_SR_DIRF : 1; /// Direction Change interrupt flag
+				uint32_t TIM_ADVANCED_SR_IERRF : 1; /// Index Error interrupt flag
+				uint32_t TIM_ADVANCED_SR_TERRF : 1; /// Transition Error interrupt flag
+				uint32_t                  : 8;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t CC2G             : 1; /// Capture/compare 2 generation
+				uint32_t CC3G             : 1; /// Capture/compare 3 generation
+				uint32_t CC4G             : 1; /// Capture/compare 4 generation
+				uint32_t COMG             : 1; /// Capture/Compare control update generation
+				uint32_t TG               : 1; /// Trigger generation
+				uint32_t BG               : 1; /// Break generation
+				uint32_t TIM_ADVANCED_EGR_B2G : 1; /// Break 2 generation
+				uint32_t                  : 23;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+				uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+				uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+				uint32_t OC1M             : 3; /// Output Compare 1 mode
+				uint32_t OC1CE            : 1; /// Output Compare 1 clear enable
+				uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+				uint32_t OC2FE            : 1; /// Output Compare 2 fast enable
+				uint32_t OC2PE            : 1; /// Output Compare 2 preload enable
+				uint32_t OC2M             : 3; /// Output Compare 2 mode
+				uint32_t OC2CE            : 1; /// Output Compare 2 clear enable
+				uint32_t TIM_ADVANCED_CCMR1_Output_OC1M_3 : 1; /// Output Compare 1 mode - bit 3
+				uint32_t                  : 7;
+				uint32_t TIM_ADVANCED_CCMR1_Output_OC2M_3 : 1; /// Output Compare 2 mode - bit 3
+				uint32_t                  : 7;
+				
+			};
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t TIM_ADVANCED_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
+						uint32_t TIM_ADVANCED_CCMR1_Input_0_IC1F : 4; /// Input capture 1 filter
+						uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+						uint32_t TIM_ADVANCED_CCMR1_Input_0_IC2PCS : 2; /// Input capture 2 prescaler
+						uint32_t TIM_ADVANCED_CCMR1_Input_0_IC2F : 4; /// Input capture 2 filter
+						uint32_t                  : 16;
+					};
+					#ifdef TIM_ADVANCED_CCMR1_Input_1
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR1_Input_1_ICPSC : 2; /// Input capture 1 prescaler
+						uint32_t TIM_ADVANCED_CCMR1_Input_1_C1F : 4; /// Input capture 1 filter
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR1_Input_1_IC2PSC : 2; /// Input capture 2 prescaler
+						uint32_t TIM_ADVANCED_CCMR1_Input_1_OC2M : 3; /// Output Compare 2 mode
+						uint32_t TIM_ADVANCED_CCMR1_Input_1_OC2CE : 1; /// Output Compare 2 clear enable
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_CCMR1_Input_2
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR1_Input_2_IC1PSC : 2; /// Input capture 1 prescaler
+						uint32_t TIM_ADVANCED_CCMR1_Input_2_OC1M : 3; /// Output Compare 1 mode
+						uint32_t TIM_ADVANCED_CCMR1_Input_2_OC1CE : 1; /// Output Compare 1 clear enable
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR1_Input_2_OC2FE : 1; /// Output Compare 2 fast enable
+						uint32_t TIM_ADVANCED_CCMR1_Input_2_OC2PE : 1; /// Output Compare 2 preload enable
+						uint32_t                  : 20;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_CCMR1_Input_3
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t IC1PCS           : 2; /// Input capture 1 prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_CCMR1_Input_4
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+						uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+						uint32_t                  : 28;
+					};
+					#endif
+				};
+				
+			};
+			struct CCMR2_Output_t: Reg32_t /// capture/compare mode register 2 (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC3S             : 2; /// Capture/Compare 3 selection
+						uint32_t OC3FE            : 1; /// Output compare 3 fast enable
+						uint32_t OC3PE            : 1; /// Output compare 3 preload enable
+						uint32_t OC3M             : 3; /// Output compare 3 mode
+						uint32_t OC3CE            : 1; /// Output compare 3 clear enable
+						uint32_t CC4S             : 2; /// Capture/Compare 4 selection
+						uint32_t OC4FE            : 1; /// Output compare 4 fast enable
+						uint32_t OC4PE            : 1; /// Output compare 4 preload enable
+						uint32_t OC4M             : 3; /// Output compare 4 mode
+						uint32_t OC4CE            : 1; /// Output compare 4 clear enable
+						uint32_t TIM_ADVANCED_CCMR2_Output_0_OC3M_3 : 1; /// Output Compare 3 mode - bit 3
+						uint32_t                  : 7;
+						uint32_t TIM_ADVANCED_CCMR2_Output_0_OC4M_4 : 1; /// Output Compare 4 mode - bit 3
+						uint32_t                  : 7;
+					};
+					#ifdef TIM_ADVANCED_CCMR2_Output_1
+					struct
+					{
+						uint32_t                  : 24;
+						uint32_t OC4M_3           : 1; /// Output Compare 4 mode - bit 3
+						uint32_t                  : 7;
+					};
+					#endif
+				};
+				
+			};
+			struct CCMR2_Input_t: Reg32_t /// capture/compare mode register 2 (input mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC3S             : 2; /// Capture/compare 3 selection
+						uint32_t TIM_ADVANCED_CCMR2_Input_0_IC3PSC : 2; /// Input capture 3 prescaler
+						uint32_t TIM_ADVANCED_CCMR2_Input_0_IC3F : 4; /// Input capture 3 filter
+						uint32_t CC4S             : 2; /// Capture/Compare 4 selection
+						uint32_t TIM_ADVANCED_CCMR2_Input_0_IC4PSC : 2; /// Input capture 4 prescaler
+						uint32_t TIM_ADVANCED_CCMR2_Input_0_IC4F : 4; /// Input capture 4 filter
+						uint32_t                  : 16;
+					};
+					#ifdef TIM_ADVANCED_CCMR2_Input_1
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_C3PSC : 2; /// Input capture 3 prescaler
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC3M : 3; /// Output compare 3 mode
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC3CE : 1; /// Output compare 3 clear enable
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC4FE : 1; /// Output compare 4 fast enable
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC4PE : 1; /// Output compare 4 preload enable
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC4M : 3; /// Output compare 4 mode
+						uint32_t TIM_ADVANCED_CCMR2_Input_1_OC4CE : 1; /// Output compare 4 clear enable
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_CCMR2_Input_2
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t OC3FE            : 1; /// Output compare 3 fast enable
+						uint32_t OC3PE            : 1; /// Output compare 3 preload enable
+						uint32_t                  : 28;
+					};
+					#endif
+				};
+				
+			};
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC1NE            : 1; /// Capture/Compare 1 complementary output enable
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC2E             : 1; /// Capture/Compare 2 output enable
+				uint32_t CC2P             : 1; /// Capture/Compare 2 output Polarity
+				uint32_t CC2NE            : 1; /// Capture/Compare 2 complementary output enable
+				uint32_t CC2NP            : 1; /// Capture/Compare 2 output Polarity
+				uint32_t CC3E             : 1; /// Capture/Compare 3 output enable
+				uint32_t CC3P             : 1; /// Capture/Compare 3 output Polarity
+				uint32_t CC3NE            : 1; /// Capture/Compare 3 complementary output enable
+				uint32_t CC3NP            : 1; /// Capture/Compare 3 output Polarity
+				uint32_t CC4E             : 1; /// Capture/Compare 4 output enable
+				uint32_t CC4P             : 1; /// Capture/Compare 3 output Polarity
+				uint32_t TIM_ADVANCED_CCER_CC4NE : 1; /// Capture/Compare 4 complementary output enable
+				uint32_t TIM_ADVANCED_CCER_CC4NP : 1; /// Capture/Compare 4 complementary output polarity
+				uint32_t TIM_ADVANCED_CCER_CC5E : 1; /// Capture/Compare 5 output enable
+				uint32_t TIM_ADVANCED_CCER_CC5P : 1; /// Capture/Compare 5 output polarity
+				uint32_t                  : 2;
+				uint32_t TIM_ADVANCED_CCER_CC6E : 1; /// Capture/Compare 6 output enable
+				uint32_t TIM_ADVANCED_CCER_CC6P : 1; /// Capture/Compare 6 output polarity
+				uint32_t                  : 10;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 15;
+				uint32_t TIM_ADVANCED_CNT_UIFCPY : 1; /// UIF copy
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR2_t: Reg32_t /// capture/compare register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR2             : 16; /// Capture/Compare 2 value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR3_t: Reg32_t /// capture/compare register 3
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR3             : 16; /// Capture/Compare value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR4_t: Reg32_t /// capture/compare register 4
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR4             : 16; /// Capture/Compare value
+				uint32_t                  : 16;
+				
+			};
+			struct DCR_t: Reg32_t /// DMA control register
+			{
+				using Reg32_t::operator=;
+				uint32_t DBA              : 5; /// DMA base address
+				uint32_t                  : 3;
+				uint32_t DBL              : 5; /// DMA burst length
+				uint32_t                  : 19;
+				
+			};
+			struct DMAR_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_DMAR_0
+					struct
+					{
+						uint32_t DMAB             : 32; /// DMA register for burst accesses
+					};
+					#endif
+					#ifdef TIM_ADVANCED_DMAR_1
+					struct
+					{
+						uint32_t DMAB             : 16; /// DMA register for burst accesses
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			struct RCR_t: Reg32_t /// repetition counter register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_RCR_0
+					struct
+					{
+						uint32_t REP              : 8; /// Repetition counter value
+						uint32_t                  : 24;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_RCR_1
+					struct
+					{
+						uint32_t REP              : 16; /// Repetition counter value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			struct BDTR_t: Reg32_t /// break and dead-time register
+			{
+				using Reg32_t::operator=;
+				uint32_t DTG              : 8; /// Dead-time generator setup
+				uint32_t LOCK             : 2; /// Lock configuration
+				uint32_t OSSI             : 1; /// Off-state selection for Idle mode
+				uint32_t OSSR             : 1; /// Off-state selection for Run mode
+				uint32_t BKE              : 1; /// Break enable
+				uint32_t BKP              : 1; /// Break polarity
+				uint32_t AOE              : 1; /// Automatic output enable
+				uint32_t MOE              : 1; /// Main output enable
+				uint32_t TIM_ADVANCED_BDTR_BKF : 4; /// Break filter
+				uint32_t TIM_ADVANCED_BDTR_BK2F : 4; /// Break 2 filter
+				uint32_t TIM_ADVANCED_BDTR_BK2E : 1; /// Break 2 enable
+				uint32_t TIM_ADVANCED_BDTR_BK2P : 1; /// Break 2 polarity
+				uint32_t TIM_ADVANCED_BDTR_BKDSRM : 1; /// Break Disarm
+				uint32_t TIM_ADVANCED_BDTR_BK2DSRM : 1; /// Break2 Disarm
+				uint32_t TIM_ADVANCED_BDTR_BKBID : 1; /// Break Bidirectional
+				uint32_t TIM_ADVANCED_BDTR_BK2ID : 1; /// Break2 bidirectional
+				uint32_t                  : 2;
+				
+			};
+			#ifdef TIM_ADVANCED_CCMR3_Output
+			struct CCMR3_Output_t: Reg32_t /// capture/compare mode register 3 (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t OC5FE            : 1; /// Output compare 5 fast enable
+						uint32_t OC5PE            : 1; /// Output compare 5 preload enable
+						uint32_t OC5M             : 3; /// Output compare 5 mode
+						uint32_t OC5CE            : 1; /// Output compare 5 clear enable
+						uint32_t                  : 2;
+						uint32_t OC6FE            : 1; /// Output compare 6 fast enable
+						uint32_t OC6PE            : 1; /// Output compare 6 preload enable
+						uint32_t OC6M             : 3; /// Output compare 6 mode
+						uint32_t OC6CE            : 1; /// Output compare 6 clear enable
+						uint32_t TIM_ADVANCED_CCMR3_Output_0_OC5M3 : 1; /// Output Compare 5 mode
+						uint32_t                  : 7;
+						uint32_t TIM_ADVANCED_CCMR3_Output_0_OC6M3 : 1; /// Output Compare 6 mode
+						uint32_t                  : 7;
+					};
+					#ifdef TIM_ADVANCED_CCMR3_Output_1
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3 : 3; /// Output Compare 5 mode bit 3
+						uint32_t                  : 5;
+						uint32_t OC6M_bit3        : 1; /// Output Compare 6 mode bit 3
+						uint32_t                  : 7;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_CCMR3_Output_2
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t OC5M_bit3        : 1; /// Output Compare 5 mode bit 3
+						uint32_t                  : 15;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_CCR5
+			struct CCR5_t: Reg32_t /// capture/compare register 5
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR5             : 16; /// Capture/Compare 5 value
+				uint32_t                  : 13;
+				uint32_t GC5C1            : 1; /// Group Channel 5 and Channel 1
+				uint32_t GC5C2            : 1; /// Group Channel 5 and Channel 2
+				uint32_t GC5C3            : 1; /// Group Channel 5 and Channel 3
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_CRR6
+			struct CRR6_t: Reg32_t /// capture/compare register 6
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR6             : 16; /// Capture/Compare 6 value
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_AF1
+			struct AF1_t: Reg32_t /// TIM1 alternate function option register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP3E : 1; /// BRK COMP3 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP4E : 1; /// BRK COMP4 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP5E : 1; /// BRK COMP5 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP6E : 1; /// BRK COMP6 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP7E : 1; /// BRK COMP7 enable
+						uint32_t TIM_ADVANCED_AF1_0_BKDF1BK0E : 1; /// BRK dfsdm1_break[0] enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP3P : 1; /// BRK COMP3 input polarity
+						uint32_t TIM_ADVANCED_AF1_0_BKCMP4P : 1; /// BRK COMP4 input polarity
+						uint32_t TIM_ADVANCED_AF1_0_ETRSEL : 4; /// ETR source selection
+						uint32_t                  : 14;
+					};
+					#ifdef TIM_ADVANCED_AF1_1
+					struct
+					{
+						uint32_t                  : 14;
+						uint32_t ETRSEL           : 3; /// ETR source selection
+						uint32_t                  : 15;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_AF2
+			struct AF2_t: Reg32_t /// TIM1 Alternate function odfsdm1_breakster 2
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t TIM_ADVANCED_AF2_0_BK2INE : 1; /// BRK2 BKIN input enable
+						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP3E : 1; /// BRK2 COMP3 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP4E : 1; /// BRK2 COMP4 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP5E : 1; /// BRK2 COMP5 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP6E : 1; /// BRK2 COMP6 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP7E : 1; /// BRK2 COMP7 enable
+						uint32_t TIM_ADVANCED_AF2_0_BK2DF1BK1E : 1; /// BRK2 dfsdm1_break[1] enable
+						uint32_t BK2INP           : 1; /// BRK2 BKIN2 input polarity
+						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarit
+						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP3P : 1; /// BRK2 COMP3 input polarity
+						uint32_t TIM_ADVANCED_AF2_0_BK2CMP4P : 1; /// BRK2 COMP4 input polarity
+						uint32_t                  : 2;
+						uint32_t TIM_ADVANCED_AF2_0_OCRSEL : 3; /// OCREF_CLR source selection
+						uint32_t                  : 13;
+					};
+					#ifdef TIM_ADVANCED_AF2_1
+					struct
+					{
+						uint32_t TIM_ADVANCED_AF2_1_BKINE : 1; /// BRK BKIN input enable
+						uint32_t                  : 7;
+						uint32_t TIM_ADVANCED_AF2_1_BK2DFBK0E : 1; /// BRK2 DFSDM_BREAK0 enable
+						uint32_t                  : 23;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_TISEL
+			struct TISEL_t: Reg32_t /// TIM1 timer input selection register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_TISEL_0
+					struct
+					{
+						uint32_t TI1SEL           : 4; /// selects TI1[0] to TI1[15] input
+						uint32_t                  : 4;
+						uint32_t TI2SEL           : 4; /// selects TI2[0] to TI2[15] input
+						uint32_t                  : 4;
+						uint32_t TI3SEL           : 4; /// selects TI3[0] to TI3[15] input
+						uint32_t                  : 4;
+						uint32_t TI4SEL           : 4; /// selects TI4[0] to TI4[15] input
+						uint32_t                  : 4;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_TISEL_1
+					struct
+					{
+						uint32_t TI1SEL3_0        : 4; /// selects TI1[0] to TI1[15] input
+						uint32_t                  : 4;
+						uint32_t TI2SEL3_0        : 4; /// selects TI2[0] to TI2[15] input
+						uint32_t                  : 4;
+						uint32_t TI3SEL3_0        : 4; /// selects TI3[0] to TI3[15] input
+						uint32_t                  : 4;
+						uint32_t TI4SEL3_0        : 4; /// selects TI4[0] to TI4[15] input
+						uint32_t                  : 4;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_OR1
+			struct OR1_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_OR1_2
+					struct
+					{
+						uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
+						uint32_t TIM_ADVANCED_OR1_2_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
+						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_OR1_3
+					struct
+					{
+						uint32_t OCREF_CLR        : 1; /// Ocref_clr source selection
+						uint32_t                  : 31;
+					};
+					#endif
+					tmpl::OR1_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_CCR6
+			struct CCR6_t: Reg32_t /// capture/compare register 4
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR6             : 16; /// Capture/Compare value
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_OR2
+			struct OR2_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_OR2_2
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t                  : 5;
+						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+						uint32_t                  : 2;
+						uint32_t ETRSEL           : 3; /// ETR source selection
+						uint32_t                  : 15;
+					};
+					#endif
+					tmpl::OR2_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_OR3
+			struct OR3_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_ADVANCED_OR3_2
+					struct
+					{
+						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
+						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+						uint32_t                  : 5;
+						uint32_t TIM_ADVANCED_OR3_2_BK2DFBK0E : 1; /// BRK2 DFSDM_BREAK0 enable
+						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
+						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
+						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
+						uint32_t                  : 20;
+					};
+					#endif
+					tmpl::OR3_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_DTR2
+			struct DTR2_t: Reg32_t /// timer Deadtime Register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t DTGF             : 8; /// Dead-time falling edge generator setup
+				uint32_t                  : 8;
+				uint32_t DTAE             : 1; /// Deadtime Asymmetric Enable
+				uint32_t DTPE             : 1; /// Deadtime Preload Enable
+				uint32_t                  : 14;
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_ECR
+			struct ECR_t: Reg32_t /// DMA control register
+			{
+				using Reg32_t::operator=;
+				uint32_t IE               : 1; /// Index Enable
+				uint32_t IDIR             : 2; /// Index Direction
+				uint32_t IBLK             : 2; /// Index Blanking
+				uint32_t FIDX             : 1; /// First Index
+				uint32_t IPOS             : 2; /// Index Positioning
+				uint32_t                  : 8;
+				uint32_t PW               : 8; /// Pulse width
+				uint32_t PWPRSC           : 3; /// Pulse Width prescaler
+				uint32_t                  : 5;
+				
+			};
+			#endif
+			#ifdef TIM_ADVANCED_OR
+			struct OR_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				uint32_t TIM1_ETR_ADC1_RMP : 2; /// TIM1_ETR_ADC1 remapping capability
+				uint32_t                  : 2;
+				uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
+				uint32_t                  : 27;
+				
+			};
+			#endif
+			union
+			{
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					CR2_t CR2; /// control register 2
+					SMCR_t SMCR; /// slave mode control register
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					CCMR2_Input_t CCMR2_Input; /// capture/compare mode register 2 (input mode)
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_32;
+					TIM_ADVANCED_MAP0_CCR5; /// capture/compare register 4
+					__SOOL_PERIPH_PADDING_4;
+					TIM_ADVANCED_MAP0_OR; /// DMA address for full transfer
+					__SOOL_PERIPH_PADDING_8;
+					TIM_ADVANCED_MAP0_CCR6; /// capture/compare register 4
+					TIM_ADVANCED_MAP0_OR2; /// DMA address for full transfer
+					TIM_ADVANCED_MAP0_OR3; /// DMA address for full transfer
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					CCMR2_Output_t CCMR2_Output; /// capture/compare mode register 2 (output mode)
+					CCER_t CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					RCR_t RCR; /// repetition counter register
+					CCR1_t CCR1; /// capture/compare register 1
+					CCR2_t CCR2; /// capture/compare register 2
+					CCR3_t CCR3; /// capture/compare register 3
+					CCR4_t CCR4; /// capture/compare register 4
+					BDTR_t BDTR; /// break and dead-time register
+					TIM_ADVANCED_MAP1_DCR; /// DMA control register
+					TIM_ADVANCED_MAP1_DMAR; /// DMA address for full transfer
+					TIM_ADVANCED_MAP1_OR1; /// DMA address for full transfer
+					TIM_ADVANCED_MAP1_CCMR3_Output; /// capture/compare mode register 3 (output mode)
+					TIM_ADVANCED_MAP1_CCR5; /// capture/compare register 5
+					TIM_ADVANCED_MAP1_CRR6; /// capture/compare register 6
+					TIM_ADVANCED_MAP1_AF1; /// TIM1 alternate function option register 1
+					TIM_ADVANCED_MAP1_AF2; /// TIM1 Alternate function odfsdm1_breakster 2
+					TIM_ADVANCED_MAP1_TISEL; /// TIM1 timer input selection register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				#ifdef TIM_ADVANCED_MAP2
+				struct
+				{
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_64;
+					CCR6_t CCR6; /// capture/compare register 4
+					CCMR3_Output_t CCMR3_Output; /// capture/compare mode register 2 (output mode)
+					DTR2_t DTR2; /// timer Deadtime Register 2
+					ECR_t ECR; /// DMA control register
+					TISEL_t TISEL; /// TIM timer input selection register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					DCR_t DCR; /// control register
+					DMAR_t DMAR; /// DMA address for full transfer
+				};
+				#endif
+			};
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_ADVANCED() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_GENERAL_3
+		template<typename tmpl=TIM_GENERAL_3_tmpl_default>
+		class TIM_GENERAL_3 /// general purpose timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_3_CR1_0
+					struct
+					{
+						uint32_t CEN              : 1; /// Counter enable
+						uint32_t UDIS             : 1; /// Update disable
+						uint32_t URS              : 1; /// Update request source
+						uint32_t OPM              : 1; /// One-pulse mode
+						uint32_t                  : 3;
+						uint32_t ARPE             : 1; /// Auto-reload preload enable
+						uint32_t CKD              : 2; /// Clock division
+						uint32_t                  : 1;
+						uint32_t TIM_GENERAL_3_CR1_0_UIFREMAP : 1; /// UIF status bit remapping
+						uint32_t TIM_GENERAL_3_CR1_0_DITHEN : 1; /// Dithering Enable
+						uint32_t                  : 19;
+					};
+					#endif
+					tmpl::CR1_t;
+				};
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCPC             : 1; /// Capture/compare preloaded control
+				uint32_t                  : 1;
+				uint32_t CCUS             : 1; /// Capture/compare control update selection
+				uint32_t CCDS             : 1; /// Capture/compare DMA selection
+				uint32_t                  : 4;
+				uint32_t OIS1             : 1; /// Output Idle state 1
+				uint32_t OIS1N            : 1; /// Output Idle state 1
+				uint32_t                  : 22;
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_3_DIER_0
+					struct
+					{
+						uint32_t UIE              : 1; /// Update interrupt enable
+						uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+						uint32_t                  : 3;
+						uint32_t COMIE            : 1; /// COM interrupt enable
+						uint32_t TIM_GENERAL_3_DIER_0_TIE : 1; /// Trigger interrupt enable
+						uint32_t BIE              : 1; /// Break interrupt enable
+						uint32_t UDE              : 1; /// Update DMA request enable
+						uint32_t CC1DE            : 1; /// Capture/Compare 1 DMA request enable
+						uint32_t                  : 3;
+						uint32_t TIM_GENERAL_3_DIER_0_COMDE : 1; /// COM DMA request enable
+						uint32_t TIM_GENERAL_3_DIER_0_TDE : 1; /// Trigger DMA request enable
+						uint32_t                  : 17;
+					};
+					#endif
+					tmpl::DIER_t;
+				};
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t                  : 3;
+				uint32_t COMIF            : 1; /// COM interrupt flag
+				uint32_t TIM_GENERAL_3_SR_TIF : 1; /// Trigger interrupt flag
+				uint32_t BIF              : 1; /// Break interrupt flag
+				uint32_t                  : 1;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t                  : 22;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t                  : 3;
+				uint32_t COMG             : 1; /// Capture/Compare control update generation
+				uint32_t TIM_GENERAL_3_EGR_TG : 1; /// Trigger generation
+				uint32_t BG               : 1; /// Break generation
+				uint32_t                  : 24;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+						uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+						uint32_t OC1M             : 3; /// Output Compare 1 mode
+						uint32_t                  : 9;
+						uint32_t TIM_GENERAL_3_CCMR1_Output_0_OC1M_2 : 1; /// Output Compare 1 mode
+						uint32_t                  : 15;
+					};
+					#ifdef TIM_GENERAL_3_CCMR1_Output_1
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t OC1M_3           : 1; /// Output Compare 1 mode
+						uint32_t                  : 15;
+					};
+					#endif
+				};
+				
+			};
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+				uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+				uint32_t IC1F             : 4; /// Input capture 1 filter
+				uint32_t                  : 24;
+				
+			};
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC1NE            : 1; /// Capture/Compare 1 complementary output enable
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 28;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 15;
+				uint32_t TIM_GENERAL_3_CNT_UIFCPY : 1; /// UIF Copy
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			struct RCR_t: Reg32_t /// repetition counter register
+			{
+				using Reg32_t::operator=;
+				uint32_t REP              : 8; /// Repetition counter value
+				uint32_t                  : 24;
+				
+			};
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct BDTR_t: Reg32_t /// break and dead-time register
+			{
+				using Reg32_t::operator=;
+				uint32_t DTG              : 8; /// Dead-time generator setup
+				uint32_t LOCK             : 2; /// Lock configuration
+				uint32_t OSSI             : 1; /// Off-state selection for Idle mode
+				uint32_t OSSR             : 1; /// Off-state selection for Run mode
+				uint32_t BKE              : 1; /// Break enable
+				uint32_t BKP              : 1; /// Break polarity
+				uint32_t AOE              : 1; /// Automatic output enable
+				uint32_t MOE              : 1; /// Main output enable
+				uint32_t TIM_GENERAL_3_BDTR_BKF : 4; /// Break filter
+				uint32_t                  : 6;
+				uint32_t TIM_GENERAL_3_BDTR_BKDSRM : 1; /// Break Disarm
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_3_BDTR_BKBID : 1; /// Break Bidirectional
+				uint32_t                  : 3;
+				
+			};
+			struct DCR_t: Reg32_t /// DMA control register
+			{
+				using Reg32_t::operator=;
+				uint32_t DBA              : 5; /// DMA base address
+				uint32_t                  : 3;
+				uint32_t DBL              : 5; /// DMA burst length
+				uint32_t                  : 19;
+				
+			};
+			struct DMAR_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_3_DMAR_0
+					struct
+					{
+						uint32_t DMAB             : 16; /// DMA register for burst accesses
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef TIM_GENERAL_3_DMAR_1
+					struct
+					{
+						uint32_t DMAB             : 32; /// DMA register for burst accesses
+					};
+					#endif
+				};
+				
+			};
+			#ifdef TIM_GENERAL_3_OR1
+			struct OR1_t: Reg32_t /// TIM16 option register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_3_OR1_1
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+						uint32_t                  : 30;
+					};
+					#endif
+					tmpl::OR1_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_OR2
+			struct OR2_t: Reg32_t /// TIM17 option register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_3_OR2_1
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t                  : 5;
+						uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+						uint32_t                  : 20;
+					};
+					#endif
+					tmpl::OR2_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_DTR2
+			struct DTR2_t: Reg32_t /// timer Deadtime Register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t DTGF             : 8; /// Dead-time generator setup
+				uint32_t                  : 8;
+				uint32_t DTAE             : 1; /// Deadtime Asymmetric Enable
+				uint32_t DTPE             : 1; /// Deadtime Preload Enable
+				uint32_t                  : 14;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_TISEL
+			struct TISEL_t: Reg32_t /// TIM timer input selection register
+			{
+				using Reg32_t::operator=;
+				uint32_t TI1SEL           : 4; /// TI1[0] to TI1[15] input selection
+				uint32_t                  : 28;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_AF1
+			struct AF1_t: Reg32_t /// TIM alternate function option register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t BKINE            : 1; /// BRK BKIN input enable
+				uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+				uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+				uint32_t TIM_GENERAL_3_AF1_BKCMP3E : 1; /// BRK COMP3 enable
+				uint32_t TIM_GENERAL_3_AF1_BKCMP4E : 1; /// BRK COMP4 enable
+				uint32_t TIM_GENERAL_3_AF1_BKCMP5E : 1; /// BRK COMP5 enable
+				uint32_t TIM_GENERAL_3_AF1_BKCMP6E : 1; /// BRK COMP6 enable
+				uint32_t TIM_GENERAL_3_AF1_BKCMP7E : 1; /// BRK COMP7 enable
+				uint32_t TIM_GENERAL_3_AF1_BKDFBK1E : 1; /// BRK DFSDM_BREAK1 enable
+				uint32_t BKINP            : 1; /// BRK BKIN input polarity
+				uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+				uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+				uint32_t TIM_GENERAL_3_AF1_BKCMP3P : 1; /// BRK COMP3 input polarity
+				uint32_t TIM_GENERAL_3_AF1_BKCMP4P : 1; /// BRK COMP4 input polarity
+				uint32_t                  : 18;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_AF2
+			struct AF2_t: Reg32_t /// TIM alternate function option register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 16;
+				uint32_t OCRSEL           : 3; /// OCREF_CLR source selection
+				uint32_t                  : 13;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_3_OR
+			struct OR_t: Reg32_t /// TIM16 option register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+				uint32_t                  : 30;
+				
+			};
+			#endif
+			union
+			{
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					CR2_t CR2; /// control register 2
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_3_MAP0_DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register (output mode)
+					TIM_GENERAL_3_MAP0_CCER; /// capture/compare enable register
+					TIM_GENERAL_3_MAP0_CNT; /// counter
+					TIM_GENERAL_3_MAP0_PSC; /// prescaler
+					TIM_GENERAL_3_MAP0_ARR; /// auto-reload register
+					TIM_GENERAL_3_MAP0_RCR; /// repetition counter register
+					TIM_GENERAL_3_MAP0_CCR1; /// capture/compare register 1
+					TIM_GENERAL_3_MAP0_BDTR; /// break and dead-time register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_3_MAP0_OR; /// TIM16 option register 1
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_3_MAP0_AF1; /// TIM alternate function option register 1
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					TIM_GENERAL_3_MAP0_DCR; /// DMA control register
+					TIM_GENERAL_3_MAP0_DMAR; /// DMA address for full transfer
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_3_MAP1_DIER; /// DMA/Interrupt enable register
+					__SOOL_PERIPH_PADDING_8;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					CCER_t CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					RCR_t RCR; /// repetition counter register
+					CCR1_t CCR1; /// capture/compare register 1
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					BDTR_t BDTR; /// break and dead-time register
+					TIM_GENERAL_3_MAP1_DCR; /// DMA control register
+					TIM_GENERAL_3_MAP1_DMAR; /// DMA address for full transfer
+					TIM_GENERAL_3_MAP1_OR1; /// TIM16 option register 1
+					TIM_GENERAL_3_MAP1_DTR2; /// timer Deadtime Register 2
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_3_MAP1_TISEL; /// TIM timer input selection register
+					TIM_GENERAL_3_MAP1_OR2; /// TIM17 option register 1
+					TIM_GENERAL_3_MAP1_AF2; /// TIM alternate function option register 2
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				#ifdef TIM_GENERAL_3_MAP2
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					DCR_t DCR; /// DMA control register
+					DMAR_t DMAR; /// DMA address for full transfer
+					OR_t OR; /// TIM16 option register 1
+					DIER_t AF1; /// TIM17 option register 1
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				#endif
+				#ifdef TIM_GENERAL_3_MAP3
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_3_MAP3_DIER; /// DMA/Interrupt enable register
+					TIM_GENERAL_3_MAP3_SR; /// status register
+					TIM_GENERAL_3_MAP3_EGR; /// event generation register
+					TIM_GENERAL_3_MAP3_CCMR1_Output; /// capture/compare mode register (output mode)
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_64;
+					TIM_GENERAL_3_MAP3_AF1; /// TIM17 option register 1
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_3_MAP3_TISEL; /// input selection register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				#endif
+			};
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_3() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_GENERAL_5
+		class TIM_GENERAL_5 /// general purpose timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t OPM              : 1; /// One-pulse mode
+				uint32_t                  : 3;
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t CKD              : 2; /// Clock division
+				uint32_t                  : 22;
+				
+			};
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				uint32_t SMS              : 3; /// Slave mode selection
+				uint32_t                  : 1;
+				uint32_t TS               : 3; /// Trigger selection
+				uint32_t MSM              : 1; /// Master/Slave mode
+				uint32_t                  : 24;
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t CC2IE            : 1; /// Capture/Compare 2 interrupt enable
+				uint32_t                  : 3;
+				uint32_t TIE              : 1; /// Trigger interrupt enable
+				uint32_t                  : 25;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t CC2IF            : 1; /// Capture/Compare 2 interrupt flag
+				uint32_t                  : 3;
+				uint32_t TIF              : 1; /// Trigger interrupt flag
+				uint32_t                  : 2;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t CC2OF            : 1; /// Capture/compare 2 overcapture flag
+				uint32_t                  : 21;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t CC2G             : 1; /// Capture/compare 2 generation
+				uint32_t                  : 3;
+				uint32_t TG               : 1; /// Trigger generation
+				uint32_t                  : 25;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+				uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+				uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+				uint32_t OC1M             : 3; /// Output Compare 1 mode
+				uint32_t                  : 1;
+				uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+				uint32_t OC2FE            : 1; /// Output Compare 2 fast enable
+				uint32_t OC2PE            : 1; /// Output Compare 2 preload enable
+				uint32_t OC2M             : 3; /// Output Compare 2 mode
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_5_CCMR1_Output_OC1M_3 : 1; /// Output Compare 1 mode - bit 3
+				uint32_t                  : 7;
+				uint32_t TIM_GENERAL_5_CCMR1_Output_OC2M_3 : 1; /// Output Compare 2 mode - bit 3
+				uint32_t                  : 7;
+				
+			};
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t TIM_GENERAL_5_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
+						uint32_t IC1F             : 3; /// Input capture 1 filter
+						uint32_t                  : 1;
+						uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+						uint32_t TIM_GENERAL_5_CCMR1_Input_0_IC2PCS : 2; /// Input capture 2 prescaler
+						uint32_t TIM_GENERAL_5_CCMR1_Input_0_IC2F : 3; /// Input capture 2 filter
+						uint32_t                  : 17;
+					};
+					#ifdef TIM_GENERAL_5_CCMR1_Input_1
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+						uint32_t                  : 6;
+						uint32_t IC2PSC           : 2; /// Input capture 2 prescaler
+						uint32_t IC2F             : 4; /// Input capture 2 filter
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC2E             : 1; /// Capture/Compare 2 output enable
+				uint32_t CC2P             : 1; /// Capture/Compare 2 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC2NP            : 1; /// Capture/Compare 2 output Polarity
+				uint32_t                  : 24;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 16;
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR2_t: Reg32_t /// capture/compare register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR2             : 16; /// Capture/Compare 2 value
+				uint32_t                  : 16;
+				
+			};
+			union
+			{
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					__SOOL_PERIPH_PADDING_4;
+					SMCR_t SMCR; /// slave mode control register
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					__SOOL_PERIPH_PADDING_32;
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					CCER_t CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					CCR1_t CCR1; /// capture/compare register 1
+					CCR2_t CCR2; /// capture/compare register 2
 				};
 			};
 			private:
-			TIM() = delete;
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_5() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_GENERAL_6
+		template<typename tmpl=TIM_GENERAL_6_tmpl_default>
+		class TIM_GENERAL_6 /// general purpose timers
+		{
+			
+			#ifdef TIM_GENERAL_6_CR1
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t TIM_GENERAL_6_CR1_OPM : 1; /// One-pulse mode
+				uint32_t                  : 3;
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t CKD              : 2; /// Clock division
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_6_CR1_UIFREMAP : 1; /// UIF status bit remapping
+				uint32_t                  : 20;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_DIER
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t                  : 30;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_SR
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t                  : 7;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t                  : 22;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_EGR
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t                  : 30;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_CCMR1_Output
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+				uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+				uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+				uint32_t OC1M             : 3; /// Output Compare 1 mode
+				uint32_t TIM_GENERAL_6_CCMR1_Output_OC1CE : 1;
+				uint32_t                  : 8;
+				uint32_t TIM_GENERAL_6_CCMR1_Output_OC1M_3 : 1; /// Output Compare 1 mode - bit 3
+				uint32_t                  : 15;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_CCMR1_Input
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_6_CCMR1_Input_0
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t TIM_GENERAL_6_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
+						uint32_t IC1F             : 4; /// Input capture 1 filter
+						uint32_t                  : 24;
+					};
+					#endif
+					#ifdef TIM_GENERAL_6_CCMR1_Input_1
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					tmpl::CCMR1_Input_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_CCER
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 28;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_CNT
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 15;
+				uint32_t TIM_GENERAL_6_CNT_UIFCPY : 1; /// UIF Copy
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_PSC
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_ARR
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_CCR1
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_SMCR
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_6_SMCR_0
+					struct
+					{
+						uint32_t SMS              : 3; /// Slave mode selection
+						uint32_t                  : 1;
+						uint32_t TS               : 3; /// Trigger selection
+						uint32_t MSM              : 1; /// Master/slave mode
+						uint32_t ETF              : 4; /// External trigger filter
+						uint32_t ETPS             : 2; /// External trigger prescaler
+						uint32_t ECE              : 1; /// External clock enable
+						uint32_t ETP              : 1; /// External trigger polarity
+						uint32_t SMS3             : 1; /// Slave mode selection
+						uint32_t                  : 15;
+					};
+					#endif
+					#ifdef TIM_GENERAL_6_SMCR_1
+					struct
+					{
+						uint32_t Res              : 32; /// Res.
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_OR
+			struct OR_t: Reg32_t /// option register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_6_OR_0
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// TIM11 Input 1 remapping capability
+						uint32_t                  : 30;
+					};
+					#endif
+					#ifdef TIM_GENERAL_6_OR_2
+					struct
+					{
+						uint32_t RMP              : 2; /// Input 1 remapping capability
+						uint32_t                  : 30;
+					};
+					#endif
+					tmpl::OR_t;
+				};
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TISEL
+			struct TISEL_t: Reg32_t /// TIM timer input selection register
+			{
+				using Reg32_t::operator=;
+				uint32_t TISEL            : 4; /// TI1[0] to TI1[15] input selection
+				uint32_t                  : 28;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_ISR
+			struct TIMx_ISR_t: Reg32_t /// TIM Interrupt Status Register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1;
+				uint32_t CC1IF            : 1;
+				uint32_t CC2IF            : 1;
+				uint32_t CC3IF            : 1;
+				uint32_t CC4IF            : 1;
+				uint32_t                  : 1;
+				uint32_t TIF              : 1;
+				uint32_t                  : 1;
+				uint32_t RSVD             : 5;
+				uint32_t                  : 19;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_MISSR
+			struct TIMx_MISSR_t: Reg32_t /// TIM interrupt missed register
+			{
+				using Reg32_t::operator=;
+				uint32_t RSVD             : 7;
+				uint32_t                  : 2;
+				uint32_t CC1IM            : 1;
+				uint32_t CC2IM            : 1;
+				uint32_t CC3IM            : 1;
+				uint32_t CC4IM            : 1;
+				uint32_t                  : 19;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CR1
+			struct TIMx_CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1;
+				uint32_t UDIS             : 1;
+				uint32_t URS              : 1;
+				uint32_t OPM              : 1;
+				uint32_t DIR              : 1;
+				uint32_t CMS              : 2;
+				uint32_t ARBE             : 1;
+				uint32_t                  : 24;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_IER
+			struct TIMx_IER_t: Reg32_t /// TIM Interrupt Enable Register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1;
+				uint32_t CC1IE            : 1;
+				uint32_t CC2IE            : 1;
+				uint32_t CC3IE            : 1;
+				uint32_t CC4IE            : 1;
+				uint32_t                  : 1;
+				uint32_t TIE              : 1;
+				uint32_t                  : 25;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CR2
+			struct TIMx_CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 4;
+				uint32_t MMS              : 3;
+				uint32_t TI1S             : 1;
+				uint32_t                  : 24;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_SMCR
+			struct TIMx_SMCR_t: Reg32_t /// slave Mode Control register
+			{
+				using Reg32_t::operator=;
+				uint32_t SMS              : 3;
+				uint32_t                  : 1;
+				uint32_t TS               : 3;
+				uint32_t MSM              : 1;
+				uint32_t ETF              : 4;
+				uint32_t ETPS             : 2;
+				uint32_t ECE              : 1;
+				uint32_t ETP              : 1;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_EGR
+			struct TIMx_EGR_t: Reg32_t /// TIM event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1;
+				uint32_t CC1G             : 1;
+				uint32_t CC2G             : 1;
+				uint32_t CC3G             : 1;
+				uint32_t CC4G             : 1;
+				uint32_t                  : 1;
+				uint32_t TG               : 1;
+				uint32_t                  : 25;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCMR1_Input
+			struct TIMx_CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (Input mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2;
+				uint32_t IC1PSC           : 2;
+				uint32_t IC1F             : 4;
+				uint32_t CC2S             : 2;
+				uint32_t IC2PSC           : 2;
+				uint32_t IC2F             : 4;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCMR1_Output
+			struct TIMx_CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2;
+				uint32_t OC1FE            : 1;
+				uint32_t OC1PE            : 1;
+				uint32_t OC1M             : 3;
+				uint32_t                  : 1;
+				uint32_t CC2S             : 2;
+				uint32_t OC2FE            : 1;
+				uint32_t OC2PE            : 1;
+				uint32_t OC2M             : 3;
+				uint32_t                  : 17;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCMR2_Input
+			struct TIMx_CCMR2_Input_t: Reg32_t /// capture/compare mode register 2 (input mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC3S             : 2;
+				uint32_t IC3PSC           : 2;
+				uint32_t IC3F             : 4;
+				uint32_t CC4S             : 2;
+				uint32_t IC4PSC           : 2;
+				uint32_t IC4F             : 4;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCMR2_Output
+			struct TIMx_CCMR2_Output_t: Reg32_t /// capture/compare mode register 2 (output mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC3S             : 2;
+				uint32_t OC3FE            : 1;
+				uint32_t OC3PE            : 1;
+				uint32_t OC3M             : 3;
+				uint32_t                  : 1;
+				uint32_t CC4S             : 2;
+				uint32_t OC4FE            : 1;
+				uint32_t OC4PE            : 1;
+				uint32_t OC4M             : 3;
+				uint32_t                  : 17;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCER
+			struct TIMx_CCER_t: Reg32_t /// TIM capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1;
+				uint32_t CC1P             : 1;
+				uint32_t                  : 2;
+				uint32_t CC2E             : 1;
+				uint32_t CC2P             : 1;
+				uint32_t                  : 2;
+				uint32_t CC3E             : 1;
+				uint32_t CC3P             : 1;
+				uint32_t                  : 2;
+				uint32_t CC4E             : 1;
+				uint32_t CC4P             : 1;
+				uint32_t                  : 18;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CNT
+			struct TIMx_CNT_t: Reg32_t /// TIM counter register
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_PSC
+			struct TIMx_PSC_t: Reg32_t /// TIM prescaler register
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_ARR
+			struct TIMx_ARR_t: Reg32_t /// TIM auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIMx_CCRx
+			struct TIMx_CCRx_t: Reg32_t /// IM capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR              : 16;
+				uint32_t                  : 16;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIM1_OR
+			struct TIM1_OR_t: Reg32_t /// TIM option register
+			{
+				using Reg32_t::operator=;
+				tmpl::TIM1_OR_t;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_6_TIM2_OR
+			struct TIM2_OR_t: Reg32_t /// TIM option register
+			{
+				using Reg32_t::operator=;
+				tmpl::TIM2_OR_t;
+				
+			};
+			#endif
+			union
+			{
+				#ifdef TIM_GENERAL_6_MAP0
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					__SOOL_PERIPH_PADDING_8;
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_2048;
+					__SOOL_PERIPH_PADDING_16384;
+				};
+				#endif
+				struct
+				{
+					TIM_GENERAL_6_MAP1_TIM1_ISR; /// TIM Interrupt Status Register
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_6_MAP1_SMCR; /// slave mode control register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_6_MAP1_CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_6_MAP1_CCER; /// capture/compare enable register
+					TIM_GENERAL_6_MAP1_CNT; /// counter
+					TIM_GENERAL_6_MAP1_PSC; /// prescaler
+					TIM_GENERAL_6_MAP1_ARR; /// auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_6_MAP1_CCR1; /// capture/compare register 1
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_6_MAP1_OR; /// option register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_6_MAP1_TISEL; /// TIM timer input selection register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					__SOOL_PERIPH_PADDING_1024;
+					__SOOL_PERIPH_PADDING_4096;
+					__SOOL_PERIPH_PADDING_8192;
+					TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input; /// capture/compare mode register 2 (input mode)
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_4096;
+				};
+				#ifdef TIM_GENERAL_6_MAP2
+				struct
+				{
+					TIMx_ISR_t TIM2_ISR; /// TIM Interrupt Status Register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					TIMx_MISSR_t TIM1_MISSR; /// TIM interrupt missed register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_32;
+					TIMx_IER_t TIM1_IER; /// TIM Interrupt Enable Register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					__SOOL_PERIPH_PADDING_1024;
+					__SOOL_PERIPH_PADDING_4096;
+					__SOOL_PERIPH_PADDING_8192;
+					TIMx_CR1_t TIM1_CR1; /// control register 1
+					TIMx_CR2_t TIM1_CR2; /// control register 2
+					TIMx_SMCR_t TIM1_SMCR; /// slave Mode Control register
+					__SOOL_PERIPH_PADDING_8;
+					TIMx_EGR_t TIM1_EGR; /// TIM event generation register
+					TIMx_CCMR1_Input_t TIM1_CCMR1_Input; /// capture/compare mode register 1 (Input mode)
+					TIMx_CCMR2_Output_t TIM1_CCMR2_Output; /// capture/compare mode register 2 (output mode)
+					TIMx_CCER_t TIM1_CCER; /// TIM capture/compare enable register
+					TIMx_CNT_t TIM1_CNT; /// TIM counter register
+					TIMx_PSC_t TIM1_PSC; /// TIM prescaler register
+					TIMx_ARR_t TIM1_ARR; /// TIM auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					TIMx_CCRx_t TIM1_CCR1; /// IM capture/compare register 1
+					TIMx_CCRx_t TIM1_CCR2; /// TIM capture/compare register 2
+					TIMx_CCRx_t TIM1_CCR3; /// TIM capture/compare register 3
+					TIMx_CCRx_t TIM1_CCR4; /// TIM capture/compare register 4
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM1_OR_t TIM1_OR; /// TIM option register
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					__SOOL_PERIPH_PADDING_1024;
+					__SOOL_PERIPH_PADDING_2048;
+					TIMx_CCMR1_Output_t TIM2_CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					TIMx_CCMR2_Input_t TIM2_CCMR2_Input; /// capture/compare mode register 2 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+				};
+				#endif
+				#ifdef TIM_GENERAL_6_MAP3
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					TIMx_MISSR_t TIM2_MISSR; /// TIM interrupt missed register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_32;
+					TIMx_IER_t TIM2_IER; /// TIM Interrupt Enable Register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					__SOOL_PERIPH_PADDING_1024;
+					__SOOL_PERIPH_PADDING_16384;
+					TIMx_CR1_t TIM2_CR1; /// control register 1
+					TIMx_CR2_t TIM2_CR2; /// control register 1
+					TIMx_SMCR_t TIM2_SMCR; /// TIM slave Mode Control register
+					__SOOL_PERIPH_PADDING_8;
+					TIMx_EGR_t TIM2_EGR; /// TIM event generation register
+					TIMx_CCMR1_Input_t TIM2_CCMR1_Input; /// capture/compare mode register 1 (Input mode)
+					TIMx_CCMR2_Output_t TIM2_CCMR2_Output; /// capture/compare mode register 2 (output mode)
+					TIMx_CCER_t TIM2_CCER; /// TIM capture/compare enable register
+					TIMx_CNT_t TIM2_CNT; /// TIM counter register
+					TIMx_PSC_t TIM2_PSC; /// TIM prescaler register
+					TIMx_ARR_t TIM2_ARR; /// TIM auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					TIMx_CCRx_t TIM2_CCR1; /// TIM capture/compare register 1
+					TIMx_CCRx_t TIM2_CCR2; /// TIM capture/compare register 2
+					TIMx_CCRx_t TIM2_CCR3; /// TIM capture/compare register 3
+					TIMx_CCRx_t TIM2_CCR4; /// TIM capture/compare register 4
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					TIM2_OR_t TIM2_OR; /// TIM option register
+				};
+				#endif
+			};
 			private:
-				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
-			
-				static constexpr volatile Reg32_t &get_clock_enable_reg(const uint32_t addr);
-			
-			public:
-				void enable_clock() volatile;
-			
-				void disable_clock() volatile;
-			
-				bool is_clock_enabled() const volatile;
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_6() = delete;
+			#endif
 			
 		};
-		
-		//region instances
-#if defined(STM32F0     ) || defined(STM32F1     ) || defined(STM32F2     ) || defined(STM32F302xC ) ||\
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F373xC ) ||\
-    defined(STM32F378xx ) || defined(STM32F398xx ) || defined(STM32F401xC ) || defined(STM32F401xE ) ||\
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) ||\
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) || defined(STM32L451xx ) ||\
-    defined(STM32L452xx ) || defined(STM32L462xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define TIM3_BASE_ADDR ((uint32_t)0x40000400U)
-#endif
+		#endif
+		#ifdef PERIPH_TIM_GENERAL_2
+		class TIM_GENERAL_2 /// general purpose timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t OPM              : 1; /// One-pulse mode
+				uint32_t                  : 3;
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t CKD              : 2; /// Clock division
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_2_CR1_UIFREMAP : 1; /// UIF status bit remapping
+				uint32_t TIM_GENERAL_2_CR1_DITHEN : 1; /// Dithering Enable
+				uint32_t                  : 19;
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CCPC             : 1; /// Capture/compare preloaded control
+						uint32_t                  : 1;
+						uint32_t CCUS             : 1; /// Capture/compare control update selection
+						uint32_t CCDS             : 1; /// Capture/compare DMA selection
+						uint32_t TIM_GENERAL_2_CR2_0_MMS : 3; /// Master mode selection
+						uint32_t TIM_GENERAL_2_CR2_0_TI1S : 1; /// TI1 selection
+						uint32_t OIS1             : 1; /// Output Idle state 1
+						uint32_t OIS1N            : 1; /// Output Idle state 1
+						uint32_t TIM_GENERAL_2_CR2_0_OIS2 : 1; /// Output idle state 2 (OC2 output)
+						uint32_t                  : 21;
+					};
+					#ifdef TIM_GENERAL_2_CR2_1
+					struct
+					{
+						uint32_t                  : 4;
+						uint32_t MMS              : 2; /// Master mode selection
+						uint32_t                  : 26;
+					};
+					#endif
+				};
+				
+			};
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t SMS              : 3; /// Slave mode selection
+						uint32_t                  : 1;
+						uint32_t TS               : 3; /// Trigger selection
+						uint32_t MSM              : 1; /// Master/Slave mode
+						uint32_t                  : 8;
+						uint32_t TIM_GENERAL_2_SMCR_0_SMS_3 : 1; /// Slave mode selection - bit 3
+						uint32_t                  : 3;
+						uint32_t TIM_GENERAL_2_SMCR_0_TS_4_3 : 2; /// Trigger selection - bit 4:3
+						uint32_t                  : 10;
+					};
+					#ifdef TIM_GENERAL_2_SMCR_1
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t SMS_16           : 1; /// SMS bit 16
+						uint32_t                  : 15;
+					};
+					#endif
+				};
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t TIM_GENERAL_2_DIER_CC2IE : 1; /// Capture/Compare 2 interrupt enable
+				uint32_t                  : 2;
+				uint32_t COMIE            : 1; /// COM interrupt enable
+				uint32_t TIE              : 1; /// Trigger interrupt enable
+				uint32_t BIE              : 1; /// Break interrupt enable
+				uint32_t UDE              : 1; /// Update DMA request enable
+				uint32_t CC1DE            : 1; /// Capture/Compare 1 DMA request enable
+				uint32_t TIM_GENERAL_2_DIER_CC2DE : 1; /// Capture/Compare 2 DMA request enable
+				uint32_t                  : 2;
+				uint32_t TIM_GENERAL_2_DIER_COMDE : 1; /// COM DMA request enable
+				uint32_t TDE              : 1; /// Trigger DMA request enable
+				uint32_t                  : 17;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t TIM_GENERAL_2_SR_CC2IF : 1; /// Capture/compare 2 interrupt flag
+				uint32_t                  : 2;
+				uint32_t COMIF            : 1; /// COM interrupt flag
+				uint32_t TIF              : 1; /// Trigger interrupt flag
+				uint32_t BIF              : 1; /// Break interrupt flag
+				uint32_t                  : 1;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t TIM_GENERAL_2_SR_CC2OF : 1; /// Capture/Compare 2 overcapture flag
+				uint32_t                  : 21;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t TIM_GENERAL_2_EGR_CC2G : 1; /// Capture/compare 2 generation
+				uint32_t                  : 2;
+				uint32_t COMG             : 1; /// Capture/Compare control update generation
+				uint32_t TG               : 1; /// Trigger generation
+				uint32_t BG               : 1; /// Break generation
+				uint32_t                  : 24;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+						uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+						uint32_t OC1M             : 3; /// Output Compare 1 mode
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC1CE : 1;
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_CC2S : 2; /// Capture/Compare 2 selection
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC2FE : 1; /// Output Compare 2 fast enable
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC2PE : 1; /// Output Compare 2 preload enable
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC2M : 3; /// Output Compare 2 mode
+						uint32_t                  : 1;
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC1M_3 : 1; /// Output Compare 1 mode
+						uint32_t                  : 7;
+						uint32_t TIM_GENERAL_2_CCMR1_Output_0_OC2M_3 : 1; /// Output Compare 2 mode - bit 3
+						uint32_t                  : 7;
+					};
+					#ifdef TIM_GENERAL_2_CCMR1_Output_1
+					struct
+					{
+						uint32_t                  : 16;
+						uint32_t OC1M_2           : 1; /// Output Compare 1 mode
+						uint32_t                  : 15;
+					};
+					#endif
+				};
+				
+			};
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+				uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+				uint32_t IC1F             : 4; /// Input capture 1 filter
+				uint32_t TIM_GENERAL_2_CCMR1_Input_CC2S : 2; /// Capture/Compare 2 selection
+				uint32_t TIM_GENERAL_2_CCMR1_Input_IC2PSC : 2; /// Input capture 2 prescaler
+				uint32_t TIM_GENERAL_2_CCMR1_Input_IC2F : 4; /// Input capture 2 filter
+				uint32_t                  : 16;
+				
+			};
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC1NE            : 1; /// Capture/Compare 1 complementary output enable
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t TIM_GENERAL_2_CCER_CC2E : 1; /// Capture/Compare 2 output enable
+				uint32_t TIM_GENERAL_2_CCER_CC2P : 1; /// Capture/Compare 2 output polarity
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_2_CCER_CC2NP : 1; /// Capture/Compare 2 complementary output polarity
+				uint32_t                  : 24;
+				
+			};
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 15;
+				uint32_t TIM_GENERAL_2_CNT_UIFCPY : 1; /// UIF Copy
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			struct RCR_t: Reg32_t /// repetition counter register
+			{
+				using Reg32_t::operator=;
+				uint32_t REP              : 8; /// Repetition counter value
+				uint32_t                  : 24;
+				
+			};
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR2_t: Reg32_t /// capture/compare register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR2             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct BDTR_t: Reg32_t /// break and dead-time register
+			{
+				using Reg32_t::operator=;
+				uint32_t DTG              : 8; /// Dead-time generator setup
+				uint32_t LOCK             : 2; /// Lock configuration
+				uint32_t OSSI             : 1; /// Off-state selection for Idle mode
+				uint32_t OSSR             : 1; /// Off-state selection for Run mode
+				uint32_t BKE              : 1; /// Break enable
+				uint32_t BKP              : 1; /// Break polarity
+				uint32_t AOE              : 1; /// Automatic output enable
+				uint32_t MOE              : 1; /// Main output enable
+				uint32_t TIM_GENERAL_2_BDTR_BKF : 4; /// Break filter
+				uint32_t                  : 6;
+				uint32_t TIM_GENERAL_2_BDTR_BKDSRM : 1;
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_2_BDTR_BKBID : 1;
+				uint32_t                  : 3;
+				
+			};
+			#ifdef TIM_GENERAL_2_DTR2
+			struct DTR2_t: Reg32_t /// timer Deadtime Register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t DTGF             : 8; /// Dead-time generator setup
+				uint32_t                  : 8;
+				uint32_t DTAE             : 1; /// Deadtime Asymmetric Enable
+				uint32_t DTPE             : 1; /// Deadtime Preload Enable
+				uint32_t                  : 14;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_2_TISEL
+			struct TISEL_t: Reg32_t /// TIM timer input selection register
+			{
+				using Reg32_t::operator=;
+				uint32_t TI1SEL           : 4; /// TI1[0] to TI1[15] input selection
+				uint32_t                  : 4;
+				uint32_t TI2SEL           : 4; /// TI2[0] to TI2[15] input selection
+				uint32_t                  : 20;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_2_AF1
+			struct AF1_t: Reg32_t /// TIM alternate function option register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t BKINE            : 1; /// BRK BKIN input enable
+				uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+				uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+				uint32_t BKCMP3E          : 1; /// BRK COMP3 enable
+				uint32_t BKCMP4E          : 1; /// BRK COMP4 enable
+				uint32_t BKCMP5E          : 1; /// BRK COMP5 enable
+				uint32_t BKCMP6E          : 1; /// BRK COMP6 enable
+				uint32_t BKCMP7E          : 1; /// BRK COMP7 enable
+				uint32_t                  : 1;
+				uint32_t BKINP            : 1; /// BRK BKIN input polarity
+				uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+				uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+				uint32_t BKCMP3P          : 1; /// BRK COMP3 input polarity
+				uint32_t BKCMP4P          : 1; /// BRK COMP4 input polarity
+				uint32_t                  : 18;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_2_AF2
+			struct AF2_t: Reg32_t /// TIM alternate function option register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 16;
+				uint32_t OCRSEL           : 3; /// OCREF_CLR source selection
+				uint32_t                  : 13;
+				
+			};
+			#endif
+			struct DCR_t: Reg32_t /// DMA control register
+			{
+				using Reg32_t::operator=;
+				uint32_t DBA              : 5; /// DMA base address
+				uint32_t                  : 3;
+				uint32_t DBL              : 5; /// DMA burst length
+				uint32_t                  : 19;
+				
+			};
+			struct DMAR_t: Reg32_t /// DMA address for full transfer
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_2_DMAR_0
+					struct
+					{
+						uint32_t DMAB             : 32; /// DMA register for burst accesses
+					};
+					#endif
+					#ifdef TIM_GENERAL_2_DMAR_1
+					struct
+					{
+						uint32_t DMAB             : 16; /// DMA register for burst accesses
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef TIM_GENERAL_2_OR1
+			struct OR1_t: Reg32_t /// TIM15 option register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t TI1_RMP          : 1; /// Input capture 1 remap
+				uint32_t ENCODER_MODE     : 2; /// Encoder mode
+				uint32_t                  : 29;
+				
+			};
+			#endif
+			#ifdef TIM_GENERAL_2_OR2
+			struct OR2_t: Reg32_t /// TIM15 option register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t BKINE            : 1; /// BRK BKIN input enable
+				uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+				uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+				uint32_t                  : 6;
+				uint32_t BKINP            : 1; /// BRK BKIN input polarity
+				uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+				uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+				uint32_t                  : 20;
+				
+			};
+			#endif
+			union
+			{
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					CR2_t CR2; /// control register 2
+					SMCR_t SMCR; /// slave mode control register
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register (output mode)
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_32;
+					TIM_GENERAL_2_MAP0_DCR; /// DMA control register
+					TIM_GENERAL_2_MAP0_DMAR; /// DMA address for full transfer
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_2_MAP0_OR2; /// TIM15 option register 2
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					CCER_t CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					RCR_t RCR; /// repetition counter register
+					CCR1_t CCR1; /// capture/compare register 1
+					CCR2_t CCR2; /// capture/compare register 2
+					__SOOL_PERIPH_PADDING_8;
+					BDTR_t BDTR; /// break and dead-time register
+					__SOOL_PERIPH_PADDING_8;
+					TIM_GENERAL_2_MAP1_OR1; /// TIM15 option register 1
+					TIM_GENERAL_2_MAP1_DTR2; /// timer Deadtime Register 2
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_2_MAP1_TISEL; /// TIM timer input selection register
+					TIM_GENERAL_2_MAP1_AF1; /// TIM alternate function option register 1
+					TIM_GENERAL_2_MAP1_AF2; /// TIM alternate function option register 2
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					TIM_GENERAL_2_MAP1_DCR; /// DMA control register
+					TIM_GENERAL_2_MAP1_DMAR; /// DMA address for full transfer
+				};
+			};
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_2() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_TIM_GENERAL_4
+		template<typename tmpl=TIM_GENERAL_4_tmpl_default>
+		class TIM_GENERAL_4 /// general purpose timers
+		{
+			
+			struct CR1_t: Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CEN              : 1; /// Counter enable
+						uint32_t UDIS             : 1; /// Update disable
+						uint32_t URS              : 1; /// Update request source
+						uint32_t TIM_GENERAL_4_CR1_0_OPM : 1; /// One-pulse mode
+						uint32_t TIM_GENERAL_4_CR1_0_DIR : 1; /// Direction
+						uint32_t TIM_GENERAL_4_CR1_0_CMS : 2; /// Center-aligned mode selection
+						uint32_t ARPE             : 1; /// Auto-reload preload enable
+						uint32_t CKD              : 2; /// Clock division
+						uint32_t                  : 22;
+					};
+					#ifdef TIM_GENERAL_4_CR1_1
+					struct
+					{
+						uint32_t                  : 3;
+						uint32_t OMP              : 1; /// One-pulse mode
+						uint32_t                  : 28;
+					};
+					#endif
+				};
+				
+			};
+			struct CR2_t: Reg32_t /// control register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t                  : 4;
+				uint32_t MMS              : 3; /// Master mode selection
+				uint32_t                  : 25;
+				
+			};
+			struct SMCR_t: Reg32_t /// slave mode control register
+			{
+				using Reg32_t::operator=;
+				uint32_t SMS              : 3; /// Slave mode selection
+				uint32_t                  : 1;
+				uint32_t TS               : 3; /// Trigger selection
+				uint32_t MSM              : 1; /// Master/Slave mode
+				uint32_t TIM_GENERAL_4_SMCR_ETF : 4; /// External trigger filter
+				uint32_t TIM_GENERAL_4_SMCR_ETPS : 2; /// External trigger prescaler
+				uint32_t TIM_GENERAL_4_SMCR_ECE : 1; /// External clock enable
+				uint32_t TIM_GENERAL_4_SMCR_ETP : 1; /// External trigger polarity
+				uint32_t                  : 16;
+				
+			};
+			struct DIER_t: Reg32_t /// DMA/Interrupt enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIE              : 1; /// Update interrupt enable
+				uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
+				uint32_t CC2IE            : 1; /// Capture/Compare 2 interrupt enable
+				uint32_t                  : 3;
+				uint32_t TIE              : 1; /// Trigger interrupt enable
+				uint32_t                  : 25;
+				
+			};
+			struct SR_t: Reg32_t /// status register
+			{
+				using Reg32_t::operator=;
+				uint32_t UIF              : 1; /// Update interrupt flag
+				uint32_t CC1IF            : 1; /// Capture/compare 1 interrupt flag
+				uint32_t CC2IF            : 1; /// Capture/Compare 2 interrupt flag
+				uint32_t                  : 3;
+				uint32_t TIF              : 1; /// Trigger interrupt flag
+				uint32_t                  : 2;
+				uint32_t CC1OF            : 1; /// Capture/Compare 1 overcapture flag
+				uint32_t CC2OF            : 1; /// Capture/compare 2 overcapture flag
+				uint32_t                  : 21;
+				
+			};
+			struct EGR_t: Reg32_t /// event generation register
+			{
+				using Reg32_t::operator=;
+				uint32_t UG               : 1; /// Update generation
+				uint32_t CC1G             : 1; /// Capture/compare 1 generation
+				uint32_t CC2G             : 1; /// Capture/compare 2 generation
+				uint32_t                  : 3;
+				uint32_t TG               : 1; /// Trigger generation
+				uint32_t                  : 25;
+				
+			};
+			struct CCMR1_Output_t: Reg32_t /// capture/compare mode register 1 (output mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t OC1FE            : 1; /// Output Compare 1 fast enable
+						uint32_t OC1PE            : 1; /// Output Compare 1 preload enable
+						uint32_t OC1M             : 3; /// Output Compare 1 mode
+						uint32_t TIM_GENERAL_4_CCMR1_Output_0_OC1CE : 1; /// Output compare 1 clear enable
+						uint32_t TIM_GENERAL_4_CCMR1_Output_0_CC2S : 2; /// Capture/Compare 2 selection
+						uint32_t OC2FE            : 1; /// Output Compare 2 fast enable
+						uint32_t OC2PE            : 1; /// Output Compare 2 preload enable
+						uint32_t OC2M             : 3; /// Output Compare 2 mode
+						uint32_t TIM_GENERAL_4_CCMR1_Output_0_OC2CE : 1; /// Output compare 2 clear enable
+						uint32_t                  : 16;
+					};
+					#ifdef TIM_GENERAL_4_CCMR1_Output_1
+					struct
+					{
+						uint32_t                  : 8;
+						uint32_t CC2S             : 1; /// Capture/Compare 2 selection
+						uint32_t                  : 23;
+					};
+					#endif
+				};
+				
+			};
+			struct CCMR1_Input_t: Reg32_t /// capture/compare mode register 1 (input mode)
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					struct
+					{
+						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
+						uint32_t TIM_GENERAL_4_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
+						uint32_t TIM_GENERAL_4_CCMR1_Input_0_IC1F : 3; /// Input capture 1 filter
+						uint32_t                  : 1;
+						uint32_t CC2S             : 2; /// Capture/Compare 2 selection
+						uint32_t TIM_GENERAL_4_CCMR1_Input_0_IC2PCS : 2; /// Input capture 2 prescaler
+						uint32_t TIM_GENERAL_4_CCMR1_Input_0_IC2F : 3; /// Input capture 2 filter
+						uint32_t                  : 17;
+					};
+					#ifdef TIM_GENERAL_4_CCMR1_Input_1
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t TIM_GENERAL_4_CCMR1_Input_1_IC1PSC : 2; /// Input capture 1 prescaler
+						uint32_t TIM_GENERAL_4_CCMR1_Input_1_IC1F : 4; /// Input capture 1 filter
+						uint32_t                  : 2;
+						uint32_t TIM_GENERAL_4_CCMR1_Input_1_IC2PSC : 2; /// Input capture 2 prescaler
+						uint32_t TIM_GENERAL_4_CCMR1_Input_1_IC2F : 4; /// Input capture 2 filter
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef TIM_GENERAL_4_CCER
+			struct CCER_t: Reg32_t /// capture/compare enable register
+			{
+				using Reg32_t::operator=;
+				uint32_t CC1E             : 1; /// Capture/Compare 1 output enable
+				uint32_t CC1P             : 1; /// Capture/Compare 1 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC1NP            : 1; /// Capture/Compare 1 output Polarity
+				uint32_t CC2E             : 1; /// Capture/Compare 2 output enable
+				uint32_t CC2P             : 1; /// Capture/Compare 2 output Polarity
+				uint32_t                  : 1;
+				uint32_t CC2NP            : 1; /// Capture/Compare 2 output Polarity
+				uint32_t                  : 24;
+				
+			};
+			#endif
+			struct CNT_t: Reg32_t /// counter
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 16; /// counter value
+				uint32_t                  : 16;
+				
+			};
+			struct PSC_t: Reg32_t /// prescaler
+			{
+				using Reg32_t::operator=;
+				uint32_t PSC              : 16; /// Prescaler value
+				uint32_t                  : 16;
+				
+			};
+			struct ARR_t: Reg32_t /// auto-reload register
+			{
+				using Reg32_t::operator=;
+				uint32_t ARR              : 16; /// Auto-reload value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR1_t: Reg32_t /// capture/compare register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR1             : 16; /// Capture/Compare 1 value
+				uint32_t                  : 16;
+				
+			};
+			struct CCR2_t: Reg32_t /// capture/compare register 2
+			{
+				using Reg32_t::operator=;
+				uint32_t CCR2             : 16; /// Capture/Compare 2 value
+				uint32_t                  : 16;
+				
+			};
+			#ifdef TIM_GENERAL_4_OR
+			struct OR_t: Reg32_t /// TIM21 option register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef TIM_GENERAL_4_OR_2
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// TIM9 Input 1 remapping capability
+						uint32_t                  : 30;
+					};
+					#endif
+					tmpl::OR_t;
+				};
+				
+			};
+			#endif
+			union
+			{
+				struct
+				{
+					CR1_t CR1; /// control register 1
+					CR2_t CR2; /// control register 2
+					SMCR_t SMCR; /// slave mode control register
+					DIER_t DIER; /// DMA/Interrupt enable register
+					SR_t SR; /// status register
+					EGR_t EGR; /// event generation register
+					CCMR1_Output_t CCMR1_Output; /// capture/compare mode register 1 (output mode)
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
+					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
+					__SOOL_PERIPH_PADDING_4;
+					TIM_GENERAL_4_MAP1_CCER; /// capture/compare enable register
+					CNT_t CNT; /// counter
+					PSC_t PSC; /// prescaler
+					ARR_t ARR; /// auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					CCR1_t CCR1; /// capture/compare register 1
+					CCR2_t CCR2; /// capture/compare register 2
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					TIM_GENERAL_4_MAP1_OR; /// TIM21 option register
+				};
+			};
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				TIM_GENERAL_4() = delete;
+			#endif
+			
+		};
+		#endif
+		#ifdef PERIPH_MAC_TIM
+		class MAC_TIM /// mac timer
+		{
+			
+			struct MACTMR_CNTR_t: Reg32_t /// MACTMR counter register
+			{
+				using Reg32_t::operator=;
+				uint32_t CNT              : 20; /// MAC timer count
+				uint32_t                  : 12;
+				
+			};
+			struct MACTMR_CR_t: Reg32_t /// MACTMR configuration register
+			{
+				using Reg32_t::operator=;
+				uint32_t EN               : 1; /// MAC timer enable
+				uint32_t RST              : 1; /// MAC timer reset
+				uint32_t                  : 30;
+				
+			};
+			MACTMR_CNTR_t MACTMR_CNTR; /// MACTMR counter register
+			__SOOL_PERIPH_PADDING_16;
+			__SOOL_PERIPH_PADDING_64;
+			MACTMR_CR_t MACTMR_CR; /// MACTMR configuration register
+			private:
+			#ifndef __SOOL_DEBUG_NOPHY
+				MAC_TIM() = delete;
+			#endif
+			
+		};
+		#endif
 
-#if defined(STM32F0     ) || defined(STM32F100xE ) || defined(STM32F101xG ) || defined(STM32F103xG ) ||\
-    defined(STM32F2     ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F405xx ) ||\
-    defined(STM32F407xx ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) 
-#define TIM14_BASE_ADDR ((uint32_t)0x40002000U)
-#endif
-
-#if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F103x6 ) ||\
-    defined(STM32F103xB ) || defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F105xC ) ||\
-    defined(STM32F107xC ) || defined(STM32F301x8 ) || defined(STM32F302x8 ) || defined(STM32F302xC ) ||\
-    defined(STM32F302xE ) || defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F318xx ) || defined(STM32F328xx ) || defined(STM32F334x8 ) || defined(STM32F358xx ) ||\
-    defined(STM32F398xx ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM1_BASE_ADDR ((uint32_t)0x40012C00U)
-#endif
-
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) || defined(STM32H7     ) 
-#define TIM1_BASE_ADDR ((uint32_t)0x40010000U)
-#endif
-
-#if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F3     ) ||\
-    defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM16_BASE_ADDR ((uint32_t)0x40014400U)
-#endif
-
-#if defined(STM32F0     ) || defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F3     ) ||\
-    defined(STM32H7     ) || defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) ||\
-    defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) ||\
-    defined(STM32L4P    ) 
-#define TIM17_BASE_ADDR ((uint32_t)0x40014800U)
-#endif
-
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) ||\
-    defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) || defined(STM32F103xG ) ||\
-    defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) || defined(STM32F3     ) ||\
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F410Cx ) || defined(STM32F410Rx ) ||\
-    defined(STM32F410Tx ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
-    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) || defined(STM32L4     ) ||\
-    defined(STM32L4P    ) 
-#define TIM6_BASE_ADDR ((uint32_t)0x40001000U)
-#endif
-
-#if defined(STM32F030x8 ) || defined(STM32F030xC ) || defined(STM32F051x8 ) || defined(STM32F058xx ) ||\
-    defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) || defined(STM32F078xx ) ||\
-    defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) || defined(STM32F100xE ) ||\
-    defined(STM32F3     ) || defined(STM32H7     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
-#define TIM15_BASE_ADDR ((uint32_t)0x40014000U)
-#endif
-
-#if defined(STM32F030xC ) || defined(STM32F070xB ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F100xB ) ||\
-    defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F303x8 ) || defined(STM32F303xC ) || defined(STM32F303xE ) || defined(STM32F328xx ) ||\
-    defined(STM32F334x8 ) || defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) ||\
-    defined(STM32F398xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Cx ) ||\
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) || defined(STM32L1     ) || defined(STM32L431xx ) ||\
-    defined(STM32L432xx ) || defined(STM32L433xx ) || defined(STM32L442xx ) || defined(STM32L443xx ) ||\
-    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define TIM7_BASE_ADDR ((uint32_t)0x40001400U)
-#endif
-
-#if defined(STM32F031x6 ) || defined(STM32F038xx ) || defined(STM32F042x6 ) || defined(STM32F048xx ) ||\
-    defined(STM32F051x8 ) || defined(STM32F058xx ) || defined(STM32F071xB ) || defined(STM32F072xB ) ||\
-    defined(STM32F078xx ) || defined(STM32F091xC ) || defined(STM32F098xx ) || defined(STM32F1     ) ||\
-    defined(STM32F2     ) || defined(STM32F3     ) || defined(STM32F401xC ) || defined(STM32F401xE ) ||\
-    defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) ||\
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) ||\
-    defined(STM32L0     ) || defined(STM32L1     ) || defined(STM32L4     ) || defined(STM32L4P    ) 
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
+    defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F031x6  ) || defined(STM32F038xx  ) || \
+    defined(STM32F042x6  ) || defined(STM32F048xx  ) || defined(STM32F051x8  ) || defined(STM32F058xx  ) || defined(STM32F071xB  ) || \
+    defined(STM32F072xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM2_BASE_ADDR ((uint32_t)0x40000000U)
+#define TIM_GENERAL_1_TIM2
+#define TIM2_TMPL TIM_GENERAL_1_tmpl_0
 #endif
 
-#if defined(STM32F100xB ) || defined(STM32F100xE ) || defined(STM32F101xB ) || defined(STM32F101xE ) ||\
-    defined(STM32F101xG ) || defined(STM32F102xB ) || defined(STM32F103xB ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F302xC ) || defined(STM32F302xE ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F358xx ) || defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F398xx ) ||\
-    defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
-    defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) ||\
-    defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) ||\
-    defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) ||\
-    defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) ||\
-    defined(STM32F7     ) || defined(STM32H7     ) || defined(STM32L1     ) || defined(STM32L471xx ) ||\
-    defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) ||\
-    defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || \
+    defined(STM32L1      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || \
+    defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L011xx  ) || \
+    defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || \
+    defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM3_BASE_ADDR ((uint32_t)0x40000400U)
+#define TIM_GENERAL_1_TIM3
+#define TIM3_TMPL TIM_GENERAL_1_tmpl_1
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM4_BASE_ADDR ((uint32_t)0x40000800U)
+#define TIM_GENERAL_1_TIM4
+#define TIM4_TMPL TIM_GENERAL_1_tmpl_1
 #endif
 
-#if defined(STM32F100xE ) || defined(STM32F101xE ) || defined(STM32F101xG ) || defined(STM32F103xE ) ||\
-    defined(STM32F103xG ) || defined(STM32F105xC ) || defined(STM32F107xC ) || defined(STM32F2     ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F4     ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) || defined(STM32L151xC ) || defined(STM32L151xCA) || defined(STM32L151xD ) ||\
-    defined(STM32L151xDx) || defined(STM32L151xE ) || defined(STM32L152xC ) || defined(STM32L152xCA) ||\
-    defined(STM32L152xD ) || defined(STM32L152xDx) || defined(STM32L152xE ) || defined(STM32L162xC ) ||\
-    defined(STM32L162xCA) || defined(STM32L162xD ) || defined(STM32L162xDx) || defined(STM32L162xE ) ||\
-    defined(STM32L471xx ) || defined(STM32L475xx ) || defined(STM32L476xx ) || defined(STM32L485xx ) ||\
-    defined(STM32L486xx ) || defined(STM32L496xx ) || defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define TIM5_BASE_ADDR ((uint32_t)0x40000C00U)
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || \
+    defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || \
+    defined(STM32L152xD  ) || defined(STM32L152xE  ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM5_BASE_ADDR ((uint32_t)0x40000c00U)
+#define TIM_GENERAL_1_TIM5
+#define TIM5_TMPL TIM_GENERAL_1_tmpl_2
 #endif
 
-#if defined(STM32F100xE ) || defined(STM32F101xG ) || defined(STM32F103xG ) || defined(STM32F2     ) ||\
-    defined(STM32F373xC ) || defined(STM32F378xx ) || defined(STM32F405xx ) || defined(STM32F407xx ) ||\
-    defined(STM32F412Cx ) || defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) ||\
-    defined(STM32F413xx ) || defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) ||\
-    defined(STM32F427xx ) || defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) ||\
-    defined(STM32F446xx ) || defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) ||\
-    defined(STM32H7     ) 
+#if	defined(STM32H7      )
 #define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
-#define TIM13_BASE_ADDR ((uint32_t)0x40001C00U)
+#define TIM_GENERAL_1_TIM12
+#define TIM12_TMPL TIM_GENERAL_1_tmpl_3
+#define TIM13_BASE_ADDR ((uint32_t)0x40001c00U)
+#define TIM_GENERAL_1_TIM13
+#define TIM13_TMPL TIM_GENERAL_1_tmpl_3
+#define TIM14_BASE_ADDR ((uint32_t)0x40002000U)
+#define TIM_GENERAL_1_TIM14
+#define TIM14_TMPL TIM_GENERAL_1_tmpl_2
 #endif
 
-#if defined(STM32F101xG ) || defined(STM32F103xG ) 
-#define TIM9_BASE_ADDR ((uint32_t)0x40014C00U)
-#define TIM10_BASE_ADDR ((uint32_t)0x40015000U)
-#define TIM11_BASE_ADDR ((uint32_t)0x40015400U)
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM19_BASE_ADDR ((uint32_t)0x40015c00U)
+#define TIM_GENERAL_1_TIM19
+#define TIM19_TMPL TIM_GENERAL_1_tmpl_3
+#define TIM18_BASE_ADDR ((uint32_t)0x40009c00U)
+#define TIM_BASIC_TIM18
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     ) 
-#define TIM9_BASE_ADDR ((uint32_t)0x40014000U)
-#define TIM11_BASE_ADDR ((uint32_t)0x40014800U)
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+    defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
+    defined(STM32F410Tx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
+    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
+    defined(STM32F479xx  ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L011xx  ) || \
+    defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L051xx  ) || defined(STM32L052xx  ) || \
+    defined(STM32L053xx  ) || defined(STM32L062xx  ) || defined(STM32L063xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || \
+    defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
+#define TIM6_BASE_ADDR ((uint32_t)0x40001000U)
+#define TIM_BASIC_TIM6
 #endif
 
-#if defined(STM32L1     ) 
-#define TIM9_BASE_ADDR ((uint32_t)0x40010800U)
-#define TIM10_BASE_ADDR ((uint32_t)0x40010C00U)
-#define TIM11_BASE_ADDR ((uint32_t)0x40011000U)
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+    defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || \
+    defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM7_BASE_ADDR ((uint32_t)0x40001400U)
+#define TIM_BASIC_TIM7
 #endif
 
-#if defined(STM32F2     ) || defined(STM32F401xC ) || defined(STM32F401xE ) || defined(STM32F405xx ) ||\
-    defined(STM32F407xx ) || defined(STM32F411xE ) || defined(STM32F412Cx ) || defined(STM32F412Rx ) ||\
-    defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) || defined(STM32F415xx ) ||\
-    defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) || defined(STM32F429xx ) ||\
-    defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) || defined(STM32F469xx ) ||\
-    defined(STM32F479xx ) || defined(STM32F7     ) 
-#define TIM10_BASE_ADDR ((uint32_t)0x40014400U)
+#if	defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || \
+    defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
+#define TIM7_BASE_ADDR ((uint32_t)0x40000c00U)
+#define TIM_BASIC_TIM7
 #endif
 
-#if defined(STM32F103xE ) || defined(STM32F103xG ) || defined(STM32F303xC ) || defined(STM32F303xE ) ||\
-    defined(STM32F358xx ) || defined(STM32F398xx ) || defined(STM32L471xx ) || defined(STM32L475xx ) ||\
-    defined(STM32L476xx ) || defined(STM32L485xx ) || defined(STM32L486xx ) || defined(STM32L496xx ) ||\
-    defined(STM32L4A6xx ) || defined(STM32L4P    ) 
-#define TIM8_BASE_ADDR ((uint32_t)0x40013400U)
-#endif
-
-#if defined(STM32F2     ) || defined(STM32F405xx ) || defined(STM32F407xx ) || defined(STM32F412Cx ) ||\
-    defined(STM32F412Rx ) || defined(STM32F412Vx ) || defined(STM32F412Zx ) || defined(STM32F413xx ) ||\
-    defined(STM32F415xx ) || defined(STM32F417xx ) || defined(STM32F423xx ) || defined(STM32F427xx ) ||\
-    defined(STM32F429xx ) || defined(STM32F437xx ) || defined(STM32F439xx ) || defined(STM32F446xx ) ||\
-    defined(STM32F469xx ) || defined(STM32F479xx ) || defined(STM32F7     ) || defined(STM32H7     ) 
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      )
+#define TIM1_BASE_ADDR ((uint32_t)0x40010000U)
+#define TIM_ADVANCED_TIM1
+#define TIM1_TMPL
 #define TIM8_BASE_ADDR ((uint32_t)0x40010400U)
+#define TIM_ADVANCED_TIM8
+#define TIM8_TMPL
 #endif
 
-#if defined(STM32F303xE ) || defined(STM32F398xx ) 
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
+    defined(STM32WB      )
+#define TIM1_BASE_ADDR ((uint32_t)0x40012c00U)
+#define TIM_ADVANCED_TIM1
+#define TIM1_TMPL TIM_ADVANCED_tmpl_0
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM8_BASE_ADDR ((uint32_t)0x40013400U)
+#define TIM_ADVANCED_TIM8
+#define TIM8_TMPL TIM_ADVANCED_tmpl_1
+#endif
+
+#if	defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define TIM20_BASE_ADDR ((uint32_t)0x40015000U)
+#define TIM_ADVANCED_TIM20
 #endif
 
-#if defined(STM32F373xC ) || defined(STM32F378xx ) 
-#define TIM18_BASE_ADDR ((uint32_t)0x40009C00U)
-#define TIM19_BASE_ADDR ((uint32_t)0x40015C00U)
+#if	defined(STM32G4      ) || defined(STM32GB      )
+#define TIM2_BASE_ADDR ((uint32_t)0x40000000U)
+#define TIM_ADVANCED_TIM2
+#define TIM3_BASE_ADDR ((uint32_t)0x40000400U)
+#define TIM_ADVANCED_TIM3
+#define TIM4_BASE_ADDR ((uint32_t)0x40000800U)
+#define TIM_ADVANCED_TIM4
 #endif
 
-#if defined(STM32L0     ) 
+#if	defined(STM32G471xx  ) || defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
+#define TIM5_BASE_ADDR ((uint32_t)0x40000c00U)
+#define TIM_ADVANCED_TIM5
+#endif
+
+#if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L433xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM15_BASE_ADDR ((uint32_t)0x40014000U)
+#define TIM_GENERAL_3_TIM15
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
+    defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM16_BASE_ADDR ((uint32_t)0x40014400U)
+#define TIM_GENERAL_3_TIM16
+#define TIM16_TMPL TIM_GENERAL_3_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || \
+    defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM17_BASE_ADDR ((uint32_t)0x40014800U)
+#define TIM_GENERAL_3_TIM17
+#define TIM17_TMPL TIM_GENERAL_3_tmpl_1
+#endif
+
+#if	defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  )
+#define TIM17_BASE_ADDR ((uint32_t)0x40001800U)
+#define TIM_GENERAL_3_TIM17
+#define TIM17_TMPL
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM9_BASE_ADDR ((uint32_t)0x40014000U)
+#define TIM_GENERAL_5_TIM9
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
+#define TIM_GENERAL_5_TIM12
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM10_BASE_ADDR ((uint32_t)0x40014400U)
+#define TIM_GENERAL_6_TIM10
+#define TIM10_TMPL TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
+#define TIM11_BASE_ADDR ((uint32_t)0x40014800U)
+#define TIM_GENERAL_6_TIM11
+#define TIM11_TMPL TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM13_BASE_ADDR ((uint32_t)0x40001c00U)
+#define TIM_GENERAL_6_TIM13
+#define TIM13_TMPL TIM_GENERAL_6_tmpl_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM14_BASE_ADDR ((uint32_t)0x40002000U)
+#define TIM_GENERAL_6_TIM14
+#define TIM14_TMPL TIM_GENERAL_6_tmpl_1
+#endif
+
+#if	defined(STM32L1      )
+#define TIM10_BASE_ADDR ((uint32_t)0x40010c00U)
+#define TIM_GENERAL_6_TIM10
+#define TIM10_TMPL
+#define TIM11_BASE_ADDR ((uint32_t)0x40011000U)
+#define TIM_GENERAL_6_TIM11
+#define TIM11_TMPL
+#define TIM9_BASE_ADDR ((uint32_t)0x40010800U)
+#define TIM_GENERAL_4_TIM9
+#endif
+
+#if	defined(STM32W1      )
+#define TIM1_BASE_ADDR ((uint32_t)0x4000a800U)
+#define TIM_GENERAL_6_TIM1
+#define TIM1_TMPL TIM_GENERAL_6_tmpl_1
+#define TIM2_BASE_ADDR ((uint32_t)0x4000a804U)
+#define TIM_GENERAL_6_TIM2
+#define TIM2_TMPL TIM_GENERAL_6_tmpl_1
+#define MAC_TIM_BASE_ADDR ((uint32_t)0x40002038U)
+#define MAC_TIM_MAC_TIM
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
+    defined(STM32F398xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM15_BASE_ADDR ((uint32_t)0x40014000U)
+#define TIM_GENERAL_2_TIM15
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || \
+    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define TIM9_BASE_ADDR ((uint32_t)0x40014000U)
+#define TIM_GENERAL_4_TIM9
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
+#define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
+#define TIM_GENERAL_4_TIM12
+#endif
+
+#if	defined(STM32L0      )
 #define TIM21_BASE_ADDR ((uint32_t)0x40010800U)
-#endif
-
-#if defined(STM32L031xx ) || defined(STM32L041xx ) || defined(STM32L051xx ) || defined(STM32L052xx ) ||\
-    defined(STM32L053xx ) || defined(STM32L061xx ) || defined(STM32L062xx ) || defined(STM32L063xx ) ||\
-    defined(STM32L071xx ) || defined(STM32L072xx ) || defined(STM32L073xx ) || defined(STM32L081xx ) ||\
-    defined(STM32L082xx ) || defined(STM32L083xx ) 
+#define TIM_GENERAL_4_TIM21
+#define TIM21_TMPL TIM_GENERAL_4_tmpl_0
 #define TIM22_BASE_ADDR ((uint32_t)0x40011400U)
+#define TIM_GENERAL_4_TIM22
+#define TIM22_TMPL TIM_GENERAL_4_tmpl_1
 #endif
 
-#ifdef TIM3_BASE_ADDR
-struct TIM3_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t                      :14;
-			uint32_t ETR_SEL              :4;
-			uint32_t                      :14;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI3SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI4SEL               :4;
-			uint32_t                      :4;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM3_OR_0
-			struct
-			{
-				uint32_t TIM3_OR_0_ETR_RMP    :2;
-				uint32_t TIM3_OR_0_TI1_RMP    :1;
-				uint32_t TIM3_OR_0_TI2_RMP    :1;
-				uint32_t TIM3_OR_0_TI4_RMP    :1;
-				uint32_t                      :5;
-				uint32_t TIM3_OR_0_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM3_OR_1
-			struct
-			{
-				uint32_t TIM3_OR_1_ITR2_RMP   :1;
-				uint32_t                      :1;
-				uint32_t TIM3_OR_1_ETR_RMP    :1;
-				uint32_t                      :3;
-				uint32_t TIM3_OR_1_TI4_RMP    :2;
-				uint32_t                      :24;
-			};
-			#endif
-			#ifdef TIM3_OR_2
-			struct
-			{
-				uint32_t TI1_RMP              :2;
-				uint32_t                      :30;
-			};
-			#endif
-			#ifdef TIM3_OR_3
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1_RMP              :2;
-			uint32_t                      :30;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t                      :14;
-			uint32_t ETRSEL               :3;
-			uint32_t                      :15;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM3_plugin>* const TIM3 =reinterpret_cast<class TIM<TIM3_plugin>* const>(TIM3_BASE_ADDR);
-#endif
-#ifdef TIM14_BASE_ADDR
-struct TIM14_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM14_OR_0
-			struct
-			{
-				uint32_t TIM14_OR_0_TI1_RMP   :2;
-				uint32_t TIM14_OR_0_ETR_RMP   :1;
-				uint32_t                      :3;
-				uint32_t TIM14_OR_0_TI4_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM14_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM14_OR_1
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM14_plugin>* const TIM14 =reinterpret_cast<class TIM<TIM14_plugin>* const>(TIM14_BASE_ADDR);
-#endif
-#ifdef TIM1_BASE_ADDR
-struct TIM1_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM1_OR_0
-			struct
-			{
-				uint32_t TIM1_OR_0_ETR_RMP    :4;
-				uint32_t                      :2;
-				uint32_t TIM1_OR_0_TI4_RMP    :2;
-				uint32_t                      :2;
-				uint32_t TIM1_OR_0_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM1_OR_1
-			struct
-			{
-				uint32_t TIM1_OR_1_TI1_RMP    :2;
-				uint32_t TIM1_OR_1_ETR_RMP    :1;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM1_OR_2
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			struct
-			{
-				uint32_t BKINE                :1;
-				uint32_t TIM1_AF1_0_BKCMP1E   :1;
-				uint32_t TIM1_AF1_0_BKCMP2E   :1;
-				uint32_t                      :5;
-				uint32_t TIM1_AF1_0_BKDF1BKE  :1;
-				uint32_t BKINP                :1;
-				uint32_t TIM1_AF1_0_BKCMP1P   :1;
-				uint32_t TIM1_AF1_0_BKCMP2P   :1;
-				uint32_t                      :2;
-				uint32_t TIM1_AF1_0_ETR_SEL   :4;
-				uint32_t                      :14;
-			};
-			#ifdef TIM1_AF1_1
-			struct
-			{
-				uint32_t                      :8;
-				uint32_t BKDFBK0E             :1;
-				uint32_t                      :23;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF2
-	struct AF2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			struct
-			{
-				uint32_t BK2INE               :1;
-				uint32_t TIM1_AF2_0_BK2CMP1E  :1;
-				uint32_t TIM1_AF2_0_BK2CMP2E  :1;
-				uint32_t                      :5;
-				uint32_t TIM1_AF2_0_BK2DF1BKE :1;
-				uint32_t BK2INP               :1;
-				uint32_t TIM1_AF2_0_BK2CMP1P  :1;
-				uint32_t TIM1_AF2_0_BK2CMP2P  :1;
-				uint32_t                      :20;
-			};
-			#ifdef TIM1_AF2_1
-			struct
-			{
-				uint32_t                      :8;
-				uint32_t BK2DFBK1E            :1;
-				uint32_t                      :23;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI3SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI4SEL               :4;
-			uint32_t                      :4;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t ETR_ADC1_RMP         :2;
-			uint32_t TIM1_OR1_ETR_ADC3_RMP :2;
-			uint32_t TI1_RMP              :1;
-			uint32_t                      :27;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t TIM1_OR2_BKDF1BK0E   :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :2;
-			uint32_t ETRSEL               :3;
-			uint32_t                      :15;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR3
-	struct OR3_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BK2INE               :1;
-			uint32_t BK2CMP1E             :1;
-			uint32_t BK2CMP2E             :1;
-			uint32_t                      :5;
-			uint32_t TIM1_OR3_BK2DF1BK1E  :1;
-			uint32_t BK2INP               :1;
-			uint32_t BK2CMP1P             :1;
-			uint32_t BK2CMP2P             :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM1_plugin>* const TIM1 =reinterpret_cast<class TIM<TIM1_plugin>* const>(TIM1_BASE_ADDR);
-#endif
-#ifdef TIM16_BASE_ADDR
-struct TIM16_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM16_OR_0
-			struct
-			{
-				uint32_t TIM16_OR_0_TI1RMP    :2;
-				uint32_t TIM16_OR_0_ETR_RMP   :1;
-				uint32_t                      :3;
-				uint32_t TIM16_OR_0_TI1_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM16_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM16_OR_1
-			struct
-			{
-				uint32_t TIM16_OR_1_TI1_RMP   :2;
-				uint32_t                      :4;
-				uint32_t TIM16_OR_1_TI4_RMP   :2;
-				uint32_t                      :24;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t BKDF1BK2E            :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :28;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM16_OR1_0
-			struct
-			{
-				uint32_t TI1_RMP              :3;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM16_OR1_1
-			struct
-			{
-				uint32_t TI1_RMP              :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t TIM16_OR2_BKDF1BK1E  :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM16_plugin>* const TIM16 =reinterpret_cast<class TIM<TIM16_plugin>* const>(TIM16_BASE_ADDR);
-#endif
-#ifdef TIM17_BASE_ADDR
-struct TIM17_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t BKDF1BK2E            :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :28;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1_RMP              :2;
-			uint32_t                      :30;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t BKDF1BK2E            :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM17_plugin>* const TIM17 =reinterpret_cast<class TIM<TIM17_plugin>* const>(TIM17_BASE_ADDR);
-#endif
-#ifdef TIM6_BASE_ADDR
-volatile class TIM<>* const TIM6 =reinterpret_cast<class TIM<>* const>(TIM6_BASE_ADDR);
-#endif
-#ifdef TIM15_BASE_ADDR
-struct TIM15_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t BKDF1BK2E            :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1_RMP              :1;
-			uint32_t ENCODER_MODE         :2;
-			uint32_t                      :29;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t TIM15_OR2_BKDF1BK0E  :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM15_plugin>* const TIM15 =reinterpret_cast<class TIM<TIM15_plugin>* const>(TIM15_BASE_ADDR);
-#endif
-#ifdef TIM7_BASE_ADDR
-volatile class TIM<>* const TIM7 =reinterpret_cast<class TIM<>* const>(TIM7_BASE_ADDR);
-#endif
-#ifdef TIM2_BASE_ADDR
-struct TIM2_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM2_OR_0
-			struct
-			{
-				uint32_t TIM2_OR_0_ETR_RMP    :3;
-				uint32_t TIM2_OR_0_TI4_RMP    :2;
-				uint32_t                      :5;
-				uint32_t TIM2_OR_0_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM2_OR_1
-			struct
-			{
-				uint32_t TIM2_OR_1_ITR1_RMP   :1;
-				uint32_t                      :1;
-				uint32_t TIM2_OR_1_ETR_RMP    :1;
-				uint32_t                      :3;
-				uint32_t TIM2_OR_1_TI4_RMP    :2;
-				uint32_t                      :24;
-			};
-			#endif
-			#ifdef TIM2_OR_2
-			struct
-			{
-				uint32_t TI1_RMP              :2;
-				uint32_t                      :30;
-			};
-			#endif
-			#ifdef TIM2_OR_3
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t                      :14;
-			uint32_t ETR_SEL              :4;
-			uint32_t                      :14;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI3SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI4SEL               :4;
-			uint32_t                      :4;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t ITR1_RMP             :1;
-			uint32_t ETR1_RMP             :1;
-			uint32_t TI4_RMP              :2;
-			uint32_t                      :28;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t                      :14;
-			uint32_t ETRSEL               :3;
-			uint32_t                      :15;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM2_plugin>* const TIM2 =reinterpret_cast<class TIM<TIM2_plugin>* const>(TIM2_BASE_ADDR);
-#endif
-#ifdef TIM4_BASE_ADDR
-volatile class TIM<>* const TIM4 =reinterpret_cast<class TIM<>* const>(TIM4_BASE_ADDR);
-#endif
-#ifdef TIM5_BASE_ADDR
-struct TIM5_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM5_OR_0
-			struct
-			{
-				uint32_t TIM5_OR_0_TI1_RMP    :2;
-				uint32_t TIM5_OR_0_ETR_RMP    :1;
-				uint32_t                      :3;
-				uint32_t TIM5_OR_0_TI4_RMP    :2;
-				uint32_t                      :2;
-				uint32_t TIM5_OR_0_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM5_OR_1
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t                      :14;
-			uint32_t ETR_SEL              :4;
-			uint32_t                      :14;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI3SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI4SEL               :4;
-			uint32_t                      :4;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM5_plugin>* const TIM5 =reinterpret_cast<class TIM<TIM5_plugin>* const>(TIM5_BASE_ADDR);
-#endif
-#ifdef TIM12_BASE_ADDR
-volatile class TIM<>* const TIM12 =reinterpret_cast<class TIM<>* const>(TIM12_BASE_ADDR);
-#endif
-#ifdef TIM13_BASE_ADDR
-volatile class TIM<>* const TIM13 =reinterpret_cast<class TIM<>* const>(TIM13_BASE_ADDR);
-#endif
-#ifdef TIM9_BASE_ADDR
-struct TIM9_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM9_OR_0
-			struct
-			{
-				uint32_t TIM9_OR_0_TI1_RMP    :2;
-				uint32_t TIM9_OR_0_ITR1_RMP   :1;
-				uint32_t                      :3;
-				uint32_t TIM9_OR_0_TI4_RMP    :2;
-				uint32_t                      :24;
-			};
-			#endif
-			#ifdef TIM9_OR_1
-			struct
-			{
-				uint32_t TIM9_OR_1_TI1RMP     :2;
-				uint32_t TIM9_OR_1_ETR_RMP    :1;
-				uint32_t                      :7;
-				uint32_t TIM9_OR_1_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM9_plugin>* const TIM9 =reinterpret_cast<class TIM<TIM9_plugin>* const>(TIM9_BASE_ADDR);
-#endif
-#ifdef TIM10_BASE_ADDR
-volatile class TIM<>* const TIM10 =reinterpret_cast<class TIM<>* const>(TIM10_BASE_ADDR);
-#endif
-#ifdef TIM11_BASE_ADDR
-struct TIM11_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM11_OR_0
-			struct
-			{
-				uint32_t TIM11_OR_0_TI1_RMP   :2;
-				uint32_t TIM11_OR_0_ETR_RMP   :1;
-				uint32_t                      :3;
-				uint32_t TIM11_OR_0_TI4_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM11_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM11_OR_1
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM11_plugin>* const TIM11 =reinterpret_cast<class TIM<TIM11_plugin>* const>(TIM11_BASE_ADDR);
-#endif
-#ifdef TIM8_BASE_ADDR
-struct TIM8_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM8_OR_0
-			struct
-			{
-				uint32_t TIM8_OR_0_ETR_RMP    :4;
-				uint32_t                      :2;
-				uint32_t TIM8_OR_0_TI4_RMP    :2;
-				uint32_t                      :2;
-				uint32_t TIM8_OR_0_ITR1_RMP   :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM8_OR_1
-			struct
-			{
-				uint32_t TIM8_OR_1_TI1_RMP    :2;
-				uint32_t TIM8_OR_1_ETR_RMP    :1;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM8_OR_2
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF1
-	struct AF1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			struct
-			{
-				uint32_t BKINE                :1;
-				uint32_t TIM8_AF1_0_BKCMP1E   :1;
-				uint32_t TIM8_AF1_0_BKCMP2E   :1;
-				uint32_t                      :5;
-				uint32_t TIM8_AF1_0_BKDF1BKE  :1;
-				uint32_t BKINP                :1;
-				uint32_t TIM8_AF1_0_BKCMP1P   :1;
-				uint32_t TIM8_AF1_0_BKCMP2P   :1;
-				uint32_t                      :2;
-				uint32_t TIM8_AF1_0_ETR_SEL   :4;
-				uint32_t                      :14;
-			};
-			#ifdef TIM8_AF1_1
-			struct
-			{
-				uint32_t                      :8;
-				uint32_t BKDFBK2E             :1;
-				uint32_t                      :23;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_AF2
-	struct AF2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			struct
-			{
-				uint32_t BK2INE               :1;
-				uint32_t TIM8_AF2_0_BK2CMP1E  :1;
-				uint32_t TIM8_AF2_0_BK2CMP2E  :1;
-				uint32_t                      :5;
-				uint32_t TIM8_AF2_0_BK2DF1BKE :1;
-				uint32_t BK2INP               :1;
-				uint32_t TIM8_AF2_0_BK2CMP1P  :1;
-				uint32_t TIM8_AF2_0_BK2CMP2P  :1;
-				uint32_t                      :20;
-			};
-			#ifdef TIM8_AF2_1
-			struct
-			{
-				uint32_t                      :8;
-				uint32_t BK2DFBK3E            :1;
-				uint32_t                      :23;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-	#ifdef TIM_TISEL
-	struct TISEL_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TI1SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI2SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI3SEL               :4;
-			uint32_t                      :4;
-			uint32_t TI4SEL               :4;
-			uint32_t                      :4;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR1
-	struct OR1_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t TIM8_OR1_ETR_ADC2_RMP :2;
-			uint32_t TIM8_OR1_ETR_ADC3_RMP :2;
-			uint32_t TI1_RMP              :1;
-			uint32_t                      :27;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR2
-	struct OR2_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BKINE                :1;
-			uint32_t BKCMP1E              :1;
-			uint32_t BKCMP2E              :1;
-			uint32_t                      :5;
-			uint32_t BKDF1BK2E            :1;
-			uint32_t BKINP                :1;
-			uint32_t BKCMP1P              :1;
-			uint32_t BKCMP2P              :1;
-			uint32_t                      :2;
-			uint32_t ETRSEL               :3;
-			uint32_t                      :15;
-	
-		
-	};
-	#endif
-	
-	#ifdef TIM_OR3
-	struct OR3_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-		
-			uint32_t BK2INE               :1;
-			uint32_t BK2CMP1E             :1;
-			uint32_t BK2CMP2E             :1;
-			uint32_t                      :5;
-			uint32_t BK2DF1BK3E           :1;
-			uint32_t BK2INP               :1;
-			uint32_t BK2CMP1P             :1;
-			uint32_t BK2CMP2P             :1;
-			uint32_t                      :20;
-	
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM8_plugin>* const TIM8 =reinterpret_cast<class TIM<TIM8_plugin>* const>(TIM8_BASE_ADDR);
-#endif
-#ifdef TIM20_BASE_ADDR
-struct TIM20_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM20_OR_0
-			struct
-			{
-				uint32_t TIM20_OR_0_ETR_RMP   :4;
-				uint32_t                      :2;
-				uint32_t TIM20_OR_0_TI4_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM20_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM20_OR_1
-			struct
-			{
-				uint32_t TIM20_OR_1_TI1_RMP   :2;
-				uint32_t TIM20_OR_1_ETR_RMP   :1;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM20_OR_2
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM20_plugin>* const TIM20 =reinterpret_cast<class TIM<TIM20_plugin>* const>(TIM20_BASE_ADDR);
-#endif
-#ifdef TIM18_BASE_ADDR
-volatile class TIM<>* const TIM18 =reinterpret_cast<class TIM<>* const>(TIM18_BASE_ADDR);
-#endif
-#ifdef TIM19_BASE_ADDR
-volatile class TIM<>* const TIM19 =reinterpret_cast<class TIM<>* const>(TIM19_BASE_ADDR);
-#endif
-#ifdef TIM21_BASE_ADDR
-struct TIM21_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM21_OR_0
-			struct
-			{
-				uint32_t TIM21_OR_0_ETR_RMP   :2;
-				uint32_t TIM21_OR_0_TI1_RMP   :3;
-				uint32_t TIM21_OR_0_TI2_RMP   :1;
-				uint32_t TIM21_OR_0_TI4_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM21_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM21_OR_1
-			struct
-			{
-				uint32_t TIM21_OR_1_TI1_RMP   :2;
-				uint32_t TIM21_OR_1_ETR_RMP   :1;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM21_OR_2
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM21_plugin>* const TIM21 =reinterpret_cast<class TIM<TIM21_plugin>* const>(TIM21_BASE_ADDR);
-#endif
-#ifdef TIM22_BASE_ADDR
-struct TIM22_plugin: TIM_base_plugin {
-	
-	#ifdef TIM_OR
-	struct OR_TypeDef : public Reg32_t
-	{
-		using Reg32_t::operator=;
-	
-		union
-		{
-			#ifdef TIM22_OR_0
-			struct
-			{
-				uint32_t TIM22_OR_0_ETR_RMP   :2;
-				uint32_t TIM22_OR_0_TI1_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM22_OR_0_TI4_RMP   :2;
-				uint32_t                      :2;
-				uint32_t TIM22_OR_0_ITR1_RMP  :2;
-				uint32_t                      :20;
-			};
-			#endif
-			#ifdef TIM22_OR_1
-			struct
-			{
-				uint32_t TIM22_OR_1_TI1_RMP   :2;
-				uint32_t TIM22_OR_1_ETR_RMP   :1;
-				uint32_t                      :29;
-			};
-			#endif
-			#ifdef TIM22_OR_2
-			struct
-			{
-				uint32_t TI1RMP               :2;
-				uint32_t                      :30;
-			};
-			#endif
-		};
-		
-	};
-	#endif
-	
-};
-volatile class TIM<TIM22_plugin>* const TIM22 =reinterpret_cast<class TIM<TIM22_plugin>* const>(TIM22_BASE_ADDR);
-#endif
-//endregion
 
+//Instances for peripheral TIM_GENERAL_1
 
-template<typename plugin>
-constexpr uint32_t TIM<plugin>::get_clock_enable_bit(const uint32_t addr)
-{
-	switch (addr) {
-#ifdef TIM1_BASE_ADDR
-		case TIM1_BASE_ADDR:
-#if defined(STM32F2) || defined(STM32F4) || defined(STM32F7) || defined(STM32H7)
-				return 1 << 0;
-#else
-				return 1 << 11;
-#endif
-#endif
-#ifdef TIM2_BASE_ADDR
-		case TIM2_BASE_ADDR: return 1 << 0;
-#endif
-#ifdef TIM3_BASE_ADDR
-		case TIM3_BASE_ADDR: return 1 << 1;
-#endif
-#ifdef TIM4_BASE_ADDR
-		case TIM4_BASE_ADDR: return 1 << 2;
-#endif
-#ifdef TIM5_BASE_ADDR
-		case TIM5_BASE_ADDR: return 1 << 3;
-#endif
-#ifdef TIM6_BASE_ADDR
-		case TIM6_BASE_ADDR: return 1 << 4;
-#endif
-#ifdef TIM7_BASE_ADDR
-		case TIM7_BASE_ADDR: return 1 << 5;
-#endif
-#ifdef TIM8_BASE_ADDR
-		case TIM8_BASE_ADDR:
-#if defined(STM32F2) || defined(STM32F4) || defined(STM32F7) || defined(STM32H7)
-				return 1 << 1;
-#else
-				return 1 << 13;
-#endif
-#endif
-#ifdef TIM9_BASE_ADDR
-		case TIM9_BASE_ADDR:
-#if defined(STM32F0)
-				return 1 << 19;
-#elif defined(STM32L1)
-				return 1 << 2;
-#else
-				return 1 << 16;
-#endif
-#endif
-#ifdef TIM10_BASE_ADDR
-		case TIM10_BASE_ADDR:
-#if defined(STM32F0)
-				return 1 << 20;
-#elif defined(STM32L1)
-				return 1 << 3;
-#else
-				return 1 << 17;
-#endif
-#endif
-#ifdef TIM11_BASE_ADDR
-		case TIM11_BASE_ADDR:
-#if defined(STM32F0)
-				return 1 << 21;
-#elif defined(STM32L1)
-				return 1 << 4;
-#else
-				return 1 << 18;
-#endif
-#endif
-#ifdef TIM12_BASE_ADDR
-		case TIM12_BASE_ADDR: return 1 << 6;
-#endif
-#ifdef TIM13_BASE_ADDR
-		case TIM13_BASE_ADDR: return 1 << 7;
-#endif
-#ifdef TIM14_BASE_ADDR
-		case TIM14_BASE_ADDR: return 1 << 8;
-#endif
-#ifdef TIM15_BASE_ADDR
-		case TIM15_BASE_ADDR: return 1 << 16;
-#endif
-#ifdef TIM16_BASE_ADDR
-		case TIM16_BASE_ADDR: return 1 << 17;
-#endif
-#ifdef TIM17_BASE_ADDR
-		case TIM17_BASE_ADDR: return 1 << 18;
-#endif
-#ifdef TIM18_BASE_ADDR
-		case TIM18_BASE_ADDR: return 1 << 9;
-#endif
-#ifdef TIM19_BASE_ADDR
-		case TIM19_BASE_ADDR: return 1 << 19;
-#endif
-#ifdef TIM20_BASE_ADDR
-		case TIM20_BASE_ADDR: return 1 << 20;
-#endif
-#ifdef TIM21_BASE_ADDR
-		case TIM21_BASE_ADDR: return 1 << 2;
-#endif
-#ifdef TIM22_BASE_ADDR
-		case TIM22_BASE_ADDR: return 1 << 5;
-#endif
-		default:
-			return 0;
-	}
-}
+		#if defined(TIM12_BASE_ADDR) && defined(TIM_GENERAL_1_TIM12) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM12_TMPL> * const TIM12 = reinterpret_cast<class TIM_GENERAL_1<TIM12_TMPL>* const>(TIM12_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM12 = new TIM_GENERAL_1();
+				#undef TIM12_BASE_ADDR
+				#define TIM12_BASE_ADDR reinterpret_cast<uint32_t>(TIM12)
+			#endif
+		#endif
 
-template<typename plugin>
-constexpr volatile Reg32_t &TIM<plugin>::get_clock_enable_reg(const uint32_t addr)
-{
-	switch (addr) {
-#ifdef TIM1_BASE_ADDR
-		case TIM1_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM8_BASE_ADDR
-		case TIM8_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM9_BASE_ADDR
-		case TIM9_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM10_BASE_ADDR
-		case TIM10_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM11_BASE_ADDR
-		case TIM11_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM15_BASE_ADDR
-		case TIM15_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM16_BASE_ADDR
-		case TIM16_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM17_BASE_ADDR
-		case TIM17_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM19_BASE_ADDR
-		case TIM19_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM20_BASE_ADDR
-		case TIM20_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM21_BASE_ADDR
-		case TIM21_BASE_ADDR: return RCC->APB2ENR;
-#endif
-#ifdef TIM22_BASE_ADDR
-		case TIM22_BASE_ADDR: return RCC->APB2ENR;
-#endif
-		default:
-#if defined(RCC_APB1ENR1)
-			return RCC->APB1ENR1;
-#elif defined(RCC_APB1LENR)
-			return RCC->APB1LENR;
-#elif defined(RCC_APB1ENR)
-			return RCC->APB1ENR;
-#else
-			return *reinterpret_cast<volatile Reg32_t *>(0);
-#endif
-	}
-}
+		#if defined(TIM13_BASE_ADDR) && defined(TIM_GENERAL_1_TIM13) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM13_TMPL> * const TIM13 = reinterpret_cast<class TIM_GENERAL_1<TIM13_TMPL>* const>(TIM13_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM13 = new TIM_GENERAL_1();
+				#undef TIM13_BASE_ADDR
+				#define TIM13_BASE_ADDR reinterpret_cast<uint32_t>(TIM13)
+			#endif
+		#endif
 
-template<typename plugin>
-inline void TIM<plugin>::enable_clock() volatile
-{
-	TIM<plugin>::get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			|= get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
+		#if defined(TIM14_BASE_ADDR) && defined(TIM_GENERAL_1_TIM14) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM14_TMPL> * const TIM14 = reinterpret_cast<class TIM_GENERAL_1<TIM14_TMPL>* const>(TIM14_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM14 = new TIM_GENERAL_1();
+				#undef TIM14_BASE_ADDR
+				#define TIM14_BASE_ADDR reinterpret_cast<uint32_t>(TIM14)
+			#endif
+		#endif
 
-template<typename plugin>
-inline void TIM<plugin>::disable_clock() volatile
-{
-	TIM<plugin>::get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			&= ~get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
+		#if defined(TIM19_BASE_ADDR) && defined(TIM_GENERAL_1_TIM19) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM19_TMPL> * const TIM19 = reinterpret_cast<class TIM_GENERAL_1<TIM19_TMPL>* const>(TIM19_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM19 = new TIM_GENERAL_1();
+				#undef TIM19_BASE_ADDR
+				#define TIM19_BASE_ADDR reinterpret_cast<uint32_t>(TIM19)
+			#endif
+		#endif
 
-template<typename plugin>
-inline bool TIM<plugin>::is_clock_enabled() const volatile
-{
-	return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
-			& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
-		   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
-}
+		#if defined(TIM2_BASE_ADDR) && defined(TIM_GENERAL_1_TIM2) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM2_TMPL> * const TIM2 = reinterpret_cast<class TIM_GENERAL_1<TIM2_TMPL>* const>(TIM2_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM2 = new TIM_GENERAL_1();
+				#undef TIM2_BASE_ADDR
+				#define TIM2_BASE_ADDR reinterpret_cast<uint32_t>(TIM2)
+			#endif
+		#endif
 
+		#if defined(TIM3_BASE_ADDR) && defined(TIM_GENERAL_1_TIM3) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM3_TMPL> * const TIM3 = reinterpret_cast<class TIM_GENERAL_1<TIM3_TMPL>* const>(TIM3_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM3 = new TIM_GENERAL_1();
+				#undef TIM3_BASE_ADDR
+				#define TIM3_BASE_ADDR reinterpret_cast<uint32_t>(TIM3)
+			#endif
+		#endif
+
+		#if defined(TIM4_BASE_ADDR) && defined(TIM_GENERAL_1_TIM4) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM4_TMPL> * const TIM4 = reinterpret_cast<class TIM_GENERAL_1<TIM4_TMPL>* const>(TIM4_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM4 = new TIM_GENERAL_1();
+				#undef TIM4_BASE_ADDR
+				#define TIM4_BASE_ADDR reinterpret_cast<uint32_t>(TIM4)
+			#endif
+		#endif
+
+		#if defined(TIM5_BASE_ADDR) && defined(TIM_GENERAL_1_TIM5) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_1<TIM5_TMPL> * const TIM5 = reinterpret_cast<class TIM_GENERAL_1<TIM5_TMPL>* const>(TIM5_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_1 * const TIM5 = new TIM_GENERAL_1();
+				#undef TIM5_BASE_ADDR
+				#define TIM5_BASE_ADDR reinterpret_cast<uint32_t>(TIM5)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_BASIC
+
+		#if defined(TIM_BASIC_TIM6) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_BASIC * const TIM6 = reinterpret_cast<class TIM_BASIC* const>(TIM6_BASE_ADDR);
+			#else
+				volatile class TIM_BASIC * const TIM6 = new TIM_BASIC();
+				#undef TIM6_BASE_ADDR
+				#define TIM6_BASE_ADDR reinterpret_cast<uint32_t>(TIM6)
+			#endif
+		#endif
+
+		#if defined(TIM18_BASE_ADDR) && defined(TIM_BASIC_TIM18) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_BASIC * const TIM18 = reinterpret_cast<class TIM_BASIC* const>(TIM18_BASE_ADDR);
+			#else
+				volatile class TIM_BASIC * const TIM18 = new TIM_BASIC();
+				#undef TIM18_BASE_ADDR
+				#define TIM18_BASE_ADDR reinterpret_cast<uint32_t>(TIM18)
+			#endif
+		#endif
+
+		#if defined(TIM7_BASE_ADDR) && defined(TIM_BASIC_TIM7) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_BASIC * const TIM7 = reinterpret_cast<class TIM_BASIC* const>(TIM7_BASE_ADDR);
+			#else
+				volatile class TIM_BASIC * const TIM7 = new TIM_BASIC();
+				#undef TIM7_BASE_ADDR
+				#define TIM7_BASE_ADDR reinterpret_cast<uint32_t>(TIM7)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_ADVANCED
+
+		#if defined(TIM_ADVANCED_TIM1) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<TIM1_TMPL> * const TIM1 = reinterpret_cast<class TIM_ADVANCED<TIM1_TMPL>* const>(TIM1_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM1 = new TIM_ADVANCED();
+				#undef TIM1_BASE_ADDR
+				#define TIM1_BASE_ADDR reinterpret_cast<uint32_t>(TIM1)
+			#endif
+		#endif
+
+		#if defined(TIM2_BASE_ADDR) && defined(TIM_ADVANCED_TIM2) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<> * const TIM2 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM2_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM2 = new TIM_ADVANCED();
+				#undef TIM2_BASE_ADDR
+				#define TIM2_BASE_ADDR reinterpret_cast<uint32_t>(TIM2)
+			#endif
+		#endif
+
+		#if defined(TIM20_BASE_ADDR) && defined(TIM_ADVANCED_TIM20) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<> * const TIM20 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM20_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM20 = new TIM_ADVANCED();
+				#undef TIM20_BASE_ADDR
+				#define TIM20_BASE_ADDR reinterpret_cast<uint32_t>(TIM20)
+			#endif
+		#endif
+
+		#if defined(TIM3_BASE_ADDR) && defined(TIM_ADVANCED_TIM3) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<> * const TIM3 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM3_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM3 = new TIM_ADVANCED();
+				#undef TIM3_BASE_ADDR
+				#define TIM3_BASE_ADDR reinterpret_cast<uint32_t>(TIM3)
+			#endif
+		#endif
+
+		#if defined(TIM4_BASE_ADDR) && defined(TIM_ADVANCED_TIM4) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<> * const TIM4 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM4_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM4 = new TIM_ADVANCED();
+				#undef TIM4_BASE_ADDR
+				#define TIM4_BASE_ADDR reinterpret_cast<uint32_t>(TIM4)
+			#endif
+		#endif
+
+		#if defined(TIM5_BASE_ADDR) && defined(TIM_ADVANCED_TIM5) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<> * const TIM5 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM5_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM5 = new TIM_ADVANCED();
+				#undef TIM5_BASE_ADDR
+				#define TIM5_BASE_ADDR reinterpret_cast<uint32_t>(TIM5)
+			#endif
+		#endif
+
+		#if defined(TIM8_BASE_ADDR) && defined(TIM_ADVANCED_TIM8) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_ADVANCED<TIM8_TMPL> * const TIM8 = reinterpret_cast<class TIM_ADVANCED<TIM8_TMPL>* const>(TIM8_BASE_ADDR);
+			#else
+				volatile class TIM_ADVANCED * const TIM8 = new TIM_ADVANCED();
+				#undef TIM8_BASE_ADDR
+				#define TIM8_BASE_ADDR reinterpret_cast<uint32_t>(TIM8)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_GENERAL_3
+
+		#if defined(TIM_GENERAL_3_TIM16) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_3<TIM16_TMPL> * const TIM16 = reinterpret_cast<class TIM_GENERAL_3<TIM16_TMPL>* const>(TIM16_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_3 * const TIM16 = new TIM_GENERAL_3();
+				#undef TIM16_BASE_ADDR
+				#define TIM16_BASE_ADDR reinterpret_cast<uint32_t>(TIM16)
+			#endif
+		#endif
+
+		#if defined(TIM15_BASE_ADDR) && defined(TIM_GENERAL_3_TIM15) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_3<> * const TIM15 = reinterpret_cast<class TIM_GENERAL_3<>* const>(TIM15_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_3 * const TIM15 = new TIM_GENERAL_3();
+				#undef TIM15_BASE_ADDR
+				#define TIM15_BASE_ADDR reinterpret_cast<uint32_t>(TIM15)
+			#endif
+		#endif
+
+		#if defined(TIM17_BASE_ADDR) && defined(TIM_GENERAL_3_TIM17) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_3<TIM17_TMPL> * const TIM17 = reinterpret_cast<class TIM_GENERAL_3<TIM17_TMPL>* const>(TIM17_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_3 * const TIM17 = new TIM_GENERAL_3();
+				#undef TIM17_BASE_ADDR
+				#define TIM17_BASE_ADDR reinterpret_cast<uint32_t>(TIM17)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_GENERAL_5
+
+		#if defined(TIM_GENERAL_5_TIM12) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_5 * const TIM12 = reinterpret_cast<class TIM_GENERAL_5* const>(TIM12_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_5 * const TIM12 = new TIM_GENERAL_5();
+				#undef TIM12_BASE_ADDR
+				#define TIM12_BASE_ADDR reinterpret_cast<uint32_t>(TIM12)
+			#endif
+		#endif
+
+		#if defined(TIM9_BASE_ADDR) && defined(TIM_GENERAL_5_TIM9) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_5 * const TIM9 = reinterpret_cast<class TIM_GENERAL_5* const>(TIM9_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_5 * const TIM9 = new TIM_GENERAL_5();
+				#undef TIM9_BASE_ADDR
+				#define TIM9_BASE_ADDR reinterpret_cast<uint32_t>(TIM9)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_GENERAL_6
+
+		#if defined(TIM1_BASE_ADDR) && defined(TIM_GENERAL_6_TIM1) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM1_TMPL> * const TIM1 = reinterpret_cast<class TIM_GENERAL_6<TIM1_TMPL>* const>(TIM1_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM1 = new TIM_GENERAL_6();
+				#undef TIM1_BASE_ADDR
+				#define TIM1_BASE_ADDR reinterpret_cast<uint32_t>(TIM1)
+			#endif
+		#endif
+
+		#if defined(TIM10_BASE_ADDR) && defined(TIM_GENERAL_6_TIM10) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM10_TMPL> * const TIM10 = reinterpret_cast<class TIM_GENERAL_6<TIM10_TMPL>* const>(TIM10_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM10 = new TIM_GENERAL_6();
+				#undef TIM10_BASE_ADDR
+				#define TIM10_BASE_ADDR reinterpret_cast<uint32_t>(TIM10)
+			#endif
+		#endif
+
+		#if defined(TIM11_BASE_ADDR) && defined(TIM_GENERAL_6_TIM11) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM11_TMPL> * const TIM11 = reinterpret_cast<class TIM_GENERAL_6<TIM11_TMPL>* const>(TIM11_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM11 = new TIM_GENERAL_6();
+				#undef TIM11_BASE_ADDR
+				#define TIM11_BASE_ADDR reinterpret_cast<uint32_t>(TIM11)
+			#endif
+		#endif
+
+		#if defined(TIM13_BASE_ADDR) && defined(TIM_GENERAL_6_TIM13) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM13_TMPL> * const TIM13 = reinterpret_cast<class TIM_GENERAL_6<TIM13_TMPL>* const>(TIM13_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM13 = new TIM_GENERAL_6();
+				#undef TIM13_BASE_ADDR
+				#define TIM13_BASE_ADDR reinterpret_cast<uint32_t>(TIM13)
+			#endif
+		#endif
+
+		#if defined(TIM14_BASE_ADDR) && defined(TIM_GENERAL_6_TIM14) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM14_TMPL> * const TIM14 = reinterpret_cast<class TIM_GENERAL_6<TIM14_TMPL>* const>(TIM14_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM14 = new TIM_GENERAL_6();
+				#undef TIM14_BASE_ADDR
+				#define TIM14_BASE_ADDR reinterpret_cast<uint32_t>(TIM14)
+			#endif
+		#endif
+
+		#if defined(TIM2_BASE_ADDR) && defined(TIM_GENERAL_6_TIM2) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_6<TIM2_TMPL> * const TIM2 = reinterpret_cast<class TIM_GENERAL_6<TIM2_TMPL>* const>(TIM2_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_6 * const TIM2 = new TIM_GENERAL_6();
+				#undef TIM2_BASE_ADDR
+				#define TIM2_BASE_ADDR reinterpret_cast<uint32_t>(TIM2)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_GENERAL_2
+
+		#if defined(TIM_GENERAL_2_TIM15) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_2 * const TIM15 = reinterpret_cast<class TIM_GENERAL_2* const>(TIM15_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_2 * const TIM15 = new TIM_GENERAL_2();
+				#undef TIM15_BASE_ADDR
+				#define TIM15_BASE_ADDR reinterpret_cast<uint32_t>(TIM15)
+			#endif
+		#endif
+
+//Instances for peripheral TIM_GENERAL_4
+
+		#if defined(TIM12_BASE_ADDR) && defined(TIM_GENERAL_4_TIM12) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_4<> * const TIM12 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM12_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_4 * const TIM12 = new TIM_GENERAL_4();
+				#undef TIM12_BASE_ADDR
+				#define TIM12_BASE_ADDR reinterpret_cast<uint32_t>(TIM12)
+			#endif
+		#endif
+
+		#if defined(TIM21_BASE_ADDR) && defined(TIM_GENERAL_4_TIM21) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_4<TIM21_TMPL> * const TIM21 = reinterpret_cast<class TIM_GENERAL_4<TIM21_TMPL>* const>(TIM21_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_4 * const TIM21 = new TIM_GENERAL_4();
+				#undef TIM21_BASE_ADDR
+				#define TIM21_BASE_ADDR reinterpret_cast<uint32_t>(TIM21)
+			#endif
+		#endif
+
+		#if defined(TIM22_BASE_ADDR) && defined(TIM_GENERAL_4_TIM22) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_4<TIM22_TMPL> * const TIM22 = reinterpret_cast<class TIM_GENERAL_4<TIM22_TMPL>* const>(TIM22_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_4 * const TIM22 = new TIM_GENERAL_4();
+				#undef TIM22_BASE_ADDR
+				#define TIM22_BASE_ADDR reinterpret_cast<uint32_t>(TIM22)
+			#endif
+		#endif
+
+		#if defined(TIM9_BASE_ADDR) && defined(TIM_GENERAL_4_TIM9) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class TIM_GENERAL_4<> * const TIM9 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM9_BASE_ADDR);
+			#else
+				volatile class TIM_GENERAL_4 * const TIM9 = new TIM_GENERAL_4();
+				#undef TIM9_BASE_ADDR
+				#define TIM9_BASE_ADDR reinterpret_cast<uint32_t>(TIM9)
+			#endif
+		#endif
+
+//Instances for peripheral MAC_TIM
+
+		#if defined(MAC_TIM_MAC_TIM) 
+			#ifndef __SOOL_DEBUG_NOPHY
+				volatile class MAC_TIM * const MAC_TIM = reinterpret_cast<class MAC_TIM* const>(MAC_TIM_BASE_ADDR);
+			#else
+				volatile class MAC_TIM * const MAC_TIM = new MAC_TIM();
+				#undef MAC_TIM_BASE_ADDR
+				#define MAC_TIM_BASE_ADDR reinterpret_cast<uint32_t>(MAC_TIM)
+			#endif
+		#endif
+		
+		
 	};
-};//region undef
-#undef TIM_DIER_COMDE
-#undef TIM_CNT_1_CNT
-#undef TIM2_OR_0_ETR_RMP
-#undef TIM2_OR_0_TI4_RMP
-#undef TIM21_OR_0_ETR_RMP
-#undef TIM21_OR_0_TI1_RMP
-#undef TIM21_OR_0_TI2_RMP
-#undef TIM_CCER_CC1NE
-#undef TIM_CCER_CC2NE
-#undef TIM_CCER_CC3NE
-#undef TIM_CR2_0_CCPC
-#undef TIM_CR2_0_CCUS
-#undef TIM_CR2_0_OIS1
-#undef TIM_CR2_0_OIS1N
-#undef TIM_CR2_0_OIS2
-#undef TIM_DIER_COMIE
-#undef TIM_DIER_BIE
-#undef TIM_EGR_COMG
-#undef TIM_EGR_BG
-#undef TIM_SR_COMIF
-#undef TIM_SR_BIF
-#undef TIM_MAP0_RCR
-#undef TIM_MAP0_BDTR
-#undef TIM_BDTR_BKF
-#undef TIM_BDTR_BK2F
-#undef TIM_BDTR_BK2E
-#undef TIM_BDTR_BK2P
-#undef TIM_CCER_CC5E
-#undef TIM_CCER_CC5P
-#undef TIM_CCER_CC6E
-#undef TIM_CCER_CC6P
-#undef TIM_CNT_1_UIFCPY
-#undef TIM_CR1_UIFREMAP
-#undef TIM_CR2_0_OIS5
-#undef TIM_CR2_0_MMS2
-#undef TIM_EGR_B2G
-#undef TIM_SR_B2IF
-#undef TIM_SR_CC5IF
-#undef TIM_SR_CC6IF
-#undef TIM_CCER_CC4NP
-#undef TIM_CCMR1_0_OC1M
-#undef TIM_CCMR1_0_OC2M
-#undef TIM_SMCR_SMS
-#undef TIM_CCMR2_0_OC3M
-#undef TIM_CCMR2_0_OC4M
-#undef TIM_CCMR3_0_OC5M0
-#undef TIM_CCMR3_0_OC5M1
-#undef TIM_CCMR3_0_OC5M3
-#undef TIM_CCMR3_2_OC6M2
-#undef TIM_CCMR3_0_OC5M
-#undef TIM_CCMR3_2_OC6M
-#undef TIM_MAP2_CCMR3
-#undef TIM_MAP1_CCR5
-#undef TIM_MAP1_CCR6
-#undef TIM_MAP1_AF1
-#undef TIM_MAP1_AF2
-#undef TIM_MAP1_TISEL
-#undef TIM1_AF1_0_BKCMP1E
-#undef TIM1_AF1_0_BKCMP2E
-#undef TIM1_AF1_0_BKCMP1P
-#undef TIM1_AF1_0_BKCMP2P
-#undef TIM1_AF1_0_ETR_SEL
-#undef TIM1_AF2_0_BK2CMP1E
-#undef TIM1_AF2_0_BK2CMP2E
-#undef TIM1_AF2_0_BK2CMP1P
-#undef TIM1_AF2_0_BK2CMP2P
-#undef TIM8_AF1_0_BKCMP1E
-#undef TIM8_AF1_0_BKCMP2E
-#undef TIM8_AF1_0_BKCMP1P
-#undef TIM8_AF1_0_BKCMP2P
-#undef TIM8_AF1_0_ETR_SEL
-#undef TIM8_AF2_0_BK2CMP1E
-#undef TIM8_AF2_0_BK2CMP2E
-#undef TIM8_AF2_0_BK2CMP1P
-#undef TIM8_AF2_0_BK2CMP2P
-#undef TIM_CR2_0_OIS2N
-#undef TIM_CR2_0_OIS3
-#undef TIM_CR2_0_OIS3N
-#undef TIM_CR2_0_OIS4
-#undef TIM_CR2_0_OIS6
-#undef TIM_MAP0_CCMR3
-#undef TIM_MAP0_CCR5
-#undef TIM_MAP0_CCR6
-#undef TIM_MAP0_OR
-#undef TIM_OR_0_TI1_RMP
-#undef TIM1_OR_1_TI1_RMP
-#undef TIM8_OR_1_TI1_RMP
-#undef TIM20_OR_1_TI1_RMP
-#undef TIM5_OR_0_TI1_RMP
-#undef TIM21_OR_1_TI1_RMP
-#undef TIM22_OR_1_TI1_RMP
-#undef TIM9_OR_0_TI1_RMP
-#undef TIM_OR_0_ETR_RMP
-#undef TIM14_OR_0_ETR_RMP
-#undef TIM16_OR_0_TI1RMP
-#undef TIM16_OR_0_ETR_RMP
-#undef TIM1_OR_1_ETR_RMP
-#undef TIM8_OR_1_ETR_RMP
-#undef TIM20_OR_1_ETR_RMP
-#undef TIM2_OR_1_ETR_RMP
-#undef TIM5_OR_0_ETR_RMP
-#undef TIM11_OR_0_ETR_RMP
-#undef TIM3_OR_1_ETR_RMP
-#undef TIM21_OR_1_ETR_RMP
-#undef TIM22_OR_1_ETR_RMP
-#undef TIM9_OR_1_TI1RMP
-#undef TIM9_OR_1_ETR_RMP
-#undef TIM_OR_0_TI4_RMP
-#undef TIM14_OR_0_TI4_RMP
-#undef TIM16_OR_1_TI4_RMP
-#undef TIM1_OR_0_TI4_RMP
-#undef TIM8_OR_0_TI4_RMP
-#undef TIM20_OR_0_TI4_RMP
-#undef TIM2_OR_1_TI4_RMP
-#undef TIM5_OR_0_TI4_RMP
-#undef TIM11_OR_0_TI1_RMP
-#undef TIM11_OR_0_TI4_RMP
-#undef TIM3_OR_1_TI4_RMP
-#undef TIM21_OR_0_TI4_RMP
-#undef TIM22_OR_0_TI4_RMP
-#undef TIM9_OR_0_TI4_RMP
-#undef TIM_OR_0_ITR1_RMP
-#undef TIM14_OR_0_ITR1_RMP
-#undef TIM16_OR_0_ITR1_RMP
-#undef TIM1_OR_0_ITR1_RMP
-#undef TIM8_OR_0_ITR1_RMP
-#undef TIM20_OR_0_ITR1_RMP
-#undef TIM5_OR_0_ITR1_RMP
-#undef TIM11_OR_0_ITR1_RMP
-#undef TIM3_OR_0_ITR1_RMP
-#undef TIM21_OR_0_ITR1_RMP
-#undef TIM22_OR_0_ITR1_RMP
-#undef TIM9_OR_1_ITR1_RMP
-#undef TIM_MAP1_OR1
-#undef TIM_MAP2_OR2
-#undef TIM_MAP2_OR3
-#undef TIM_SMCR_OCCS
-#undef TIM_SMCR_TS
-#undef TIM_SR_SBIF
-#undef TIM_MAP0_AF1
-#undef TIM_MAP0_AF2
-#undef TIM1_AF1_0_BKDF1BKE
-#undef TIM1_AF2_0_BK2DF1BKE
-#undef TIM8_AF1_0_BKDF1BKE
-#undef TIM8_AF2_0_BK2DF1BKE
-#undef TIM14_OR_0_TI1_RMP
-#undef TIM16_OR_0_TI1_RMP
-#undef TIM16_OR_1_TI1_RMP
-#undef TIM16_OR2_BKDF1BK1E
-#undef TIM1_OR2_BKDF1BK0E
-#undef TIM1_OR3_BK2DF1BK1E
-#undef TIM15_OR2_BKDF1BK0E
-#undef TIM1_OR_0_ETR_RMP
-#undef TIM1_OR1_ETR_ADC3_RMP
-#undef TIM8_OR1_ETR_ADC2_RMP
-#undef TIM8_OR1_ETR_ADC3_RMP
-#undef TIM8_OR_0_ETR_RMP
-#undef TIM20_OR_0_ETR_RMP
-#undef TIM2_OR_0_ITR1_RMP
-#undef TIM2_OR_1_ITR1_RMP
-#undef TIM3_OR_1_ITR2_RMP
-#undef TIM9_OR_0_ITR1_RMP
-#undef TIM3_OR_0_ETR_RMP
-#undef TIM3_OR_0_TI1_RMP
-#undef TIM3_OR_0_TI2_RMP
-#undef TIM3_OR_0_TI4_RMP
-#undef TIM22_OR_0_ETR_RMP
-#undef TIM22_OR_0_TI1_RMP
-//endregion
+};
+#undef TIM_GENERAL_1_MAP3_TIM2_OR
+#undef TIM_GENERAL_1_OR_0_ETR_RMP
+#undef PERIPH_MAC_TIM
+#undef TIM_GENERAL_4_CR1_0_DIR
+#undef TIM_GENERAL_2_MAP0_DCR
+#undef TIM_ADVANCED_CCMR1_Input_4
+#undef TIM_GENERAL_1_MAP0_OR2
+#undef TIM_ADVANCED_AF2_1_BK2DFBK0E
+#undef TIM_GENERAL_1_CCR2_0
+#undef TIM_ADVANCED_MAP1_DCR
+#undef TIM_GENERAL_4_SMCR_ETP
+#undef TIM_GENERAL_2_TIM15
+#undef TIM_GENERAL_1_CCR4_0
+#undef TIM_GENERAL_2_MAP1_OR1
+#undef TIM_ADVANCED_BDTR_BKDSRM
+#undef TIM_GENERAL_6_TIM1
+#undef TIM_ADVANCED_MAP1_AF1
+#undef TIM_GENERAL_1_CCR2_2
+#undef TIM_ADVANCED_AF1_0_BKCMP3E
+#undef TIM_GENERAL_4_CR1_1
+#undef TIM_GENERAL_1_OR1_1
+#undef TIM_ADVANCED_MAP1_OR1
+#undef TIM_GENERAL_3_EGR_TG
+#undef TIM_GENERAL_6_MAP1_PSC
+#undef TIM_GENERAL_1_MAP1_CCR1
+#undef TIM_ADVANCED_OR2_2
+#undef TIM1_TMPL
+#undef TIM_ADVANCED_CCMR1_Input_2
+#undef TIM3_TMPL
+#undef TIM_GENERAL_3_BDTR_BKDSRM
+#undef TIM_ADVANCED_CCER_CC6P
+#undef TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
+#undef TIM_GENERAL_3_OR2_1
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
+#undef TIM_ADVANCED_CCMR1_Input_0_IC2PCS
+#undef TIM_ADVANCED_TIM5
+#undef TIM_GENERAL_3_CR1_1
+#undef TIM_GENERAL_1_CCR1_2
+#undef TIM_GENERAL_3_CCMR1_Output_0_OC1M_2
+#undef TIM_GENERAL_1_CR1_2_UIFREMAP
+#undef TIM_GENERAL_2_DMAR_0
+#undef TIM_GENERAL_5_TIM9
+#undef TIM_GENERAL_6_CCMR1_Output_OC1CE
+#undef TIM_ADVANCED_CCMR2_Input_0_IC4PSC
+#undef TIM_GENERAL_2_CCER_CC2P
+#undef TIM_ADVANCED_SMCR_1
+#undef TIM_GENERAL_3_MAP0_DCR
+#undef TIM_GENERAL_3_OR2_0
+#undef TIM_GENERAL_2_MAP1_DMAR
+#undef TIM10_TMPL
+#undef TIM_GENERAL_6_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_6_TIM13
+#undef TIM_ADVANCED_CR2_OIS5
+#undef TIM_GENERAL_6_OR_1
+#undef TIM_GENERAL_1_CNT_2
+#undef TIM_GENERAL_2_CCER_CC2E
+#undef TIM_GENERAL_4_CR1_0_CMS
+#undef TIM_GENERAL_1_CCMR2_Output_1
+#undef TIM_ADVANCED_AF1_0_BKCMP7E
+#undef TIM_GENERAL_1_OR_4
+#undef TIM_GENERAL_2_DIER_CC2IE
+#undef TIM_GENERAL_3_MAP3_SR
+#undef TIM_GENERAL_1_SMCR_SMS_3
+#undef TIM_GENERAL_1_CNT_6
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M
+#undef TIM_ADVANCED_CCMR1_Input_2_OC1CE
+#undef TIM_GENERAL_1_CCR2_1
+#undef TIM_GENERAL_1_SMCR_TS_4_3
+#undef TIM_ADVANCED_TIM20
+#undef TIM_BASIC_TIM6
+#undef TIM_GENERAL_6_TIM14
+#undef TIM_ADVANCED_OR1_0
+#undef TIM_ADVANCED_AF2_1_BKINE
+#undef TIM_GENERAL_1_SMCR_OCCS
+#undef TIM_GENERAL_3_CNT_UIFCPY
+#undef TIM_GENERAL_1_OR_0_IT4_RMP
+#undef TIM_GENERAL_1_TIM12
+#undef TIM_ADVANCED_MAP1_CCMR3_Output
+#undef TIM_GENERAL_6_MAP1_CCER
+#undef TIM_GENERAL_6_MAP2
+#undef TIM_ADVANCED_TIM2
+#undef TIM_GENERAL_2_DIER_COMDE
+#undef TIM_ADVANCED_OR2_1
+#undef TIM_ADVANCED_OR3_0
+#undef TIM_GENERAL_6_MAP1_CCR1
+#undef TIM_GENERAL_3_MAP0_RCR
+#undef TIM_GENERAL_6_OR_0
+#undef TIM_GENERAL_3_MAP3_DIER
+#undef TIM_GENERAL_3_DMAR_0
+#undef TIM8_TMPL
+#undef TIM_GENERAL_3_OR1_1
+#undef TIM_ADVANCED_TIM3
+#undef TIM_GENERAL_5_TIM12
+#undef TIM_GENERAL_1_MAP3_AF
+#undef TIM_GENERAL_1_OR_0
+#undef TIM_GENERAL_3_MAP1_DIER
+#undef TIM_GENERAL_1_CNT_3_UIFCPY
+#undef TIM_GENERAL_4_OR_1
+#undef TIM_GENERAL_3_CR1_2
+#undef TIM_GENERAL_6_CR1_UIFREMAP
+#undef TIM_ADVANCED_DIER_IDXIE
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
+#undef TIM11_TMPL
+#undef TIM_ADVANCED_CCER_CC5P
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC2F
+#undef TIM_GENERAL_1_TIM14
+#undef TIM_GENERAL_1_ARR_1
+#undef TIM_ADVANCED_CCMR1_Input_1_OC2CE
+#undef TIM_ADVANCED_SR_IERRF
+#undef TIM_GENERAL_1_MAP1_CCR3
+#undef PERIPH_TIM_GENERAL_3
+#undef TIM_GENERAL_3_MAP3_AF1
+#undef TIM_GENERAL_1_DMAR_0
+#undef TIM_GENERAL_3_AF1_BKCMP5E
+#undef TIM_GENERAL_6_CCMR1_Output_OC1M_3
+#undef TIM_GENERAL_1_CCR4_3
+#undef TIM_GENERAL_1_TISEL_TI3SEL
+#undef TIM_ADVANCED_CCMR2_Input_0_IC4F
+#undef TIM_ADVANCED_EGR_B2G
+#undef PERIPH_TIM_GENERAL_5
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4FE
+#undef TIM_GENERAL_4_OR_2
+#undef TIM_GENERAL_2_SMCR_0_TS_4_3
+#undef TIM_ADVANCED_TIM8
+#undef TIM_ADVANCED_CCMR2_Input_1
+#undef TIM_GENERAL_3_AF1_BKCMP4E
+#undef TIM_GENERAL_3_MAP0_PSC
+#undef TIM_ADVANCED_AF2_0_OCRSEL
+#undef TIM_ADVANCED_CCMR2_Input_0_IC3PSC
+#undef TIM_ADVANCED_AF1_0_BKDF1BK0E
+#undef TIM_GENERAL_1_CCR3_0
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC2PSC
+#undef TIM_ADVANCED_CCMR1_Input_2_OC2FE
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4M
+#undef TIM_ADVANCED_SR_TERRF
+#undef TIM_ADVANCED_AF2_0_BK2CMP6E
+#undef TIM_GENERAL_4_CCMR1_Output_1
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2PE
+#undef PERIPH_TIM_BASIC
+#undef TIM_GENERAL_1_CCR2_3
+#undef TIM_GENERAL_2_EGR_CC2G
+#undef TIM_GENERAL_2_CCMR1_Input_CC2S
+#undef TIM_ADVANCED_CCMR2_Output_0_OC3M_3
+#undef TIM_GENERAL_1_DMAR_1
+#undef TIM_GENERAL_3_MAP1_AF2
+#undef TIM_ADVANCED_CCMR1_Input_1_C1F
+#undef TIM16_TMPL
+#undef TIM_GENERAL_1_CNT_2_CNT_H
+#undef TIM_ADVANCED_OR2_0
+#undef TIM_ADVANCED_CCMR1_Input_2_OC2PE
+#undef TIM_BASIC_CNT_UIFCPY
+#undef TIM_GENERAL_3_BDTR_BKBID
+#undef TIM_ADVANCED_AF2_0_BK2CMP7E
+#undef TIM_ADVANCED_BDTR_BKBID
+#undef TIM_GENERAL_1_MAP3_CCR3
+#undef TIM_GENERAL_1_CCR1_1
+#undef TIM_ADVANCED_DIER_IERRIE
+#undef TIM_GENERAL_2_MAP1_AF1
+#undef TIM_ADVANCED_CCMR3_Output_2
+#undef TIM4_TMPL
+#undef TIM_GENERAL_1_CCR4_2
+#undef TIM_GENERAL_3_MAP1_OR1
+#undef TIM_GENERAL_1_CCR3_1
+#undef TIM_GENERAL_3_AF1_BKDFBK1E
+#undef TIM_GENERAL_1_MAP1_TISEL
+#undef TIM_ADVANCED_AF2_0_BK2CMP4E
+#undef TIM_ADVANCED_CCMR1_Input_0_IC1F
+#undef TIM21_TMPL
+#undef TIM_ADVANCED_MAP1_CRR6
+#undef TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
+#undef TIM_GENERAL_1_MAP3_CCR1
+#undef TIM_ADVANCED_SMCR_0_TS
+#undef TIM_GENERAL_6_MAP1_CNT
+#undef TIM_BASIC_TIM7
+#undef TIM_GENERAL_3_MAP0_CCER
+#undef TIM_GENERAL_1_OR1_3
+#undef TIM_GENERAL_1_CR1_0
+#undef TIM_GENERAL_1_CNT_5
+#undef TIM_ADVANCED_CCMR2_Output_0_OC4M_4
+#undef TIM_GENERAL_6_MAP1_TISEL
+#undef TIM_GENERAL_2_MAP1_DTR2
+#undef TIM_GENERAL_2_CR2_0_TI1S
+#undef TIM_GENERAL_1_CNT_3_CNT
+#undef TIM_ADVANCED_OR3_2
+#undef TIM_GENERAL_6_SMCR_0
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC1M_3
+#undef TIM_ADVANCED_OR1_3
+#undef TIM_GENERAL_3_OR1_0
+#undef TIM19_TMPL
+#undef TIM_GENERAL_6_TIM2
+#undef TIM_ADVANCED_AF1_0_BKCMP4P
+#undef TIM_ADVANCED_AF2_0_BK2CMP5E
+#undef TIM_GENERAL_1_CCMR2_Output_0_CC4S
+#undef TIM_ADVANCED_BDTR_BK2ID
+#undef TIM_ADVANCED_BDTR_BKF
+#undef TIM_ADVANCED_SMCR_0_SMSPE
+#undef TIM_ADVANCED_TISEL_1
+#undef TIM_GENERAL_2_BDTR_BKDSRM
+#undef TIM13_TMPL
+#undef TIM_GENERAL_6_SMCR_1
+#undef TIM_GENERAL_1_CNT_3_CNT_H
+#undef TIM_ADVANCED_CCMR2_Input_1_OC3CE
+#undef TIM_GENERAL_3_BDTR_BKF
+#undef TIM14_TMPL
+#undef TIM_ADVANCED_MAP1_DMAR
+#undef TIM_GENERAL_1_MAP3
+#undef TIM_GENERAL_1_MAP1_AF1
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4PE
+#undef TIM_GENERAL_6_MAP1_SMCR
+#undef TIM_ADVANCED_TIM4
+#undef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
+#undef TIM_ADVANCED_SR_CC5IF
+#undef TIM_ADVANCED_CCMR1_Input_1
+#undef TIM_GENERAL_4_TIM12
+#undef TIM_GENERAL_6_MAP1_CCMR1_Input
+#undef TIM_ADVANCED_AF1_0_BKCMP5E
+#undef TIM_GENERAL_5_CCMR1_Input_0_IC2F
+#undef TIM_GENERAL_3_TIM15
+#undef TIM_GENERAL_2_BDTR_BKF
+#undef TIM_GENERAL_3_TIM16
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4CE
+#undef TIM_GENERAL_4_CCMR1_Output_0_CC2S
+#undef TIM_GENERAL_6_CR1_OPM
+#undef TIM_GENERAL_4_TIM21
+#undef TIM_GENERAL_6_MAP1_OR
+#undef TIM_GENERAL_4_OR_0
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC1F
+#undef TIM_ADVANCED_CCMR2_Input_2
+#undef TIM_ADVANCED_CR2_OIS4N
+#undef TIM_GENERAL_1_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_1_OR1_2
+#undef TIM_GENERAL_3_MAP3_EGR
+#undef TIM_ADVANCED_CR1_UIFREMAP
+#undef TIM_GENERAL_3_AF1_BKCMP7E
+#undef TIM_GENERAL_3_MAP3_CCMR1_Output
+#undef TIM_GENERAL_1_CCMR2_Output_0_O24CE
+#undef TIM_GENERAL_6_CNT_UIFCPY
+#undef TIM_GENERAL_3_MAP0_DMAR
+#undef TIM_GENERAL_1_CR1_2
+#undef TIM_GENERAL_1_CNT_4
+#undef TIM_ADVANCED_AF1_0_BKCMP3P
+#undef TIM_ADVANCED_SR_SBIF
+#undef TIM_GENERAL_1_MAP0_OR1
+#undef TIM_GENERAL_4_MAP1_OR
+#undef TIM_GENERAL_2_SMCR_0_SMS_3
+#undef TIM_ADVANCED_TIM1
+#undef TIM_GENERAL_6_TIM10
+#undef TIM_GENERAL_4_TIM22
+#undef TIM_ADVANCED_CCER_CC4NP
+#undef TIM_GENERAL_3_MAP0_BDTR
+#undef TIM_ADVANCED_CCMR2_Input_1_OC3M
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC1F
+#undef TIM_ADVANCED_AF2_0_BK2CMP3P
+#undef TIM_ADVANCED_TIM_ADVANCED_tmpl_0
+#undef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
+#undef TIM_GENERAL_2_CCER_CC2NP
+#undef TIM_GENERAL_1_OR2_1
+#undef TIM_GENERAL_1_CNT_1
+#undef TIM_GENERAL_3_MAP2
+#undef TIM_ADVANCED_TISEL_0
+#undef TIM_GENERAL_1_OR2_0
+#undef TIM_GENERAL_3_MAP3_TISEL
+#undef TIM_GENERAL_4_TIM9
+#undef TIM_GENERAL_4_CCMR1_Output_0_OC1CE
+#undef TIM_ADVANCED_AF2_0_BK2CMP3E
+#undef TIM_ADVANCED_SR_CC6IF
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_2_SR_CC2OF
+#undef TIM_ADVANCED_SMCR_0_SMS_3
+#undef TIM_ADVANCED_OR3_1
+#undef TIM_GENERAL_2_CCMR1_Input_IC2PSC
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2FE
+#undef TIM_ADVANCED_CCMR1_Input_1_OC2M
+#undef TIM_GENERAL_4_CCMR1_Input_0_ICPCS
+#undef TIM12_TMPL
+#undef TIM_GENERAL_2_CCMR1_Output_1
+#undef TIM_GENERAL_1_CCMR1_Input_1
+#undef TIM_GENERAL_1_CNT_3
+#undef TIM_ADVANCED_OR1_2
+#undef TIM_GENERAL_2_CR2_0_MMS
+#undef TIM_GENERAL_1_OR1_0
+#undef TIM_GENERAL_2_DIER_CC2DE
+#undef TIM_GENERAL_5_CCMR1_Input_1
+#undef TIM_ADVANCED_CR1_DITHEN
+#undef TIM_ADVANCED_CR2_MMS2
+#undef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
+#undef TIM_GENERAL_3_MAP0_ARR
+#undef TIM_ADVANCED_OR1_2_ETR_ADC3_RMP
+#undef TIM_ADVANCED_CCMR1_Output_OC1M_3
+#undef TIM_ADVANCED_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_4_SMCR_ECE
+#undef TIM_GENERAL_2_CR2_0_OIS2
+#undef TIM_ADVANCED_MAP1_TISEL
+#undef TIM_GENERAL_5_CCMR1_Output_OC2M_3
+#undef TIM_GENERAL_1_TIM13
+#undef TIM_ADVANCED_AF2_0_BK2DF1BK1E
+#undef TIM_ADVANCED_CCMR1_Input_1_IC2PSC
+#undef TIM_GENERAL_1_TIM4
+#undef TIM_GENERAL_2_BDTR_BKBID
+#undef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
+#undef TIM_GENERAL_3_TIM17
+#undef TIM_ADVANCED_DMAR_0
+#undef TIM_GENERAL_1_TIM5
+#undef TIM_ADVANCED_MAP0_OR
+#undef TIM_GENERAL_3_CR1_0_DITHEN
+#undef PERIPH_TIM_ADVANCED
+#undef TIM_GENERAL_1_ARR_3
+#undef TIM_GENERAL_3_MAP0_OR
+#undef TIM_ADVANCED_CCMR2_Input_1_C3PSC
+#undef TIM_GENERAL_3_MAP3
+#undef TIM_GENERAL_2_SMCR_1
+#undef TIM_GENERAL_2_DMAR_1
+#undef TIM_GENERAL_1_TISEL_TI4SEL
+#undef TIM_ADVANCED_CCER_CC4NE
+#undef TIM_ADVANCED_SMCR_0_SMSPS
+#undef TIM_ADVANCED_AF1_1
+#undef TIM_GENERAL_1_TIM2
+#undef TIM_ADVANCED_CR2_OIS6
+#undef TIM_ADVANCED_SMCR_0_OCCS
+#undef TIM_GENERAL_1_CCR3_2
+#undef TIM_GENERAL_5_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_1_ARR_2
+#undef MAC_TIM_MAC_TIM
+#undef TIM_GENERAL_3_MAP1_DMAR
+#undef TIM_GENERAL_3_AF1_BKCMP6E
+#undef PERIPH_TIM_GENERAL_6
+#undef TIM_ADVANCED_CCMR3_Output_0_OC5M3
+#undef TIM_GENERAL_3_DIER_0_TDE
+#undef TIM_GENERAL_2_CCMR1_Output_0_CC2S
+#undef TIM_ADVANCED_AF2_0_BK2INE
+#undef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
+#undef TIM_GENERAL_6_CCMR1_Input_1
+#undef TIM_GENERAL_2_MAP0_OR2
+#undef TIM_ADVANCED_AF2_1
+#undef TIM_GENERAL_6_CCMR1_Input_2
+#undef TIM_GENERAL_1_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_3_AF1_BKCMP3P
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M_3
+#undef TIM_GENERAL_1_OR_2
+#undef TIM_GENERAL_3_CR1_0
+#undef TIM_GENERAL_2_MAP0_DMAR
+#undef TIM_GENERAL_2_MAP1_AF2
+#undef TIM_ADVANCED_BDTR_BK2P
+#undef TIM_GENERAL_1_TIM3
+#undef TIM_ADVANCED_RCR_1
+#undef TIM_GENERAL_6_TIM11
+#undef TIM_GENERAL_1_OR_0_TI4_RMP
+#undef TIM_ADVANCED_OR3_2_BK2DFBK0E
+#undef TIM_GENERAL_3_DIER_1
+#undef TIM_GENERAL_1_ARR_0
+#undef TIM_GENERAL_1_CNT_0
+#undef TIM_GENERAL_1_MAP2
+#undef TIM_GENERAL_1_CCR4_1
+#undef TIM_ADVANCED_CR2_MMS_3
+#undef TIM_GENERAL_3_MAP0_AF1
+#undef TIM_GENERAL_6_MAP1_ARR
+#undef TIM_GENERAL_3_MAP1_DTR2
+#undef TIM_ADVANCED_SR_IDXF
+#undef TIM_GENERAL_3_DIER_0_COMDE
+#undef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
+#undef TIM_ADVANCED_RCR_0
+#undef TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
+#undef TIM_ADVANCED_DMAR_1
+#undef TIM_GENERAL_4_CR1_0_OPM
+#undef TIM_GENERAL_6_CCMR1_Input_3
+#undef TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3
+#undef TIM_ADVANCED_CCMR1_Input_2_IC1PSC
+#undef TIM_GENERAL_1_TIM19
+#undef TIM_GENERAL_4_SMCR_ETF
+#undef TIM_GENERAL_2_CR1_UIFREMAP
+#undef TIM_GENERAL_4_CCMR1_Output_0_OC2CE
+#undef TIM_GENERAL_3_AF1_BKCMP3E
+#undef TIM_GENERAL_2_CNT_UIFCPY
+#undef TIM_GENERAL_6_OR_2
+#undef TIM_GENERAL_1_CCR1_0
+#undef TIM_GENERAL_3_MAP1_OR2
+#undef TIM_GENERAL_1_CR1_1
+#undef TIM_GENERAL_3_DIER_0_TIE
+#undef TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
+#undef TIM_GENERAL_3_DMAR_1
+#undef TIM_GENERAL_6_CCMR1_Input_0
+#undef TIM_GENERAL_4_SMCR_ETPS
+#undef PERIPH_TIM_GENERAL_4
+#undef TIM_GENERAL_1_CCMR1_Output_0_CC2S
+#undef TIM_GENERAL_3_DIER_0
+#undef TIM_GENERAL_3_CR1_0_UIFREMAP
+#undef TIM_GENERAL_6_MAP1_TIM1_ISR
+#undef TIM_GENERAL_1_MAP1_OR
+#undef TIM_GENERAL_4_MAP1_CCER
+#undef TIM_ADVANCED_MAP1_AF2
+#undef TIM22_TMPL
+#undef TIM2_TMPL
+#undef TIM_ADVANCED_CCER_CC5E
+#undef TIM_ADVANCED_BDTR_BK2E
+#undef TIM_GENERAL_1_CCMR1_Output_1
+#undef TIM_GENERAL_6_MAP3
+#undef TIM_ADVANCED_AF2_0_BK2CMP4P
+#undef TIM_GENERAL_3_MAP0_CNT
+#undef TIM_GENERAL_5_CCMR1_Output_OC1M_3
+#undef TIM_GENERAL_3_MAP1_TISEL
+#undef TIM_ADVANCED_MAP2
+#undef TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
+#undef TIM_ADVANCED_CCMR2_Output_1
+#undef TIM_GENERAL_3_AF1_BKCMP4P
+#undef TIM_GENERAL_3_MAP1_DCR
+#undef TIM_ADVANCED_SR_DIRF
+#undef PERIPH_TIM_GENERAL_1
+#undef TIM_ADVANCED_MAP0_CCR5
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC2F
+#undef TIM_GENERAL_3_CCMR1_Output_1
+#undef TIM_GENERAL_2_MAP1_DCR
+#undef TIM_ADVANCED_AF1_0_BKCMP4E
+#undef TIM_GENERAL_1_DIER_COMDE
+#undef TIM_ADVANCED_BDTR_BK2F
+#undef TIM_ADVANCED_MAP0_CCR6
+#undef TIM_ADVANCED_CCMR1_Input_1_ICPSC
+#undef TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output
+#undef TIM17_TMPL
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
+#undef TIM_GENERAL_1_OR_1
+#undef PERIPH_TIM_GENERAL_2
+#undef TIM_GENERAL_1_CCMR2_Output_1_CC4S
+#undef TIM_GENERAL_2_CR2_1
+#undef TIM_ADVANCED_AF1_0_BKCMP6E
+#undef TIM_GENERAL_2_MAP1_TISEL
+#undef TIM_ADVANCED_CCMR3_Output_0_OC6M3
+#undef TIM_GENERAL_2_CCMR1_Input_IC2F
+#undef TIM_BASIC_CR1_DITHEN
+#undef TIM_GENERAL_3_MAP0_DIER
+#undef TIM_BASIC_CR1_UIFREMAP
+#undef TIM_ADVANCED_CNT_UIFCPY
+#undef TIM_ADVANCED_SR_B2IF
+#undef TIM_ADVANCED_MAP1_CCR5
+#undef TIM_ADVANCED_CCMR1_Output_OC2M_3
+#undef TIM_ADVANCED_AF1_0_ETRSEL
+#undef TIM_GENERAL_1_OR_3
+#undef TIM_GENERAL_2_SR_CC2IF
+#undef TIM_BASIC_TIM18
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC1CE
+#undef TIM_ADVANCED_OR1_1
+#undef TIM_ADVANCED_CCER_CC6E
+#undef TIM_GENERAL_2_CR1_DITHEN
+#undef TIM5_TMPL
+#undef TIM_ADVANCED_SMCR_0_TS_4_3
+#undef TIM_ADVANCED_MAP0_OR2
+#undef TIM_ADVANCED_CCMR1_Input_2_OC1M
+#undef TIM_ADVANCED_MAP0_OR3
+#undef TIM_ADVANCED_TIM_ADVANCED_tmpl_1
+#undef TIM_ADVANCED_CCMR1_Input_3
+#undef TIM_GENERAL_3_SR_TIF
+#undef TIM_ADVANCED_CCMR1_Input_0_IC2F
+#undef TIM_ADVANCED_CCMR2_Input_0_IC3F
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC1PSC
+#undef TIM_GENERAL_5_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_3_MAP0_CCR1
+#undef TIM_ADVANCED_DIER_DIRIE
+#undef TIM_ADVANCED_CCMR3_Output_1
+#undef TIM_GENERAL_1_DIER_TDE
+#undef TIM_GENERAL_6_MAP0
+#undef TIM_ADVANCED_BDTR_BK2DSRM
+#undef TIM_ADVANCED_DIER_TERRIE
+#undef TIM_GENERAL_4_CCMR1_Input_1
+
 #endif
+
+#endif //__SOOL_CORE_TIM_H
