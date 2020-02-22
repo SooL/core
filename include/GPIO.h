@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-21T22:51:46.582004
+//Generated 2020-02-22T20:57:02.029921
 
 #ifndef __SOOL_CORE_GPIO_H
 #define __SOOL_CORE_GPIO_H
@@ -76,6 +76,7 @@ namespace sool {
 		#ifdef PERIPH_GPIO
 		class GPIO /// general purpose i/os
 		{
+		public:
 			public:
 			//##################################################################################################
 			//#                                              Pin                                              #
@@ -540,15 +541,21 @@ namespace sool {
 			GPIO_MAP0_VERR; /// GPIO version register
 			GPIO_MAP0_IPIDR; /// GPIO identification register
 			GPIO_MAP0_SIDR; /// GPIO size identification register
+
+			#if __SOOL_DEBUG_NOPHY
+				GPIO(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				GPIO() = delete;
 			#endif
 			//##################################################################################################
 			//#                                              methods                                           #
 			//##################################################################################################
 			private:
-				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
+				static constexpr uint32_t get_clock_enable_bit(const uintptr_t addr);
 			
 			public:
 				static constexpr const Pin pin(unsigned int id);
@@ -569,6 +576,7 @@ namespace sool {
 		#ifdef PERIPH_GPIO_OLD
 		class GPIO_OLD /// general purpose i/os
 		{
+		public:
 			
 			struct CRL_t: Reg32_t /// Port A configuration register (Low)
 			{
@@ -684,8 +692,14 @@ namespace sool {
 			ODR_t ODR; /// Port A output data register
 			BSR_t BSR; /// Port A bit set register
 			BRR_t BRR; /// Port A output clear register
+
+			#if __SOOL_DEBUG_NOPHY
+				GPIO_OLD(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				GPIO_OLD() = delete;
 			#endif
 			
@@ -694,6 +708,7 @@ namespace sool {
 		#ifdef PERIPH_GPIO_DBG
 		class GPIO_DBG /// general purpose i/os
 		{
+		public:
 			
 			struct DBGCR_t: Reg32_t /// GPIO debug configuration register
 			{
@@ -734,8 +749,14 @@ namespace sool {
 			__SOOL_PERIPH_PADDING_16384;
 			DBGCR_t DBGCR; /// GPIO debug configuration register
 			DBGSR_t DBGSR; /// GPIO debug status register
+
+			#if __SOOL_DEBUG_NOPHY
+				GPIO_DBG(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				GPIO_DBG() = delete;
 			#endif
 			
@@ -968,166 +989,150 @@ namespace sool {
 //Instances for peripheral GPIO
 
 		#if defined(GPIO_GPIOA) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOA = reinterpret_cast<class GPIO* const>(GPIOA_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOA = new GPIO(GPIOA_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOA = new GPIO();
-				#undef GPIOA_BASE_ADDR
-				#define GPIOA_BASE_ADDR reinterpret_cast<uint32_t>(GPIOA)
+				volatile class GPIO * const GPIOA = reinterpret_cast<class GPIO* const>(GPIOA_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIO_GPIOB) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOB = reinterpret_cast<class GPIO* const>(GPIOB_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOB = new GPIO(GPIOB_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOB = new GPIO();
-				#undef GPIOB_BASE_ADDR
-				#define GPIOB_BASE_ADDR reinterpret_cast<uint32_t>(GPIOB)
+				volatile class GPIO * const GPIOB = reinterpret_cast<class GPIO* const>(GPIOB_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIO_GPIOC) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOC = reinterpret_cast<class GPIO* const>(GPIOC_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOC = new GPIO(GPIOC_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOC = new GPIO();
-				#undef GPIOC_BASE_ADDR
-				#define GPIOC_BASE_ADDR reinterpret_cast<uint32_t>(GPIOC)
+				volatile class GPIO * const GPIOC = reinterpret_cast<class GPIO* const>(GPIOC_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOD_BASE_ADDR) && defined(GPIO_GPIOD) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOD = reinterpret_cast<class GPIO* const>(GPIOD_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOD = new GPIO(GPIOD_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOD = new GPIO();
-				#undef GPIOD_BASE_ADDR
-				#define GPIOD_BASE_ADDR reinterpret_cast<uint32_t>(GPIOD)
+				volatile class GPIO * const GPIOD = reinterpret_cast<class GPIO* const>(GPIOD_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOE_BASE_ADDR) && defined(GPIO_GPIOE) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOE = reinterpret_cast<class GPIO* const>(GPIOE_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOE = new GPIO(GPIOE_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOE = new GPIO();
-				#undef GPIOE_BASE_ADDR
-				#define GPIOE_BASE_ADDR reinterpret_cast<uint32_t>(GPIOE)
+				volatile class GPIO * const GPIOE = reinterpret_cast<class GPIO* const>(GPIOE_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOF_BASE_ADDR) && defined(GPIO_GPIOF) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOF = reinterpret_cast<class GPIO* const>(GPIOF_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOF = new GPIO(GPIOF_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOF = new GPIO();
-				#undef GPIOF_BASE_ADDR
-				#define GPIOF_BASE_ADDR reinterpret_cast<uint32_t>(GPIOF)
+				volatile class GPIO * const GPIOF = reinterpret_cast<class GPIO* const>(GPIOF_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOG_BASE_ADDR) && defined(GPIO_GPIOG) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOG = reinterpret_cast<class GPIO* const>(GPIOG_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOG = new GPIO(GPIOG_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOG = new GPIO();
-				#undef GPIOG_BASE_ADDR
-				#define GPIOG_BASE_ADDR reinterpret_cast<uint32_t>(GPIOG)
+				volatile class GPIO * const GPIOG = reinterpret_cast<class GPIO* const>(GPIOG_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOH_BASE_ADDR) && defined(GPIO_GPIOH) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOH = reinterpret_cast<class GPIO* const>(GPIOH_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOH = new GPIO(GPIOH_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOH = new GPIO();
-				#undef GPIOH_BASE_ADDR
-				#define GPIOH_BASE_ADDR reinterpret_cast<uint32_t>(GPIOH)
+				volatile class GPIO * const GPIOH = reinterpret_cast<class GPIO* const>(GPIOH_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOI_BASE_ADDR) && defined(GPIO_GPIOI) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOI = reinterpret_cast<class GPIO* const>(GPIOI_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOI = new GPIO(GPIOI_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOI = new GPIO();
-				#undef GPIOI_BASE_ADDR
-				#define GPIOI_BASE_ADDR reinterpret_cast<uint32_t>(GPIOI)
+				volatile class GPIO * const GPIOI = reinterpret_cast<class GPIO* const>(GPIOI_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOJ_BASE_ADDR) && defined(GPIO_GPIOJ) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOJ = reinterpret_cast<class GPIO* const>(GPIOJ_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOJ = new GPIO(GPIOJ_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOJ = new GPIO();
-				#undef GPIOJ_BASE_ADDR
-				#define GPIOJ_BASE_ADDR reinterpret_cast<uint32_t>(GPIOJ)
+				volatile class GPIO * const GPIOJ = reinterpret_cast<class GPIO* const>(GPIOJ_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOK_BASE_ADDR) && defined(GPIO_GPIOK) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOK = reinterpret_cast<class GPIO* const>(GPIOK_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOK = new GPIO(GPIOK_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOK = new GPIO();
-				#undef GPIOK_BASE_ADDR
-				#define GPIOK_BASE_ADDR reinterpret_cast<uint32_t>(GPIOK)
+				volatile class GPIO * const GPIOK = reinterpret_cast<class GPIO* const>(GPIOK_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIOZ_BASE_ADDR) && defined(GPIO_GPIOZ) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOZ = reinterpret_cast<class GPIO* const>(GPIOZ_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO * const GPIOZ = new GPIO(GPIOZ_BASE_ADDR);
+
 			#else
-				volatile class GPIO * const GPIOZ = new GPIO();
-				#undef GPIOZ_BASE_ADDR
-				#define GPIOZ_BASE_ADDR reinterpret_cast<uint32_t>(GPIOZ)
+				volatile class GPIO * const GPIOZ = reinterpret_cast<class GPIO* const>(GPIOZ_BASE_ADDR);
 			#endif
 		#endif
 
 //Instances for peripheral GPIO_OLD
 
 		#if defined(GPIO_OLD_GPIOA) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOA = reinterpret_cast<class GPIO_OLD* const>(GPIOA_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO_OLD * const GPIOA = new GPIO_OLD(GPIOA_BASE_ADDR);
+
 			#else
-				volatile class GPIO_OLD * const GPIOA = new GPIO_OLD();
-				#undef GPIOA_BASE_ADDR
-				#define GPIOA_BASE_ADDR reinterpret_cast<uint32_t>(GPIOA)
+				volatile class GPIO_OLD * const GPIOA = reinterpret_cast<class GPIO_OLD* const>(GPIOA_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIO_OLD_GPIOB) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOB = reinterpret_cast<class GPIO_OLD* const>(GPIOB_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO_OLD * const GPIOB = new GPIO_OLD(GPIOB_BASE_ADDR);
+
 			#else
-				volatile class GPIO_OLD * const GPIOB = new GPIO_OLD();
-				#undef GPIOB_BASE_ADDR
-				#define GPIOB_BASE_ADDR reinterpret_cast<uint32_t>(GPIOB)
+				volatile class GPIO_OLD * const GPIOB = reinterpret_cast<class GPIO_OLD* const>(GPIOB_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(GPIO_OLD_GPIOC) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOC = reinterpret_cast<class GPIO_OLD* const>(GPIOC_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO_OLD * const GPIOC = new GPIO_OLD(GPIOC_BASE_ADDR);
+
 			#else
-				volatile class GPIO_OLD * const GPIOC = new GPIO_OLD();
-				#undef GPIOC_BASE_ADDR
-				#define GPIOC_BASE_ADDR reinterpret_cast<uint32_t>(GPIOC)
+				volatile class GPIO_OLD * const GPIOC = reinterpret_cast<class GPIO_OLD* const>(GPIOC_BASE_ADDR);
 			#endif
 		#endif
 
 //Instances for peripheral GPIO_DBG
 
 		#if defined(GPIO_DBG_GPIO_DBG) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class GPIO_DBG * const GPIO_DBG = reinterpret_cast<class GPIO_DBG* const>(GPIO_DBG_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class GPIO_DBG * const GPIO_DBG = new GPIO_DBG(GPIO_DBG_BASE_ADDR);
+
 			#else
-				volatile class GPIO_DBG * const GPIO_DBG = new GPIO_DBG();
-				#undef GPIO_DBG_BASE_ADDR
-				#define GPIO_DBG_BASE_ADDR reinterpret_cast<uint32_t>(GPIO_DBG)
+				volatile class GPIO_DBG * const GPIO_DBG = reinterpret_cast<class GPIO_DBG* const>(GPIO_DBG_BASE_ADDR);
 			#endif
 		#endif
 		
@@ -1212,7 +1217,7 @@ namespace sool {
 			return static_cast<GPIO::Pin>(1 << pin_num);
 		}
 		
-		inline constexpr uint32_t GPIO::get_clock_enable_bit(const uint32_t addr)
+		inline constexpr uint32_t GPIO::get_clock_enable_bit(const uintptr_t addr)
 		{
 		#if defined(STM32F0     ) || defined(STM32F3     )
 			unsigned int offset = 17u;
@@ -1260,7 +1265,7 @@ namespace sool {
 		
 		inline void GPIO::enable_clock() volatile
 		{
-			const unsigned int bit = GPIO::get_clock_enable_bit((unsigned int) reinterpret_cast<const std::size_t>(this));
+			const unsigned int bit = GPIO::get_clock_enable_bit(get_addr());
 		
 		#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
 			RCC->AHB1ENR |= bit;
@@ -1806,29 +1811,29 @@ namespace sool {
 	};
 };
 #undef GPIO_GPIOH
-#undef GPIO_OLD_GPIOB
-#undef GPIO_OLD_GPIOC
-#undef PERIPH_GPIO_DBG
-#undef GPIO_GPIOE
-#undef GPIO_MAP0_SIDR
-#undef GPIO_MAP0_BRR
-#undef GPIO_GPIOJ
-#undef PERIPH_GPIO
 #undef PERIPH_GPIO_OLD
-#undef GPIO_GPIOZ
-#undef GPIO_MAP0_ASCR
 #undef GPIO_OLD_GPIOA
-#undef GPIO_GPIOC
+#undef GPIO_GPIOE
 #undef GPIO_GPIOD
-#undef GPIO_GPIOG
-#undef GPIO_MAP0_VERR
-#undef GPIO_GPIOB
-#undef GPIO_GPIOA
+#undef GPIO_GPIOC
+#undef GPIO_MAP0_ASCR
+#undef GPIO_OLD_GPIOC
+#undef GPIO_GPIOJ
 #undef GPIO_GPIOI
-#undef GPIO_DBG_GPIO_DBG
+#undef GPIO_GPIOA
+#undef GPIO_OLD_GPIOB
+#undef GPIO_GPIOG
+#undef GPIO_GPIOZ
+#undef GPIO_MAP0_VERR
 #undef GPIO_GPIOF
-#undef GPIO_GPIOK
+#undef PERIPH_GPIO_DBG
 #undef GPIO_MAP0_IPIDR
+#undef PERIPH_GPIO
+#undef GPIO_MAP0_BRR
+#undef GPIO_GPIOB
+#undef GPIO_DBG_GPIO_DBG
+#undef GPIO_GPIOK
+#undef GPIO_MAP0_SIDR
 
 
 #endif //__SOOL_CORE_GPIO_H

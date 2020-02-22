@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-21T22:51:46.559162
+//Generated 2020-02-22T21:40:10.100781
 
 #ifndef __SOOL_CORE_USART_H
 #define __SOOL_CORE_USART_H
@@ -542,7 +542,7 @@
 namespace sool {
 	namespace core {
 		#ifdef USART_USART_tmpl_0
-		struct USART_tmpl_0 /// specific fields for UART7, UART8, USART1, USART6, USART2 
+		struct USART_tmpl_0 /// specific fields for UART8, USART1, UART7, USART2, USART6 
 		{
 			struct CR1_t
 			{
@@ -2368,7 +2368,7 @@ namespace sool {
 		};
 		#endif
 		#ifdef USART_USART_tmpl_3
-		struct USART_tmpl_3 /// specific fields for UART4, USART4, USART5 
+		struct USART_tmpl_3 /// specific fields for USART5, USART4, UART4 
 		{
 			struct CR1_t
 			{
@@ -4007,6 +4007,7 @@ namespace sool {
 		template<typename tmpl=USART_tmpl_default>
 		class USART /// universal synchronous asynchronous receiver transmitter
 		{
+		public:
 			
 			struct CR1_t: Reg32_t /// Control register 1
 			{
@@ -4551,15 +4552,49 @@ namespace sool {
 				};
 				#endif
 			};
+
+			#if __SOOL_DEBUG_NOPHY
+				USART(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				USART() = delete;
 			#endif
+			private:
+				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
+			
+				static constexpr volatile Reg32_t& get_clock_enable_reg(const uint32_t addr);
+			
+			public:
+				void enable_clock() volatile;
+			
+				void disable_clock() volatile;
+			
+				bool is_clock_enabled() const volatile;
+			
+				void init();
+			
+				const bool is_rx_not_empty() const;
+			
+				const bool is_tx_empty() const;
+			
+				const bool tx_sent() const;
+			
+				USART& operator<<(const uint8_t value);
+			
+				USART& operator<<(const uint16_t value);
+			
+				USART& operator>>(uint8_t &variable);
+			
+				USART& operator>>(uint16_t &variable);
 			
 		};
 		#ifdef PERIPH_UART
 		class UART /// lower power universal asynchronous receiver transmitter
 		{
+		public:
 			
 			struct CR1_t: Reg32_t /// Control register 1
 			{
@@ -4722,8 +4757,14 @@ namespace sool {
 			ICR_t ICR; /// Interrupt flag clear register
 			RDR_t RDR; /// Receive data register
 			TDR_t TDR; /// Transmit data register
+
+			#if __SOOL_DEBUG_NOPHY
+				UART(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				UART() = delete;
 			#endif
 			
@@ -4877,363 +4918,506 @@ namespace sool {
 //Instances for peripheral USART
 
 		#if defined(LPUART_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<LPUART_TMPL> * const LPUART = reinterpret_cast<class USART<LPUART_TMPL>* const>(LPUART_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const LPUART = new class USART(LPUART_BASE_ADDR);
+
 			#else
-				volatile class USART * const LPUART = new USART();
-				#undef LPUART_BASE_ADDR
-				#define LPUART_BASE_ADDR reinterpret_cast<uint32_t>(LPUART)
+				volatile class USART<LPUART_TMPL> * const LPUART = reinterpret_cast<class USART<LPUART_TMPL>* const>(LPUART_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(LPUART1_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<LPUART1_TMPL> * const LPUART1 = reinterpret_cast<class USART<LPUART1_TMPL>* const>(LPUART1_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const LPUART1 = new class USART(LPUART1_BASE_ADDR);
+
 			#else
-				volatile class USART * const LPUART1 = new USART();
-				#undef LPUART1_BASE_ADDR
-				#define LPUART1_BASE_ADDR reinterpret_cast<uint32_t>(LPUART1)
+				volatile class USART<LPUART1_TMPL> * const LPUART1 = reinterpret_cast<class USART<LPUART1_TMPL>* const>(LPUART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(LPUSART1_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<LPUSART1_TMPL> * const LPUSART1 = reinterpret_cast<class USART<LPUSART1_TMPL>* const>(LPUSART1_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const LPUSART1 = new class USART(LPUSART1_BASE_ADDR);
+
 			#else
-				volatile class USART * const LPUSART1 = new USART();
-				#undef LPUSART1_BASE_ADDR
-				#define LPUSART1_BASE_ADDR reinterpret_cast<uint32_t>(LPUSART1)
+				volatile class USART<LPUSART1_TMPL> * const LPUSART1 = reinterpret_cast<class USART<LPUSART1_TMPL>* const>(LPUSART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART10_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<> * const UART10 = reinterpret_cast<class USART<>* const>(UART10_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART10 = new class USART(UART10_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART10 = new USART();
-				#undef UART10_BASE_ADDR
-				#define UART10_BASE_ADDR reinterpret_cast<uint32_t>(UART10)
+				volatile class USART<> * const UART10 = reinterpret_cast<class USART<>* const>(UART10_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART4_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<UART4_TMPL> * const UART4 = reinterpret_cast<class USART<UART4_TMPL>* const>(UART4_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART4 = new class USART(UART4_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART4 = new USART();
-				#undef UART4_BASE_ADDR
-				#define UART4_BASE_ADDR reinterpret_cast<uint32_t>(UART4)
+				volatile class USART<UART4_TMPL> * const UART4 = reinterpret_cast<class USART<UART4_TMPL>* const>(UART4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART5_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<UART5_TMPL> * const UART5 = reinterpret_cast<class USART<UART5_TMPL>* const>(UART5_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART5 = new class USART(UART5_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART5 = new USART();
-				#undef UART5_BASE_ADDR
-				#define UART5_BASE_ADDR reinterpret_cast<uint32_t>(UART5)
+				volatile class USART<UART5_TMPL> * const UART5 = reinterpret_cast<class USART<UART5_TMPL>* const>(UART5_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART7_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<UART7_TMPL> * const UART7 = reinterpret_cast<class USART<UART7_TMPL>* const>(UART7_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART7 = new class USART(UART7_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART7 = new USART();
-				#undef UART7_BASE_ADDR
-				#define UART7_BASE_ADDR reinterpret_cast<uint32_t>(UART7)
+				volatile class USART<UART7_TMPL> * const UART7 = reinterpret_cast<class USART<UART7_TMPL>* const>(UART7_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART8_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<UART8_TMPL> * const UART8 = reinterpret_cast<class USART<UART8_TMPL>* const>(UART8_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART8 = new class USART(UART8_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART8 = new USART();
-				#undef UART8_BASE_ADDR
-				#define UART8_BASE_ADDR reinterpret_cast<uint32_t>(UART8)
+				volatile class USART<UART8_TMPL> * const UART8 = reinterpret_cast<class USART<UART8_TMPL>* const>(UART8_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART9_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<> * const UART9 = reinterpret_cast<class USART<>* const>(UART9_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const UART9 = new class USART(UART9_BASE_ADDR);
+
 			#else
-				volatile class USART * const UART9 = new USART();
-				#undef UART9_BASE_ADDR
-				#define UART9_BASE_ADDR reinterpret_cast<uint32_t>(UART9)
+				volatile class USART<> * const UART9 = reinterpret_cast<class USART<>* const>(UART9_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART1_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART1_TMPL> * const USART1 = reinterpret_cast<class USART<USART1_TMPL>* const>(USART1_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART1 = new class USART(USART1_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART1 = new USART();
-				#undef USART1_BASE_ADDR
-				#define USART1_BASE_ADDR reinterpret_cast<uint32_t>(USART1)
+				volatile class USART<USART1_TMPL> * const USART1 = reinterpret_cast<class USART<USART1_TMPL>* const>(USART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART2_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART2_TMPL> * const USART2 = reinterpret_cast<class USART<USART2_TMPL>* const>(USART2_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART2 = new class USART(USART2_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART2 = new USART();
-				#undef USART2_BASE_ADDR
-				#define USART2_BASE_ADDR reinterpret_cast<uint32_t>(USART2)
+				volatile class USART<USART2_TMPL> * const USART2 = reinterpret_cast<class USART<USART2_TMPL>* const>(USART2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART3_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART3_TMPL> * const USART3 = reinterpret_cast<class USART<USART3_TMPL>* const>(USART3_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART3 = new class USART(USART3_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART3 = new USART();
-				#undef USART3_BASE_ADDR
-				#define USART3_BASE_ADDR reinterpret_cast<uint32_t>(USART3)
+				volatile class USART<USART3_TMPL> * const USART3 = reinterpret_cast<class USART<USART3_TMPL>* const>(USART3_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART4_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART4_TMPL> * const USART4 = reinterpret_cast<class USART<USART4_TMPL>* const>(USART4_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART4 = new class USART(USART4_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART4 = new USART();
-				#undef USART4_BASE_ADDR
-				#define USART4_BASE_ADDR reinterpret_cast<uint32_t>(USART4)
+				volatile class USART<USART4_TMPL> * const USART4 = reinterpret_cast<class USART<USART4_TMPL>* const>(USART4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART5_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART5_TMPL> * const USART5 = reinterpret_cast<class USART<USART5_TMPL>* const>(USART5_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART5 = new class USART(USART5_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART5 = new USART();
-				#undef USART5_BASE_ADDR
-				#define USART5_BASE_ADDR reinterpret_cast<uint32_t>(USART5)
+				volatile class USART<USART5_TMPL> * const USART5 = reinterpret_cast<class USART<USART5_TMPL>* const>(USART5_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART6_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<USART6_TMPL> * const USART6 = reinterpret_cast<class USART<USART6_TMPL>* const>(USART6_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART6 = new class USART(USART6_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART6 = new USART();
-				#undef USART6_BASE_ADDR
-				#define USART6_BASE_ADDR reinterpret_cast<uint32_t>(USART6)
+				volatile class USART<USART6_TMPL> * const USART6 = reinterpret_cast<class USART<USART6_TMPL>* const>(USART6_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART7_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<> * const USART7 = reinterpret_cast<class USART<>* const>(USART7_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART7 = new class USART(USART7_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART7 = new USART();
-				#undef USART7_BASE_ADDR
-				#define USART7_BASE_ADDR reinterpret_cast<uint32_t>(USART7)
+				volatile class USART<> * const USART7 = reinterpret_cast<class USART<>* const>(USART7_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART8_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class USART<> * const USART8 = reinterpret_cast<class USART<>* const>(USART8_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class USART * const USART8 = new class USART(USART8_BASE_ADDR);
+
 			#else
-				volatile class USART * const USART8 = new USART();
-				#undef USART8_BASE_ADDR
-				#define USART8_BASE_ADDR reinterpret_cast<uint32_t>(USART8)
+				volatile class USART<> * const USART8 = reinterpret_cast<class USART<>* const>(USART8_BASE_ADDR);
 			#endif
 		#endif
 
 //Instances for peripheral UART
 
 		#if defined(UART_LPUART1) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class UART * const LPUART1 = reinterpret_cast<class UART* const>(LPUART1_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class UART * const LPUART1 = new class UART(LPUART1_BASE_ADDR);
+
 			#else
-				volatile class UART * const LPUART1 = new UART();
-				#undef LPUART1_BASE_ADDR
-				#define LPUART1_BASE_ADDR reinterpret_cast<uint32_t>(LPUART1)
+				volatile class UART * const LPUART1 = reinterpret_cast<class UART* const>(LPUART1_BASE_ADDR);
 			#endif
 		#endif
 		
+		inline constexpr uint32_t USART::get_clock_enable_bit(const uintptr_t addr)
+		{
+			switch (addr) {
+		#ifdef USART1_BASE_ADDR
+				case USART1_BASE_ADDR :
+		#if defined(STM32F2) || defined(STM32F4) || defined(STM32F7) || defined(STM32H7)
+						return 1 << 4;
+		#else
+						return 1 << 14;
+		#endif
+		#endif
+		#ifdef USART2_BASE_ADDR
+				case USART2_BASE_ADDR :
+		#ifdef RCC_APB1ENR1
+						return 1 << 14;
+		#else
+						return 1 << 17;
+		#endif
+		#endif
+		#ifdef USART3_BASE_ADDR
+				case USART3_BASE_ADDR :
+						return 1 << 18;
+		#endif
+		#ifdef USART4_BASE_ADDR
+				case USART4_BASE_ADDR : return 1 << 19;
+		#endif
+		#ifdef USART5_BASE_ADDR
+				case USART5_BASE_ADDR : return 1 << 20;
+		#endif
+		#ifdef USART6_BASE_ADDR
+				case USART6_BASE_ADDR : return 1 << 5;
+		#endif
+		#ifdef USART7_BASE_ADDR
+				case USART7_BASE_ADDR :
+		#ifdef STM32F0
+						return 1 << 6;
+		#else
+						return 1 << 30;
+		#endif
+		#endif
+		#ifdef USART8_BASE_ADDR
+				case USART8_BASE_ADDR :
+		#ifdef STM32F0
+						return 1 << 7;
+		#else
+						return 1 << 31;
+		#endif
+		#endif
+				default :
+					return 0;
+			}
+		}
+		
+		inline constexpr volatile Reg32_t& USART::get_clock_enable_reg(const uintptr_t addr)
+		{
+			switch (addr) {
+		#ifdef USART1_BASE_ADDR
+				case USART1_BASE_ADDR : return RCC->APB2ENR;
+		#endif
+		#ifdef USART6_BASE_ADDR
+				case USART6_BASE_ADDR : return RCC->APB2ENR;
+		#endif
+				default:
+		#if defined(RCC_APB1ENR1)
+					return RCC->APB1ENR1;
+		#elif defined(RCC_APB1LENR)
+					return RCC->APB1LENR;
+		#elif defined(RCC_APB1ENR)
+					return RCC->APB1ENR;
+		#else
+					return *reinterpret_cast<volatile Reg32_t *>(0);
+		#endif
+			}
+		}
+		
+		inline void USART::enable_clock() volatile 
+		{
+			get_clock_enable_reg(get_addr()) |= get_clock_enable_bit(get_addr());
+		}
+		
+		inline void USART::disable_clock() volatile
+		{
+			get_clock_enable_reg(rget_addr())
+					&= ~get_clock_enable_bit(get_addr());
+		}
+		
+		inline bool USART::is_clock_enabled() const volatile
+		{
+			return (get_clock_enable_reg(get_addr()) & get_clock_enable_bit(get_addr()))
+			== get_clock_enable_bit(get_addr());
+		}
+		
+		inline const bool USART::is_rx_not_empty() const
+		{
+		#ifdef USART_ISR
+			return ISR.RXNE == 1;
+		#elif defined(USART_SR)
+			return SR.RXNE == 1;
+		#endif
+		}
+		
+		inline const bool USART::is_tx_empty() const
+		{
+		#ifdef USART_ISR
+			return ISR.TXE == 1;
+		#elif defined(USART_SR)
+			return SR.TXE == 1;
+		#endif
+		
+		}
+		
+		inline const bool USART::tx_sent() const
+		{
+		#ifdef USART_ISR
+			return ISR.TC == 1;
+		#elif defined(USART_SR)
+			return SR.TC == 1;
+		#endif
+		}
+		
+		inline USART& USART::operator<<(const uint8_t value)
+		{
+		#ifdef USART_DR
+			DR = value;
+		#else
+			TDR = value;
+			//TODO send
+		#endif
+			return *this;
+		}
+		
+		inline USART& USART::operator<<(const uint16_t value)
+		{
+		#ifdef USART_DR
+			DR = value;
+		#else
+			TDR = value;
+			//TODO send
+		#endif
+			return *this;
+		}
+		
+		inline USART& USART::operator>>(uint8_t &variable)
+		{
+		#ifdef USART_DR
+			variable = DR;
+		#else
+			variable = RDR;
+		#endif
+			return *this;
+		}
+		
+		inline USART& USART::operator>>(uint16_t &variable)
+		{
+		#ifdef USART_DR
+			variable = DR;
+		#else
+			variable = RDR;
+		#endif
+			return *this;
+		}
 		
 	};
 };
-#undef USART_CR2_0_ABREN
-#undef LPUART_TMPL
-#undef USART_CR2_2
-#undef USART_CR1_1_DEDT4
-#undef USART_CR1_7
-#undef USART_SIDR_0
-#undef USART2_TMPL
-#undef USART_CR3_0_WUFIE
-#undef USART_CR1_1_SBK
-#undef USART_ISR_0_REACK
-#undef USART_CR1_1_M
-#undef USART_ICR_0_TXFECF
-#undef USART_PRESC_1
-#undef USART_VERR_1
-#undef USART_IPIDR_0
-#undef USART_RTOR_0
-#undef USART_BRR_2
-#undef USART_USART_tmpl_4
-#undef USART_CR1_3
-#undef USART_CR3_0_DDRE
-#undef LPUSART1_TMPL
-#undef USART_CR3_9
-#undef UART5_TMPL
-#undef USART_ICR_0_WUCF
-#undef USART_CR2_0
-#undef USART_CR3_6
-#undef USART_USART_tmpl_3
-#undef USART_SR_1
-#undef USART_GTPR_1
-#undef USART_USART_tmpl_1
-#undef UART_LPUART1
-#undef USART_ISR_0
-#undef USART_CR2_0_ABRMOD
-#undef USART_CR3_5
-#undef USART_CR1_0_MME
-#undef USART_BRR_0
-#undef USART_CR3_0_SCARCNT
-#undef USART_ISR_3
-#undef LPUART1_TMPL
-#undef USART_CR2_0_RXINV
-#undef USART_CR1_1_RWU
-#undef USART_ICR_2
-#undef USART_CR1_1_DEDT2
-#undef USART_CR3_0_TXFTIE
-#undef USART_ICR_4
-#undef USART_CR1_1_DEAT1
-#undef USART_CR1_0_UESM
-#undef USART_ISR_0_WUF
-#undef USART_CR3_4
-#undef UART7_TMPL
-#undef USART_CR2_1_ADD4
-#undef USART5_TMPL
-#undef USART_CR3_0_DEP
-#undef USART_MAP0_PRESC
-#undef USART_MAP0_SIDR
-#undef USART_ISR_0_TXFT
-#undef USART_CR1_0_UE
-#undef USART1_TMPL
-#undef USART_CR3_0_OVRDIS
-#undef USART_CR2_8
-#undef USART_CR3_7
-#undef USART_CR1_0_DEDT
-#undef USART_CR2_6
-#undef USART_CR1_6
-#undef USART_BRR_4
-#undef USART_ISR_6
-#undef USART_BRR_3
-#undef USART_CR3_11
-#undef USART_ICR_5
 #undef USART_CR1_0_M0
-#undef USART_CR2_0_DATAINV
-#undef USART_CR2_0_ADD4_7
-#undef USART_CR1_1_DEDT1
-#undef USART_CR1_2
-#undef USART_CR3_8
-#undef USART_BRR_5
-#undef USART_CR2_4
-#undef USART_SIDR_1
-#undef USART_CR2_1_ADD
-#undef USART_CR1_1_DEAT3
-#undef USART_ISR_2
-#undef USART_ICR_0
-#undef USART_CR2_7
-#undef USART_CR3_0_TCBGTIE
-#undef USART_HWCFGR1_1
-#undef USART6_TMPL
-#undef USART_USART_tmpl_2
-#undef USART_CR2_0_RTOEN
-#undef USART_BRR_1
-#undef USART_ICR_3
-#undef USART_CR3_0_DEM
-#undef USART_HWCFGR2_1
-#undef USART_ISR_0_RXFT
-#undef USART_CR1_0_RXFFIE
-#undef UART4_TMPL
-#undef USART_HWCFGR1_0
-#undef USART_CR2_0_MSBFIRST
+#undef USART_ISR_4
+#undef USART_ISR_1
 #undef USART_USART_tmpl_5
-#undef USART_MAP0_VERR
+#undef USART_CR3_0_OVRDIS
+#undef USART_CR1_1_RWU
+#undef USART_IPIDR_1
+#undef USART_ICR_0_UDRCF
+#undef USART_CR3_0_DDRE
+#undef USART_CR1_1_DEDT4
+#undef USART_CR1_0_M1
+#undef USART_MAP1
+#undef USART_RTOR_1
+#undef USART_CR2_0_ABRMOD
+#undef USART_MAP0_HWCFGR1
+#undef USART_HWCFGR1_1
+#undef USART_ICR_1
+#undef USART_CR1_1_DEAT3
+#undef USART_CR1_0_FIFOEN
+#undef USART_CR3_0
+#undef USART_GTPR_1
+#undef USART_HWCFGR2_0
+#undef USART_CR1_0_UE
+#undef USART_CR1_1_DEDT1
+#undef USART_BRR_4
+#undef UART7_TMPL
+#undef USART_CR1_0_RXFFIE
+#undef USART_CR2_1
+#undef USART5_TMPL
+#undef USART_CR1_1_DEAT1
+#undef USART_CR1_0_CMIE
+#undef USART_ICR_4
+#undef USART_USART_tmpl_1
+#undef USART_BRR_3
+#undef USART_CR1_0_EOBIE
+#undef LPUSART1_TMPL
+#undef USART_CR1_0_UESM
+#undef USART_ICR_0_TCBGTCF
+#undef USART_CR1_0_DEDT
+#undef USART_ISR_0_TXFE
+#undef USART_ISR_2
+#undef USART_CR2_0_ABREN
+#undef USART_ISR_0_RXFF
+#undef USART_CR2_0
+#undef USART_ISR_0_WUF
 #undef USART_CR1_0_RTOIE
+#undef USART_CR1_0_DEAT
+#undef USART_CR2_0_DIS_NSS
+#undef USART_CR2_0_DATAINV
+#undef USART_CR2_0_SWAP
+#undef USART_CR3_8
+#undef USART_CR1_1_DEAT2
+#undef USART_CR2_1_ADD4
+#undef USART_SIDR_0
+#undef USART_BRR_0
+#undef USART_ICR_2
+#undef USART_CR2_2
+#undef USART3_TMPL
+#undef UART_LPUART1
+#undef USART6_TMPL
+#undef USART_CR2_0_ADDM7
+#undef USART_CR1_3
+#undef USART_SR_0
+#undef USART_MAP0_PRESC
+#undef USART_CR1_1
+#undef USART1_TMPL
+#undef USART4_TMPL
+#undef USART_SR_2
+#undef USART_CR2_0_SLVEN
+#undef USART_SIDR_1
+#undef LPUART_TMPL
+#undef USART_CR1_1_SBK
+#undef USART_CR1_0_MME
+#undef USART_PRESC_1
 #undef USART_CR1_1_DEAT4
 #undef USART_CR1_4
-#undef USART_SR_2
-#undef USART_SR_0
-#undef USART_ISR_1
-#undef USART_BRR_7
-#undef USART_USART_tmpl_0
-#undef USART3_TMPL
-#undef USART_MAP1
-#undef USART_ISR_0_RWU
-#undef USART_PRESC_0
-#undef USART_CR2_1_ABRMOD1
-#undef USART_CR2_1_ADD0
-#undef USART_CR3_0_RXFTCFG
-#undef USART_ISR_0_TCBGT
-#undef USART_CR3_12
-#undef USART_CR1_1_DEAT2
-#undef USART_CR3_1
-#undef USART4_TMPL
-#undef USART_CR1_1_DEDT0
-#undef USART_RQR_3
-#undef USART_CR2_0_ADD0_3
-#undef USART_IPIDR_1
-#undef USART_RTOR_1
-#undef USART_CR1_0_TXFEIE
-#undef USART_CR3_0_RXFTIE
-#undef USART_CR1_5
-#undef USART_BRR_6
-#undef USART_RQR_2
 #undef USART_RQR_0
-#undef USART_RQR_1
-#undef USART_ISR_0_TXFE
-#undef USART_MAP0_IPIDR
-#undef PERIPH_UART
-#undef USART_CR2_1
-#undef USART_CR2_1_ABRMOD0
-#undef USART_ISR_5
-#undef USART_ISR_0_RXFF
-#undef USART_CR3_0_TXFTCFG
-#undef USART_CR2_0_SWAP
-#undef USART_ICR_0_TCBGTCF
-#undef USART_CR2_0_TXINV
-#undef USART_CR1_1
-#undef USART_CR1_0_DEAT
-#undef USART_CR1_1_DEDT3
-#undef USART_CR1_0_FIFOEN
-#undef USART_GTPR_0
-#undef USART_CR3_10
-#undef USART_ICR_0_UDRCF
-#undef USART_CR2_5
-#undef USART_CR3_0
-#undef USART_CR1_0_EOBIE
-#undef USART_MAP0_HWCFGR1
-#undef USART_CR1_1_UE
-#undef USART_CR1_1_DEAT0
-#undef USART_MAP0
-#undef USART_ICR_1
-#undef USART_CR1_0_M1
-#undef USART_CR3_3
-#undef USART_MAP0_HWCFGR2
-#undef USART_ISR_0_UDR
-#undef USART_CR1_0
-#undef UART8_TMPL
-#undef USART_CR3_0_WUS
-#undef USART_CR2_3
+#undef USART_CR2_1_ADD0
+#undef USART_CR2_1_ABRMOD1
 #undef USART_CR3_2
-#undef USART_HWCFGR2_0
-#undef USART_CR2_0_DIS_NSS
-#undef USART_CR1_0_CMIE
-#undef USART_CR2_0_SLVEN
-#undef USART_ISR_4
-#undef USART_CR2_0_ADDM7
+#undef USART_ISR_6
+#undef USART_GTPR_0
+#undef USART_CR3_4
+#undef USART_CR3_0_WUS
+#undef USART_BRR_1
+#undef USART_CR3_0_DEM
+#undef USART_HWCFGR2_1
+#undef USART2_TMPL
+#undef USART_CR1_1_DEDT0
+#undef USART_CR2_8
+#undef USART_CR2_5
+#undef USART_CR1_6
+#undef USART_CR3_0_TXFTCFG
+#undef USART_BRR_7
+#undef USART_CR3_0_RXFTCFG
+#undef USART_CR3_3
+#undef USART_ISR_5
+#undef USART_USART_tmpl_2
+#undef USART_USART_tmpl_0
+#undef USART_MAP0
+#undef USART_CR3_0_DEP
+#undef USART_RQR_1
+#undef USART_VERR_1
+#undef USART_ICR_3
+#undef USART_CR3_9
+#undef USART_USART_tmpl_4
+#undef UART4_TMPL
+#undef USART_MAP0_SIDR
+#undef USART_ISR_0_TCBGT
+#undef UART8_TMPL
+#undef USART_BRR_5
+#undef USART_ISR_0
+#undef USART_CR3_5
+#undef USART_BRR_2
+#undef USART_CR2_0_RTOEN
+#undef USART_ISR_0_RXFT
+#undef USART_ISR_0_RWU
+#undef USART_ICR_0_WUCF
+#undef USART_CR1_7
+#undef USART_ISR_0_TXFT
+#undef USART_ISR_0_UDR
+#undef USART_ISR_3
+#undef USART_CR1_1_DEDT3
+#undef USART_CR1_1_M
+#undef USART_CR2_1_ADD
+#undef LPUART1_TMPL
+#undef USART_CR2_7
+#undef USART_BRR_6
+#undef USART_CR1_0
+#undef USART_RQR_3
+#undef USART_CR3_11
+#undef USART_CR3_10
+#undef USART_ISR_0_REACK
+#undef USART_ICR_5
+#undef USART_CR3_0_RXFTIE
+#undef USART_MAP0_HWCFGR2
+#undef USART_CR3_0_SCARCNT
+#undef USART_CR3_12
+#undef USART_RTOR_0
+#undef USART_CR3_0_WUFIE
+#undef USART_RQR_2
+#undef USART_HWCFGR1_0
+#undef PERIPH_UART
+#undef USART_CR2_6
+#undef USART_CR1_1_UE
+#undef USART_ICR_0
 #undef USART_VERR_0
+#undef USART_MAP0_IPIDR
+#undef USART_CR2_0_MSBFIRST
+#undef USART_SR_1
+#undef UART5_TMPL
+#undef USART_CR1_5
+#undef USART_CR2_0_ADD4_7
+#undef USART_CR2_1_ABRMOD0
+#undef USART_USART_tmpl_3
+#undef USART_PRESC_0
+#undef USART_IPIDR_0
+#undef USART_CR2_4
+#undef USART_CR2_0_ADD0_3
+#undef USART_CR2_3
+#undef USART_CR1_1_DEAT0
+#undef USART_CR3_0_TXFTIE
+#undef USART_CR3_7
+#undef USART_CR1_2
+#undef USART_ICR_0_TXFECF
+#undef USART_CR2_0_RXINV
+#undef USART_CR1_0_TXFEIE
+#undef USART_MAP0_VERR
+#undef USART_CR3_0_TCBGTIE
+#undef USART_CR1_1_DEDT2
+#undef USART_CR3_6
+#undef USART_CR3_1
+#undef USART_CR2_0_TXINV
 
 #endif
 
