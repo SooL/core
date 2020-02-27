@@ -2008,17 +2008,17 @@ volatile class SYSCFG * const SYSCFG = reinterpret_cast<class SYSCFG* const>(SYS
 		#elif defined(STM32F2) || defined(STM32F4) || defined(STM32F7)
 		inline void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
 		inline void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
-		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
+		inline bool SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
 		
 		#elif defined(STM32F3) || defined(STM32L0) || defined(STM32L1) || defined(STM32L4) || defined(STM32L4P)
 		inline void SYSCFG::enable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 1; }
 		inline void SYSCFG::disable_clock() volatile { RCC->APB2ENR.SYSCFGEN = 0; }
-		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
+		inline bool SYSCFG::is_clock_enabled() const volatile { return RCC->APB2ENR.SYSCFGEN; }
 		
 		#elif defined(STM32H7)
 		inline void SYSCFG::enable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 1; }
 		inline void SYSCFG::disable_clock() volatile { RCC->APB4ENR.SYSCFGEN = 0; }
-		inline void SYSCFG::is_clock_enabled() const volatile { return RCC->APB4ENR.SYSCFGEN; }
+		inline bool SYSCFG::is_clock_enabled() const volatile { return RCC->APB4ENR.SYSCFGEN; }
 		inline void SYSCFG::enable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 1; }
 		inline void SYSCFG::disable_low_power_clock() volatile { RCC->APB4LPENR.SYSCFGLPEN = 0; }
 		inline bool SYSCFG::is_low_power_clock_enabled() const volatile { RCC->APB4LPENR.SYSCFGLPEN; }
