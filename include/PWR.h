@@ -2272,5 +2272,4 @@ namespace sool
 #undef PWR_PUCRH_PH3
 
 //endregion
-#endif // chips selection
 #endif //__SOOL_PWR_H
