@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-21T22:51:46.658994
+//Generated 2020-03-01T00:46:38.014996
 
 #ifndef __SOOL_CORE_ADC_H
 #define __SOOL_CORE_ADC_H
@@ -619,7 +619,7 @@
 #if	defined(STM32MP1     )
 #define ADC_PCSEL_0
 #define ADC_OR
-#define ADC_MAP0_OR OR_t OR
+#define ADC_MAP0_OR tmpl::OR_t OR
 #define ADC_ADC_tmpl_0
 #else
 #define ADC_MAP0_OR __SOOL_PERIPH_PADDING_4
@@ -1542,25 +1542,29 @@
 namespace sool {
 	namespace core {
 		#ifdef ADC_ADC_tmpl_0
-		struct ADC_tmpl_0 /// specific fields for ADC2 
+		struct ADC_tmpl_0 /// fields used by ADC2 
 		{
-			struct OR_t
+			#ifdef ADC_OR
+			struct OR_t: public Reg32_t /// ADC2 option register
 			{
+				using Reg32_t::operator=;
 				uint32_t VDDCOREEN        : 1;
 				uint32_t                  : 31;
+				
 			};
+			#endif
 		};
 		#endif
 		struct ADC_tmpl_default /// default template for ADC 
 		{
-			struct OR_t { };
 		};
 		template<typename tmpl=ADC_tmpl_default>
 		class ADC /// analog to digital converter
 		{
+		public:
 			
 			#ifdef ADC_ISR
-			struct ISR_t: Reg32_t /// ADC interrupt and status register
+			struct ISR_t: public Reg32_t /// ADC interrupt and status register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1603,7 +1607,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_IER
-			struct IER_t: Reg32_t /// ADC interrupt enable register
+			struct IER_t: public Reg32_t /// ADC interrupt enable register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1646,7 +1650,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CR
-			struct CR_t: Reg32_t /// ADC control register
+			struct CR_t: public Reg32_t /// ADC control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1703,7 +1707,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CFGR
-			struct CFGR_t: Reg32_t /// ADC configuration register 1
+			struct CFGR_t: public Reg32_t /// ADC configuration register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -1758,7 +1762,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CFGR2
-			struct CFGR2_t: Reg32_t /// ADC configuration register 2
+			struct CFGR2_t: public Reg32_t /// ADC configuration register 2
 			{
 				using Reg32_t::operator=;
 				union
@@ -1811,7 +1815,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SMPR1
-			struct SMPR1_t: Reg32_t /// ADC sampling time register 1
+			struct SMPR1_t: public Reg32_t /// ADC sampling time register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -1853,7 +1857,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SMPR2
-			struct SMPR2_t: Reg32_t /// ADC sampling time register 2
+			struct SMPR2_t: public Reg32_t /// ADC sampling time register 2
 			{
 				using Reg32_t::operator=;
 				union
@@ -1895,7 +1899,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_PCSEL
-			struct PCSEL_t: Reg32_t /// ADC channel preselection register
+			struct PCSEL_t: public Reg32_t /// ADC channel preselection register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1938,7 +1942,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_LTR1
-			struct LTR1_t: Reg32_t /// ADC analog watchdog 1 threshold register
+			struct LTR1_t: public Reg32_t /// ADC analog watchdog 1 threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR1             : 26; /// ADC analog watchdog 1 threshold low
@@ -1947,7 +1951,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_LHTR1
-			struct LHTR1_t: Reg32_t /// ADC analog watchdog 2 threshold register
+			struct LHTR1_t: public Reg32_t /// ADC analog watchdog 2 threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LHTR1            : 26; /// ADC analog watchdog 2 threshold low
@@ -1956,7 +1960,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SQR1
-			struct SQR1_t: Reg32_t /// ADC group regular sequencer ranks register 1
+			struct SQR1_t: public Reg32_t /// ADC group regular sequencer ranks register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -2010,7 +2014,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SQR2
-			struct SQR2_t: Reg32_t /// ADC group regular sequencer ranks register 2
+			struct SQR2_t: public Reg32_t /// ADC group regular sequencer ranks register 2
 			{
 				using Reg32_t::operator=;
 				union
@@ -2059,7 +2063,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SQR3
-			struct SQR3_t: Reg32_t /// ADC group regular sequencer ranks register 3
+			struct SQR3_t: public Reg32_t /// ADC group regular sequencer ranks register 3
 			{
 				using Reg32_t::operator=;
 				union
@@ -2108,7 +2112,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SQR4
-			struct SQR4_t: Reg32_t /// ADC group regular sequencer ranks register 4
+			struct SQR4_t: public Reg32_t /// ADC group regular sequencer ranks register 4
 			{
 				using Reg32_t::operator=;
 				union
@@ -2138,7 +2142,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DR
-			struct DR_t: Reg32_t /// ADC group regular conversion data register
+			struct DR_t: public Reg32_t /// ADC group regular conversion data register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2191,7 +2195,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JSQR
-			struct JSQR_t: Reg32_t /// ADC group injected sequencer register
+			struct JSQR_t: public Reg32_t /// ADC group injected sequencer register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2243,7 +2247,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFRx
-			struct OFRx_t: Reg32_t /// ADC offset number 1 register
+			struct OFRx_t: public Reg32_t /// ADC offset number 1 register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2270,7 +2274,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JDR1
-			struct JDR1_t: Reg32_t /// ADC group injected sequencer rank 1 register
+			struct JDR1_t: public Reg32_t /// ADC group injected sequencer rank 1 register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2293,7 +2297,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JDR2
-			struct JDR2_t: Reg32_t /// ADC group injected sequencer rank 2 register
+			struct JDR2_t: public Reg32_t /// ADC group injected sequencer rank 2 register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2316,7 +2320,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JDR3
-			struct JDR3_t: Reg32_t /// ADC group injected sequencer rank 3 register
+			struct JDR3_t: public Reg32_t /// ADC group injected sequencer rank 3 register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2339,7 +2343,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JDR4
-			struct JDR4_t: Reg32_t /// ADC group injected sequencer rank 4 register
+			struct JDR4_t: public Reg32_t /// ADC group injected sequencer rank 4 register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2362,7 +2366,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_AWD2CR
-			struct AWD2CR_t: Reg32_t /// ADC analog watchdog 2 configuration register
+			struct AWD2CR_t: public Reg32_t /// ADC analog watchdog 2 configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2401,7 +2405,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_AWD3CR
-			struct AWD3CR_t: Reg32_t /// ADC analog watchdog 3 configuration register
+			struct AWD3CR_t: public Reg32_t /// ADC analog watchdog 3 configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2448,7 +2452,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_LTR2
-			struct LTR2_t: Reg32_t /// ADC watchdog lower threshold register 2
+			struct LTR2_t: public Reg32_t /// ADC watchdog lower threshold register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR2             : 26; /// Analog watchdog 2 lower threshold
@@ -2457,7 +2461,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HTR2
-			struct HTR2_t: Reg32_t /// ADC watchdog higher threshold register 2
+			struct HTR2_t: public Reg32_t /// ADC watchdog higher threshold register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t HTR2             : 26; /// Analog watchdog 2 higher threshold
@@ -2466,7 +2470,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_LTR3
-			struct LTR3_t: Reg32_t /// ADC watchdog lower threshold register 3
+			struct LTR3_t: public Reg32_t /// ADC watchdog lower threshold register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR3             : 26; /// Analog watchdog 3 lower threshold
@@ -2475,7 +2479,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HTR3
-			struct HTR3_t: Reg32_t /// ADC watchdog higher threshold register 3
+			struct HTR3_t: public Reg32_t /// ADC watchdog higher threshold register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t HTR3             : 26; /// Analog watchdog 3 higher threshold
@@ -2484,7 +2488,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DIFSEL
-			struct DIFSEL_t: Reg32_t /// ADC channel differential or single-ended mode selection register
+			struct DIFSEL_t: public Reg32_t /// ADC channel differential or single-ended mode selection register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2518,7 +2522,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CALFACT
-			struct CALFACT_t: Reg32_t /// ADC calibration factors register
+			struct CALFACT_t: public Reg32_t /// ADC calibration factors register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2553,7 +2557,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CALFACT2
-			struct CALFACT2_t: Reg32_t /// ADC Calibration Factor register 2
+			struct CALFACT2_t: public Reg32_t /// ADC Calibration Factor register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LINCALFACT       : 30; /// Linearity Calibration Factor
@@ -2561,16 +2565,8 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef ADC_OR
-			struct OR_t: Reg32_t /// ADC2 option register
-			{
-				using Reg32_t::operator=;
-				tmpl::OR_t;
-				
-			};
-			#endif
 			#ifdef ADC_CCR
-			struct CCR_t: Reg32_t /// ADC common control register
+			struct CCR_t: public Reg32_t /// ADC common control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2614,7 +2610,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_TR1
-			struct TR1_t: Reg32_t /// watchdog threshold register 1
+			struct TR1_t: public Reg32_t /// watchdog threshold register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t LT1              : 12; /// ADC analog watchdog 1 threshold low
@@ -2626,7 +2622,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_TR2
-			struct TR2_t: Reg32_t /// watchdog threshold register
+			struct TR2_t: public Reg32_t /// watchdog threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT2              : 8; /// ADC analog watchdog 2 threshold low
@@ -2637,7 +2633,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_TR3
-			struct TR3_t: Reg32_t /// watchdog threshold register 3
+			struct TR3_t: public Reg32_t /// watchdog threshold register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t LT3              : 8; /// ADC analog watchdog 3 threshold low
@@ -2648,7 +2644,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFR1
-			struct OFR1_t: Reg32_t /// offset register 1
+			struct OFR1_t: public Reg32_t /// offset register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET1          : 12; /// ADC offset number 1 offset level
@@ -2659,7 +2655,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFR2
-			struct OFR2_t: Reg32_t /// offset register 2
+			struct OFR2_t: public Reg32_t /// offset register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET2          : 12; /// ADC offset number 2 offset level
@@ -2670,7 +2666,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFR3
-			struct OFR3_t: Reg32_t /// offset register 3
+			struct OFR3_t: public Reg32_t /// offset register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET3          : 12; /// ADC offset number 3 offset level
@@ -2681,7 +2677,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFR4
-			struct OFR4_t: Reg32_t /// offset register 4
+			struct OFR4_t: public Reg32_t /// offset register 4
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET4          : 12; /// ADC offset number 4 offset level
@@ -2692,7 +2688,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SR
-			struct SR_t: Reg32_t /// status register
+			struct SR_t: public Reg32_t /// status register
 			{
 				using Reg32_t::operator=;
 				uint32_t AWD              : 1; /// Analog watchdog flag
@@ -2710,7 +2706,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CR1
-			struct CR1_t: Reg32_t /// control register 1
+			struct CR1_t: public Reg32_t /// control register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t AWDCH            : 5; /// Analog watchdog channel select bits
@@ -2735,7 +2731,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CR2
-			struct CR2_t: Reg32_t /// control register 2
+			struct CR2_t: public Reg32_t /// control register 2
 			{
 				using Reg32_t::operator=;
 				union
@@ -2783,7 +2779,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SMPRx
-			struct SMPRx_t: Reg32_t /// sample time register 1
+			struct SMPRx_t: public Reg32_t /// sample time register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -2805,7 +2801,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JOFR1
-			struct JOFR1_t: Reg32_t /// injected channel data offset register x
+			struct JOFR1_t: public Reg32_t /// injected channel data offset register x
 			{
 				using Reg32_t::operator=;
 				uint32_t JOFFSET1         : 12; /// Data offset for injected channel x
@@ -2814,7 +2810,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JOFR2
-			struct JOFR2_t: Reg32_t /// injected channel data offset register x
+			struct JOFR2_t: public Reg32_t /// injected channel data offset register x
 			{
 				using Reg32_t::operator=;
 				uint32_t JOFFSET2         : 12; /// Data offset for injected channel x
@@ -2823,7 +2819,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JOFR3
-			struct JOFR3_t: Reg32_t /// injected channel data offset register x
+			struct JOFR3_t: public Reg32_t /// injected channel data offset register x
 			{
 				using Reg32_t::operator=;
 				uint32_t JOFFSET3         : 12; /// Data offset for injected channel x
@@ -2832,7 +2828,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JOFR4
-			struct JOFR4_t: Reg32_t /// injected channel data offset register x
+			struct JOFR4_t: public Reg32_t /// injected channel data offset register x
 			{
 				using Reg32_t::operator=;
 				uint32_t JOFFSET4         : 12; /// Data offset for injected channel x
@@ -2841,7 +2837,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HTR
-			struct HTR_t: Reg32_t /// watchdog higher threshold register
+			struct HTR_t: public Reg32_t /// watchdog higher threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t HT               : 12; /// Analog watchdog higher threshold
@@ -2850,7 +2846,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_LTR
-			struct LTR_t: Reg32_t /// watchdog lower threshold register
+			struct LTR_t: public Reg32_t /// watchdog lower threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT               : 12; /// Analog watchdog lower threshold
@@ -2859,7 +2855,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_JDRx
-			struct JDRx_t: Reg32_t /// injected data register x
+			struct JDRx_t: public Reg32_t /// injected data register x
 			{
 				using Reg32_t::operator=;
 				uint32_t JDATA            : 16; /// Injected data
@@ -2868,7 +2864,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_GCOMP
-			struct GCOMP_t: Reg32_t /// Gain compensation Register
+			struct GCOMP_t: public Reg32_t /// Gain compensation Register
 			{
 				using Reg32_t::operator=;
 				uint32_t GCOMPCOEFF       : 14;
@@ -2877,7 +2873,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CSR
-			struct CSR_t: Reg32_t /// Common status register
+			struct CSR_t: public Reg32_t /// Common status register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2914,7 +2910,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CFGR1
-			struct CFGR1_t: Reg32_t /// configuration register 1
+			struct CFGR1_t: public Reg32_t /// configuration register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -2960,7 +2956,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SMPR
-			struct SMPR_t: Reg32_t /// sampling time register
+			struct SMPR_t: public Reg32_t /// sampling time register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2986,7 +2982,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_TR
-			struct TR_t: Reg32_t /// watchdog threshold register
+			struct TR_t: public Reg32_t /// watchdog threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT               : 12; /// Analog watchdog lower threshold
@@ -2997,7 +2993,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CHSELR
-			struct CHSELR_t: Reg32_t /// channel selection register
+			struct CHSELR_t: public Reg32_t /// channel selection register
 			{
 				using Reg32_t::operator=;
 				union
@@ -3039,7 +3035,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_AWD1TR
-			struct AWD1TR_t: Reg32_t /// watchdog threshold register
+			struct AWD1TR_t: public Reg32_t /// watchdog threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT1              : 12; /// ADC analog watchdog 1 threshold low
@@ -3050,7 +3046,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_AWD2TR
-			struct AWD2TR_t: Reg32_t /// watchdog threshold register
+			struct AWD2TR_t: public Reg32_t /// watchdog threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT2              : 12; /// ADC analog watchdog 2 threshold low
@@ -3061,7 +3057,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_CHSELR_1
-			struct CHSELR_1_t: Reg32_t /// channel selection register CHSELRMOD = 1 in ADC_CFGR1
+			struct CHSELR_1_t: public Reg32_t /// channel selection register CHSELRMOD = 1 in ADC_CFGR1
 			{
 				using Reg32_t::operator=;
 				uint32_t SQ1              : 4; /// conversion of the sequence
@@ -3076,7 +3072,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_AWD3TR
-			struct AWD3TR_t: Reg32_t /// watchdog threshold register
+			struct AWD3TR_t: public Reg32_t /// watchdog threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LT3              : 12; /// ADC analog watchdog 3 threshold high
@@ -3087,7 +3083,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR6
-			struct HWCFGR6_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR6_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP20          : 5; /// Input channel mapping
@@ -3102,7 +3098,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR5
-			struct HWCFGR5_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR5_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP19          : 5; /// Input channel mapping
@@ -3117,7 +3113,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR4
-			struct HWCFGR4_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR4_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP15          : 5; /// Input channel mapping
@@ -3132,7 +3128,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR3
-			struct HWCFGR3_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR3_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP11          : 5; /// Input channel mapping
@@ -3147,7 +3143,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR2
-			struct HWCFGR2_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR2_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP7           : 5; /// Input channel mapping
@@ -3162,7 +3158,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR1
-			struct HWCFGR1_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR1_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t CHMAP3           : 5; /// Input channel mapping
@@ -3177,7 +3173,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_HWCFGR0
-			struct HWCFGR0_t: Reg32_t /// Hardware Configuration Register
+			struct HWCFGR0_t: public Reg32_t /// Hardware Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t NUM_CHAN_24      : 4;
@@ -3188,7 +3184,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_VERR
-			struct VERR_t: Reg32_t /// EXTI IP Version register
+			struct VERR_t: public Reg32_t /// EXTI IP Version register
 			{
 				using Reg32_t::operator=;
 				uint32_t MINREV           : 4; /// Minor Revision number
@@ -3198,7 +3194,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_IPIDR
-			struct IPIDR_t: Reg32_t /// EXTI Identification register
+			struct IPIDR_t: public Reg32_t /// EXTI Identification register
 			{
 				using Reg32_t::operator=;
 				uint32_t IPID             : 32; /// IP Identification
@@ -3206,7 +3202,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SIDR
-			struct SIDR_t: Reg32_t /// EXTI Size ID register
+			struct SIDR_t: public Reg32_t /// EXTI Size ID register
 			{
 				using Reg32_t::operator=;
 				uint32_t SID              : 32; /// Size Identification
@@ -3214,7 +3210,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_SQR5
-			struct SQR5_t: Reg32_t /// regular sequence register 5
+			struct SQR5_t: public Reg32_t /// regular sequence register 5
 			{
 				using Reg32_t::operator=;
 				uint32_t SQ1              : 5; /// 1st conversion in regular sequence
@@ -3228,7 +3224,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_OFFSETR
-			struct OFFSETR_t: Reg32_t /// ADC offset register
+			struct OFFSETR_t: public Reg32_t /// ADC offset register
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET           : 16;
@@ -3237,7 +3233,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_GAINR
-			struct GAINR_t: Reg32_t /// ADC gain register
+			struct GAINR_t: public Reg32_t /// ADC gain register
 			{
 				using Reg32_t::operator=;
 				uint32_t GAIN             : 16;
@@ -3246,7 +3242,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMACR
-			struct DMACR_t: Reg32_t /// ADC DMA control register
+			struct DMACR_t: public Reg32_t /// ADC DMA control register
 			{
 				using Reg32_t::operator=;
 				uint32_t LOAD             : 1; /// Loads the DMA buffer
@@ -3258,7 +3254,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMASR
-			struct DMASR_t: Reg32_t /// ADC DMA status register
+			struct DMASR_t: public Reg32_t /// ADC DMA status register
 			{
 				using Reg32_t::operator=;
 				uint32_t ACT              : 1;
@@ -3268,7 +3264,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMAMSAR
-			struct DMAMSAR_t: Reg32_t /// ADC DMA memory start address register
+			struct DMAMSAR_t: public Reg32_t /// ADC DMA memory start address register
 			{
 				using Reg32_t::operator=;
 				uint32_t MSA              : 13;
@@ -3277,7 +3273,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMANDTR
-			struct DMANDTR_t: Reg32_t /// ADC DMA number of data to transfer register
+			struct DMANDTR_t: public Reg32_t /// ADC DMA number of data to transfer register
 			{
 				using Reg32_t::operator=;
 				uint32_t NDT              : 13;
@@ -3286,7 +3282,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMAMNAR
-			struct DMAMNAR_t: Reg32_t /// ADC DMA memory next address register
+			struct DMAMNAR_t: public Reg32_t /// ADC DMA memory next address register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -3296,7 +3292,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_DMACNDTR
-			struct DMACNDTR_t: Reg32_t /// ADC DMA count number of data transferred register
+			struct DMACNDTR_t: public Reg32_t /// ADC DMA count number of data transferred register
 			{
 				using Reg32_t::operator=;
 				uint32_t CNDT             : 13;
@@ -3526,8 +3522,14 @@ namespace sool {
 				};
 				#endif
 			};
+
+			#if __SOOL_DEBUG_NOPHY
+				ADC(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				ADC() = delete;
 			#endif
 			
@@ -3535,9 +3537,10 @@ namespace sool {
 		#ifdef PERIPH_ADC_Common
 		class ADC_Common /// analog to digital converter
 		{
+		public:
 			
 			#ifdef ADC_Common_CSR
-			struct CSR_t: Reg32_t /// ADC Common status register
+			struct CSR_t: public Reg32_t /// ADC Common status register
 			{
 				using Reg32_t::operator=;
 				union
@@ -3609,7 +3612,7 @@ namespace sool {
 				
 			};
 			#endif
-			struct CCR_t: Reg32_t /// ADC common control register
+			struct CCR_t: public Reg32_t /// ADC common control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -3660,7 +3663,7 @@ namespace sool {
 				
 			};
 			#ifdef ADC_Common_CDR
-			struct CDR_t: Reg32_t /// ADC common regular data register for dual and triple modes
+			struct CDR_t: public Reg32_t /// ADC common regular data register for dual and triple modes
 			{
 				using Reg32_t::operator=;
 				union
@@ -3684,7 +3687,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CDR2
-			struct CDR2_t: Reg32_t /// ADC common regular data register for dual and triple modes
+			struct CDR2_t: public Reg32_t /// ADC common regular data register for dual and triple modes
 			{
 				using Reg32_t::operator=;
 				uint32_t RDATA_ALT        : 32; /// Regular data of the master/slave alternated ADCs
@@ -3692,7 +3695,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_ISR
-			struct ISR_t: Reg32_t /// ADC interrupt and status register
+			struct ISR_t: public Reg32_t /// ADC interrupt and status register
 			{
 				using Reg32_t::operator=;
 				uint32_t ADRDY            : 1; /// ADC ready flag
@@ -3711,7 +3714,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_IER
-			struct IER_t: Reg32_t /// ADC interrupt enable register
+			struct IER_t: public Reg32_t /// ADC interrupt enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t ADRDYIE          : 1; /// ADC ready interrupt
@@ -3730,7 +3733,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CR
-			struct CR_t: Reg32_t /// ADC control register
+			struct CR_t: public Reg32_t /// ADC control register
 			{
 				using Reg32_t::operator=;
 				uint32_t ADEN             : 1; /// ADC enable
@@ -3758,7 +3761,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CFGR
-			struct CFGR_t: Reg32_t /// ADC configuration register 1
+			struct CFGR_t: public Reg32_t /// ADC configuration register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t DMNGT            : 2; /// ADC DMA transfer enable
@@ -3784,7 +3787,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CFGR2
-			struct CFGR2_t: Reg32_t /// ADC configuration register 2
+			struct CFGR2_t: public Reg32_t /// ADC configuration register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t ROVSE            : 1; /// ADC oversampler enable on scope ADC group regular
@@ -3805,7 +3808,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_SMPR1
-			struct SMPR1_t: Reg32_t /// ADC sampling time register 1
+			struct SMPR1_t: public Reg32_t /// ADC sampling time register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t SMP0             : 3; /// ADC channel 0 sampling time selection
@@ -3823,7 +3826,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_SMPR2
-			struct SMPR2_t: Reg32_t /// ADC sampling time register 2
+			struct SMPR2_t: public Reg32_t /// ADC sampling time register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SMP10            : 3; /// ADC channel 10 sampling time selection
@@ -3841,7 +3844,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_LTR1
-			struct LTR1_t: Reg32_t /// ADC analog watchdog 1 threshold register
+			struct LTR1_t: public Reg32_t /// ADC analog watchdog 1 threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR1             : 26; /// ADC analog watchdog 1 threshold low
@@ -3850,7 +3853,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_LHTR1
-			struct LHTR1_t: Reg32_t /// ADC analog watchdog 2 threshold register
+			struct LHTR1_t: public Reg32_t /// ADC analog watchdog 2 threshold register
 			{
 				using Reg32_t::operator=;
 				uint32_t LHTR1            : 26; /// ADC analog watchdog 2 threshold low
@@ -3859,7 +3862,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_SQR1
-			struct SQR1_t: Reg32_t /// ADC group regular sequencer ranks register 1
+			struct SQR1_t: public Reg32_t /// ADC group regular sequencer ranks register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t L3               : 4;
@@ -3876,7 +3879,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_SQR2
-			struct SQR2_t: Reg32_t /// ADC group regular sequencer ranks register 2
+			struct SQR2_t: public Reg32_t /// ADC group regular sequencer ranks register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SQ5              : 5; /// ADC group regular sequencer rank 5
@@ -3893,7 +3896,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_SQR4
-			struct SQR4_t: Reg32_t /// ADC group regular sequencer ranks register 4
+			struct SQR4_t: public Reg32_t /// ADC group regular sequencer ranks register 4
 			{
 				using Reg32_t::operator=;
 				uint32_t SQ15             : 5; /// ADC group regular sequencer rank 15
@@ -3904,7 +3907,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_DR
-			struct DR_t: Reg32_t /// ADC group regular conversion data register
+			struct DR_t: public Reg32_t /// ADC group regular conversion data register
 			{
 				using Reg32_t::operator=;
 				uint32_t RDATA            : 32; /// ADC group regular conversion data
@@ -3912,7 +3915,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_JSQR
-			struct JSQR_t: Reg32_t /// ADC group injected sequencer register
+			struct JSQR_t: public Reg32_t /// ADC group injected sequencer register
 			{
 				using Reg32_t::operator=;
 				uint32_t JL               : 2; /// ADC group injected sequencer scan length
@@ -3929,7 +3932,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_OFRx
-			struct OFRx_t: Reg32_t /// ADC offset number 1 register
+			struct OFRx_t: public Reg32_t /// ADC offset number 1 register
 			{
 				using Reg32_t::operator=;
 				uint32_t OFFSET1          : 26; /// ADC offset number 1 offset level
@@ -3939,7 +3942,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_JDR1
-			struct JDR1_t: Reg32_t /// ADC group injected sequencer rank 1 register
+			struct JDR1_t: public Reg32_t /// ADC group injected sequencer rank 1 register
 			{
 				using Reg32_t::operator=;
 				uint32_t JDATA1           : 32; /// ADC group injected sequencer rank 1 conversion data
@@ -3947,7 +3950,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_JDR2
-			struct JDR2_t: Reg32_t /// ADC group injected sequencer rank 2 register
+			struct JDR2_t: public Reg32_t /// ADC group injected sequencer rank 2 register
 			{
 				using Reg32_t::operator=;
 				uint32_t JDATA2           : 32; /// ADC group injected sequencer rank 2 conversion data
@@ -3955,7 +3958,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_JDR3
-			struct JDR3_t: Reg32_t /// ADC group injected sequencer rank 3 register
+			struct JDR3_t: public Reg32_t /// ADC group injected sequencer rank 3 register
 			{
 				using Reg32_t::operator=;
 				uint32_t JDATA3           : 32; /// ADC group injected sequencer rank 3 conversion data
@@ -3963,7 +3966,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_JDR4
-			struct JDR4_t: Reg32_t /// ADC group injected sequencer rank 4 register
+			struct JDR4_t: public Reg32_t /// ADC group injected sequencer rank 4 register
 			{
 				using Reg32_t::operator=;
 				uint32_t JDATA4           : 32; /// ADC group injected sequencer rank 4 conversion data
@@ -3971,7 +3974,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_AWD2CR
-			struct AWD2CR_t: Reg32_t /// ADC analog watchdog 2 configuration register
+			struct AWD2CR_t: public Reg32_t /// ADC analog watchdog 2 configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t AWD2CH           : 20; /// ADC analog watchdog 2 monitored channel selection
@@ -3980,7 +3983,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_AWD3CR
-			struct AWD3CR_t: Reg32_t /// ADC analog watchdog 3 configuration register
+			struct AWD3CR_t: public Reg32_t /// ADC analog watchdog 3 configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t AWD3CH           : 20; /// ADC analog watchdog 3 monitored channel selection
@@ -3989,7 +3992,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_DIFSEL
-			struct DIFSEL_t: Reg32_t /// ADC channel differential or single-ended mode selection register
+			struct DIFSEL_t: public Reg32_t /// ADC channel differential or single-ended mode selection register
 			{
 				using Reg32_t::operator=;
 				uint32_t DIFSEL           : 20; /// ADC channel differential or single-ended mode for channel
@@ -3998,7 +4001,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CALFACT
-			struct CALFACT_t: Reg32_t /// ADC calibration factors register
+			struct CALFACT_t: public Reg32_t /// ADC calibration factors register
 			{
 				using Reg32_t::operator=;
 				uint32_t CALFACT_S        : 11; /// ADC calibration factor in single-ended mode
@@ -4009,7 +4012,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_PCSEL
-			struct PCSEL_t: Reg32_t /// ADC pre channel selection register
+			struct PCSEL_t: public Reg32_t /// ADC pre channel selection register
 			{
 				using Reg32_t::operator=;
 				uint32_t PCSEL            : 20; /// Channel x (VINP[i]) pre selection
@@ -4018,7 +4021,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_LTR2
-			struct LTR2_t: Reg32_t /// ADC watchdog lower threshold register 2
+			struct LTR2_t: public Reg32_t /// ADC watchdog lower threshold register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR2             : 26; /// Analog watchdog 2 lower threshold
@@ -4027,7 +4030,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_HTR2
-			struct HTR2_t: Reg32_t /// ADC watchdog higher threshold register 2
+			struct HTR2_t: public Reg32_t /// ADC watchdog higher threshold register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t HTR2             : 26; /// Analog watchdog 2 higher threshold
@@ -4036,7 +4039,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_LTR3
-			struct LTR3_t: Reg32_t /// ADC watchdog lower threshold register 3
+			struct LTR3_t: public Reg32_t /// ADC watchdog lower threshold register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t LTR3             : 26; /// Analog watchdog 3 lower threshold
@@ -4045,7 +4048,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_HTR3
-			struct HTR3_t: Reg32_t /// ADC watchdog higher threshold register 3
+			struct HTR3_t: public Reg32_t /// ADC watchdog higher threshold register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t HTR3             : 26; /// Analog watchdog 3 higher threshold
@@ -4054,7 +4057,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef ADC_Common_CALFACT2
-			struct CALFACT2_t: Reg32_t /// ADC Calibration Factor register 2
+			struct CALFACT2_t: public Reg32_t /// ADC Calibration Factor register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LINCALFACT       : 30; /// Linearity Calibration Factor
@@ -4131,8 +4134,14 @@ namespace sool {
 				};
 				#endif
 			};
+
+			#if __SOOL_DEBUG_NOPHY
+				ADC_Common(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				ADC_Common() = delete;
 			#endif
 			
@@ -4297,593 +4306,579 @@ namespace sool {
 //Instances for peripheral ADC
 
 		#if defined(ADC_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<> * const ADC = reinterpret_cast<class ADC<>* const>(ADC_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC = new class ADC(ADC_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC = new ADC();
-				#undef ADC_BASE_ADDR
-				#define ADC_BASE_ADDR reinterpret_cast<uint32_t>(ADC)
+				volatile class ADC<> * const ADC = reinterpret_cast<class ADC<>* const>(ADC_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC1_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<> * const ADC1 = reinterpret_cast<class ADC<>* const>(ADC1_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC1 = new class ADC(ADC1_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC1 = new ADC();
-				#undef ADC1_BASE_ADDR
-				#define ADC1_BASE_ADDR reinterpret_cast<uint32_t>(ADC1)
+				volatile class ADC<> * const ADC1 = reinterpret_cast<class ADC<>* const>(ADC1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC2_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<ADC2_TMPL> * const ADC2 = reinterpret_cast<class ADC<ADC2_TMPL>* const>(ADC2_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC2 = new class ADC(ADC2_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC2 = new ADC();
-				#undef ADC2_BASE_ADDR
-				#define ADC2_BASE_ADDR reinterpret_cast<uint32_t>(ADC2)
+				volatile class ADC<ADC2_TMPL> * const ADC2 = reinterpret_cast<class ADC<ADC2_TMPL>* const>(ADC2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC3_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<> * const ADC3 = reinterpret_cast<class ADC<>* const>(ADC3_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC3 = new class ADC(ADC3_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC3 = new ADC();
-				#undef ADC3_BASE_ADDR
-				#define ADC3_BASE_ADDR reinterpret_cast<uint32_t>(ADC3)
+				volatile class ADC<> * const ADC3 = reinterpret_cast<class ADC<>* const>(ADC3_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC4_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<> * const ADC4 = reinterpret_cast<class ADC<>* const>(ADC4_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC4 = new class ADC(ADC4_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC4 = new ADC();
-				#undef ADC4_BASE_ADDR
-				#define ADC4_BASE_ADDR reinterpret_cast<uint32_t>(ADC4)
+				volatile class ADC<> * const ADC4 = reinterpret_cast<class ADC<>* const>(ADC4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC5_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC<> * const ADC5 = reinterpret_cast<class ADC<>* const>(ADC5_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC * const ADC5 = new class ADC(ADC5_BASE_ADDR);
+
 			#else
-				volatile class ADC * const ADC5 = new ADC();
-				#undef ADC5_BASE_ADDR
-				#define ADC5_BASE_ADDR reinterpret_cast<uint32_t>(ADC5)
+				volatile class ADC<> * const ADC5 = reinterpret_cast<class ADC<>* const>(ADC5_BASE_ADDR);
 			#endif
 		#endif
 
 //Instances for peripheral ADC_Common
 
 		#if defined(ADC123_Common_BASE_ADDR) && defined(ADC_Common_ADC123_Common) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC123_Common = reinterpret_cast<class ADC_Common* const>(ADC123_Common_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC123_Common = new class ADC_Common(ADC123_Common_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC123_Common = new ADC_Common();
-				#undef ADC123_Common_BASE_ADDR
-				#define ADC123_Common_BASE_ADDR reinterpret_cast<uint32_t>(ADC123_Common)
+				volatile class ADC_Common * const ADC123_Common = reinterpret_cast<class ADC_Common* const>(ADC123_Common_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC12_Common_BASE_ADDR) && defined(ADC_Common_ADC12_Common) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC12_Common = reinterpret_cast<class ADC_Common* const>(ADC12_Common_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC12_Common = new class ADC_Common(ADC12_Common_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC12_Common = new ADC_Common();
-				#undef ADC12_Common_BASE_ADDR
-				#define ADC12_Common_BASE_ADDR reinterpret_cast<uint32_t>(ADC12_Common)
+				volatile class ADC_Common * const ADC12_Common = reinterpret_cast<class ADC_Common* const>(ADC12_Common_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC1_2_BASE_ADDR) && defined(ADC_Common_ADC1_2) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC1_2 = reinterpret_cast<class ADC_Common* const>(ADC1_2_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC1_2 = new class ADC_Common(ADC1_2_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC1_2 = new ADC_Common();
-				#undef ADC1_2_BASE_ADDR
-				#define ADC1_2_BASE_ADDR reinterpret_cast<uint32_t>(ADC1_2)
+				volatile class ADC_Common * const ADC1_2 = reinterpret_cast<class ADC_Common* const>(ADC1_2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC345_Common_BASE_ADDR) && defined(ADC_Common_ADC345_Common) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC345_Common = reinterpret_cast<class ADC_Common* const>(ADC345_Common_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC345_Common = new class ADC_Common(ADC345_Common_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC345_Common = new ADC_Common();
-				#undef ADC345_Common_BASE_ADDR
-				#define ADC345_Common_BASE_ADDR reinterpret_cast<uint32_t>(ADC345_Common)
+				volatile class ADC_Common * const ADC345_Common = reinterpret_cast<class ADC_Common* const>(ADC345_Common_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC3_4_BASE_ADDR) && defined(ADC_Common_ADC3_4) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC3_4 = reinterpret_cast<class ADC_Common* const>(ADC3_4_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC3_4 = new class ADC_Common(ADC3_4_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC3_4 = new ADC_Common();
-				#undef ADC3_4_BASE_ADDR
-				#define ADC3_4_BASE_ADDR reinterpret_cast<uint32_t>(ADC3_4)
+				volatile class ADC_Common * const ADC3_4 = reinterpret_cast<class ADC_Common* const>(ADC3_4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC3_Common_BASE_ADDR) && defined(ADC_Common_ADC3_Common) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC3_Common = reinterpret_cast<class ADC_Common* const>(ADC3_Common_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC3_Common = new class ADC_Common(ADC3_Common_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC3_Common = new ADC_Common();
-				#undef ADC3_Common_BASE_ADDR
-				#define ADC3_Common_BASE_ADDR reinterpret_cast<uint32_t>(ADC3_Common)
+				volatile class ADC_Common * const ADC3_Common = reinterpret_cast<class ADC_Common* const>(ADC3_Common_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC_Common_BASE_ADDR) && defined(ADC_Common_ADC_Common) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const ADC_Common = reinterpret_cast<class ADC_Common* const>(ADC_Common_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const ADC_Common = new class ADC_Common(ADC_Common_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const ADC_Common = new ADC_Common();
-				#undef ADC_Common_BASE_ADDR
-				#define ADC_Common_BASE_ADDR reinterpret_cast<uint32_t>(ADC_Common)
+				volatile class ADC_Common * const ADC_Common = reinterpret_cast<class ADC_Common* const>(ADC_Common_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(C_ADC_BASE_ADDR) && defined(ADC_Common_C_ADC) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class ADC_Common * const C_ADC = reinterpret_cast<class ADC_Common* const>(C_ADC_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class ADC_Common * const C_ADC = new class ADC_Common(C_ADC_BASE_ADDR);
+
 			#else
-				volatile class ADC_Common * const C_ADC = new ADC_Common();
-				#undef C_ADC_BASE_ADDR
-				#define C_ADC_BASE_ADDR reinterpret_cast<uint32_t>(C_ADC)
+				volatile class ADC_Common * const C_ADC = reinterpret_cast<class ADC_Common* const>(C_ADC_BASE_ADDR);
 			#endif
 		#endif
 		
 		
 	};
 };
-#undef ADC_MAP1_TR3
-#undef ADC_MAP0_CALFACT2
-#undef ADC_IER_1_SATIE
-#undef ADC_Common_ADC12_Common
-#undef ADC_ISR_0_AWD1
-#undef ADC_MAP5_DMACR
-#undef ADC_Common_CSR_0_EOS_SLV
-#undef ADC_Common_CSR_1_STRT1
-#undef ADC_Common_CSR_1_JEOC1
-#undef ADC_SMPR1_1_SMP18
-#undef ADC_Common_CCR_1_VBATE
-#undef ADC_CFGR_0_JQDIS
-#undef ADC_MAP0_OR
-#undef ADC_Common_CCR_0
-#undef ADC_Common_CSR_0_OVR_SLV
-#undef ADC_CFGR1_0_AWDEN
-#undef ADC_CR_0_ADEN
-#undef ADC_CR_0_JADSTP
-#undef ADC_CCR_2
-#undef ADC_Common_CSR_0_JEOS_SLV
-#undef ADC_CR_1
-#undef ADC_Common_CCR_2
-#undef ADC_Common_CSR_1_EOC2
-#undef ADC_CR_2
-#undef ADC_CFGR1_0_AWDCH
-#undef ADC_JSQR_0_JSQ1
-#undef ADC_SQR1_1_SQ15
-#undef ADC_CALFACT_0
-#undef ADC_CR2_0_EXTEN
-#undef ADC_Common_CSR_0_ADRDY_MST
-#undef ADC_Common_CCR_0_VREFEN
-#undef ADC_Common_CCR_0_TSEN
-#undef ADC_CR_1_ADON
-#undef ADC_CFGR2_0_OVSR
-#undef ADC_Common_CSR_1_EOC3
-#undef ADC_CR_0_ADVREGEN
-#undef ADC_CFGR_1_EXTSEL
-#undef ADC_SQR3_0
-#undef ADC_ISR_1_DMABF
-#undef ADC_CR_0_HVSELN
-#undef ADC_JSQR_2
-#undef ADC_MAP5_SQR5
-#undef ADC_IER_0_AWD3IE
-#undef ADC_MAP4_HWCFGR5
-#undef ADC_MAP4_SMPR3
-#undef ADC2_TMPL
-#undef ADC_SQR1_1_L
-#undef ADC_CSR_0_JEOC1
-#undef ADC_CFGR2_0
-#undef ADC_IER_1_DMAOVFIE
-#undef ADC_Common_CSR_0_JEOC_MST
-#undef ADC_CR_0_LINCALRDYW1
-#undef ADC_CR2_0_EXTSEL
-#undef ADC_CFGR1_1
-#undef ADC_MAP2_JDR2
-#undef ADC_DR_5
-#undef ADC_MAP0_JDR3
-#undef ADC_JDR3_1
-#undef ADC_PCSEL_0
-#undef ADC_CR_0_ADCAL
-#undef ADC_SQR4_1
-#undef ADC_CSR_0_JEOS_MST
-#undef ADC_CR_0_ADSTP
-#undef ADC_Common_CSR_0_JQOVF_SLV
-#undef ADC_Common_CCR_1_MDMA
-#undef ADC_MAP0_CCR
-#undef ADC_MAP1_CALFACT
-#undef ADC_CR2_0_JEXTEN
-#undef ADC_ADC_tmpl_0
-#undef ADC_JDR4_0
-#undef ADC_CFGR2_0_JOVSE
 #undef ADC_AWD3CR_3
-#undef ADC_Common_CSR_0_ADRDY_SLV
-#undef ADC_MAP0_ISR
-#undef ADC_CR_0_BOOST
-#undef ADC_Common_CCR_2_DMA
-#undef ADC_MAP0_HTR2
-#undef ADC_Common_MAP0_CDR2
-#undef ADC_Common_CSR_0_AWD3_MST
-#undef ADC_CR_0_DEEPPWD
-#undef ADC_MAP5_SMPR0
-#undef ADC_MAP2_CCR
-#undef ADC_PCSEL_1
-#undef ADC_MAP0_OFR1
-#undef ADC_CSR_0_JSTRT1
-#undef ADC_MAP3
-#undef ADC_MAP2_GCOMP
-#undef ADC_SQR1_0
-#undef ADC_SQR1_2_SQ28
-#undef ADC_CFGR1_0_AUTDLY
-#undef ADC_CFGR2_1_TOVS
-#undef ADC_Common_CCR_1_MULT
-#undef ADC_SMPR1_0_SMP0
-#undef ADC_CR2_0_CAL
-#undef ADC_Common_CCR_1_CH18SEL
-#undef ADC_MAP0_OFR3
-#undef ADC_MAP4_AWD3TR
-#undef ADC_Common_ADC1_2
-#undef ADC_CR_1_BOOST
-#undef ADC_CCR_0_LFMEN
-#undef ADC_MAP0
-#undef ADC_MAP1_TR1
-#undef ADC_CFGR2_0_ROVSM
-#undef ADC_SMPR1_0_SMPPLUS
-#undef ADC_CR1_PDI
-#undef ADC_CSR_0_AWD1
-#undef ADC_Common_MAP0_CSR
-#undef ADC_MAP4_IER
-#undef ADC_MAP4_HWCFGR4
-#undef ADC_CCR_0
-#undef ADC_MAP0_SQR2
-#undef ADC_IER_1_DMABFIE
-#undef ADC_MAP0_HTR3
-#undef ADC_MAP5_JDR3
-#undef ADC_Common_CSR_0_EOS_MST
-#undef ADC_Common_CSR_0_EOSMP_SLV
-#undef ADC_MAP2_SQR3
-#undef ADC_CFGR_1_DMAEN
-#undef ADC_MAP1_OFR3
-#undef ADC_Common_CSR_0
-#undef ADC_CFGR_2
-#undef ADC_CR2_1
-#undef ADC_Common_CCR_0_CKMODE
-#undef ADC_AWD3CR_1
-#undef ADC_CFGR2_1
-#undef ADC_Common_CDR_1
-#undef ADC_CR2_0_DDS
-#undef ADC_MAP4_SIDR
-#undef ADC_CR_1_CLK
-#undef ADC_MAP2_JOFR4
-#undef ADC_CR_0_ADCALDIF
-#undef ADC_SQR1_3
-#undef ADC_Common_CCR_1_ADCPRE
-#undef ADC_MAP4_AWD1TR
-#undef ADC_CFGR_1_ALIGN
-#undef ADC_Common_CCR_0_DELAY
-#undef ADC_MAP4_HWCFGR6
-#undef ADC_SQR1_2_SQ13
-#undef ADC_Common_CSR_0_EOSMP_MST
-#undef ADC_CR2_1_JSWSTART
-#undef ADC_DR_0
-#undef ADC_CFGR2_1_GCOMP
-#undef ADC_MAP1_OFR4
-#undef ADC_CCR_0_TSEN
-#undef ADC_Common_CCR_1_DDS
-#undef ADC_MAP5_DR
-#undef ADC_CFGR_1_AUTOFF
-#undef ADC_AWD3CR_2
-#undef ADC_CR_0_JADSTART
-#undef ADC_SMPR1_1
-#undef ADC_MAP2_SMPR2
-#undef ADC_CR_0_LINCALRDYW4
-#undef ADC_Common_CCR_0_DUAL
-#undef ADC_CR_0_ADDIS
-#undef ADC_CSR_0_STRT1
-#undef ADC_CR2_0_EOCS
-#undef ADC_MAP2_JOFR2
-#undef ADC_CR2_0_TSVREFE
-#undef ADC_DR_1
-#undef ADC_Common_CSR_0_JSTRT2
-#undef ADC_MAP4_HWCFGR1
-#undef ADC_SMPR1_0
-#undef ADC_CFGR2_1_OVSE
-#undef ADC_MAP5_OFFSETR
-#undef ADC_ISR_1
-#undef ADC_SQR4_0_SQ12
-#undef ADC_MAP1_TR2
-#undef ADC_SMPR_0_SMPSEL
-#undef ADC_CHSELR_1
-#undef ADC_MAP2_JOFR1
-#undef ADC_CCR_1_TSVREFE
-#undef ADC_SMPR2_1
-#undef ADC_CR_0_HVSELP
-#undef ADC_AWD3CR_4
-#undef ADC_Common_CSR_0_AWD1_MST
-#undef ADC_Common_CSR_0_OVR2
-#undef ADC_SQR3_1
-#undef ADC_Common_CSR_1
-#undef ADC_CSR_0_AWD3_MST
-#undef ADC_MAP2_LTR
-#undef ADC_MAP2_DR
-#undef ADC_CFGR_2_ALIGN_5
-#undef ADC_Common_CSR_1_ADDRDY_MST
-#undef ADC_ISR_0_CCRDY
-#undef ADC_MAP4
-#undef ADC_Common_ADC_Common
-#undef ADC_JDR3_0
-#undef ADC_Common_CSR_1_OVR3
-#undef ADC_CR_0_ADSTART
-#undef ADC_MAP4_VERR
-#undef ADC_MAP0_OFR2
-#undef ADC_MAP2_JDR3
-#undef ADC_SQR4_0_SQ15
-#undef ADC_MAP4_HWCFGR2
-#undef ADC_Common_MAP0_CDR
-#undef ADC_Common_ADC3_4
-#undef ADC_MAP0_SQR1
-#undef ADC_MAP0_LTR2
-#undef ADC_CFGR_1_DMACFG
-#undef ADC_CSR_0_JQOVF_MST
-#undef ADC_MAP5_LTR
-#undef ADC_MAP4_HWCFGR0
-#undef ADC_ISR_0_JEOC
-#undef ADC_DIFSEL_0
-#undef ADC_MAP4_HWCFGR3
-#undef ADC_Common_CSR_1_JEOC3
-#undef ADC_CCR_0_VBATEN
-#undef ADC_Common_ADC345_Common
-#undef ADC_CFGR_1_RES
-#undef ADC_IER_1
-#undef ADC_CFGR_2_DFSDMCFG
-#undef ADC_CFGR2_0_OSR
-#undef ADC_MAP4_JOFR2
-#undef ADC_JSQR_1
-#undef ADC_CCR_1_VBATE
-#undef ADC_AWD2CR_1
-#undef ADC_CALFACT_2
-#undef ADC_ISR_1_AWD
-#undef ADC_MAP0_SQR3
-#undef ADC_SQR1_0_L3
-#undef ADC_MAP0_CFGR
-#undef ADC_JDR1_1
-#undef ADC_MAP0_JDR1
-#undef ADC_Common_CSR_0_EOC_MST
-#undef ADC_Common_CSR_0_AWD3_SLV
-#undef ADC_ISR_1_DMABHF
-#undef ADC_CR2_1_SWSTART
-#undef ADC_IER_0_EOCALIE
-#undef ADC_MAP4_JOFR1
-#undef ADC_CFGR2_1_LFTRIG
-#undef ADC_Common_CDR_0
-#undef ADC_AWD2CR_0
-#undef ADC_CFGR2_1_SWTRIG
-#undef ADC_MAP1_SMPR1
-#undef ADC_CSR_0_EOC1
-#undef ADC_IER_0_JQOVFIE
-#undef ADC_MAP5_GAINR
-#undef ADC_CSR_0_OVR1
-#undef ADC_Common_CSR_1_EOC1
-#undef ADC_Common_CCR_0_VBATEN
-#undef ADC_CR2_0_RSTCAL
-#undef ADC_MAP0_SMPR1
-#undef ADC_Common_CSR_0_JEOS_MST
-#undef ADC_CCR_0_PRESC
-#undef ADC_CR2_1_EXTTRIG
-#undef ADC_MAP0_JDR4
 #undef ADC_DIFSEL_1_DIFSEL_16_18
-#undef ADC_JSQR_0
-#undef ADC_Common_CCR_0_PRESC
-#undef ADC_MAP0_DR
-#undef ADC_MAP0_IER
-#undef ADC_JSQR_0_JSQ4
-#undef ADC_Common_CSR_1_JSTRT1
-#undef ADC_MAP0_AWD2CR
-#undef ADC_MAP0_DIFSEL
-#undef ADC_SQR3_2
-#undef ADC_MAP5
-#undef ADC_MAP1_CCR
-#undef ADC_MAP0_CR
-#undef ADC_CFGR1_0_CHSELRMOD
-#undef ADC_CR_0_SMP
-#undef ADC_Common_CCR_1
-#undef ADC_CR2_1_EXTSEL
-#undef ADC_IER_0_AWD2IE
-#undef ADC_CFGR_0_EXTSEL
-#undef ADC_MAP2_SMPR1
-#undef ADC_JSQR_0_JSQ3
-#undef ADC_Common_CCR_1_CH17SEL
-#undef ADC_CR2_1_JEXTSEL
-#undef ADC_ISR_0
-#undef ADC_SQR4_0_SQ10
-#undef ADC_CR_0_ADCALLIN
-#undef ADC_SMPRx_0
-#undef ADC_CSR_0_AWD1_MST
-#undef ADC_SQR1_2_SQ26
-#undef ADC_ISR_0_EOCAL
-#undef ADC_Common_CSR_1_JSTRT3
-#undef ADC_SR_JCNR
-#undef ADC_DIFSEL_2
-#undef ADC_ISR_0_AWD2
-#undef ADC_AWD2CR_3
-#undef ADC_CCR_1_CH18SEL
-#undef ADC_SQR2_2
-#undef ADC_Common_CSR_0_JQOVF_MST
-#undef ADC_DR_2
-#undef ADC_MAP1
-#undef ADC_Common_C_ADC
-#undef ADC_Common_ADC123_Common
-#undef ADC_MAP0_LHTR1
-#undef ADC_SQR1_2
-#undef ADC_CFGR2_0_ROVSE
-#undef ADC_MAP0_JDR2
-#undef ADC_SR_OVR
-#undef ADC_Common_MAP2
-#undef ADC_MAP1_DIFSEL
-#undef ADC_MAP0_JSQR
-#undef ADC_CR_0_LINCALRDYW6
-#undef ADC_MAP0_PCSEL
-#undef ADC_Common_MAP2_CDR
-#undef ADC_MAP0_OFR4
-#undef ADC_MAP3_TR
-#undef ADC_CHSELR_0
-#undef ADC_MAP5_DMANDTR
-#undef ADC_MAP2_SQR1
-#undef ADC_CFGR1_0_AWDSGL
-#undef ADC_ISR_0_AWD3
-#undef ADC_SMPR2_0_SMP19
-#undef ADC_MAP0_AWD3CR
-#undef ADC_MAP4_AWD2TR
-#undef ADC_Common_CSR_0_AWD2_SLV
-#undef ADC_MAP5_JDR4
-#undef ADC_SMPR_0_SMPR
-#undef ADC_CR_1_CHSELN
-#undef ADC_CSR_1
-#undef ADC_IER_1_DMABHFIE
-#undef ADC_MAP5_DMAMNAR
-#undef ADC_MAP1_OFR2
-#undef ADC_SQR2_1
-#undef ADC_CFGR_0_RES
-#undef ADC_IER_1_AWDIE
-#undef ADC_CR1_PDD
-#undef ADC_Common_CSR_0_OVR_MST
-#undef ADC_ISR_0_JEOS
-#undef ADC_DR_4
-#undef ADC_CCR_1_ADCPRE
-#undef ADC_MAP2_CR2
-#undef ADC_CCR_2_CH17SEL
-#undef ADC_CFGR2_0_TROVS
-#undef ADC_CR_0_LINCALRDYW3
-#undef ADC_Common_CSR_1_AWD2
-#undef ADC_MAP5_DMASR
-#undef ADC_JDR2_0
-#undef ADC_CFGR2_1_JITOFF_D4
-#undef ADC_OFRx_0_OFFSET1
-#undef ADC_IER_0_AWD1IE
-#undef ADC_ISR_1_DMAOVF
-#undef ADC_CFGR2_0_LSHIFT
-#undef ADC_CR2_0_JEXTTRIG
-#undef ADC_Common_CCR_0_DMACFG
-#undef ADC_MAP2_JOFR3
-#undef ADC_MAP2_JSQR
-#undef ADC_Common_CSR_1_OVR1
-#undef ADC_SQR2_0
-#undef ADC_DIFSEL_1_DIFSEL_1_15
-#undef ADC_Common_CSR_2
-#undef ADC_MAP5_JDR1
-#undef ADC_MAP2_CSR
-#undef ADC_Common_CSR_0_STRT2
-#undef ADC_CFGR2_0_RSHIFT1
-#undef ADC_Common_CSR_0_JEOC_SLV
-#undef ADC_CSR_0_AWD2_MST
-#undef ADC_MAP2_JDR4
-#undef ADC_SMPR_1
-#undef ADC_CR1_OVRIE
-#undef ADC_SQR1_1
-#undef ADC_OFRx_0_SSATE
-#undef ADC_MAP0_CALFACT
-#undef ADC_CFGR_0_ALIGN
-#undef ADC_IER_0_CCRDYIE
-#undef ADC_CR2_1_CFG
-#undef ADC_JDR4_1
-#undef ADC_CR_0_LINCALRDYW2
-#undef ADC_IER_0_JEOSIE
+#undef ADC_CFGR1_0_AUTDLY
 #undef ADC_Common_ADC3_Common
-#undef ADC_MAP0_LTR1
-#undef ADC_CR2_0_SWSTART
-#undef ADC_JSQR_0_JEXTEN
-#undef ADC_MAP5_HTR
-#undef ADC_Common_CCR_0_DAMDF
-#undef ADC_MAP0_LTR3
-#undef ADC_JSQR_0_JSQ2
-#undef ADC_MAP4_IPIDR
-#undef ADC_CCR_2_VLCDEN
-#undef ADC_CR_0_LINCALRDYW5
-#undef ADC_CALFACT_1
-#undef ADC_CFGR2_0_RSHIFT2
-#undef ADC_CFGR2_1_JITOFF_D2
-#undef ADC_Common_CSR_0_AWD2_MST
-#undef ADC_MAP5_DMACNDTR
-#undef ADC_Common_CSR_1_ADONS1
-#undef ADC_MAP5_JDR2
-#undef ADC_MAP1_OFR1
-#undef PERIPH_ADC_Common
-#undef ADC_ISR_0_JQOVF
-#undef ADC_SQR1_1_SQ16
-#undef ADC_TR1_AWDFILT
-#undef ADC_CFGR2_0_RSHIFT4
-#undef ADC_SQR1_1_SQ14
-#undef ADC_MAP4_CHSELR_1
-#undef ADC_CFGR_1
-#undef ADC_MAP2
-#undef ADC_Common_MAP1
-#undef ADC_SMPR2_0
-#undef ADC_MAP5_CR
-#undef ADC_MAP5_DMAMSAR
-#undef ADC_Common_CSR_0_EOC_SLV
-#undef ADC_ISR_1_SAT
-#undef ADC_MAP1_SR
-#undef ADC_MAP5_JSQR
-#undef ADC_SR_ADONS
-#undef ADC_MAP2_HTR
-#undef ADC_SR_RCNR
-#undef ADC_MAP0_SMPR2
-#undef ADC_CR2_0_JEXTSEL
-#undef ADC_IER_0_JEOCIE
-#undef ADC_MAP1_SMPR2
-#undef ADC_CR2_0_JSWSTART
-#undef ADC_CCR_0_CKMODE
-#undef ADC_CCR_1
-#undef ADC_SQR4_0_SQ16
-#undef ADC_OFRx_1
-#undef ADC_Common_CSR_1_JEOC2
-#undef ADC_IER_0
-#undef ADC_SMPR_0_SMP2
-#undef ADC_MAP1_CR1
-#undef ADC_Common_CSR_0_AWD1_SLV
-#undef ADC_JDR2_1
-#undef ADC_DIFSEL_1
-#undef ADC_CR1_RES
-#undef ADC_CFGR_0_DMNGT
-#undef ADC_AWD3CR_0
-#undef ADC_MAP2_SQR2
-#undef ADC_MAP0_SQR4
-#undef ADC_CFGR2_2
-#undef ADC_CFGR2_0_SMPTRIG
-#undef ADC_CFGR2_0_BULB
-#undef ADC_CFGR2_0_RSHIFT3
-#undef ADC_SMPRx_1
-#undef ADC_Common_CSR_1_STRT3
-#undef ADC_Common_MAP0_CCR
-#undef ADC_Common_CSR_1_AWD3
-#undef ADC_JSQR_0_JEXTSEL
-#undef ADC_MAP2_JDR1
-#undef ADC_MAP5_JOFR4
-#undef ADC_CR2_0_DELS
-#undef ADC_DR_3
-#undef ADC_MAP0_CFGR2
-#undef ADC_SQR1_2_SQ27
-#undef ADC_DIFSEL_1_DIFSEL_0
+#undef ADC_MAP5_DR
+#undef ADC_SQR2_2
+#undef ADC_Common_C_ADC
 #undef ADC_SQR4_0_SQ11
-#undef ADC_AWD2CR_2
+#undef ADC_IER_0_JEOCIE
+#undef ADC_SQR1_1_SQ14
+#undef ADC_CFGR_2
+#undef ADC_SQR1_2_SQ26
+#undef ADC_ISR_0_AWD2
+#undef ADC_CFGR_2_ALIGN_5
+#undef ADC_MAP4_JOFR1
+#undef ADC_MAP0_OFR3
+#undef ADC_IER_0_AWD1IE
+#undef ADC_CCR_1_VBATE
+#undef ADC_CFGR2_0_JOVSE
+#undef ADC_MAP5_LTR
+#undef ADC_Common_CSR_0_JEOS_SLV
+#undef ADC_Common_MAP0_CDR
+#undef ADC_CFGR1_0_AWDSGL
+#undef ADC_CR_0_SMP
+#undef ADC_MAP0_CR
+#undef ADC_OFRx_0_OFFSET1
+#undef ADC_CR_0_LINCALRDYW1
+#undef ADC_MAP1_SMPR2
+#undef ADC_CALFACT_2
+#undef ADC_ISR_0_JQOVF
+#undef ADC_CFGR1_0_AWDEN
+#undef ADC_MAP5
+#undef ADC_CFGR2_1_GCOMP
+#undef ADC_CR_0_ADVREGEN
+#undef ADC_MAP2_JDR1
+#undef ADC_DIFSEL_1
+#undef ADC_Common_CSR_1_OVR1
+#undef ADC_Common_ADC3_4
+#undef ADC_CFGR_1_DMAEN
+#undef ADC_CFGR2_0_RSHIFT2
+#undef ADC_CR_0_ADSTP
+#undef ADC_DIFSEL_1_DIFSEL_1_15
+#undef ADC_Common_MAP2
+#undef ADC_Common_CSR_1_JEOC2
+#undef ADC_CR_0_ADSTART
+#undef ADC_JDR4_1
+#undef ADC_Common_CSR_1_ADONS1
+#undef ADC_MAP5_JDR3
+#undef ADC_IER_0_JQOVFIE
+#undef ADC_MAP4_CHSELR_1
+#undef ADC_MAP4_AWD1TR
+#undef ADC_SQR1_1_L
+#undef ADC_Common_CCR_1_DDS
+#undef ADC_MAP2_HTR
+#undef ADC_SQR3_1
+#undef ADC_MAP0_AWD3CR
+#undef ADC_ADC_tmpl_0
+#undef ADC_Common_MAP2_CDR
+#undef ADC_TR1_AWDFILT
+#undef ADC_CFGR2_1_JITOFF_D2
+#undef ADC_ISR_0_AWD3
+#undef ADC_MAP0_ISR
+#undef ADC_Common_CSR_0_AWD1_MST
+#undef ADC_Common_CSR_1_JEOC3
+#undef ADC_MAP2
+#undef ADC_MAP2_JSQR
+#undef ADC_ISR_0
+#undef ADC_CR_0_ADCALDIF
+#undef ADC_MAP0_LTR2
+#undef ADC_CFGR2_1_OVSE
+#undef ADC_SQR4_0_SQ15
+#undef ADC_CR_0_LINCALRDYW5
+#undef ADC_MAP5_SQR5
+#undef ADC_MAP1_CCR
+#undef ADC_DR_4
+#undef ADC_Common_CSR_0_EOSMP_SLV
+#undef ADC_CR_0_ADCAL
+#undef ADC_MAP0_LHTR1
+#undef ADC_SQR4_1
+#undef ADC_MAP0_IER
+#undef ADC_SQR3_0
+#undef ADC_CR_0_JADSTART
+#undef ADC_IER_1_AWDIE
+#undef ADC_CFGR2_0_OSR
+#undef ADC_CR2_1_JSWSTART
+#undef ADC_Common_CCR_2
+#undef ADC_Common_CCR_0_VBATEN
+#undef ADC_Common_CSR_0_ADRDY_MST
+#undef ADC_CFGR1_0_CHSELRMOD
+#undef ADC_MAP4_JOFR2
+#undef ADC_PCSEL_1
+#undef ADC_MAP0_CFGR
+#undef ADC_DR_3
+#undef ADC_MAP1_DIFSEL
+#undef ADC_IER_0_CCRDYIE
+#undef ADC_SMPR2_0_SMP19
+#undef ADC_CR2_0_EXTEN
+#undef ADC_MAP4
+#undef ADC_CR1_OVRIE
+#undef ADC_Common_CSR_0_OVR2
+#undef ADC_CFGR2_0_TROVS
+#undef ADC_JSQR_0_JSQ2
+#undef ADC_Common_CSR_0_OVR_SLV
+#undef ADC_MAP1_OFR1
+#undef ADC_Common_CSR_0_EOS_SLV
+#undef ADC_MAP5_CR
+#undef ADC_MAP2_CR2
+#undef ADC_SR_ADONS
+#undef ADC_MAP2_SQR2
+#undef ADC_Common_CCR_0_DAMDF
+#undef ADC_MAP5_GAINR
+#undef ADC_CFGR_1_AUTOFF
+#undef ADC_CFGR_2_DFSDMCFG
+#undef ADC_MAP1_TR1
+#undef ADC_MAP0_SMPR2
+#undef ADC_SQR1_1_SQ15
+#undef ADC_CFGR_0_JQDIS
+#undef ADC_MAP4_IER
+#undef ADC_SQR1_2_SQ27
+#undef ADC_SMPR_1
+#undef ADC_CCR_0_CKMODE
+#undef ADC_MAP2_JOFR2
+#undef ADC_MAP4_HWCFGR3
+#undef ADC_MAP0_DR
+#undef ADC_Common_CSR_1_JSTRT1
+#undef ADC_SMPR_0_SMPSEL
+#undef ADC_JSQR_0_JSQ3
+#undef ADC_MAP4_HWCFGR0
+#undef ADC_CFGR2_0_SMPTRIG
+#undef ADC_DIFSEL_0
+#undef ADC_MAP1
+#undef PERIPH_ADC_Common
+#undef ADC_MAP0_SMPR1
+#undef ADC_SMPR1_0_SMPPLUS
+#undef ADC_CR_0_ADEN
+#undef ADC_CCR_2_VLCDEN
+#undef ADC_AWD2CR_0
+#undef ADC_JDR4_0
+#undef ADC_MAP0_CALFACT
+#undef ADC_CFGR2_0
+#undef ADC_MAP5_DMAMSAR
+#undef ADC_MAP1_TR3
+#undef ADC_CSR_0_JSTRT1
+#undef ADC_Common_ADC123_Common
+#undef ADC_MAP0_SQR2
+#undef ADC_MAP1_OFR4
+#undef ADC_Common_MAP1
+#undef ADC_JSQR_0_JEXTSEL
+#undef ADC_Common_CSR_0
+#undef ADC_CHSELR_0
+#undef ADC_MAP0_JDR3
+#undef ADC_CFGR2_1
+#undef ADC_MAP3
+#undef ADC_CSR_0_JEOS_MST
+#undef ADC_MAP2_SMPR2
+#undef ADC_CR2_0_CAL
+#undef ADC_CCR_0_TSEN
 #undef ADC_MAP5_JOFR3
+#undef ADC_MAP4_HWCFGR5
+#undef ADC_IER_1_DMABFIE
+#undef ADC_MAP2_JOFR3
+#undef ADC_CR2_0_TSVREFE
+#undef ADC_MAP5_SMPR0
+#undef ADC_Common_CCR_0_VREFEN
+#undef ADC_CFGR_0_EXTSEL
+#undef ADC_MAP2_DR
+#undef ADC_MAP1_CALFACT
+#undef ADC_Common_CCR_0_DELAY
+#undef ADC_OFRx_1
+#undef ADC_SQR4_0_SQ12
+#undef ADC_CFGR2_0_RSHIFT4
+#undef ADC_SQR2_0
+#undef ADC_CR_0_ADDIS
+#undef ADC_Common_CCR_0_DMACFG
+#undef ADC_IER_1_SATIE
+#undef ADC_JDR1_1
+#undef ADC_Common_CSR_0_STRT2
+#undef ADC_CR1_PDD
+#undef ADC_MAP5_JSQR
+#undef ADC_CSR_1
+#undef ADC_MAP2_GCOMP
+#undef ADC_Common_CCR_0_TSEN
+#undef ADC_Common_CDR_0
+#undef ADC_CFGR_0_DMNGT
+#undef ADC_MAP2_SQR1
+#undef ADC_MAP2_JOFR1
+#undef ADC_CR2_1_JEXTSEL
+#undef ADC_AWD3CR_4
+#undef ADC_ISR_1_DMABF
+#undef ADC_CCR_0_LFMEN
+#undef ADC_CSR_0_JEOC1
+#undef ADC_CCR_0_PRESC
+#undef ADC_MAP0_LTR1
+#undef ADC_ISR_0_EOCAL
+#undef ADC_MAP0_SQR3
+#undef ADC_CFGR_1_DMACFG
+#undef ADC_JSQR_0_JSQ1
+#undef ADC_Common_CSR_0_AWD2_SLV
+#undef ADC_JDR3_1
+#undef ADC_JSQR_0_JEXTEN
+#undef ADC_CFGR2_0_BULB
+#undef ADC_Common_CSR_0_JEOC_MST
+#undef ADC_Common_ADC_Common
+#undef ADC_SMPRx_0
+#undef ADC_CFGR2_2
+#undef ADC_CFGR_1_RES
+#undef ADC_MAP0_PCSEL
+#undef ADC_AWD2CR_2
+#undef ADC_Common_CSR_1
+#undef ADC_CR_0_ADCALLIN
+#undef ADC_MAP1_OFR2
+#undef ADC_PCSEL_0
+#undef ADC_Common_MAP0_CSR
+#undef ADC_CFGR2_0_ROVSE
+#undef ADC_SMPR1_1_SMP18
+#undef ADC_MAP4_AWD2TR
+#undef ADC_CFGR2_1_SWTRIG
+#undef ADC_CSR_0_OVR1
+#undef ADC_JSQR_0_JSQ4
+#undef ADC_ISR_0_JEOS
+#undef ADC_MAP2_JDR3
+#undef ADC_MAP0_OFR4
+#undef ADC_Common_CCR_1_MULT
+#undef ADC_ISR_0_CCRDY
+#undef ADC_CFGR2_1_LFTRIG
+#undef ADC_CR2_0_JSWSTART
+#undef ADC_ISR_0_AWD1
+#undef ADC_SQR1_2_SQ13
+#undef ADC_CR2_0_JEXTSEL
+#undef ADC_Common_CCR_1_CH17SEL
+#undef ADC_IER_0_JEOSIE
+#undef ADC_MAP0_JSQR
+#undef ADC_SQR4_0_SQ10
+#undef ADC_Common_CSR_1_ADDRDY_MST
+#undef ADC_SMPR1_1
+#undef ADC_CR_0_DEEPPWD
+#undef ADC_CR_0_HVSELN
+#undef ADC_MAP2_JOFR4
+#undef ADC_Common_CSR_0_EOC_SLV
+#undef ADC_Common_CCR_2_DMA
+#undef ADC_AWD2CR_3
+#undef ADC_Common_CSR_0_AWD2_MST
+#undef ADC_CR2_0_DELS
+#undef ADC_MAP4_HWCFGR4
+#undef ADC_ISR_0_JEOC
+#undef ADC_MAP5_OFFSETR
+#undef ADC_JDR3_0
+#undef ADC_CR1_RES
+#undef ADC_MAP4_SIDR
+#undef ADC_MAP5_DMASR
+#undef ADC_CCR_0_VBATEN
+#undef ADC_MAP5_DMACR
+#undef ADC_MAP0_OR
+#undef ADC_SQR1_3
+#undef ADC_MAP0_HTR3
+#undef ADC_Common_CSR_0_AWD3_SLV
+#undef ADC_CR_1
+#undef ADC_MAP5_DMACNDTR
+#undef ADC_CSR_0_EOC1
 #undef ADC_JDR1_0
+#undef ADC_CR2_0_SWSTART
+#undef ADC_CSR_0_AWD2_MST
+#undef ADC_MAP4_HWCFGR2
+#undef ADC_CR_2
+#undef ADC_MAP5_DMAMNAR
+#undef ADC_Common_CCR_1_VBATE
+#undef ADC_Common_CSR_0_ADRDY_SLV
+#undef ADC_MAP5_HTR
+#undef ADC_DR_1
+#undef ADC_SMPR_0_SMP2
+#undef ADC_Common_CSR_0_EOS_MST
+#undef ADC_Common_CSR_1_EOC2
+#undef ADC_Common_CSR_1_JEOC1
+#undef ADC_MAP1_OFR3
+#undef ADC_CR_0_JADSTP
+#undef ADC_Common_CSR_1_STRT3
+#undef ADC_MAP0_OFR2
+#undef ADC_CFGR2_0_OVSR
+#undef ADC_MAP0_JDR2
+#undef ADC_MAP5_JDR1
+#undef ADC_CR2_0_RSTCAL
+#undef ADC_SQR1_0
+#undef ADC_Common_CCR_1_ADCPRE
+#undef ADC_CCR_0
+#undef ADC_CR1_PDI
+#undef ADC_MAP4_HWCFGR6
+#undef ADC_CFGR2_0_LSHIFT
+#undef ADC_CFGR_1_ALIGN
+#undef ADC_Common_CSR_1_EOC1
+#undef ADC_SR_JCNR
+#undef ADC_CSR_0_AWD1
+#undef ADC_DIFSEL_1_DIFSEL_0
+#undef ADC_Common_CSR_1_AWD2
+#undef ADC_CCR_2_CH17SEL
+#undef ADC_DR_2
+#undef ADC_IER_1
+#undef ADC_CR_0_LINCALRDYW3
+#undef ADC_CR_1_BOOST
+#undef ADC_JSQR_2
+#undef ADC_Common_CSR_0_AWD3_MST
+#undef ADC_MAP0
+#undef ADC_Common_ADC12_Common
+#undef ADC2_TMPL
+#undef ADC_MAP4_SMPR3
+#undef ADC_CR2_0_JEXTTRIG
+#undef ADC_SQR1_2_SQ28
+#undef ADC_Common_ADC345_Common
+#undef ADC_CR2_0_DDS
+#undef ADC_ISR_1_AWD
+#undef ADC_MAP5_JDR2
+#undef ADC_SMPR2_0
+#undef ADC_IER_0_EOCALIE
+#undef ADC_SR_OVR
+#undef ADC_Common_CSR_0_JQOVF_MST
+#undef ADC_CFGR_1_EXTSEL
+#undef ADC_SQR1_1
+#undef ADC_Common_CSR_0_AWD1_SLV
+#undef ADC_CFGR2_1_JITOFF_D4
+#undef ADC_CCR_1_CH18SEL
+#undef ADC_Common_CCR_1_MDMA
+#undef ADC_CR2_1_SWSTART
+#undef ADC_MAP4_IPIDR
+#undef ADC_CR2_1_EXTSEL
+#undef ADC_MAP0_OFR1
+#undef ADC_CR_0_HVSELP
+#undef ADC_AWD3CR_0
+#undef ADC_JDR2_0
+#undef ADC_DIFSEL_2
+#undef ADC_AWD3CR_2
+#undef ADC_CFGR2_1_TOVS
+#undef ADC_MAP2_LTR
+#undef ADC_Common_CDR_1
+#undef ADC_SMPR2_1
+#undef ADC_CR2_0_EOCS
+#undef ADC_MAP0_HTR2
+#undef ADC_Common_CSR_1_STRT1
+#undef ADC_Common_ADC1_2
+#undef ADC_MAP2_CCR
+#undef ADC_CR_1_CLK
+#undef ADC_CCR_2
+#undef ADC_JSQR_0
+#undef ADC_DR_0
+#undef ADC_ISR_1_SAT
+#undef ADC_Common_CCR_1_CH18SEL
+#undef ADC_CCR_1_TSVREFE
+#undef ADC_Common_CSR_1_AWD3
+#undef ADC_SQR4_0_SQ16
+#undef ADC_AWD2CR_1
+#undef ADC_ISR_1_DMAOVF
+#undef ADC_MAP1_SMPR1
+#undef ADC_CALFACT_0
+#undef ADC_Common_MAP0_CDR2
+#undef ADC_SMPRx_1
+#undef ADC_MAP0_CFGR2
+#undef ADC_MAP4_VERR
+#undef ADC_IER_0_AWD2IE
+#undef ADC_MAP0_AWD2CR
+#undef ADC_CR_1_ADON
+#undef ADC_Common_CSR_0_JQOVF_SLV
+#undef ADC_Common_CSR_1_OVR3
+#undef ADC_MAP0_SQR4
+#undef ADC_SMPR_0_SMPR
+#undef ADC_CFGR1_0_AWDCH
+#undef ADC_IER_1_DMABHFIE
+#undef ADC_CFGR2_0_RSHIFT3
+#undef ADC_Common_CCR_0_DUAL
+#undef ADC_MAP2_JDR4
+#undef ADC_CR_0_BOOST
+#undef ADC_MAP5_JOFR4
+#undef ADC_Common_CSR_0_EOC_MST
+#undef ADC_MAP4_AWD3TR
+#undef ADC_SQR1_1_SQ16
+#undef ADC_CR2_1
+#undef ADC_CALFACT_1
+#undef ADC_SQR1_0_L3
+#undef ADC_JSQR_1
+#undef ADC_DR_5
+#undef ADC_MAP2_CSR
+#undef ADC_MAP1_TR2
+#undef ADC_CSR_0_STRT1
+#undef ADC_MAP0_CCR
+#undef ADC_Common_CCR_0_CKMODE
+#undef ADC_MAP2_SMPR1
+#undef ADC_CFGR_1
+#undef ADC_CFGR1_1
+#undef ADC_Common_CSR_2
+#undef ADC_CHSELR_1
+#undef ADC_CSR_0_AWD3_MST
+#undef ADC_MAP5_DMANDTR
+#undef ADC_Common_CSR_0_EOSMP_MST
+#undef ADC_MAP0_DIFSEL
+#undef ADC_IER_1_DMAOVFIE
+#undef ADC_Common_CSR_1_JSTRT3
+#undef ADC_SQR1_2
+#undef ADC_CFGR_0_RES
+#undef ADC_MAP4_HWCFGR1
+#undef ADC_Common_CCR_0_PRESC
+#undef ADC_MAP0_LTR3
+#undef ADC_CCR_1
+#undef ADC_CR2_0_JEXTEN
+#undef ADC_CR2_1_CFG
+#undef ADC_CR_0_LINCALRDYW2
+#undef ADC_CFGR_0_ALIGN
+#undef ADC_CSR_0_AWD1_MST
+#undef ADC_CR_0_LINCALRDYW4
+#undef ADC_CR_1_CHSELN
+#undef ADC_Common_CCR_0
+#undef ADC_SQR2_1
+#undef ADC_SR_RCNR
+#undef ADC_Common_CSR_0_JEOS_MST
+#undef ADC_SMPR1_0
+#undef ADC_OFRx_0_SSATE
+#undef ADC_AWD3CR_1
+#undef ADC_CR2_0_EXTSEL
+#undef ADC_JDR2_1
+#undef ADC_CFGR2_0_ROVSM
+#undef ADC_IER_0
+#undef ADC_Common_CSR_0_JSTRT2
+#undef ADC_MAP1_SR
+#undef ADC_Common_MAP0_CCR
+#undef ADC_Common_CCR_1
+#undef ADC_CSR_0_JQOVF_MST
+#undef ADC_MAP0_CALFACT2
+#undef ADC_Common_CSR_0_OVR_MST
+#undef ADC_SQR3_2
+#undef ADC_MAP3_TR
+#undef ADC_MAP0_JDR4
+#undef ADC_CFGR2_0_RSHIFT1
+#undef ADC_Common_CSR_1_EOC3
+#undef ADC_Common_CSR_0_JEOC_SLV
+#undef ADC_CR2_1_EXTTRIG
+#undef ADC_IER_0_AWD3IE
+#undef ADC_MAP2_JDR2
+#undef ADC_SMPR1_0_SMP0
+#undef ADC_ISR_1
+#undef ADC_MAP1_CR1
+#undef ADC_MAP0_SQR1
+#undef ADC_MAP5_JDR4
+#undef ADC_CCR_1_ADCPRE
+#undef ADC_ISR_1_DMABHF
+#undef ADC_CR_0_LINCALRDYW6
+#undef ADC_MAP2_SQR3
+#undef ADC_MAP0_JDR1
 
 
 #endif //__SOOL_CORE_ADC_H

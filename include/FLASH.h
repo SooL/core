@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-21T22:51:46.811576
+//Generated 2020-03-01T00:46:38.171644
 
 #ifndef __SOOL_CORE_FLASH_H
 #define __SOOL_CORE_FLASH_H
@@ -998,8 +998,9 @@ namespace sool {
 	namespace core {
 		class FLASH /// flash
 		{
+		public:
 			
-			struct ACR_t: Reg32_t /// Access control register
+			struct ACR_t: public Reg32_t /// Access control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1055,14 +1056,14 @@ namespace sool {
 				
 			};
 			#ifdef FLASH_KEYR1
-			struct KEYR1_t: Reg32_t /// FLASH key register for bank 1
+			struct KEYR1_t: public Reg32_t /// FLASH key register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t KEYR1            : 32; /// Bank 1 access configuration unlock key
 				
 			};
 			#endif
-			struct OPTKEYR_t: Reg32_t /// FLASH option key register
+			struct OPTKEYR_t: public Reg32_t /// FLASH option key register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1083,7 +1084,7 @@ namespace sool {
 				
 			};
 			#ifdef FLASH_CR1
-			struct CR1_t: Reg32_t /// FLASH control register for bank 1
+			struct CR1_t: public Reg32_t /// FLASH control register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t LOCK1            : 1; /// Bank 1 configuration lock bit
@@ -1113,7 +1114,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SR1
-			struct SR1_t: Reg32_t /// FLASH status register for bank 1
+			struct SR1_t: public Reg32_t /// FLASH status register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t BSY1             : 1; /// Bank 1 ongoing program flag
@@ -1138,7 +1139,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CCR1
-			struct CCR1_t: Reg32_t /// FLASH clear control register for bank 1
+			struct CCR1_t: public Reg32_t /// FLASH clear control register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 16;
@@ -1159,7 +1160,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTCR
-			struct OPTCR_t: Reg32_t /// FLASH option control register
+			struct OPTCR_t: public Reg32_t /// FLASH option control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1212,7 +1213,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTSR_CUR
-			struct OPTSR_CUR_t: Reg32_t /// FLASH option status register
+			struct OPTSR_CUR_t: public Reg32_t /// FLASH option status register
 			{
 				using Reg32_t::operator=;
 				uint32_t OPT_BUSY         : 1; /// Option byte change ongoing flag
@@ -1239,7 +1240,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTSR_PRG
-			struct OPTSR_PRG_t: Reg32_t /// FLASH option status register
+			struct OPTSR_PRG_t: public Reg32_t /// FLASH option status register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 2;
@@ -1265,7 +1266,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTCCR
-			struct OPTCCR_t: Reg32_t /// FLASH option clear control register
+			struct OPTCCR_t: public Reg32_t /// FLASH option clear control register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 30;
@@ -1275,7 +1276,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PRAR_CUR1
-			struct PRAR_CUR1_t: Reg32_t /// FLASH protection address for bank 1
+			struct PRAR_CUR1_t: public Reg32_t /// FLASH protection address for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t PROT_AREA_START1 : 12; /// Bank 1 lowest PCROP protected address
@@ -1287,7 +1288,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SCAR_CUR1
-			struct SCAR_CUR1_t: Reg32_t /// FLASH secure address for bank 1
+			struct SCAR_CUR1_t: public Reg32_t /// FLASH secure address for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t SEC_AREA_START1  : 12; /// Bank 1 lowest secure protected address
@@ -1299,7 +1300,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WPSN_CUR1R
-			struct WPSN_CUR1R_t: Reg32_t /// FLASH write sector protection for bank 1
+			struct WPSN_CUR1R_t: public Reg32_t /// FLASH write sector protection for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t WRPSn1           : 8; /// Bank 1 sector write protection option status byte
@@ -1308,7 +1309,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_BOOT_CURR
-			struct BOOT_CURR_t: Reg32_t /// FLASH register with boot address
+			struct BOOT_CURR_t: public Reg32_t /// FLASH register with boot address
 			{
 				using Reg32_t::operator=;
 				uint32_t BOOT_ADD0        : 16; /// Boot address 0
@@ -1317,7 +1318,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CRCCRx
-			struct CRCCRx_t: Reg32_t /// FLASH CRC control register for bank 1
+			struct CRCCRx_t: public Reg32_t /// FLASH CRC control register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t CRC_SECT         : 3; /// Bank 1 CRC sector number
@@ -1336,7 +1337,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CRCSADDxR
-			struct CRCSADDxR_t: Reg32_t /// FLASH CRC start address register for bank 1
+			struct CRCSADDxR_t: public Reg32_t /// FLASH CRC start address register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t CRC_START_ADDR   : 32; /// CRC start address on bank 1
@@ -1344,7 +1345,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CRCEADDxR
-			struct CRCEADDxR_t: Reg32_t /// FLASH CRC end address register for bank 1
+			struct CRCEADDxR_t: public Reg32_t /// FLASH CRC end address register for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t CRC_END_ADDR     : 32; /// CRC end address on bank 1
@@ -1352,7 +1353,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CRCDATAR
-			struct CRCDATAR_t: Reg32_t /// FLASH CRC data register
+			struct CRCDATAR_t: public Reg32_t /// FLASH CRC data register
 			{
 				using Reg32_t::operator=;
 				uint32_t CRC_DATA         : 32; /// CRC result
@@ -1360,7 +1361,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_ECC_FA1R
-			struct ECC_FA1R_t: Reg32_t /// FLASH ECC fail address for bank 1
+			struct ECC_FA1R_t: public Reg32_t /// FLASH ECC fail address for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t FAIL_ECC_ADDR1   : 15; /// Bank 1 ECC error address
@@ -1369,7 +1370,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_KEYR2
-			struct KEYR2_t: Reg32_t /// FLASH key register for bank 2
+			struct KEYR2_t: public Reg32_t /// FLASH key register for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t KEYR2            : 32; /// Bank 2 access configuration unlock key
@@ -1377,7 +1378,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CR2
-			struct CR2_t: Reg32_t /// FLASH control register for bank 2
+			struct CR2_t: public Reg32_t /// FLASH control register for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LOCK2            : 1; /// Bank 2 configuration lock bit
@@ -1407,7 +1408,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SR2
-			struct SR2_t: Reg32_t /// FLASH status register for bank 2
+			struct SR2_t: public Reg32_t /// FLASH status register for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t BSY2             : 1; /// Bank 2 ongoing program flag
@@ -1432,7 +1433,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CCR2
-			struct CCR2_t: Reg32_t /// FLASH clear control register for bank 2
+			struct CCR2_t: public Reg32_t /// FLASH clear control register for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 16;
@@ -1453,7 +1454,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PRAR_CUR2
-			struct PRAR_CUR2_t: Reg32_t /// FLASH protection address for bank 1
+			struct PRAR_CUR2_t: public Reg32_t /// FLASH protection address for bank 1
 			{
 				using Reg32_t::operator=;
 				uint32_t PROT_AREA_START2 : 12; /// Bank 2 lowest PCROP protected address
@@ -1465,7 +1466,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SCAR_CUR2
-			struct SCAR_CUR2_t: Reg32_t /// FLASH secure address for bank 2
+			struct SCAR_CUR2_t: public Reg32_t /// FLASH secure address for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SEC_AREA_START2  : 12; /// Bank 2 lowest secure protected address
@@ -1477,7 +1478,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WPSN_CUR2R
-			struct WPSN_CUR2R_t: Reg32_t /// FLASH write sector protection for bank 2
+			struct WPSN_CUR2R_t: public Reg32_t /// FLASH write sector protection for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t WRPSn2           : 8; /// Bank 2 sector write protection option status byte
@@ -1486,7 +1487,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_ECC_FA2R
-			struct ECC_FA2R_t: Reg32_t /// FLASH ECC fail address for bank 2
+			struct ECC_FA2R_t: public Reg32_t /// FLASH ECC fail address for bank 2
 			{
 				using Reg32_t::operator=;
 				uint32_t FAIL_ECC_ADDR2   : 15; /// Bank 2 ECC error address
@@ -1495,7 +1496,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PDKEYR
-			struct PDKEYR_t: Reg32_t /// Power down key register
+			struct PDKEYR_t: public Reg32_t /// Power down key register
 			{
 				using Reg32_t::operator=;
 				uint32_t PDKEYR           : 32; /// RUN_PD in FLASH_ACR key
@@ -1503,7 +1504,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_KEYR
-			struct KEYR_t: Reg32_t /// Flash key register
+			struct KEYR_t: public Reg32_t /// Flash key register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1531,7 +1532,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SR
-			struct SR_t: Reg32_t /// Status register
+			struct SR_t: public Reg32_t /// Status register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1596,7 +1597,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CR
-			struct CR_t: Reg32_t /// Flash control register
+			struct CR_t: public Reg32_t /// Flash control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1686,7 +1687,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_ECCR
-			struct ECCR_t: Reg32_t /// Flash ECC register
+			struct ECCR_t: public Reg32_t /// Flash ECC register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1730,7 +1731,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTR
-			struct OPTR_t: Reg32_t /// Flash option register
+			struct OPTR_t: public Reg32_t /// Flash option register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1794,7 +1795,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1SR
-			struct PCROP1SR_t: Reg32_t /// Flash Bank 1 PCROP Start address register
+			struct PCROP1SR_t: public Reg32_t /// Flash Bank 1 PCROP Start address register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1818,7 +1819,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1ER
-			struct PCROP1ER_t: Reg32_t /// Flash Bank 1 PCROP End address register
+			struct PCROP1ER_t: public Reg32_t /// Flash Bank 1 PCROP End address register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1841,7 +1842,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRP1AR
-			struct WRP1AR_t: Reg32_t /// Flash Bank 1 WRP area A address register
+			struct WRP1AR_t: public Reg32_t /// Flash Bank 1 WRP area A address register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1878,7 +1879,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRP1BR
-			struct WRP1BR_t: Reg32_t /// Flash Bank 1 WRP area B address register
+			struct WRP1BR_t: public Reg32_t /// Flash Bank 1 WRP area B address register
 			{
 				using Reg32_t::operator=;
 				union
@@ -1924,7 +1925,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP2SR
-			struct PCROP2SR_t: Reg32_t /// Flash Bank 2 PCROP Start address register
+			struct PCROP2SR_t: public Reg32_t /// Flash Bank 2 PCROP Start address register
 			{
 				using Reg32_t::operator=;
 				uint32_t PCROP2_STRT      : 16; /// Bank 2 PCROP area start offset
@@ -1933,7 +1934,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP2ER
-			struct PCROP2ER_t: Reg32_t /// Flash Bank 2 PCROP End address register
+			struct PCROP2ER_t: public Reg32_t /// Flash Bank 2 PCROP End address register
 			{
 				using Reg32_t::operator=;
 				uint32_t PCROP2_END       : 16; /// Bank 2 PCROP area end offset
@@ -1942,7 +1943,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRP2AR
-			struct WRP2AR_t: Reg32_t /// Flash Bank 2 WRP area A address register
+			struct WRP2AR_t: public Reg32_t /// Flash Bank 2 WRP area A address register
 			{
 				using Reg32_t::operator=;
 				uint32_t WRP2A_STRT       : 8; /// Bank 2 WRP first area A start offset
@@ -1953,7 +1954,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRP2BR
-			struct WRP2BR_t: Reg32_t /// Flash Bank 2 WRP area B address register
+			struct WRP2BR_t: public Reg32_t /// Flash Bank 2 WRP area B address register
 			{
 				using Reg32_t::operator=;
 				uint32_t WRP2B_STRT       : 8; /// Bank 2 WRP second area B start offset
@@ -1964,7 +1965,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTCR1
-			struct OPTCR1_t: Reg32_t /// Flash option control register 1
+			struct OPTCR1_t: public Reg32_t /// Flash option control register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -1989,7 +1990,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SEC1R
-			struct SEC1R_t: Reg32_t /// securable area bank1 register
+			struct SEC1R_t: public Reg32_t /// securable area bank1 register
 			{
 				using Reg32_t::operator=;
 				uint32_t SEC_SIZE1        : 8;
@@ -2000,7 +2001,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OPTCR2
-			struct OPTCR2_t: Reg32_t /// Flash option control register
+			struct OPTCR2_t: public Reg32_t /// Flash option control register
 			{
 				using Reg32_t::operator=;
 				uint32_t PCROP            : 8; /// PCROP option byte
@@ -2010,7 +2011,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1ASR
-			struct PCROP1ASR_t: Reg32_t /// Flash Bank 1 PCROP Start address zone A register
+			struct PCROP1ASR_t: public Reg32_t /// Flash Bank 1 PCROP Start address zone A register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2034,7 +2035,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1AER
-			struct PCROP1AER_t: Reg32_t /// Flash Bank 1 PCROP End address zone A register
+			struct PCROP1AER_t: public Reg32_t /// Flash Bank 1 PCROP End address zone A register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2057,7 +2058,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1BSR
-			struct PCROP1BSR_t: Reg32_t /// Flash Bank 1 PCROP Start address area B register
+			struct PCROP1BSR_t: public Reg32_t /// Flash Bank 1 PCROP Start address area B register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2081,7 +2082,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PCROP1BER
-			struct PCROP1BER_t: Reg32_t /// Flash Bank 1 PCROP End address area B register
+			struct PCROP1BER_t: public Reg32_t /// Flash Bank 1 PCROP End address area B register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2105,7 +2106,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_IPCCBR
-			struct IPCCBR_t: Reg32_t /// IPCC mailbox data buffer address register
+			struct IPCCBR_t: public Reg32_t /// IPCC mailbox data buffer address register
 			{
 				using Reg32_t::operator=;
 				uint32_t IPCCDBA          : 14; /// PCC mailbox data buffer base address
@@ -2114,7 +2115,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_C2ACR
-			struct C2ACR_t: Reg32_t /// CPU2 cortex M0 access control register
+			struct C2ACR_t: public Reg32_t /// CPU2 cortex M0 access control register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 8;
@@ -2129,7 +2130,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_C2SR
-			struct C2SR_t: Reg32_t /// CPU2 cortex M0 status register
+			struct C2SR_t: public Reg32_t /// CPU2 cortex M0 status register
 			{
 				using Reg32_t::operator=;
 				uint32_t EOP              : 1; /// End of operation
@@ -2154,7 +2155,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_C2CR
-			struct C2CR_t: Reg32_t /// CPU2 cortex M0 control register
+			struct C2CR_t: public Reg32_t /// CPU2 cortex M0 control register
 			{
 				using Reg32_t::operator=;
 				uint32_t PG               : 1; /// Programming
@@ -2174,7 +2175,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SFR
-			struct SFR_t: Reg32_t /// Secure flash start address register
+			struct SFR_t: public Reg32_t /// Secure flash start address register
 			{
 				using Reg32_t::operator=;
 				uint32_t SFSA             : 8; /// Secure flash start address
@@ -2186,7 +2187,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SRRVR
-			struct SRRVR_t: Reg32_t /// Secure SRAM2 start address and cortex M0 reset vector register
+			struct SRRVR_t: public Reg32_t /// Secure SRAM2 start address and cortex M0 reset vector register
 			{
 				using Reg32_t::operator=;
 				uint32_t SBRV             : 18; /// cortex M0 access control register
@@ -2200,7 +2201,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_AR
-			struct AR_t: Reg32_t /// Flash address register
+			struct AR_t: public Reg32_t /// Flash address register
 			{
 				using Reg32_t::operator=;
 				uint32_t FAR              : 32; /// Flash address
@@ -2208,7 +2209,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_OBR
-			struct OBR_t: Reg32_t /// Option byte register
+			struct OBR_t: public Reg32_t /// Option byte register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2259,7 +2260,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRPR
-			struct WRPR_t: Reg32_t /// Write protection register
+			struct WRPR_t: public Reg32_t /// Write protection register
 			{
 				using Reg32_t::operator=;
 				union
@@ -2282,7 +2283,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_SECR
-			struct SECR_t: Reg32_t /// Flash Security register
+			struct SECR_t: public Reg32_t /// Flash Security register
 			{
 				using Reg32_t::operator=;
 				uint32_t SEC_SIZE         : 7; /// Securable memory area size
@@ -2293,7 +2294,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PECR
-			struct PECR_t: Reg32_t /// Program/erase control register
+			struct PECR_t: public Reg32_t /// Program/erase control register
 			{
 				using Reg32_t::operator=;
 				uint32_t PELOCK           : 1; /// FLASH_PECR and data EEPROM lock
@@ -2315,7 +2316,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PEKEYR
-			struct PEKEYR_t: Reg32_t /// Program/erase key register
+			struct PEKEYR_t: public Reg32_t /// Program/erase key register
 			{
 				using Reg32_t::operator=;
 				uint32_t PEKEYR           : 32; /// FLASH_PEC and data EEPROM key
@@ -2323,7 +2324,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_PRGKEYR
-			struct PRGKEYR_t: Reg32_t /// Program memory key register
+			struct PRGKEYR_t: public Reg32_t /// Program memory key register
 			{
 				using Reg32_t::operator=;
 				uint32_t PRGKEYR          : 32; /// Program memory key
@@ -2331,7 +2332,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRPR1
-			struct WRPR1_t: Reg32_t /// Write protection register
+			struct WRPR1_t: public Reg32_t /// Write protection register
 			{
 				using Reg32_t::operator=;
 				uint32_t WRP1             : 32; /// Write protection
@@ -2339,7 +2340,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRPR2
-			struct WRPR2_t: Reg32_t /// Write protection register
+			struct WRPR2_t: public Reg32_t /// Write protection register
 			{
 				using Reg32_t::operator=;
 				uint32_t WRP2             : 32;
@@ -2347,7 +2348,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_WRPR3
-			struct WRPR3_t: Reg32_t /// Write protection register
+			struct WRPR3_t: public Reg32_t /// Write protection register
 			{
 				using Reg32_t::operator=;
 				uint32_t WRP3             : 32;
@@ -2355,7 +2356,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CLKER
-			struct CLKER_t: Reg32_t /// FLASH controller clock enable register
+			struct CLKER_t: public Reg32_t /// FLASH controller clock enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t EN               : 1;
@@ -2364,7 +2365,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef FLASH_CLKSR
-			struct CLKSR_t: Reg32_t /// FLASH controller clock status register
+			struct CLKSR_t: public Reg32_t /// FLASH controller clock status register
 			{
 				using Reg32_t::operator=;
 				uint32_t ACK              : 1;
@@ -2578,8 +2579,14 @@ namespace sool {
 				};
 				#endif
 			};
+
+			#if __SOOL_DEBUG_NOPHY
+				FLASH(uintptr_t addr) : myaddr(addr){};
+				const uintptr_t myaddr;
+				inline const uintptr_t get_addr() {return myaddr;};
+			#else
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
-			#ifndef __SOOL_DEBUG_NOPHY
 				FLASH() = delete;
 			#endif
 			
@@ -2620,330 +2627,328 @@ namespace sool {
 //Instances for peripheral FLASH
 
 		#if defined(FLASH_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class FLASH * const FLASH = new class FLASH(FLASH_BASE_ADDR);
+
 			#else
-				volatile class FLASH * const FLASH = new FLASH();
-				#undef FLASH_BASE_ADDR
-				#define FLASH_BASE_ADDR reinterpret_cast<uint32_t>(FLASH)
+				volatile class FLASH * const FLASH = reinterpret_cast<class FLASH* const>(FLASH_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(Flash_BASE_ADDR) 
-			#ifndef __SOOL_DEBUG_NOPHY
-				volatile class FLASH * const Flash = reinterpret_cast<class FLASH* const>(Flash_BASE_ADDR);
+			#if __SOOL_DEBUG_NOPHY
+				volatile class FLASH * const Flash = new class FLASH(Flash_BASE_ADDR);
+
 			#else
-				volatile class FLASH * const Flash = new FLASH();
-				#undef Flash_BASE_ADDR
-				#define Flash_BASE_ADDR reinterpret_cast<uint32_t>(Flash)
+				volatile class FLASH * const Flash = reinterpret_cast<class FLASH* const>(Flash_BASE_ADDR);
 			#endif
 		#endif
 		
 		
 	};
 };
-#undef FLASH_MAP1_OPTR
-#undef FLASH_CR_5
-#undef FLASH_MAP0_OPTCR
-#undef FLASH_SR_0_PESD
-#undef FLASH_MAP2_WRP2AR
-#undef FLASH_ACR_1_PRFTBE
-#undef FLASH_MAP0_SCAR_PRG1
-#undef FLASH_MAP0_KEYR2
-#undef FLASH_MAP2_WRP1AR
-#undef FLASH_CR_1_PSIZE
-#undef FLASH_SR_0_PROGERR
-#undef FLASH_OBR_0_Data1
-#undef FLASH_OPTCR1_1
-#undef FLASH_MAP1_SCAR_CUR2
-#undef FLASH_OPTCR_1_WDG_SW
-#undef FLASH_OPTCR_0_RDP
-#undef FLASH_KEYR_0
-#undef FLASH_SR_0_SIZERR
-#undef FLASH_OPTCR_1
-#undef FLASH_MAP1_OPTKEYR
-#undef FLASH_MAP0
-#undef FLASH_MAP1_PCROP1ER
-#undef FLASH_MAP2_PCROP2ER
-#undef FLASH_ACR_1_ARTEN
-#undef FLASH_MAP1_SCAR_PRG2
-#undef FLASH_ACR_0_PRFTEN
-#undef FLASH_SR_0_OPTVERR
-#undef FLASH_SR_2_WRPRTERR
-#undef FLASH_MAP4_CLKSR
-#undef FLASH_PCROP1SR_1
-#undef FLASH_MAP0_OPTKEYR
-#undef FLASH_MAP0_BOOT_CURR
-#undef FLASH_ECCR_0_ADDR_ECC
-#undef FLASH_OPTR_1_nRST_STDBY
-#undef FLASH_MAP0_OPTKEYR_
-#undef FLASH_MAP1_WPSN_CUR2R
-#undef FLASH_OBR_2
-#undef FLASH_CR_0_BKER
-#undef FLASH_OPTR_0_nRST_SHDW
-#undef FLASH_OPTR_0_nBOOT1
-#undef FLASH_MAP4_OBR
-#undef FLASH_SR_1_OPTVERR
-#undef FLASH_MAP1_PDKEYR
-#undef FLASH_MAP4_WRPR2
-#undef FLASH_CR_0_ERRIE
-#undef FLASH_PCROP1BSR_1
-#undef FLASH_OPTCR_0_nRST_STOP
-#undef FLASH_MAP2_PCROP2SR
-#undef FLASH_MAP0_SR1
-#undef FLASH_MAP1_PRAR_PRG2
-#undef FLASH_ACR_0_EMPTY
-#undef FLASH_OPTCR_0_nDBOOT
-#undef FLASH_SR_1_ENDHV
-#undef FLASH_OPTR_0_SRAM2_PE
-#undef FLASH_WRPR_1
-#undef FLASH_ECCR_0_ECCC2
-#undef FLASH_OPTCR_0_OPTSTART
-#undef FLASH_SR_0_OPTVERRUSR
-#undef FLASH_OPTR_0_NRST_MODE
-#undef FLASH_OPTCR_0_MER
-#undef FLASH_MAP2_C2ACR
-#undef FLASH_WRPR_0
-#undef FLASH_CR_1_MER
-#undef FLASH_MAP1_CRCSADD2R
-#undef FLASH_MAP2
-#undef FLASH_SR_0_PGAERR
-#undef FLASH_OPTR_0_RAM_PARITY_CHECK
-#undef FLASH_ACR_0_ICEN
-#undef FLASH_CR_0_FSTPG
-#undef FLASH_CR_0_MER1
-#undef FLASH_OPTCR_1_WWDG_SW
-#undef FLASH_SR_1_READY
-#undef FLASH_SR_0_CFGBSY
-#undef FLASH_CR_4
-#undef FLASH_MAP1_KEYR
-#undef FLASH_MAP3_AR
-#undef FLASH_MAP2_SEC1R
-#undef FLASH_MAP2_C2SR
-#undef FLASH_OPTCR1_0
-#undef FLASH_CR_2
-#undef FLASH_MAP3_OPTKEYR
-#undef FLASH_MAP0_OPTSR_PRG
-#undef FLASH_OPTR_1_nRST_STOP
-#undef FLASH_ACR_0_RUN_PD
-#undef FLASH_MAP0_KEYR1
-#undef FLASH_OPTCR_0_OPTCHANGEERRIE
-#undef FLASH_MAP0_OPTCR_
-#undef FLASH_SR_0_FASTERR
-#undef FLASH_MAP1
-#undef FLASH_MAP4_WRPR
-#undef FLASH_MAP2_PCROP1BSR
-#undef FLASH_MAP3_PDKEYR
-#undef FLASH_PCROP1ER_0_PCROP1_END
-#undef FLASH_OBR_0_LEVEL1_PROT
-#undef FLASH_PCROP1AER_0_PCROP1A_END
-#undef FLASH_SR_0_PGSERR
-#undef FLASH_OPTR_0_SRAM2_RST
-#undef FLASH_CR_1_SER
-#undef FLASH_MAP4_CR
-#undef FLASH_MAP2_C2CR
-#undef FLASH_ACR_0
-#undef FLASH_SR_0_EOP
-#undef FLASH_ACR_0_DCRST
-#undef FLASH_CR_3_LOCK
-#undef FLASH_SR_0_WRPERR
-#undef FLASH_MAP0_SR2
-#undef FLASH_MAP1_WPSN_PRG2R
-#undef FLASH_OBR_1_SPRMOD
-#undef FLASH_ACR_2_ACC64
-#undef FLASH_SR_1_BSY
-#undef FLASH_OBR_1_IWDG_SW
-#undef FLASH_MAP3_OBR
-#undef FLASH_MAP3_WRPR
-#undef FLASH_OPTCR_0_nRST_STDBY
-#undef FLASH_MAP2_PCROP1ASR
-#undef FLASH_OPTR_0_BOR_LEV
-#undef FLASH_OBR_0_Data0
-#undef FLASH_SR_1_EOP
-#undef FLASH_MAP1_ECC_FA2R
-#undef FLASH_MAP2_SFR
-#undef FLASH_MAP2_SR
-#undef FLASH_OBR_0_nRST_STDBY
-#undef FLASH_WRP1BR_2
-#undef FLASH_MAP0_ECC_FA1R
-#undef FLASH_MAP2_SRRVR
-#undef FLASH_OPTR_0_nBOOT0
-#undef FLASH_MAP4_AR
-#undef FLASH_MAP0_CRCSADD1R
-#undef FLASH_MAP3_SR
-#undef FLASH_MAP3_PEKEYR
-#undef FLASH_MAP0_ACR_
-#undef FLASH_CR_1_MER1
-#undef FLASH_OPTCR_2_DB1M
-#undef FLASH_MAP0_PRAR_PRG1
-#undef FLASH_CR_1_SNB
-#undef FLASH_OBR_0_SRAM_PARITY_CHECK
-#undef FLASH_MAP1_CRCEADD2R
-#undef FLASH_CR_3_SNB
-#undef FLASH_MAP2_PCROP1AER
-#undef FLASH_OPTR_1_nBOOT0
-#undef FLASH_ECCR_1_BK_ECC
-#undef FLASH_MAP0_CR1
-#undef FLASH_OPTR_2
-#undef FLASH_MAP1_CR
-#undef FLASH_PCROP1BER_1
-#undef FLASH_MAP3_SECR
-#undef FLASH_CR_1_EOPIE
-#undef FLASH_MAP4_SR
-#undef FLASH_OPTCR_0_nDBANK
-#undef FLASH_OPTR_1_ESE
-#undef FLASH_SR_0_OPERR
-#undef FLASH_MAP4
-#undef FLASH_WRP1AR_2
-#undef FLASH_MAP1_ECCR
-#undef FLASH_MAP2_KEYR
-#undef FLASH_ECCR_1_ECCCIE
-#undef FLASH_OPTR_1_AGC_TRIM
-#undef FLASH_MAP0_CR2
-#undef FLASH_MAP2_WRP1BR
-#undef FLASH_ECCR_1_CPUID
-#undef FLASH_ECCR_2
-#undef FLASH_OPTCR_0_nWRP
-#undef FLASH_CR_0_OPTLOCK
-#undef FLASH_ACR_1_LATENCY
-#undef FLASH_CR_0_RDERRIE
-#undef FLASH_OPTR_1_NRST_MODE
 #undef FLASH_CR_0_SEC_PROT1
-#undef FLASH_KEYR_1
-#undef FLASH_SR_1_RDERR
-#undef FLASH_SR_1_PGPERR
-#undef FLASH_WRP1BR_0
-#undef FLASH_MAP0_SCAR_CUR1
-#undef FLASH_PCROP1BER_0
-#undef FLASH_OPTCR_1_IWDG_STDBY
-#undef FLASH_SR_0_OPTNV
-#undef FLASH_SR_1_SIZERR
-#undef FLASH_SR_0_RDERR
-#undef FLASH_CR_0_PER
-#undef FLASH_CR_0_START
-#undef FLASH_SR_1_NOTZEROERR
-#undef FLASH_MAP0_OPTCCR_
-#undef FLASH_MAP1_SR
+#undef FLASH_SR_0_BSY
 #undef FLASH_SR_0_PGERR
-#undef FLASH_ACR_0_ICRST
-#undef FLASH_OBR_0_LEVEL2_PROT
-#undef FLASH_ACR_0_WRHIGHFREQ
-#undef FLASH_WRP1AR_1
-#undef FLASH_CR_1_SEC_PROT
-#undef FLASH_SR_2_WRPERR
-#undef FLASH_MAP0_PRAR_CUR1
-#undef FLASH_OPTKEYR_0
-#undef FLASH_MAP0_CRCEADD1R
-#undef FLASH_ACR_1_PRFTBS
-#undef FLASH_MAP0_CCR1
-#undef FLASH_SR_1_PGAERR
-#undef FLASH_OBR_0_BOOT1
-#undef FLASH_CR_0_PNB
-#undef FLASH_OPTR_0_DUALBANK
-#undef FLASH_CR_0_OPTSTRT
-#undef FLASH_MAP2_CR
-#undef FLASH_MAP0_OPTSR_PRG_
-#undef FLASH_ACR_2
-#undef FLASH_OBR_1
-#undef FLASH_OPTCR_2_BFB2
-#undef FLASH_MAP0_OPTCCR
-#undef FLASH_MAP1_CRCCR2
-#undef FLASH_ACR_0_SLEEP_PD
-#undef FLASH_MAP2_PCROP1BER
-#undef FLASH_OBR_0_WDG_SW
-#undef FLASH_MAP2_IPCCBR
-#undef FLASH_ECCR_0_BK_ECC
-#undef FLASH_OPTR_0_nRST_STDBY
-#undef FLASH_ACR_0_LATENCY
-#undef FLASH_PCROP1SR_0
-#undef FLASH_PCROP1ER_1
-#undef FLASH_CR_1
-#undef FLASH_ACR_0_PRE_READ
-#undef FLASH_SR_2
-#undef FLASH_MAP4_WRPR3
-#undef FLASH_MAP0_CRCDATAR
-#undef FLASH_ECCR_0_ECCD2
-#undef FLASH_ACR_2_DESAB_BUF
-#undef FLASH_MAP4_CLKER
-#undef FLASH_OPTCR_1_IWDG_STOP
-#undef FLASH_MAP0_PRAR_CUR2
-#undef FLASH_MAP2_WRP2BR
-#undef FLASH_OPTCR_2
 #undef FLASH_OPTR_0_nRSTS_HDW
-#undef FLASH_OPTCR_0_IWDG_SW
-#undef FLASH_ACR_1_ARTRST
-#undef FLASH_SR_1
-#undef FLASH_CR_0_LOCK
-#undef FLASH_MAP0_WPSN_CUR1R
-#undef FLASH_MAP4_KEYR
-#undef FLASH_CR_0_FORCE_OPTLOAD
-#undef FLASH_SR_1_ERSERR
-#undef FLASH_WRP1BR_3
-#undef FLASH_OPTR_0_nSWBOOT0
-#undef FLASH_MAP0_WPSN_PRG1R
-#undef FLASH_ACR_0_DCEN
-#undef FLASH_OPTCR_2_nWRP
-#undef FLASH_OPTR_0_nRST_STOP
-#undef FLASH_ECCR_0_SYSF_ECC
-#undef FLASH_SR_0_FWWERR
-#undef FLASH_CR_1_STRT
-#undef FLASH_CR_3
-#undef FLASH_MAP3_PRGKEYR
-#undef FLASH_ECCR_0_ECCIE
-#undef FLASH_OPTCR_1_nWRP
-#undef FLASH_MAP0_OPTSR_CUR_
-#undef FLASH_SR_0_MISERR
-#undef FLASH_MAP0_BOOT_PRGR
-#undef FLASH_OPTCR_0_SWAP_BANK
-#undef FLASH_CR_0_OBL_LAUNCH
-#undef FLASH_OPTKEYR_1
-#undef FLASH_ACR_1
-#undef FLASH_PCROP1ASR_0
+#undef FLASH_SR_0_WRPERR
+#undef FLASH_CR_2
+#undef FLASH_MAP2_WRP2BR
 #undef FLASH_OPTCR_0_BOR_LEV
-#undef FLASH_WRP1AR_0
-#undef FLASH_MAP3
+#undef FLASH_OBR_0_nRST_STDBY
 #undef FLASH_OPTR_1_nBOOT_SEL
-#undef FLASH_ACR_0_HLFCYA
-#undef FLASH_MAP4_OPTKEYR
-#undef FLASH_OPTR_1_nBOOT1
 #undef FLASH_OBR_0_SDADC12_VDD_MONITOR
-#undef FLASH_MAP4_WRPR1
 #undef FLASH_CR_1_ERRIE
-#undef FLASH_OBR_1_nRST_STDBY
+#undef FLASH_ACR_0_DCRST
+#undef FLASH_WRP1BR_0
+#undef FLASH_CR_0_OBL_LAUNCH
+#undef FLASH_OBR_0_LEVEL2_PROT
+#undef FLASH_OBR_0_nRST_STOP
+#undef FLASH_MAP0_OPTCR
+#undef FLASH_SR_0_MISERR
+#undef FLASH_CR_0_LOCK
+#undef FLASH_MAP2_C2CR
+#undef FLASH_ACR_2_DESAB_BUF
+#undef FLASH_MAP0_PRAR_CUR2
+#undef FLASH_OPTR_1_nBOOT0
+#undef FLASH_SR_1_PGAERR
+#undef FLASH_OBR_1_IWDG_SW
+#undef FLASH_KEYR_1
+#undef FLASH_MAP0_OPTCR_
+#undef FLASH_OPTCR_2
+#undef FLASH_PCROP1SR_0
+#undef FLASH_MAP1_CRCSADD2R
+#undef FLASH_MAP1_SR
+#undef FLASH_OPTCR_0_nRST_STDBY
+#undef FLASH_CR_1_MER
+#undef FLASH_ACR_0_ICEN
+#undef FLASH_ACR_0_ICRST
+#undef FLASH_OPTR_0_nBOOT0
+#undef FLASH_OPTCR_0_OPTSTART
+#undef FLASH_MAP2_CR
+#undef FLASH_MAP1_WPSN_PRG2R
+#undef FLASH_OPTCR_1_IWDG_STOP
+#undef FLASH_SR_0_SIZERR
+#undef FLASH_CR_0_OPTSTRT
+#undef FLASH_CR_0_BKER
+#undef FLASH_OPTR_0_nRST_STDBY
+#undef FLASH_MAP1_SCAR_CUR2
+#undef FLASH_CR_0_ERRIE
+#undef FLASH_SR_0_PESD
+#undef FLASH_MAP0_SCAR_PRG1
+#undef FLASH_MAP1_PCROP1ER
+#undef FLASH_MAP2_C2ACR
+#undef FLASH_MAP2_PCROP1ASR
+#undef FLASH_ACR_1
+#undef FLASH_SR_2_EOP
+#undef FLASH_SR_1_ENDHV
+#undef FLASH_OPTCR_0_nRST_STOP
+#undef FLASH_PCROP1ER_1
+#undef FLASH_CR_1_SEC_PROT
+#undef FLASH_OPTR_0_nRST_SHDW
+#undef FLASH_ACR_0_EMPTY
+#undef FLASH_MAP4_WRPR1
+#undef FLASH_OPTR_0_SRAM2_RST
+#undef FLASH_MAP0_OPTCCR_
+#undef FLASH_KEYR_2
+#undef FLASH_CR_0_EOPIE
+#undef FLASH_OPTCR_1_IWDG_STDBY
+#undef FLASH_SR_1_RDERR
+#undef FLASH_PCROP1BSR_0
+#undef FLASH_ECCR_1_ECCCIE
+#undef FLASH_MAP0_CCR2
+#undef FLASH_ACR_1_PRFTBE
+#undef FLASH_WRP1BR_2
+#undef FLASH_OPTCR_0_nWRP
+#undef FLASH_MAP4_OPTKEYR
+#undef FLASH_MAP1_ECC_FA2R
+#undef FLASH_OBR_1_BFB2
+#undef FLASH_OPTKEYR_1
+#undef FLASH_MAP2
+#undef FLASH_SR_1_PGPERR
+#undef FLASH_OPTCR_0_nDBANK
+#undef FLASH_SR_1_EOP
+#undef FLASH_OBR_0_VDDA_MONITOR
+#undef FLASH_ECCR_0_ECCC2
+#undef FLASH_OPTR_1_nBOOT1
+#undef FLASH_MAP3_PECR
+#undef FLASH_OBR_0_Data0
+#undef FLASH_MAP0_OPTCCR
+#undef FLASH_MAP3_WRPR
+#undef FLASH_SR_0_PROGERR
+#undef FLASH_MAP4_KEYR
+#undef FLASH_ECCR_1_BK_ECC
+#undef FLASH_SR_0_FASTERR
+#undef FLASH_MAP2_KEYR
+#undef FLASH_MAP1_WPSN_CUR2R
+#undef FLASH_OPTCR_0_nDBOOT
+#undef FLASH_SR_1_OPTVERR
+#undef FLASH_MAP0_SCAR_CUR1
+#undef FLASH_OBR_0_WDG_SW
+#undef FLASH_OBR_0_SRAM_PARITY_CHECK
+#undef FLASH_ACR_0_PRFTEN
+#undef FLASH_MAP1_KEYR
+#undef FLASH_SR_0_OPTVERR
+#undef FLASH_MAP1_CR
+#undef FLASH_OPTCR_0_SWAP_BANK
+#undef FLASH_MAP2_PCROP1AER
+#undef FLASH_MAP1_SCAR_PRG2
+#undef FLASH_ECCR_0_ADDR_ECC
+#undef FLASH_ECCR_0_BK_ECC
+#undef FLASH_MAP0_ECC_FA1R
+#undef FLASH_OPTCR_1_WDG_SW
+#undef FLASH_MAP1_PDKEYR
+#undef FLASH_CR_1_SER
+#undef FLASH_CR_0_FORCE_OPTLOAD
+#undef FLASH_MAP0_OPTSR_PRG_
+#undef FLASH_OPTR_0_IRHEN
+#undef FLASH_ACR_1_PRFTBS
+#undef FLASH_OPTCR_0_MER
+#undef FLASH_OPTR_1_NRST_MODE
+#undef FLASH_MAP2_PCROP2SR
+#undef FLASH_PCROP1SR_1
+#undef FLASH_CR_0_MER2
+#undef FLASH_MAP0
+#undef FLASH_CR_0_OPTLOCK
+#undef FLASH_CR_0_PER
+#undef FLASH_ACR_0_PRE_READ
+#undef FLASH_CR_1_MER1
+#undef FLASH_MAP4_ACR
+#undef FLASH_ECCR_1
+#undef FLASH_MAP2_PCROP1BSR
+#undef FLASH_MAP3_OBR
+#undef FLASH_SR_0_PGAERR
+#undef FLASH_MAP2_SFR
+#undef FLASH_OPTCR_0_IWDG_SW
 #undef FLASH_MAP2_OPTCR1
 #undef FLASH_OPTR_1_BOR_LEV
-#undef FLASH_MAP0_CCR2
-#undef FLASH_ACR_0_PES
-#undef FLASH_KEYR_2
-#undef FLASH_OBR_0_nRST_STOP
-#undef FLASH_OPTR_0_BFB2
-#undef FLASH_CR_0_MER2
-#undef FLASH_MAP2_OPTCR2
-#undef FLASH_CR_0_EOPIE
-#undef FLASH_OBR_1_nRTS_STOP
-#undef FLASH_WRP1BR_1
-#undef FLASH_ACR_0_DBG_SWEN
-#undef FLASH_CR_3_OPTWRE
-#undef FLASH_SR_2_EOP
-#undef FLASH_OBR_0
-#undef FLASH_MAP0_OPTSR_CUR
-#undef FLASH_OBR_1_BFB2
-#undef FLASH_PCROP1ASR_1
-#undef FLASH_ECCR_1
-#undef FLASH_PCROP1AER_1
-#undef FLASH_MAP3_PECR
-#undef FLASH_MAP1_PCROP1SR
-#undef FLASH_ECCR_1_SYSF_ECC
-#undef FLASH_OPTR_1
+#undef FLASH_MAP0_CR2
+#undef FLASH_MAP4_WRPR2
+#undef FLASH_MAP4_CLKSR
+#undef FLASH_MAP1
+#undef FLASH_OPTR_0_RAM_PARITY_CHECK
+#undef FLASH_ACR_0_LATENCY
+#undef FLASH_SR_0_CFGBSY
+#undef FLASH_MAP1_CRCCR2
+#undef FLASH_ACR_0_HLFCYA
+#undef FLASH_ACR_2
+#undef FLASH_ACR_0_WRHIGHFREQ
+#undef FLASH_CR_0_FSTPG
 #undef FLASH_ECCR_1_ADDR_ECC
+#undef FLASH_OPTR_1_AGC_TRIM
+#undef FLASH_OBR_1_SPRMOD
+#undef FLASH_MAP0_PRAR_CUR1
+#undef FLASH_MAP4
+#undef FLASH_OPTR_0_nRST_STOP
+#undef FLASH_MAP4_SR
+#undef FLASH_PCROP1ASR_0
+#undef FLASH_CR_3_LOCK
+#undef FLASH_CR_0_MER1
+#undef FLASH_PCROP1ER_0_PCROP1_END
+#undef FLASH_MAP1_PRAR_PRG2
+#undef FLASH_MAP0_OPTSR_CUR
+#undef FLASH_MAP3_OPTKEYR
+#undef FLASH_MAP0_CRCDATAR
+#undef FLASH_PCROP1AER_1
+#undef FLASH_PCROP1AER_0_PCROP1A_END
+#undef FLASH_MAP2_WRP1BR
+#undef FLASH_SR_2_WRPRTERR
+#undef FLASH_CR_4
+#undef FLASH_OBR_0_Data1
+#undef FLASH_OPTR_0_nBOOT1
+#undef FLASH_ACR_0_RUN_PD
+#undef FLASH_SR_0_EOP
+#undef FLASH_ECCR_0_ECCD2
+#undef FLASH_OPTR_0_nSWBOOT0
 #undef FLASH_SR_1_WRPRT
-#undef FLASH_OBR_0_VDDA_MONITOR
-#undef FLASH_OPTR_0_IRHEN
-#undef FLASH_MAP2_OPTCR
+#undef FLASH_MAP0_OPTSR_PRG
+#undef FLASH_MAP0_WPSN_CUR1R
+#undef FLASH_MAP2_WRP1AR
+#undef FLASH_CR_0_START
+#undef FLASH_WRP1BR_3
+#undef FLASH_MAP4_WRPR3
+#undef FLASH_MAP3
+#undef FLASH_MAP0_SR1
+#undef FLASH_OPTCR_1
+#undef FLASH_SR_1_READY
+#undef FLASH_ECCR_1_CPUID
+#undef FLASH_MAP4_OBR
+#undef FLASH_OPTCR_2_BFB2
+#undef FLASH_SR_1
+#undef FLASH_SR_1_ERSERR
+#undef FLASH_CR_0_RDERRIE
+#undef FLASH_SR_0_OPTNV
+#undef FLASH_MAP1_OPTKEYR
+#undef FLASH_MAP2_SEC1R
+#undef FLASH_OPTR_1_nRST_STOP
+#undef FLASH_WRP1AR_2
+#undef FLASH_OPTR_0_BOR_LEV
+#undef FLASH_MAP0_BOOT_PRGR
+#undef FLASH_WRP1BR_1
+#undef FLASH_MAP0_CRCEADD1R
+#undef FLASH_PCROP1ASR_1
+#undef FLASH_WRP1AR_0
+#undef FLASH_MAP0_KEYR1
+#undef FLASH_MAP0_BOOT_CURR
+#undef FLASH_OBR_1
+#undef FLASH_MAP0_CCR1
+#undef FLASH_MAP0_OPTKEYR_
+#undef FLASH_MAP4_CLKER
+#undef FLASH_OPTCR_1_nWRP
+#undef FLASH_SR_0_OPTVERRUSR
+#undef FLASH_OBR_0
+#undef FLASH_MAP3_PDKEYR
+#undef FLASH_MAP3_SECR
+#undef FLASH_CR_3_SNB
+#undef FLASH_MAP2_WRP2AR
+#undef FLASH_CR_1_EOPIE
+#undef FLASH_CR_1_STRT
+#undef FLASH_OPTCR_0_RDP
+#undef FLASH_SR_0_FWWERR
+#undef FLASH_CR_3_OPTWRE
+#undef FLASH_OPTCR_1_WWDG_SW
 #undef FLASH_MAP0_CRCCR1
-#undef FLASH_MAP4_ACR
-#undef FLASH_PCROP1BSR_0
-#undef FLASH_SR_0_BSY
+#undef FLASH_ACR_1_LATENCY
+#undef FLASH_MAP1_ECCR
+#undef FLASH_ECCR_1_SYSF_ECC
+#undef FLASH_OPTR_0_NRST_MODE
+#undef FLASH_SR_0_OPERR
+#undef FLASH_MAP3_PEKEYR
+#undef FLASH_MAP4_WRPR
+#undef FLASH_SR_0_PGSERR
+#undef FLASH_CR_5
+#undef FLASH_MAP0_OPTKEYR
+#undef FLASH_MAP0_CRCSADD1R
+#undef FLASH_OPTKEYR_0
+#undef FLASH_OPTCR_2_DB1M
+#undef FLASH_OBR_1_nRTS_STOP
+#undef FLASH_KEYR_0
+#undef FLASH_MAP2_PCROP1BER
+#undef FLASH_MAP1_PCROP1SR
+#undef FLASH_OPTR_2
+#undef FLASH_OPTR_1_ESE
+#undef FLASH_SR_1_NOTZEROERR
+#undef FLASH_SR_2_WRPERR
+#undef FLASH_ACR_0_DBG_SWEN
+#undef FLASH_PCROP1BSR_1
+#undef FLASH_MAP2_OPTCR
+#undef FLASH_MAP1_CRCEADD2R
+#undef FLASH_MAP2_PCROP2ER
+#undef FLASH_OBR_2
+#undef FLASH_MAP0_SR2
+#undef FLASH_MAP2_SR
+#undef FLASH_MAP0_OPTSR_CUR_
+#undef FLASH_ACR_1_ARTEN
+#undef FLASH_SR_1_BSY
+#undef FLASH_OBR_0_LEVEL1_PROT
+#undef FLASH_MAP0_PRAR_PRG1
+#undef FLASH_PCROP1BER_0
+#undef FLASH_MAP2_SRRVR
+#undef FLASH_SR_1_SIZERR
+#undef FLASH_OPTCR1_1
+#undef FLASH_MAP2_OPTCR2
+#undef FLASH_MAP1_OPTR
+#undef FLASH_CR_1
+#undef FLASH_WRPR_1
+#undef FLASH_ACR_2_ACC64
+#undef FLASH_OPTCR_2_nWRP
+#undef FLASH_OPTCR1_0
+#undef FLASH_CR_1_PSIZE
+#undef FLASH_OBR_0_BOOT1
+#undef FLASH_ACR_0
+#undef FLASH_ACR_0_PES
+#undef FLASH_SR_0_RDERR
+#undef FLASH_MAP0_KEYR2
+#undef FLASH_PCROP1BER_1
+#undef FLASH_CR_0_PNB
+#undef FLASH_OPTR_0_SRAM2_PE
+#undef FLASH_MAP3_SR
+#undef FLASH_OBR_1_nRST_STDBY
+#undef FLASH_ECCR_0_SYSF_ECC
+#undef FLASH_ACR_0_DCEN
+#undef FLASH_OPTR_0_DUALBANK
+#undef FLASH_OPTR_1
+#undef FLASH_ACR_0_SLEEP_PD
+#undef FLASH_MAP3_AR
+#undef FLASH_CR_3
+#undef FLASH_MAP4_CR
+#undef FLASH_MAP4_AR
+#undef FLASH_MAP0_WPSN_PRG1R
+#undef FLASH_MAP0_ACR_
+#undef FLASH_MAP0_CR1
+#undef FLASH_SR_2
+#undef FLASH_MAP3_PRGKEYR
+#undef FLASH_WRP1AR_1
+#undef FLASH_CR_1_SNB
+#undef FLASH_ECCR_0_ECCIE
+#undef FLASH_MAP2_IPCCBR
+#undef FLASH_WRPR_0
+#undef FLASH_ECCR_2
+#undef FLASH_OPTR_0_BFB2
+#undef FLASH_MAP2_C2SR
+#undef FLASH_OPTCR_0_OPTCHANGEERRIE
+#undef FLASH_OPTR_1_nRST_STDBY
+#undef FLASH_ACR_1_ARTRST
 
 #endif
 

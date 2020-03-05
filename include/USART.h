@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-22T21:40:10.100781
+//Generated 2020-03-01T19:16:33.354991
 
 #ifndef __SOOL_CORE_USART_H
 #define __SOOL_CORE_USART_H
@@ -489,7 +489,7 @@
 #if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32MP1     ) || \
     defined(STM32WB      ) || defined(STM32L4P5xx  )
 #define USART_PRESC
-#define USART_MAP0_PRESC PRESC_t PRESC
+#define USART_MAP0_PRESC typename tmpl::PRESC_t PRESC
 #else
 #define USART_MAP0_PRESC __SOOL_PERIPH_PADDING_4
 #endif
@@ -505,11 +505,11 @@
 #define USART_VERR
 #define USART_IPIDR
 #define USART_SIDR
-#define USART_MAP0_HWCFGR2 HWCFGR2_t HWCFGR2
-#define USART_MAP0_HWCFGR1 HWCFGR1_t HWCFGR1
-#define USART_MAP0_VERR VERR_t VERR
-#define USART_MAP0_IPIDR IPIDR_t IPIDR
-#define USART_MAP0_SIDR SIDR_t SIDR
+#define USART_MAP0_HWCFGR2 typename tmpl::HWCFGR2_t HWCFGR2
+#define USART_MAP0_HWCFGR1 typename tmpl::HWCFGR1_t HWCFGR1
+#define USART_MAP0_VERR typename tmpl::VERR_t VERR
+#define USART_MAP0_IPIDR typename tmpl::IPIDR_t IPIDR
+#define USART_MAP0_SIDR typename tmpl::SIDR_t SIDR
 #else
 #define USART_MAP0_HWCFGR2 __SOOL_PERIPH_PADDING_4
 #define USART_MAP0_HWCFGR1 __SOOL_PERIPH_PADDING_4
@@ -542,12 +542,64 @@
 namespace sool {
 	namespace core {
 		#ifdef USART_USART_tmpl_0
-		struct USART_tmpl_0 /// specific fields for UART8, USART1, UART7, USART2, USART6 
+		struct USART_tmpl_0 /// fields used by UART7, USART6, USART2, UART8, USART1 
 		{
-			struct CR1_t
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR1_0
+					struct
+					{
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_1
+					struct
+					{
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
+						uint32_t                  : 2;
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
+					};
+					#endif
 					#ifdef USART_CR1_2
 					struct
 					{
@@ -650,11 +702,53 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR2_t
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
 					#ifdef USART_CR2_6
 					struct
 					{
@@ -757,11 +851,43 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR3_t
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
 					#ifdef USART_CR3_5
 					struct
 					{
@@ -865,11 +991,36 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct BRR_t
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_BRR_0
+					struct
+					{
+						uint32_t BRR_0_3          : 4; /// DIV_Fraction
+						uint32_t BRR_4_15         : 12; /// DIV_Mantissa
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_4
+					struct
+					{
+						uint32_t DIV_Fraction     : 4; /// fraction of USARTDIV
+						uint32_t DIV_Mantissa     : 12; /// mantissa of USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
 					#ifdef USART_BRR_1
 					struct
 					{
@@ -895,46 +1046,128 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct GTPR_t
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
 			{
-				#ifdef USART_GTPR_1
-				struct
-				{
-					uint32_t PSC              : 8; /// Prescaler value
-					uint32_t GT               : 8; /// Guard time value
-					uint32_t                  : 16;
-				};
-				#endif
-			};
-			struct RTOR_t
-			{
-				#ifdef USART_RTOR_1
-				struct
-				{
-					uint32_t RTO              : 24; /// Receiver timeout value
-					uint32_t BLEN             : 8; /// Block Length
-				};
-				#endif
-			};
-			struct RQR_t
-			{
-				#ifdef USART_RQR_1
-				struct
-				{
-					uint32_t ABRRQ            : 1; /// Auto baud rate request
-					uint32_t SBKRQ            : 1; /// Send break request
-					uint32_t MMRQ             : 1; /// Mute mode request
-					uint32_t RXFRQ            : 1; /// Receive data flush request
-					uint32_t TXFRQ            : 1; /// Transmit data flush request
-					uint32_t                  : 27;
-				};
-				#endif
-			};
-			struct ISR_t
-			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_GTPR_0
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_GTPR_1
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RTOR_0
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+					#ifdef USART_RTOR_1
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef USART_RQR_1
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
 					#ifdef USART_ISR_1
 					struct
 					{
@@ -1064,11 +1297,47 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ICR_t
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_1
+					struct
+					{
+						uint32_t                  : 7;
+						uint32_t TCBGTC           : 1; /// Transmission complete before Guard time clear flag
+						uint32_t                  : 24;
+					};
+					#endif
 					#ifdef USART_ICR_2
 					struct
 					{
@@ -1141,55 +1410,90 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct PRESC_t
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
 			{
-				#ifdef USART_PRESC_1
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PRESCALER        : 4; /// Clock prescaler
-					uint32_t                  : 28;
+					#ifdef USART_PRESC_0
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef USART_PRESC_1
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
 				};
-				#endif
+				
 			};
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
 			{
-				#ifdef USART_SR_0
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PE               : 1; /// Parity error
-					uint32_t FE               : 1; /// Framing error
-					uint32_t NF               : 1; /// Noise detected flag
-					uint32_t ORE              : 1; /// Overrun error
-					uint32_t IDLE             : 1; /// IDLE line detected
-					uint32_t RXNE             : 1; /// Read data register not empty
-					uint32_t TC               : 1; /// Transmission complete
-					uint32_t TXE              : 1; /// Transmit data register empty
-					uint32_t LBD              : 1; /// LIN break detection flag
-					uint32_t CTS              : 1; /// CTS flag
-					uint32_t                  : 22;
+					#ifdef USART_SR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
+					#ifdef USART_SR_2
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
 				};
-				#endif
+				
 			};
+			#endif
 		};
 		#endif
 		#ifdef USART_USART_tmpl_1
-		struct USART_tmpl_1 /// specific fields for UART5 
+		struct USART_tmpl_1 /// fields used by USART4, USART5, UART5 
 		{
-			struct CR1_t
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
+				using Reg32_t::operator=;
 				union
 				{
-					#ifdef USART_CR1_2
+					#ifdef USART_CR1_0
 					struct
 					{
-						uint32_t UE               : 1; /// USART enable
-						uint32_t UESM             : 1; /// USART enable in Stop mode
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
 						uint32_t RE               : 1; /// Receiver enable
 						uint32_t TE               : 1; /// Transmitter enable
 						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
@@ -1200,508 +1504,42 @@ namespace sool {
 						uint32_t PS               : 1; /// Parity selection
 						uint32_t PCE              : 1; /// Parity control enable
 						uint32_t WAKE             : 1; /// Receiver wakeup method
-						uint32_t M0               : 1; /// Word length
-						uint32_t MME              : 1; /// Mute mode enable
-						uint32_t CMIE             : 1; /// Character match interrupt enable
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
 						uint32_t OVER8            : 1; /// Oversampling mode
-						uint32_t DEDT0            : 1;
-						uint32_t DEDT1            : 1;
-						uint32_t DEDT2            : 1;
-						uint32_t DEDT3            : 1;
-						uint32_t DEDT4            : 1; /// Driver Enable de-assertion time
-						uint32_t DEAT0            : 1;
-						uint32_t DEAT1            : 1;
-						uint32_t DEAT2            : 1;
-						uint32_t DEAT3            : 1;
-						uint32_t DEAT4            : 1; /// Driver Enable assertion time
-						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
-						uint32_t EOBIE            : 1; /// End of Block interrupt enable
-						uint32_t M1               : 1; /// Word length
-						uint32_t                  : 3;
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
 					};
 					#endif
-					#ifdef USART_CR1_4
+					#ifdef USART_CR1_1
 					struct
 					{
-						uint32_t UE               : 1; /// USART enable
-						uint32_t UESM             : 1; /// USART enable in Stop mode
-						uint32_t RE               : 1; /// Receiver enable
-						uint32_t TE               : 1; /// Transmitter enable
-						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
-						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
-						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
-						uint32_t TXEIE            : 1; /// interrupt enable
-						uint32_t PEIE             : 1; /// PE interrupt enable
-						uint32_t PS               : 1; /// Parity selection
-						uint32_t PCE              : 1; /// Parity control enable
-						uint32_t WAKE             : 1; /// Receiver wakeup method
-						uint32_t M0               : 1; /// Word length
-						uint32_t MME              : 1; /// Mute mode enable
-						uint32_t CMIE             : 1; /// Character match interrupt enable
-						uint32_t OVER8            : 1; /// Oversampling mode
-						uint32_t DEDT0            : 1;
-						uint32_t DEDT1            : 1;
-						uint32_t DEDT2            : 1;
-						uint32_t DEDT3            : 1;
-						uint32_t DEDT4            : 1; /// Driver Enable de-assertion time
-						uint32_t DEAT0            : 1;
-						uint32_t DEAT1            : 1;
-						uint32_t DEAT2            : 1;
-						uint32_t DEAT3            : 1;
-						uint32_t DEAT4            : 1; /// Driver Enable assertion time
-						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
-						uint32_t EOBIE            : 1; /// End of Block interrupt enable
-						uint32_t M1               : 1; /// Word length
-						uint32_t FIFOEN           : 1; /// FIFO mode enable
-						uint32_t TXFEIE           : 1; /// TXFIFO empty interrupt enable
-						uint32_t RXFFIE           : 1; /// RXFIFO Full interrupt enable
-					};
-					#endif
-				};
-			};
-			struct CR2_t
-			{
-				union
-				{
-					#ifdef USART_CR2_2
-					struct
-					{
-						uint32_t                  : 4;
-						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
-						uint32_t LBDL             : 1; /// LIN break detection length
-						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
-						uint32_t                  : 1;
-						uint32_t LBCL             : 1; /// Last bit clock pulse
-						uint32_t CPHA             : 1; /// Clock phase
-						uint32_t CPOL             : 1; /// Clock polarity
-						uint32_t CLKEN            : 1; /// Clock enable
-						uint32_t STOP             : 2; /// STOP bits
-						uint32_t LINEN            : 1; /// LIN mode enable
-						uint32_t SWAP             : 1; /// Swap TX/RX pins
-						uint32_t RXINV            : 1; /// RX pin active level inversion
-						uint32_t TXINV            : 1; /// TX pin active level inversion
-						uint32_t DATAINV          : 1; /// Binary data inversion
-						uint32_t MSBFIRST         : 1; /// Most significant bit first
-						uint32_t ABREN            : 1; /// Auto baud rate enable
-						uint32_t ABRMOD0          : 1;
-						uint32_t ABRMOD1          : 1; /// Auto baud rate mode
-						uint32_t RTOEN            : 1; /// Receiver timeout enable
-						uint32_t ADD0_3           : 4; /// Address of the USART node
-						uint32_t ADD4_7           : 4; /// Address of the USART node
-					};
-					#endif
-					#ifdef USART_CR2_4
-					struct
-					{
-						uint32_t SLVEN            : 1; /// Synchronous Slave mode enable
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
 						uint32_t                  : 2;
-						uint32_t DIS_NSS          : 1;
-						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
-						uint32_t LBDL             : 1; /// LIN break detection length
-						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
-						uint32_t                  : 1;
-						uint32_t LBCL             : 1; /// Last bit clock pulse
-						uint32_t CPHA             : 1; /// Clock phase
-						uint32_t CPOL             : 1; /// Clock polarity
-						uint32_t CLKEN            : 1; /// Clock enable
-						uint32_t STOP             : 2; /// STOP bits
-						uint32_t LINEN            : 1; /// LIN mode enable
-						uint32_t SWAP             : 1; /// Swap TX/RX pins
-						uint32_t RXINV            : 1; /// RX pin active level inversion
-						uint32_t TXINV            : 1; /// TX pin active level inversion
-						uint32_t DATAINV          : 1; /// Binary data inversion
-						uint32_t MSBFIRST         : 1; /// Most significant bit first
-						uint32_t ABREN            : 1; /// Auto baud rate enable
-						uint32_t ABRMOD0          : 1;
-						uint32_t ABRMOD1          : 1; /// Auto baud rate mode
-						uint32_t RTOEN            : 1; /// Receiver timeout enable
-						uint32_t ADD0_3           : 4; /// Address of the USART node
-						uint32_t ADD4_7           : 4; /// Address of the USART node
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
 					};
 					#endif
-					#ifdef USART_CR2_7
-					struct
-					{
-						uint32_t ADD              : 4; /// Address of the USART node
-						uint32_t                  : 1;
-						uint32_t LBDL             : 1; /// lin break detection length
-						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
-						uint32_t                  : 5;
-						uint32_t STOP             : 2; /// STOP bits
-						uint32_t LINEN            : 1; /// LIN mode enable
-						uint32_t                  : 17;
-					};
-					#endif
-				};
-			};
-			struct CR3_t
-			{
-				union
-				{
-					#ifdef USART_CR3_1
-					struct
-					{
-						uint32_t EIE              : 1; /// Error interrupt enable
-						uint32_t IREN             : 1; /// Ir mode enable
-						uint32_t IRLP             : 1; /// Ir low-power
-						uint32_t HDSEL            : 1; /// Half-duplex selection
-						uint32_t NACK             : 1; /// Smartcard NACK enable
-						uint32_t SCEN             : 1; /// Smartcard mode enable
-						uint32_t DMAR             : 1; /// DMA enable receiver
-						uint32_t DMAT             : 1; /// DMA enable transmitter
-						uint32_t RTSE             : 1; /// RTS enable
-						uint32_t CTSE             : 1; /// CTS enable
-						uint32_t CTSIE            : 1; /// CTS interrupt enable
-						uint32_t ONEBIT           : 1; /// One sample bit method enable
-						uint32_t OVRDIS           : 1; /// Overrun Disable
-						uint32_t DDRE             : 1; /// DMA Disable on Reception Error
-						uint32_t DEM              : 1; /// Driver enable mode
-						uint32_t DEP              : 1; /// Driver enable polarity selection
-						uint32_t                  : 1;
-						uint32_t SCARCNT          : 3; /// Smartcard auto-retry count
-						uint32_t WUS              : 2; /// Wakeup from Stop mode interrupt flag selection
-						uint32_t WUFIE            : 1; /// Wakeup from Stop mode interrupt enable
-						uint32_t                  : 9;
-					};
-					#endif
-					#ifdef USART_CR3_3
-					struct
-					{
-						uint32_t EIE              : 1; /// Error interrupt enable
-						uint32_t IREN             : 1; /// Ir mode enable
-						uint32_t IRLP             : 1; /// Ir low-power
-						uint32_t HDSEL            : 1; /// Half-duplex selection
-						uint32_t NACK             : 1; /// Smartcard NACK enable
-						uint32_t SCEN             : 1; /// Smartcard mode enable
-						uint32_t DMAR             : 1; /// DMA enable receiver
-						uint32_t DMAT             : 1; /// DMA enable transmitter
-						uint32_t RTSE             : 1; /// RTS enable
-						uint32_t CTSE             : 1; /// CTS enable
-						uint32_t CTSIE            : 1; /// CTS interrupt enable
-						uint32_t ONEBIT           : 1; /// One sample bit method enable
-						uint32_t OVRDIS           : 1; /// Overrun Disable
-						uint32_t DDRE             : 1; /// DMA Disable on Reception Error
-						uint32_t DEM              : 1; /// Driver enable mode
-						uint32_t DEP              : 1; /// Driver enable polarity selection
-						uint32_t                  : 1;
-						uint32_t SCARCNT          : 3; /// Smartcard auto-retry count
-						uint32_t WUS              : 2; /// Wakeup from Stop mode interrupt flag selection
-						uint32_t WUFIE            : 1; /// Wakeup from Stop mode interrupt enable
-						uint32_t TXFTIE           : 1; /// TXFIFO threshold interrupt enable
-						uint32_t TCBGTIE          : 1; /// Transmission Complete before guard time, interrupt enable
-						uint32_t RXFTCFG          : 3; /// Receive FIFO threshold configuration
-						uint32_t RXFTIE           : 1; /// RXFIFO threshold interrupt enable
-						uint32_t TXFTCFG          : 3; /// TXFIFO threshold configuration
-					};
-					#endif
-					#ifdef USART_CR3_6
-					struct
-					{
-						uint32_t EIE              : 1; /// Error interrupt enable
-						uint32_t IREN             : 1; /// IrDA mode enable
-						uint32_t IRLP             : 1; /// IrDA low-power
-						uint32_t HDSEL            : 1; /// Half-duplex selection
-						uint32_t                  : 2;
-						uint32_t DMAR             : 1; /// DMA enable receiver
-						uint32_t DMAT             : 1; /// DMA enable transmitter
-						uint32_t                  : 3;
-						uint32_t ONEBIT           : 1; /// One sample bit method enable
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef USART_CR3_11
-					struct
-					{
-						uint32_t EIE              : 1; /// Error interrupt enable
-						uint32_t IREN             : 1; /// IrDA mode enable
-						uint32_t IRLP             : 1; /// IrDA low-power
-						uint32_t HDSEL            : 1; /// Half-duplex selection
-						uint32_t                  : 7;
-						uint32_t ONEBIT           : 1; /// One sample bit method enable
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-			};
-			struct BRR_t
-			{
-				union
-				{
-					#ifdef USART_BRR_1
-					struct
-					{
-						uint32_t DIV_Fraction     : 4;
-						uint32_t DIV_Mantissa     : 12;
-						uint32_t                  : 16;
-					};
-					#endif
-					#ifdef USART_BRR_3
-					struct
-					{
-						uint32_t BRR0_3           : 4; /// BRR
-						uint32_t BRR4_15          : 12; /// USARTDIV
-						uint32_t                  : 16;
-					};
-					#endif
-				};
-			};
-			struct GTPR_t
-			{
-				#ifdef USART_GTPR_1
-				struct
-				{
-					uint32_t PSC              : 8; /// Prescaler value
-					uint32_t GT               : 8; /// Guard time value
-					uint32_t                  : 16;
-				};
-				#endif
-			};
-			struct RTOR_t
-			{
-				#ifdef USART_RTOR_1
-				struct
-				{
-					uint32_t RTO              : 24; /// Receiver timeout value
-					uint32_t BLEN             : 8; /// Block Length
-				};
-				#endif
-			};
-			struct RQR_t
-			{
-				#ifdef USART_RQR_1
-				struct
-				{
-					uint32_t ABRRQ            : 1; /// Auto baud rate request
-					uint32_t SBKRQ            : 1; /// Send break request
-					uint32_t MMRQ             : 1; /// Mute mode request
-					uint32_t RXFRQ            : 1; /// Receive data flush request
-					uint32_t TXFRQ            : 1; /// Transmit data flush request
-					uint32_t                  : 27;
-				};
-				#endif
-			};
-			struct ISR_t
-			{
-				union
-				{
-					#ifdef USART_ISR_1
-					struct
-					{
-						uint32_t PE               : 1;
-						uint32_t FE               : 1;
-						uint32_t NF               : 1;
-						uint32_t ORE              : 1;
-						uint32_t IDLE             : 1;
-						uint32_t RXNE             : 1;
-						uint32_t TC               : 1;
-						uint32_t TXE              : 1;
-						uint32_t LBDF             : 1;
-						uint32_t CTSIF            : 1;
-						uint32_t CTS              : 1;
-						uint32_t RTOF             : 1;
-						uint32_t EOBF             : 1;
-						uint32_t                  : 1;
-						uint32_t ABRE             : 1;
-						uint32_t ABRF             : 1;
-						uint32_t BUSY             : 1;
-						uint32_t CMF              : 1;
-						uint32_t SBKF             : 1;
-						uint32_t RWU              : 1;
-						uint32_t WUF              : 1;
-						uint32_t TEACK            : 1;
-						uint32_t REACK            : 1;
-						uint32_t                  : 9;
-					};
-					#endif
-					#ifdef USART_ISR_3
-					struct
-					{
-						uint32_t PE               : 1;
-						uint32_t FE               : 1;
-						uint32_t NF               : 1;
-						uint32_t ORE              : 1;
-						uint32_t IDLE             : 1;
-						uint32_t RXNE             : 1;
-						uint32_t TC               : 1;
-						uint32_t TXE              : 1;
-						uint32_t LBDF             : 1;
-						uint32_t CTSIF            : 1;
-						uint32_t CTS              : 1;
-						uint32_t RTOF             : 1;
-						uint32_t EOBF             : 1;
-						uint32_t                  : 1;
-						uint32_t ABRE             : 1;
-						uint32_t ABRF             : 1;
-						uint32_t BUSY             : 1;
-						uint32_t CMF              : 1;
-						uint32_t SBKF             : 1;
-						uint32_t RWU              : 1;
-						uint32_t WUF              : 1;
-						uint32_t TEACK            : 1;
-						uint32_t REACK            : 1;
-						uint32_t TXFE             : 1;
-						uint32_t RXFF             : 1;
-						uint32_t TCBGT            : 1;
-						uint32_t RXFT             : 1;
-						uint32_t TXFT             : 1;
-						uint32_t                  : 4;
-					};
-					#endif
-					#ifdef USART_ISR_4
-					struct
-					{
-						uint32_t PE               : 1;
-						uint32_t FE               : 1;
-						uint32_t NF               : 1;
-						uint32_t ORE              : 1;
-						uint32_t IDLE             : 1;
-						uint32_t RXNE             : 1;
-						uint32_t TC               : 1;
-						uint32_t TXE              : 1;
-						uint32_t LBDF             : 1;
-						uint32_t CTSIF            : 1;
-						uint32_t CTS              : 1;
-						uint32_t RTOF             : 1;
-						uint32_t EOBF             : 1;
-						uint32_t UDR              : 1; /// SPI slave underrun error flag
-						uint32_t ABRE             : 1;
-						uint32_t ABRF             : 1;
-						uint32_t BUSY             : 1;
-						uint32_t CMF              : 1;
-						uint32_t SBKF             : 1;
-						uint32_t RWU              : 1;
-						uint32_t WUF              : 1;
-						uint32_t TEACK            : 1;
-						uint32_t REACK            : 1;
-						uint32_t TXFE             : 1; /// TXFIFO Empty
-						uint32_t RXFF             : 1; /// RXFIFO Full
-						uint32_t TCBGT            : 1; /// Transmission complete before guard time flag
-						uint32_t RXFT             : 1; /// RXFIFO threshold flag
-						uint32_t TXFT             : 1; /// TXFIFO threshold flag
-						uint32_t                  : 4;
-					};
-					#endif
-				};
-			};
-			struct ICR_t
-			{
-				union
-				{
-					#ifdef USART_ICR_2
-					struct
-					{
-						uint32_t PECF             : 1; /// Parity error clear flag
-						uint32_t FECF             : 1; /// Framing error clear flag
-						uint32_t NCF              : 1; /// Noise detected clear flag
-						uint32_t ORECF            : 1; /// Overrun error clear flag
-						uint32_t IDLECF           : 1; /// Idle line detected clear flag
-						uint32_t                  : 1;
-						uint32_t TCCF             : 1; /// Transmission complete clear flag
-						uint32_t                  : 1;
-						uint32_t LBDCF            : 1; /// LIN break detection clear flag
-						uint32_t CTSCF            : 1; /// CTS clear flag
-						uint32_t                  : 1;
-						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
-						uint32_t EOBCF            : 1; /// End of block clear flag
-						uint32_t                  : 4;
-						uint32_t CMCF             : 1; /// Character match clear flag
-						uint32_t                  : 2;
-						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
-						uint32_t                  : 11;
-					};
-					#endif
-					#ifdef USART_ICR_4
-					struct
-					{
-						uint32_t PECF             : 1; /// Parity error clear flag
-						uint32_t FECF             : 1; /// Framing error clear flag
-						uint32_t NCF              : 1; /// Noise detected clear flag
-						uint32_t ORECF            : 1; /// Overrun error clear flag
-						uint32_t IDLECF           : 1; /// Idle line detected clear flag
-						uint32_t                  : 1;
-						uint32_t TCCF             : 1; /// Transmission complete clear flag
-						uint32_t                  : 1;
-						uint32_t LBDCF            : 1; /// LIN break detection clear flag
-						uint32_t CTSCF            : 1; /// CTS clear flag
-						uint32_t                  : 1;
-						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
-						uint32_t EOBCF            : 1; /// End of block clear flag
-						uint32_t UDRCF            : 1;
-						uint32_t                  : 3;
-						uint32_t CMCF             : 1; /// Character match clear flag
-						uint32_t                  : 2;
-						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
-						uint32_t                  : 11;
-					};
-					#endif
-					#ifdef USART_ICR_5
-					struct
-					{
-						uint32_t PECF             : 1; /// Parity error clear flag
-						uint32_t FECF             : 1; /// Framing error clear flag
-						uint32_t NCF              : 1; /// Noise detected clear flag
-						uint32_t ORECF            : 1; /// Overrun error clear flag
-						uint32_t IDLECF           : 1; /// Idle line detected clear flag
-						uint32_t TXFECF           : 1; /// TXFIFO empty clear flag
-						uint32_t TCCF             : 1; /// Transmission complete clear flag
-						uint32_t TCBGTCF          : 1; /// Transmission complete before Guard time clear flag
-						uint32_t LBDCF            : 1; /// LIN break detection clear flag
-						uint32_t CTSCF            : 1; /// CTS clear flag
-						uint32_t                  : 1;
-						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
-						uint32_t EOBCF            : 1; /// End of block clear flag
-						uint32_t UDRCF            : 1; /// SPI slave underrun clear flag
-						uint32_t                  : 3;
-						uint32_t CMCF             : 1; /// Character match clear flag
-						uint32_t                  : 2;
-						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
-						uint32_t                  : 11;
-					};
-					#endif
-				};
-			};
-			struct PRESC_t
-			{
-				#ifdef USART_PRESC_1
-				struct
-				{
-					uint32_t PRESCALER        : 4; /// Clock prescaler
-					uint32_t                  : 28;
-				};
-				#endif
-			};
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t
-			{
-				#ifdef USART_SR_1
-				struct
-				{
-					uint32_t PE               : 1; /// Parity error
-					uint32_t FE               : 1; /// Framing error
-					uint32_t NF               : 1; /// Noise detected flag
-					uint32_t ORE              : 1; /// Overrun error
-					uint32_t IDLE             : 1; /// IDLE line detected
-					uint32_t RXNE             : 1; /// Read data register not empty
-					uint32_t TC               : 1; /// Transmission complete
-					uint32_t TXE              : 1; /// Transmit data register empty
-					uint32_t LBD              : 1; /// LIN break detection flag
-					uint32_t                  : 23;
-				};
-				#endif
-			};
-		};
-		#endif
-		#ifdef USART_USART_tmpl_2
-		struct USART_tmpl_2 /// specific fields for USART3 
-		{
-			struct CR1_t
-			{
-				union
-				{
 					#ifdef USART_CR1_2
 					struct
 					{
@@ -1804,11 +1642,938 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR2_t
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_2
+					struct
+					{
+						uint32_t                  : 4;
+						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t SWAP             : 1; /// Swap TX/RX pins
+						uint32_t RXINV            : 1; /// RX pin active level inversion
+						uint32_t TXINV            : 1; /// TX pin active level inversion
+						uint32_t DATAINV          : 1; /// Binary data inversion
+						uint32_t MSBFIRST         : 1; /// Most significant bit first
+						uint32_t ABREN            : 1; /// Auto baud rate enable
+						uint32_t ABRMOD0          : 1;
+						uint32_t ABRMOD1          : 1; /// Auto baud rate mode
+						uint32_t RTOEN            : 1; /// Receiver timeout enable
+						uint32_t ADD0_3           : 4; /// Address of the USART node
+						uint32_t ADD4_7           : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_4
+					struct
+					{
+						uint32_t SLVEN            : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t DIS_NSS          : 1;
+						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t SWAP             : 1; /// Swap TX/RX pins
+						uint32_t RXINV            : 1; /// RX pin active level inversion
+						uint32_t TXINV            : 1; /// TX pin active level inversion
+						uint32_t DATAINV          : 1; /// Binary data inversion
+						uint32_t MSBFIRST         : 1; /// Most significant bit first
+						uint32_t ABREN            : 1; /// Auto baud rate enable
+						uint32_t ABRMOD0          : 1;
+						uint32_t ABRMOD1          : 1; /// Auto baud rate mode
+						uint32_t RTOEN            : 1; /// Receiver timeout enable
+						uint32_t ADD0_3           : 4; /// Address of the USART node
+						uint32_t ADD4_7           : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_7
+					struct
+					{
+						uint32_t ADD              : 4; /// Address of the USART node
+						uint32_t                  : 1;
+						uint32_t LBDL             : 1; /// lin break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 5;
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t                  : 17;
+					};
+					#endif
+					#ifdef USART_CR2_8
+					struct
+					{
+						uint32_t SLVEN            : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t DIS_NSS          : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t SWAP             : 1; /// Swap TX/RX pins
+						uint32_t RXINV            : 1; /// RX pin active level inversion
+						uint32_t TXINV            : 1; /// TX pin active level inversion
+						uint32_t DATAINV          : 1; /// Binary data inversion
+						uint32_t MSBFIRST         : 1; /// Most significant bit first
+						uint32_t ABREN            : 1; /// Auto baud rate enable
+						uint32_t ABRMOD           : 2; /// Auto baud rate mode
+						uint32_t RTOEN            : 1; /// Receiver timeout enable
+						uint32_t ADD0_3           : 4; /// Address of the USART node
+						uint32_t ADD4_7           : 4; /// Address of the USART node
+					};
+					#endif
+				};
+				
+			};
+			struct CR3_t: public Reg32_t /// Control register 3
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
+					#ifdef USART_CR3_1
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t OVRDIS           : 1; /// Overrun Disable
+						uint32_t DDRE             : 1; /// DMA Disable on Reception Error
+						uint32_t DEM              : 1; /// Driver enable mode
+						uint32_t DEP              : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t SCARCNT          : 3; /// Smartcard auto-retry count
+						uint32_t WUS              : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t WUFIE            : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t                  : 9;
+					};
+					#endif
+					#ifdef USART_CR3_3
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t OVRDIS           : 1; /// Overrun Disable
+						uint32_t DDRE             : 1; /// DMA Disable on Reception Error
+						uint32_t DEM              : 1; /// Driver enable mode
+						uint32_t DEP              : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t SCARCNT          : 3; /// Smartcard auto-retry count
+						uint32_t WUS              : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t WUFIE            : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t TXFTIE           : 1; /// TXFIFO threshold interrupt enable
+						uint32_t TCBGTIE          : 1; /// Transmission Complete before guard time, interrupt enable
+						uint32_t RXFTCFG          : 3; /// Receive FIFO threshold configuration
+						uint32_t RXFTIE           : 1; /// RXFIFO threshold interrupt enable
+						uint32_t TXFTCFG          : 3; /// TXFIFO threshold configuration
+					};
+					#endif
+					#ifdef USART_CR3_6
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// IrDA mode enable
+						uint32_t IRLP             : 1; /// IrDA low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t                  : 2;
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t                  : 3;
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t                  : 20;
+					};
+					#endif
+					#ifdef USART_CR3_11
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// IrDA mode enable
+						uint32_t IRLP             : 1; /// IrDA low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t                  : 7;
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t                  : 20;
+					};
+					#endif
+				};
+				
+			};
+			struct BRR_t: public Reg32_t /// Baud rate register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_BRR_0
+					struct
+					{
+						uint32_t BRR_0_3          : 4; /// DIV_Fraction
+						uint32_t BRR_4_15         : 12; /// DIV_Mantissa
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_1
+					struct
+					{
+						uint32_t DIV_Fraction     : 4;
+						uint32_t DIV_Mantissa     : 12;
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_3
+					struct
+					{
+						uint32_t BRR0_3           : 4; /// BRR
+						uint32_t BRR4_15          : 12; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_4
+					struct
+					{
+						uint32_t DIV_Fraction     : 4; /// fraction of USARTDIV
+						uint32_t DIV_Mantissa     : 12; /// mantissa of USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_7
+					struct
+					{
+						uint32_t BRR_0_3          : 4;
+						uint32_t BRR_4_15         : 12;
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_GTPR_0
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_GTPR_1
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RTOR_0
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+					#ifdef USART_RTOR_1
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef USART_RQR_1
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
+					#ifdef USART_ISR_1
+					struct
+					{
+						uint32_t PE               : 1;
+						uint32_t FE               : 1;
+						uint32_t NF               : 1;
+						uint32_t ORE              : 1;
+						uint32_t IDLE             : 1;
+						uint32_t RXNE             : 1;
+						uint32_t TC               : 1;
+						uint32_t TXE              : 1;
+						uint32_t LBDF             : 1;
+						uint32_t CTSIF            : 1;
+						uint32_t CTS              : 1;
+						uint32_t RTOF             : 1;
+						uint32_t EOBF             : 1;
+						uint32_t                  : 1;
+						uint32_t ABRE             : 1;
+						uint32_t ABRF             : 1;
+						uint32_t BUSY             : 1;
+						uint32_t CMF              : 1;
+						uint32_t SBKF             : 1;
+						uint32_t RWU              : 1;
+						uint32_t WUF              : 1;
+						uint32_t TEACK            : 1;
+						uint32_t REACK            : 1;
+						uint32_t                  : 9;
+					};
+					#endif
+					#ifdef USART_ISR_3
+					struct
+					{
+						uint32_t PE               : 1;
+						uint32_t FE               : 1;
+						uint32_t NF               : 1;
+						uint32_t ORE              : 1;
+						uint32_t IDLE             : 1;
+						uint32_t RXNE             : 1;
+						uint32_t TC               : 1;
+						uint32_t TXE              : 1;
+						uint32_t LBDF             : 1;
+						uint32_t CTSIF            : 1;
+						uint32_t CTS              : 1;
+						uint32_t RTOF             : 1;
+						uint32_t EOBF             : 1;
+						uint32_t                  : 1;
+						uint32_t ABRE             : 1;
+						uint32_t ABRF             : 1;
+						uint32_t BUSY             : 1;
+						uint32_t CMF              : 1;
+						uint32_t SBKF             : 1;
+						uint32_t RWU              : 1;
+						uint32_t WUF              : 1;
+						uint32_t TEACK            : 1;
+						uint32_t REACK            : 1;
+						uint32_t TXFE             : 1;
+						uint32_t RXFF             : 1;
+						uint32_t TCBGT            : 1;
+						uint32_t RXFT             : 1;
+						uint32_t TXFT             : 1;
+						uint32_t                  : 4;
+					};
+					#endif
+					#ifdef USART_ISR_4
+					struct
+					{
+						uint32_t PE               : 1;
+						uint32_t FE               : 1;
+						uint32_t NF               : 1;
+						uint32_t ORE              : 1;
+						uint32_t IDLE             : 1;
+						uint32_t RXNE             : 1;
+						uint32_t TC               : 1;
+						uint32_t TXE              : 1;
+						uint32_t LBDF             : 1;
+						uint32_t CTSIF            : 1;
+						uint32_t CTS              : 1;
+						uint32_t RTOF             : 1;
+						uint32_t EOBF             : 1;
+						uint32_t UDR              : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1;
+						uint32_t ABRF             : 1;
+						uint32_t BUSY             : 1;
+						uint32_t CMF              : 1;
+						uint32_t SBKF             : 1;
+						uint32_t RWU              : 1;
+						uint32_t WUF              : 1;
+						uint32_t TEACK            : 1;
+						uint32_t REACK            : 1;
+						uint32_t TXFE             : 1; /// TXFIFO Empty
+						uint32_t RXFF             : 1; /// RXFIFO Full
+						uint32_t TCBGT            : 1; /// Transmission complete before guard time flag
+						uint32_t RXFT             : 1; /// RXFIFO threshold flag
+						uint32_t TXFT             : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_1
+					struct
+					{
+						uint32_t                  : 7;
+						uint32_t TCBGTC           : 1; /// Transmission complete before Guard time clear flag
+						uint32_t                  : 24;
+					};
+					#endif
+					#ifdef USART_ICR_2
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t                  : 1;
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t                  : 1;
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t                  : 4;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_4
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t                  : 1;
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t                  : 1;
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t UDRCF            : 1;
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_5
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t TXFECF           : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t TCBGTCF          : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t UDRCF            : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_PRESC_0
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef USART_PRESC_1
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_SR_1
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t                  : 23;
+					};
+					#endif
+					#ifdef USART_SR_2
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+		};
+		#endif
+		#ifdef USART_USART_tmpl_2
+		struct USART_tmpl_2 /// fields used by USART3 
+		{
+			struct CR1_t: public Reg32_t /// Control register 1
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_CR1_0
+					struct
+					{
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_1
+					struct
+					{
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
+						uint32_t                  : 2;
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
+					};
+					#endif
+					#ifdef USART_CR1_2
+					struct
+					{
+						uint32_t UE               : 1; /// USART enable
+						uint32_t UESM             : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t M0               : 1; /// Word length
+						uint32_t MME              : 1; /// Mute mode enable
+						uint32_t CMIE             : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t DEDT0            : 1;
+						uint32_t DEDT1            : 1;
+						uint32_t DEDT2            : 1;
+						uint32_t DEDT3            : 1;
+						uint32_t DEDT4            : 1; /// Driver Enable de-assertion time
+						uint32_t DEAT0            : 1;
+						uint32_t DEAT1            : 1;
+						uint32_t DEAT2            : 1;
+						uint32_t DEAT3            : 1;
+						uint32_t DEAT4            : 1; /// Driver Enable assertion time
+						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
+						uint32_t EOBIE            : 1; /// End of Block interrupt enable
+						uint32_t M1               : 1; /// Word length
+						uint32_t                  : 3;
+					};
+					#endif
+					#ifdef USART_CR1_4
+					struct
+					{
+						uint32_t UE               : 1; /// USART enable
+						uint32_t UESM             : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t M0               : 1; /// Word length
+						uint32_t MME              : 1; /// Mute mode enable
+						uint32_t CMIE             : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t DEDT0            : 1;
+						uint32_t DEDT1            : 1;
+						uint32_t DEDT2            : 1;
+						uint32_t DEDT3            : 1;
+						uint32_t DEDT4            : 1; /// Driver Enable de-assertion time
+						uint32_t DEAT0            : 1;
+						uint32_t DEAT1            : 1;
+						uint32_t DEAT2            : 1;
+						uint32_t DEAT3            : 1;
+						uint32_t DEAT4            : 1; /// Driver Enable assertion time
+						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
+						uint32_t EOBIE            : 1; /// End of Block interrupt enable
+						uint32_t M1               : 1; /// Word length
+						uint32_t FIFOEN           : 1; /// FIFO mode enable
+						uint32_t TXFEIE           : 1; /// TXFIFO empty interrupt enable
+						uint32_t RXFFIE           : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_6
+					struct
+					{
+						uint32_t UE               : 1; /// USART enable
+						uint32_t UESM             : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t M0               : 1; /// Word length
+						uint32_t MME              : 1; /// Mute mode enable
+						uint32_t CMIE             : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t DEDT             : 5;
+						uint32_t DEAT             : 5;
+						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
+						uint32_t EOBIE            : 1; /// End of Block interrupt enable
+						uint32_t M1               : 1; /// Word length
+						uint32_t FIFOEN           : 1; /// FIFO mode enable
+						uint32_t TXFEIE           : 1; /// TXFIFO empty interrupt enable
+						uint32_t RXFFIE           : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+				};
+				
+			};
+			struct CR2_t: public Reg32_t /// Control register 2
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
 					#ifdef USART_CR2_2
 					struct
 					{
@@ -1911,11 +2676,43 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR3_t
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
 					#ifdef USART_CR3_1
 					struct
 					{
@@ -2047,11 +2844,21 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct BRR_t
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_BRR_0
+					struct
+					{
+						uint32_t BRR_0_3          : 4; /// DIV_Fraction
+						uint32_t BRR_4_15         : 12; /// DIV_Mantissa
+						uint32_t                  : 16;
+					};
+					#endif
 					#ifdef USART_BRR_1
 					struct
 					{
@@ -2065,6 +2872,21 @@ namespace sool {
 					{
 						uint32_t BRR0_3           : 4; /// BRR
 						uint32_t BRR4_15          : 12; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_4
+					struct
+					{
+						uint32_t DIV_Fraction     : 4; /// fraction of USARTDIV
+						uint32_t DIV_Mantissa     : 12; /// mantissa of USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
 						uint32_t                  : 16;
 					};
 					#endif
@@ -2084,46 +2906,128 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct GTPR_t
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
 			{
-				#ifdef USART_GTPR_1
-				struct
-				{
-					uint32_t PSC              : 8; /// Prescaler value
-					uint32_t GT               : 8; /// Guard time value
-					uint32_t                  : 16;
-				};
-				#endif
-			};
-			struct RTOR_t
-			{
-				#ifdef USART_RTOR_1
-				struct
-				{
-					uint32_t RTO              : 24; /// Receiver timeout value
-					uint32_t BLEN             : 8; /// Block Length
-				};
-				#endif
-			};
-			struct RQR_t
-			{
-				#ifdef USART_RQR_1
-				struct
-				{
-					uint32_t ABRRQ            : 1; /// Auto baud rate request
-					uint32_t SBKRQ            : 1; /// Send break request
-					uint32_t MMRQ             : 1; /// Mute mode request
-					uint32_t RXFRQ            : 1; /// Receive data flush request
-					uint32_t TXFRQ            : 1; /// Transmit data flush request
-					uint32_t                  : 27;
-				};
-				#endif
-			};
-			struct ISR_t
-			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_GTPR_0
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_GTPR_1
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RTOR_0
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+					#ifdef USART_RTOR_1
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef USART_RQR_1
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
 					#ifdef USART_ISR_1
 					struct
 					{
@@ -2253,11 +3157,47 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ICR_t
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_1
+					struct
+					{
+						uint32_t                  : 7;
+						uint32_t TCBGTC           : 1; /// Transmission complete before Guard time clear flag
+						uint32_t                  : 24;
+					};
+					#endif
 					#ifdef USART_ICR_2
 					struct
 					{
@@ -2330,50 +3270,136 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct PRESC_t
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
 			{
-				#ifdef USART_PRESC_1
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PRESCALER        : 4; /// Clock prescaler
-					uint32_t                  : 28;
+					#ifdef USART_PRESC_0
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef USART_PRESC_1
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
 				};
-				#endif
+				
 			};
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
 			{
-				#ifdef USART_SR_0
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PE               : 1; /// Parity error
-					uint32_t FE               : 1; /// Framing error
-					uint32_t NF               : 1; /// Noise detected flag
-					uint32_t ORE              : 1; /// Overrun error
-					uint32_t IDLE             : 1; /// IDLE line detected
-					uint32_t RXNE             : 1; /// Read data register not empty
-					uint32_t TC               : 1; /// Transmission complete
-					uint32_t TXE              : 1; /// Transmit data register empty
-					uint32_t LBD              : 1; /// LIN break detection flag
-					uint32_t CTS              : 1; /// CTS flag
-					uint32_t                  : 22;
+					#ifdef USART_SR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
+					#ifdef USART_SR_2
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
 				};
-				#endif
+				
 			};
+			#endif
 		};
 		#endif
 		#ifdef USART_USART_tmpl_3
-		struct USART_tmpl_3 /// specific fields for USART5, USART4, UART4 
+		struct USART_tmpl_3 /// fields used by UART4 
 		{
-			struct CR1_t
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR1_0
+					struct
+					{
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_1
+					struct
+					{
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
+						uint32_t                  : 2;
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
+					};
+					#endif
 					#ifdef USART_CR1_2
 					struct
 					{
@@ -2446,41 +3472,54 @@ namespace sool {
 						uint32_t RXFFIE           : 1; /// RXFIFO Full interrupt enable
 					};
 					#endif
-					#ifdef USART_CR1_6
-					struct
-					{
-						uint32_t UE               : 1; /// USART enable
-						uint32_t UESM             : 1; /// USART enable in Stop mode
-						uint32_t RE               : 1; /// Receiver enable
-						uint32_t TE               : 1; /// Transmitter enable
-						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
-						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
-						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
-						uint32_t TXEIE            : 1; /// interrupt enable
-						uint32_t PEIE             : 1; /// PE interrupt enable
-						uint32_t PS               : 1; /// Parity selection
-						uint32_t PCE              : 1; /// Parity control enable
-						uint32_t WAKE             : 1; /// Receiver wakeup method
-						uint32_t M0               : 1; /// Word length
-						uint32_t MME              : 1; /// Mute mode enable
-						uint32_t CMIE             : 1; /// Character match interrupt enable
-						uint32_t OVER8            : 1; /// Oversampling mode
-						uint32_t DEDT             : 5;
-						uint32_t DEAT             : 5;
-						uint32_t RTOIE            : 1; /// Receiver timeout interrupt enable
-						uint32_t EOBIE            : 1; /// End of Block interrupt enable
-						uint32_t M1               : 1; /// Word length
-						uint32_t FIFOEN           : 1; /// FIFO mode enable
-						uint32_t TXFEIE           : 1; /// TXFIFO empty interrupt enable
-						uint32_t RXFFIE           : 1; /// RXFIFO Full interrupt enable
-					};
-					#endif
 				};
+				
 			};
-			struct CR2_t
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
 					#ifdef USART_CR2_2
 					struct
 					{
@@ -2550,40 +3589,44 @@ namespace sool {
 						uint32_t                  : 17;
 					};
 					#endif
-					#ifdef USART_CR2_8
-					struct
-					{
-						uint32_t SLVEN            : 1; /// Synchronous Slave mode enable
-						uint32_t                  : 2;
-						uint32_t DIS_NSS          : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
-						uint32_t ADDM7            : 1; /// 7-bit Address Detection/4-bit Address Detection
-						uint32_t LBDL             : 1; /// LIN break detection length
-						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
-						uint32_t                  : 1;
-						uint32_t LBCL             : 1; /// Last bit clock pulse
-						uint32_t CPHA             : 1; /// Clock phase
-						uint32_t CPOL             : 1; /// Clock polarity
-						uint32_t CLKEN            : 1; /// Clock enable
-						uint32_t STOP             : 2; /// STOP bits
-						uint32_t LINEN            : 1; /// LIN mode enable
-						uint32_t SWAP             : 1; /// Swap TX/RX pins
-						uint32_t RXINV            : 1; /// RX pin active level inversion
-						uint32_t TXINV            : 1; /// TX pin active level inversion
-						uint32_t DATAINV          : 1; /// Binary data inversion
-						uint32_t MSBFIRST         : 1; /// Most significant bit first
-						uint32_t ABREN            : 1; /// Auto baud rate enable
-						uint32_t ABRMOD           : 2; /// Auto baud rate mode
-						uint32_t RTOEN            : 1; /// Receiver timeout enable
-						uint32_t ADD0_3           : 4; /// Address of the USART node
-						uint32_t ADD4_7           : 4; /// Address of the USART node
-					};
-					#endif
 				};
+				
 			};
-			struct CR3_t
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
 					#ifdef USART_CR3_1
 					struct
 					{
@@ -2656,11 +3699,21 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct BRR_t
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_BRR_0
+					struct
+					{
+						uint32_t BRR_0_3          : 4; /// DIV_Fraction
+						uint32_t BRR_4_15         : 12; /// DIV_Mantissa
+						uint32_t                  : 16;
+					};
+					#endif
 					#ifdef USART_BRR_1
 					struct
 					{
@@ -2677,55 +3730,144 @@ namespace sool {
 						uint32_t                  : 16;
 					};
 					#endif
-					#ifdef USART_BRR_7
+					#ifdef USART_BRR_4
 					struct
 					{
-						uint32_t BRR_0_3          : 4;
-						uint32_t BRR_4_15         : 12;
+						uint32_t DIV_Fraction     : 4; /// fraction of USARTDIV
+						uint32_t DIV_Mantissa     : 12; /// mantissa of USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
 						uint32_t                  : 16;
 					};
 					#endif
 				};
+				
 			};
-			struct GTPR_t
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
 			{
-				#ifdef USART_GTPR_1
-				struct
-				{
-					uint32_t PSC              : 8; /// Prescaler value
-					uint32_t GT               : 8; /// Guard time value
-					uint32_t                  : 16;
-				};
-				#endif
-			};
-			struct RTOR_t
-			{
-				#ifdef USART_RTOR_1
-				struct
-				{
-					uint32_t RTO              : 24; /// Receiver timeout value
-					uint32_t BLEN             : 8; /// Block Length
-				};
-				#endif
-			};
-			struct RQR_t
-			{
-				#ifdef USART_RQR_1
-				struct
-				{
-					uint32_t ABRRQ            : 1; /// Auto baud rate request
-					uint32_t SBKRQ            : 1; /// Send break request
-					uint32_t MMRQ             : 1; /// Mute mode request
-					uint32_t RXFRQ            : 1; /// Receive data flush request
-					uint32_t TXFRQ            : 1; /// Transmit data flush request
-					uint32_t                  : 27;
-				};
-				#endif
-			};
-			struct ISR_t
-			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_GTPR_0
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_GTPR_1
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RTOR_0
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+					#ifdef USART_RTOR_1
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef USART_RQR_1
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
 					#ifdef USART_ISR_1
 					struct
 					{
@@ -2824,11 +3966,47 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ICR_t
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_1
+					struct
+					{
+						uint32_t                  : 7;
+						uint32_t TCBGTC           : 1; /// Transmission complete before Guard time clear flag
+						uint32_t                  : 24;
+					};
+					#endif
 					#ifdef USART_ICR_2
 					struct
 					{
@@ -2901,49 +4079,135 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct PRESC_t
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
 			{
-				#ifdef USART_PRESC_1
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PRESCALER        : 4; /// Clock prescaler
-					uint32_t                  : 28;
+					#ifdef USART_PRESC_0
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef USART_PRESC_1
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
 				};
-				#endif
+				
 			};
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
 			{
-				#ifdef USART_SR_1
-				struct
+				using Reg32_t::operator=;
+				union
 				{
-					uint32_t PE               : 1; /// Parity error
-					uint32_t FE               : 1; /// Framing error
-					uint32_t NF               : 1; /// Noise detected flag
-					uint32_t ORE              : 1; /// Overrun error
-					uint32_t IDLE             : 1; /// IDLE line detected
-					uint32_t RXNE             : 1; /// Read data register not empty
-					uint32_t TC               : 1; /// Transmission complete
-					uint32_t TXE              : 1; /// Transmit data register empty
-					uint32_t LBD              : 1; /// LIN break detection flag
-					uint32_t                  : 23;
+					#ifdef USART_SR_1
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t                  : 23;
+					};
+					#endif
+					#ifdef USART_SR_2
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// IDLE line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBD              : 1; /// LIN break detection flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t                  : 22;
+					};
+					#endif
 				};
-				#endif
+				
 			};
+			#endif
 		};
 		#endif
 		#ifdef USART_USART_tmpl_4
-		struct USART_tmpl_4 /// specific fields for USART1 
+		struct USART_tmpl_4 /// fields used by USART1 
 		{
-			struct CR1_t
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR1_0
+					struct
+					{
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_1
+					struct
+					{
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
+						uint32_t                  : 2;
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
+					};
+					#endif
 					#ifdef USART_CR1_2
 					struct
 					{
@@ -3046,11 +4310,53 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR2_t
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
 					#ifdef USART_CR2_2
 					struct
 					{
@@ -3136,11 +4442,43 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR3_t
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
 					#ifdef USART_CR3_1
 					struct
 					{
@@ -3254,9 +4592,11 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct BRR_t
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
+				using Reg32_t::operator=;
 				union
 				{
 					#ifdef USART_BRR_1
@@ -3275,6 +4615,21 @@ namespace sool {
 						uint32_t                  : 16;
 					};
 					#endif
+					#ifdef USART_BRR_4
+					struct
+					{
+						uint32_t DIV_Fraction     : 4; /// fraction of USARTDIV
+						uint32_t DIV_Mantissa     : 12; /// mantissa of USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
 					#ifdef USART_BRR_7
 					struct
 					{
@@ -3284,46 +4639,128 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct GTPR_t
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
 			{
-				#ifdef USART_GTPR_1
-				struct
-				{
-					uint32_t PSC              : 8; /// Prescaler value
-					uint32_t GT               : 8; /// Guard time value
-					uint32_t                  : 16;
-				};
-				#endif
-			};
-			struct RTOR_t
-			{
-				#ifdef USART_RTOR_1
-				struct
-				{
-					uint32_t RTO              : 24; /// Receiver timeout value
-					uint32_t BLEN             : 8; /// Block Length
-				};
-				#endif
-			};
-			struct RQR_t
-			{
-				#ifdef USART_RQR_1
-				struct
-				{
-					uint32_t ABRRQ            : 1; /// Auto baud rate request
-					uint32_t SBKRQ            : 1; /// Send break request
-					uint32_t MMRQ             : 1; /// Mute mode request
-					uint32_t RXFRQ            : 1; /// Receive data flush request
-					uint32_t TXFRQ            : 1; /// Transmit data flush request
-					uint32_t                  : 27;
-				};
-				#endif
-			};
-			struct ISR_t
-			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_GTPR_0
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+					#ifdef USART_GTPR_1
+					struct
+					{
+						uint32_t PSC              : 8; /// Prescaler value
+						uint32_t GT               : 8; /// Guard time value
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RTOR_0
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+					#ifdef USART_RTOR_1
+					struct
+					{
+						uint32_t RTO              : 24; /// Receiver timeout value
+						uint32_t BLEN             : 8; /// Block Length
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+					#ifdef USART_RQR_1
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
 					#ifdef USART_ISR_1
 					struct
 					{
@@ -3453,11 +4890,39 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ICR_t
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
 					#ifdef USART_ICR_2
 					struct
 					{
@@ -3530,32 +4995,117 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct PRESC_t
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
 			{
-				#ifdef USART_PRESC_1
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_PRESC_0
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef USART_PRESC_1
+					struct
+					{
+						uint32_t PRESCALER        : 4; /// Clock prescaler
+						uint32_t                  : 28;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_SR_2
 				struct
 				{
-					uint32_t PRESCALER        : 4; /// Clock prescaler
-					uint32_t                  : 28;
+					uint32_t PE               : 1; /// Parity error
+					uint32_t FE               : 1; /// Framing error
+					uint32_t NF               : 1; /// Noise detected flag
+					uint32_t ORE              : 1; /// Overrun error
+					uint32_t IDLE             : 1; /// IDLE line detected
+					uint32_t RXNE             : 1; /// Read data register not empty
+					uint32_t TC               : 1; /// Transmission complete
+					uint32_t TXE              : 1; /// Transmit data register empty
+					uint32_t LBD              : 1; /// LIN break detection flag
+					uint32_t CTS              : 1; /// CTS flag
+					uint32_t                  : 22;
 				};
 				#endif
+				
 			};
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t { };
+			#endif
 		};
 		#endif
 		#ifdef USART_USART_tmpl_5
-		struct USART_tmpl_5 /// specific fields for LPUART, LPUART1, LPUSART1 
+		struct USART_tmpl_5 /// fields used by LPUSART1, LPUART1, LPUART 
 		{
-			struct CR1_t
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR1_0
+					struct
+					{
+						uint32_t USART_CR1_0_UE   : 1; /// USART enable
+						uint32_t USART_CR1_0_UESM : 1; /// USART enable in Stop mode
+						uint32_t RE               : 1; /// Receiver enable
+						uint32_t TE               : 1; /// Transmitter enable
+						uint32_t IDLEIE           : 1; /// IDLE interrupt enable
+						uint32_t RXNEIE           : 1; /// RXNE interrupt enable
+						uint32_t TCIE             : 1; /// Transmission complete interrupt enable
+						uint32_t TXEIE            : 1; /// interrupt enable
+						uint32_t PEIE             : 1; /// PE interrupt enable
+						uint32_t PS               : 1; /// Parity selection
+						uint32_t PCE              : 1; /// Parity control enable
+						uint32_t WAKE             : 1; /// Receiver wakeup method
+						uint32_t USART_CR1_0_M0   : 1; /// Word length
+						uint32_t USART_CR1_0_MME  : 1; /// Mute mode enable
+						uint32_t USART_CR1_0_CMIE : 1; /// Character match interrupt enable
+						uint32_t OVER8            : 1; /// Oversampling mode
+						uint32_t USART_CR1_0_DEDT : 5; /// Driver Enable deassertion time
+						uint32_t USART_CR1_0_DEAT : 5; /// Driver Enable assertion time
+						uint32_t USART_CR1_0_RTOIE : 1; /// Receiver timeout interrupt enable
+						uint32_t USART_CR1_0_EOBIE : 1; /// End of Block interrupt enable
+						uint32_t USART_CR1_0_M1   : 1; /// Word length
+						uint32_t USART_CR1_0_FIFOEN : 1; /// FIFO mode enable
+						uint32_t USART_CR1_0_TXFEIE : 1; /// TXFIFO empty interrupt enable
+						uint32_t USART_CR1_0_RXFFIE : 1; /// RXFIFO Full interrupt enable
+					};
+					#endif
+					#ifdef USART_CR1_1
+					struct
+					{
+						uint32_t USART_CR1_1_SBK  : 1; /// Send break
+						uint32_t USART_CR1_1_RWU  : 1; /// Receiver wakeup
+						uint32_t                  : 10;
+						uint32_t USART_CR1_1_M    : 1; /// Word length
+						uint32_t USART_CR1_1_UE   : 1; /// USART enable
+						uint32_t                  : 2;
+						uint32_t USART_CR1_1_DEDT0 : 1;
+						uint32_t USART_CR1_1_DEDT1 : 1;
+						uint32_t USART_CR1_1_DEDT2 : 1;
+						uint32_t USART_CR1_1_DEDT3 : 1;
+						uint32_t USART_CR1_1_DEDT4 : 1; /// Driver Enable de-assertion time
+						uint32_t USART_CR1_1_DEAT0 : 1;
+						uint32_t USART_CR1_1_DEAT1 : 1;
+						uint32_t USART_CR1_1_DEAT2 : 1;
+						uint32_t USART_CR1_1_DEAT3 : 1;
+						uint32_t USART_CR1_1_DEAT4 : 1; /// Driver Enable assertion time
+						uint32_t                  : 6;
+					};
+					#endif
 					#ifdef USART_CR1_3
 					struct
 					{
@@ -3655,11 +5205,53 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR2_t
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR2_0
+					struct
+					{
+						uint32_t USART_CR2_0_SLVEN : 1; /// Synchronous Slave mode enable
+						uint32_t                  : 2;
+						uint32_t USART_CR2_0_DIS_NSS : 1; /// When the DSI_NSS bit is set, the NSS pin input will be ignored
+						uint32_t USART_CR2_0_ADDM7 : 1; /// 7-bit Address Detection/4-bit Address Detection
+						uint32_t LBDL             : 1; /// LIN break detection length
+						uint32_t LBDIE            : 1; /// LIN break detection interrupt enable
+						uint32_t                  : 1;
+						uint32_t LBCL             : 1; /// Last bit clock pulse
+						uint32_t CPHA             : 1; /// Clock phase
+						uint32_t CPOL             : 1; /// Clock polarity
+						uint32_t CLKEN            : 1; /// Clock enable
+						uint32_t STOP             : 2; /// STOP bits
+						uint32_t LINEN            : 1; /// LIN mode enable
+						uint32_t USART_CR2_0_SWAP : 1; /// Swap TX/RX pins
+						uint32_t USART_CR2_0_RXINV : 1; /// RX pin active level inversion
+						uint32_t USART_CR2_0_TXINV : 1; /// TX pin active level inversion
+						uint32_t USART_CR2_0_DATAINV : 1; /// Binary data inversion
+						uint32_t USART_CR2_0_MSBFIRST : 1; /// Most significant bit first
+						uint32_t USART_CR2_0_ABREN : 1; /// Auto baud rate enable
+						uint32_t USART_CR2_0_ABRMOD : 2; /// Auto baud rate mode
+						uint32_t USART_CR2_0_RTOEN : 1; /// Receiver timeout enable
+						uint32_t USART_CR2_0_ADD0_3 : 4; /// Address of the USART node
+						uint32_t USART_CR2_0_ADD4_7 : 4; /// Address of the USART node
+					};
+					#endif
+					#ifdef USART_CR2_1
+					struct
+					{
+						uint32_t USART_CR2_1_ADD  : 4; /// Address of the USART node
+						uint32_t                  : 17;
+						uint32_t USART_CR2_1_ABRMOD0 : 1;
+						uint32_t USART_CR2_1_ABRMOD1 : 1; /// Auto baud rate mode
+						uint32_t                  : 1;
+						uint32_t USART_CR2_1_ADD0 : 4; /// Address of the USART node
+						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
+					};
+					#endif
 					#ifdef USART_CR2_3
 					struct
 					{
@@ -3698,11 +5290,43 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct CR3_t
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_CR3_0
+					struct
+					{
+						uint32_t EIE              : 1; /// Error interrupt enable
+						uint32_t IREN             : 1; /// Ir mode enable
+						uint32_t IRLP             : 1; /// Ir low-power
+						uint32_t HDSEL            : 1; /// Half-duplex selection
+						uint32_t NACK             : 1; /// Smartcard NACK enable
+						uint32_t SCEN             : 1; /// Smartcard mode enable
+						uint32_t DMAR             : 1; /// DMA enable receiver
+						uint32_t DMAT             : 1; /// DMA enable transmitter
+						uint32_t RTSE             : 1; /// RTS enable
+						uint32_t CTSE             : 1; /// CTS enable
+						uint32_t CTSIE            : 1; /// CTS interrupt enable
+						uint32_t ONEBIT           : 1; /// One sample bit method enable
+						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+						uint32_t                  : 1;
+						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
+					};
+					#endif
 					#ifdef USART_CR3_2
 					struct
 					{
@@ -3802,23 +5426,74 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct BRR_t
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
-				#ifdef USART_BRR_2
-				struct
-				{
-					uint32_t BRR              : 20;
-					uint32_t                  : 12;
-				};
-				#endif
-			};
-			struct GTPR_t { };
-			struct RTOR_t { };
-			struct RQR_t
-			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_BRR_2
+					struct
+					{
+						uint32_t BRR              : 20;
+						uint32_t                  : 12;
+					};
+					#endif
+					#ifdef USART_BRR_5
+					struct
+					{
+						uint32_t BRR              : 16; /// USARTDIV
+						uint32_t                  : 16;
+					};
+					#endif
+				};
+				
+			};
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_GTPR_0
+				struct
+				{
+					uint32_t PSC              : 8; /// Prescaler value
+					uint32_t GT               : 8; /// Guard time value
+					uint32_t                  : 16;
+				};
+				#endif
+				
+			};
+			#ifdef USART_RTOR
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_RTOR_0
+				struct
+				{
+					uint32_t RTO              : 24; /// Receiver timeout value
+					uint32_t BLEN             : 8; /// Block Length
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_RQR
+			struct RQR_t: public Reg32_t /// Request register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_RQR_0
+					struct
+					{
+						uint32_t ABRRQ            : 1; /// Auto baud rate request
+						uint32_t SBKRQ            : 1; /// Send break request
+						uint32_t MMRQ             : 1; /// Mute mode request
+						uint32_t RXFRQ            : 1; /// Receive data flush request
+						uint32_t TXFRQ            : 1; /// Transmit data flush request
+						uint32_t                  : 27;
+					};
+					#endif
 					#ifdef USART_RQR_2
 					struct
 					{
@@ -3841,11 +5516,49 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ISR_t
+			#endif
+			#ifdef USART_ISR
+			struct ISR_t: public Reg32_t /// Interrupt & status register
 			{
+				using Reg32_t::operator=;
 				union
 				{
+					#ifdef USART_ISR_0
+					struct
+					{
+						uint32_t PE               : 1; /// Parity error
+						uint32_t FE               : 1; /// Framing error
+						uint32_t NF               : 1; /// Noise detected flag
+						uint32_t ORE              : 1; /// Overrun error
+						uint32_t IDLE             : 1; /// Idle line detected
+						uint32_t RXNE             : 1; /// Read data register not empty
+						uint32_t TC               : 1; /// Transmission complete
+						uint32_t TXE              : 1; /// Transmit data register empty
+						uint32_t LBDF             : 1; /// LIN break detection flag
+						uint32_t CTSIF            : 1; /// CTS interrupt flag
+						uint32_t CTS              : 1; /// CTS flag
+						uint32_t RTOF             : 1; /// Receiver timeout
+						uint32_t EOBF             : 1; /// End of block flag
+						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+						uint32_t ABRE             : 1; /// Auto baud rate error
+						uint32_t ABRF             : 1; /// Auto baud rate flag
+						uint32_t BUSY             : 1; /// Busy flag
+						uint32_t CMF              : 1; /// character match flag
+						uint32_t SBKF             : 1; /// Send break flag
+						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+						uint32_t                  : 4;
+					};
+					#endif
 					#ifdef USART_ISR_2
 					struct
 					{
@@ -3902,32 +5615,80 @@ namespace sool {
 					};
 					#endif
 				};
+				
 			};
-			struct ICR_t
+			#endif
+			#ifdef USART_ICR
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
-				#ifdef USART_ICR_3
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef USART_ICR_0
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t USART_ICR_0_TXFECF : 1; /// TXFIFO empty clear flag
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t USART_ICR_0_TCBGTCF : 1; /// Transmission complete before Guard time clear flag
+						uint32_t LBDCF            : 1; /// LIN break detection clear flag
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 1;
+						uint32_t RTOCF            : 1; /// Receiver timeout clear flag
+						uint32_t EOBCF            : 1; /// End of block clear flag
+						uint32_t USART_ICR_0_UDRCF : 1; /// SPI slave underrun clear flag
+						uint32_t                  : 3;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t USART_ICR_0_WUCF : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+					#ifdef USART_ICR_3
+					struct
+					{
+						uint32_t PECF             : 1; /// Parity error clear flag
+						uint32_t FECF             : 1; /// Framing error clear flag
+						uint32_t NCF              : 1; /// Noise detected clear flag
+						uint32_t ORECF            : 1; /// Overrun error clear flag
+						uint32_t IDLECF           : 1; /// Idle line detected clear flag
+						uint32_t                  : 1;
+						uint32_t TCCF             : 1; /// Transmission complete clear flag
+						uint32_t                  : 2;
+						uint32_t CTSCF            : 1; /// CTS clear flag
+						uint32_t                  : 7;
+						uint32_t CMCF             : 1; /// Character match clear flag
+						uint32_t                  : 2;
+						uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
+						uint32_t                  : 11;
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_PRESC_0
 				struct
 				{
-					uint32_t PECF             : 1; /// Parity error clear flag
-					uint32_t FECF             : 1; /// Framing error clear flag
-					uint32_t NCF              : 1; /// Noise detected clear flag
-					uint32_t ORECF            : 1; /// Overrun error clear flag
-					uint32_t IDLECF           : 1; /// Idle line detected clear flag
-					uint32_t                  : 1;
-					uint32_t TCCF             : 1; /// Transmission complete clear flag
-					uint32_t                  : 2;
-					uint32_t CTSCF            : 1; /// CTS clear flag
-					uint32_t                  : 7;
-					uint32_t CMCF             : 1; /// Character match clear flag
-					uint32_t                  : 2;
-					uint32_t WUCF             : 1; /// Wakeup from Stop mode clear flag
-					uint32_t                  : 11;
+					uint32_t PRESCALER        : 4; /// Clock prescaler
+					uint32_t                  : 28;
 				};
 				#endif
+				
 			};
-			struct PRESC_t { };
-			struct HWCFGR2_t
+			#endif
+			#ifdef USART_HWCFGR2
+			struct HWCFGR2_t: public Reg32_t /// USART Hardware Configuration register 2
 			{
+				using Reg32_t::operator=;
 				#ifdef USART_HWCFGR2_1
 				struct
 				{
@@ -3936,9 +5697,13 @@ namespace sool {
 					uint32_t                  : 24;
 				};
 				#endif
+				
 			};
-			struct HWCFGR1_t
+			#endif
+			#ifdef USART_HWCFGR1
+			struct HWCFGR1_t: public Reg32_t /// USART Hardware Configuration register 1
 			{
+				using Reg32_t::operator=;
 				#ifdef USART_HWCFGR1_1
 				struct
 				{
@@ -3952,9 +5717,13 @@ namespace sool {
 					uint32_t CFG8             : 4; /// LUART hardware configuration 2
 				};
 				#endif
+				
 			};
-			struct VERR_t
+			#endif
+			#ifdef USART_VERR
+			struct VERR_t: public Reg32_t /// EXTI IP Version register
 			{
+				using Reg32_t::operator=;
 				#ifdef USART_VERR_1
 				struct
 				{
@@ -3963,53 +5732,40 @@ namespace sool {
 					uint32_t                  : 24;
 				};
 				#endif
+				
 			};
-			struct IPIDR_t
+			#endif
+			#ifdef USART_IPIDR
+			struct IPIDR_t: public Reg32_t /// EXTI Identification register
 			{
+				using Reg32_t::operator=;
 				#ifdef USART_IPIDR_1
 				struct
 				{
 					uint32_t IPID             : 32; /// IP Identification
 				};
 				#endif
+				
 			};
-			struct SIDR_t
+			#endif
+			#ifdef USART_SIDR
+			struct SIDR_t: public Reg32_t /// EXTI Size ID register
 			{
+				using Reg32_t::operator=;
 				#ifdef USART_SIDR_1
 				struct
 				{
 					uint32_t SID              : 32; /// Size Identification
 				};
 				#endif
+				
 			};
-			struct SR_t { };
+			#endif
 		};
 		#endif
 		struct USART_tmpl_default /// default template for USART 
 		{
-			struct CR1_t { };
-			struct CR2_t { };
-			struct CR3_t { };
-			struct BRR_t { };
-			struct GTPR_t { };
-			struct RTOR_t { };
-			struct RQR_t { };
-			struct ISR_t { };
-			struct ICR_t { };
-			struct PRESC_t { };
-			struct HWCFGR2_t { };
-			struct HWCFGR1_t { };
-			struct VERR_t { };
-			struct IPIDR_t { };
-			struct SIDR_t { };
-			struct SR_t { };
-		};
-		template<typename tmpl=USART_tmpl_default>
-		class USART /// universal synchronous asynchronous receiver transmitter
-		{
-		public:
-			
-			struct CR1_t: Reg32_t /// Control register 1
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -4065,11 +5821,10 @@ namespace sool {
 						uint32_t                  : 6;
 					};
 					#endif
-					tmpl::CR1_t;
 				};
 				
 			};
-			struct CR2_t: Reg32_t /// Control register 2
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
 				using Reg32_t::operator=;
 				union
@@ -4114,50 +5869,45 @@ namespace sool {
 						uint32_t USART_CR2_1_ADD4 : 4; /// Address of the USART node
 					};
 					#endif
-					tmpl::CR2_t;
 				};
 				
 			};
-			struct CR3_t: Reg32_t /// Control register 3
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
 				using Reg32_t::operator=;
-				union
+				#ifdef USART_CR3_0
+				struct
 				{
-					#ifdef USART_CR3_0
-					struct
-					{
-						uint32_t EIE              : 1; /// Error interrupt enable
-						uint32_t IREN             : 1; /// Ir mode enable
-						uint32_t IRLP             : 1; /// Ir low-power
-						uint32_t HDSEL            : 1; /// Half-duplex selection
-						uint32_t NACK             : 1; /// Smartcard NACK enable
-						uint32_t SCEN             : 1; /// Smartcard mode enable
-						uint32_t DMAR             : 1; /// DMA enable receiver
-						uint32_t DMAT             : 1; /// DMA enable transmitter
-						uint32_t RTSE             : 1; /// RTS enable
-						uint32_t CTSE             : 1; /// CTS enable
-						uint32_t CTSIE            : 1; /// CTS interrupt enable
-						uint32_t ONEBIT           : 1; /// One sample bit method enable
-						uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
-						uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
-						uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
-						uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
-						uint32_t                  : 1;
-						uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
-						uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
-						uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
-						uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
-						uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
-						uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
-						uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
-						uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
-					};
-					#endif
-					tmpl::CR3_t;
+					uint32_t EIE              : 1; /// Error interrupt enable
+					uint32_t IREN             : 1; /// Ir mode enable
+					uint32_t IRLP             : 1; /// Ir low-power
+					uint32_t HDSEL            : 1; /// Half-duplex selection
+					uint32_t NACK             : 1; /// Smartcard NACK enable
+					uint32_t SCEN             : 1; /// Smartcard mode enable
+					uint32_t DMAR             : 1; /// DMA enable receiver
+					uint32_t DMAT             : 1; /// DMA enable transmitter
+					uint32_t RTSE             : 1; /// RTS enable
+					uint32_t CTSE             : 1; /// CTS enable
+					uint32_t CTSIE            : 1; /// CTS interrupt enable
+					uint32_t ONEBIT           : 1; /// One sample bit method enable
+					uint32_t USART_CR3_0_OVRDIS : 1; /// Overrun Disable
+					uint32_t USART_CR3_0_DDRE : 1; /// DMA Disable on Reception Error
+					uint32_t USART_CR3_0_DEM  : 1; /// Driver enable mode
+					uint32_t USART_CR3_0_DEP  : 1; /// Driver enable polarity selection
+					uint32_t                  : 1;
+					uint32_t USART_CR3_0_SCARCNT : 3; /// Smartcard auto-retry count
+					uint32_t USART_CR3_0_WUS  : 2; /// Wakeup from Stop mode interrupt flag selection
+					uint32_t USART_CR3_0_WUFIE : 1; /// Wakeup from Stop mode interrupt enable
+					uint32_t USART_CR3_0_TXFTIE : 1; /// threshold interrupt enable
+					uint32_t USART_CR3_0_TCBGTIE : 1; /// Tr Complete before guard time, interrupt enable
+					uint32_t USART_CR3_0_RXFTCFG : 3; /// Receive FIFO threshold configuration
+					uint32_t USART_CR3_0_RXFTIE : 1; /// RXFIFO threshold interrupt enable
+					uint32_t USART_CR3_0_TXFTCFG : 3; /// TXFIFO threshold configuration
 				};
+				#endif
 				
 			};
-			struct BRR_t: Reg32_t /// Baud rate register
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
 				using Reg32_t::operator=;
 				union
@@ -4185,114 +5935,97 @@ namespace sool {
 						uint32_t                  : 16;
 					};
 					#endif
-					tmpl::BRR_t;
 				};
 				
 			};
-			struct GTPR_t: Reg32_t /// Guard time and prescaler register
+			struct GTPR_t: public Reg32_t /// Guard time and prescaler register
 			{
 				using Reg32_t::operator=;
-				union
+				#ifdef USART_GTPR_0
+				struct
 				{
-					#ifdef USART_GTPR_0
-					struct
-					{
-						uint32_t PSC              : 8; /// Prescaler value
-						uint32_t GT               : 8; /// Guard time value
-						uint32_t                  : 16;
-					};
-					#endif
-					tmpl::GTPR_t;
+					uint32_t PSC              : 8; /// Prescaler value
+					uint32_t GT               : 8; /// Guard time value
+					uint32_t                  : 16;
 				};
+				#endif
 				
 			};
 			#ifdef USART_RTOR
-			struct RTOR_t: Reg32_t /// Receiver timeout register
+			struct RTOR_t: public Reg32_t /// Receiver timeout register
 			{
 				using Reg32_t::operator=;
-				union
+				#ifdef USART_RTOR_0
+				struct
 				{
-					#ifdef USART_RTOR_0
-					struct
-					{
-						uint32_t RTO              : 24; /// Receiver timeout value
-						uint32_t BLEN             : 8; /// Block Length
-					};
-					#endif
-					tmpl::RTOR_t;
+					uint32_t RTO              : 24; /// Receiver timeout value
+					uint32_t BLEN             : 8; /// Block Length
 				};
+				#endif
 				
 			};
 			#endif
 			#ifdef USART_RQR
-			struct RQR_t: Reg32_t /// Request register
+			struct RQR_t: public Reg32_t /// Request register
 			{
 				using Reg32_t::operator=;
-				union
+				#ifdef USART_RQR_0
+				struct
 				{
-					#ifdef USART_RQR_0
-					struct
-					{
-						uint32_t ABRRQ            : 1; /// Auto baud rate request
-						uint32_t SBKRQ            : 1; /// Send break request
-						uint32_t MMRQ             : 1; /// Mute mode request
-						uint32_t RXFRQ            : 1; /// Receive data flush request
-						uint32_t TXFRQ            : 1; /// Transmit data flush request
-						uint32_t                  : 27;
-					};
-					#endif
-					tmpl::RQR_t;
+					uint32_t ABRRQ            : 1; /// Auto baud rate request
+					uint32_t SBKRQ            : 1; /// Send break request
+					uint32_t MMRQ             : 1; /// Mute mode request
+					uint32_t RXFRQ            : 1; /// Receive data flush request
+					uint32_t TXFRQ            : 1; /// Transmit data flush request
+					uint32_t                  : 27;
 				};
+				#endif
 				
 			};
 			#endif
 			#ifdef USART_ISR
-			struct ISR_t: Reg32_t /// Interrupt & status register
+			struct ISR_t: public Reg32_t /// Interrupt & status register
 			{
 				using Reg32_t::operator=;
-				union
+				#ifdef USART_ISR_0
+				struct
 				{
-					#ifdef USART_ISR_0
-					struct
-					{
-						uint32_t PE               : 1; /// Parity error
-						uint32_t FE               : 1; /// Framing error
-						uint32_t NF               : 1; /// Noise detected flag
-						uint32_t ORE              : 1; /// Overrun error
-						uint32_t IDLE             : 1; /// Idle line detected
-						uint32_t RXNE             : 1; /// Read data register not empty
-						uint32_t TC               : 1; /// Transmission complete
-						uint32_t TXE              : 1; /// Transmit data register empty
-						uint32_t LBDF             : 1; /// LIN break detection flag
-						uint32_t CTSIF            : 1; /// CTS interrupt flag
-						uint32_t CTS              : 1; /// CTS flag
-						uint32_t RTOF             : 1; /// Receiver timeout
-						uint32_t EOBF             : 1; /// End of block flag
-						uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
-						uint32_t ABRE             : 1; /// Auto baud rate error
-						uint32_t ABRF             : 1; /// Auto baud rate flag
-						uint32_t BUSY             : 1; /// Busy flag
-						uint32_t CMF              : 1; /// character match flag
-						uint32_t SBKF             : 1; /// Send break flag
-						uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
-						uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
-						uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
-						uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
-						uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
-						uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
-						uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
-						uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
-						uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
-						uint32_t                  : 4;
-					};
-					#endif
-					tmpl::ISR_t;
+					uint32_t PE               : 1; /// Parity error
+					uint32_t FE               : 1; /// Framing error
+					uint32_t NF               : 1; /// Noise detected flag
+					uint32_t ORE              : 1; /// Overrun error
+					uint32_t IDLE             : 1; /// Idle line detected
+					uint32_t RXNE             : 1; /// Read data register not empty
+					uint32_t TC               : 1; /// Transmission complete
+					uint32_t TXE              : 1; /// Transmit data register empty
+					uint32_t LBDF             : 1; /// LIN break detection flag
+					uint32_t CTSIF            : 1; /// CTS interrupt flag
+					uint32_t CTS              : 1; /// CTS flag
+					uint32_t RTOF             : 1; /// Receiver timeout
+					uint32_t EOBF             : 1; /// End of block flag
+					uint32_t USART_ISR_0_UDR  : 1; /// SPI slave underrun error flag
+					uint32_t ABRE             : 1; /// Auto baud rate error
+					uint32_t ABRF             : 1; /// Auto baud rate flag
+					uint32_t BUSY             : 1; /// Busy flag
+					uint32_t CMF              : 1; /// character match flag
+					uint32_t SBKF             : 1; /// Send break flag
+					uint32_t USART_ISR_0_RWU  : 1; /// Receiver wakeup from Mute mode
+					uint32_t USART_ISR_0_WUF  : 1; /// Wakeup from Stop mode flag
+					uint32_t TEACK            : 1; /// Transmit enable acknowledge flag
+					uint32_t USART_ISR_0_REACK : 1; /// Receive enable acknowledge flag
+					uint32_t USART_ISR_0_TXFE : 1; /// TXFIFO Empty
+					uint32_t USART_ISR_0_RXFF : 1; /// RXFIFO Full
+					uint32_t USART_ISR_0_TCBGT : 1; /// Transmission complete before guard time flag
+					uint32_t USART_ISR_0_RXFT : 1; /// RXFIFO threshold flag
+					uint32_t USART_ISR_0_TXFT : 1; /// TXFIFO threshold flag
+					uint32_t                  : 4;
 				};
+				#endif
 				
 			};
 			#endif
 			#ifdef USART_ICR
-			struct ICR_t: Reg32_t /// Interrupt flag clear register
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
 				using Reg32_t::operator=;
 				union
@@ -4329,13 +6062,131 @@ namespace sool {
 						uint32_t                  : 24;
 					};
 					#endif
-					tmpl::ICR_t;
 				};
 				
 			};
 			#endif
+			#ifdef USART_PRESC
+			struct PRESC_t: public Reg32_t /// Prescaler register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_PRESC_0
+				struct
+				{
+					uint32_t PRESCALER        : 4; /// Clock prescaler
+					uint32_t                  : 28;
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_HWCFGR2
+			struct HWCFGR2_t: public Reg32_t /// USART Hardware Configuration register 2
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_HWCFGR2_0
+				struct
+				{
+					uint32_t CFG1             : 4;
+					uint32_t CFG2             : 4;
+					uint32_t                  : 24;
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_HWCFGR1
+			struct HWCFGR1_t: public Reg32_t /// USART Hardware Configuration register 1
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_HWCFGR1_0
+				struct
+				{
+					uint32_t CFG1             : 4;
+					uint32_t CFG2             : 4;
+					uint32_t CFG3             : 4;
+					uint32_t CFG4             : 4;
+					uint32_t CFG5             : 4;
+					uint32_t CFG6             : 4;
+					uint32_t CFG7             : 4;
+					uint32_t CFG8             : 4;
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_VERR
+			struct VERR_t: public Reg32_t /// EXTI IP Version register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_VERR_0
+				struct
+				{
+					uint32_t MINREV           : 4; /// Minor Revision number
+					uint32_t MAJREV           : 4; /// Major Revision number
+					uint32_t                  : 24;
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_IPIDR
+			struct IPIDR_t: public Reg32_t /// EXTI Identification register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_IPIDR_0
+				struct
+				{
+					uint32_t IPID             : 32; /// IP Identification
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_SIDR
+			struct SIDR_t: public Reg32_t /// EXTI Size ID register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_SIDR_0
+				struct
+				{
+					uint32_t SID              : 32; /// Size Identification
+				};
+				#endif
+				
+			};
+			#endif
+			#ifdef USART_SR
+			struct SR_t: public Reg32_t /// Status register
+			{
+				using Reg32_t::operator=;
+				#ifdef USART_SR_2
+				struct
+				{
+					uint32_t PE               : 1; /// Parity error
+					uint32_t FE               : 1; /// Framing error
+					uint32_t NF               : 1; /// Noise detected flag
+					uint32_t ORE              : 1; /// Overrun error
+					uint32_t IDLE             : 1; /// IDLE line detected
+					uint32_t RXNE             : 1; /// Read data register not empty
+					uint32_t TC               : 1; /// Transmission complete
+					uint32_t TXE              : 1; /// Transmit data register empty
+					uint32_t LBD              : 1; /// LIN break detection flag
+					uint32_t CTS              : 1; /// CTS flag
+					uint32_t                  : 22;
+				};
+				#endif
+				
+			};
+			#endif
+		};
+		template<typename tmpl=USART_tmpl_default>
+		class USART /// universal synchronous asynchronous receiver transmitter
+		{
+		public:
+			
 			#ifdef USART_RDR
-			struct RDR_t: Reg32_t /// Receive data register
+			struct RDR_t: public Reg32_t /// Receive data register
 			{
 				using Reg32_t::operator=;
 				uint32_t RDR              : 9; /// Receive data value
@@ -4344,7 +6195,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef USART_TDR
-			struct TDR_t: Reg32_t /// Transmit data register
+			struct TDR_t: public Reg32_t /// Transmit data register
 			{
 				using Reg32_t::operator=;
 				uint32_t TDR              : 9; /// Transmit data value
@@ -4352,149 +6203,8 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef USART_PRESC
-			struct PRESC_t: Reg32_t /// Prescaler register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_PRESC_0
-					struct
-					{
-						uint32_t PRESCALER        : 4; /// Clock prescaler
-						uint32_t                  : 28;
-					};
-					#endif
-					tmpl::PRESC_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_HWCFGR2
-			struct HWCFGR2_t: Reg32_t /// USART Hardware Configuration register 2
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_HWCFGR2_0
-					struct
-					{
-						uint32_t CFG1             : 4;
-						uint32_t CFG2             : 4;
-						uint32_t                  : 24;
-					};
-					#endif
-					tmpl::HWCFGR2_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_HWCFGR1
-			struct HWCFGR1_t: Reg32_t /// USART Hardware Configuration register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_HWCFGR1_0
-					struct
-					{
-						uint32_t CFG1             : 4;
-						uint32_t CFG2             : 4;
-						uint32_t CFG3             : 4;
-						uint32_t CFG4             : 4;
-						uint32_t CFG5             : 4;
-						uint32_t CFG6             : 4;
-						uint32_t CFG7             : 4;
-						uint32_t CFG8             : 4;
-					};
-					#endif
-					tmpl::HWCFGR1_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_VERR
-			struct VERR_t: Reg32_t /// EXTI IP Version register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_VERR_0
-					struct
-					{
-						uint32_t MINREV           : 4; /// Minor Revision number
-						uint32_t MAJREV           : 4; /// Major Revision number
-						uint32_t                  : 24;
-					};
-					#endif
-					tmpl::VERR_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_IPIDR
-			struct IPIDR_t: Reg32_t /// EXTI Identification register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_IPIDR_0
-					struct
-					{
-						uint32_t IPID             : 32; /// IP Identification
-					};
-					#endif
-					tmpl::IPIDR_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_SIDR
-			struct SIDR_t: Reg32_t /// EXTI Size ID register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_SIDR_0
-					struct
-					{
-						uint32_t SID              : 32; /// Size Identification
-					};
-					#endif
-					tmpl::SIDR_t;
-				};
-				
-			};
-			#endif
-			#ifdef USART_SR
-			struct SR_t: Reg32_t /// Status register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef USART_SR_2
-					struct
-					{
-						uint32_t PE               : 1; /// Parity error
-						uint32_t FE               : 1; /// Framing error
-						uint32_t NF               : 1; /// Noise detected flag
-						uint32_t ORE              : 1; /// Overrun error
-						uint32_t IDLE             : 1; /// IDLE line detected
-						uint32_t RXNE             : 1; /// Read data register not empty
-						uint32_t TC               : 1; /// Transmission complete
-						uint32_t TXE              : 1; /// Transmit data register empty
-						uint32_t LBD              : 1; /// LIN break detection flag
-						uint32_t CTS              : 1; /// CTS flag
-						uint32_t                  : 22;
-					};
-					#endif
-					tmpl::SR_t;
-				};
-				
-			};
-			#endif
 			#ifdef USART_DR
-			struct DR_t: Reg32_t /// Data register
+			struct DR_t: public Reg32_t /// Data register
 			{
 				using Reg32_t::operator=;
 				uint32_t DR               : 9; /// Data value
@@ -4507,15 +6217,15 @@ namespace sool {
 				#ifdef USART_MAP0
 				struct
 				{
-					CR1_t CR1; /// Control register 1
-					CR2_t CR2; /// Control register 2
-					CR3_t CR3; /// Control register 3
-					BRR_t BRR; /// Baud rate register
-					GTPR_t GTPR; /// Guard time and prescaler register
-					RTOR_t RTOR; /// Receiver timeout register
-					RQR_t RQR; /// Request register
-					ISR_t ISR; /// Interrupt & status register
-					ICR_t ICR; /// Interrupt flag clear register
+					typename tmpl::CR1_t CR1; /// Control register 1
+					typename tmpl::CR2_t CR2; /// Control register 2
+					typename tmpl::CR3_t CR3; /// Control register 3
+					typename tmpl::BRR_t BRR; /// Baud rate register
+					typename tmpl::GTPR_t GTPR; /// Guard time and prescaler register
+					typename tmpl::RTOR_t RTOR; /// Receiver timeout register
+					typename tmpl::RQR_t RQR; /// Request register
+					typename tmpl::ISR_t ISR; /// Interrupt & status register
+					typename tmpl::ICR_t ICR; /// Interrupt flag clear register
 					RDR_t RDR; /// Receive data register
 					TDR_t TDR; /// Transmit data register
 					USART_MAP0_PRESC; /// Prescaler register
@@ -4536,13 +6246,13 @@ namespace sool {
 				#ifdef USART_MAP1
 				struct
 				{
-					SR_t SR; /// Status register
+					typename tmpl::SR_t SR; /// Status register
 					DR_t DR; /// Data register
-					BRR_t BRR; /// Baud rate register
-					CR1_t CR1; /// Control register 1
-					CR2_t CR2; /// Control register 2
-					CR3_t CR3; /// Control register 3
-					GTPR_t GTPR; /// Guard time and prescaler register
+					typename tmpl::BRR_t BRR; /// Baud rate register
+					typename tmpl::CR1_t CR1; /// Control register 1
+					typename tmpl::CR2_t CR2; /// Control register 2
+					typename tmpl::CR3_t CR3; /// Control register 3
+					typename tmpl::GTPR_t GTPR; /// Guard time and prescaler register
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_32;
 					__SOOL_PERIPH_PADDING_64;
@@ -4563,9 +6273,9 @@ namespace sool {
 				USART() = delete;
 			#endif
 			private:
-				static constexpr uint32_t get_clock_enable_bit(const uint32_t addr);
+				static constexpr uint32_t get_clock_enable_bit(const uintptr_t addr);
 			
-				static constexpr volatile Reg32_t& get_clock_enable_reg(const uint32_t addr);
+				static constexpr volatile Reg32_t& get_clock_enable_reg(const uintptr_t addr);
 			
 			public:
 				void enable_clock() volatile;
@@ -4596,7 +6306,7 @@ namespace sool {
 		{
 		public:
 			
-			struct CR1_t: Reg32_t /// Control register 1
+			struct CR1_t: public Reg32_t /// Control register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t UE               : 1; /// USART enable
@@ -4630,7 +6340,7 @@ namespace sool {
 				uint32_t                  : 3;
 				
 			};
-			struct CR2_t: Reg32_t /// Control register 2
+			struct CR2_t: public Reg32_t /// Control register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 4;
@@ -4649,7 +6359,7 @@ namespace sool {
 				uint32_t ADD4_7           : 4; /// Address of the USART node
 				
 			};
-			struct CR3_t: Reg32_t /// Control register 3
+			struct CR3_t: public Reg32_t /// Control register 3
 			{
 				using Reg32_t::operator=;
 				uint32_t EIE              : 1; /// Error interrupt enable
@@ -4672,14 +6382,14 @@ namespace sool {
 				uint32_t                  : 9;
 				
 			};
-			struct BRR_t: Reg32_t /// Baud rate register
+			struct BRR_t: public Reg32_t /// Baud rate register
 			{
 				using Reg32_t::operator=;
 				uint32_t BRR              : 20;
 				uint32_t                  : 12;
 				
 			};
-			struct RQR_t: Reg32_t /// Request register
+			struct RQR_t: public Reg32_t /// Request register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -4689,7 +6399,7 @@ namespace sool {
 				uint32_t                  : 28;
 				
 			};
-			struct ISR_t: Reg32_t /// Interrupt & status register
+			struct ISR_t: public Reg32_t /// Interrupt & status register
 			{
 				using Reg32_t::operator=;
 				uint32_t PE               : 1;
@@ -4714,7 +6424,7 @@ namespace sool {
 				uint32_t                  : 9;
 				
 			};
-			struct ICR_t: Reg32_t /// Interrupt flag clear register
+			struct ICR_t: public Reg32_t /// Interrupt flag clear register
 			{
 				using Reg32_t::operator=;
 				uint32_t PECF             : 1; /// Parity error clear flag
@@ -4733,14 +6443,14 @@ namespace sool {
 				uint32_t                  : 11;
 				
 			};
-			struct RDR_t: Reg32_t /// Receive data register
+			struct RDR_t: public Reg32_t /// Receive data register
 			{
 				using Reg32_t::operator=;
 				uint32_t RDR              : 9; /// Receive data value
 				uint32_t                  : 23;
 				
 			};
-			struct TDR_t: Reg32_t /// Transmit data register
+			struct TDR_t: public Reg32_t /// Transmit data register
 			{
 				using Reg32_t::operator=;
 				uint32_t TDR              : 9; /// Transmit data value
@@ -4792,14 +6502,42 @@ namespace sool {
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      )
 #define USART1_BASE_ADDR ((uint32_t)0x40011000U)
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define USART1_TMPL USART_tmpl_0
+#define USART6_TMPL USART_tmpl_0
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || \
+    defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  )
+#define USART1_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
     defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
     defined(STM32L1      ) || defined(STM32L4      )
 #define USART2_BASE_ADDR ((uint32_t)0x40004400U)
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || \
+    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
+    defined(STM32F479xx  ) || defined(STM32L051xx  ) || defined(STM32L052xx  ) || defined(STM32L053xx  ) || defined(STM32L062xx  ) || \
+    defined(STM32L063xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define USART2_TMPL USART_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L1      ) || \
+    defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
+    defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+    defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32L010x4  ) || defined(STM32L010x6  ) || defined(STM32L010x8  ) || \
+    defined(STM32L010xB  ) || defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || \
+    defined(STM32L071xx  ) || defined(STM32L081xx  )
+#define USART2_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || \
@@ -4813,7 +6551,23 @@ namespace sool {
     defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
     defined(STM32L4S9xx  )
 #define UART5_BASE_ADDR ((uint32_t)0x40005000U)
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32G471xx  ) || defined(STM32G473xx  ) || defined(STM32G474xx  ) || \
+    defined(STM32G484xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define UART5_TMPL USART_tmpl_1
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303xC  ) || \
+    defined(STM32F303xE  ) || defined(STM32F358xx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32L151xB  ) || \
+    defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || \
+    defined(STM32L152xE  )
+#define UART5_TMPL
+#define UART4_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F030x6  ) || \
@@ -4821,15 +6575,32 @@ namespace sool {
     defined(STM32F051x8  ) || defined(STM32F058xx  ) || defined(STM32F070x6  ) || defined(STM32F070xB  ) || defined(STM32F071xB  ) || \
     defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  )
 #define USART6_BASE_ADDR ((uint32_t)0x40011400U)
-#define USART6_TMPL USART_tmpl_0
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F030x6  ) || defined(STM32F030x8  ) || defined(STM32F030xC  ) || \
+    defined(STM32F031x6  ) || defined(STM32F038xx  ) || defined(STM32F048xx  ) || defined(STM32F051x8  ) || defined(STM32F058xx  ) || \
+    defined(STM32F070x6  ) || defined(STM32F070xB  ) || defined(STM32F071xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || \
+    defined(STM32F098xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
+    defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  )
+#define USART6_TMPL
 #endif
 
 #if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
     defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define UART7_BASE_ADDR ((uint32_t)0x40007800U)
-#define UART7_TMPL USART_tmpl_0
 #define UART8_BASE_ADDR ((uint32_t)0x40007c00U)
+#endif
+
+#if	defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F469xx  ) || \
+    defined(STM32F479xx  )
+#define UART7_TMPL USART_tmpl_0
 #define UART8_TMPL USART_tmpl_0
+#endif
+
+#if	defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F413xx  ) || defined(STM32F423xx  )
+#define UART7_TMPL
+#define UART8_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F7      ) || defined(STM32G4      ) || \
@@ -4839,7 +6610,19 @@ namespace sool {
     defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
     defined(STM32F479xx  ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
 #define USART3_BASE_ADDR ((uint32_t)0x40004800U)
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || \
+    defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
 #define USART3_TMPL USART_tmpl_2
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L1      ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F423xx  )
+#define USART3_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32H7      ) || defined(STM32F302xC  ) || \
@@ -4853,6 +6636,15 @@ namespace sool {
     defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
     defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define UART4_BASE_ADDR ((uint32_t)0x40004c00U)
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32G4      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || \
+    defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define UART4_TMPL USART_tmpl_3
 #endif
 
@@ -4862,30 +6654,60 @@ namespace sool {
     defined(STM32L062xx  ) || defined(STM32L063xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || \
     defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define USART1_BASE_ADDR ((uint32_t)0x40013800U)
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32L051xx  ) || \
+    defined(STM32L052xx  ) || defined(STM32L053xx  ) || defined(STM32L062xx  ) || defined(STM32L063xx  ) || defined(STM32L072xx  ) || \
+    defined(STM32L073xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define USART1_TMPL USART_tmpl_4
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32L1      ) || defined(STM32WB      ) || defined(STM32L011xx  ) || \
+    defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L081xx  )
+#define USART1_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32WB      )
 #define LPUART1_BASE_ADDR ((uint32_t)0x40008000U)
+#endif
+
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      )
 #define LPUART1_TMPL USART_tmpl_5
+#endif
+
+#if	defined(STM32WB      )
+#define LPUART1_TMPL
 #endif
 
 #if	defined(STM32F413xx  ) || defined(STM32F423xx  )
 #define UART9_BASE_ADDR ((uint32_t)0x40011800U)
+#define UART9_TMPL
 #define UART10_BASE_ADDR ((uint32_t)0x40011c00U)
+#define UART10_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L011xx  ) || \
     defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || \
     defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define USART4_BASE_ADDR ((uint32_t)0x40004c00U)
-#define USART4_TMPL USART_tmpl_3
+#endif
+
+#if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || \
+    defined(STM32L082xx  ) || defined(STM32L083xx  )
+#define USART4_TMPL USART_tmpl_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || \
+    defined(STM32L071xx  ) || defined(STM32L081xx  )
+#define USART4_TMPL
 #endif
 
 #if	defined(STM32F031x6  ) || defined(STM32F038xx  ) || defined(STM32F048xx  ) || defined(STM32F051x8  ) || defined(STM32F058xx  ) || \
     defined(STM32F071xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  )
 #define USART7_BASE_ADDR ((uint32_t)0x40011800U)
+#define USART7_TMPL
 #define USART8_BASE_ADDR ((uint32_t)0x40011c00U)
+#define USART8_TMPL
 #endif
 
 #if	defined(STM32F030x6  ) || defined(STM32F030x8  ) || defined(STM32F030xC  ) || defined(STM32F031x6  ) || defined(STM32F038xx  ) || \
@@ -4894,7 +6716,17 @@ namespace sool {
     defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || \
     defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define USART5_BASE_ADDR ((uint32_t)0x40005000U)
-#define USART5_TMPL USART_tmpl_3
+#endif
+
+#if	defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
+#define USART5_TMPL USART_tmpl_1
+#endif
+
+#if	defined(STM32F030x6  ) || defined(STM32F030x8  ) || defined(STM32F030xC  ) || defined(STM32F031x6  ) || defined(STM32F038xx  ) || \
+    defined(STM32F048xx  ) || defined(STM32F051x8  ) || defined(STM32F058xx  ) || defined(STM32F070x6  ) || defined(STM32F070xB  ) || \
+    defined(STM32F071xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  ) || defined(STM32L011xx  ) || \
+    defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L081xx  )
+#define USART5_TMPL
 #endif
 
 #if	defined(STM32G0      )
@@ -4912,6 +6744,7 @@ namespace sool {
     defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L081xx  )
 #define LPUART1_BASE_ADDR ((uint32_t)0x40004800U)
 #define UART_LPUART1
+#define LPUART1_TMPL
 #endif
 
 
@@ -4919,34 +6752,34 @@ namespace sool {
 
 		#if defined(LPUART_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const LPUART = new class USART(LPUART_BASE_ADDR);
+				volatile class USART<> * const LPUART = new class USART<>(LPUART_BASE_ADDR);
 
 			#else
-				volatile class USART<LPUART_TMPL> * const LPUART = reinterpret_cast<class USART<LPUART_TMPL>* const>(LPUART_BASE_ADDR);
+				volatile class USART<> * const LPUART = reinterpret_cast<class USART<>* const>(LPUART_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(LPUART1_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const LPUART1 = new class USART(LPUART1_BASE_ADDR);
+				volatile class USART<> * const LPUART1 = new class USART<>(LPUART1_BASE_ADDR);
 
 			#else
-				volatile class USART<LPUART1_TMPL> * const LPUART1 = reinterpret_cast<class USART<LPUART1_TMPL>* const>(LPUART1_BASE_ADDR);
+				volatile class USART<> * const LPUART1 = reinterpret_cast<class USART<>* const>(LPUART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(LPUSART1_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const LPUSART1 = new class USART(LPUSART1_BASE_ADDR);
+				volatile class USART<> * const LPUSART1 = new class USART<>(LPUSART1_BASE_ADDR);
 
 			#else
-				volatile class USART<LPUSART1_TMPL> * const LPUSART1 = reinterpret_cast<class USART<LPUSART1_TMPL>* const>(LPUSART1_BASE_ADDR);
+				volatile class USART<> * const LPUSART1 = reinterpret_cast<class USART<>* const>(LPUSART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART10_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART10 = new class USART(UART10_BASE_ADDR);
+				volatile class USART<> * const UART10 = new class USART<>(UART10_BASE_ADDR);
 
 			#else
 				volatile class USART<> * const UART10 = reinterpret_cast<class USART<>* const>(UART10_BASE_ADDR);
@@ -4955,43 +6788,43 @@ namespace sool {
 
 		#if defined(UART4_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART4 = new class USART(UART4_BASE_ADDR);
+				volatile class USART<> * const UART4 = new class USART<>(UART4_BASE_ADDR);
 
 			#else
-				volatile class USART<UART4_TMPL> * const UART4 = reinterpret_cast<class USART<UART4_TMPL>* const>(UART4_BASE_ADDR);
+				volatile class USART<> * const UART4 = reinterpret_cast<class USART<>* const>(UART4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART5_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART5 = new class USART(UART5_BASE_ADDR);
+				volatile class USART<> * const UART5 = new class USART<>(UART5_BASE_ADDR);
 
 			#else
-				volatile class USART<UART5_TMPL> * const UART5 = reinterpret_cast<class USART<UART5_TMPL>* const>(UART5_BASE_ADDR);
+				volatile class USART<> * const UART5 = reinterpret_cast<class USART<>* const>(UART5_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART7_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART7 = new class USART(UART7_BASE_ADDR);
+				volatile class USART<> * const UART7 = new class USART<>(UART7_BASE_ADDR);
 
 			#else
-				volatile class USART<UART7_TMPL> * const UART7 = reinterpret_cast<class USART<UART7_TMPL>* const>(UART7_BASE_ADDR);
+				volatile class USART<> * const UART7 = reinterpret_cast<class USART<>* const>(UART7_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART8_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART8 = new class USART(UART8_BASE_ADDR);
+				volatile class USART<> * const UART8 = new class USART<>(UART8_BASE_ADDR);
 
 			#else
-				volatile class USART<UART8_TMPL> * const UART8 = reinterpret_cast<class USART<UART8_TMPL>* const>(UART8_BASE_ADDR);
+				volatile class USART<> * const UART8 = reinterpret_cast<class USART<>* const>(UART8_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(UART9_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const UART9 = new class USART(UART9_BASE_ADDR);
+				volatile class USART<> * const UART9 = new class USART<>(UART9_BASE_ADDR);
 
 			#else
 				volatile class USART<> * const UART9 = reinterpret_cast<class USART<>* const>(UART9_BASE_ADDR);
@@ -5000,61 +6833,61 @@ namespace sool {
 
 		#if defined(USART1_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART1 = new class USART(USART1_BASE_ADDR);
+				volatile class USART<> * const USART1 = new class USART<>(USART1_BASE_ADDR);
 
 			#else
-				volatile class USART<USART1_TMPL> * const USART1 = reinterpret_cast<class USART<USART1_TMPL>* const>(USART1_BASE_ADDR);
+				volatile class USART<> * const USART1 = reinterpret_cast<class USART<>* const>(USART1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART2_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART2 = new class USART(USART2_BASE_ADDR);
+				volatile class USART<> * const USART2 = new class USART<>(USART2_BASE_ADDR);
 
 			#else
-				volatile class USART<USART2_TMPL> * const USART2 = reinterpret_cast<class USART<USART2_TMPL>* const>(USART2_BASE_ADDR);
+				volatile class USART<> * const USART2 = reinterpret_cast<class USART<>* const>(USART2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART3_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART3 = new class USART(USART3_BASE_ADDR);
+				volatile class USART<> * const USART3 = new class USART<>(USART3_BASE_ADDR);
 
 			#else
-				volatile class USART<USART3_TMPL> * const USART3 = reinterpret_cast<class USART<USART3_TMPL>* const>(USART3_BASE_ADDR);
+				volatile class USART<> * const USART3 = reinterpret_cast<class USART<>* const>(USART3_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART4_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART4 = new class USART(USART4_BASE_ADDR);
+				volatile class USART<> * const USART4 = new class USART<>(USART4_BASE_ADDR);
 
 			#else
-				volatile class USART<USART4_TMPL> * const USART4 = reinterpret_cast<class USART<USART4_TMPL>* const>(USART4_BASE_ADDR);
+				volatile class USART<> * const USART4 = reinterpret_cast<class USART<>* const>(USART4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART5_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART5 = new class USART(USART5_BASE_ADDR);
+				volatile class USART<> * const USART5 = new class USART<>(USART5_BASE_ADDR);
 
 			#else
-				volatile class USART<USART5_TMPL> * const USART5 = reinterpret_cast<class USART<USART5_TMPL>* const>(USART5_BASE_ADDR);
+				volatile class USART<> * const USART5 = reinterpret_cast<class USART<>* const>(USART5_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART6_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART6 = new class USART(USART6_BASE_ADDR);
+				volatile class USART<> * const USART6 = new class USART<>(USART6_BASE_ADDR);
 
 			#else
-				volatile class USART<USART6_TMPL> * const USART6 = reinterpret_cast<class USART<USART6_TMPL>* const>(USART6_BASE_ADDR);
+				volatile class USART<> * const USART6 = reinterpret_cast<class USART<>* const>(USART6_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(USART7_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART7 = new class USART(USART7_BASE_ADDR);
+				volatile class USART<> * const USART7 = new class USART<>(USART7_BASE_ADDR);
 
 			#else
 				volatile class USART<> * const USART7 = reinterpret_cast<class USART<>* const>(USART7_BASE_ADDR);
@@ -5063,7 +6896,7 @@ namespace sool {
 
 		#if defined(USART8_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class USART * const USART8 = new class USART(USART8_BASE_ADDR);
+				volatile class USART<> * const USART8 = new class USART<>(USART8_BASE_ADDR);
 
 			#else
 				volatile class USART<> * const USART8 = reinterpret_cast<class USART<>* const>(USART8_BASE_ADDR);
@@ -5081,7 +6914,8 @@ namespace sool {
 			#endif
 		#endif
 		
-		inline constexpr uint32_t USART::get_clock_enable_bit(const uintptr_t addr)
+		template<typename tmpl>
+		inline constexpr uint32_t USART<tmpl>::get_clock_enable_bit(const uintptr_t addr)
 		{
 			switch (addr) {
 		#ifdef USART1_BASE_ADDR
@@ -5134,7 +6968,8 @@ namespace sool {
 			}
 		}
 		
-		inline constexpr volatile Reg32_t& USART::get_clock_enable_reg(const uintptr_t addr)
+		template<typename tmpl>
+		inline constexpr volatile Reg32_t& USART<tmpl>::get_clock_enable_reg(const uintptr_t addr)
 		{
 			switch (addr) {
 		#ifdef USART1_BASE_ADDR
@@ -5156,24 +6991,28 @@ namespace sool {
 			}
 		}
 		
-		inline void USART::enable_clock() volatile 
+		template<typename tmpl>
+		inline void USART<tmpl>::enable_clock() volatile
 		{
 			get_clock_enable_reg(get_addr()) |= get_clock_enable_bit(get_addr());
 		}
 		
-		inline void USART::disable_clock() volatile
+		template<typename tmpl>
+		inline void USART<tmpl>::disable_clock() volatile
 		{
 			get_clock_enable_reg(rget_addr())
 					&= ~get_clock_enable_bit(get_addr());
 		}
 		
-		inline bool USART::is_clock_enabled() const volatile
+		template<typename tmpl>
+		inline bool USART<tmpl>::is_clock_enabled() const volatile
 		{
 			return (get_clock_enable_reg(get_addr()) & get_clock_enable_bit(get_addr()))
 			== get_clock_enable_bit(get_addr());
 		}
 		
-		inline const bool USART::is_rx_not_empty() const
+		template<typename tmpl>
+		inline const bool USART<tmpl>::is_rx_not_empty() const
 		{
 		#ifdef USART_ISR
 			return ISR.RXNE == 1;
@@ -5182,7 +7021,8 @@ namespace sool {
 		#endif
 		}
 		
-		inline const bool USART::is_tx_empty() const
+		template<typename tmpl>
+		inline const bool USART<tmpl>::is_tx_empty() const
 		{
 		#ifdef USART_ISR
 			return ISR.TXE == 1;
@@ -5192,7 +7032,8 @@ namespace sool {
 		
 		}
 		
-		inline const bool USART::tx_sent() const
+		template<typename tmpl>
+		inline const bool USART<tmpl>::tx_sent() const
 		{
 		#ifdef USART_ISR
 			return ISR.TC == 1;
@@ -5201,7 +7042,8 @@ namespace sool {
 		#endif
 		}
 		
-		inline USART& USART::operator<<(const uint8_t value)
+		template<typename tmpl>
+		inline USART<tmpl>& USART<tmpl>::operator<<(const uint8_t value)
 		{
 		#ifdef USART_DR
 			DR = value;
@@ -5212,7 +7054,8 @@ namespace sool {
 			return *this;
 		}
 		
-		inline USART& USART::operator<<(const uint16_t value)
+		template<typename tmpl>
+		inline USART<tmpl>& USART<tmpl>::operator<<(const uint16_t value)
 		{
 		#ifdef USART_DR
 			DR = value;
@@ -5223,7 +7066,8 @@ namespace sool {
 			return *this;
 		}
 		
-		inline USART& USART::operator>>(uint8_t &variable)
+		template<typename tmpl>
+		inline USART<tmpl>& USART<tmpl>::operator>>(uint8_t &variable)
 		{
 		#ifdef USART_DR
 			variable = DR;
@@ -5233,7 +7077,8 @@ namespace sool {
 			return *this;
 		}
 		
-		inline USART& USART::operator>>(uint16_t &variable)
+		template<typename tmpl>
+		inline USART<tmpl>& USART<tmpl>::operator>>(uint16_t &variable)
 		{
 		#ifdef USART_DR
 			variable = DR;
@@ -5245,179 +7090,183 @@ namespace sool {
 		
 	};
 };
-#undef USART_CR1_0_M0
-#undef USART_ISR_4
-#undef USART_ISR_1
-#undef USART_USART_tmpl_5
-#undef USART_CR3_0_OVRDIS
-#undef USART_CR1_1_RWU
-#undef USART_IPIDR_1
-#undef USART_ICR_0_UDRCF
-#undef USART_CR3_0_DDRE
-#undef USART_CR1_1_DEDT4
-#undef USART_CR1_0_M1
-#undef USART_MAP1
-#undef USART_RTOR_1
-#undef USART_CR2_0_ABRMOD
-#undef USART_MAP0_HWCFGR1
-#undef USART_HWCFGR1_1
-#undef USART_ICR_1
-#undef USART_CR1_1_DEAT3
-#undef USART_CR1_0_FIFOEN
-#undef USART_CR3_0
-#undef USART_GTPR_1
-#undef USART_HWCFGR2_0
-#undef USART_CR1_0_UE
-#undef USART_CR1_1_DEDT1
-#undef USART_BRR_4
-#undef UART7_TMPL
-#undef USART_CR1_0_RXFFIE
-#undef USART_CR2_1
-#undef USART5_TMPL
-#undef USART_CR1_1_DEAT1
-#undef USART_CR1_0_CMIE
-#undef USART_ICR_4
-#undef USART_USART_tmpl_1
-#undef USART_BRR_3
-#undef USART_CR1_0_EOBIE
-#undef LPUSART1_TMPL
-#undef USART_CR1_0_UESM
-#undef USART_ICR_0_TCBGTCF
-#undef USART_CR1_0_DEDT
-#undef USART_ISR_0_TXFE
-#undef USART_ISR_2
-#undef USART_CR2_0_ABREN
-#undef USART_ISR_0_RXFF
-#undef USART_CR2_0
-#undef USART_ISR_0_WUF
-#undef USART_CR1_0_RTOIE
-#undef USART_CR1_0_DEAT
-#undef USART_CR2_0_DIS_NSS
-#undef USART_CR2_0_DATAINV
-#undef USART_CR2_0_SWAP
-#undef USART_CR3_8
-#undef USART_CR1_1_DEAT2
+#undef UART10_TMPL
 #undef USART_CR2_1_ADD4
-#undef USART_SIDR_0
 #undef USART_BRR_0
-#undef USART_ICR_2
-#undef USART_CR2_2
-#undef USART3_TMPL
-#undef UART_LPUART1
 #undef USART6_TMPL
-#undef USART_CR2_0_ADDM7
-#undef USART_CR1_3
-#undef USART_SR_0
-#undef USART_MAP0_PRESC
-#undef USART_CR1_1
-#undef USART1_TMPL
-#undef USART4_TMPL
-#undef USART_SR_2
-#undef USART_CR2_0_SLVEN
-#undef USART_SIDR_1
-#undef LPUART_TMPL
-#undef USART_CR1_1_SBK
-#undef USART_CR1_0_MME
-#undef USART_PRESC_1
-#undef USART_CR1_1_DEAT4
-#undef USART_CR1_4
-#undef USART_RQR_0
-#undef USART_CR2_1_ADD0
-#undef USART_CR2_1_ABRMOD1
-#undef USART_CR3_2
-#undef USART_ISR_6
-#undef USART_GTPR_0
+#undef USART_HWCFGR1_1
+#undef USART_MAP1
 #undef USART_CR3_4
-#undef USART_CR3_0_WUS
-#undef USART_BRR_1
-#undef USART_CR3_0_DEM
-#undef USART_HWCFGR2_1
-#undef USART2_TMPL
-#undef USART_CR1_1_DEDT0
-#undef USART_CR2_8
-#undef USART_CR2_5
-#undef USART_CR1_6
-#undef USART_CR3_0_TXFTCFG
-#undef USART_BRR_7
-#undef USART_CR3_0_RXFTCFG
-#undef USART_CR3_3
-#undef USART_ISR_5
-#undef USART_USART_tmpl_2
-#undef USART_USART_tmpl_0
-#undef USART_MAP0
-#undef USART_CR3_0_DEP
-#undef USART_RQR_1
-#undef USART_VERR_1
-#undef USART_ICR_3
-#undef USART_CR3_9
-#undef USART_USART_tmpl_4
-#undef UART4_TMPL
-#undef USART_MAP0_SIDR
-#undef USART_ISR_0_TCBGT
-#undef UART8_TMPL
-#undef USART_BRR_5
-#undef USART_ISR_0
+#undef USART_CR1_1
+#undef USART_CR2_0_DATAINV
+#undef USART_ISR_6
 #undef USART_CR3_5
-#undef USART_BRR_2
-#undef USART_CR2_0_RTOEN
-#undef USART_ISR_0_RXFT
-#undef USART_ISR_0_RWU
-#undef USART_ICR_0_WUCF
-#undef USART_CR1_7
-#undef USART_ISR_0_TXFT
+#undef USART_CR1_1_DEDT4
+#undef USART_BRR_1
+#undef USART5_TMPL
+#undef USART_CR2_0_TXINV
+#undef USART_CR2_0_RXINV
+#undef USART_CR2_2
+#undef USART_CR1_1_DEAT4
+#undef USART_USART_tmpl_4
 #undef USART_ISR_0_UDR
 #undef USART_ISR_3
-#undef USART_CR1_1_DEDT3
 #undef USART_CR1_1_M
-#undef USART_CR2_1_ADD
-#undef LPUART1_TMPL
-#undef USART_CR2_7
-#undef USART_BRR_6
+#undef USART_CR2_0_ADD0_3
+#undef USART_CR1_0_MME
+#undef USART_CR3_0_DEP
+#undef USART_CR1_0_EOBIE
+#undef USART_ICR_0_TXFECF
+#undef USART_CR3_0_TXFTCFG
+#undef USART_CR1_0_M0
+#undef USART_CR3_0_TXFTIE
+#undef USART_CR1_1_DEDT0
+#undef USART_CR2_1
+#undef USART_VERR_0
+#undef USART_CR1_1_DEDT1
+#undef USART_CR2_1_ABRMOD0
+#undef USART_ICR_4
+#undef USART_CR2_1_ABRMOD1
+#undef USART_CR3_0_RXFTIE
 #undef USART_CR1_0
-#undef USART_RQR_3
+#undef USART_MAP0
+#undef USART_CR1_1_RWU
+#undef USART_ISR_0_TXFE
+#undef USART_CR1_1_UE
+#undef USART_SIDR_1
+#undef USART_CR1_1_DEAT3
+#undef UART8_TMPL
+#undef USART_CR3_3
+#undef USART_GTPR_1
+#undef USART_RTOR_0
+#undef USART_CR2_7
+#undef USART_CR3_0
+#undef USART_ISR_0_TCBGT
+#undef USART_ICR_0_TCBGTCF
+#undef USART_ISR_4
+#undef USART_SR_1
+#undef USART_HWCFGR2_0
+#undef LPUART_TMPL
+#undef USART_CR3_0_DDRE
+#undef USART_CR2_0_RTOEN
+#undef USART_RQR_2
+#undef USART_IPIDR_0
+#undef USART_RTOR_1
+#undef USART_CR2_0_SLVEN
+#undef USART_CR3_0_OVRDIS
+#undef USART_HWCFGR2_1
+#undef USART_CR1_1_DEDT3
+#undef USART_BRR_4
+#undef USART_CR2_6
+#undef USART_CR3_6
+#undef USART_CR3_0_DEM
+#undef USART_CR1_0_UESM
 #undef USART_CR3_11
 #undef USART_CR3_10
-#undef USART_ISR_0_REACK
-#undef USART_ICR_5
-#undef USART_CR3_0_RXFTIE
-#undef USART_MAP0_HWCFGR2
-#undef USART_CR3_0_SCARCNT
-#undef USART_CR3_12
-#undef USART_RTOR_0
-#undef USART_CR3_0_WUFIE
-#undef USART_RQR_2
-#undef USART_HWCFGR1_0
-#undef PERIPH_UART
-#undef USART_CR2_6
-#undef USART_CR1_1_UE
-#undef USART_ICR_0
-#undef USART_VERR_0
-#undef USART_MAP0_IPIDR
-#undef USART_CR2_0_MSBFIRST
-#undef USART_SR_1
-#undef UART5_TMPL
+#undef USART_CR1_0_FIFOEN
+#undef USART_CR2_1_ADD
+#undef USART_PRESC_1
+#undef USART_ICR_1
+#undef USART_MAP0_PRESC
+#undef USART_ICR_3
 #undef USART_CR1_5
-#undef USART_CR2_0_ADD4_7
-#undef USART_CR2_1_ABRMOD0
-#undef USART_USART_tmpl_3
-#undef USART_PRESC_0
-#undef USART_IPIDR_0
-#undef USART_CR2_4
-#undef USART_CR2_0_ADD0_3
-#undef USART_CR2_3
-#undef USART_CR1_1_DEAT0
-#undef USART_CR3_0_TXFTIE
-#undef USART_CR3_7
-#undef USART_CR1_2
-#undef USART_ICR_0_TXFECF
-#undef USART_CR2_0_RXINV
+#undef USART_CR3_0_RXFTCFG
+#undef USART_BRR_7
+#undef USART_CR1_0_RXFFIE
+#undef USART_CR3_8
+#undef USART_CR3_0_WUFIE
+#undef USART_RQR_1
+#undef USART_ICR_0
+#undef USART_CR3_9
+#undef USART_ISR_0_REACK
+#undef USART_CR2_0
+#undef USART_CR3_2
+#undef USART_CR3_0_SCARCNT
+#undef USART_BRR_2
+#undef USART_ICR_5
+#undef USART_HWCFGR1_0
+#undef USART_CR2_8
+#undef USART4_TMPL
+#undef LPUSART1_TMPL
+#undef USART_CR1_0_M1
+#undef USART_USART_tmpl_2
+#undef USART_CR1_1_DEAT1
 #undef USART_CR1_0_TXFEIE
-#undef USART_MAP0_VERR
+#undef USART_CR1_1_DEAT0
+#undef USART_MAP0_HWCFGR2
+#undef USART2_TMPL
+#undef USART_ISR_1
+#undef USART_RQR_0
+#undef USART_CR1_0_CMIE
+#undef USART_USART_tmpl_3
+#undef USART_SR_0
+#undef UART_LPUART1
+#undef USART_CR1_0_DEAT
+#undef USART_CR1_1_DEAT2
+#undef USART_ICR_2
+#undef USART_ISR_0_RXFF
+#undef UART9_TMPL
+#undef USART_CR2_5
+#undef USART7_TMPL
+#undef USART_BRR_3
+#undef USART_USART_tmpl_0
+#undef USART_CR1_0_UE
+#undef USART_CR2_0_ABRMOD
+#undef LPUART1_TMPL
+#undef USART_USART_tmpl_5
+#undef USART_USART_tmpl_1
+#undef USART_ISR_0
+#undef USART_ISR_0_RXFT
+#undef USART_CR2_0_DIS_NSS
+#undef USART_BRR_6
+#undef UART5_TMPL
+#undef USART_MAP0_HWCFGR1
+#undef USART_ICR_0_WUCF
+#undef USART_MAP0_SIDR
+#undef USART8_TMPL
 #undef USART_CR3_0_TCBGTIE
+#undef PERIPH_UART
+#undef USART_BRR_5
+#undef USART_SIDR_0
+#undef USART_CR3_7
+#undef USART_VERR_1
+#undef USART_ISR_2
+#undef USART3_TMPL
+#undef USART_CR3_0_WUS
 #undef USART_CR1_1_DEDT2
-#undef USART_CR3_6
+#undef USART_ISR_0_RWU
+#undef USART_CR2_3
+#undef USART_CR2_0_ADDM7
+#undef USART_CR1_6
+#undef USART_CR2_0_SWAP
+#undef USART_GTPR_0
 #undef USART_CR3_1
-#undef USART_CR2_0_TXINV
+#undef USART_ISR_5
+#undef USART_RQR_3
+#undef USART_CR1_2
+#undef USART_MAP0_VERR
+#undef USART_CR2_0_MSBFIRST
+#undef USART_CR1_3
+#undef USART_CR1_0_RTOIE
+#undef USART_CR1_0_DEDT
+#undef USART_ICR_0_UDRCF
+#undef USART_PRESC_0
+#undef USART_SR_2
+#undef USART_CR2_0_ADD4_7
+#undef USART_CR2_4
+#undef USART_CR1_4
+#undef UART7_TMPL
+#undef UART4_TMPL
+#undef USART1_TMPL
+#undef USART_CR2_0_ABREN
+#undef USART_CR1_7
+#undef USART_CR3_12
+#undef USART_IPIDR_1
+#undef USART_CR1_1_SBK
+#undef USART_ISR_0_TXFT
+#undef USART_CR2_1_ADD0
+#undef USART_ISR_0_WUF
+#undef USART_MAP0_IPIDR
 
 #endif
 

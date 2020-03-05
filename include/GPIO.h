@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-02-22T20:57:02.029921
+//Generated 2020-03-01T00:46:37.941532
 
 #ifndef __SOOL_CORE_GPIO_H
 #define __SOOL_CORE_GPIO_H
@@ -52,18 +52,18 @@
     defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
     defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define GPIO_BRR
-#define GPIO_MAP0_BRR BRR_t BRR
+#define GPIO_MAP1_BRR BRR_t BRR
 #else
-#define GPIO_MAP0_BRR __SOOL_PERIPH_PADDING_4
+#define GPIO_MAP1_BRR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32L476xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
     defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
     defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define GPIO_ASCR
-#define GPIO_MAP0_ASCR ASCR_t ASCR
+#define GPIO_MAP1_ASCR ASCR_t ASCR
 #else
-#define GPIO_MAP0_ASCR __SOOL_PERIPH_PADDING_4
+#define GPIO_MAP1_ASCR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32W1      )
@@ -221,7 +221,7 @@ namespace sool {
 					uint8_t modif;
 				};
 			
-			struct MODER_t: Reg32_t /// GPIO port mode register
+			struct MODER_t: public Reg32_t /// GPIO port mode register
 			{
 				using Reg32_t::operator=;
 				uint32_t MODE0            : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O mode.
@@ -242,7 +242,7 @@ namespace sool {
 				uint32_t MODE15           : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O mode.
 				
 			};
-			struct OTYPER_t: Reg32_t /// GPIO port output type register
+			struct OTYPER_t: public Reg32_t /// GPIO port output type register
 			{
 				using Reg32_t::operator=;
 				uint32_t OT0              : 1; /// Port x configuration bits written by software to configure the I/O output type.
@@ -264,7 +264,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct OSPEEDR_t: Reg32_t /// GPIO port output speed register
+			struct OSPEEDR_t: public Reg32_t /// GPIO port output speed register
 			{
 				using Reg32_t::operator=;
 				uint32_t OSPEED0          : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O output speed. Note: Refer to the device datasheet for the frequency specifications and the power supply and load conditions for each speed.
@@ -285,7 +285,7 @@ namespace sool {
 				uint32_t OSPEED15         : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O output speed. Note: Refer to the device datasheet for the frequency specifications and the power supply and load conditions for each speed.
 				
 			};
-			struct PUPDR_t: Reg32_t /// GPIO port pull-up/pull-down register
+			struct PUPDR_t: public Reg32_t /// GPIO port pull-up/pull-down register
 			{
 				using Reg32_t::operator=;
 				uint32_t PUPD0            : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O pull-up or pull-down
@@ -306,7 +306,7 @@ namespace sool {
 				uint32_t PUPD15           : 2; /// [1:0]: Port x configuration bits written by software to configure the I/O pull-up or pull-down
 				
 			};
-			struct IDR_t: Reg32_t /// GPIO port input data register
+			struct IDR_t: public Reg32_t /// GPIO port input data register
 			{
 				using Reg32_t::operator=;
 				uint32_t ID0              : 1; /// Port input data bit read-only. They contain the input value of the corresponding I/O port.
@@ -328,7 +328,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct ODR_t: Reg32_t /// GPIO port output data register
+			struct ODR_t: public Reg32_t /// GPIO port output data register
 			{
 				using Reg32_t::operator=;
 				uint32_t OD0              : 1; /// Port output data bit These bits can be read and written by software. Note: For atomic bit set/reset, the OD bits can be individually set and/or reset by writing to the GPIOx_BSRR or GPIOx_BRR registers (x = A..F).
@@ -361,7 +361,7 @@ namespace sool {
 					const GPIO::ODR_t &operator-=(const Pin &p) volatile;
 				
 			};
-			struct BSRR_t: Reg32_t /// GPIO port bit set/reset register
+			struct BSRR_t: public Reg32_t /// GPIO port bit set/reset register
 			{
 				using Reg32_t::operator=;
 				uint32_t BS0              : 1; /// Port x set bit y (y= 0..15) write-only. A read to these bits returns the value 0x0000.
@@ -398,7 +398,7 @@ namespace sool {
 				uint32_t BR15             : 1; /// Port x reset bit y write-only. A read to these bits returns the value 0x0000. Note: If both BSx and BRx are set, BSx has priority.
 				
 			};
-			struct LCKR_t: Reg32_t /// This register is used to lock the configuration of the port bits when a correct write sequence is applied to bit 16 (LCKK). The value of bits [15:0] is used to lock the configuration of the GPIO. During the write sequence, the value of LCKR[15:0] must not change. When the LOCK sequence has been applied on a port bit, the value of this port bit can no longer be modified until the next MCU reset or peripheral reset. A specific write sequence is used to write to the GPIOx_LCKR register. Only word access (32-bit long) is allowed during this locking sequence. Each lock bit freezes a specific configuration register (control and alternate function registers).
+			struct LCKR_t: public Reg32_t /// This register is used to lock the configuration of the port bits when a correct write sequence is applied to bit 16 (LCKK). The value of bits [15:0] is used to lock the configuration of the GPIO. During the write sequence, the value of LCKR[15:0] must not change. When the LOCK sequence has been applied on a port bit, the value of this port bit can no longer be modified until the next MCU reset or peripheral reset. A specific write sequence is used to write to the GPIOx_LCKR register. Only word access (32-bit long) is allowed during this locking sequence. Each lock bit freezes a specific configuration register (control and alternate function registers).
 			{
 				using Reg32_t::operator=;
 				uint32_t LCK0             : 1; /// Port x lock bit y (y= 0..15) read/write but can only be written when the LCKK bit is 0.
@@ -421,7 +421,7 @@ namespace sool {
 				uint32_t                  : 15;
 				
 			};
-			struct AFRL_t: Reg32_t /// GPIO alternate function low register
+			struct AFRL_t: public Reg32_t /// GPIO alternate function low register
 			{
 				using Reg32_t::operator=;
 				uint32_t AFSEL0           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
@@ -434,7 +434,7 @@ namespace sool {
 				uint32_t AFSEL7           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
 				
 			};
-			struct AFRH_t: Reg32_t /// GPIO alternate function high register
+			struct AFRH_t: public Reg32_t /// GPIO alternate function high register
 			{
 				using Reg32_t::operator=;
 				uint32_t AFSEL8           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
@@ -448,7 +448,7 @@ namespace sool {
 				
 			};
 			#ifdef GPIO_VERR
-			struct VERR_t: Reg32_t /// GPIO version register
+			struct VERR_t: public Reg32_t /// GPIO version register
 			{
 				using Reg32_t::operator=;
 				uint32_t MINREV           : 4;
@@ -458,7 +458,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef GPIO_IPIDR
-			struct IPIDR_t: Reg32_t /// GPIO identification register
+			struct IPIDR_t: public Reg32_t /// GPIO identification register
 			{
 				using Reg32_t::operator=;
 				uint32_t ID               : 32;
@@ -466,15 +466,36 @@ namespace sool {
 			};
 			#endif
 			#ifdef GPIO_SIDR
-			struct SIDR_t: Reg32_t /// GPIO size identification register
+			struct SIDR_t: public Reg32_t /// GPIO size identification register
 			{
 				using Reg32_t::operator=;
 				uint32_t SID              : 32;
 				
 			};
 			#endif
+			struct AFR_t: public ArrayRegBase_t<uint64_t, uint32_t> /// GPIO alternate function low register
+			{
+				using ArrayRegBase_t<uint64_t, uint32_t>::operator=;
+				uint64_t AFSEL0           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL1           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL2           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL3           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL4           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL5           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL6           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL7           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os AFSELy selection:
+				uint64_t AFSEL8           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL9           : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL10          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL11          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL12          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL13          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL14          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				uint64_t AFSEL15          : 4; /// [3:0]: Alternate function selection for port x pin y written by software to configure alternate function I/Os
+				
+			};
 			#ifdef GPIO_BRR
-			struct BRR_t: Reg32_t /// GPIO port bit reset register
+			struct BRR_t: public Reg32_t /// GPIO port bit reset register
 			{
 				using Reg32_t::operator=;
 				uint32_t BR0              : 1; /// Port Reset bit
@@ -498,7 +519,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef GPIO_ASCR
-			struct ASCR_t: Reg32_t /// GPIO port analog switch control register
+			struct ASCR_t: public Reg32_t /// GPIO port analog switch control register
 			{
 				using Reg32_t::operator=;
 				uint32_t ASC0             : 1; /// Port analog switch control
@@ -521,26 +542,43 @@ namespace sool {
 				
 			};
 			#endif
-			MODER_t MODER; /// GPIO port mode register
-			OTYPER_t OTYPER; /// GPIO port output type register
-			OSPEEDR_t OSPEEDR; /// GPIO port output speed register
-			PUPDR_t PUPDR; /// GPIO port pull-up/pull-down register
-			IDR_t IDR; /// GPIO port input data register
-			ODR_t ODR; /// GPIO port output data register
-			BSRR_t BSRR; /// GPIO port bit set/reset register
-			LCKR_t LCKR; /// This register is used to lock the configuration of the port bits when a correct write sequence is applied to bit 16 (LCKK). The value of bits [15:0] is used to lock the configuration of the GPIO. During the write sequence, the value of LCKR[15:0] must not change. When the LOCK sequence has been applied on a port bit, the value of this port bit can no longer be modified until the next MCU reset or peripheral reset. A specific write sequence is used to write to the GPIOx_LCKR register. Only word access (32-bit long) is allowed during this locking sequence. Each lock bit freezes a specific configuration register (control and alternate function registers).
-			AFRL_t AFRL; /// GPIO alternate function low register
-			AFRH_t AFRH; /// GPIO alternate function high register
-			GPIO_MAP0_BRR; /// GPIO port bit reset register
-			GPIO_MAP0_ASCR; /// GPIO port analog switch control register
-			__SOOL_PERIPH_PADDING_4;
-			__SOOL_PERIPH_PADDING_64;
-			__SOOL_PERIPH_PADDING_128;
-			__SOOL_PERIPH_PADDING_256;
-			__SOOL_PERIPH_PADDING_512;
-			GPIO_MAP0_VERR; /// GPIO version register
-			GPIO_MAP0_IPIDR; /// GPIO identification register
-			GPIO_MAP0_SIDR; /// GPIO size identification register
+			union
+			{
+				struct
+				{
+					MODER_t MODER; /// GPIO port mode register
+					OTYPER_t OTYPER; /// GPIO port output type register
+					OSPEEDR_t OSPEEDR; /// GPIO port output speed register
+					PUPDR_t PUPDR; /// GPIO port pull-up/pull-down register
+					IDR_t IDR; /// GPIO port input data register
+					ODR_t ODR; /// GPIO port output data register
+					BSRR_t BSRR; /// GPIO port bit set/reset register
+					LCKR_t LCKR; /// This register is used to lock the configuration of the port bits when a correct write sequence is applied to bit 16 (LCKK). The value of bits [15:0] is used to lock the configuration of the GPIO. During the write sequence, the value of LCKR[15:0] must not change. When the LOCK sequence has been applied on a port bit, the value of this port bit can no longer be modified until the next MCU reset or peripheral reset. A specific write sequence is used to write to the GPIOx_LCKR register. Only word access (32-bit long) is allowed during this locking sequence. Each lock bit freezes a specific configuration register (control and alternate function registers).
+					AFRL_t AFRL; /// GPIO alternate function low register
+					AFRH_t AFRH; /// GPIO alternate function high register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					GPIO_MAP0_VERR; /// GPIO version register
+					GPIO_MAP0_IPIDR; /// GPIO identification register
+					GPIO_MAP0_SIDR; /// GPIO size identification register
+				};
+				struct
+				{
+					__SOOL_PERIPH_PADDING_32;
+					AFR_t AFR; /// GPIO alternate function low register
+					GPIO_MAP1_BRR; /// GPIO port bit reset register
+					GPIO_MAP1_ASCR; /// GPIO port analog switch control register
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+				};
+			};
 
 			#if __SOOL_DEBUG_NOPHY
 				GPIO(uintptr_t addr) : myaddr(addr){};
@@ -578,7 +616,7 @@ namespace sool {
 		{
 		public:
 			
-			struct CRL_t: Reg32_t /// Port A configuration register (Low)
+			struct CRL_t: public Reg32_t /// Port A configuration register (Low)
 			{
 				using Reg32_t::operator=;
 				uint32_t CNFMODE0         : 4;
@@ -588,7 +626,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct CRH_t: Reg32_t /// Port A configuration register (High)
+			struct CRH_t: public Reg32_t /// Port A configuration register (High)
 			{
 				using Reg32_t::operator=;
 				uint32_t CNFMODE4         : 4;
@@ -598,7 +636,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct IDR_t: Reg32_t /// Port A input data register
+			struct IDR_t: public Reg32_t /// Port A input data register
 			{
 				using Reg32_t::operator=;
 				uint32_t ID0              : 1;
@@ -620,7 +658,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct ODR_t: Reg32_t /// Port A output data register
+			struct ODR_t: public Reg32_t /// Port A output data register
 			{
 				using Reg32_t::operator=;
 				uint32_t OD0              : 1;
@@ -642,7 +680,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct BSR_t: Reg32_t /// Port A bit set register
+			struct BSR_t: public Reg32_t /// Port A bit set register
 			{
 				using Reg32_t::operator=;
 				uint32_t BS0              : 1;
@@ -664,7 +702,7 @@ namespace sool {
 				uint32_t                  : 16;
 				
 			};
-			struct BRR_t: Reg32_t /// Port A output clear register
+			struct BRR_t: public Reg32_t /// Port A output clear register
 			{
 				using Reg32_t::operator=;
 				uint32_t BR0              : 1;
@@ -710,7 +748,7 @@ namespace sool {
 		{
 		public:
 			
-			struct DBGCR_t: Reg32_t /// GPIO debug configuration register
+			struct DBGCR_t: public Reg32_t /// GPIO debug configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 4;
@@ -719,7 +757,7 @@ namespace sool {
 				uint32_t                  : 26;
 				
 			};
-			struct DBGSR_t: Reg32_t /// GPIO debug status register
+			struct DBGSR_t: public Reg32_t /// GPIO debug status register
 			{
 				using Reg32_t::operator=;
 				uint32_t SWEN             : 1;
@@ -729,7 +767,7 @@ namespace sool {
 				uint32_t                  : 28;
 				
 			};
-			struct PCTRACECR_t: Reg32_t /// Clock PC trace register
+			struct PCTRACECR_t: public Reg32_t /// Clock PC trace register
 			{
 				using Reg32_t::operator=;
 				uint32_t SEL              : 1; /// selects PC_TRACE source on bb_debug GPIO pins
@@ -990,7 +1028,7 @@ namespace sool {
 
 		#if defined(GPIO_GPIOA) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOA = new GPIO(GPIOA_BASE_ADDR);
+				volatile class GPIO * const GPIOA = new class GPIO(GPIOA_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOA = reinterpret_cast<class GPIO* const>(GPIOA_BASE_ADDR);
@@ -999,7 +1037,7 @@ namespace sool {
 
 		#if defined(GPIO_GPIOB) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOB = new GPIO(GPIOB_BASE_ADDR);
+				volatile class GPIO * const GPIOB = new class GPIO(GPIOB_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOB = reinterpret_cast<class GPIO* const>(GPIOB_BASE_ADDR);
@@ -1008,7 +1046,7 @@ namespace sool {
 
 		#if defined(GPIO_GPIOC) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOC = new GPIO(GPIOC_BASE_ADDR);
+				volatile class GPIO * const GPIOC = new class GPIO(GPIOC_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOC = reinterpret_cast<class GPIO* const>(GPIOC_BASE_ADDR);
@@ -1017,7 +1055,7 @@ namespace sool {
 
 		#if defined(GPIOD_BASE_ADDR) && defined(GPIO_GPIOD) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOD = new GPIO(GPIOD_BASE_ADDR);
+				volatile class GPIO * const GPIOD = new class GPIO(GPIOD_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOD = reinterpret_cast<class GPIO* const>(GPIOD_BASE_ADDR);
@@ -1026,7 +1064,7 @@ namespace sool {
 
 		#if defined(GPIOE_BASE_ADDR) && defined(GPIO_GPIOE) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOE = new GPIO(GPIOE_BASE_ADDR);
+				volatile class GPIO * const GPIOE = new class GPIO(GPIOE_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOE = reinterpret_cast<class GPIO* const>(GPIOE_BASE_ADDR);
@@ -1035,7 +1073,7 @@ namespace sool {
 
 		#if defined(GPIOF_BASE_ADDR) && defined(GPIO_GPIOF) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOF = new GPIO(GPIOF_BASE_ADDR);
+				volatile class GPIO * const GPIOF = new class GPIO(GPIOF_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOF = reinterpret_cast<class GPIO* const>(GPIOF_BASE_ADDR);
@@ -1044,7 +1082,7 @@ namespace sool {
 
 		#if defined(GPIOG_BASE_ADDR) && defined(GPIO_GPIOG) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOG = new GPIO(GPIOG_BASE_ADDR);
+				volatile class GPIO * const GPIOG = new class GPIO(GPIOG_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOG = reinterpret_cast<class GPIO* const>(GPIOG_BASE_ADDR);
@@ -1053,7 +1091,7 @@ namespace sool {
 
 		#if defined(GPIOH_BASE_ADDR) && defined(GPIO_GPIOH) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOH = new GPIO(GPIOH_BASE_ADDR);
+				volatile class GPIO * const GPIOH = new class GPIO(GPIOH_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOH = reinterpret_cast<class GPIO* const>(GPIOH_BASE_ADDR);
@@ -1062,7 +1100,7 @@ namespace sool {
 
 		#if defined(GPIOI_BASE_ADDR) && defined(GPIO_GPIOI) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOI = new GPIO(GPIOI_BASE_ADDR);
+				volatile class GPIO * const GPIOI = new class GPIO(GPIOI_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOI = reinterpret_cast<class GPIO* const>(GPIOI_BASE_ADDR);
@@ -1071,7 +1109,7 @@ namespace sool {
 
 		#if defined(GPIOJ_BASE_ADDR) && defined(GPIO_GPIOJ) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOJ = new GPIO(GPIOJ_BASE_ADDR);
+				volatile class GPIO * const GPIOJ = new class GPIO(GPIOJ_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOJ = reinterpret_cast<class GPIO* const>(GPIOJ_BASE_ADDR);
@@ -1080,7 +1118,7 @@ namespace sool {
 
 		#if defined(GPIOK_BASE_ADDR) && defined(GPIO_GPIOK) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOK = new GPIO(GPIOK_BASE_ADDR);
+				volatile class GPIO * const GPIOK = new class GPIO(GPIOK_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOK = reinterpret_cast<class GPIO* const>(GPIOK_BASE_ADDR);
@@ -1089,7 +1127,7 @@ namespace sool {
 
 		#if defined(GPIOZ_BASE_ADDR) && defined(GPIO_GPIOZ) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO * const GPIOZ = new GPIO(GPIOZ_BASE_ADDR);
+				volatile class GPIO * const GPIOZ = new class GPIO(GPIOZ_BASE_ADDR);
 
 			#else
 				volatile class GPIO * const GPIOZ = reinterpret_cast<class GPIO* const>(GPIOZ_BASE_ADDR);
@@ -1100,7 +1138,7 @@ namespace sool {
 
 		#if defined(GPIO_OLD_GPIOA) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOA = new GPIO_OLD(GPIOA_BASE_ADDR);
+				volatile class GPIO_OLD * const GPIOA = new class GPIO_OLD(GPIOA_BASE_ADDR);
 
 			#else
 				volatile class GPIO_OLD * const GPIOA = reinterpret_cast<class GPIO_OLD* const>(GPIOA_BASE_ADDR);
@@ -1109,7 +1147,7 @@ namespace sool {
 
 		#if defined(GPIO_OLD_GPIOB) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOB = new GPIO_OLD(GPIOB_BASE_ADDR);
+				volatile class GPIO_OLD * const GPIOB = new class GPIO_OLD(GPIOB_BASE_ADDR);
 
 			#else
 				volatile class GPIO_OLD * const GPIOB = reinterpret_cast<class GPIO_OLD* const>(GPIOB_BASE_ADDR);
@@ -1118,7 +1156,7 @@ namespace sool {
 
 		#if defined(GPIO_OLD_GPIOC) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO_OLD * const GPIOC = new GPIO_OLD(GPIOC_BASE_ADDR);
+				volatile class GPIO_OLD * const GPIOC = new class GPIO_OLD(GPIOC_BASE_ADDR);
 
 			#else
 				volatile class GPIO_OLD * const GPIOC = reinterpret_cast<class GPIO_OLD* const>(GPIOC_BASE_ADDR);
@@ -1129,7 +1167,7 @@ namespace sool {
 
 		#if defined(GPIO_DBG_GPIO_DBG) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class GPIO_DBG * const GPIO_DBG = new GPIO_DBG(GPIO_DBG_BASE_ADDR);
+				volatile class GPIO_DBG * const GPIO_DBG = new class GPIO_DBG(GPIO_DBG_BASE_ADDR);
 
 			#else
 				volatile class GPIO_DBG * const GPIO_DBG = reinterpret_cast<class GPIO_DBG* const>(GPIO_DBG_BASE_ADDR);
@@ -1810,30 +1848,30 @@ namespace sool {
 		
 	};
 };
-#undef GPIO_GPIOH
 #undef PERIPH_GPIO_OLD
-#undef GPIO_OLD_GPIOA
-#undef GPIO_GPIOE
-#undef GPIO_GPIOD
-#undef GPIO_GPIOC
-#undef GPIO_MAP0_ASCR
-#undef GPIO_OLD_GPIOC
-#undef GPIO_GPIOJ
-#undef GPIO_GPIOI
-#undef GPIO_GPIOA
-#undef GPIO_OLD_GPIOB
-#undef GPIO_GPIOG
 #undef GPIO_GPIOZ
-#undef GPIO_MAP0_VERR
-#undef GPIO_GPIOF
-#undef PERIPH_GPIO_DBG
-#undef GPIO_MAP0_IPIDR
 #undef PERIPH_GPIO
-#undef GPIO_MAP0_BRR
-#undef GPIO_GPIOB
-#undef GPIO_DBG_GPIO_DBG
+#undef GPIO_GPIOI
 #undef GPIO_GPIOK
+#undef GPIO_OLD_GPIOA
+#undef GPIO_GPIOJ
+#undef GPIO_MAP1_BRR
+#undef GPIO_DBG_GPIO_DBG
+#undef GPIO_GPIOC
+#undef GPIO_GPIOE
+#undef GPIO_MAP1_ASCR
+#undef GPIO_GPIOA
+#undef GPIO_MAP0_VERR
+#undef GPIO_GPIOG
+#undef GPIO_MAP0_IPIDR
+#undef GPIO_GPIOB
+#undef GPIO_OLD_GPIOB
+#undef GPIO_GPIOH
+#undef GPIO_OLD_GPIOC
+#undef GPIO_GPIOD
+#undef GPIO_GPIOF
 #undef GPIO_MAP0_SIDR
+#undef PERIPH_GPIO_DBG
 
 
 #endif //__SOOL_CORE_GPIO_H

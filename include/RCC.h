@@ -17,13 +17,16 @@
  */
 
 
-//Generated 2020-02-22T20:57:01.954881
+//Generated 2020-03-01T00:46:37.831282
 
 #ifndef __SOOL_CORE_RCC_H
 #define __SOOL_CORE_RCC_H
 #include "lib_utils/peripheral_include.h"
 
 
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
+    defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
+    defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32MP1     ) || defined(STM32WB      )
 #if	defined(STM32MP1     )
 #define RCC_TZCR
 #define RCC_OCENSETR
@@ -3013,7 +3016,7 @@
 #define RCC_CSR_0_LSIRDY
 #endif
 
-#if	defined(STM32L151xBA ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L152xBA ) || defined(STM32L152xCA )
+#if	defined(STM32L151xBA ) || defined(STM32L151xCA ) || defined(STM32L152xBA ) || defined(STM32L152xCA )
 #define RCC_CSR_0_LSECSSD LSECSSD
 #define RCC_CSR_3
 #define RCC_CIR_2_LSECSSF LSECSSF
@@ -3046,8 +3049,8 @@
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
-    defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32L151xBA ) || defined(STM32L151xC  ) || \
-    defined(STM32L151xCA ) || defined(STM32L152xBA ) || defined(STM32L152xCA )
+    defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32L151xBA ) || defined(STM32L151xCA ) || \
+    defined(STM32L152xBA ) || defined(STM32L152xCA )
 #define RCC_CSR_0_OBLRSTF OBLRSTF
 #else
 #define RCC_CSR_0_OBLRSTF
@@ -4072,8 +4075,8 @@
     defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
     defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
     defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
-    defined(STM32F479xx  ) || defined(STM32L151xB  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || \
-    defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+    defined(STM32F479xx  ) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || \
+    defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_APB2RSTR_2_SDIORST SDIORST
 #define RCC_APB2ENR_2_SDIOEN SDIOEN
 #else
@@ -4342,8 +4345,8 @@
 #define RCC_MAP3_CIR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32L151xB  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || \
-    defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xD  ) || \
+    defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_APB2LPENR_1_SDIOLPEN SDIOLPEN
 #else
 #define RCC_APB2LPENR_1_SDIOLPEN
@@ -4983,8 +4986,8 @@
     defined(STM32F302xE  ) || defined(STM32F303xC  ) || defined(STM32F303xE  ) || defined(STM32F318xx  ) || defined(STM32F328xx  ) || \
     defined(STM32F358xx  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
     defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
-    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L151xB  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || \
-    defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xD  ) || \
+    defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_APB1RSTR_0_UART4RST UART4RST
 #define RCC_APB1RSTR_0_UART5RST UART5RST
 #else
@@ -5257,8 +5260,8 @@
 
 #if	defined(STM32F0      ) || defined(STM32L010x4  ) || defined(STM32L010x6  ) || defined(STM32L010x8  ) || defined(STM32L010xB  ) || \
     defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || \
-    defined(STM32L081xx  ) || defined(STM32L151xB  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || \
-    defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+    defined(STM32L081xx  ) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || \
+    defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_APB1ENR_1_USART4EN USART4EN
 #else
 #define RCC_APB1ENR_1_USART4EN
@@ -5269,8 +5272,8 @@
     defined(STM32F071xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  ) || defined(STM32L010x4  ) || \
     defined(STM32L010x6  ) || defined(STM32L010x8  ) || defined(STM32L010xB  ) || defined(STM32L011xx  ) || defined(STM32L021xx  ) || \
     defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L081xx  ) || defined(STM32L151xB  ) || \
-    defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xD  ) || \
-    defined(STM32L152xE  )
+    defined(STM32L151xC  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || \
+    defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_APB1ENR_1_USART5EN USART5EN
 #else
 #define RCC_APB1ENR_1_USART5EN
@@ -5564,8 +5567,8 @@
 #define RCC_CFGR2_ADC34PRES
 #endif
 
-#if	defined(STM32L151xB  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || \
-    defined(STM32L152xD  ) || defined(STM32L152xE  )
+#if	defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || \
+    defined(STM32L152xC  ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define RCC_AHBENR_0_FSMCEN FSMCEN
 #define RCC_AHBRSTR_0_FSMCRST FSMCRST
 #else
@@ -5693,7 +5696,7 @@ namespace sool {
 		public:
 			
 			#ifdef RCC_TZCR
-			struct TZCR_t: Reg32_t /// This register is used to switch the RCC into secure mode. This register can only be accessed in secure mode.
+			struct TZCR_t: public Reg32_t /// This register is used to switch the RCC into secure mode. This register can only be accessed in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t TZEN             : 1;
@@ -5703,7 +5706,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_OCENSETR
-			struct OCENSETR_t: Reg32_t /// This register is used to control the oscillators.Writing to this register has no effect, writing will set the corresponding bits. Reading will give the effective values of each bit.If , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct OCENSETR_t: public Reg32_t /// This register is used to control the oscillators.Writing to this register has no effect, writing will set the corresponding bits. Reading will give the effective values of each bit.If , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t HSION            : 1;
@@ -5722,7 +5725,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_OCENCLRR
-			struct OCENCLRR_t: Reg32_t /// This register is used to control the oscillators.Writing to this register has no effect, writing will clear the corresponding bits. Reading will give the effective values of the enable bits.If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct OCENCLRR_t: public Reg32_t /// This register is used to control the oscillators.Writing to this register has no effect, writing will clear the corresponding bits. Reading will give the effective values of the enable bits.If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t HSION            : 1;
@@ -5740,7 +5743,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_HSICFGR
-			struct HSICFGR_t: Reg32_t /// This register is used to configure the HSI. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct HSICFGR_t: public Reg32_t /// This register is used to configure the HSI. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				union
@@ -5770,7 +5773,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CSICFGR
-			struct CSICFGR_t: Reg32_t /// This register is used to fine-tune the CSI frequency. If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct CSICFGR_t: public Reg32_t /// This register is used to fine-tune the CSI frequency. If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				union
@@ -5799,7 +5802,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MPCKSELR
-			struct MPCKSELR_t: Reg32_t /// This register is used to select the clock source for the MPU. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct MPCKSELR_t: public Reg32_t /// This register is used to select the clock source for the MPU. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t MPUSRC           : 2;
@@ -5809,7 +5812,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_ASSCKSELR
-			struct ASSCKSELR_t: Reg32_t /// This register is used to select the clock source for the AXI sub-system. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct ASSCKSELR_t: public Reg32_t /// This register is used to select the clock source for the AXI sub-system. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t AXISSRC          : 3;
@@ -5819,7 +5822,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RCK12SELR
-			struct RCK12SELR_t: Reg32_t /// This register is used to select the reference clock for PLL1 and PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct RCK12SELR_t: public Reg32_t /// This register is used to select the reference clock for PLL1 and PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLL12SRC         : 2;
@@ -5829,7 +5832,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MPCKDIVR
-			struct MPCKDIVR_t: Reg32_t /// This register is used to control the MPU clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
+			struct MPCKDIVR_t: public Reg32_t /// This register is used to control the MPU clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t MPUDIV           : 3;
@@ -5839,7 +5842,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AXIDIVR
-			struct AXIDIVR_t: Reg32_t /// This register is used to control the AXI Matrix clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
+			struct AXIDIVR_t: public Reg32_t /// This register is used to control the AXI Matrix clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t AXIDIV           : 3;
@@ -5849,7 +5852,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB4DIVR
-			struct APB4DIVR_t: Reg32_t /// This register is used to control the APB4 clock divider. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
+			struct APB4DIVR_t: public Reg32_t /// This register is used to control the APB4 clock divider. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t APB4DIV          : 3;
@@ -5859,7 +5862,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB5DIVR
-			struct APB5DIVR_t: Reg32_t /// This register is used to control the APB5 clock divider. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
+			struct APB5DIVR_t: public Reg32_t /// This register is used to control the APB5 clock divider. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t APB5DIV          : 3;
@@ -5869,7 +5872,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RTCDIVR
-			struct RTCDIVR_t: Reg32_t /// This register is used to divide the HSE clock for RTC. If TZEN = , this register can only be modified in secure mode.
+			struct RTCDIVR_t: public Reg32_t /// This register is used to divide the HSE clock for RTC. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t RTCDIV           : 6;
@@ -5878,7 +5881,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MSSCKSELR
-			struct MSSCKSELR_t: Reg32_t /// This register is used to select the clock source for the MCU sub-system, including the MCU itself. If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct MSSCKSELR_t: public Reg32_t /// This register is used to select the clock source for the MCU sub-system, including the MCU itself. If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t MCUSSRC          : 3;
@@ -5888,7 +5891,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL1CR
-			struct PLL1CR_t: Reg32_t /// This register is used to control the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLL1CR_t: public Reg32_t /// This register is used to control the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLON            : 1;
@@ -5903,7 +5906,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL1CFGR1
-			struct PLL1CFGR1_t: Reg32_t /// This register is used to configure the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLL1CFGR1_t: public Reg32_t /// This register is used to configure the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN             : 9;
@@ -5914,7 +5917,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLxCFGR2
-			struct PLLxCFGR2_t: Reg32_t /// This register is used to configure the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLLxCFGR2_t: public Reg32_t /// This register is used to configure the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVP             : 7;
@@ -5927,7 +5930,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLxFRACR
-			struct PLLxFRACR_t: Reg32_t /// This register is used to fine-tune the frequency of the PLL1 VCO. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLLxFRACR_t: public Reg32_t /// This register is used to fine-tune the frequency of the PLL1 VCO. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -5938,7 +5941,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLxCSGR
-			struct PLLxCSGR_t: Reg32_t /// This register is used to configure the PLL1.It is not recommended to change the content of this register when the PLL1 is enabled (PLLON = ). Please refer to Section1.4.5.4: Using the PLLs in spread spectrum mode for details. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLLxCSGR_t: public Reg32_t /// This register is used to configure the PLL1.It is not recommended to change the content of this register when the PLL1 is enabled (PLLON = ). Please refer to Section1.4.5.4: Using the PLLs in spread spectrum mode for details. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t MOD_PER          : 13;
@@ -5951,7 +5954,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL2CR
-			struct PLL2CR_t: Reg32_t /// This register is used to control the PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLL2CR_t: public Reg32_t /// This register is used to control the PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLON            : 1;
@@ -5966,7 +5969,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL2CFGR1
-			struct PLL2CFGR1_t: Reg32_t /// This register is used to configure the PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
+			struct PLL2CFGR1_t: public Reg32_t /// This register is used to configure the PLL2. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN             : 9;
@@ -5977,7 +5980,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_I2C4CKSELR
-			struct I2C4CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the I2C4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
+			struct I2C4CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the I2C4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t I2C46SRC         : 3;
@@ -5986,7 +5989,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SPI6CKSELR
-			struct SPI6CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SPI6. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
+			struct SPI6CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SPI6. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6SRC          : 3;
@@ -5995,7 +5998,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_UART1CKSELR
-			struct UART1CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the USART1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
+			struct UART1CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the USART1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t UART1SRC         : 3;
@@ -6004,7 +6007,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RNG1CKSELR
-			struct RNG1CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the RNG1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
+			struct RNG1CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the RNG1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t RNG1SRC          : 2;
@@ -6013,7 +6016,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CPERCKSELR
-			struct CPERCKSELR_t: Reg32_t /// This register is used to select an oscillator source as kernel clock for the per_ck clock. The per_ck clock is distributed to several peripherals. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct CPERCKSELR_t: public Reg32_t /// This register is used to select an oscillator source as kernel clock for the per_ck clock. The per_ck clock is distributed to several peripherals. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t CKPERSRC         : 2;
@@ -6022,7 +6025,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_STGENCKSELR
-			struct STGENCKSELR_t: Reg32_t /// This register is used to select the peripheral clock for the STGEN block. Note that this clock is used to provide a time reference for the application. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
+			struct STGENCKSELR_t: public Reg32_t /// This register is used to select the peripheral clock for the STGEN block. Note that this clock is used to provide a time reference for the application. Please refer to Section1.4.10.1: Clock Enabling Delays. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t STGENSRC         : 2;
@@ -6031,7 +6034,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DDRITFCR
-			struct DDRITFCR_t: Reg32_t /// This register is used to control the DDR interface, including the DDRC and DDRPHYC. If TZEN = , this register can only be modified in secure mode.
+			struct DDRITFCR_t: public Reg32_t /// This register is used to control the DDR interface, including the DDRC and DDRPHYC. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t DDRC1EN          : 1;
@@ -6061,7 +6064,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_BOOTCR
-			struct MP_BOOTCR_t: Reg32_t /// This register is used to control the HOLD boot function when the system exits from STANDBY. Please refer to Section1.3.13.5: MCU HOLD_BOOT After Processor Reset. This register is reset when a system reset occurs, but not when the circuit exits from STANDBY (app_rst reset).If TZEN = , this register can only be modified in secure mode. This register can only be accessed by the MPU.
+			struct MP_BOOTCR_t: public Reg32_t /// This register is used to control the HOLD boot function when the system exits from STANDBY. Please refer to Section1.3.13.5: MCU HOLD_BOOT After Processor Reset. This register is reset when a system reset occurs, but not when the circuit exits from STANDBY (app_rst reset).If TZEN = , this register can only be modified in secure mode. This register can only be accessed by the MPU.
 			{
 				using Reg32_t::operator=;
 				uint32_t MCU_BEN          : 1;
@@ -6071,7 +6074,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_SREQSETR
-			struct MP_SREQSETR_t: Reg32_t /// Writing has no effect, reading will return the values of the bits. Writing a sets the corresponding bit to . The MCU cannot access to this register. If TZEN = , this register can only be modified in secure mode.
+			struct MP_SREQSETR_t: public Reg32_t /// Writing has no effect, reading will return the values of the bits. Writing a sets the corresponding bit to . The MCU cannot access to this register. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t STPREQ_P0        : 1;
@@ -6081,7 +6084,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_GCR
-			struct MP_GCR_t: Reg32_t /// The register contains global control bits. If TZEN = , this register can only be modified in secure mode.
+			struct MP_GCR_t: public Reg32_t /// The register contains global control bits. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t BOOT_MCU         : 1;
@@ -6090,7 +6093,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APRSTCR
-			struct MP_APRSTCR_t: Reg32_t /// This register is used to control the behavior of the warm reset. If TZEN = , this register can only be modified in secure mode.
+			struct MP_APRSTCR_t: public Reg32_t /// This register is used to control the behavior of the warm reset. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t RDCTLEN          : 1;
@@ -6101,7 +6104,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APRSTSR
-			struct MP_APRSTSR_t: Reg32_t /// This register provides a status of the RDCTL. If TZEN = , this register can only be modified in secure mode.
+			struct MP_APRSTSR_t: public Reg32_t /// This register provides a status of the RDCTL. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 8;
@@ -6111,7 +6114,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_BDCR
-			struct BDCR_t: Reg32_t /// This register is used to control the LSE function. Wait states are inserted in case of successive write accesses to this register. The number of wait states may be up to 7 cycles of AHB4 clock.After a system reset, the register RCC_BDCR is write-protected. In order to modify this register, the DBP bit in the PWR control register 1 (PWR_CR1) has to be set to . Bits of RCC_BDCR register are only reset after a backup domain reset: nreset_vsw (see Section1.3.5: Backup domain reset). Any other internal or external reset will not have any effect on these bits.This register is located into the VSW domain. If TZEN = , this register can only be modified in secure mode.
+			struct BDCR_t: public Reg32_t /// This register is used to control the LSE function. Wait states are inserted in case of successive write accesses to this register. The number of wait states may be up to 7 cycles of AHB4 clock.After a system reset, the register RCC_BDCR is write-protected. In order to modify this register, the DBP bit in the PWR control register 1 (PWR_CR1) has to be set to . Bits of RCC_BDCR register are only reset after a backup domain reset: nreset_vsw (see Section1.3.5: Backup domain reset). Any other internal or external reset will not have any effect on these bits.This register is located into the VSW domain. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				union
@@ -6181,7 +6184,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RDLSICR
-			struct RDLSICR_t: Reg32_t /// This register is used to control the minimum NRST active duration and LSI function.0 to 7 wait states are inserted for word, half-word and byte accesses. Wait states are inserted in case of successive accesses to this register.This register is reset by the por_rst reset, and it is located into the VDD domain. If TZEN = , this register can only be modified in secure mode.
+			struct RDLSICR_t: public Reg32_t /// This register is used to control the minimum NRST active duration and LSI function.0 to 7 wait states are inserted for word, half-word and byte accesses. Wait states are inserted in case of successive accesses to this register.This register is reset by the por_rst reset, and it is located into the VDD domain. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t LSION            : 1;
@@ -6195,7 +6198,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB4RSTSETR
-			struct APB4RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct APB4RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t LTDCRST          : 1;
@@ -6210,7 +6213,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB5RSTSETR
-			struct APB5RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
+			struct APB5RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6RST          : 1;
@@ -6225,7 +6228,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB5RSTSETR
-			struct AHB5RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
+			struct AHB5RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOZRST         : 1;
@@ -6240,7 +6243,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB6RSTSETR
-			struct AHB6RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct AHB6RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 5;
@@ -6263,7 +6266,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB6RSTCLRR
-			struct AHB6RSTCLRR_t: Reg32_t /// This register is used to release the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a releases the reset of the corresponding peripheral.
+			struct AHB6RSTCLRR_t: public Reg32_t /// This register is used to release the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a releases the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 10;
@@ -6284,7 +6287,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_TZAHB6RSTSETR
-			struct TZAHB6RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
+			struct TZAHB6RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMARST          : 1;
@@ -6293,7 +6296,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB4ENSETR
-			struct MP_APB4ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MP_APB4ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LTDCEN           : 1;
@@ -6311,7 +6314,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB5ENSETR
-			struct MP_APB5ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_APB5ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6EN           : 1;
@@ -6335,7 +6338,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_AHB5ENSETR
-			struct MP_AHB5ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_AHB5ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOZEN          : 1;
@@ -6352,7 +6355,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB6ENSETR
-			struct AHB6ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB6ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMAEN           : 1;
@@ -6379,7 +6382,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_TZAHB6ENSETR
-			struct MP_TZAHB6ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_TZAHB6ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMAEN           : 1;
@@ -6388,7 +6391,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB4ENSETR
-			struct MC_APB4ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MC_APB4ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LTDCEN           : 1;
@@ -6405,7 +6408,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB5ENSETR
-			struct MC_APB5ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MC_APB5ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6EN           : 1;
@@ -6428,7 +6431,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_AHB5ENSETR
-			struct MC_AHB5ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MC_AHB5ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOZEN          : 1;
@@ -6443,7 +6446,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB4LPENSETR
-			struct MP_APB4LPENSETR_t: Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MP_APB4LPENSETR_t: public Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LTDCLPEN         : 1;
@@ -6462,7 +6465,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB5LPENSETR
-			struct MP_APB5LPENSETR_t: Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_APB5LPENSETR_t: public Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6LPEN         : 1;
@@ -6487,7 +6490,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB5LPENSETR
-			struct AHB5LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct AHB5LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOZLPEN        : 1;
@@ -6502,7 +6505,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB6LPENSETR
-			struct AHB6LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB6LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMALPEN         : 1;
@@ -6529,7 +6532,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_TZAHB6LPENSETR
-			struct MP_TZAHB6LPENSETR_t: Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_TZAHB6LPENSETR_t: public Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMALPEN         : 1;
@@ -6538,7 +6541,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB4LPENSETR
-			struct MC_APB4LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MC_APB4LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LTDCLPEN         : 1;
@@ -6556,7 +6559,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB5LPENSETR
-			struct MC_APB5LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MC_APB5LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI6LPEN         : 1;
@@ -6580,7 +6583,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_BR_RSTSCLRR
-			struct BR_RSTSCLRR_t: Reg32_t /// This register is used by the BOOTROM to check the reset source. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a clears the corresponding bit to .The application running on MPU shall not use this register to define the reset source, the register RCC_MP_RSTSR must be used instead.Please refer to Section1.3.12: Reset Source Identification for details.This register is located into VDD domain, and is reset by por_rst reset. If TZEN = , this register can only be modified in secure mode.
+			struct BR_RSTSCLRR_t: public Reg32_t /// This register is used by the BOOTROM to check the reset source. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a clears the corresponding bit to .The application running on MPU shall not use this register to define the reset source, the register RCC_MP_RSTSR must be used instead.Please refer to Section1.3.12: Reset Source Identification for details.This register is located into VDD domain, and is reset by por_rst reset. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t PORRSTF          : 1;
@@ -6599,7 +6602,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_GRSTCSETR
-			struct MP_GRSTCSETR_t: Reg32_t /// This register is used by the MPU in order to generate either a MCU reset or a system reset. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct MP_GRSTCSETR_t: public Reg32_t /// This register is used by the MPU in order to generate either a MCU reset or a system reset. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t MPSYSRST         : 1;
@@ -6609,7 +6612,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_RSTSR
-			struct MP_RSTSR_t: Reg32_t /// This register is used by the MPU to check the reset source. This register is updated by the BOOTROM code, after a power-on reset (por_rst), a system reset (nreset), or an exit from STANDBY or CSTANDBY.The flags can be cleared by simply writing them to . Please refer to Section1.3.12: Reset Source Identification for details.The register is located in VDD_CORE.If TZEN = , this register can only be modified in secure mode.
+			struct MP_RSTSR_t: public Reg32_t /// This register is used by the MPU to check the reset source. This register is updated by the BOOTROM code, after a power-on reset (por_rst), a system reset (nreset), or an exit from STANDBY or CSTANDBY.The flags can be cleared by simply writing them to . Please refer to Section1.3.12: Reset Source Identification for details.The register is located in VDD_CORE.If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t PORRSTF          : 1;
@@ -6631,7 +6634,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_IWDGFZSETR
-			struct MP_IWDGFZSETR_t: Reg32_t /// This register is used by the BOOTROM in order to freeze the IWDGs clocks. After a system reset or STANDBY reset (nreset), or a CSTANDBY reset (cstby_rst) the MPU is allowed to write it once.Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
+			struct MP_IWDGFZSETR_t: public Reg32_t /// This register is used by the BOOTROM in order to freeze the IWDGs clocks. After a system reset or STANDBY reset (nreset), or a CSTANDBY reset (cstby_rst) the MPU is allowed to write it once.Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t FZ_IWDG1         : 1;
@@ -6641,7 +6644,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MxCIER
-			struct MxCIER_t: Reg32_t /// This register shall be used by the MPU to control the interrupt source enable. Please refer to Section1.5: RCC Interrupts for more details. If TZEN = , this register can only be modified in secure mode.
+			struct MxCIER_t: public Reg32_t /// This register shall be used by the MPU to control the interrupt source enable. Please refer to Section1.5: RCC Interrupts for more details. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t LSIRDYIE         : 1;
@@ -6663,7 +6666,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MxCIFR
-			struct MxCIFR_t: Reg32_t /// This register shall be used by the MPU in order to read and clear the interrupt flags.Writing has no effect, writing will clear the corresponding flag.Please refer to Section1.5: RCC Interrupts for more details. If TZEN = , this register can only be modified in secure mode.
+			struct MxCIFR_t: public Reg32_t /// This register shall be used by the MPU in order to read and clear the interrupt flags.Writing has no effect, writing will clear the corresponding flag.Please refer to Section1.5: RCC Interrupts for more details. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t LSIRDYF          : 1;
@@ -6685,7 +6688,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PWRLPDLYCR
-			struct PWRLPDLYCR_t: Reg32_t /// This register is used to program the delay between the moment where the system exits from STOP and the moment where it is allowed to enable the PLLs and provide a clock to bridges and processors. If TZEN = , this register can only be modified in secure mode.
+			struct PWRLPDLYCR_t: public Reg32_t /// This register is used to program the delay between the moment where the system exits from STOP and the moment where it is allowed to enable the PLLs and provide a clock to bridges and processors. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t PWRLP_DLY        : 22;
@@ -6696,7 +6699,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MCO1CFGR
-			struct MCO1CFGR_t: Reg32_t /// This register is used to select the clock generated on MCO1 output.
+			struct MCO1CFGR_t: public Reg32_t /// This register is used to select the clock generated on MCO1 output.
 			{
 				using Reg32_t::operator=;
 				uint32_t MCO1SEL          : 3;
@@ -6709,7 +6712,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MCO2CFGR
-			struct MCO2CFGR_t: Reg32_t /// This register is used to select the clock generated on MCO2 output.
+			struct MCO2CFGR_t: public Reg32_t /// This register is used to select the clock generated on MCO2 output.
 			{
 				using Reg32_t::operator=;
 				uint32_t MCO2SEL          : 3;
@@ -6722,7 +6725,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_OCRDYR
-			struct OCRDYR_t: Reg32_t /// This is a read-only access register, It contains the status flags of oscillators. Writing has no effect.
+			struct OCRDYR_t: public Reg32_t /// This is a read-only access register, It contains the status flags of oscillators. Writing has no effect.
 			{
 				using Reg32_t::operator=;
 				uint32_t HSIRDY           : 1;
@@ -6741,7 +6744,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DBGCFGR
-			struct DBGCFGR_t: Reg32_t /// This is register contains the enable control of the debug and trace function, and the clock divider for the trace function.
+			struct DBGCFGR_t: public Reg32_t /// This is register contains the enable control of the debug and trace function, and the clock divider for the trace function.
 			{
 				using Reg32_t::operator=;
 				uint32_t TRACEDIV         : 3;
@@ -6755,7 +6758,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RCK3SELR
-			struct RCK3SELR_t: Reg32_t /// This register is used to select the reference clock for PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
+			struct RCK3SELR_t: public Reg32_t /// This register is used to select the reference clock for PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLL3SRC          : 2;
@@ -6765,7 +6768,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RCK4SELR
-			struct RCK4SELR_t: Reg32_t /// This register is used to select the reference clock for PLL4.
+			struct RCK4SELR_t: public Reg32_t /// This register is used to select the reference clock for PLL4.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLL4SRC          : 2;
@@ -6775,7 +6778,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_TIMG1PRER
-			struct TIMG1PRER_t: Reg32_t /// This register is used to control the prescaler value of timers located into APB1 domain. It concerns TIM2, TIM3, TIM4, TIM5, TIM6, TIM7, TIM12, TIM13 and TIM14. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
+			struct TIMG1PRER_t: public Reg32_t /// This register is used to control the prescaler value of timers located into APB1 domain. It concerns TIM2, TIM3, TIM4, TIM5, TIM6, TIM7, TIM12, TIM13 and TIM14. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
 			{
 				using Reg32_t::operator=;
 				uint32_t TIMG1PRE         : 1;
@@ -6785,7 +6788,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_TIMG2PRER
-			struct TIMG2PRER_t: Reg32_t /// This register is used to control the prescaler value of timers located into APB2 domain. It concerns TIM1, TIM8, TIM15, TIM16, and TIM17. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
+			struct TIMG2PRER_t: public Reg32_t /// This register is used to control the prescaler value of timers located into APB2 domain. It concerns TIM1, TIM8, TIM15, TIM16, and TIM17. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
 			{
 				using Reg32_t::operator=;
 				uint32_t TIMG2PRE         : 1;
@@ -6795,7 +6798,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MCUDIVR
-			struct MCUDIVR_t: Reg32_t /// This register is used to control the MCU sub-system clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
+			struct MCUDIVR_t: public Reg32_t /// This register is used to control the MCU sub-system clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information. If TZEN = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t MCUDIV           : 4;
@@ -6805,7 +6808,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1DIVR
-			struct APB1DIVR_t: Reg32_t /// This register is used to control the APB1 clock prescaler. Please refer to section Section1.4.6.3: Sub-System Clock Generation for additional information.
+			struct APB1DIVR_t: public Reg32_t /// This register is used to control the APB1 clock prescaler. Please refer to section Section1.4.6.3: Sub-System Clock Generation for additional information.
 			{
 				using Reg32_t::operator=;
 				uint32_t APB1DIV          : 3;
@@ -6815,7 +6818,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2DIVR
-			struct APB2DIVR_t: Reg32_t /// This register is used to control the APB2 clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
+			struct APB2DIVR_t: public Reg32_t /// This register is used to control the APB2 clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
 			{
 				using Reg32_t::operator=;
 				uint32_t APB2DIV          : 3;
@@ -6825,7 +6828,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3DIVR
-			struct APB3DIVR_t: Reg32_t /// This register is used to control the APB3 clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
+			struct APB3DIVR_t: public Reg32_t /// This register is used to control the APB3 clock prescaler. Please refer to Section1.4.6.3: Sub-System Clock Generation for additional information.
 			{
 				using Reg32_t::operator=;
 				uint32_t APB3DIV          : 3;
@@ -6835,7 +6838,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL3CR
-			struct PLL3CR_t: Reg32_t /// This register is used to control the PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
+			struct PLL3CR_t: public Reg32_t /// This register is used to control the PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLON            : 1;
@@ -6850,7 +6853,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL3CFGR1
-			struct PLL3CFGR1_t: Reg32_t /// This register is used to configure the PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
+			struct PLL3CFGR1_t: public Reg32_t /// This register is used to configure the PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN             : 9;
@@ -6863,7 +6866,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL4CR
-			struct PLL4CR_t: Reg32_t /// This register is used to control the PLL4.
+			struct PLL4CR_t: public Reg32_t /// This register is used to control the PLL4.
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLON            : 1;
@@ -6878,7 +6881,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL4CFGR1
-			struct PLL4CFGR1_t: Reg32_t /// This register is used to configure the PLL4.
+			struct PLL4CFGR1_t: public Reg32_t /// This register is used to configure the PLL4.
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN             : 9;
@@ -6891,7 +6894,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_I2C12CKSELR
-			struct I2C12CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the I2C1 and I2C2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct I2C12CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the I2C1 and I2C2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t I2C12SRC         : 3;
@@ -6900,7 +6903,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_I2C35CKSELR
-			struct I2C35CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the I2C3 and I2C5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct I2C35CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the I2C3 and I2C5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t I2C35SRC         : 3;
@@ -6909,7 +6912,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SAI1CKSELR
-			struct SAI1CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SAI1 and DFSDM audio clock. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SAI1CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SAI1 and DFSDM audio clock. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SAI1SRC          : 3;
@@ -6918,7 +6921,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SAI2CKSELR
-			struct SAI2CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SAI2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SAI2CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SAI2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SAI2SRC          : 3;
@@ -6927,7 +6930,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SAI3CKSELR
-			struct SAI3CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SAI3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SAI3CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SAI3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SAI3SRC          : 3;
@@ -6936,7 +6939,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SAI4CKSELR
-			struct SAI4CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SAI4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SAI4CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SAI4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SAI4SRC          : 3;
@@ -6945,7 +6948,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SPI2S1CKSELR
-			struct SPI2S1CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SPI/I2S1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SPI2S1CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SPI/I2S1. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI1SRC          : 3;
@@ -6954,7 +6957,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SPI2S23CKSELR
-			struct SPI2S23CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SPI/I2S2,3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SPI2S23CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SPI/I2S2,3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI23SRC         : 3;
@@ -6963,7 +6966,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SPI45CKSELR
-			struct SPI45CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SPI4,5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SPI45CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SPI4,5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPI45SRC         : 3;
@@ -6972,7 +6975,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_UART6CKSELR
-			struct UART6CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the USART6. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct UART6CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the USART6. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t UART6SRC         : 3;
@@ -6981,7 +6984,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_UART24CKSELR
-			struct UART24CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the USART2 and UART4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct UART24CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the USART2 and UART4. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t UART24SRC        : 3;
@@ -6990,7 +6993,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_UART35CKSELR
-			struct UART35CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the USART3 and UART5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct UART35CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the USART3 and UART5. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t UART35SRC        : 3;
@@ -6999,7 +7002,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_UART78CKSELR
-			struct UART78CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the UART7 and UART8. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct UART78CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the UART7 and UART8. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t UART78SRC        : 3;
@@ -7008,7 +7011,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SDMMC12CKSELR
-			struct SDMMC12CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SDMMC1 and SDMMC2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SDMMC12CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SDMMC1 and SDMMC2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SDMMC12SRC       : 3;
@@ -7017,7 +7020,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SDMMC3CKSELR
-			struct SDMMC3CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SDMMC3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SDMMC3CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SDMMC3. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SDMMC3SRC        : 3;
@@ -7026,7 +7029,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_ETHCKSELR
-			struct ETHCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the ETH block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct ETHCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the ETH block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t ETHSRC           : 2;
@@ -7037,7 +7040,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_QSPICKSELR
-			struct QSPICKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the QUADSPI. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct QSPICKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the QUADSPI. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t QSPISRC          : 2;
@@ -7046,7 +7049,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_FMCCKSELR
-			struct FMCCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the FMC block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct FMCCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the FMC block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t FMCSRC           : 2;
@@ -7055,7 +7058,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_FDCANCKSELR
-			struct FDCANCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the FDCAN block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct FDCANCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the FDCAN block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t FDCANSRC         : 2;
@@ -7064,7 +7067,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SPDIFCKSELR
-			struct SPDIFCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the SPDIFRX. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct SPDIFCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the SPDIFRX. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t SPDIFSRC         : 2;
@@ -7073,7 +7076,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CECCKSELR
-			struct CECCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the CEC-HDMI. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct CECCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the CEC-HDMI. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t CECSRC           : 2;
@@ -7082,7 +7085,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_USBCKSELR
-			struct USBCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the USBPHY PLL of the USB HOST and USB OTG. It also controls the pre-divider for the reference clock for the USBPHY. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct USBCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the USBPHY PLL of the USB HOST and USB OTG. It also controls the pre-divider for the reference clock for the USBPHY. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t USBPHYSRC        : 2;
@@ -7093,7 +7096,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_RNG2CKSELR
-			struct RNG2CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the RNG2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time.
+			struct RNG2CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the RNG2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time.
 			{
 				using Reg32_t::operator=;
 				uint32_t RNG2SRC          : 2;
@@ -7102,7 +7105,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DSICKSELR
-			struct DSICKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the DSI block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct DSICKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the DSI block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t DSISRC           : 1;
@@ -7111,7 +7114,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_ADCCKSELR
-			struct ADCCKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the ADC block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct ADCCKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the ADC block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t ADCSRC           : 2;
@@ -7120,7 +7123,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_LPTIM45CKSELR
-			struct LPTIM45CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM4 and LPTIM5 blocks. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct LPTIM45CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM4 and LPTIM5 blocks. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM45SRC       : 3;
@@ -7129,7 +7132,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_LPTIM23CKSELR
-			struct LPTIM23CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM2 and LPTIM3 blocks. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct LPTIM23CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM2 and LPTIM3 blocks. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM23SRC       : 3;
@@ -7138,7 +7141,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_LPTIM1CKSELR
-			struct LPTIM1CKSELR_t: Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM1 block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
+			struct LPTIM1CKSELR_t: public Reg32_t /// This register is used to control the selection of the kernel clock for the LPTIM1 block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to insure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Please refer to Section1.4.10.1: Clock Enabling Delays.
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM1SRC        : 3;
@@ -7147,7 +7150,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1RSTSETR
-			struct APB1RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct APB1RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2RST          : 1;
@@ -7186,7 +7189,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2RSTSETR
-			struct APB2RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct APB2RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM1RST          : 1;
@@ -7213,7 +7216,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3RSTSETR
-			struct APB3RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct APB3RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM2RST        : 1;
@@ -7234,7 +7237,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2RSTSETR
-			struct AHB2RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct AHB2RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t DMA1RST          : 1;
@@ -7251,7 +7254,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3RSTSETR
-			struct AHB3RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct AHB3RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t DCMIRST          : 1;
@@ -7268,7 +7271,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4RSTSETR
-			struct AHB4RSTSETR_t: Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
+			struct AHB4RSTSETR_t: public Reg32_t /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOARST         : 1;
@@ -7287,7 +7290,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB1ENSETR
-			struct MP_APB1ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective value of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MP_APB1ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective value of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2EN           : 1;
@@ -7326,7 +7329,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2ENSETR
-			struct APB2ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct APB2ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM1EN           : 1;
@@ -7354,7 +7357,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3ENSETR
-			struct APB3ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct APB3ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM2EN         : 1;
@@ -7377,7 +7380,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2ENSETR
-			struct AHB2ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB2ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t DMA1EN           : 1;
@@ -7394,7 +7397,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3ENSETR
-			struct AHB3ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB3ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t DCMIEN           : 1;
@@ -7411,7 +7414,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4ENSETR
-			struct AHB4ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB4ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOAEN          : 1;
@@ -7430,7 +7433,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MxMLAHBENSETR
-			struct MxMLAHBENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MxMLAHBENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 4;
@@ -7440,7 +7443,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB1ENSETR
-			struct MC_APB1ENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return . Writing a sets the corresponding bit to .
+			struct MC_APB1ENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return . Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2EN           : 1;
@@ -7479,7 +7482,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_AXIMENSETR
-			struct MC_AXIMENSETR_t: Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MC_AXIMENSETR_t: public Reg32_t /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t SYSRAMEN         : 1;
@@ -7488,7 +7491,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MP_APB1LPENSETR
-			struct MP_APB1LPENSETR_t: Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MP_APB1LPENSETR_t: public Reg32_t /// This register is used by the MPU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2LPEN         : 1;
@@ -7527,7 +7530,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2LPENSETR
-			struct APB2LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct APB2LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM1LPEN         : 1;
@@ -7555,7 +7558,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3LPENSETR
-			struct APB3LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct APB3LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t LPTIM2LPEN       : 1;
@@ -7576,7 +7579,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2LPENSETR
-			struct AHB2LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB2LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t DMA1LPEN         : 1;
@@ -7593,7 +7596,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3LPENSETR
-			struct AHB3LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB3LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t DCMILPEN         : 1;
@@ -7610,7 +7613,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4LPENSETR
-			struct AHB4LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct AHB4LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOALPEN        : 1;
@@ -7629,7 +7632,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MxAXIMLPENSETR
-			struct MxAXIMLPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MxAXIMLPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t SYSRAMLPEN       : 1;
@@ -7638,7 +7641,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MxMLAHBLPENSETR
-			struct MxMLAHBLPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MxMLAHBLPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t SRAM1LPEN        : 1;
@@ -7651,7 +7654,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_APB1LPENSETR
-			struct MC_APB1LPENSETR_t: Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
+			struct MC_APB1LPENSETR_t: public Reg32_t /// This register is used by the MCU in order to set the PERxLPEN bit of the corresponding peripheral to . Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2LPEN         : 1;
@@ -7690,7 +7693,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_MC_RSTSCLRR
-			struct MC_RSTSCLRR_t: Reg32_t /// This register is used by the MCU to check the reset source. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a clears the corresponding bit to .Please refer to Section1.3.12: Reset Source Identification for details.This register is located into VDD domain, and is reset by por_rst reset.
+			struct MC_RSTSCLRR_t: public Reg32_t /// This register is used by the MCU to check the reset source. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a clears the corresponding bit to .Please refer to Section1.3.12: Reset Source Identification for details.This register is located into VDD domain, and is reset by por_rst reset.
 			{
 				using Reg32_t::operator=;
 				uint32_t PORRSTF          : 1;
@@ -7709,7 +7712,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_VERR
-			struct VERR_t: Reg32_t /// This register gives the IP version
+			struct VERR_t: public Reg32_t /// This register gives the IP version
 			{
 				using Reg32_t::operator=;
 				uint32_t MINREV           : 4;
@@ -7719,7 +7722,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_IDR
-			struct IDR_t: Reg32_t /// This register gives the unique identifier of the RCC
+			struct IDR_t: public Reg32_t /// This register gives the unique identifier of the RCC
 			{
 				using Reg32_t::operator=;
 				uint32_t ID               : 32;
@@ -7727,7 +7730,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SIDR
-			struct SIDR_t: Reg32_t /// This register gives the decoding space, which is for the RCC of 4 kB.
+			struct SIDR_t: public Reg32_t /// This register gives the decoding space, which is for the RCC of 4 kB.
 			{
 				using Reg32_t::operator=;
 				uint32_t SID              : 32;
@@ -7735,7 +7738,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CR
-			struct CR_t: Reg32_t /// clock control register
+			struct CR_t: public Reg32_t /// clock control register
 			{
 				using Reg32_t::operator=;
 				union
@@ -7843,7 +7846,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CRRCR
-			struct CRRCR_t: Reg32_t /// RCC Clock Recovery RC Register
+			struct CRRCR_t: public Reg32_t /// RCC Clock Recovery RC Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -7895,7 +7898,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CFGR
-			struct CFGR_t: Reg32_t /// RCC Clock Configuration Register
+			struct CFGR_t: public Reg32_t /// RCC Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8025,7 +8028,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D1CFGR
-			struct D1CFGR_t: Reg32_t /// RCC Domain 1 Clock Configuration Register
+			struct D1CFGR_t: public Reg32_t /// RCC Domain 1 Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t HPRE             : 4; /// D1 domain AHB prescaler
@@ -8037,7 +8040,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D2CFGR
-			struct D2CFGR_t: Reg32_t /// RCC Domain 2 Clock Configuration Register
+			struct D2CFGR_t: public Reg32_t /// RCC Domain 2 Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 4;
@@ -8049,7 +8052,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D3CFGR
-			struct D3CFGR_t: Reg32_t /// RCC Domain 3 Clock Configuration Register
+			struct D3CFGR_t: public Reg32_t /// RCC Domain 3 Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8087,7 +8090,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLCKSELR
-			struct PLLCKSELR_t: Reg32_t /// RCC PLLs Clock Source Selection Register
+			struct PLLCKSELR_t: public Reg32_t /// RCC PLLs Clock Source Selection Register
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLSRC           : 2; /// DIVMx and PLLs clock source selection
@@ -8102,7 +8105,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLCFGR
-			struct PLLCFGR_t: Reg32_t /// RCC PLLs Configuration Register
+			struct PLLCFGR_t: public Reg32_t /// RCC PLLs Configuration Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8217,7 +8220,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLxDIVR
-			struct PLLxDIVR_t: Reg32_t /// RCC PLL1 Dividers Configuration Register
+			struct PLLxDIVR_t: public Reg32_t /// RCC PLL1 Dividers Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN1            : 9; /// Multiplication factor for PLL1 VCO
@@ -8230,7 +8233,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL1FRACR
-			struct PLL1FRACR_t: Reg32_t /// RCC PLL1 Fractional Divider Register
+			struct PLL1FRACR_t: public Reg32_t /// RCC PLL1 Fractional Divider Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -8240,7 +8243,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL2FRACR
-			struct PLL2FRACR_t: Reg32_t /// RCC PLL2 Fractional Divider Register
+			struct PLL2FRACR_t: public Reg32_t /// RCC PLL2 Fractional Divider Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -8250,7 +8253,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL3DIVR
-			struct PLL3DIVR_t: Reg32_t /// RCC PLL3 Dividers Configuration Register
+			struct PLL3DIVR_t: public Reg32_t /// RCC PLL3 Dividers Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t DIVN3            : 9; /// Multiplication factor for PLL1 VCO
@@ -8263,7 +8266,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLL3FRACR
-			struct PLL3FRACR_t: Reg32_t /// RCC PLL3 Fractional Divider Register
+			struct PLL3FRACR_t: public Reg32_t /// RCC PLL3 Fractional Divider Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -8273,7 +8276,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D1CCIPR
-			struct D1CCIPR_t: Reg32_t /// RCC Domain 1 Kernel Clock Configuration Register
+			struct D1CCIPR_t: public Reg32_t /// RCC Domain 1 Kernel Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t FMCSRC           : 2; /// FMC kernel clock source selection
@@ -8290,7 +8293,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D2CCIP1R
-			struct D2CCIP1R_t: Reg32_t /// RCC Domain 2 Kernel Clock Configuration Register
+			struct D2CCIP1R_t: public Reg32_t /// RCC Domain 2 Kernel Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t SAI1SRC          : 3; /// SAI1 and DFSDM1 kernel Aclk clock source selection
@@ -8312,7 +8315,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D2CCIP2R
-			struct D2CCIP2R_t: Reg32_t /// RCC Domain 2 Kernel Clock Configuration Register
+			struct D2CCIP2R_t: public Reg32_t /// RCC Domain 2 Kernel Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t USART234578SRC   : 3; /// USART2/3, UART4,5, 7/8 (APB1) kernel clock source selection
@@ -8331,7 +8334,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D3CCIPR
-			struct D3CCIPR_t: Reg32_t /// RCC Domain 3 Kernel Clock Configuration Register
+			struct D3CCIPR_t: public Reg32_t /// RCC Domain 3 Kernel Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				uint32_t LPUART1SRC       : 3; /// LPUART1 kernel clock source selection
@@ -8350,7 +8353,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CIER
-			struct CIER_t: Reg32_t /// RCC Clock Source Interrupt Enable Register
+			struct CIER_t: public Reg32_t /// RCC Clock Source Interrupt Enable Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8413,7 +8416,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CIFR
-			struct CIFR_t: Reg32_t /// RCC Clock Source Interrupt Flag Register
+			struct CIFR_t: public Reg32_t /// RCC Clock Source Interrupt Flag Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8482,7 +8485,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CICR
-			struct CICR_t: Reg32_t /// RCC Clock Source Interrupt Clear Register
+			struct CICR_t: public Reg32_t /// RCC Clock Source Interrupt Clear Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8551,7 +8554,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CSR
-			struct CSR_t: Reg32_t /// RCC Clock Control and Status Register
+			struct CSR_t: public Reg32_t /// RCC Clock Control and Status Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8637,7 +8640,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3RSTR
-			struct AHB3RSTR_t: Reg32_t /// RCC AHB3 Reset Register
+			struct AHB3RSTR_t: public Reg32_t /// RCC AHB3 Reset Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8692,7 +8695,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB1RSTR
-			struct AHB1RSTR_t: Reg32_t /// RCC AHB1 Peripheral Reset Register
+			struct AHB1RSTR_t: public Reg32_t /// RCC AHB1 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8764,7 +8767,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2RSTR
-			struct AHB2RSTR_t: Reg32_t /// RCC AHB2 Peripheral Reset Register
+			struct AHB2RSTR_t: public Reg32_t /// RCC AHB2 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8846,7 +8849,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4RSTR
-			struct AHB4RSTR_t: Reg32_t /// RCC AHB4 Peripheral Reset Register
+			struct AHB4RSTR_t: public Reg32_t /// RCC AHB4 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOARST         : 1; /// GPIO block reset
@@ -8872,7 +8875,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3RSTR
-			struct APB3RSTR_t: Reg32_t /// RCC APB3 Peripheral Reset Register
+			struct APB3RSTR_t: public Reg32_t /// RCC APB3 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				uint32_t RCC_APB3RSTR_RFRST : 1; /// Radio system BLE reset
@@ -8884,7 +8887,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1LRSTR
-			struct APB1LRSTR_t: Reg32_t /// RCC APB1 Peripheral Reset Register
+			struct APB1LRSTR_t: public Reg32_t /// RCC APB1 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -8932,7 +8935,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1HRSTR
-			struct APB1HRSTR_t: Reg32_t /// RCC APB1 Peripheral Reset Register
+			struct APB1HRSTR_t: public Reg32_t /// RCC APB1 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -8948,7 +8951,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2RSTR
-			struct APB2RSTR_t: Reg32_t /// RCC APB2 Peripheral Reset Register
+			struct APB2RSTR_t: public Reg32_t /// RCC APB2 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9054,7 +9057,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB4RSTR
-			struct APB4RSTR_t: Reg32_t /// RCC APB4 Peripheral Reset Register
+			struct APB4RSTR_t: public Reg32_t /// RCC APB4 Peripheral Reset Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -9080,7 +9083,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_GCR
-			struct GCR_t: Reg32_t /// RCC Global Control Register
+			struct GCR_t: public Reg32_t /// RCC Global Control Register
 			{
 				using Reg32_t::operator=;
 				uint32_t WW1RSC           : 1; /// WWDG1 reset scope control
@@ -9092,7 +9095,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_D3AMR
-			struct D3AMR_t: Reg32_t /// RCC D3 Autonomous mode Register
+			struct D3AMR_t: public Reg32_t /// RCC D3 Autonomous mode Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9139,7 +9142,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_xRSR
-			struct xRSR_t: Reg32_t /// RCC Reset Status Register
+			struct xRSR_t: public Reg32_t /// RCC Reset Status Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 16;
@@ -9163,7 +9166,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB1ENR
-			struct AHB1ENR_t: Reg32_t /// RCC AHB1 Clock Register
+			struct AHB1ENR_t: public Reg32_t /// RCC AHB1 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9252,7 +9255,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C1_AHB1ENR
-			struct C1_AHB1ENR_t: Reg32_t /// RCC AHB1 Clock Register
+			struct C1_AHB1ENR_t: public Reg32_t /// RCC AHB1 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9290,7 +9293,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2ENR
-			struct AHB2ENR_t: Reg32_t /// RCC AHB2 Clock Register
+			struct AHB2ENR_t: public Reg32_t /// RCC AHB2 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9374,7 +9377,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4ENR
-			struct AHB4ENR_t: Reg32_t /// RCC AHB4 Clock Register
+			struct AHB4ENR_t: public Reg32_t /// RCC AHB4 Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOAEN          : 1; /// 0GPIO peripheral clock enable
@@ -9402,7 +9405,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3ENR
-			struct APB3ENR_t: Reg32_t /// RCC APB3 Clock Register
+			struct APB3ENR_t: public Reg32_t /// RCC APB3 Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -9415,7 +9418,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1LENR
-			struct APB1LENR_t: Reg32_t /// RCC APB1 Clock Register
+			struct APB1LENR_t: public Reg32_t /// RCC APB1 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9465,7 +9468,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C1_APB1LENR
-			struct C1_APB1LENR_t: Reg32_t /// RCC APB1 Clock Register
+			struct C1_APB1LENR_t: public Reg32_t /// RCC APB1 Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2EN           : 1; /// TIM peripheral clock enable
@@ -9499,7 +9502,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1HENR
-			struct APB1HENR_t: Reg32_t /// RCC APB1 Clock Register
+			struct APB1HENR_t: public Reg32_t /// RCC APB1 Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -9515,7 +9518,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2ENR
-			struct APB2ENR_t: Reg32_t /// RCC APB2 Clock Register
+			struct APB2ENR_t: public Reg32_t /// RCC APB2 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9630,7 +9633,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB4ENR
-			struct APB4ENR_t: Reg32_t /// RCC APB4 Clock Register
+			struct APB4ENR_t: public Reg32_t /// RCC APB4 Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -9657,7 +9660,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3LPENR
-			struct AHB3LPENR_t: Reg32_t /// RCC AHB3 Sleep Clock Register
+			struct AHB3LPENR_t: public Reg32_t /// RCC AHB3 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9706,7 +9709,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB1LPENR
-			struct AHB1LPENR_t: Reg32_t /// RCC AHB1 Sleep Clock Register
+			struct AHB1LPENR_t: public Reg32_t /// RCC AHB1 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9783,7 +9786,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2LPENR
-			struct AHB2LPENR_t: Reg32_t /// RCC AHB2 Sleep Clock Register
+			struct AHB2LPENR_t: public Reg32_t /// RCC AHB2 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9827,7 +9830,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB4LPENR
-			struct AHB4LPENR_t: Reg32_t /// RCC AHB4 Sleep Clock Register
+			struct AHB4LPENR_t: public Reg32_t /// RCC AHB4 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t GPIOALPEN        : 1; /// GPIO peripheral clock enable during CSleep mode
@@ -9855,7 +9858,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB3LPENR
-			struct APB3LPENR_t: Reg32_t /// RCC APB3 Sleep Clock Register
+			struct APB3LPENR_t: public Reg32_t /// RCC APB3 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 3;
@@ -9868,7 +9871,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1LLPENR
-			struct APB1LLPENR_t: Reg32_t /// RCC APB1 Low Sleep Clock Register
+			struct APB1LLPENR_t: public Reg32_t /// RCC APB1 Low Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2LPEN         : 1; /// TIM2 peripheral clock enable during CSleep mode
@@ -9904,7 +9907,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1HLPENR
-			struct APB1HLPENR_t: Reg32_t /// RCC APB1 High Sleep Clock Register
+			struct APB1HLPENR_t: public Reg32_t /// RCC APB1 High Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -9920,7 +9923,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2LPENR
-			struct APB2LPENR_t: Reg32_t /// RCC APB2 Sleep Clock Register
+			struct APB2LPENR_t: public Reg32_t /// RCC APB2 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -9993,7 +9996,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB4LPENR
-			struct APB4LPENR_t: Reg32_t /// RCC APB4 Sleep Clock Register
+			struct APB4LPENR_t: public Reg32_t /// RCC APB4 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 1;
@@ -10020,7 +10023,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_ICSCR
-			struct ICSCR_t: Reg32_t /// RCC Internal Clock Source Calibration Register
+			struct ICSCR_t: public Reg32_t /// RCC Internal Clock Source Calibration Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10079,7 +10082,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3ENR
-			struct AHB3ENR_t: Reg32_t /// RCC AHB3 Clock Register
+			struct AHB3ENR_t: public Reg32_t /// RCC AHB3 Clock Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10133,7 +10136,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C1_AHB3LPENR
-			struct C1_AHB3LPENR_t: Reg32_t /// RCC AHB3 Sleep Clock Register
+			struct C1_AHB3LPENR_t: public Reg32_t /// RCC AHB3 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t MDMALPEN         : 1; /// MDMA Clock Enable During CSleep Mode
@@ -10157,7 +10160,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C1_AHB1LPENR
-			struct C1_AHB1LPENR_t: Reg32_t /// RCC AHB1 Sleep Clock Register
+			struct C1_AHB1LPENR_t: public Reg32_t /// RCC AHB1 Sleep Clock Register
 			{
 				using Reg32_t::operator=;
 				uint32_t DMA1LPEN         : 1; /// DMA1 Clock Enable During CSleep Mode
@@ -10178,7 +10181,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLSAI1CFGR
-			struct PLLSAI1CFGR_t: Reg32_t /// PLLSAI1 configuration register
+			struct PLLSAI1CFGR_t: public Reg32_t /// PLLSAI1 configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10221,7 +10224,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLSAI2CFGR
-			struct PLLSAI2CFGR_t: Reg32_t /// PLLSAI2 configuration register
+			struct PLLSAI2CFGR_t: public Reg32_t /// PLLSAI2 configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 4;
@@ -10241,7 +10244,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1RSTR1
-			struct APB1RSTR1_t: Reg32_t /// APB1 peripheral reset register 1
+			struct APB1RSTR1_t: public Reg32_t /// APB1 peripheral reset register 1
 			{
 				using Reg32_t::operator=;
 				union
@@ -10299,7 +10302,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1RSTR2
-			struct APB1RSTR2_t: Reg32_t /// APB1 peripheral reset register 2
+			struct APB1RSTR2_t: public Reg32_t /// APB1 peripheral reset register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LPUART1RST       : 1; /// Low-power UART 1 reset
@@ -10314,7 +10317,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1ENR1
-			struct APB1ENR1_t: Reg32_t /// None
+			struct APB1ENR1_t: public Reg32_t /// None
 			{
 				using Reg32_t::operator=;
 				union
@@ -10384,7 +10387,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1ENR2
-			struct APB1ENR2_t: Reg32_t /// APB1 peripheral clock enable register 2
+			struct APB1ENR2_t: public Reg32_t /// APB1 peripheral clock enable register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LPUART1EN        : 1; /// Low power UART 1 clock enable
@@ -10401,7 +10404,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB1SMENR
-			struct AHB1SMENR_t: Reg32_t /// AHB1 peripheral clocks enable in Sleep and Stop modes register
+			struct AHB1SMENR_t: public Reg32_t /// AHB1 peripheral clocks enable in Sleep and Stop modes register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10439,7 +10442,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB2SMENR
-			struct AHB2SMENR_t: Reg32_t /// AHB2 peripheral clocks enable in Sleep and Stop modes register
+			struct AHB2SMENR_t: public Reg32_t /// AHB2 peripheral clocks enable in Sleep and Stop modes register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10502,7 +10505,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHB3SMENR
-			struct AHB3SMENR_t: Reg32_t /// AHB3 peripheral clocks enable in Sleep and Stop modes register
+			struct AHB3SMENR_t: public Reg32_t /// AHB3 peripheral clocks enable in Sleep and Stop modes register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10537,7 +10540,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1SMENR1
-			struct APB1SMENR1_t: Reg32_t /// None
+			struct APB1SMENR1_t: public Reg32_t /// None
 			{
 				using Reg32_t::operator=;
 				union
@@ -10604,7 +10607,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1SMENR2
-			struct APB1SMENR2_t: Reg32_t /// APB1 peripheral clocks enable in Sleep and Stop modes register 2
+			struct APB1SMENR2_t: public Reg32_t /// APB1 peripheral clocks enable in Sleep and Stop modes register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t LPUART1SMEN      : 1; /// Low power UART 1 clocks enable during Sleep and Stop modes
@@ -10619,7 +10622,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB2SMENR
-			struct APB2SMENR_t: Reg32_t /// CPU2 APB2SMENR
+			struct APB2SMENR_t: public Reg32_t /// CPU2 APB2SMENR
 			{
 				using Reg32_t::operator=;
 				union
@@ -10670,7 +10673,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CCIPR
-			struct CCIPR_t: Reg32_t /// Peripherals independent clock configuration register
+			struct CCIPR_t: public Reg32_t /// Peripherals independent clock configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10743,7 +10746,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CCIPR2
-			struct CCIPR2_t: Reg32_t /// Peripherals independent clock configuration register
+			struct CCIPR2_t: public Reg32_t /// Peripherals independent clock configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10782,7 +10785,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CIR
-			struct CIR_t: Reg32_t /// clock interrupt register
+			struct CIR_t: public Reg32_t /// clock interrupt register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10850,7 +10853,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1RSTR
-			struct APB1RSTR_t: Reg32_t /// APB1 peripheral reset register
+			struct APB1RSTR_t: public Reg32_t /// APB1 peripheral reset register
 			{
 				using Reg32_t::operator=;
 				union
@@ -10947,7 +10950,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1ENR
-			struct APB1ENR_t: Reg32_t /// APB1 peripheral clock enable register
+			struct APB1ENR_t: public Reg32_t /// APB1 peripheral clock enable register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11052,7 +11055,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1LPENR
-			struct APB1LPENR_t: Reg32_t /// APB1 peripheral clock enable in low power mode register
+			struct APB1LPENR_t: public Reg32_t /// APB1 peripheral clock enable in low power mode register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11124,7 +11127,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SSCGR
-			struct SSCGR_t: Reg32_t /// spread spectrum clock generation register
+			struct SSCGR_t: public Reg32_t /// spread spectrum clock generation register
 			{
 				using Reg32_t::operator=;
 				uint32_t MODPER           : 13; /// Modulation period
@@ -11136,7 +11139,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLI2SCFGR
-			struct PLLI2SCFGR_t: Reg32_t /// PLLI2S configuration register
+			struct PLLI2SCFGR_t: public Reg32_t /// PLLI2S configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11191,7 +11194,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLSAICFGR
-			struct PLLSAICFGR_t: Reg32_t /// PLL configuration register
+			struct PLLSAICFGR_t: public Reg32_t /// PLL configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t RCC_PLLSAICFGR_PLLSAIM : 6; /// Division factor for audio PLLSAI input clock
@@ -11206,7 +11209,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DKCFGR1
-			struct DKCFGR1_t: Reg32_t /// dedicated clocks configuration register
+			struct DKCFGR1_t: public Reg32_t /// dedicated clocks configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLI2SDIV        : 5; /// PLLI2S division factor for SAI1 clock
@@ -11223,7 +11226,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DKCFGR2
-			struct DKCFGR2_t: Reg32_t /// dedicated clocks configuration register
+			struct DKCFGR2_t: public Reg32_t /// dedicated clocks configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t USART1SEL        : 2; /// USART 1 clock source selection
@@ -11247,7 +11250,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_PLLSYSCFGR
-			struct PLLSYSCFGR_t: Reg32_t /// PLL configuration register
+			struct PLLSYSCFGR_t: public Reg32_t /// PLL configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11290,7 +11293,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CCIPR1
-			struct CCIPR1_t: Reg32_t /// CCIPR
+			struct CCIPR1_t: public Reg32_t /// CCIPR
 			{
 				using Reg32_t::operator=;
 				uint32_t USART1SEL        : 2; /// USART1 clock source selection
@@ -11313,7 +11316,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DCKCFGR
-			struct DCKCFGR_t: Reg32_t /// Dedicated Clock Configuration Register
+			struct DCKCFGR_t: public Reg32_t /// Dedicated Clock Configuration Register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11354,7 +11357,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DCKCFGR1
-			struct DCKCFGR1_t: Reg32_t /// dedicated clocks configuration register
+			struct DCKCFGR1_t: public Reg32_t /// dedicated clocks configuration register
 			{
 				using Reg32_t::operator=;
 				uint32_t PLLI2SDIV        : 5; /// PLLI2S division factor for SAI1 clock
@@ -11369,7 +11372,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_DCKCFGR2
-			struct DCKCFGR2_t: Reg32_t /// dedicated clocks configuration register
+			struct DCKCFGR2_t: public Reg32_t /// dedicated clocks configuration register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11423,7 +11426,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CKGATENR
-			struct CKGATENR_t: Reg32_t /// clocks gated enable register
+			struct CKGATENR_t: public Reg32_t /// clocks gated enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t AHB2APB1_CKEN    : 1; /// AHB to APB1 Bridge clock enable
@@ -11439,7 +11442,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_SMPSCR
-			struct SMPSCR_t: Reg32_t /// Step Down converter control register
+			struct SMPSCR_t: public Reg32_t /// Step Down converter control register
 			{
 				using Reg32_t::operator=;
 				uint32_t SMPSSEL          : 2; /// Step Down converter clock selection
@@ -11452,7 +11455,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_HSECR
-			struct HSECR_t: Reg32_t /// Clock HSE register
+			struct HSECR_t: public Reg32_t /// Clock HSE register
 			{
 				using Reg32_t::operator=;
 				uint32_t UNLOCKED         : 1; /// Register lock system
@@ -11466,7 +11469,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_EXTCFGR
-			struct EXTCFGR_t: Reg32_t /// Extended clock recovery register
+			struct EXTCFGR_t: public Reg32_t /// Extended clock recovery register
 			{
 				using Reg32_t::operator=;
 				uint32_t SHDHPRE          : 4; /// Shared AHB prescaler
@@ -11481,7 +11484,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2AHB1ENR
-			struct C2AHB1ENR_t: Reg32_t /// CPU2 AHB1 peripheral clock enable register
+			struct C2AHB1ENR_t: public Reg32_t /// CPU2 AHB1 peripheral clock enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t DMA1EN           : 1; /// CPU2 DMA1 clock enable
@@ -11498,7 +11501,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2AHB3ENR
-			struct C2AHB3ENR_t: Reg32_t /// CPU2 AHB3 peripheral clock enable register
+			struct C2AHB3ENR_t: public Reg32_t /// CPU2 AHB3 peripheral clock enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 16;
@@ -11514,7 +11517,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2APB1ENR1
-			struct C2APB1ENR1_t: Reg32_t /// CPU2 APB1ENR1
+			struct C2APB1ENR1_t: public Reg32_t /// CPU2 APB1ENR1
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2EN           : 1; /// CPU2 TIM2 timer clock enable
@@ -11536,7 +11539,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2APB3ENR
-			struct C2APB3ENR_t: Reg32_t /// CPU2 APB3ENR
+			struct C2APB3ENR_t: public Reg32_t /// CPU2 APB3ENR
 			{
 				using Reg32_t::operator=;
 				uint32_t BLEEN            : 1; /// CPU2 BLE interface clock enable
@@ -11546,7 +11549,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2AHB3SMENR
-			struct C2AHB3SMENR_t: Reg32_t /// CPU2 AHB3 peripheral clocks enable in Sleep and Stop modes register
+			struct C2AHB3SMENR_t: public Reg32_t /// CPU2 AHB3 peripheral clocks enable in Sleep and Stop modes register
 			{
 				using Reg32_t::operator=;
 				uint32_t                  : 16;
@@ -11561,7 +11564,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2APB1SMENR1
-			struct C2APB1SMENR1_t: Reg32_t /// CPU2 APB1SMENR1
+			struct C2APB1SMENR1_t: public Reg32_t /// CPU2 APB1SMENR1
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2SMEN         : 1; /// TIM2 timer clocks enable during CPU2 Sleep mode
@@ -11583,7 +11586,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_C2APB3SMENR
-			struct C2APB3SMENR_t: Reg32_t /// CPU2 APB3SMENR
+			struct C2APB3SMENR_t: public Reg32_t /// CPU2 APB3SMENR
 			{
 				using Reg32_t::operator=;
 				uint32_t BLESMEN          : 1; /// BLE interface clocks enable during CPU2 Sleep mode
@@ -11593,7 +11596,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHBENR
-			struct AHBENR_t: Reg32_t /// AHB Peripheral Clock enable register (RCC_AHBENR)
+			struct AHBENR_t: public Reg32_t /// AHB Peripheral Clock enable register (RCC_AHBENR)
 			{
 				using Reg32_t::operator=;
 				union
@@ -11676,7 +11679,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHBRSTR
-			struct AHBRSTR_t: Reg32_t /// AHB peripheral reset register
+			struct AHBRSTR_t: public Reg32_t /// AHB peripheral reset register
 			{
 				using Reg32_t::operator=;
 				union
@@ -11752,7 +11755,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CFGR2
-			struct CFGR2_t: Reg32_t /// Clock configuration register 2
+			struct CFGR2_t: public Reg32_t /// Clock configuration register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t PREDIV           : 4; /// PREDIV division factor
@@ -11763,7 +11766,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CFGR3
-			struct CFGR3_t: Reg32_t /// Clock configuration register 3
+			struct CFGR3_t: public Reg32_t /// Clock configuration register 3
 			{
 				using Reg32_t::operator=;
 				union
@@ -11802,7 +11805,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CR2
-			struct CR2_t: Reg32_t /// Clock control register 2
+			struct CR2_t: public Reg32_t /// Clock control register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t HSI14ON          : 1; /// HSI14 clock enable
@@ -11819,7 +11822,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_IOPRSTR
-			struct IOPRSTR_t: Reg32_t /// GPIO reset register
+			struct IOPRSTR_t: public Reg32_t /// GPIO reset register
 			{
 				using Reg32_t::operator=;
 				uint32_t IOPARST          : 1; /// I/O port A reset
@@ -11835,7 +11838,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBRSTR1
-			struct APBRSTR1_t: Reg32_t /// APB peripheral reset register 1
+			struct APBRSTR1_t: public Reg32_t /// APB peripheral reset register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2RST          : 1; /// TIM2 timer reset
@@ -11865,7 +11868,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBRSTR2
-			struct APBRSTR2_t: Reg32_t /// APB peripheral reset register 2
+			struct APBRSTR2_t: public Reg32_t /// APB peripheral reset register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SYSCFGRST        : 1; /// SYSCFG, COMP and VREFBUF reset
@@ -11885,7 +11888,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_IOPENR
-			struct IOPENR_t: Reg32_t /// GPIO clock enable register
+			struct IOPENR_t: public Reg32_t /// GPIO clock enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t IOPAEN           : 1; /// I/O port A clock enable
@@ -11901,7 +11904,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBENR1
-			struct APBENR1_t: Reg32_t /// APB peripheral clock enable register 1
+			struct APBENR1_t: public Reg32_t /// APB peripheral clock enable register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2EN           : 1; /// TIM2 timer clock enable
@@ -11934,7 +11937,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBENR2
-			struct APBENR2_t: Reg32_t /// APB peripheral clock enable register 2
+			struct APBENR2_t: public Reg32_t /// APB peripheral clock enable register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SYSCFGEN         : 1; /// SYSCFG, COMP and VREFBUF clock enable
@@ -11954,7 +11957,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_IOPSMENR
-			struct IOPSMENR_t: Reg32_t /// GPIO in Sleep mode clock enable register
+			struct IOPSMENR_t: public Reg32_t /// GPIO in Sleep mode clock enable register
 			{
 				using Reg32_t::operator=;
 				uint32_t IOPASMEN         : 1; /// I/O port A clock enable during Sleep mode
@@ -11968,7 +11971,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHBSMENR
-			struct AHBSMENR_t: Reg32_t /// AHB peripheral clock enable in Sleep mode register
+			struct AHBSMENR_t: public Reg32_t /// AHB peripheral clock enable in Sleep mode register
 			{
 				using Reg32_t::operator=;
 				union
@@ -12008,7 +12011,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBSMENR1
-			struct APBSMENR1_t: Reg32_t /// APB peripheral clock enable in Sleep mode register 1
+			struct APBSMENR1_t: public Reg32_t /// APB peripheral clock enable in Sleep mode register 1
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2SMEN         : 1; /// TIM2 timer clock enable during Sleep mode
@@ -12041,7 +12044,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APBSMENR2
-			struct APBSMENR2_t: Reg32_t /// APB peripheral clock enable in Sleep mode register 2
+			struct APBSMENR2_t: public Reg32_t /// APB peripheral clock enable in Sleep mode register 2
 			{
 				using Reg32_t::operator=;
 				uint32_t SYSCFGSMEN       : 1; /// SYSCFG, COMP and VREFBUF clock enable during Sleep mode
@@ -12061,7 +12064,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_IOPSMEN
-			struct IOPSMEN_t: Reg32_t /// GPIO clock enable in sleep mode register
+			struct IOPSMEN_t: public Reg32_t /// GPIO clock enable in sleep mode register
 			{
 				using Reg32_t::operator=;
 				uint32_t IOPASMEN         : 1; /// Port A clock enable during Sleep mode bit
@@ -12076,7 +12079,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_APB1SMENR
-			struct APB1SMENR_t: Reg32_t /// APB1 peripheral clock enable in sleep mode register
+			struct APB1SMENR_t: public Reg32_t /// APB1 peripheral clock enable in sleep mode register
 			{
 				using Reg32_t::operator=;
 				uint32_t TIM2SMEN         : 1; /// Timer2 clock enable during sleep mode bit
@@ -12108,7 +12111,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_AHBLPENR
-			struct AHBLPENR_t: Reg32_t /// AHB peripheral clock enable in low power mode register
+			struct AHBLPENR_t: public Reg32_t /// AHB peripheral clock enable in low power mode register
 			{
 				using Reg32_t::operator=;
 				union
@@ -12841,1869 +12844,1870 @@ namespace sool {
 		
 	};
 };
-#undef RCC_MAP1_D1CFGR
-#undef RCC_CSR_2_FIREWALLRSTF
-#undef RCC_CR_2_PLLSYSRDY
-#undef RCC_AHB2RSTR_0_GPIOCRST
-#undef RCC_DCKCFGR2_0_CECSEL
-#undef RCC_AHB2ENR_0_GPIOHEN
-#undef RCC_APB1SMENR2_USBPDSMEN
-#undef RCC_CFGR_2_MCO2PRE
-#undef RCC_MAP0_APB1DIVR
-#undef RCC_MAP0_SPDIFCKSELR
-#undef RCC_PLLCFGR_2_PLLM1
-#undef RCC_MAP2_APB2SMENR
-#undef RCC_MAP4_DCKCFGR
-#undef RCC_APB1SMENR1_2
-#undef RCC_MAP3_AHB1RSTR
-#undef RCC_APB1RSTR_0_TIM5RST
-#undef RCC_APB1RSTR1_0_TIM3RST
-#undef RCC_APB1RSTR_3
-#undef RCC_AHB2RSTR_1_GPIOERST
-#undef RCC_APB1ENR_1_RTCAPB
-#undef RCC_CSR_0_RTCRST
-#undef RCC_CCIPR_1_TIM15SEL
-#undef RCC_AHB1RSTR_0_DMA2RST
-#undef RCC_PLLCFGR_2_PLLN5
-#undef RCC_APB1LPENR_0_I2C3LPEN
-#undef RCC_APB2ENR_1
-#undef RCC_APB2RSTR_1_DFSDM1RST
-#undef RCC_CR_1_PLLON
-#undef RCC_CFGR_5_HPRE
-#undef RCC_APB1SMENR1_0_CAN2SMEN
-#undef RCC_MAP0_MC_AHB6LPENSETR
-#undef RCC_APB1RSTR_2_CRSRST
-#undef RCC_MAP4_IOPSMENR
-#undef RCC_MAP4_APB1RSTR
-#undef RCC_CR_1_PLLSAI2RDY
-#undef RCC_APB1ENR_0_TIM4EN
-#undef RCC_APB2RSTR_0_DFSDM1RST
-#undef RCC_MAP0_PLL3CFGR2
-#undef RCC_APB1ENR1_0_I2C3EN
-#undef RCC_APB2SMENR_1_HRTIMERSMEN
-#undef RCC_MAP1_APB1ENR
-#undef RCC_APB1RSTR_0_UART4RST
-#undef RCC_MAP5_APBENR1
-#undef RCC_MAP0_MC_CIER
-#undef RCC_PLLCFGR_0_PLLN8
-#undef RCC_APB2LPENR_0_SYSCFGLPEN
-#undef RCC_AHB1RSTR_1_CORDICRST
-#undef RCC_CSR_0_MSISRANGE
-#undef RCC_APB1ENR1_0_TIM5EN
-#undef RCC_AHBRSTR_0_IOPCRST
-#undef RCC_MAP0_AHB4RSTSETR
-#undef RCC_MAP1_APB3RSTR
-#undef RCC_APB2SMENR_0_TIM21SMEN
-#undef RCC_AHB1ENR_1
-#undef RCC_ICSCR_1_HSITRIM
-#undef RCC_APB1ENR1_1_SPI1EN
-#undef RCC_AHBENR_0_TSCEN
-#undef RCC_PLLCFGR_2_PLLM4
-#undef RCC_MAP1_AHB4RSTR
-#undef RCC_CCIPR_0_SWPMI1SEL
-#undef RCC_AHBRSTR_2_DMA1RST
-#undef RCC_CCIPR_1_RNGDIV
-#undef RCC_AHBENR_0_IOPDEN
-#undef RCC_APB2SMENR_1_DFSDMSMEN
-#undef RCC_APB1LPENR_1_COMPLPEN
-#undef RCC_D3CFGR_0
-#undef RCC_APB2ENR_1_TIM11EN
-#undef RCC_PLLCFGR_0_DIVQ3EN
-#undef RCC_BDCR_0_LSEMOD
-#undef RCC_AHB2ENR_1_GPIOFEN
-#undef RCC_AHB2ENR_0_GPIOIEN
-#undef RCC_MAP0_MC_APB4LPENSETR
-#undef RCC_APB1ENR1_2
-#undef RCC_AHB2ENR_0
-#undef RCC_IOPRSTR_IOPERST
-#undef RCC_AHBRSTR_1
-#undef RCC_CFGR_2_MCO11
-#undef RCC_MAP0_PLL1CSGR
-#undef RCC_APB1RSTR_0_UART5RST
-#undef RCC_MAP0_MC_AHB5LPENCLRR
-#undef RCC_CCIPR_0_SAI1SEL
-#undef RCC_ICSCR_3_MSICAL
-#undef RCC_AHB3SMENR_0_FMCSMEN
-#undef RCC_CIFR_1_PLLSAI2RDYF
-#undef RCC_APB1LENR_0_HDMICECEN
-#undef RCC_MAP1_PLLCFGR
-#undef RCC_AHB3RSTR_0_RNGRST
-#undef RCC_PLLCFGR_4
-#undef RCC_APB2LPENR_0_SAI2LPEN
-#undef RCC_BDCR_1_LSECSSD
-#undef RCC_AHBENR_1_RNGEN
-#undef RCC_CFGR_4
-#undef RCC_AHB3RSTR_1_FMCRST
-#undef RCC_APB2LPENR_0_TIM15LPEN
-#undef RCC_MAP0_MC_AHB3LPENCLRR
-#undef RCC_AHB1ENR_0_DMA2DEN
-#undef RCC_MAP5_C2AHB1ENR
-#undef RCC_CR_0_D2CKRDY
-#undef RCC_APB1RSTR_0_SPI2RST
-#undef RCC_APB1RSTR1_0_SPI3RST
-#undef RCC_PLLI2SCFGR_0
-#undef RCC_MAP5_DCKCFGR2
-#undef RCC_CICR_1_PLLRDYC
-#undef RCC_MAP3_APB2RSTR
-#undef RCC_MAP0_LPTIM45CKSELR
-#undef RCC_AHB1RSTR_0_GPIOGRST
-#undef RCC_APB2RSTR_1_TIM8RST
-#undef RCC_MAP2_APB1ENR1
-#undef RCC_PLLCFGR_2_PLLM0
-#undef RCC_MAP0_VERR
-#undef RCC_CCIPR_0_DFSDMSEL
-#undef RCC_MAP1_APB4LPENR
-#undef RCC_APBENR1_TIM7EN
-#undef RCC_APB1SMENR_I2C3SMEN
-#undef RCC_CICR_0_HSECSSC
-#undef RCC_CSR_1_BORRSTF
-#undef RCC_APB1ENR_3_CRSEN
-#undef RCC_MAP0_MP_AHB5LPENSETR
-#undef RCC_APB1LPENR_0_CAN2LPEN
-#undef RCC_AHB2LPENR_0_RNGLPEN
-#undef RCC_AHB2SMENR_0_DCMISMEN
-#undef RCC_PLLCFGR_0_PLL1RGE
-#undef RCC_AHBRSTR_0_GPIOERST
-#undef RCC_MAP0_MPCKDIVR
-#undef RCC_CCIPR_0_I2C2SEL
-#undef RCC_CCIPR_0_UART5SEL
-#undef RCC_APB2ENR_3_MIFIEN
-#undef RCC_CFGR_2_HPRE1
-#undef RCC_APB2ENR_0_LTDCEN
-#undef RCC_CIFR_0_HSERDYF
-#undef RCC_AHB1ENR_0_ETH1TXEN
-#undef RCC_MAP1_PLL2FRACR
-#undef RCC_MAP0_MC_AHB2ENSETR
-#undef RCC_MAP0_MC_APB4ENSETR
-#undef RCC_APB1RSTR_0_UART3RST
+#undef RCC_PLLI2SCFGR_0_PLLI2SM
+#undef RCC_CCIPR_1
+#undef RCC_MAP1_D1CCIPR
 #undef RCC_APB2RSTR_2_DBGMCURST
-#undef RCC_APB1ENR_0_I2C2EN
-#undef RCC_AHB1LPENR_0_RNGLPEN
-#undef RCC_AHB1RSTR_1_MATRIXRST
-#undef RCC_MAP0_OCENCLRR
-#undef RCC_MAP0_ASSCKSELR
-#undef RCC_CFGR_1_HPRE
-#undef RCC_CCIPR_0_SAI2SEL
-#undef RCC_MAP3_AHB3ENR
-#undef RCC_MAP0_MP_SREQSETR
-#undef RCC_MAP0_RNG1CKSELR
-#undef RCC_AHBENR_0_IOPAEN
-#undef RCC_AHB2ENR_1
-#undef RCC_AHB2LPENR_0_HASHLPEN
-#undef RCC_AHB3RSTR_0_QUADSPI1RST
-#undef RCC_CIER_0_LSI2RDYIE
-#undef RCC_AHB2RSTR_1_CRYPTRST
-#undef RCC_APB2RSTR_0_USART1RST
-#undef RCC_AHBRSTR_2_TOUCHRST
-#undef RCC_MAP4_DCKCFGR2
-#undef RCC_MAP5_C2APB1ENR1
-#undef RCC_MAP0_MC_AHB4ENCLRR
-#undef RCC_CSR_0_CSSLSEON
-#undef RCC_AHB3ENR_0_OSPI2EN
-#undef RCC_CR_2_PLLI2SON
-#undef RCC_MAP0_SAI2CKSELR
-#undef RCC_CCIPR2_1_I2C4SEL_1
-#undef RCC_MAP1_PLL2DIVR
-#undef RCC_MAP2_CIER
-#undef RCC_MAP0_APB2RSTSETR
-#undef RCC_CSR_1_WDGRSTF
-#undef RCC_CR_1
-#undef RCC_APBSMENR2_TIM15SMEN
-#undef RCC_CR_3
+#undef RCC_AHB1RSTR_2_DMAMUXRST
 #undef RCC_CR_0_CSIKERON
-#undef RCC_MAP1_D2CCIP1R
-#undef RCC_AHB2RSTR_0_GPIOHRST
-#undef RCC_MAP1_C1_AHB1ENR
-#undef RCC_CFGR_2_SW0
-#undef RCC_APB1ENR1_0_LCDEN
-#undef RCC_AHB1ENR_1_USB2OTGEN
-#undef RCC_APB2LPENR_1_TIM9LPEN
-#undef RCC_AHBENR_0_ADC12EN
-#undef RCC_MAP4
-#undef RCC_APB2LPENR_0_ADC2LPEN
-#undef RCC_AHB2ENR_1_RNGEN
-#undef RCC_CCIPR_1_USART4SEL
-#undef RCC_DCKCFGR2_0_UART6SEL
-#undef RCC_MAP5_BDCR
-#undef RCC_APB2ENR_0_DFSDM2EN
-#undef RCC_CSR_1_RTCRST
-#undef RCC_APB1ENR_0_SPDIFRXEN
-#undef RCC_AHBRSTR_0_TSCRST
-#undef RCC_AHB3ENR_0_MDMAEN
-#undef RCC_APB2ENR_1_SYSCFGEN
+#undef RCC_APB2SMENR_1
+#undef RCC_CFGR_2_RTCPRE4
+#undef RCC_CFGR_4
+#undef RCC_MAP0_TIMG2PRER
+#undef RCC_DCKCFGR_0_PLLSAIDIVQ
+#undef RCC_MAP2_C1_AHB1LPENR
+#undef RCC_CCIPR_1_LPTIM1SEL1
+#undef RCC_CR_3
+#undef RCC_MAP4_APBRSTR1
+#undef RCC_AHB3RSTR_0_CPURST
+#undef RCC_MAP0_MC_MLAHBLPENCLRR
+#undef RCC_AHB2ENR_0_GPIODEN
 #undef RCC_CR_0_HSECSSON
-#undef RCC_BDCR_1_LSCOSEL
+#undef RCC_AHB1LPENR_0_AXILPEN
+#undef RCC_MAP0_APB1DIVR
+#undef RCC_MAP0_ETHCKSELR
+#undef RCC_IOPSMEN_IOPESMEN
+#undef RCC_APB1LPENR_1_CAN3LPEN
+#undef RCC_APB2RSTR_2_DFSDMRST
+#undef RCC_BDCR_1_LSEDRV
+#undef RCC_AHB3RSTR_0_QUADSPI1RST
+#undef RCC_CCIPR2_0_PLLSAI2DIVR
+#undef RCC_CCIPR_0_I2C3SEL
+#undef RCC_AHB1ENR_1_CORDICEN
+#undef RCC_APB1LPENR_0_TIM12LPEN
+#undef RCC_MAP3_DKCFGR1
+#undef RCC_AHB3RSTR_0_OSPI2RST
+#undef RCC_MAP0_MP_APB1ENCLRR
+#undef RCC_MAP0_VERR
 #undef RCC_APBRSTR1_CECRST
-#undef RCC_CR_0_HSION
-#undef RCC_APB1ENR_0_UART7ENR
-#undef RCC_APB1LPENR_0_CAN1LPEN
-#undef RCC_AHB2ENR_0_GPIOCEN
-#undef RCC_APB2ENR_3_SDAD1EN
-#undef RCC_AHB2SMENR_0_AESSMEN
-#undef RCC_CIFR_0_LSECSSF
-#undef RCC_DCKCFGR2_0_SDMMC2SEL
-#undef RCC_MAP0_PLL2CFGR2
-#undef RCC_DCKCFGR2_0_I2C1SEL
-#undef RCC_AHBSMENR_1_CRYPTSMEN
-#undef RCC_MAP4_AHBLPENR
-#undef RCC_APB2LPENR_0_DFSDM2LPEN
-#undef RCC_MAP1_C1_AHB2ENR
-#undef RCC_CCIPR2_1_QUADSPISEL
-#undef RCC_APB1RSTR1_0_PWRRST
+#undef RCC_MAP0_BDCR
+#undef RCC_MAP0_AHB6RSTSETR
+#undef RCC_MAP0_I2C12CKSELR
+#undef RCC_MAP1_D3AMR
+#undef RCC_CRRCR_2_HSI48CAL
+#undef RCC_AHBRSTR_1_GPIOARST
+#undef RCC_MAP0_MP_APRSTSR
+#undef RCC_APB2LPENR_0_DSILPEN
+#undef RCC_AHB1LPENR_0_USB2ULPILPEN
+#undef RCC_AHB3LPENR_2
+#undef RCC_APB2ENR_0_SYSCFGEN
+#undef RCC_APB2RSTR_0_TIM17RST
+#undef RCC_CICR_2_PLLSYSRDYC
+#undef RCC_APB1ENR1_1_SPI1EN
+#undef RCC_APB1SMENR1_0_UART4SMEN
+#undef RCC_APB2ENR_0_TIM1EN
+#undef RCC_AHB2SMENR_0_RNGSMEN
+#undef RCC_CFGR_3_MCO2PRE2
+#undef RCC_IOPENR_IOPHEN
+#undef RCC_CFGR_2_MCO2PRE
+#undef RCC_APB2ENR_2_DFSDMEN
+#undef RCC_PLLCFGR_0_DIVP3EN
+#undef RCC_MAP0_MP_APB3LPENSETR
+#undef RCC_AHB2LPENR_0_CRYPTLPEN
+#undef RCC_AHB1LPENR_0_RNGLPEN
+#undef RCC_APB2RSTR_1_SDAD2RST
+#undef RCC_AHB2ENR_0_GPIOIEN
+#undef RCC_APB1ENR_0_TIM3EN
+#undef RCC_AHB2ENR_0_DCMIEN
+#undef RCC_MAP2_CRRCR
+#undef RCC_BDCR_0_LSEMOD
+#undef RCC_MAP0_SPDIFCKSELR
+#undef RCC_APB2ENR_2_ADC1EN
 #undef RCC_MAP0_CECCKSELR
-#undef RCC_CSR_1_LSI1ON
-#undef RCC_CRRCR_3
-#undef RCC_CFGR_5_SDPRE
-#undef RCC_AHB1ENR_0_OTGHSULPIEN
-#undef RCC_HSICFGR_1
-#undef RCC_PLLCFGR_0_PLL3VCOSEL
-#undef RCC_APB1RSTR1_1
-#undef RCC_DCKCFGR2_1_SDIOSEL
+#undef RCC_PLLCFGR_3_PLLR1
+#undef RCC_MAP5_APB2ENR
+#undef RCC_APB2RSTR_1_TIM1RST
+#undef RCC_AHBRSTR_1_CRYPRST
+#undef RCC_MAP1_HSICFGR
+#undef RCC_CFGR3_1_ADCSW
+#undef RCC_AHBLPENR_0_DMA1LPEN
+#undef RCC_APB1RSTR_1_CANRST
+#undef RCC_CR_2_PLLSAION
+#undef RCC_CR_2_HSI16ON
+#undef RCC_APB2ENR_1_TIM9EN
+#undef RCC_AHB1LPENR_0_GPIOHLPEN
+#undef RCC_APB1LRSTR_1
+#undef RCC_MAP0_SPI45CKSELR
+#undef RCC_APB1SMENR_DACSMEN
 #undef RCC_APB1LENR_0_WWDG2EN
-#undef RCC_CR_0_D1CKRDY
-#undef RCC_BDCR_0_RTCCKEN
-#undef RCC_APB2ENR_0_DFSDM1EN
-#undef RCC_AHB2SMENR_0_ADCFSSMEN
-#undef RCC_MAP0_PLL3FRACR
-#undef RCC_AHBENR_0_GPIOPDEN
+#undef RCC_APB2ENR_2
+#undef RCC_APB1RSTR_0_TIM6RST
+#undef RCC_BDCR_0_LSECSSD_
+#undef RCC_APB2RSTR_0_TIM19RST
+#undef RCC_APB1RSTR1_0_PWRRST
+#undef RCC_APBRSTR2_TIM15RST
+#undef RCC_BDCR_0_RTCEN
+#undef RCC_AHB2RSTR_1_OTGFSRST
+#undef RCC_CCIPR_1_USART1SEL0
+#undef RCC_APB1RSTR1_0_I2C3RST
+#undef RCC_MAP0_PLL1CR
+#undef RCC_CFGR_1_SWS
+#undef RCC_APB2RSTR_3_DBGRST
+#undef RCC_CFGR_0_TIMPRE
+#undef RCC_CFGR_2_HPRE0
+#undef RCC_MAP2_CCIPR
+#undef RCC_PLLCFGR_1_PLLM
+#undef RCC_AHB2RSTR_3
+#undef RCC_AHBLPENR_0_DMA2LPEN
+#undef RCC_AHBENR_0_IOPAEN
+#undef RCC_MAP1_CIER
+#undef RCC_CR_2_PLLSAIRDY
+#undef RCC_AHBRSTR_0_ADC12RST
+#undef RCC_PLLI2SCFGR_2
+#undef RCC_MAP1_APB2ENR
+#undef RCC_MAP0_UART1CKSELR
+#undef RCC_AHB3ENR_0_FMCEN
+#undef RCC_CCIPR_0_UART4SEL
+#undef RCC_APB2ENR_1
+#undef RCC_CSR_0_BORRSTF
+#undef RCC_APB1RSTR_1_USART5RST
+#undef RCC_CICR_0_HSE_ready_Interrupt_Clear
+#undef RCC_APB2RSTR_0_USART6RST
+#undef RCC_MAP0_PLL2FRACR
+#undef RCC_MAP0_DSICKSELR
+#undef RCC_CFGR3_0_USBSW
+#undef RCC_DCKCFGR_0_I2S1SRC
+#undef RCC_APB2LPENR_0_TIM16LPEN
+#undef RCC_CIFR_0_HSIRDYF
+#undef RCC_AHB1RSTR_2_FLITFRST_
+#undef RCC_PLLCFGR_1_PLLM3
+#undef RCC_AHB1LPENR_1_FLITFLPEN
+#undef RCC_DCKCFGR_0_CKDFSDM1ASEL
+#undef RCC_MAP1_PLL2DIVR
+#undef RCC_PLLI2SCFGR_0_PLLI2SP
+#undef RCC_CFGR_5_PLLSRC
+#undef RCC_AHB1LPENR_0_CRCLPEN
+#undef RCC_AHBENR_1
+#undef RCC_APB2ENR_0_HRTIMEN
+#undef RCC_PLLCFGR_1_PLLQ3
+#undef RCC_MAP1_C1_APB1LLPENR
+#undef RCC_APB2ENR_0_ADC2EN
+#undef RCC_APB2SMENR_0_SDMMCSMEN
+#undef RCC_D3CFGR_0
+#undef RCC_APB1SMENR1_0_USART2SMEN
+#undef RCC_MAP0_MP_BOOTCR
+#undef RCC_CIFR_0_PLL1RDYF
+#undef RCC_BDCR_0_LSECSSON
+#undef RCC_APB1RSTR_0_TIM4RST
+#undef RCC_DCKCFGR2_0_UART7SEL
+#undef RCC_CR_0_HSEPRE
+#undef RCC_APB2RSTR_0_SDMMCRST
+#undef RCC_MAP0_MC_AHB2ENSETR
+#undef RCC_ICSCR_3
+#undef RCC_CFGR3_0_USART3SW
+#undef RCC_AHB2RSTR_2_DCMIRST
+#undef RCC_APB1ENR1_1_SPI3EN
+#undef RCC_APB1RSTR_2
+#undef RCC_MAP0_APB4DIVR
+#undef RCC_APB1RSTR1_0_LCDRST
+#undef RCC_APB1ENR_2_USBRST
+#undef RCC_AHB2ENR_1_CRYPTEN
+#undef RCC_DCKCFGR2_2_I2C4SEL
+#undef RCC_APB2ENR_1_HRTIM1EN
+#undef RCC_CIER_1_PLLSAI2RDYIE
+#undef RCC_APB2RSTR_1_SPI4RST
+#undef RCC_APB1LPENR_0_TIM3LPEN
+#undef RCC_PLLCFGR_1_PLLQ1
+#undef RCC_MAP1_BDCR
+#undef RCC_CR_0_D2CKRDY
+#undef RCC_APB1LPENR_0_TIM6LPEN
+#undef RCC_DCKCFGR2_0_SDMMC2SEL
+#undef RCC_AHB2LPENR_0_CAMITFLPEN
+#undef RCC_CR_2_CSSLSEON
+#undef RCC_CIER_0_PLL3RDYIE
+#undef RCC_CSR_0_LSIRDY
+#undef RCC_ICSCR_2
+#undef RCC_MAP0_MP_GRSTCSETR
+#undef RCC_MAP0_MP_TZAHB6LPENCLRR
+#undef RCC_AHB1ENR_0_DMAMUX1EN
+#undef RCC_APB2SMENR_0_TIM15SMEN
+#undef RCC_MAP2_C1_AHB3LPENR
+#undef RCC_APB2ENR_0_EXTITEN
+#undef RCC_PLLCFGR_1_PLLN
+#undef RCC_APB2LPENR_0_SPI6LPEN
+#undef RCC_MAP0_MC_APB1ENCLRR
+#undef RCC_GCR_BOOT_C1
+#undef RCC_CR_0_PLL1ON
+#undef RCC_PLLCFGR_2_PLLN3
+#undef RCC_CSR_1
+#undef RCC_CICR_0_PLL2RDYC
+#undef RCC_PLLCFGR_1_PLLPEN
+#undef RCC_CCIPR_1_I2C3SEL1
+#undef RCC_APBENR1_UCPD1EN
+#undef RCC_APB1ENR1_0_UART5EN
+#undef RCC_MAP0_I2C4CKSELR
+#undef RCC_MAP0_RNG2CKSELR
+#undef RCC_CIR_0_PLLSAIRDYIE
+#undef RCC_MAP0_APB2RSTSETR
+#undef RCC_MAP1_C1_AHB4ENR
+#undef RCC_APB1SMENR1_1_CRSMEN
+#undef RCC_AHB2ENR_0_GPIOHEN
+#undef RCC_MAP0_MP_SREQSETR
+#undef RCC_APBSMENR1_UCPD1SMEN
+#undef RCC_APB1ENR_1_CANEN
+#undef RCC_AHB2RSTR_1_CRYPTRST
+#undef RCC_DCKCFGR2_0_SDMMC1SEL
+#undef RCC_APB2RSTR_2_TIM9RST
+#undef RCC_CR_0_RC48RDY
+#undef RCC_MAP0_MC_APB5LPENSETR
+#undef RCC_CIFR_2_HSI48RDYF
+#undef RCC_APB1SMENR1_1
+#undef RCC_CCIPR_1_I2C1SEL1
+#undef RCC_MAP4
+#undef RCC_APB1RSTR_1_USART3RST
+#undef RCC_ICSCR_1_HSICAL
+#undef RCC_BDCR_0_VSWRST
+#undef RCC_PLLCFGR_2
+#undef RCC_PLLCFGR_2_PLLP1
+#undef RCC_APB1LPENR_0_CAN2LPEN
+#undef RCC_AHBENR_1_DMA2EN
+#undef RCC_AHB2RSTR_2_CRYPRST
+#undef RCC_AHB1ENR_0_GPIOEEN
+#undef RCC_CFGR_2_RTCPRE3
+#undef RCC_CFGR_1_RTCPRE
+#undef RCC_APB2LPENR_1_TIM11LPEN
+#undef RCC_AHB2RSTR_0_GPIOHRST
+#undef RCC_CCIPR_1_USART1SEL1
+#undef RCC_APB2ENR_0_TIM15EN
+#undef RCC_APB2RSTR_1_HRTIM1RST
+#undef RCC_MAP4_APBRSTR2
+#undef RCC_APB2ENR_3_MIFIEN
+#undef RCC_APBENR1_UCPD2EN
+#undef RCC_APB2ENR_0_TIM16EN
+#undef RCC_MAP1_C1_AHB1ENR
+#undef RCC_CICR_1_PLLSAI1RDYC
+#undef RCC_HSICFGR_0
+#undef RCC_AHB1ENR_0_FLASHEN
+#undef RCC_CCIPR_0_UART5SEL
+#undef RCC_APB1LPENR_0_TIM13LPEN
+#undef RCC_MAP0_MP_AHB6LPENSETR
+#undef RCC_APB2RSTR_0_DFSDM1RST
+#undef RCC_APB2LPENR_0_DFSDM2LPEN
+#undef RCC_CICR_0_LSI2RDYC
+#undef RCC_CIFR_0_LSECSSF
+#undef RCC_APB1ENR_3_TIM18EN
+#undef RCC_APB1RSTR_0_TIM14RST
+#undef RCC_CSR_0_RTCEN
+#undef RCC_ICSCR_3_MSITRIM
+#undef RCC_AHB1LPENR_2
+#undef RCC_CR_0_HSIKERON
+#undef RCC_AHBENR_1_RNGEN
+#undef RCC_APB1RSTR1_1_CRSRST
+#undef RCC_MAP5_APBSMENR1
+#undef RCC_CFGR_1_MCO1
+#undef RCC_MAP2_C1_APB1LENR
+#undef RCC_AHB1LPENR_1_GPIOBLPEN
+#undef RCC_AHB1RSTR_1_CORDICRST
+#undef RCC_AHBSMENR_0_FLASHSMEN
+#undef RCC_APB2LPENR_0_SPI4LPEN
+#undef RCC_APB1RSTR1_0_TIM7RST
+#undef RCC_MAP0_MC_APB2ENSETR
+#undef RCC_APB1ENR1_0_LCDEN
+#undef RCC_APB1ENR_0_TIM4EN
+#undef RCC_AHB2ENR_1_GPIOEEN
+#undef RCC_MAP0_MP_APB5ENCLRR
 #undef RCC_MAP0_MP_APB2LPENSETR
 #undef RCC_AHB2ENR_1_ADC345EN
-#undef RCC_MAP1_AHB1ENR
-#undef RCC_APB1ENR_3_TIM18EN
-#undef RCC_CCIPR_1_LPTIM1SEL0
-#undef RCC_CSR_0_FWRSTF
-#undef RCC_AHB1SMENR_0_CRCSMEN
-#undef RCC_CIFR_2_RC48RDYF
-#undef RCC_APB3LPENR_DSILPEN
-#undef RCC_CR_3_MSION
-#undef RCC_APB2RSTR_2_TIM9RST
-#undef RCC_CIER_0_CSIRDYIE
-#undef RCC_APB1RSTR_1
-#undef RCC_DCKCFGR_0_SAI1BSRC
-#undef RCC_APBENR1_DAC1EN
-#undef RCC_AHB1ENR_0_ETH1MACEN
-#undef RCC_APB3RSTR_DSIRST
-#undef RCC_APB1SMENR1_0_CAN1SMEN
-#undef RCC_APB2SMENR_0_SDMMCSMEN
-#undef RCC_APB2ENR_2_SDAD3EN
-#undef RCC_PLLCFGR_0_DIVR2EN
-#undef RCC_MAP0_ICSCR
-#undef RCC_AHBRSTR_0_DMA2RST
-#undef RCC_BDCR_0_LSEDRV
-#undef RCC_APB2ENR_0_SAI1EN
-#undef RCC_CR_1_MSIRANGE
-#undef RCC_MAP0_MCO1CFGR
-#undef RCC_CIFR_1_PLLSAI1RDYF
-#undef RCC_AHB1SMENR_0_DMAMUX1SMEN
-#undef RCC_AHB1LPENR_0_DMA2LPEN
-#undef RCC_PLLCFGR_1_PLLM2
-#undef RCC_DCKCFGR2_0_UART7SEL
-#undef RCC_APB1SMENR_USART4SMEN
-#undef RCC_CIER_2_HSI48RDYIE
-#undef RCC_CSR_1_RTCSEL
-#undef RCC_AHB1RSTR_1_DMA2RST
-#undef RCC_APB2SMENR_0_TIM1SMEN
-#undef RCC_CR_2_CSSLSEON
-#undef RCC_MAP5_C2AHB3ENR
-#undef RCC_CFGR_3_MCOSEL
-#undef RCC_MAP0_APB4RSTCLRR
-#undef RCC_CFGR_5_PPRE
-#undef RCC_MAP0_MP_SREQCLRR
-#undef RCC_APB2LPENR_0_TIM16LPEN
-#undef RCC_PLLCFGR_0_PLL3RGE
-#undef RCC_MAP5_APBENR2
-#undef RCC_AHBRSTR_0_GPIOGRST
-#undef RCC_AHB2RSTR_1_GPIOGRST
-#undef RCC_APB2SMENR_0_DSISMEN
-#undef RCC_MAP2
-#undef RCC_APB2ENR_0_TIM8EN
-#undef RCC_MAP0_PLL4FRACR
-#undef RCC_APB1SMENR_USBSMEN
-#undef RCC_MAP2_BDCR
-#undef RCC_APB1ENR1_0_UART5EN
-#undef RCC_AHB3RSTR_0_IPCCRST
-#undef RCC_APB1ENR_0_TIM6EN
-#undef RCC_C1_AHB1ENR_0_USB1OTGHSEN
-#undef RCC_CFGR_4_ADCPRE
-#undef RCC_APB2ENR_2_SDMMC2EN
-#undef RCC_APB1SMENR1_0_TIM7SMEN
-#undef RCC_AHB1LPENR_1_GPIOBLPEN
-#undef RCC_CIER_2_CSSLSE
-#undef RCC_APB2ENR_2_TIM9EN
-#undef RCC_CCIPR_1_I2S2SEL
-#undef RCC_CCIPR_1_TIM1SEL
-#undef RCC_PLLCFGR_2_PLLP0
-#undef RCC_AHB2RSTR_0_GPIOIRST
-#undef RCC_AHB2ENR_0_RNGEN
-#undef RCC_GCR_WW2RSC
-#undef RCC_CR_0_CSIRDY
-#undef RCC_APB1ENR_1_CANEN
-#undef RCC_APB1SMENR1_0_LCDSMEN
-#undef RCC_CSR_0_SFTRSTF
-#undef RCC_MAP5_CSR
-#undef RCC_PLLCFGR_3_PLLR2
-#undef RCC_DCKCFGR2_0
-#undef RCC_CFGR3_0_I2C2SW
-#undef RCC_CICR_1_CSSC
-#undef RCC_CIER_3
-#undef RCC_APBSMENR1_USART4SMEN
-#undef RCC_PLLI2SCFGR_0_PLLI2SSRC
-#undef RCC_APB2LPENR_0_TIM10LPEN
-#undef RCC_MAP0_FDCANCKSELR
-#undef RCC_APB2ENR_1_HRTIMEREN
-#undef RCC_AHB1ENR_1_TSCEN
-#undef RCC_AHB2SMENR_0_HASHSMEN
-#undef RCC_CCIPR_1
-#undef RCC_AHB1LPENR_0_GPIOJLPEN
-#undef RCC_MAP0_PWRLPDLYCR
-#undef RCC_MAP1_AHB2LPENR
-#undef RCC_MAP3_APB1ENR
-#undef RCC_PLLSYSCFGR_0_PLLSYSN
-#undef RCC_CCIPR_1_LPUART1SEL0
-#undef RCC_MAP3_AHB2RSTR
-#undef RCC_CFGR_0_RTCPRE1
-#undef RCC_AHB2ENR_1_HASHEN
 #undef RCC_D3AMR_1
-#undef RCC_MAP4_BDCR
-#undef RCC_APB1SMENR1_0_TIM5SMEN
-#undef RCC_CFGR_2_RTCPRE4
-#undef RCC_AHB2RSTR_2_RNGRST
-#undef RCC_MAP2_AHB2SMENR
-#undef RCC_CICR_0_RC48RDYC
-#undef RCC_MAP0_MC_AXIMLPENSETR
-#undef RCC_CIFR_0_LSI2RDYF
-#undef RCC_APB2ENR_0_DSIEN
-#undef RCC_APB2ENR_1_USART1EN
-#undef RCC_AHB2ENR_0_CRYPTEN
-#undef RCC_MAP1_D3CFGR
-#undef RCC_APB1ENR2_USBPDEN
-#undef RCC_CFGR_1_RTCPRE
-#undef RCC_APB1ENR_2_DAC3EN
-#undef RCC_AHB3RSTR_2_FSMCRST
-#undef RCC_CFGR_2_MCO2EN
-#undef RCC_MAP2_AHB3RSTR
-#undef RCC_APB2RSTR_2_DFSDMRST
-#undef RCC_APB2LPENR_2
-#undef RCC_AHBENR_1
-#undef RCC_APB2RSTR_1_TIM20RST
-#undef RCC_APB2ENR_0_USART1EN
-#undef RCC_AHBENR_0_DMA2EN
-#undef RCC_DCKCFGR2_0_UART3SEL
-#undef RCC_AHBENR_0_FLITFEN
-#undef RCC_APBENR1_UCPD1EN
-#undef RCC_APB2SMENR_0_SPI4SMEN
-#undef RCC_APB1ENR_0_RTCAPBEN
-#undef RCC_MAP5_C2AHB3SMENR
-#undef RCC_APB2RSTR_0_SPI4RST
-#undef RCC_CFGR_0_STOPWUCK
-#undef RCC_AHB1LPENR_0_GPIOHLPEN
-#undef RCC_CSR_3
-#undef RCC_APB1RSTR_0_DACRST
-#undef RCC_CICR_1_MSIRDYC
-#undef RCC_MAP0_MC_AHB5ENSETR
-#undef RCC_MAP5_HSECR
-#undef RCC_APB2RSTR_3_SDAD1RST
-#undef RCC_MAP0_RCK3SELR
-#undef RCC_CIFR_3
-#undef RCC_AHBRSTR_2_RNGRST
-#undef RCC_PLLCFGR_2_PLLSRC
-#undef RCC_APB2SMENR_0_TIM20SMEN
-#undef RCC_APB2ENR_0_USBPHYCEN
-#undef RCC_CR_3_HSI16DIVF
-#undef RCC_MAP5_CKGATENR
-#undef RCC_CCIPR2_0_DSISEL
-#undef RCC_APB1SMENR1_0_USART3SMEN
-#undef RCC_MAP1_C1_AHB1LPENR
-#undef RCC_AHB3LPENR_1
-#undef RCC_CIR_0_PLLSAIRDYF
-#undef RCC_MAP0_DBGCFGR
-#undef RCC_AHB2ENR_1_GPIOGEN
-#undef RCC_APB2ENR_0_SAI3EN
-#undef RCC_APBSMENR1_TIM7SMEN
-#undef RCC_MAP0_MP_APB3LPENSETR
-#undef RCC_MAP5_AHBENR
-#undef RCC_CIFR_2_HSI16RDYF
-#undef RCC_CFGR_3
-#undef RCC_AHB1RSTR_0_CRCRST
-#undef RCC_AHB1LPENR_0_GPIOGLPEN
-#undef RCC_MAP3_PLLSAICFGR
-#undef RCC_AHB2LPENR_0_SRAM3LPEN
-#undef RCC_AHB2RSTR_0_DAC4RST
-#undef RCC_AHB1ENR_0_USB1OTGHEN
-#undef RCC_APB2ENR_0_EXTITEN
-#undef RCC_AHB2RSTR_0_GPIODRST
-#undef RCC_MAP0_APB2DIVR
-#undef RCC_APB1ENR_2_LPTIM1EN
-#undef RCC_AHBENR_3
-#undef RCC_MAP0_MC_AHB5ENCLRR
-#undef RCC_CR_1_PLLSAI1RDY
-#undef RCC_AHB3RSTR_0_CPURST
-#undef RCC_PLLSYSCFGR_0_PLLSYSR
-#undef RCC_MAP0_MCO2CFGR
-#undef RCC_APB1RSTR_0_TIM3RST
-#undef RCC_MAP0_MC_APB4LPENCLRR
-#undef RCC_CSR_0_LSION
-#undef RCC_AHB1LPENR_0_USB2ULPILPEN
-#undef RCC_CR_0_PLL2ON
-#undef RCC_MAP0_APB5DIVR
-#undef RCC_APB2RSTR_1_TIM9RST
-#undef RCC_AHB1RSTR_0_GPIODRST
-#undef RCC_D1CCIPR_DSISEL
-#undef RCC_MAP2_AHB3SMENR
-#undef RCC_AHB3ENR_0_JPGDECEN
-#undef RCC_MAP4_APB2RSTR
-#undef RCC_CIFR_1_PLLRDYF
-#undef RCC_AHB1RSTR_0_TSCRST
-#undef RCC_AHB1ENR_1_GPIOAEN
-#undef RCC_MAP0_MC_APB5ENSETR
-#undef RCC_AHB3LPENR_0
-#undef RCC_AHB1ENR_0_GPIOEEN
-#undef RCC_MAP1_C1_AHB2LPENR
-#undef RCC_CSR_0_LPWRSTF
-#undef RCC_AHB1LPENR_0_ADC12LPEN
-#undef RCC_DCKCFGR2_0_LPTIM1SEL
-#undef RCC_APB1LPENR_2
-#undef RCC_APB2ENR_2
-#undef RCC_APB1RSTR_3_LCDRST
-#undef RCC_MAP0_MP_AHB5ENSETR
-#undef RCC_PLLCFGR_2_PLLN4
-#undef RCC_HSICFGR_0
-#undef RCC_APB2SMENR_0_SAI2SMEN
-#undef RCC_CR_1_MSIPLLEN
-#undef RCC_BDCR_0_LSECSSON
-#undef RCC_APB2ENR_2_ADC1EN
-#undef RCC_AHBENR_0_GPIOPGEN
-#undef RCC_AHBRSTR_0_FLITFRST
-#undef RCC_CFGR_0_RTCPRE0
-#undef RCC_MAP0_MP_APB1ENCLRR
-#undef RCC_APB2ENR_2_DBGMCUEN
-#undef RCC_APB2ENR_0_USART6EN
-#undef RCC_APB1RSTR1_0_CAN2RST
-#undef RCC_MAP1_APB1HRSTR
-#undef RCC_CIER_0_PLL1RDYIE
-#undef RCC_APB1SMENR1_1_USART2SMEN
-#undef RCC_APBRSTR1_USART3RST
-#undef RCC_AHB1LPENR_0_OTGHSULPILPEN
-#undef RCC_APB1RSTR_1_USBRST
-#undef RCC_CICR_1
-#undef RCC_MAP1_APB1LRSTR
-#undef RCC_MAP0_SPI45CKSELR
-#undef RCC_DCKCFGR_0_CKDFSDM1ASEL
-#undef RCC_MAP0_UART6CKSELR
-#undef RCC_AHB2RSTR_0_OTGFSRST
-#undef RCC_MAP1_AHB3LPENR
-#undef RCC_BDCR_1_LSEDRV
-#undef RCC_CFGR_3_PPRE2F
-#undef RCC_MAP1_C1_APB2LPENR
-#undef RCC_CICR_2_HSI16RDYC
-#undef RCC_AHB2SMENR_0_SRAM3SMEN
-#undef RCC_MAP0_PLL2CR
-#undef RCC_APB2RSTR_0_DFSDM2RST
-#undef RCC_MAP0_MP_BOOTCR
-#undef RCC_MAP1_APB4ENR
-#undef RCC_BDCR_0_LSCOSEL
-#undef RCC_MAP2_PLLSAI2CFGR
-#undef RCC_AHB2ENR_0_SDMMC2EN
-#undef RCC_CSR_2
-#undef RCC_APB1ENR1_0_SPI2EN
-#undef RCC_APBRSTR1_USART4RST
-#undef RCC_APB2RSTR_1_SAI1RST
-#undef RCC_MAP1_D3CCIPR
-#undef RCC_APB1SMENR1_0_TIM3SMEN
-#undef RCC_MAP1_C1_APB2ENR
-#undef RCC_AHB2RSTR_1_ADC345RST_
-#undef RCC_AHBENR_1_GPIOPBEN
-#undef RCC_APB1RSTR1_0_LCDRST
-#undef RCC_AHB1RSTR_0_RNGRST
-#undef RCC_APB2LPENR_0_USART1LPEN
-#undef RCC_APB1LPENR_1_RTCAPBLPEN
-#undef RCC_CSR_1_PORRSTF
-#undef RCC_AHB2RSTR_1_OTGFSRST
-#undef RCC_CIER_0_RC48RDYIE
-#undef RCC_MAP1_AHB2RSTR
-#undef RCC_APB1ENR_4
-#undef RCC_APB1ENR_1_SPDIFEN
-#undef RCC_MAP0_MC_APB5LPENCLRR
-#undef RCC_APB2RSTR_0_TM10RST
-#undef RCC_CR_3_MSIRDY
-#undef RCC_IOPSMEN_IOPESMEN
-#undef RCC_AHB2ENR_0_DAC4
-#undef RCC_MAP0_OCRDYR
-#undef RCC_PLLCFGR_0_DIVP2EN
-#undef RCC_MAP0_ADCCKSELR
-#undef RCC_CCIPR2_0_SDMMCSEL
-#undef RCC_APB2RSTR_0_SDMMC1RST
-#undef RCC_CFGR_3_MCO2PRE2
-#undef RCC_APB2SMENR_0_ADCSMEN
-#undef RCC_CR_1_RTCPRE
-#undef RCC_AHB2SMENR_0_RNGSMEN
-#undef RCC_CSR_0_LSI2TRIMOK
-#undef RCC_APB1SMENR1_0_SP3SMEN
-#undef RCC_AHB1ENR_0_GPIOGEN
-#undef RCC_AHB1ENR_1_FMACEN
-#undef RCC_MAP0_I2C4CKSELR
-#undef RCC_APB1RSTR_1_LPTIMER1RST
-#undef RCC_DCKCFGR2_2_CKSDIOSEL
-#undef RCC_MAP2_AHB1RSTR
-#undef RCC_MAP0_TZAHB6RSTCLRR
-#undef RCC_AHBENR_1_MIFEN
-#undef RCC_AHB3ENR_0_FLASHEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSQEN
-#undef RCC_APB2SMENR_0_SAI1SMEN
-#undef RCC_APB1ENR1_1_USART1EN
-#undef RCC_APB1LPENR_1_CAN3LPEN
-#undef RCC_CIFR_0_LSIRDYF
-#undef RCC_GCR_BOOT_C2
-#undef RCC_AHB1ENR_0_GPIOKEN
-#undef RCC_CIFR_0_HSECSSF
-#undef RCC_AHB2LPENR_0_QSPILPEN
-#undef RCC_PLLCFGR_1_PLLM
-#undef RCC_APB1LPENR_0_UART4LPEN
-#undef RCC_APB1ENR1_0_TIM4EN
-#undef RCC_APB1RSTR_0_WWDGRST
-#undef RCC_MAP0_MC_AHB3ENCLRR
-#undef RCC_CR_3_HSI16KERON
-#undef RCC_CSR_0_BORRSTF
-#undef RCC_CICR_0_PLL1RDYC
-#undef RCC_CFGR3_0_UART4SW
-#undef RCC_APB2LPENR_1_TIM11LPEN
-#undef RCC_CICR_0_HSE_ready_Interrupt_Clear
-#undef RCC_APB1ENR_1_TIM3EN
-#undef RCC_CR_1_MSION
-#undef RCC_APB2ENR_2_DFSDMEN
-#undef RCC_ICSCR_3_HSITRIM
-#undef RCC_MAP1_APB3LPENR
-#undef RCC_MAP0_MC_AXIMLPENCLRR
-#undef RCC_MAP0_AHB3RSTCLRR
-#undef RCC_AHBENR_0_CRCEN
-#undef RCC_MAP0_MP_APB2ENSETR
-#undef RCC_APB1RSTR_0_LPTIM1RST
-#undef RCC_MAP1_APB4RSTR
-#undef RCC_APB2ENR_1_FIREWALLEN
-#undef RCC_MAP0_CPERCKSELR
-#undef RCC_CCIPR_1_RNGSEL
-#undef RCC_CR_2_PLLSAION
-#undef RCC_AHB1ENR_0_RNGEN
-#undef RCC_PLLSAI2CFGR_PLLSAI2M
-#undef RCC_ICSCR_3
-#undef RCC_PLLSAICFGR_PLLSAIR
-#undef RCC_MAP0_ETHCKSELR
-#undef RCC_APB2LPENR_0_SAI3LPEN
-#undef RCC_CFGR_3_PPRE20
-#undef RCC_CFGR_3_PLLSRC
-#undef RCC_APB2RSTR_0_ADCRST
-#undef RCC_CSR_1_LPWRRSTF
-#undef RCC_CFGR3_0_USART3SW
-#undef RCC_MAP0_USBCKSELR
-#undef RCC_MAP0_RDLSICR
-#undef RCC_CFGR_2_RTCPRE2
-#undef RCC_AHB1ENR_1_DMA1EN
-#undef RCC_AHB3RSTR_2
-#undef RCC_AHB1RSTR_0_GPIOJRST
-#undef RCC_AHB2ENR_0_GPIODEN
-#undef RCC_MAP0_MC_AHB3LPENSETR
-#undef RCC_MAP3_AHB2LPENR
-#undef RCC_MAP1_AHB4LPENR
-#undef RCC_MAP1_HSICFGR
-#undef RCC_CFGR_0_HRTIMSEL
-#undef RCC_APB2LPENR_1
-#undef RCC_AHB3ENR_1_FMCEN
-#undef RCC_APB2RSTR_1_TIM1RST
-#undef RCC_AHB1ENR_1_GPIOCEN
-#undef RCC_AHB2SMENR_2_AES1SMEN
-#undef RCC_AHB1ENR_1_GPIOBEN
-#undef RCC_AHB3RSTR_0_DMA2DRST
-#undef RCC_CCIPR_0_USART2SEL
-#undef RCC_MAP3_APB2LPENR
-#undef RCC_APB2SMENR_0_TIM22SMEN
-#undef RCC_MAP0_TIMG1PRER
-#undef RCC_APB2RSTR_0_DSIRST
-#undef RCC_APB1RSTR1_0_TIM7RST
-#undef RCC_CR_0_PLL3ON
-#undef RCC_APB2LPENR_0_DSILPEN
-#undef RCC_AHB2SMENR_1
-#undef RCC_MAP2_PLLSAI1CFGR
-#undef RCC_CICR_2_PLLRDYC
-#undef RCC_APB1ENR_1_DAC2EN
-#undef RCC_CFGR_3_ADCPRE
-#undef RCC_APB1ENR1_1_CRSEN
-#undef RCC_CFGR_2_SW1
-#undef RCC_MAP0_SPI2S1CKSELR
-#undef RCC_CIFR_1_CSSF
-#undef RCC_AHB3RSTR_1_QSPIRST
-#undef RCC_PLLSAI2CFGR_PLLSAI2QEN
-#undef RCC_APB2ENR_0_TIM15EN
-#undef RCC_APBRSTR1_TIM6RST
-#undef RCC_APB2ENR_2_SPI4ENR
-#undef RCC_DCKCFGR2_0_UART1SEL
-#undef RCC_CFGR_2_MCO10
-#undef RCC_PLLCFGR_0_DIVP3EN
-#undef RCC_APB1ENR_0_TIM14EN
-#undef RCC_CCIPR_0_ADCSEL
-#undef RCC_CFGR_4_MCOF
-#undef RCC_AHB2ENR_1_CRYPTEN
-#undef RCC_APB1SMENR1_0_PWRSMEN
-#undef RCC_DCKCFGR_1_SAI2SRC
-#undef RCC_MAP1_AHB1LPENR
-#undef RCC_PLLCFGR_2_PLLQ0
-#undef RCC_MAP0_MC_AHB3ENSETR
-#undef RCC_CFGR2_ADC12PRES
-#undef RCC_MAP5_C2APB3SMENR
-#undef RCC_MAP2_CFGR
-#undef RCC_AHB2ENR_2_HASH1EN
-#undef RCC_CSR_0_RFWKPSEL
-#undef RCC_CIFR_0_PLL2RDYF
-#undef RCC_CSR_0_IWDGRSTF
-#undef RCC_AHB2SMENR_0_GPIOISMEN
-#undef RCC_MAP0_RNG2CKSELR
-#undef RCC_AHB1LPENR_1_USB1ULPILPEN
-#undef RCC_APB2SMENR_0_SYSCFGSMEN
-#undef RCC_APB2SMENR_0_LTDCSMEN
-#undef RCC_AHBRSTR_0_IOPERST
-#undef RCC_CSR_0_OBLRSTF
-#undef RCC_MAP0_AHB2RSTCLRR
-#undef RCC_MAP5_EXTCFGR
-#undef RCC_AHB1LPENR_0_GPIOCLPEN
-#undef RCC_APB1ENR2_I2C4EN
-#undef RCC_MAP5_AHBSMENR
-#undef RCC_MAP0_MC_MLAHBENSETR
-#undef RCC_APB1ENR1_1_USBDEN
-#undef RCC_APB1ENR_0_SPI3EN
-#undef RCC_AHB1RSTR_0_ETH1MACRST
-#undef RCC_MAP1_AHB3ENR
-#undef RCC_MAP0_BDCR
-#undef RCC_AHB1RSTR_0_DMA1RST
-#undef RCC_CFGR_2_MCO1PRE
-#undef RCC_AHB3ENR_2_FSMCEN
-#undef RCC_AHB2SMENR_0_GPIOESMEN
-#undef RCC_APB2RSTR_0_TIM8RST
+#undef RCC_MAP0_MP_MLAHBLPENSETR
+#undef RCC_APB2ENR_1_TIM1EN
 #undef RCC_AHB2ENR_0_CAMITFEN
-#undef RCC_PLLSAI2CFGR_PLLSAI2PDIV
-#undef RCC_DCKCFGR2_0_UART4SEL
-#undef RCC_APB2RSTR_0_SPI6RST
-#undef RCC_APB1SMENR1_0_CRSSMEN
-#undef RCC_APBRSTR1_UCPD2RST
-#undef RCC_CCIPR2_1
-#undef RCC_PLLCFGR_3_PLLM
-#undef RCC_AHB1LPENR_0_DMA2DLPEN
-#undef RCC_MAP2_CSR
-#undef RCC_MAP2_AHB1ENR
-#undef RCC_APB2ENR_1_SPI5ENR
-#undef RCC_PLLCFGR_2_PLLP1
-#undef RCC_APB1ENR_0_UART4EN
-#undef RCC_APB1ENR_1_UART8EN
-#undef RCC_BDCR_0_LSECSSD
-#undef RCC_MAP0_MP_AHB4LPENSETR
-#undef RCC_MAP0_PLL4CR
-#undef RCC_APB1ENR_1_USART5EN
-#undef RCC_MAP0_MP_APB2LPENCLRR
-#undef RCC_MAP0_PLL1CFGR2
-#undef RCC_AHB3ENR_0_SDMMC1EN
-#undef RCC_AHBRSTR_1_IOPHRST
-#undef RCC_MAP1_C1_APB1LENR
-#undef RCC_AHB3SMENR_0_OCTOSPI2
-#undef RCC_APB2LPENR_0_SDMMC2LPEN
-#undef RCC_CFGR_0_SW
-#undef RCC_BDCR_1_RTCSRC
-#undef RCC_AHB2ENR_0_OSPIMEN
-#undef RCC_ICSCR_2_HSI16TRIM
-#undef RCC_AHB2LPENR_2_FSMCLPEN
-#undef RCC_AHBRSTR_0_GPIOFRST
-#undef RCC_CCIPR_1_USART1SEL0
-#undef RCC_APB1SMENR1_1_FDCANSMEN
-#undef RCC_CFGR_2_PPRE2
-#undef RCC_APB1LPENR_1_USART4LPEN
-#undef RCC_AHBENR_0_ADC34EN
-#undef RCC_ICSCR_2_HSITRIM
-#undef RCC_AHB2RSTR_1_RNGRST
-#undef RCC_BDCR_1_VSWRST
-#undef RCC_APB3RSTR_RFRST
-#undef RCC_AHB3SMENR_0_QUADSPI1SMEN
-#undef RCC_C1_AHB1ENR_0_ARTEN
-#undef RCC_APB2ENR_3_DBGEN
-#undef RCC_CICR_1_HSI48RDYC
-#undef RCC_APB1ENR_0_TIM13EN
-#undef RCC_PLLI2SCFGR_0_PLLI2SM
-#undef RCC_MAP2_IOPRSTR
-#undef RCC_MAP5_AHBRSTR
-#undef RCC_AHBENR_0_FLASHEN
+#undef RCC_CR_2_HSI16RDYF
+#undef RCC_AHB1ENR_0_GPIOGEN
+#undef RCC_APB2RSTR_1_ADCRST
+#undef RCC_MAP0_MP_CIFR
+#undef RCC_MAP0_MC_APB3LPENSETR
+#undef RCC_APB2ENR_1_SDAD2EN
+#undef RCC_CIFR_1_PLLSAI1RDYF
+#undef RCC_MAP0_APB3DIVR
+#undef RCC_APB1RSTR1_0_OPAMPRST
 #undef RCC_APB1ENR1_0_USART3EN
-#undef RCC_MAP0_PLL4CFGR2
-#undef RCC_MAP0_MP_AHB3ENSETR
-#undef RCC_PLLSAI1CFGR_0_PLLSAI1M
-#undef RCC_APB1RSTR_0_TIM14RST
-#undef RCC_APB2LPENR_0_LTDCLPEN
-#undef RCC_MAP2_C1_AHB1LPENR
-#undef RCC_AHB1ENR_0_FLASHEN
-#undef RCC_MAP0_MP_AXIMLPENSETR
-#undef RCC_MAP0_RCK4SELR
-#undef RCC_AHB2RSTR_1_ADC12RST
-#undef RCC_CR_0_PLL1RDY
-#undef RCC_APB1ENR1_0_SP3EN
-#undef RCC_AHB1ENR_1_GPIOFEN
-#undef RCC_APB1LPENR_1_I2CFMP1LPEN
-#undef RCC_MAP2_AHB1SMENR
-#undef RCC_AHB3ENR_0_FMCEN
-#undef RCC_APB2SMENR_0_TIM16SMEN
-#undef RCC_APB2RSTR_1_SYSCFGRST
-#undef RCC_CCIPR_1_USART1SEL1
-#undef RCC_APB1SMENR1_0_TIM6SMEN
-#undef RCC_APB1ENR_0_TIM3EN
-#undef RCC_APB1ENR1_0_CRSEN
-#undef RCC_AHB2LPENR_0_OTGFSLPEN
-#undef RCC_PLLCFGR_1_PLLN
-#undef RCC_MAP3_PLLCFGR
-#undef RCC_PLLCFGR_3_PLLP
-#undef RCC_MAP0_MP_AHB6LPENCLRR
-#undef RCC_MAP0_MP_MLAHBLPENCLRR
-#undef RCC_CIR_0_PLLI2SRDYIE
-#undef RCC_CFGR_3_PPRE11
-#undef RCC_AHBSMENR_0_RNGSMEN
-#undef RCC_PLLCFGR_0_PLL2FRACEN
-#undef RCC_APB1RSTR_2_COMPRST
-#undef RCC_AHB3ENR_1
-#undef RCC_CR_1_PLLRDY
-#undef RCC_AHB2RSTR_0_SDMMC1RST
-#undef RCC_AHB2LPENR_0_SRAM1LPEN
+#undef RCC_APB1RSTR_2_CECRST
+#undef RCC_PLLCFGR_4_PLLP
+#undef RCC_CRRCR_2
+#undef RCC_DCKCFGR_1_I2S2SRC
+#undef RCC_ICSCR_3_HSI16CAL
+#undef RCC_MAP3_APB1RSTR
+#undef RCC_AHB2RSTR_0_GPIOBRST
+#undef RCC_APB1ENR_1_RTCAPB
+#undef RCC_APB3RSTR_RFRST
+#undef RCC_CCIPR2_0_DSISEL
+#undef RCC_CR_1_HSIRDY
+#undef RCC_AHBRSTR_0_IOPARST
+#undef RCC_AHBSMENR_0_CRYPSMEN
+#undef RCC_APB2RSTR_0_SDMMC2RST
+#undef RCC_CCIPR2_0_SAI2SEL
+#undef RCC_CCIPR2_0_SDMMCSEL
+#undef RCC_MAP0_MC_AHB4ENCLRR
+#undef RCC_APB2SMENR_0_TIM22SMEN
+#undef RCC_CFGR_3_MCO2PRE1
+#undef RCC_AHB2RSTR_0_GPIOIRST
+#undef RCC_APB1RSTR1_0_CAN1RST
+#undef RCC_APB1ENR_0_SPDIFRXEN
+#undef RCC_APB1ENR_0_SPI3EN
+#undef RCC_APB1LPENR_1
+#undef RCC_AHB1ENR_0_DMA1EN
+#undef RCC_MAP1_APB4LPENR
+#undef RCC_APB1LPENR_0_TIM5LPEN
+#undef RCC_MAP1_APB2RSTR
+#undef RCC_AHBRSTR_0_IOPGRST
+#undef RCC_MAP0_MP_GCR
+#undef RCC_CFGR3_0_UART4SW
+#undef RCC_MAP4_DCKCFGR2
+#undef RCC_MAP0_APB5RSTCLRR
+#undef RCC_CR_3_HSI16KERON
+#undef RCC_CSR_1_WDGRSTF
+#undef RCC_AHBRSTR_0_GPIOBRST
+#undef RCC_PLLSAICFGR_PLLSAIR
+#undef RCC_MAP0_SIDR
+#undef RCC_AHB2SMENR_0_OSPIMSMEN
+#undef RCC_PLLCFGR_2_PLLQ0
+#undef RCC_APB1ENR_0_UART4EN
+#undef RCC_DCKCFGR2_0_UART3SEL
+#undef RCC_APB2ENR_1_USART1EN
+#undef RCC_MAP0_MP_AHB4ENSETR
+#undef RCC_MAP1_APB1HENR
+#undef RCC_AHB2ENR_0_DAC4
+#undef RCC_MAP3_AHB3ENR
+#undef RCC_MAP3_PLLSAICFGR
+#undef RCC_CFGR_2_HPRE1
 #undef RCC_APB2ENR_2_TIM11EN
-#undef RCC_MAP0_SAI3CKSELR
-#undef RCC_MAP0_AHB6RSTSETR
+#undef RCC_CICR_2_HSI16RDYC
+#undef RCC_PLLCFGR_1_PLLQ
+#undef RCC_APB2RSTR_0_DFSDM2RST
+#undef RCC_APB2ENR_0_SDMMC1EN
+#undef RCC_AHB1ENR_1
+#undef RCC_ICSCR_2_HSI16TRIM
+#undef RCC_PLLCFGR_2_PLLN5
+#undef RCC_AHB1RSTR_0_GFXMMURST
+#undef RCC_AHB1LPENR_0_DTCMLPEN
+#undef RCC_MAP0_ASSCKSELR
+#undef RCC_MAP0_PLL2CR
+#undef RCC_MAP5_AHBSMENR
+#undef RCC_AHB1SMENR_0_GFXMMUSMEN
+#undef RCC_AHB1ENR_1_GPIOBEN
+#undef RCC_AHB1LPENR_0_SRAM3LPEN
+#undef RCC_MAP2_AHB3SMENR
+#undef RCC_APB1ENR1_0_USART2EN
+#undef RCC_DCKCFGR2_1_I2CFMP1SEL
+#undef RCC_APB1RSTR1_1_USART4RST
+#undef RCC_AHB3ENR_1_FMCEN
+#undef RCC_AHB1RSTR_1_ETHMACRST
+#undef RCC_AHB1RSTR_1_DMA2DRST
+#undef RCC_CCIPR_0_USART2SEL
+#undef RCC_MAP0_MP_AHB4LPENSETR
+#undef RCC_APB1ENR_1_TIM3EN
+#undef RCC_CICR_2_HSECSSC
+#undef RCC_APB2RSTR_0_LTDCRST
+#undef RCC_AHB1ENR_1_GPIOIEN
+#undef RCC_MAP0_FMCCKSELR
+#undef RCC_MAP2_CICR
+#undef RCC_PLLSAI2CFGR_PLLSAI2M
+#undef RCC_MAP0_APB2RSTCLRR
+#undef RCC_AHBLPENR_0_GPIOFLPEN
+#undef RCC_AHBRSTR_0_GPIOCRST
+#undef RCC_AHBRSTR_1_MIFRST
+#undef RCC_AHB1ENR_1_USB1OTGEN
+#undef RCC_CFGR_3_PLLNODIV
+#undef RCC_APB1SMENR1_0_TIM7SMEN
+#undef RCC_CIFR_0_PLL2RDYF
+#undef RCC_APB2SMENR_0_TIM21SMEN
+#undef RCC_AHB2RSTR_0_SDMMC1RST
+#undef RCC_MAP0_MC_APB4LPENSETR
+#undef RCC_ICSCR_1_HSITRIM
+#undef RCC_MAP0_PLL2CSGR
+#undef RCC_APB2RSTR_0_DSIRST
+#undef RCC_MAP0_PLL4CSGR
+#undef RCC_MAP0_MC_APB3ENSETR
+#undef RCC_CR_1_PLLON
+#undef RCC_AHB2ENR_0_OSPIMEN
+#undef RCC_IOPRSTR_IOPHRST
+#undef RCC_MAP1_AHB4RSTR
+#undef RCC_AHBRSTR_3
+#undef RCC_MAP0_UART6CKSELR
+#undef RCC_AHB3SMENR_1
+#undef RCC_BDCR_1_LSCCOEN
+#undef RCC_AHB3RSTR_0_IPCCRST
+#undef RCC_AHB3ENR_2_FSMCEN
+#undef RCC_APB2ENR_0_TIM8EN
+#undef RCC_APB2RSTR_2_TIM22RST
+#undef RCC_BDCR_2
+#undef RCC_AHB2RSTR_1_ADC345RST_
+#undef RCC_MAP0_MC_MLAHBENSETR
+#undef RCC_AHB1SMENR_1
+#undef RCC_CFGR_3_USBPRES
+#undef RCC_APB1ENR_0_TIM6EN
+#undef RCC_CIFR_2_PLLRDYF
+#undef RCC_APB1ENR_1_USART5EN
+#undef RCC_MAP0_MP_APB3LPENCLRR
+#undef RCC_AHB1RSTR_0_ARTRST
+#undef RCC_AHB3ENR_0_SDMMC1EN
+#undef RCC_MAP0_PLL4CR
+#undef RCC_APB2LPENR_0_SAI1LPEN
+#undef RCC_MAP0_C1_AHB3ENR
+#undef RCC_MAP1_D2CCIP2R
+#undef RCC_APB1ENR1_0_SPI2EN
+#undef RCC_APB1ENR_0_CAN1EN
+#undef RCC_MAP5_C2AHB2ENR
+#undef RCC_MAP0_SPI2S1CKSELR
+#undef RCC_AHB1SMENR_0_FMACSMEN
+#undef RCC_AHB1SMENR_0_TSCSMEN
+#undef RCC_APB1SMENR_TIM7SMEN
+#undef RCC_MAP3_APB2ENR
+#undef RCC_AHB3ENR_0_FLASHEN
+#undef RCC_AHB1RSTR_1_CRCRST
+#undef RCC_CIER_2_PLLSYSRDYIE
+#undef RCC_APB1RSTR_0_CAN1RST
+#undef RCC_MAP0_MC_AHB5ENSETR
+#undef RCC_DCKCFGR2_0_UART6SEL
+#undef RCC_AHB1LPENR_1_USB1ULPILPEN
+#undef RCC_MAP0_PLL4CFGR1
+#undef RCC_APB2RSTR_0_ADC1RST
+#undef RCC_AHB3ENR_0_QUADSPI1EN
+#undef RCC_AHB1LPENR_0_USB2OTGHSLPEN
+#undef RCC_MAP1_C1_APB3ENR
+#undef RCC_APB2RSTR_1_SAI2RST
+#undef RCC_AHB2ENR_1_OTGFSEN
+#undef RCC_CIER_0_HSERDYIE
+#undef RCC_CSR_1_PORRSTF
+#undef RCC_APB1ENR_1_I2CFMP1EN
+#undef RCC_APB1ENR_0_TIM2EN
+#undef RCC_APB1RSTR1_0_TIM6RST
+#undef RCC_MAP0_SDMMC3CKSELR
+#undef RCC_AHB3SMENR_0_AES2SMEN
+#undef RCC_CFGR_1_HPRE
+#undef RCC_AHB2SMENR_0_SRAM2SMEN
+#undef RCC_CSR_2
+#undef RCC_MAP0_PLL3CFGR1
+#undef RCC_MAP1_CIFR
+#undef RCC_APB1RSTR_1_LPTIM1RST
+#undef RCC_MAP5_AHBENR
+#undef RCC_AHB2SMENR_0_HASHSMEN
+#undef RCC_AHB1ENR_0_OTGHSULPIEN
+#undef RCC_CIER_1_PLLRDYIE
+#undef RCC_AHB3SMENR_0_PKASMEN
+#undef RCC_CR_2_PLLI2SON
+#undef RCC_DCKCFGR2_0_I2C1SEL
+#undef RCC_MAP1_C1_APB1LENR
+#undef RCC_MAP0_MP_AHB2ENSETR
+#undef RCC_CCIPR2_0_OSPISEL
+#undef RCC_AHB1RSTR_0_TSCRST
+#undef RCC_PLLSAI2CFGR_PLLSAI2QEN
+#undef RCC_MAP2_AHB1RSTR
+#undef RCC_CIFR_0_PLL3RDYF
+#undef RCC_MAP1_C1_APB3LPENR
+#undef RCC_APB1SMENR2_USBPDSMEN
+#undef RCC_MAP0_OCRDYR
+#undef RCC_APB1LPENR_0_UART4LPEN
+#undef RCC_AHBRSTR_1_IOPHRST
+#undef RCC_AHBRSTR_0_FLASHRST
+#undef RCC_AHB3LPENR_1
+#undef RCC_CFGR_5_HPRE
+#undef RCC_AHB3ENR_0_DMA2DEN
+#undef RCC_APB1SMENR1_1_I2C3SMEN_3
+#undef RCC_MAP1_AHB1ENR
+#undef RCC_CFGR_2_PPRE2
+#undef RCC_MAP5_BDCR
+#undef RCC_AHB1RSTR_0_ETH1MACRST
+#undef RCC_MAP0_MC_AHB5ENCLRR
+#undef RCC_APB2ENR_1_HRTIMEREN
+#undef RCC_MAP2_DCKCFGR1
+#undef RCC_CR_1_MSIPLLEN
+#undef RCC_CSR_0_RFRSTS
+#undef RCC_MAP0_TZCR
+#undef RCC_AHB3LPENR_1_QSPILPEN
+#undef RCC_APB1RSTR_0_I2C3RST
+#undef RCC_AHB1RSTR_1_GPIOBRST
+#undef RCC_APB2LPENR_0_SAI2LPEN
+#undef RCC_MAP5_AHBRSTR
+#undef RCC_AHBRSTR_1
+#undef RCC_PLLSYSCFGR_0_PLLSYSM
+#undef RCC_PLLCFGR_0_DIVP2EN
+#undef RCC_APB2LPENR_1_ADC1LPEN
+#undef RCC_MAP0_MP_APB4ENSETR
+#undef RCC_MAP0_AHB2RSTCLRR
+#undef RCC_PLLSYSCFGR_0_PLLSYSR
+#undef RCC_CCIPR_0_SAI1SEL
+#undef RCC_AHB1RSTR_0_DMA2RST
+#undef RCC_APB1RSTR_0_TIM12RST
+#undef RCC_CFGR_1_MCOSEL
+#undef RCC_MAP0_MP_CIER
+#undef RCC_APB2SMENR_1_DBGSMEN
+#undef RCC_AHB2RSTR_0_OTGFSRST
+#undef RCC_AHBRSTR_0_FLITFRST
+#undef RCC_CSR_0_CSSLSEON
+#undef RCC_APB2ENR_0_ADC1EN
+#undef RCC_MAP0_MC_AXIMLPENCLRR
+#undef RCC_MAP0_MC_AHB4ENSETR
+#undef RCC_CCIPR_1_USART2SEL1
+#undef RCC_APB2ENR_2_SDIOEN
+#undef RCC_APB2LPENR_0_TIM1LPEN
+#undef RCC_APB1ENR_1_USART4EN
+#undef RCC_CR_2_HSITRIM
+#undef RCC_CIFR_0_RC48RDYF
+#undef RCC_AHB1ENR_0_USB2ULPIEN
+#undef RCC_PLLCFGR_0_PLLN8
+#undef RCC_MAP1_APB3ENR
+#undef RCC_AHBRSTR_2_TOUCHRST
+#undef RCC_APB1ENR1_1_FDCANEN
+#undef RCC_AHB1RSTR_0_GPIOKRST
+#undef RCC_MAP0_MP_APB3ENCLRR
+#undef RCC_APB1LPENR_0_UART8LPEN
+#undef RCC_CCIPR_0_SWPMI1SEL
+#undef RCC_CSR_0_RTCRST
+#undef RCC_APB1SMENR_I2C3SMEN
+#undef RCC_PLLCFGR_3_PLLR3
+#undef RCC_MAP1
+#undef RCC_MAP3_AHB1ENR
+#undef RCC_MAP2_IOPRSTR
+#undef RCC_MAP0_MC_APB4ENSETR
+#undef RCC_CFGR_4_MCOF
+#undef RCC_MAP1_APB1LRSTR
+#undef RCC_MAP1_APB3RSTR
+#undef RCC_AHB1ENR_0_ARTEN
+#undef RCC_CFGR_5_MCO
+#undef RCC_CSR_2_FIREWALLRSTF
+#undef RCC_APB1RSTR2_SWPMI1RST
+#undef RCC_MAP0
+#undef RCC_AHB1SMENR_1_DMAMUXSMEN
+#undef RCC_AHB1ENR_2_ETHMACRXEN
+#undef RCC_CSR_2_LSEDRV
+#undef RCC_MAP5_C2AHB1ENR
+#undef RCC_MAP0_CSICFGR
+#undef RCC_MAP5_APB2RSTR
+#undef RCC_PLLCFGR_4
+#undef RCC_AHBRSTR_0_ADC34RST
+#undef RCC_CIER_0_PLL1RDYIE
+#undef RCC_AHBENR_2_RNGEN
+#undef RCC_APB1ENR1_0_I2C2EN
+#undef RCC_BDCR_0_LSERDY
+#undef RCC_APBSMENR2_TIM15SMEN
+#undef RCC_AHB1ENR_0_GPIODEN
+#undef RCC_MAP0_MP_APB1LPENCLRR
+#undef RCC_DCKCFGR_0_PLLSAIDIVR
+#undef RCC_APB1SMENR1_0_SP3SMEN
+#undef RCC_AHBENR_0_IOPCEN
+#undef RCC_MAP5_SMPSCR
+#undef RCC_CFGR_3_PLLSRC
+#undef RCC_APB2LPENR_0_USART1LPEN
+#undef RCC_MAP2_AHB3ENR
+#undef RCC_CR_1_MSION
+#undef RCC_AHB3RSTR_0_MDMARST
+#undef RCC_AHBENR_0_DMAEN
+#undef RCC_MAP0_SAI2CKSELR
+#undef RCC_MAP2_AHB2RSTR
+#undef RCC_APB2SMENR_0_DFSDM1SMEN
+#undef RCC_MAP5_CKGATENR
+#undef RCC_BDCR_0_LSEBYP
+#undef RCC_MAP0_MP_AHB3LPENSETR
+#undef RCC_APB1ENR2_USBPDEN
+#undef RCC_AHB1RSTR_0_GPIOJRST
+#undef RCC_MAP3_DKCFGR2
+#undef RCC_APB1LPENR_1_USART4LPEN
+#undef RCC_CR_0_CSIRDY
+#undef RCC_MAP2_AHB1SMENR
+#undef RCC_APB1LPENR_1_USBLPEN
+#undef RCC_CFGR_1_I2SSRC
+#undef RCC_PLLCFGR_0_PLL2FRACEN
+#undef RCC_MAP5_CFGR
+#undef RCC_CCIPR_1_TIM1SEL
+#undef RCC_AHB3ENR_0_JPGDECEN
+#undef RCC_APB2LPENR_0_ADC3LPEN
+#undef RCC_AHBRSTR_0_IOPFRST
+#undef RCC_APB2SMENR_1_HRTIMERSMEN
+#undef RCC_APBENR1_DAC1EN
+#undef RCC_CCIPR_1_USART4SEL
+#undef RCC_MAP0_OCENSETR
+#undef RCC_MAP0_MC_APB1ENSETR
+#undef RCC_AHBLPENR_0_GPIOELPEN
+#undef RCC_APB2ENR_1_SDMMCEN
+#undef RCC_CCIPR2_0_ADFSDMSEL
+#undef RCC_MAP0_MC_MLAHBLPENSETR
+#undef RCC_APB1LPENR_0_SPDIFRXLPEN
+#undef RCC_DCKCFGR2_1
+#undef RCC_APB1ENR2_I2C4EN
+#undef RCC_CIFR_1_LSI1RDYF
+#undef RCC_APB1ENR_0_I2C4EN
+#undef RCC_CFGR3_0_TIM8SW
+#undef RCC_APB1ENR1_1_I2C3
+#undef RCC_PLLCFGR_3_PLLQ
+#undef RCC_CFGR3_0_I2C2SW
+#undef RCC_MAP4_APB1RSTR
+#undef RCC_AHB2ENR_2_HASH1EN
+#undef RCC_MAP5_CR2
+#undef RCC_APB1RSTR1_0_TIM3RST
+#undef RCC_CCIPR2_1_I2C4SEL_1
+#undef RCC_CIER_2
+#undef RCC_APBSMENR1_CECSMEN
+#undef RCC_MAP0_APB4RSTSETR
+#undef RCC_APB1ENR_3_CRSEN
+#undef RCC_APB1ENR_2_CAN3EN
+#undef RCC_CICR_0_PLL3RDYC
+#undef RCC_MAP0_ADCCKSELR
+#undef RCC_AHB1ENR_0_USB1OTGHEN
+#undef RCC_MAP0_AHB3RSTCLRR
+#undef RCC_CR_3_CSSON
+#undef RCC_AHB3RSTR_0_QSPIRST
+#undef RCC_APB1LPENR_0_UART5LPEN
+#undef RCC_AHB1LPENR_0_ADC12LPEN
+#undef RCC_AHB1RSTR_0_ADC12RST
+#undef RCC_APB1SMENR1_0_CAN1SMEN
+#undef RCC_APB1ENR_0_SPI2EN
+#undef RCC_CCIPR_1_TIM15SEL
+#undef RCC_AHBLPENR_1
+#undef RCC_CIR_0_PLLI2SRDYC
+#undef RCC_AHB1RSTR_1_GPIOFRST
+#undef RCC_CR_1_PLLSAI1RDY
+#undef RCC_APB1RSTR_0_TIM13RST
+#undef RCC_MAP0_UART35CKSELR
+#undef RCC_MAP3_AHB2ENR
+#undef RCC_CFGR_0_SWS
+#undef RCC_MAP0_RTCDIVR
+#undef RCC_APB2ENR_1_TIM22EN
+#undef RCC_AHB2SMENR_0_GPIOHSMEN
+#undef RCC_MAP0_MC_AHB3LPENSETR
+#undef RCC_APB1RSTR_1_LPTIMER1RST
+#undef RCC_MAP5_C2APB1ENR1
+#undef RCC_CIFR_1_MSIRDYF
+#undef RCC_APB1SMENR1_1_CRSSMEN
+#undef RCC_APB1RSTR_3_I2C3
+#undef RCC_APB1SMENR1_1_USBFSSMEN
+#undef RCC_AHBENR_0_IOPGEN
+#undef RCC_MAP0_MP_APB2LPENCLRR
+#undef RCC_APB2LPENR_0_TIM8LPEN
+#undef RCC_APB1SMENR1_0_LCDSMEN
+#undef RCC_APB2RSTR_2_SDAD3RST
+#undef RCC_C1_AHB1ENR_1
+#undef RCC_MAP0_DBGCFGR
+#undef RCC_APB2RSTR_0_TIM16RST
+#undef RCC_MAP0_ICSCR
+#undef RCC_APB1ENR_0_TIM12EN
+#undef RCC_APB1LPENR_1_SPDIFLPEN
+#undef RCC_MAP2_CSR
+#undef RCC_IOPRSTR_IOPERST
+#undef RCC_APB1RSTR_0_CECRST
+#undef RCC_APBENR1_TIM6EN
+#undef RCC_AHB1LPENR_0_GPIOJLPEN
+#undef RCC_APB1ENR_0_USART3EN
+#undef RCC_PLLCFGR_0_DIVR2EN
+#undef RCC_MAP2_CIER
+#undef RCC_PLLCFGR_2_PLLM1
+#undef RCC_DCKCFGR2_0_UART8SEL
+#undef RCC_CCIPR_1_I2S2SEL
+#undef RCC_MAP0_IDR
+#undef RCC_AHB2LPENR_2
+#undef RCC_AHB2RSTR_1_RNGRST
+#undef RCC_D3AMR_0_BKPSRAMAMEN
+#undef RCC_MAP1_AHB3LPENR
+#undef RCC_CSR_0_SFTRSTF
+#undef RCC_APB1LPENR_0_CAN1LPEN
+#undef RCC_APB1RSTR_1_I2CFMP1RST
+#undef RCC_CCIPR_1_I2C1SEL0
+#undef RCC_AHB2SMENR_0_GPIOGSMEN
+#undef RCC_DCKCFGR2_2
+#undef RCC_AHB2RSTR_1_GPIOERST
+#undef RCC_CFGR_2_RTCPRE2
+#undef RCC_APB2RSTR_1_SAI1RST
+#undef RCC_ICSCR_1_MSICAL
+#undef RCC_MAP0_MCO1CFGR
+#undef RCC_APB1ENR_0_CECEN
+#undef RCC_AHB1LPENR_0_GPIOCLPEN
+#undef RCC_MAP0_SAI1CKSELR
+#undef RCC_AHB1RSTR_1_MATRIXRST
+#undef RCC_APB1SMENR1_0_TIM6SMEN
+#undef RCC_PLLI2SCFGR_1
+#undef RCC_APB2RSTR_0_HRTIMRST
+#undef RCC_MAP1_CICR
+#undef RCC_APB1ENR_0_TIM5EN
+#undef RCC_APB1RSTR_2_COMPRST
+#undef RCC_AHB1LPENR_0_USB1OTGHSLPEN
+#undef RCC_BDCR_1_VSWRST
+#undef RCC_DCKCFGR2_0_UART2SEL
+#undef RCC_PLLSYSCFGR_0_PLLSYSQ
+#undef RCC_MAP0_AHB5RSTSETR
+#undef RCC_MAP0_MP_AXIMLPENCLRR
+#undef RCC_MAP5_C2AHB1SMENR
+#undef RCC_AHB3LPENR_0
+#undef RCC_MAP1_APB1LLPENR
+#undef RCC_AHB2RSTR_2_RNGRST
+#undef RCC_APB2LPENR_0_SDMMC2LPEN
+#undef RCC_MAP1_PLLCFGR
+#undef RCC_MAP0_MP_AHB2LPENCLRR
+#undef RCC_CFGR_3_ADCPRE
+#undef RCC_AHB1SMENR_1_CRCSMEN
+#undef RCC_APB1RSTR1_0_USART2RST
+#undef RCC_MAP4_IOPSMENR
+#undef RCC_APB1RSTR_1_WWDRST
+#undef RCC_AHB3ENR_1_QSPIEN
+#undef RCC_MAP0_AXIDIVR
+#undef RCC_APB1LPENR_0_TIM2LPEN
+#undef RCC_CICR_2
+#undef RCC_APB1ENR1_0_DAC1EN
+#undef RCC_CR_3_HSI16DIVF
+#undef RCC_MAP0_MC_RSTSCLRR
+#undef RCC_MAP0_AHB5RSTCLRR
+#undef RCC_AHB2RSTR_2_HSAHRST
+#undef RCC_CIER_0_PLL2RDYIE
+#undef RCC_MAP1_C1_RSR
+#undef RCC_APB1ENR1_2
+#undef RCC_DCKCFGR_0_MSEL
+#undef RCC_DCKCFGR2_0_UART1SEL
+#undef RCC_AHB2RSTR_0_CAMITFRST
+#undef RCC_CR_3_HSI16OUTEN
+#undef RCC_CSR_1_LSI1RDY
+#undef RCC_PLLCFGR_3_PLLM
+#undef RCC_MAP1_PLL3FRACR
+#undef RCC_AHB3RSTR_0_JPGDECRST
+#undef RCC_APB1RSTR2_I2C4RST
+#undef RCC_MAP0_MP_AHB4ENCLRR
+#undef RCC_AHBRSTR_0_GPIOHRST
+#undef RCC_AHB2SMENR_0_SDMMC1SMEN
+#undef RCC_MAP3_AHB2RSTR
+#undef RCC_AHBLPENR_0_GPIOGLPEN
+#undef RCC_AHB2RSTR_2_AES1RST
+#undef RCC_CCIPR_1_RNGSEL
+#undef RCC_CFGR3_0_USART2SW
+#undef RCC_AHBENR_0_CRCEN
+#undef RCC_APB1LRSTR_0_HDMICECRST
+#undef RCC_MAP0_AHB3RSTSETR
+#undef RCC_CSR_1_CSSLSED
+#undef RCC_APB2RSTR_1_TM12RST
+#undef RCC_APB2RSTR_1
+#undef RCC_PLLI2SCFGR_0
+#undef RCC_APB1RSTR_1_DAC2RST
+#undef RCC_CICR_0_LSECSSC
+#undef RCC_MAP0_MP_APB4ENCLRR
+#undef RCC_MAP5_HSECR
+#undef RCC_MAP0_MP_APB1LPENSETR
+#undef RCC_AHBENR_0_ADC34EN
+#undef RCC_AHB2ENR_0_SRAM1EN
+#undef RCC_APB2RSTR_0_USBPHYCRST
+#undef RCC_BDCR_0_LSCOSEL
+#undef RCC_APB1SMENR1_0_DAC1SMEN
+#undef RCC_MAP0_AHB6RSTCLRR
+#undef RCC_CSR_0_PINRSTF
+#undef RCC_MAP0_MC_CIER
+#undef RCC_CFGR_3_MCOSEL
+#undef RCC_CFGR_1_PPRE21
+#undef RCC_MAP0_MCUDIVR
+#undef RCC_AHB1ENR_1_DMA1EN
+#undef RCC_APB2RSTR_0_SPI4RST
+#undef RCC_MAP1_AHB1RSTR
+#undef RCC_CIER_2_PLLRDYIE
+#undef RCC_APB2SMENR_0_TIM8SMEN
+#undef RCC_CR_1_MSIRGSEL
+#undef RCC_AHB1LPENR_1
+#undef RCC_CIER_0_LSECSSIE
+#undef RCC_AHB2ENR_0_DAC2
+#undef RCC_DCKCFGR_1_SAI1SRC
+#undef RCC_MAP1_APB4ENR
+#undef RCC_APB2ENR_0_FWEN
+#undef RCC_CR_0_PLL2ON
+#undef RCC_MAP0_MP_AHB3ENSETR
+#undef RCC_AHB1ENR_0_CCMDATARAMEN
+#undef RCC_APB1RSTR1_0_CRSRST
+#undef RCC_AHBSMENR_1_CRYPTSMEN
+#undef RCC_PLLCFGR_2_PLLN0
+#undef RCC_PLLSYSCFGR_0_PLLSYSQEN
+#undef RCC_AHBRSTR_0_TSCRST
+#undef RCC_APB2LPENR_0_HRTIMLPEN
+#undef RCC_APB1SMENR1_0_USART3SMEN
+#undef RCC_C1_AHB1ENR_0_USB1OTGHSEN
+#undef RCC_PLLCFGR_1_PLLR
+#undef RCC_PLLSAICFGR_PLLSAIP
+#undef RCC_AHB1LPENR_1_SRAM1LPEN
+#undef RCC_APB2LPENR_0_TIM15LPEN
+#undef RCC_MAP0_APB1RSTCLRR
+#undef RCC_MAP5_CIR
+#undef RCC_MAP0_HSICFGR
+#undef RCC_AHB1ENR_0_DMA2DEN
+#undef RCC_MAP2_APB1SMENR2
+#undef RCC_PLLSYSCFGR_1
+#undef RCC_DCKCFGR_0_SAI1ASRC
+#undef RCC_CKGATENR_EVTCL_CKEN
+#undef RCC_AHB1RSTR_0_GPIOGRST
+#undef RCC_APB1RSTR1_0_UART5RST
+#undef RCC_MAP0_MP_MLAHBENSETR
+#undef RCC_AHB2ENR_1_DAC1
+#undef RCC_APB1ENR1_0_PWREN
+#undef RCC_PLLCFGR_0
+#undef RCC_CIER_1_MSIRDYIE
+#undef RCC_CR_3_MSIRDY
+#undef RCC_APB1SMENR2_LPTIM2SMEN
+#undef RCC_HSICFGR_1
+#undef RCC_AHB3SMENR_0
+#undef RCC_MAP0_MC_AHB4LPENSETR
+#undef RCC_APBENR1_USART3EN
+#undef RCC_MAP0_TZAHB6RSTSETR
+#undef RCC_CIFR_0_LSIRDYF
+#undef RCC_AHB1LPENR_0_GPIOKLPEN
+#undef RCC_AHB3ENR_0_RNGEN
+#undef RCC_MAP0_MC_APB3LPENCLRR
+#undef RCC_GCR_BOOT_C2
+#undef RCC_APB1ENR_1_UART7EN
+#undef RCC_APB1LPENR_0_RTCAPBEN
+#undef RCC_APB2RSTR_1_DFSDM1RST
+#undef RCC_MAP1_CSR
+#undef RCC_AHBRSTR_0_DMARST
+#undef RCC_APB1RSTR2_USBPDRST
+#undef RCC_AHB3RSTR_1_PKARST
+#undef RCC_CSR_0_OBLRSTF
+#undef RCC_MAP0_SAI4CKSELR
+#undef RCC_APB1ENR_2_DAC3EN
+#undef RCC_MAP5_EXTCFGR
+#undef RCC_AHB1LPENR_1_USB2OTGHSULPILPEN
+#undef RCC_MAP0_MC_APB5LPENCLRR
+#undef RCC_APB2LPENR_0_TIM10LPEN
+#undef RCC_APB1LPENR_2
+#undef RCC_MAP1_APB1LENR
+#undef RCC_AHB1SMENR_0_DMAMUX1SMEN
+#undef RCC_PLLI2SCFGR_0_PLLI2SSRC
+#undef RCC_MAP0_MPCKSELR
+#undef RCC_MAP3_AHB3LPENR
+#undef RCC_AHB1LPENR_0_ETH1TXLPEN
+#undef RCC_BDCR_0_LSECSSD
+#undef RCC_CFGR_4_MCO1PRE0
+#undef RCC_CIR_0_PLLSAIRDYF
+#undef RCC_AHBENR_0_IOPDEN
+#undef RCC_AHB1LPENR_1_SRAM2LPEN
+#undef RCC_APB1SMENR1_0_OPAMPSMEN
+#undef RCC_AHB1ENR_0_RNGEN
+#undef RCC_MAP4_BDCR
+#undef RCC_APB2ENR_3
+#undef RCC_MAP3_AHB2LPENR
+#undef RCC_APB1LLPENR_WWDG2LPEN
+#undef RCC_PLLCFGR_0_DIVQ3EN
+#undef RCC_CIFR_3
+#undef RCC_CIFR_2
+#undef RCC_APB1LPENR_1_LPTIMER1LPEN
+#undef RCC_AHB2LPENR_0_QSPILPEN
+#undef RCC_CIFR_0_CSIRDY
+#undef RCC_APB1SMENR2_SWPMI1SMEN
+#undef RCC_APB1LPENR_0_I2C4LPEN
+#undef RCC_APB1ENR_2
+#undef RCC_MAP2_AHB2SMENR
+#undef RCC_MAP0_MC_APB2LPENCLRR
+#undef RCC_PLLCFGR_0_PLLN6
+#undef RCC_APB1ENR_1_CEC
+#undef RCC_CFGR_4_PLLMUL
+#undef RCC_CCIPR_1_LPUART1SEL0
+#undef RCC_ICSCR_2_HSITRIM
+#undef RCC_APB1ENR_3_COMPEN
+#undef RCC_MAP3_AHB3RSTR
+#undef RCC_MAP0_MP_APB5LPENCLRR
+#undef RCC_AHB2ENR_0_SRAM3EN
+#undef RCC_APB2ENR_1_FIREWALLEN
+#undef RCC_CFGR_0_RTCPRE0
+#undef RCC_CIR_0_PLLSAIRDYC
+#undef RCC_APB1ENR_0_LPTMI1EN
+#undef RCC_CSR_0_LSION
+#undef RCC_APB1ENR_0_RTCAPBEN
+#undef RCC_CR_1_HSIKERDY
+#undef RCC_AHBENR_0_GPIOPDEN
+#undef RCC_APB2ENR_0_USART6EN
+#undef RCC_MAP0_UART24CKSELR
+#undef RCC_AHBRSTR_0_IOPBRST
+#undef RCC_CFGR_5_SDPRE
+#undef RCC_AHB2RSTR_0_SDMMC2RST
+#undef RCC_MAP0_MP_AHB2LPENSETR
+#undef RCC_PLLCFGR_1_PLLQ2
+#undef RCC_APB1LPENR_1_COMPLPEN
+#undef RCC_BDCR_1_LSCOSEL
+#undef RCC_MAP2_APB1RSTR1
+#undef RCC_APB2RSTR_3_SDAD1RST
+#undef RCC_APB1ENR1_0_TIM5EN
+#undef RCC_APB1ENR1_0_CRSEN
+#undef RCC_MAP1_C1_APB2ENR
+#undef RCC_MAP3_SSCGR
+#undef RCC_PLLSYSCFGR_0_PLLSYSP
+#undef RCC_DCKCFGR2_1_SPDIFSEL
+#undef RCC_AHBRSTR_0_IOPCRST
+#undef RCC_CFGR2_ADC34PRES
+#undef RCC_MAP0_MC_AXIMLPENSETR
+#undef RCC_MAP1_AHB2ENR
+#undef RCC_APB1RSTR_0_UART8RST
+#undef RCC_MAP2_BDCR
+#undef RCC_AHBRSTR_0_GPIOGRST
+#undef RCC_APB1ENR_0_CAN2EN
+#undef RCC_APB2LPENR_1_TIM9LPEN
+#undef RCC_ICSCR_0
+#undef RCC_PLLSYSCFGR_0_PLLSYSREN
+#undef RCC_MAP4_AHBENR
+#undef RCC_AHB1ENR_2
+#undef RCC_MAP5_APB1RSTR
+#undef RCC_CIFR_1_PLLRDYF
+#undef RCC_CIFR_1_PLLSAI2RDYF
+#undef RCC_AHB2RSTR_1_GPIOFRST
+#undef RCC_APB1ENR_3_CECEN
+#undef RCC_CFGR_3_PPRE2F
+#undef RCC_APB2ENR_0_TIM19EN
+#undef RCC_APB2RSTR_1_TIM20RST
+#undef RCC_CIER_3
+#undef RCC_APB2ENR_1_SPI5ENR
+#undef RCC_MAP1_CSICFGR
+#undef RCC_MAP0_MC_AXIMENSETR
+#undef RCC_AHB2RSTR_1_GPIOGRST
+#undef RCC_AHB1LPENR_0_OTGHSULPILPEN
+#undef RCC_PLLCFGR_3_PLLR2
+#undef RCC_APB2LPENR_0_SDMMC1LPEN
+#undef RCC_CR_1_CSSON
+#undef RCC_CIR_2
+#undef RCC_PLLCFGR_2_PLLM0
+#undef RCC_D1CCIPR_DSISEL
+#undef RCC_GCR_WW2RSC
+#undef RCC_AHB2SMENR_0_CRYPTSMEN
+#undef RCC_APB2LPENR_0_TIM17LPEN
+#undef RCC_APB1LENR_1
+#undef RCC_APBRSTR1_TIM6RST
+#undef RCC_MAP0_MP_APB4LPENSETR
+#undef RCC_MAP0_PLL3FRACR
+#undef RCC_AHB3RSTR_0_HSEMRST
+#undef RCC_MAP4_AHBLPENR
+#undef RCC_MAP2_PLLCFGR
+#undef RCC_AHB2RSTR_2_HASH1RST
+#undef RCC_APB2RSTR_0_TM10RST
+#undef RCC_CR_3_RTCPRE0
+#undef RCC_AHBENR_0_FSMCEN
+#undef RCC_APB2ENR_2_SPI4ENR
+#undef RCC_APB1SMENR1_0_PWRSMEN
+#undef RCC_AHB1ENR_1_FMACEN
+#undef RCC_APBENR1_CECEN
+#undef RCC_PLLCFGR_1_PLLSRC
+#undef RCC_MAP1_PLL3DIVR
+#undef RCC_APBSMENR1_TIM7SMEN
+#undef RCC_MAP1_D3CFGR
+#undef RCC_APB1ENR_0_DACEN
+#undef RCC_APB1ENR_2_I2C3EN
+#undef RCC_CR_0_PLL3ON
+#undef RCC_MAP3
+#undef RCC_MAP0_MP_APB3ENSETR
+#undef RCC_APB2ENR_1_TIM10EN
+#undef RCC_IOPRSTR_IOPFRST
+#undef RCC_CIFR_0_HSERDYF
+#undef RCC_AHB3ENR_0
+#undef RCC_APB2RSTR_0_USART9RST
+#undef RCC_AHB1RSTR_0_GPIODRST
+#undef RCC_AHB1SMENR_0_FLASHSMEN
+#undef RCC_MAP2_APB1SMENR1
+#undef RCC_AHBENR_0_SRAMEN
+#undef RCC_MAP5_APBSMENR2
+#undef RCC_CSR_1_PADRSTF
+#undef RCC_CFGR_0_RTCPRE
+#undef RCC_PLLCFGR_2_PLLP0
+#undef RCC_AHBENR_1_GPIOPBEN
+#undef RCC_CFGR_3_PLLXTPRE
+#undef RCC_BDCR_0_LSEDRV
+#undef RCC_AHB1ENR_0_GPIOKEN
+#undef RCC_MAP5_C2APB2ENR
+#undef RCC_APB2RSTR_0_TIM15RST
+#undef RCC_APB2RSTR_0_SAI1RST
+#undef RCC_AHB1ENR_1_GPIOAEN
+#undef RCC_MAP2
+#undef RCC_AHBRSTR_0_AESRST
+#undef RCC_CFGR_2_HPRE2
+#undef RCC_MAP6
+#undef RCC_MAP0_MPCKDIVR
+#undef RCC_CR_2_HSICAL
+#undef RCC_MAP0_MP_AHB5LPENSETR
+#undef RCC_APBENR1_TIM7EN
+#undef RCC_APB2RSTR_1_TIM9RST
+#undef RCC_APB2RSTR_1_TM11RST
+#undef RCC_MAP5_CSR
+#undef RCC_AHB1ENR_0_GPIOHEN
+#undef RCC_DCKCFGR2_0_UART5SEL
+#undef RCC_PLLCFGR_3_PLLP
+#undef RCC_APBENR1_USART4EN
+#undef RCC_MAP4_APB2RSTR
+#undef RCC_MAP1_AHB2LPENR
+#undef RCC_MAP5_APBENR2
+#undef RCC_MAP1_C1_AHB2LPENR
+#undef RCC_ICSCR_3_HSITRIM
+#undef RCC_MAP0_MC_AHB2LPENCLRR
+#undef RCC_CFGR_3_PPRE22
+#undef RCC_APB2RSTR_2_SDIORST
+#undef RCC_APB1ENR_0_UART7ENR
+#undef RCC_APB1RSTR_3_LCDRST
+#undef RCC_APB2ENR_1_SAI2EN
+#undef RCC_CICR_1_HSI48RDYC
+#undef RCC_APB2RSTR_1_USART1RST
+#undef RCC_APB1ENR_0_TIM13EN
+#undef RCC_MAP0_MP_AHB5ENCLRR
+#undef RCC_CFGR_1_MCOPRE
+#undef RCC_MAP0_MP_IWDGFZSETR
+#undef RCC_APB1ENR2_SWPMI1EN
+#undef RCC_CFGR_3_PPRE11
+#undef RCC_CICR_0_HSIRDYC
+#undef RCC_MAP0_MC_AHB2LPENSETR
+#undef RCC_AHB1RSTR_1_GPIOIRST
+#undef RCC_APB2ENR_2_DBGMCUEN
+#undef RCC_APB1RSTR_0_DACRST
+#undef RCC_MAP4_DCKCFGR
+#undef RCC_PLLSAI1CFGR_0
+#undef RCC_AHBRSTR_2_DMA1RST
+#undef RCC_AHB1LPENR_0_ETH1MACLPEN
+#undef RCC_AHB1LPENR_1_GPIOALPEN
+#undef RCC_APB3ENR_DSIEN
+#undef RCC_AHB2RSTR_0_ADCRST
+#undef RCC_APB1RSTR_0_UART4RST
+#undef RCC_AHBENR_2_DMA1EN
+#undef RCC_APB1RSTR2_LPTIM2RST
+#undef RCC_MAP7
+#undef RCC_BDCR_2_RTCSEL
+#undef RCC_APB1ENR1_1_CRSEN
+#undef RCC_MAP2_PLLSAI1CFGR
+#undef RCC_MAP0_APB5RSTSETR
+#undef RCC_DCKCFGR_1_SAI2SRC
+#undef RCC_MAP0_MC_MLAHBENCLRR
+#undef RCC_DCKCFGR2_0_UART4SEL
+#undef RCC_AHB3SMENR_0_SRAM2SMEN
+#undef RCC_MAP0_APB2DIVR
+#undef RCC_MAP1_PLL1FRACR
+#undef RCC_MAP0_MC_AHB6ENSETR
+#undef RCC_CCIPR2_0
+#undef RCC_APB1RSTR_1_I2C3RST
+#undef RCC_MAP2_AHB2ENR
+#undef RCC_AHB1ENR_0_OTGHSEN
+#undef RCC_AHBSMENR_1_TOUCHSMEN
+#undef RCC_MAP5_C2APB3SMENR
+#undef RCC_AHB1ENR_0_DMA2EN
+#undef RCC_CIFR_0_LSI2RDYF
+#undef RCC_MAP0_MP_APRSTCR
+#undef RCC_CFGR_0_STOPWUCK
+#undef RCC_MAP1_C1_APB2LPENR
+#undef RCC_APB2ENR_1_SAI1EN
+#undef RCC_APBSMENR1_USART3SMEN
+#undef RCC_APB1ENR1_0_I2C3EN
+#undef RCC_MAP0_MC_APB2LPENSETR
+#undef RCC_AHBSMENR_0_RNGSMEN
+#undef RCC_MAP3_AHB1RSTR
+#undef RCC_AHBENR_0_ADC12EN
+#undef RCC_MAP0_MP_AHB6LPENCLRR
+#undef RCC_IOPENR_IOPFEN
+#undef RCC_AHBENR_2_TOUCHEN
+#undef RCC_APB1SMENR1_1_FDCANSMEN
+#undef RCC_AHB2ENR_0_GPIOBEN
+#undef RCC_APB1RSTR_1_DAC1RST
+#undef RCC_CSR_1_LSI2BW
+#undef RCC_PLLCFGR_2_PLLREN
+#undef RCC_CR_0_HSIDIV
+#undef RCC_APB1RSTR_0_WWDGRST
+#undef RCC_MAP0_MP_TZAHB6ENCLRR
+#undef RCC_DCKCFGR_0_PLLIS2DIVQ
+#undef RCC_APB2LPENR_0_LTDCLPEN
+#undef RCC_APB1ENR_1_LPTIM1EN
+#undef RCC_AHB1ENR_1_TSCEN
+#undef RCC_APB2SMENR_0_ADCSMEN
+#undef RCC_D3CFGR_1
+#undef RCC_CR_1_PLLSAI1ON
+#undef RCC_APB2SMENR_0_DSISMEN
+#undef RCC_APB1ENR_1_LPUART1EN
+#undef RCC_AHB2ENR_0_CRYPTEN
+#undef RCC_APB1ENR1_0_RTCAPBEN
+#undef RCC_MAP1_APB1HLPENR
+#undef RCC_AHBRSTR_0_CRCRST
+#undef RCC_MAP1_AHB1LPENR
+#undef RCC_CCIPR_0_DFSDMSEL
+#undef RCC_AHBENR_2
+#undef RCC_MAP2_APB1ENR1
+#undef RCC_MAP0_USBCKSELR
+#undef RCC_APB2ENR_1_ADCEN
+#undef RCC_APB1RSTR_1_SPDIFRST
+#undef RCC_CICR_1_LSI1RDYC
+#undef RCC_MAP1_D3CCIPR
+#undef RCC_APB2RSTR_0_ADCRST
+#undef RCC_APB2ENR_3_SDAD1EN
+#undef RCC_CSR_1_RTCEN
+#undef RCC_APB2LPENR_1_SYSCFGLPEN
+#undef RCC_CSR_0_MSISRANGE
+#undef RCC_MAP4_PLLSYSCFGR
+#undef RCC_APB1SMENR2_I2C4SMEN
+#undef RCC_PLLCFGR_0_PLL2VCOSEL
+#undef RCC_CSR_1_LPWRRSTF
+#undef RCC_CCIPR_1_LPTIM1SEL0
+#undef RCC_CFGR_1_MCO2PRE0
+#undef RCC_CFGR_2_MCO2
+#undef RCC_AHB2ENR_0_AESEN
+#undef RCC_MAP2_AHB1ENR
+#undef RCC_CR_2
+#undef RCC_APB2RSTR_0_SDMMC1RST
+#undef RCC_PLLCFGR_0_PLLR
+#undef RCC_CSICFGR_1
+#undef RCC_AHB3RSTR_0_DMA2DRST
+#undef RCC_CFGR_2_SWS0
+#undef RCC_APBRSTR1_USART4RST
+#undef RCC_AHB2ENR_0_DAC3
+#undef RCC_APB1ENR1_1
+#undef RCC_MAP0_PLL2CFGR1
+#undef RCC_CFGR_2_HPREF
+#undef RCC_CFGR_2_SW1
+#undef RCC_MAP0_MC_APB4LPENCLRR
+#undef RCC_CCIPR2_0_DFSDMSEL
+#undef RCC_CIER_1_LSI1RDYIE
+#undef RCC_APB1ENR1_0_CAN2EN
+#undef RCC_APB1ENR_1
+#undef RCC_APB1SMENR1_0_RTCAPBSMEN
+#undef RCC_MAP0_MP_APB5ENSETR
+#undef RCC_AHB1ENR_0_GPIOJEN
+#undef RCC_AHB1RSTR_0_USB1OTGRST
+#undef RCC_AHB2ENR_1_RNGEN
+#undef RCC_CCIPR2_1
+#undef RCC_MAP0_MP_SREQCLRR
+#undef RCC_CFGR_0_HRTIMSEL
+#undef RCC_PLLCFGR_2_PLLN2
+#undef RCC_AHB2RSTR_0
+#undef RCC_MAP5_APB3RSTR
+#undef RCC_PLLCFGR_0_PLL3RGE
+#undef RCC_AHB3ENR_0_HSEMEN
+#undef RCC_MAP0_LPTIM45CKSELR
+#undef RCC_AHB2ENR_1_HASHEN
+#undef RCC_CICR_1_CSSC
+#undef RCC_CR_1_PLLSAI2ON
+#undef RCC_MAP5_C2APB3ENR
+#undef RCC_AHB3ENR_0_OSPI2EN
+#undef RCC_AHB3RSTR_2
+#undef RCC_AHB2ENR_1_GPIOFEN
+#undef RCC_APB2ENR_0_SAI2EN
+#undef RCC_APB1LPENR_0_TIM7LPEN
+#undef RCC_APB2LPENR_1
+#undef RCC_MAP2_CCIPR2
+#undef RCC_APB3RSTR_LTDCRST
+#undef RCC_APB2LPENR_0_TIM9LPEN
+#undef RCC_APB1SMENR_USART4SMEN
+#undef RCC_APB2SMENR_0_SAI2SMEN
+#undef RCC_AHB3ENR_2
+#undef RCC_MAP0_PLL3CSGR
+#undef RCC_DCKCFGR2_0_I2C2SEL
+#undef RCC_APB1RSTR1_0_SPI3RST
+#undef RCC_APB3RSTR_DSIRST
+#undef RCC_AHB1LPENR_0_OTGHSLPEN
+#undef RCC_AHB1ENR_1_GFXMMUEN
+#undef RCC_MAP2_APB1ENR2
+#undef RCC_MAP0_APB4RSTCLRR
+#undef RCC_MAP0_MC_AXIMENCLRR
+#undef RCC_AHB2RSTR_1_DAC1RST_
+#undef RCC_CR_2_PLLSYSRDY
+#undef RCC_APB2ENR_0_DFSDM2EN
+#undef RCC_MAP0_MSSCKSELR
+#undef RCC_APB1ENR_0_TIM7EN
+#undef RCC_AHB2SMENR_0_DCMISMEN
+#undef RCC_APB2LPENR_1_USART10LPEN
+#undef RCC_PLLCFGR_0_DIVP1EN
+#undef RCC_APB2RSTR_0_USART1RST
+#undef RCC_AHB1ENR_2_ETHMACEN
+#undef RCC_AHB2ENR_3
+#undef RCC_APB2ENR_0_SPI6ENR
+#undef RCC_CIFR_2_CSSLSEF
+#undef RCC_APB1RSTR_0_UART3RST
+#undef RCC_AHB2LPENR_0_HASHLPEN
+#undef RCC_CIER_0_RC48RDYIE
+#undef RCC_AHB1ENR_1_GPIOFEN
+#undef RCC_AHB3SMENR_0_RNGSMEN
+#undef RCC_CCIPR_1_I2C3SEL0
+#undef RCC_PLLSAICFGR_PLLSAIM
+#undef RCC_APB2ENR_0_TIM10EN
+#undef RCC_MAP3_APB1LPENR
+#undef RCC_AHB1ENR_0_USB2OTGHSEN
+#undef RCC_CSR_0_RFWKPSEL
+#undef RCC_CSR_2_LSEON
+#undef RCC_MAP1_APB4RSTR
+#undef RCC_CIFR_1
+#undef RCC_CFGR_2_MCO1PRE
+#undef RCC_APB1ENR1_0_CAN1EN
+#undef RCC_AHB1ENR_0_USB1OTGHSULPIEN
+#undef RCC_APB1RSTR_1_USART4RST
+#undef RCC_AHB1ENR_1_USB2OTGEN
+#undef RCC_BDCR_3
+#undef RCC_AHBRSTR_0_GPIODRST
+#undef RCC_CFGR_2_MCO11
+#undef RCC_BDCR_0_RTCCKEN
+#undef RCC_C1_AHB1ENR_0_ARTEN
+#undef RCC_CCIPR_0_USART3SEL
+#undef RCC_AHB3ENR_0_MDMAEN
+#undef RCC_PLLCFGR_0_PLL2RGE
+#undef RCC_AHB3SMENR_0_FMCSMEN
+#undef RCC_APB2LPENR_0_ADC2LPEN
+#undef RCC_MAP0_MC_APB5ENCLRR
+#undef RCC_APB1ENR1_0_UART4EN
+#undef RCC_CIER_1_PLLSAI1RDYIE
+#undef RCC_CIER_2_HSI48RDYIE
+#undef RCC_CICR_1_MSIRDYC
+#undef RCC_CIR_1
+#undef RCC_AHB1ENR_1_ETHMACPTPEN
+#undef RCC_APB1LENR_0_HDMICECEN
+#undef RCC_MAP0_LPTIM1CKSELR
+#undef RCC_AHB1LPENR_0_GPIOILPEN
+#undef RCC_DCKCFGR2_2_CKSDIOSEL
+#undef RCC_AHB1ENR_1_CRCEN
+#undef RCC_APB1RSTR_1_CAN3RST
+#undef RCC_MAP1_D2CFGR
+#undef RCC_CIER_0_CSIRDYIE
+#undef RCC_CFGR_1
+#undef RCC_MAP1_RSR
+#undef RCC_CICR_0_HSECSSC
+#undef RCC_APB1ENR_0_TIM14EN
+#undef RCC_MAP0_MP_APB5LPENSETR
+#undef RCC_AHBENR_0_IOPBEN
+#undef RCC_APBSMENR1_DAC1SMEN
+#undef RCC_CICR_1_PLLSAI2RDYC
+#undef RCC_AHBSMENR_1
+#undef RCC_APB2ENR_1_TIM11EN
+#undef RCC_MAP0_MP_AHB6ENCLRR
+#undef RCC_AHB1ENR_0_ETH1MACEN
+#undef RCC_CFGR_3
+#undef RCC_AHB2RSTR_0_OSPIMRST
+#undef RCC_MAP0_AHB3ENR
+#undef RCC_CSR_2_LSERDY
+#undef RCC_CFGR3_0_I2C3SW
+#undef RCC_APB2ENR_1_DFSDM1EN
+#undef RCC_MAP5_C2APB1SMENR2
+#undef RCC_PLLCFGR_0_PLL3FRACEN
+#undef RCC_CFGR_5_PPRE
+#undef RCC_CSR_0_LSI2RDY
+#undef RCC_PLLCFGR_2_PLLSRC
+#undef RCC_APB2SMENR_0_SAI1SMEN
+#undef RCC_APB1RSTR_3_CRCRST
+#undef RCC_CICR_2_CSSLSEC
+#undef RCC_MAP0_MP_AXIMLPENSETR
+#undef RCC_AHB1RSTR_0_USB2OTGRST
+#undef RCC_APB1SMENR1_0_UART5SMEN
+#undef RCC_AHB2SMENR_0_GPIOISMEN
+#undef RCC_APB2RSTR_0_SPI6RST
+#undef RCC_APB1RSTR_0_TIM7RST
+#undef RCC_MAP3_PLLCFGR
+#undef RCC_AHB2LPENR_0_SRAM2LPEN
+#undef RCC_AHB3SMENR_0_QUADSPI1SMEN
+#undef RCC_MAP0_MP_TZAHB6LPENSETR
+#undef RCC_CSR_1_LSIIWDGLP
+#undef RCC_CIER_2_CSSLSE
+#undef RCC_APBSMENR1_UCPD2SMEN
+#undef RCC_CRRCR_3
+#undef RCC_AHB2LPENR_1
+#undef RCC_APB1RSTR1_0_UART4RST
+#undef RCC_MAP0_APB5DIVR
+#undef RCC_AHB1RSTR_0_GPIOHRST
+#undef RCC_APB2RSTR_1_TIM10RST
+#undef RCC_AHB3LPENR_1_FMCLPEN
+#undef RCC_AHB1RSTR_1_DMA1RST
+#undef RCC_APB1RSTR_0_SPDIFRXRST
+#undef RCC_PLLCFGR_0_DIVQ2EN
+#undef RCC_CR_0_HSION
+#undef RCC_APB2LPENR_1_USART1LPEN
+#undef RCC_APBRSTR1_UCPD2RST
+#undef RCC_AHBENR_1_IOPHEN
+#undef RCC_APB2ENR_1_SPI4EN
+#undef RCC_AHB1ENR_2_BKPSRAMEN
+#undef RCC_AHBENR_1_GPIOPEEN
+#undef RCC_PLLSYSCFGR_0_PLLSYSN
+#undef RCC_MAP4_CCIPR1
+#undef RCC_AHB1LPENR_0_DMA1LPEN
+#undef RCC_APB1RSTR_0_TIM2RST
+#undef RCC_APB1LPENR_0_CECLPEN
+#undef RCC_MAP5_C2APB2SMENR
+#undef RCC_BDCR_0_LSCOEN
+#undef RCC_MAP0_MP_APB1ENSETR
+#undef RCC_MAP1_PLL2FRACR
+#undef RCC_DCKCFGR_0_SDMMCSEL
+#undef RCC_MAP1_C1_AHB1LPENR
+#undef RCC_MAP0_MP_APB2ENSETR
+#undef RCC_MAP0_DDRITFCR
+#undef RCC_CR_0_PLL1RDY
+#undef RCC_MAP1_AHB4ENR
+#undef RCC_AHB1LPENR_0_GPIODLPEN
+#undef RCC_AHB1RSTR_0_DMA1RST
+#undef RCC_MAP0_APB3RSTSETR
+#undef RCC_MAP0_AHB4RSTCLRR
+#undef RCC_AHB2RSTR_0_DCMIRST
+#undef RCC_AHB1LPENR_0_BKPSRAMLPEN
+#undef RCC_CR_1_PLLSAI2RDY
+#undef RCC_APB2ENR_0_ADC3EN
+#undef RCC_APB2ENR_0_LTDCEN
+#undef RCC_MAP0_SPI2S23CKSELR
+#undef RCC_PLLCFGR_0_PLLN7
+#undef RCC_AHB2LPENR_0_SRAM1LPEN
+#undef RCC_CFGR_4_PPRE
+#undef RCC_MAP1_APB2LPENR
+#undef RCC_APB1RSTR_2_LPUART1RST
+#undef RCC_AHBENR_3
+#undef RCC_MAP1_C1_APB4ENR
+#undef RCC_CICR_0_RC48RDYC
+#undef RCC_MAP0_MP_RSTSR
+#undef RCC_AHBRSTR_0_GPIOERST
+#undef RCC_MAP0_MC_AHB4LPENCLRR
+#undef RCC_AHB3RSTR_0
+#undef RCC_APB1RSTR_0_I2C4RST
+#undef RCC_APB1LPENR_0_USART3LPEN
+#undef RCC_MAP2_CFGR
+#undef RCC_AHB3RSTR_1
+#undef RCC_APB2ENR_0_SAI1EN
+#undef RCC_MAP5
+#undef RCC_APB1RSTR1_0_USART3RST
+#undef RCC_MAP0_PWRLPDLYCR
+#undef RCC_PLLSAI1CFGR_1
+#undef RCC_BDCR_2_BDRST
+#undef RCC_AHBLPENR_0_GPIOHLPEN
+#undef RCC_APB1ENR_1_DAC1EN
+#undef RCC_PLLCFGR_0_PLL1VCOSEL
+#undef RCC_PLLSAI2CFGR_PLLSAI2PDIV
+#undef RCC_AHB1RSTR_0_OTGHSRST
+#undef RCC_APB2ENR_0_TIM21EN
+#undef RCC_MAP5_C2AHB3SMENR
+#undef RCC_AHB1LPENR_1_GPIOFLPEN
+#undef RCC_AHB2RSTR_0_DAC3RST
+#undef RCC_CIFR_2_HSECSSF
+#undef RCC_CIER_1_RC48RDYIE
+#undef RCC_AHB1ENR_0_USB2OTGHSULPIEN
+#undef RCC_AHB3ENR_1
+#undef RCC_CSR_1_RMVF
+#undef RCC_CICR_2_RC48RDYC
+#undef RCC_APB2LPENR_1_TIM10LPEN
+#undef RCC_AHB2LPENR_1_CRYPLPEN
+#undef RCC_IOPENR_IOPEEN
+#undef RCC_CIR_2_LSECSSC
+#undef RCC_MAP0_QSPICKSELR
+#undef RCC_APB2RSTR_1_TIM11RST
+#undef RCC_APB1RSTR1_0_TIM4RST
+#undef RCC_CCIPR2_1_QUADSPISEL
+#undef RCC_MAP5_APBENR1
+#undef RCC_CR_1_RTCPRE
+#undef RCC_CRRCR_0
+#undef RCC_CCIPR2_0_SAI1SEL
+#undef RCC_APB2RSTR_0_SAI2RST
+#undef RCC_AHB3RSTR_0_FLASHRST
+#undef RCC_AHB1LPENR_0_ETH1RXLPEN
+#undef RCC_CFGR_1_MCO21
+#undef RCC_APB1ENR1_0_TIM6EN
+#undef RCC_CFGR3_0_HRTIM1SW
+#undef RCC_MAP5_CFGR3
+#undef RCC_AHB2RSTR_1_HASHRST
+#undef RCC_APB1RSTR_0_CAN2RST
+#undef RCC_CR_1
+#undef RCC_PLLCFGR_0_DIVR3EN
+#undef RCC_MAP0_MP_AHB5LPENCLRR
+#undef RCC_AHB3LPENR_1_FLASHLPEN
+#undef RCC_CFGR_0_RTCPRE1
+#undef RCC_AHBENR_0_TSCEN
+#undef RCC_MAP1_APB1HRSTR
+#undef RCC_DCKCFGR_0_DSISEL
+#undef RCC_APB1SMENR_LCDSMEN
+#undef RCC_AHB2LPENR_0_OTGFSLPEN
+#undef RCC_CFGR_2_MCO10
+#undef RCC_MAP1_AHB3ENR
+#undef RCC_CSR_2_LSEBYP
+#undef RCC_AHB1SMENR_0_DMA2DSMEN
+#undef RCC_APB1ENR1_1_USBDEN
+#undef RCC_MAP1_APB1ENR
+#undef RCC_MAP0_MC_AHB2ENCLRR
+#undef RCC_DCKCFGR_1
+#undef RCC_CICR_2_HSI48RDYC
+#undef RCC_CR_2_PLLI2SRDY
+#undef RCC_CSR_3
+#undef RCC_AHB3RSTR_1_FMCRST
+#undef RCC_CIR_2_LSECSSF
+#undef RCC_MAP0_PLL1FRACR
+#undef RCC_CICR_2_PLLRDYC
+#undef RCC_APB1SMENR1_2
+#undef RCC_MAP5_DCKCFGR2
+#undef RCC_APB1SMENR_TIM3SMEN
+#undef RCC_CR_3_HSI16DIVEN
+#undef RCC_CIFR_1_CSSF
+#undef RCC_APB1LPENR_0_DACLPEN
+#undef RCC_AHB1RSTR_0_GPIOERST
+#undef RCC_C1_AHB1ENR_0_USB2OTGHSEN
+#undef RCC_AHB2ENR_0_SDMMC1EN
+#undef RCC_CFGR_2_SW0
+#undef RCC_APB1ENR_0_UART5EN
+#undef RCC_MAP1_APB3LPENR
+#undef RCC_CFGR_1_SW
+#undef RCC_APB1SMENR1_0_TIM3SMEN
+#undef RCC_MAP0_MC_APB3ENCLRR
+#undef RCC_MAP5_C2AHB3ENR
+#undef RCC_MAP1_C1_AHB3LPENR
+#undef RCC_CSR_0_LSI2TRIMEN
+#undef RCC_APB2ENR_1_SYSCFGEN
+#undef RCC_MAP0_MC_CIFR
+#undef RCC_APB2RSTR_0_SPI5RST
+#undef RCC_APB2ENR_0_SPI5EN
+#undef RCC_CICR_3
+#undef RCC_MAP5_C2AHB2SMENR
+#undef RCC_MAP1_CFGR
+#undef RCC_MAP0_RDLSICR
+#undef RCC_AHB1LPENR_0_DMA2LPEN
+#undef RCC_AHB1LPENR_0_ARTLPEN
+#undef RCC_CR_0_RTCPRE1
+#undef RCC_CFGR_3_PPRE12
+#undef RCC_MAP3_APB1ENR
+#undef RCC_AHB2RSTR_0_AESRST
+#undef RCC_PLLCFGR_3
+#undef RCC_APB2LPENR_0_USART9LPEN
+#undef RCC_AHB3RSTR_2_FSMCRST
+#undef RCC_AHB2SMENR_0_OTGFSSMEN
+#undef RCC_CFGR_1_STOPWUCK
+#undef RCC_AHB2ENR_1
+#undef RCC_MAP0_MP_IWDGFZCLRR
+#undef RCC_APB1SMENR_USBSMEN
+#undef RCC_CIR_0_PLLI2SRDYF
+#undef RCC_CIER_2_HSI16RDYIE
+#undef RCC_MAP1_AHB4LPENR
+#undef RCC_MAP1_CRRCR
+#undef RCC_APB2ENR_0_USBPHYCEN
+#undef RCC_CSR_2_PWRRSTF
+#undef RCC_APB2LPENR_0_ADC1LPEN
+#undef RCC_APB1LPENR_0_LPTIM1LPEN
+#undef RCC_MAP0_PLL1CFGR2
+#undef RCC_PLLCFGR_0_DIVR1EN
+#undef RCC_APB3LPENR_DSILPEN
+#undef RCC_APB1ENR_2_LPTIM1EN
+#undef RCC_AHB2ENR_0_GPIOCEN
+#undef RCC_AHB3RSTR_0_RNGRST
+#undef RCC_MAP2_C1_AHB1ENR
+#undef RCC_APB1RSTR_3
+#undef RCC_AHBRSTR_0_FSMCRST
+#undef RCC_CR_0_HSIRDY
+#undef RCC_APB1ENR_0_I2C2EN
+#undef RCC_CIFR_0_HSECSSF
+#undef RCC_MAP0_MC_AHB5LPENSETR
+#undef RCC_AHB1SMENR_0_CORDICSMEN
 #undef RCC_MAP5_C2APB1SMENR1
 #undef RCC_MAP2_CIFR
-#undef RCC_AHBENR_2_RNGEN
-#undef RCC_AHB2ENR_2_DCMIEN
-#undef RCC_ICSCR_0
-#undef RCC_APB1LPENR_0_I2C4LPEN
-#undef RCC_AHB1ENR_0_ARTEN
-#undef RCC_APB1ENR1_0_TIM3EN
-#undef RCC_CICR_1_LSI1RDYC
-#undef RCC_APB2RSTR_1_HRTIM1RST
-#undef RCC_CCIPR_0_USART3SEL
-#undef RCC_APB2ENR_0_TIM21EN
-#undef RCC_AHB1RSTR_1
-#undef RCC_DCKCFGR_0_I2S1SRC
-#undef RCC_PLLCFGR_2_PLLQ
-#undef RCC_AHB2RSTR_0_AESRST
-#undef RCC_MAP1_D3AMR
-#undef RCC_AHBENR_0_IOPEEN
-#undef RCC_AHB2LPENR_0_SDMMC2LPEN
-#undef RCC_MAP4_APB2ENR
-#undef RCC_MAP0_MC_APB1LPENSETR
-#undef RCC_AHB1ENR_1_CORDICEN
-#undef RCC_DCKCFGR2_0_UART5SEL
-#undef RCC_MAP1_CIFR
-#undef RCC_MAP1_C1_AHB4ENR
-#undef RCC_APB2LPENR_1_SYSCFGLPEN
-#undef RCC_MAP2_C1_AHB3LPENR
-#undef RCC_APB1RSTR_1_I2CFMP1RST
-#undef RCC_MAP0_MP_TZAHB6ENCLRR
-#undef RCC_CCIPR2_0
-#undef RCC_MAP0_MC_APB3LPENCLRR
-#undef RCC_MAP0_MP_APB4ENSETR
-#undef RCC_APB2RSTR_1_SDAD2RST
-#undef RCC_CCIPR_1_USART2SEL1
-#undef RCC_APB2ENR_0_SYSCFGEN
-#undef RCC_AHB2ENR_2_AES1EN
-#undef RCC_MAP5_APB3RSTR
-#undef RCC_MAP1_CICR
-#undef RCC_CFGR_4_MCO1PRE1
-#undef RCC_APB1ENR_0_TIM12EN
-#undef RCC_MAP0_MC_AHB2LPENCLRR
-#undef RCC_AHBENR_1_CRYPEN
-#undef RCC_AHB1LPENR_1_DMA2LPEN
-#undef RCC_CRRCR_1
-#undef RCC_CSR_1_LSIIWDGLP
-#undef RCC_AHB1LPENR_1_GPIOALPEN
-#undef RCC_MAP3_AHB3RSTR
-#undef RCC_MAP3
-#undef RCC_CSR_2_LSEBYP
-#undef RCC_APB1ENR_1_LPTIM1EN
-#undef RCC_MAP0_SAI4CKSELR
-#undef RCC_AHB1ENR_1_DMA2EN
-#undef RCC_MAP2_C1_AHB1ENR
-#undef RCC_AHBENR_2_GPIOPAEN
-#undef RCC_CFGR_2_HPRE0
-#undef RCC_PLLCFGR_1_PLLP
-#undef RCC_CR_2_PLLSAIRDY
-#undef RCC_CRRCR_0
-#undef RCC_APB2SMENR_0_DFSDM1SMEN
-#undef RCC_MAP1_APB1LENR
-#undef RCC_AHB1ENR_0_CRCEN
-#undef RCC_CFGR_0_TIMPRE
-#undef RCC_APB1SMENR1_1_USBFSSMEN
-#undef RCC_MAP0_MC_APB2ENSETR
-#undef RCC_APB1ENR_0_I2C3EN
-#undef RCC_APB1SMENR1_0_TIM4SMEN
-#undef RCC_MAP0_MP_APB3ENCLRR
-#undef RCC_AHB1ENR_0_USB2ULPIEN
-#undef RCC_AHB1LPENR_0_GPIOKLPEN
-#undef RCC_APB1RSTR1_0_OPAMPRST
-#undef RCC_CFGR_0_RTCPRE
-#undef RCC_CFGR_3_PPRE12
-#undef RCC_CSICFGR_0
-#undef RCC_AHBRSTR_1_MIFRST
-#undef RCC_PLLCFGR_4_PLLQEN
-#undef RCC_BDCR_1_LSECSSON
-#undef RCC_APB2RSTR_1_TM11RST
-#undef RCC_CR_2_HSI16ON
-#undef RCC_APB1LPENR_1_USBLPEN
-#undef RCC_MAP0_MP_AHB2LPENCLRR
-#undef RCC_MAP0_MC_APB3LPENSETR
-#undef RCC_CFGR_2
-#undef RCC_APB2ENR_0_SPI4EN
-#undef RCC_AHB1ENR_0_GPIOJEN
-#undef RCC_AHB1RSTR_0_FLASHRST
-#undef RCC_PLLCFGR_3_PLLR1
-#undef RCC_CFGR_2_MCO1EN
-#undef RCC_DCKCFGR2_0_I2C3SEL
-#undef RCC_CR_1_HSIKERDY
-#undef RCC_APB2ENR_1_SAI2EN
-#undef RCC_APB1LPENR_1_USART5LPEN
-#undef RCC_APBENR1_USART3EN
-#undef RCC_AHBENR_0_DMAEN
-#undef RCC_CR_0_HSIDIVF
-#undef RCC_APB2SMENR_0_TIM17SMEN
-#undef RCC_CCIPR_1_LPTIM1SEL1
-#undef RCC_APB1ENR1_0_USART2EN
-#undef RCC_MAP0_MC_MLAHBENCLRR
-#undef RCC_MAP2_PLLCFGR
-#undef RCC_MAP3_AHB1LPENR
-#undef RCC_PLLCFGR_0_DIVP1EN
-#undef RCC_APB1SMENR1_1_I2C3SMEN_3
-#undef RCC_MAP0_MP_AHB3LPENSETR
-#undef RCC_CFGR3_0_UART5SW
-#undef RCC_APB2RSTR_1_ADCRST
-#undef RCC_MAP0_PLL4CFGR1
-#undef RCC_APB1LPENR_0_TIM4LPEN
-#undef RCC_AHBSMENR_0_FLASHSMEN
-#undef RCC_AHBRSTR_0_IOPGRST
-#undef RCC_CIFR_1_MSIRDYF
-#undef RCC_APB1ENR1_0_CAN2EN
-#undef RCC_MAP0_MP_AHB4ENCLRR
-#undef RCC_AHB1RSTR_0_DMAMUX1RST
-#undef RCC_AHB1ENR_1_USB1ULPIEN
-#undef RCC_CIFR_2_HSECSSF
-#undef RCC_MAP0_AHB2RSTSETR
-#undef RCC_PLLI2SCFGR_1
-#undef RCC_MAP2_CCIPR2
-#undef RCC_APB1SMENR1_1_USART1SMEN
-#undef RCC_APB2LPENR_1_USART1LPEN
-#undef RCC_MAP3_DKCFGR1
-#undef RCC_MAP0_MP_AHB2ENSETR
-#undef RCC_PLLCFGR_4_PLLP
-#undef RCC_AHB1ENR_0_GPIODEN
-#undef RCC_AHB1ENR_2_ETHMACTXEN
-#undef RCC_AHB2RSTR_1
-#undef RCC_AHB2RSTR_0_ADCRST
-#undef RCC_CR_2_HSIRDY
-#undef RCC_APB2RSTR_0_USART9RST
-#undef RCC_AHB3LPENR_1_QSPILPEN
-#undef RCC_APB2ENR_0_TIM16EN
-#undef RCC_MAP2_APB2ENR
-#undef RCC_AHBRSTR_0_GPIODRST
-#undef RCC_CSR_1_LSI2BW
-#undef RCC_CR_1_HSION
-#undef RCC_AHBENR_0_GPIOPHEN
-#undef RCC_APB2ENR_1_ADCEN
-#undef RCC_CCIPR2_0_PLLSAI2DIVR
-#undef RCC_AHBRSTR_0_IOPARST
-#undef RCC_CFGR_1_PPRE21
-#undef RCC_APB1ENR_0_TIM7EN
-#undef RCC_AHB2ENR_1_OTGFSEN
-#undef RCC_APB1RSTR_1_DAC2RST
-#undef RCC_APB1RSTR_1_CANRST
-#undef RCC_CSR_1
-#undef RCC_CSR_1_PADRSTF
-#undef RCC_MAP0_MP_TZAHB6LPENSETR
-#undef RCC_CIFR_2_PLLRDYF
-#undef RCC_AHB2SMENR_0_GPIOGSMEN
-#undef RCC_APB2RSTR_3
-#undef RCC_AHB1RSTR_0_ARTRST
-#undef RCC_CCIPR_2
-#undef RCC_APB1ENR1_1_USBF
-#undef RCC_BDCR_1
-#undef RCC_MAP4_AHBRSTR
-#undef RCC_CFGR3_0_HRTIM1SW
-#undef RCC_MAP0_MP_IWDGFZSETR
-#undef RCC_AHBRSTR_0_GPIOBRST
-#undef RCC_AHB1ENR_2_BKPSRAMEN
-#undef RCC_MAP2_AHB2RSTR
-#undef RCC_AHB3ENR_2
-#undef RCC_MAP0_MCUDIVR
-#undef RCC_CFGR_0_MCO2SEL
-#undef RCC_AHB1ENR_1_ETHMACPTPEN
-#undef RCC_APB2LPENR_0_EXTITEN
-#undef RCC_CCIPR2_0_DFSDMSEL
-#undef RCC_MAP5_APBSMENR1
-#undef RCC_AHBENR_0_IOPFEN
-#undef RCC_CICR_0_HSIRDYC
-#undef RCC_APB1LPENR_0_TIM5LPEN
-#undef RCC_AHB1ENR_2_ETHMACEN
-#undef RCC_MAP0_MP_APB5ENCLRR
-#undef RCC_IOPENR_IOPEEN
-#undef RCC_MAP0_MP_APB1ENSETR
-#undef RCC_MAP3_APB2ENR
-#undef RCC_APB3RSTR_LTDCRST
-#undef RCC_APB1RSTR_0_UART2RST
-#undef RCC_APB1SMENR_DACSMEN
-#undef RCC_MAP0_PLL3CFGR1
-#undef RCC_MAP0_MC_MLAHBLPENSETR
-#undef RCC_APB1ENR_1_UART7EN
-#undef RCC_CIER_1
-#undef RCC_AHB1LPENR_0_ETH1MACLPEN
-#undef RCC_APB1ENR_1_DAC1EN
-#undef RCC_AHB2LPENR_2
-#undef RCC_MAP0_MP_AHB6ENCLRR
-#undef RCC_MAP1_APB2RSTR
-#undef RCC_AHB1RSTR_1_GPIOARST
-#undef RCC_AHB1ENR_1_DTCMRAMEN
-#undef RCC_AHBLPENR_0_DMA2LPEN
-#undef RCC_AHB1RSTR_0_USB2OTGRST
-#undef RCC_CFGR_0_SWS
-#undef RCC_AHBSMENR_1
-#undef RCC_AHB1RSTR_1_CRCRST
-#undef RCC_APB1RSTR_0_TIM2RST
-#undef RCC_AHB1LPENR_1_DMA1LPEN
-#undef RCC_MAP1_PLL3FRACR
-#undef RCC_DCKCFGR_0_PLLSAIDIVQ
-#undef RCC_AHB3RSTR_0_QSPIRST
-#undef RCC_MAP0_PLL3CR
-#undef RCC_APB1LRSTR_0_HDMICECRST
-#undef RCC_APB1SMENR1_0_UART5SMEN
-#undef RCC_MAP0_OCENSETR
-#undef RCC_CR_1_CSSON
-#undef RCC_AHB1ENR_0_CCMDATARAMEN
-#undef RCC_MAP0_APB1RSTCLRR
-#undef RCC_CIFR_0_RC48RDYF
-#undef RCC_APB1ENR1_0_TIM7EN
-#undef RCC_APB1RSTR1_0_UART4RST
-#undef RCC_MAP0_MP_AHB4ENSETR
-#undef RCC_CR_1_MSIRDY
-#undef RCC_CR_0_RC48RDY
-#undef RCC_AHB3RSTR_0_OSPI2RST
-#undef RCC_MAP0_MC_APB2ENCLRR
-#undef RCC_APB2LPENR_0_SPI4LPEN
-#undef RCC_AHB2RSTR_1_HASHRST
-#undef RCC_CFGR_1_PPRE2
-#undef RCC_APB2RSTR_0_TIM1RST
-#undef RCC_AHBENR_0_AESEN
-#undef RCC_MAP0_MP_APB3LPENCLRR
-#undef RCC_CR_0_CSION
-#undef RCC_MAP4_IOPENR
-#undef RCC_MAP0_STGENCKSELR
-#undef RCC_MAP0_I2C12CKSELR
-#undef RCC_AHB3RSTR_0
-#undef RCC_AHB1RSTR_1_ETHMACRST
-#undef RCC_AHB1LPENR_0_DMA1LPEN
-#undef RCC_AHBRSTR_2
-#undef RCC_AHBENR_1_GPIOPEEN
-#undef RCC_MAP5_CIR
-#undef RCC_MAP1_CFGR
-#undef RCC_AHB2ENR_2_CRYPEN
-#undef RCC_APB1ENR_0_LPTMI1EN
-#undef RCC_CIFR_0_PLL1RDYF
-#undef RCC_APB2ENR_0_SAI2EN
-#undef RCC_MAP0_PLL2FRACR
-#undef RCC_AHBRSTR_0_IOPFRST
-#undef RCC_MAP0_MP_AHB6ENSETR
-#undef RCC_CIER_0_HSERDYIE
-#undef RCC_AHB1RSTR_1_GPIOCRST
-#undef RCC_APBENR2_TIM15EN
-#undef RCC_APB1RSTR_0_CAN2RST
-#undef RCC_MAP0_MP_AHB4LPENCLRR
-#undef RCC_MAP4_APBRSTR2
-#undef RCC_MAP1_C1_APB1LLPENR
-#undef RCC_AHBRSTR_0_GPIOCRST
-#undef RCC_CRRCR_2
-#undef RCC_APB1RSTR1_1_USBFSRST
-#undef RCC_MAP0_PLL1CR
-#undef RCC_AHB1ENR_0_ADC12EN
-#undef RCC_APB1RSTR1_0_USART3RST
-#undef RCC_APB1RSTR_1_USART4RST
-#undef RCC_AHBENR_0_IOPGEN
-#undef RCC_APB1RSTR_2_LPUART1RST
-#undef RCC_MAP1_C1_APB1HLPENR
-#undef RCC_MAP5_C2APB2ENR
-#undef RCC_PLLSAI1CFGR_1
-#undef RCC_MAP1_APB2LPENR
-#undef RCC_CR_0_HSIRDY
-#undef RCC_CCIPR2_0_OSPISEL
-#undef RCC_AHB3LPENR_1_FMCLPEN
-#undef RCC_MAP0_RTCDIVR
-#undef RCC_AHBSMENR_0_CRYPSMEN
-#undef RCC_CFGR_2_MCO2
-#undef RCC_MAP5_CR2
-#undef RCC_AHB2ENR_1_GPIOAEN
-#undef RCC_PLLCFGR_3_PLLR3
-#undef RCC_MAP0_UART35CKSELR
-#undef RCC_MAP5_C2APB1SMENR2
-#undef RCC_AHB3RSTR_1_PKARST
-#undef RCC_CICR_1_PLLSAI2RDYC
-#undef RCC_MAP0_SPI2S23CKSELR
-#undef RCC_AHB1LPENR_0_ETH1TXLPEN
-#undef RCC_AHB3RSTR_0_JPGDECRST
-#undef RCC_APB2ENR_0_HRTIMEN
-#undef RCC_CSR_0_PINRSTF
-#undef RCC_AHB1RSTR_2_DMAMUXRST
-#undef RCC_MAP0_MC_AHB2LPENSETR
-#undef RCC_CR_0_PLL2RDY
-#undef RCC_BDCR_2_BDRST
-#undef RCC_MAP1_C1_APB4ENR
-#undef RCC_AHB1RSTR_0_GPIOKRST
-#undef RCC_APB2RSTR_0_TIM17RST
-#undef RCC_DCKCFGR_0_SDMMCSEL
-#undef RCC_APB1LPENR_0_LPTIM1LPEN
-#undef RCC_MAP1_CRRCR
-#undef RCC_APB1RSTR_0_UART7RST
-#undef RCC_MAP0_APB3RSTSETR
-#undef RCC_PLLCFGR_0_DIVR3EN
-#undef RCC_APBENR1_UCPD2EN
-#undef RCC_AHB3ENR_0_AES2EN
-#undef RCC_MAP1_PLL3DIVR
-#undef RCC_CCIPR_1_I2C1SEL0
-#undef RCC_APB1RSTR_0_UART8RST
-#undef RCC_AHB1ENR_0_OTGHSEN
-#undef RCC_AHB1LPENR_1_USB1OTGLPEN
-#undef RCC_AHBENR_1_FLITFEN
-#undef RCC_APB1LENR_1
-#undef RCC_PLLCFGR_0_DIVQ2EN
-#undef RCC_MAP0_LPTIM1CKSELR
-#undef RCC_DCKCFGR_0_DSISEL
-#undef RCC_APB1ENR1_1_FDCANEN
-#undef RCC_PLLCFGR_1_PLLQEN
-#undef RCC_CICR_0_LSIRDYC
-#undef RCC_APB1RSTR_0_CECRST
-#undef RCC_APB2RSTR_2_SDIORST
-#undef RCC_APB1RSTR_0_TIM4RST
-#undef RCC_DCKCFGR_0_SAI1ASRC
-#undef RCC_MAP4_AHBENR
-#undef RCC_AHB2RSTR_1_GPIOARST
-#undef RCC_AHBLPENR_0_GPIOELPEN
-#undef RCC_CICR_0_LSI2RDYC
-#undef RCC_APB1ENR1_0_OPAMPEN
-#undef RCC_MAP5
-#undef RCC_AHB3SMENR_0_RNGSMEN
-#undef RCC_APBRSTR2_TIM15RST
-#undef RCC_CFGR3_0_TIM1SW
-#undef RCC_APB1ENR_0_CAN1EN
-#undef RCC_AHBSMENR_1_TOUCHSMEN
-#undef RCC_CIR_0_PLLSAIRDYC
-#undef RCC_APB1LPENR_0_TIM6LPEN
-#undef RCC_AHB2ENR_0_SRAM2EN
-#undef RCC_CIR_2
-#undef RCC_MAP5_CFGR3
-#undef RCC_MAP1_C1_APB1HENR
-#undef RCC_ICSCR_4
-#undef RCC_ICSCR_2
-#undef RCC_AHB2SMENR_2
-#undef RCC_AHBENR_1_DMA2EN
-#undef RCC_AHBENR_1_DMA1EN
-#undef RCC_APB2ENR_1_TIM8EN
-#undef RCC_AHBRSTR_0_AESRST
-#undef RCC_MAP0_TZCR
-#undef RCC_CIFR_2
-#undef RCC_APB2RSTR_1_SAI2RST
-#undef RCC_MAP0_MP_MLAHBENSETR
-#undef RCC_APBSMENR1_UCPD1SMEN
-#undef RCC_APB1RSTR_0_SPDIFRXRST
-#undef RCC_MAP0_MP_APB4ENCLRR
-#undef RCC_MAP0_MC_APB1ENCLRR
-#undef RCC_CR_1_HSIKERON
-#undef RCC_MAP0_APB4DIVR
-#undef RCC_APB1RSTR2_LPTIM2RST
-#undef RCC_APB1SMENR_TIM7SMEN
-#undef RCC_AHB1SMENR_1_CRCSMEN
-#undef RCC_CR_3_HSIDIV
-#undef RCC_AHB2SMENR_0_SRAM2SMEN
-#undef RCC_APB1LRSTR_1
-#undef RCC_DCKCFGR2_0_FMPI2C1SEL
-#undef RCC_APB1ENR1_0_TIM6EN
-#undef RCC_AHB2RSTR_0_DAC2RST
-#undef RCC_MAP2_APB1ENR2
-#undef RCC_MAP5_C2APB1ENR2
-#undef RCC_AHB3SMENR_0_AES2SMEN
-#undef RCC_MAP2_CRRCR
-#undef RCC_APB2LPENR_1_TIM10LPEN
-#undef RCC_MAP5_APB1ENR
-#undef RCC_CSR_0_RFRSTS
-#undef RCC_AHB2SMENR_0_GPIOHSMEN
-#undef RCC_AHB1ENR_1_GPIOIEN
-#undef RCC_APB2LPENR_0_TIM17LPEN
-#undef RCC_APBRSTR1_DAC1RST
-#undef RCC_PLLSAI2CFGR_PLLSAI2Q
-#undef RCC_CCIPR_2_CECSEL
-#undef RCC_MAP0_MP_CIER
-#undef RCC_AHB2ENR_0_DAC3
-#undef RCC_APB2RSTR_2_TIM22RST
-#undef RCC_PLLSAI1CFGR_0
-#undef RCC_MAP0_MP_APB3ENSETR
-#undef RCC_APB1RSTR1_1_USART1RST
-#undef RCC_APB1ENR2_LPTIM2EN
-#undef RCC_AHB3ENR_2_QSPIEN
-#undef RCC_APB1RSTR_0_TIM7RST
-#undef RCC_CFGR_1_MCO2PRE0
-#undef RCC_AHBRSTR_0_ADC12RST
-#undef RCC_MAP2_APB2RSTR
-#undef RCC_PLLCFGR_0_PLL3FRACEN
-#undef RCC_APB1RSTR2_SWPMI1RST
-#undef RCC_AHBRSTR_1_RNGRST
-#undef RCC_AHB1ENR_2
-#undef RCC_MAP1_CIER
-#undef RCC_APB1RSTR_2_DAC3RST
-#undef RCC_AHB1ENR_0_DMA1EN
-#undef RCC_MAP2_C1_APB1LENR
-#undef RCC_AHB1SMENR_1_DMAMUXSMEN
-#undef RCC_MAP0_MP_AHB2ENCLRR
-#undef RCC_PLLCFGR_1_PLLM3
-#undef RCC_AHBENR_0_IOPCEN
-#undef RCC_APB1ENR1_1_I2C3
-#undef RCC_CFGR_5_PLLDIV
-#undef RCC_APB1ENR_0_TIM2EN
-#undef RCC_MAP2_APB1SMENR2
-#undef RCC_APB1ENR_3_COMPEN
-#undef RCC_MAP0_MC_APB3ENSETR
-#undef RCC_BDCR_0_LSECSSD_
-#undef RCC_AHB1SMENR_0_CORDICSMEN
-#undef RCC_MAP1_CSICFGR
-#undef RCC_APB1ENR1_0_UART4EN
-#undef RCC_MAP3_AHB1ENR
-#undef RCC_AHB2SMENR_0_OTGFSSMEN
-#undef RCC_AHBRSTR_0_IOPDRST
-#undef RCC_CIER_1_RC48RDYIE
-#undef RCC_AHBRSTR_0_ADC34RST
-#undef RCC_APB2LPENR_1_SDIOLPEN
-#undef RCC_AHB2RSTR_0_DAC3RST
-#undef RCC_CFGR_5
-#undef RCC_MAP0_MC_RSTSCLRR
-#undef RCC_APB2RSTR_0_USART6RST
-#undef RCC_AHB2ENR_0_DAC2
-#undef RCC_APBSMENR1_TIM6SMEN
-#undef RCC_MAP0_MP_AHB6LPENSETR
-#undef RCC_CFGR_1
-#undef RCC_APB2LPENR_1_USART10LPEN
-#undef RCC_MAP1_C1_APB3LPENR
-#undef RCC_APB2LPENR_0_ADC1LPEN
-#undef RCC_CFGR_1_SW
-#undef RCC_MAP0_MC_APB1LPENCLRR
-#undef RCC_MAP5_APB2RSTR
-#undef RCC_AHB1LPENR_1_USB2OTGLPEN
-#undef RCC_MAP0_MC_APB5LPENSETR
-#undef RCC_AHB1ENR_0_USB2OTGHSEN
-#undef RCC_AHB2RSTR_0_CAMITFRST
-#undef RCC_CFGR_2_HPRE2
-#undef RCC_AHB3ENR_0_QSPIEN
-#undef RCC_AHB1RSTR_1_DMA2DRST
-#undef RCC_APB1LPENR_0_UART7LPEN
-#undef RCC_MAP5_CCIPR
-#undef RCC_MAP0_MP_RSTSR
-#undef RCC_MAP0_MC_APB4ENCLRR
-#undef RCC_AHB1LPENR_0_GPIOELPEN
-#undef RCC_APB1ENR2_SWPMI1EN
-#undef RCC_CR_0_RTCPRE1
-#undef RCC_APB1RSTR_2
-#undef RCC_AHBENR_2
-#undef RCC_AHB3ENR_0_RNGEN
-#undef RCC_MAP1_APB1HENR
-#undef RCC_CFGR_1_MCOPRE
-#undef RCC_AHB1SMENR_0_GFXMMUSMEN
-#undef RCC_APB1RSTR_3_CRCRST
-#undef RCC_MAP1_AHB4ENR
-#undef RCC_D3AMR_0_BKPSRAMAMEN
-#undef RCC_AHB3ENR_1_PKAEN
-#undef RCC_AHBRSTR_3
-#undef RCC_APB1RSTR_0_TIM12RST
-#undef RCC_CSR_2_PWRRSTF
-#undef RCC_MAP4_PLLSYSCFGR
-#undef RCC_PLLSYSCFGR_0_PLLSYSQ
-#undef RCC_AHB2ENR_2
-#undef RCC_APB1ENR_0_I2C4EN
-#undef RCC_CR_2_PLLSYSON
-#undef RCC_AHB1LPENR_2
-#undef RCC_APB2ENR_1_TIM1EN
-#undef RCC_APB1RSTR1_0_I2C3RST
-#undef RCC_CFGR_2_SWS0
-#undef RCC_AHB1ENR_2_ETHMACRXEN
-#undef RCC_DCKCFGR2_0_UART2SEL
-#undef RCC_AHBRSTR_1_GPIOARST
-#undef RCC_MAP2_CCIPR
-#undef RCC_ICSCR_2_MSIRANGE
-#undef RCC_APB2ENR_1_TIM9EN
-#undef RCC_APB1ENR1_0_DAC1EN
-#undef RCC_APB2RSTR_2_SDAD3RST
-#undef RCC_MAP2_AHB3ENR
-#undef RCC_AHB2LPENR_1
-#undef RCC_AHB1LPENR_0_USB1OTGHSLPEN
-#undef RCC_APB1ENR_0_SPI2EN
-#undef RCC_BDCR_0_RTCSRC
-#undef RCC_MAP0_APB5RSTSETR
-#undef RCC_AHB1ENR_0_GPIOHEN
-#undef RCC_APB2LPENR_0_SPI6LPEN
-#undef RCC_AHBRSTR_0_DMARST
-#undef RCC_APB2RSTR_0_TIM21RST
-#undef RCC_BDCR_2_RTCSEL
-#undef RCC_MAP5_CFGR
-#undef RCC_APB2LPENR_0_USART9LPEN
-#undef RCC_MAP4_CCIPR1
-#undef RCC_CRRCR_2_HSI48CAL
-#undef RCC_APB1RSTR_2_TIM18RST
-#undef RCC_C1_AHB1ENR_1
-#undef RCC_AHB3RSTR_0_FMCRST
-#undef RCC_AHB1LPENR_0_USB2OTGHSLPEN
-#undef RCC_PLLI2SCFGR_0_PLLI2SP
-#undef RCC_CICR_2_RC48RDYC
-#undef RCC_APB1RSTR1_0_CAN1RST
-#undef RCC_MAP0_LPTIM23CKSELR
-#undef RCC_PLLCFGR_1_PLLREN
-#undef RCC_APB1RSTR1_1_USART4RST
-#undef RCC_AHB3ENR_0_DMA2DEN
-#undef RCC_PLLCFGR_2_PLLM5
-#undef RCC_AHB3RSTR_0_AES2RST
-#undef RCC_AHB1RSTR_1_GPIOBRST
-#undef RCC_APBSMENR1_CECSMEN
-#undef RCC_PLLCFGR_2_PLLN1
-#undef RCC_APB1SMENR1_0_USART2SMEN
-#undef RCC_CKGATENR_EVTCL_CKEN
-#undef RCC_CR_2_HSICAL
-#undef RCC_PLLSYSCFGR_0_PLLSYSREN
-#undef RCC_PLLCFGR_2_PLLR
-#undef RCC_CICR_2_CSSLSEC
-#undef RCC_CIR_2_LSECSSC
-#undef RCC_MAP0_MC_APB2LPENSETR
-#undef RCC_MAP0_MC_AHB6ENCLRR
-#undef RCC_APB1SMENR_USART5SMEN
-#undef RCC_MAP0_MC_APB5ENCLRR
-#undef RCC_AHB2ENR_3
-#undef RCC_APB1ENR_1_I2CFMP1EN
-#undef RCC_APB1RSTR_1_CAN3RST
-#undef RCC_AHB1ENR_0_USB1OTGHSULPIEN
-#undef RCC_APB1ENR_0_CAN2EN
-#undef RCC_APB2RSTR_3_DBGRST
-#undef RCC_APB1RSTR_1_SPDIFRST
-#undef RCC_CSR_0_LSI2ON
-#undef RCC_APB2RSTR_0_SAI3RST
-#undef RCC_APB1RSTR1_0_UART5RST
-#undef RCC_MAP2_AHB2ENR
-#undef RCC_APB1RSTR_1_DAC1RST
-#undef RCC_AHB1LPENR_1_GPIOFLPEN
-#undef RCC_APB1SMENR1_0_RTCAPBSMEN
-#undef RCC_MAP0
-#undef RCC_CFGR_2_HPREF
-#undef RCC_APB1SMENR1_1_CRSMEN
-#undef RCC_APB2ENR_1_TIM22EN
-#undef RCC_CFGR_3_PLLXTPRE
-#undef RCC_MAP1_C1_AHB3ENR
-#undef RCC_APB1RSTR1_0_TIM4RST
-#undef RCC_CIFR_2_CSSLSEF
-#undef RCC_APB2RSTR_0_LTDCRST
-#undef RCC_AHBLPENR_0_GPIOFLPEN
-#undef RCC_MAP0_MC_MLAHBLPENCLRR
-#undef RCC_AHB1LPENR_0_GPIODLPEN
-#undef RCC_APB1SMENR_TIM3SMEN
-#undef RCC_APB2RSTR_0_SDMMCRST
-#undef RCC_APB2LPENR_0_TIM1LPEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSM
-#undef RCC_CIR_0_PLLI2SRDYC
-#undef RCC_MAP3_AHB3LPENR
-#undef RCC_APB2SMENR_1
-#undef RCC_AHB1LPENR_1
-#undef RCC_CR_1_PLLSAI1ON
-#undef RCC_BDCR_0_VSWRST
-#undef RCC_CFGR_0_MCO1SEL
-#undef RCC_PLLCFGR_0
-#undef RCC_APB2ENR_3
-#undef RCC_CFGR_1_MCO1
-#undef RCC_APB2LPENR_0_TIM9LPEN
-#undef RCC_PLLCFGR_3_PLLQ
-#undef RCC_CIER_0_HSIRDYIE
-#undef RCC_AHB1SMENR_0_FLASHSMEN
-#undef RCC_AHB2RSTR_2_AES1RST
-#undef RCC_MAP0_UART24CKSELR
-#undef RCC_BDCR_0_LSEBYP
-#undef RCC_CIER_2_PLLRDYIE
-#undef RCC_APB2RSTR_1_TIM11RST
-#undef RCC_APB1ENR1_1_SPI3EN
-#undef RCC_MAP5_APB1RSTR
-#undef RCC_CR_3_CSSON
-#undef RCC_DCKCFGR_0_MSEL
-#undef RCC_CSR_1_LSI1RDY
-#undef RCC_DCKCFGR_1_I2SSRC
-#undef RCC_APB1RSTR_1_WWDRST
-#undef RCC_AHB1SMENR_0_TSCSMEN
-#undef RCC_PLLCFGR_2_PLLREN
-#undef RCC_PLLCFGR_2_PLLN0
-#undef RCC_APB1ENR1_0_PWREN
-#undef RCC_PLLSAI1CFGR_0_PLLSAI1PDIV
-#undef RCC_CIFR_1_HSI48RDYF
-#undef RCC_CCIPR_0
-#undef RCC_APB2LPENR_0_SAI1LPEN
-#undef RCC_MAP0_MC_AHB4LPENCLRR
-#undef RCC_APB1ENR1_1
-#undef RCC_MAP0_APB5RSTCLRR
-#undef RCC_ICSCR_1
-#undef RCC_C1_AHB1ENR_0_USB1OTGHSULPIEN
-#undef RCC_AHB1LPENR_0_USB1OTGHSULPILPEN
-#undef RCC_PLLI2SCFGR_2
-#undef RCC_CFGR_2_RTCPRE3
-#undef RCC_AHBRSTR_0_IOPBRST
-#undef RCC_AHBENR_2_DMA1EN
-#undef RCC_AHB1RSTR_0_USB1OTGRST
-#undef RCC_CICR_0_LSECSSC
-#undef RCC_AHB2LPENR_0_SRAM2LPEN
-#undef RCC_APB1LPENR_0_TIM12LPEN
-#undef RCC_CFGR_2_PPRE1
-#undef RCC_APB2ENR_0_SPI5EN
-#undef RCC_MAP3_AHBENR
-#undef RCC_CSR_0_WWDGRSTF
-#undef RCC_MAP0_APB4RSTSETR
-#undef RCC_AHB2ENR_0_SRAM3EN
-#undef RCC_CCIPR_1_LPUART1SEL1
-#undef RCC_MAP1_C1_AHB4LPENR
-#undef RCC_CFGR_4_USBPRE
-#undef RCC_MAP1_AHB2ENR
-#undef RCC_AHB1ENR_1_GFXMMUEN
-#undef RCC_APB1RSTR_1_USART2RST
-#undef RCC_APB1ENR_2_I2C3EN
-#undef RCC_CIER_1_LSI1RDYIE
-#undef RCC_CICR_1_PLLSAI1RDYC
-#undef RCC_CIER_0_LSIRDYIE
-#undef RCC_APB1RSTR1_0_I2C2RST
-#undef RCC_MAP0_TZAHB6RSTSETR
-#undef RCC_MAP5_SMPSCR
-#undef RCC_CFGR_1_MCO21
-#undef RCC_AHB1LPENR_1_SRAM2LPEN
-#undef RCC_BDCR_0_RTCEN
-#undef RCC_APB2ENR_0_TIM19EN
-#undef RCC_DCKCFGR_1_I2S2SRC
-#undef RCC_MAP0_MP_MLAHBENCLRR
-#undef RCC_AHB2ENR_0_ADCEN
-#undef RCC_MAP0_SPI6CKSELR
-#undef RCC_MAP0_MP_IWDGFZCLRR
-#undef RCC_MAP0_APB1RSTSETR
-#undef RCC_AHBRSTR_1_CRYPRST
-#undef RCC_AHB2RSTR_0_RNGRST
-#undef RCC_PLLCFGR_0_PLL2RGE
-#undef RCC_AHB2ENR_1_ADC12EN
-#undef RCC_CSR_1_RMVF
-#undef RCC_BDCR_2
-#undef RCC_APB2RSTR_1
-#undef RCC_APB1RSTR1_0_TIM5RST
-#undef RCC_APB1RSTR_2_CECRST
-#undef RCC_APB1ENR_3
-#undef RCC_AHB1RSTR_0_GPIOHRST
-#undef RCC_APB1RSTR_0_CAN1RST
-#undef RCC_PLLCFGR_0_PLL1VCOSEL
-#undef RCC_CICR_2_PLLSYSRDYC
-#undef RCC_APB1LPENR_0_DACLPEN
-#undef RCC_MAP0_MP_APB1LPENCLRR
-#undef RCC_BDCR_3
-#undef RCC_APB1ENR_0_TIM5EN
-#undef RCC_APB1LPENR_0_USART3LPEN
-#undef RCC_APB1ENR_2_USBRST
-#undef RCC_AHB1RSTR_1_GPIOFRST
-#undef RCC_MAP0_MC_CIFR
-#undef RCC_CR_3_HSI16DIVEN
-#undef RCC_PLLCFGR_0_PLLR
-#undef RCC_MAP0_IDR
-#undef RCC_CSR_2_LSERDY
-#undef RCC_AHB2ENR_1_GPIOEEN
-#undef RCC_CCIPR2_0_ADFSDMSEL
-#undef RCC_APB2ENR_1_HRTIM1EN
-#undef RCC_CIR_1
-#undef RCC_PLLCFGR_0_PLL1FRACEN
-#undef RCC_AHB1SMENR_0_DMA2DSMEN
-#undef RCC_C1_AHB1ENR_0_USB2ULPIEN
-#undef RCC_AHB2RSTR_2_HASH1RST
-#undef RCC_DCKCFGR2_2
-#undef RCC_APB1ENR_0_USART3EN
-#undef RCC_AHB1RSTR_1_GPIOIRST
-#undef RCC_APB2RSTR_2_HRTIM1RST
-#undef RCC_CIER_0_HSI48RDYIE
-#undef RCC_DCKCFGR_1_SAI1SRC
-#undef RCC_CIFR_0_PLL3RDYF
-#undef RCC_AHB2RSTR_0_OSPIMRST
-#undef RCC_AHB1LPENR_1_USB2OTGHSULPILPEN
-#undef RCC_APBRSTR1_TIM7RST
-#undef RCC_CSR_0_LSI2TRIMEN
-#undef RCC_PLLCFGR_1_PLLQ
-#undef RCC_ICSCR_2_HSICAL0
-#undef RCC_CFGR3_0_USART2SW
-#undef RCC_CIER_2_HSI16RDYIE
-#undef RCC_PLLSYSCFGR_0_PLLSYSPDIV
-#undef RCC_CR_1_HSIRDY
-#undef RCC_AHB3ENR_1_QSPIEN
-#undef RCC_AHB1RSTR_0_DMA2DRST
-#undef RCC_MAP0_MP_GCR
-#undef RCC_APB1RSTR1_1_FDCANRST
-#undef RCC_APB2ENR_0_TIM10EN
-#undef RCC_CCIPR_0_UART4SEL
-#undef RCC_CR_0_PLL1ON
-#undef RCC_AHB2RSTR_1_GPIOFRST
-#undef RCC_MAP0_MP_AHB3ENCLRR
-#undef RCC_AHB1RSTR_2_FLITFRST_
-#undef RCC_MAP5_C2APB2SMENR
-#undef RCC_APB1SMENR2_I2C4SMEN
-#undef RCC_AHB2ENR_0_DCMIEN
-#undef RCC_IOPRSTR_IOPHRST
-#undef RCC_APB1ENR_1_LPUART1EN
-#undef RCC_CFGR_3_MCO2PRE1
-#undef RCC_APB1RSTR1_0_USART2RST
-#undef RCC_MAP1_AHB1RSTR
-#undef RCC_AHB3SMENR_0
-#undef RCC_APB1SMENR_LCDSMEN
-#undef RCC_MAP0_I2C35CKSELR
-#undef RCC_AHB1LPENR_0_AXILPEN
-#undef RCC_PLLCFGR_1_PLLSRC
-#undef RCC_AHB1RSTR_0_GPIOERST
-#undef RCC_MAP1_PLL1DIVR
-#undef RCC_CCIPR_1_HSI48MSEL
-#undef RCC_MAP0_MP_APB1LPENSETR
-#undef RCC_CFGR_1_I2SSRC
-#undef RCC_AHB2ENR_0_AESEN
-#undef RCC_APB1RSTR1_1_CRSRST
-#undef RCC_APB2RSTR_0_TIM16RST
-#undef RCC_MAP2_APB1RSTR1
-#undef RCC_CR_1_MSIRGSEL
-#undef RCC_MAP1_APB2ENR
-#undef RCC_APB1SMENR1_0_I2C2SMEN
-#undef RCC_CR_2_PLLI2SRDY
-#undef RCC_CFGR_1_STOPWUCK
-#undef RCC_CCIPR2_1_I2C4SEL_0
-#undef RCC_MAP3_DKCFGR2
-#undef RCC_APB1LPENR_1
-#undef RCC_DCKCFGR2_1
-#undef RCC_AHB2ENR_0_OTGFSEN
-#undef RCC_CCIPR_1_I2C3SEL1
-#undef RCC_MAP0_MP_APB2ENCLRR
-#undef RCC_MAP0_MC_AHB2ENCLRR
-#undef RCC_APB1LPENR_0_RTCAPBEN
-#undef RCC_APB2ENR_2_TIM20EN
-#undef RCC_CIER_2
-#undef RCC_CFGR_2_HPRE3
-#undef RCC_CFGR3_0_I2C3SW
-#undef RCC_APB1SMENR1_0_DAC1SMEN
-#undef RCC_ICSCR_1_HSICAL
-#undef RCC_APB1SMENR2_LPTIM2SMEN
-#undef RCC_AHB2ENR_0_SDMMC1EN
-#undef RCC_PLLCFGR_0_PLLN7
-#undef RCC_MAP0_MC_APB2LPENCLRR
-#undef RCC_CICR_2_HSECSSC
-#undef RCC_CIER_2_PLLSYSRDYIE
-#undef RCC_MAP0_APB2RSTCLRR
-#undef RCC_MAP0_MC_AHB4LPENSETR
-#undef RCC_CR_1_PLLSAI2ON
-#undef RCC_AHB3LPENR_0_FLITFLPEN
-#undef RCC_APB2RSTR_0_SAI2RST
-#undef RCC_MAP3_PLLI2SCFGR
-#undef RCC_MAP2_APB1SMENR1
-#undef RCC_AHB3RSTR_0_MDMARST
-#undef RCC_APB2ENR_0_ADC2EN
-#undef RCC_MAP1_BDCR
-#undef RCC_MAP0_AXIDIVR
-#undef RCC_CIR_2_LSECSSF
-#undef RCC_PLLCFGR_0_PLL2VCOSEL
-#undef RCC_CSR_2_LSEON
-#undef RCC_APB2SMENR_0_TIM8SMEN
-#undef RCC_APB1ENR1_0_I2C2EN
-#undef RCC_AHB3ENR_0_IPCCEN
-#undef RCC_APB1ENR_0_CECEN
-#undef RCC_AHBRSTR_0_FLASHRST
-#undef RCC_MAP0_PLL3CSGR
-#undef RCC_AHB1LPENR_1_SRAM1LPEN
-#undef RCC_MAP5_C2AHB2ENR
-#undef RCC_CFGR_3_MCO20
-#undef RCC_AHB3RSTR_0_HSEMRST
-#undef RCC_APB2SMENR_1_DBGSMEN
-#undef RCC_CICR_2_HSI48RDYC
-#undef RCC_PLLCFGR_2
-#undef RCC_MAP0_UART78CKSELR
-#undef RCC_MAP0_MP_AHB3LPENCLRR
-#undef RCC_MAP0_SDMMC12CKSELR
-#undef RCC_CFGR3_0_TIM8SW
-#undef RCC_CICR_2
-#undef RCC_APB1ENR_3_CECEN
-#undef RCC_IOPENR_IOPFEN
-#undef RCC_APB1RSTR1_0_CRSRST
-#undef RCC_CCIPR_0_I2C3SEL
-#undef RCC_DCKCFGR2_0_SDMMC1SEL
-#undef RCC_MAP0_APB3DIVR
-#undef RCC_APB2LPENR_0_SDMMC1LPEN
-#undef RCC_APB1SMENR1_0_UART4SMEN
-#undef RCC_BDCR_0_LSCOEN
 #undef RCC_MAP4_CSR
-#undef RCC_APB1RSTR2_USBPDRST
+#undef RCC_MAP0_LPTIM23CKSELR
+#undef RCC_AHBENR_1_CRYPEN
+#undef RCC_APB1RSTR1_1_USART1RST
+#undef RCC_ICSCR_2_MSIRANGE
+#undef RCC_CFGR2_ADC12PRES
+#undef RCC_APB1ENR1_1_USART1EN
+#undef RCC_APB2LPENR_0_EXTITEN
+#undef RCC_AHB1RSTR_1_GPIOCRST
+#undef RCC_AHB2ENR_1_GPIOGEN
+#undef RCC_APB2RSTR_0_TIM21RST
+#undef RCC_MAP5_C2APB1ENR2
+#undef RCC_ICSCR_2_HSICAL0
+#undef RCC_CRRCR_1
+#undef RCC_MAP0_MP_MLAHBLPENCLRR
 #undef RCC_AHB2RSTR_0_HASHRST
-#undef RCC_APB2ENR_2_SDIOEN
-#undef RCC_CIFR_0_HSIRDYF
-#undef RCC_CFGR_3_PLLNODIV
-#undef RCC_AHBENR_0_IOPBEN
-#undef RCC_CSR_0_RTCEN
-#undef RCC_APB1ENR_1_CEC
-#undef RCC_AHBENR_0_SRAMEN
-#undef RCC_APB2RSTR_0_SPI5RST
-#undef RCC_APB1RSTR_0_I2C4RST
-#undef RCC_CFGR_1_MCOSEL
-#undef RCC_APB1ENR_2_LPTIMER1EN
-#undef RCC_AHB2ENR_0_GPIOBEN
-#undef RCC_MAP1_RSR
-#undef RCC_BDCR_1_LSCCOEN
-#undef RCC_APB3ENR_DSIEN
-#undef RCC_APB1SMENR1_1_CRSSMEN
-#undef RCC_CRRCR_4
-#undef RCC_AHB1LPENR_0_GPIOILPEN
-#undef RCC_DCKCFGR2_1_LPTIM1SEL
-#undef RCC_D3CFGR_1
-#undef RCC_MAP1_C1_APB3ENR
-#undef RCC_MAP1_APB1HLPENR
-#undef RCC_MAP1_D1CCIPR
-#undef RCC_MAP0_AHB5RSTCLRR
-#undef RCC_APB2ENR_1_SPI4EN
-#undef RCC_MAP2_CICR
-#undef RCC_MAP0_PLL2CSGR
-#undef RCC_APB1LPENR_0_SPI3LPEN
-#undef RCC_MAP0_MP_APB4LPENCLRR
-#undef RCC_APB1RSTR_2_LPUART12RST
-#undef RCC_MAP2_DCKCFGR1
-#undef RCC_CFGR_3_PPRE10
-#undef RCC_APB1ENR_1_USART4EN
-#undef RCC_MAP1_C1_APB4LPENR
-#undef RCC_AHB1LPENR_0_ETH1RXLPEN
-#undef RCC_MAP1_C1_AHB3LPENR
-#undef RCC_APB1ENR_0_DACEN
-#undef RCC_APB2RSTR_0_ADC1RST
-#undef RCC_AHB2RSTR_1_DAC1RST_
-#undef RCC_AHB2ENR_1_DAC1
-#undef RCC_APB2ENR_0_SDMMC1EN
-#undef RCC_APB2RSTR_1_SART10RST
-#undef RCC_CR_0_HSIDIV
-#undef RCC_AHB2RSTR_0
-#undef RCC_APB2RSTR_2
-#undef RCC_CSR_1_RTCEN
-#undef RCC_APB1SMENR1_1
-#undef RCC_AHB2RSTR_0_DCMIRST
-#undef RCC_CFGR_5_MCO
-#undef RCC_AHB1ENR_1_DMA2DEN
-#undef RCC_CCIPR2_0_SAI1SEL
-#undef RCC_AHB3LPENR_1_FLASHLPEN
-#undef RCC_AHB2RSTR_0_CRYPTRST
-#undef RCC_PLLCFGR_3_PLLN
-#undef RCC_MAP3_APB1LPENR
-#undef RCC_AHBSMENR_1_RNGSMEN
-#undef RCC_MAP0_MP_CIFR
-#undef RCC_APB1ENR_2_CAN3EN
-#undef RCC_AHB1ENR_2_FLITFEN
-#undef RCC_CIFR_0_CSIRDY
-#undef RCC_CSR_2_LSEDRV
-#undef RCC_APB1RSTR_1_LPTIM1RST
-#undef RCC_AHB1ENR_1_USB1OTGEN
-#undef RCC_APB1RSTR_1_I2C3RST
-#undef RCC_MAP5_CFGR2
-#undef RCC_APB1ENR1_0_CAN1EN
-#undef RCC_CICR_0_PLL3RDYC
-#undef RCC_MAP1_PLLCKSELR
-#undef RCC_CFGR_2_PPRE1F
-#undef RCC_MAP1
-#undef RCC_AHB3ENR_0
-#undef RCC_APB2LPENR_0_DFSDM1LPEN
-#undef RCC_AHB3ENR_0_QUADSPI1EN
-#undef RCC_MAP0_FMCCKSELR
-#undef RCC_MAP0_MC_AHB6LPENCLRR
-#undef RCC_AHB1LPENR_0_OTGHSLPEN
-#undef RCC_AHBRSTR_0_CRCRST
-#undef RCC_CIFR_2_PLLSYSRDYF
-#undef RCC_APB2RSTR_1_USART1RST
-#undef RCC_MAP0_MPCKSELR
-#undef RCC_CR_0_RC48ON
-#undef RCC_DCKCFGR_0_LPTIMER1SEL
-#undef RCC_AHB3RSTR_0_SDMMC1RST
-#undef RCC_APB2LPENR_0_SPI5LPEN
-#undef RCC_CR_2_HSI16RDYF
-#undef RCC_CSICFGR_1
-#undef RCC_MAP5_C2APB3ENR
-#undef RCC_ICSCR_3_MSITRIM
-#undef RCC_AHB1RSTR_0_OTGHSRST
-#undef RCC_AHB2ENR_0_HASHEN
-#undef RCC_CFGR3_1
-#undef RCC_AHB1LPENR_0_CRCLPEN
-#undef RCC_APB1LPENR_0_TIM7LPEN
-#undef RCC_APB2ENR_0_FWEN
-#undef RCC_CFGR3_0_USBSW
-#undef RCC_APB1LPENR_0_TIM2LPEN
-#undef RCC_APB1ENR_0_UART8ENR
-#undef RCC_CSR_1_CSSLSED
-#undef RCC_APBSMENR1_DAC1SMEN
-#undef RCC_APB1RSTR_0_I2C3RST
-#undef RCC_APB2ENR_1_DFSDM1EN
-#undef RCC_MAP0_MC_APB1ENSETR
-#undef RCC_APB2LPENR_1_ADC1LPEN
-#undef RCC_MAP1_D2CCIP2R
-#undef RCC_MAP0_MC_AHB6ENSETR
-#undef RCC_APB1LLPENR_WWDG2LPEN
-#undef RCC_AHBENR_1_GPIOPCEN
-#undef RCC_DCKCFGR2_0_UART8SEL
-#undef RCC_MAP0_MC_AHB5LPENSETR
-#undef RCC_AHB3RSTR_0_FLASHRST
-#undef RCC_CIER_1_PLLSAI1RDYIE
-#undef RCC_CICR_0_HSERDYC
-#undef RCC_AHB2SMENR_0_GPIOFSMEN
-#undef RCC_MAP0_MP_APB5LPENCLRR
-#undef RCC_AHBRSTR_0_FSMCRST
-#undef RCC_MAP0_TIMG2PRER
-#undef RCC_AHB1ENR_0_USB2OTGHSULPIEN
-#undef RCC_CIER_1_PLLRDYIE
-#undef RCC_AHB2RSTR_3
-#undef RCC_APB2LPENR_0_TIM8LPEN
-#undef RCC_APB2ENR_1_TIM10EN
-#undef RCC_MAP0_MP_APB5ENSETR
-#undef RCC_CIER_1_PLLSAI2RDYIE
-#undef RCC_AHB3LPENR_2
-#undef RCC_CR_0_HSIASFS
-#undef RCC_AHB2SMENR_0_OSPIMSMEN
-#undef RCC_APB1LPENR_0_UART8LPEN
-#undef RCC_APB2RSTR_0_SDMMC2RST
-#undef RCC_APB1ENR_1_USBEN
-#undef RCC_APB1ENR_2
-#undef RCC_APB1LPENR_0_UART5LPEN
-#undef RCC_CIER_0_PLL3RDYIE
-#undef RCC_PLLCFGR_0_PLLN6
-#undef RCC_MAP0_AHB4RSTCLRR
-#undef RCC_AHB1ENR_0_DMAMUX1EN
-#undef RCC_APB1LPENR_0_TIM14LPEN
-#undef RCC_APB2RSTR_0_SYSCFGRST
-#undef RCC_AHB1LPENR_0_BKPSRAMLPEN
-#undef RCC_AHB1RSTR_1_DMA1RST
-#undef RCC_AHBLPENR_1
-#undef RCC_CCIPR_1_I2C3SEL0
-#undef RCC_AHB1ENR_0_ETH1RXEN
-#undef RCC_MAP0_MP_APB5LPENSETR
-#undef RCC_CSR_0_RMVF
-#undef RCC_APB2ENR_0_SPI6ENR
-#undef RCC_APB2RSTR_1_SPI4RST
-#undef RCC_AHB1LPENR_0_SRAM3LPEN
-#undef RCC_MAP0_MP_APRSTSR
-#undef RCC_MAP0_MSSCKSELR
-#undef RCC_MAP1_AHB3RSTR
-#undef RCC_AHBSMENR_0_AESSMEN
-#undef RCC_APB2LPENR_0_USART6LPEN
-#undef RCC_MAP3_AHB2ENR
-#undef RCC_DCKCFGR2_1_SPDIFSEL
-#undef RCC_APB1RSTR_1_USART3RST
-#undef RCC_C1_AHB1ENR_0_USB2OTGHSEN
-#undef RCC_DCKCFGR_1
-#undef RCC_CR_2_HSITRIM
-#undef RCC_MAP0_HSICFGR
-#undef RCC_APB1RSTR1_0_DAC1RST
-#undef RCC_APB1RSTR_1_USART5RST
-#undef RCC_CFGR_3_USBPRES
-#undef RCC_AHB1LPENR_0_DTCMLPEN
-#undef RCC_CIER_0_LSECSSIE
-#undef RCC_AHB1SMENR_0_FMACSMEN
-#undef RCC_CFGR_4_MCO1PRE0
-#undef RCC_AHB1LPENR_0_ARTLPEN
-#undef RCC_CCIPR_1_USART2SEL0
-#undef RCC_ICSCR_3_HSI16CAL
-#undef RCC_MAP0_UART1CKSELR
-#undef RCC_MAP0_AHB5RSTSETR
-#undef RCC_MAP1_C1_RSR
-#undef RCC_CIR_2_LSECSSIE
-#undef RCC_DCKCFGR2_0_I2C2SEL
-#undef RCC_APB2LPENR_1_DFSDMLPEN
-#undef RCC_ICSCR_1_MSITRIM
-#undef RCC_CSR_0_LSECSSD
-#undef RCC_MAP0_CSICFGR
-#undef RCC_MAP0_RCK12SELR
-#undef RCC_MAP0_QSPICKSELR
-#undef RCC_MAP0_SIDR
-#undef RCC_MAP5_C2AHB1SMENR
-#undef RCC_PLLCFGR_0_DIVR1EN
-#undef RCC_MAP5_APB2ENR
-#undef RCC_AHB3SMENR_0_FLASHSMEN
-#undef RCC_MAP0_MP_TZAHB6ENSETR
-#undef RCC_APB2RSTR_1_TM12RST
-#undef RCC_AHB1SMENR_1
-#undef RCC_CR_0_PLL3RDY
-#undef RCC_CIR_0_PLLI2SRDYF
-#undef RCC_PLLCFGR_1_PLLQ1
-#undef RCC_AHB2RSTR_2
-#undef RCC_AHB1ENR_0_DMA2EN
-#undef RCC_MAP0_C1_AHB3ENR
-#undef RCC_PLLCFGR_1_PLLPEN
-#undef RCC_DCKCFGR2_2_I2C4SEL
-#undef RCC_CIFR_1_LSI1RDYF
-#undef RCC_AHB1RSTR_0_GFXMMURST
-#undef RCC_APBRSTR1_UCPD1RST
-#undef RCC_DCKCFGR2_1_I2CFMP1SEL
-#undef RCC_CCIPR_1_I2C1SEL1
-#undef RCC_AHB2RSTR_2_DCMIRST
-#undef RCC_PLLCFGR_1_PLLR
-#undef RCC_PLLCFGR_0_DIVQ1EN
-#undef RCC_AHB2SMENR_0_DAC4SMEN
-#undef RCC_APB2RSTR_0_TIM19RST
-#undef RCC_APB2ENR_0_ADC3EN
-#undef RCC_MAP0_MP_AHB5ENCLRR
-#undef RCC_MAP5_C2AHB2SMENR
-#undef RCC_APB2ENR_1_SDMMCEN
-#undef RCC_MAP0_PLL1FRACR
-#undef RCC_APB2RSTR_0_HRTIMRST
-#undef RCC_BDCR_0_LSERDY
-#undef RCC_MAP0_DDRITFCR
-#undef RCC_MAP0_AHB3ENR
-#undef RCC_APB1RSTR_3_I2C3
-#undef RCC_PLLCFGR_1
-#undef RCC_MAP0_MP_AHB5LPENCLRR
-#undef RCC_APB1RSTR_0_TIM6RST
-#undef RCC_AHB2ENR_2_RNGEN
-#undef RCC_MAP1_APB3ENR
-#undef RCC_MAP0_MP_APB4LPENSETR
-#undef RCC_APB1LPENR_0_TIM3LPEN
-#undef RCC_AHB2RSTR_0_GPIOBRST
-#undef RCC_APB1LPENR_1_SPDIFLPEN
-#undef RCC_APBENR1_USART4EN
-#undef RCC_APB1LPENR_1_LPTIMER1LPEN
-#undef RCC_MAP0_BR_RSTSCLRR
-#undef RCC_CFGR_4_PLLMUL
-#undef RCC_MAP5_APBSMENR2
-#undef RCC_PLLCFGR_0_PLLPDIV
-#undef RCC_APB1ENR1_0_RTCAPBEN
-#undef RCC_CR_3_HSI16OUTEN
-#undef RCC_AHBLPENR_0_GPIOGLPEN
-#undef RCC_MAP0_PLL1CFGR1
-#undef RCC_AHB2SMENR_0_CRYPTSMEN
-#undef RCC_DCKCFGR_0_PLLSAIDIVR
-#undef RCC_MAP1_APB1LLPENR
-#undef RCC_CFGR_0
-#undef RCC_PLLCFGR_1_PLLQ3
-#undef RCC_APB1ENR_1
-#undef RCC_CR_0_HSEPRE
-#undef RCC_MAP0_DSICKSELR
-#undef RCC_PLLCFGR_2_PLLN3
-#undef RCC_IOPRSTR_IOPFRST
-#undef RCC_APBSMENR1_USART3SMEN
-#undef RCC_CCIPR_0_CLK48SEL
-#undef RCC_MAP0_SAI1CKSELR
-#undef RCC_MAP0_MC_APB3ENCLRR
-#undef RCC_MAP1_D2CFGR
-#undef RCC_AHB2LPENR_2_AESLPEN
-#undef RCC_AHB1RSTR_0_ADC12RST
-#undef RCC_CFGR_4_PPRE
-#undef RCC_MAP1_PLL1FRACR
-#undef RCC_MAP0_MP_AHB2LPENSETR
-#undef RCC_ICSCR_2_HSICAL
-#undef RCC_APB1RSTR1_1_I2C3
-#undef RCC_APB1ENR2_DFSDMEN
-#undef RCC_APB1RSTR1_1_USBDRST
-#undef RCC_MAP0_MP_MLAHBLPENSETR
-#undef RCC_ICSCR_1_MSICAL
-#undef RCC_DCKCFGR_1_PLLI2SDIVQ
-#undef RCC_APB2ENR_0_TIM17EN
-#undef RCC_APB2RSTR_0_TIM15RST
-#undef RCC_APBENR1_CECEN
-#undef RCC_PLLCFGR_1_PLLQ2
-#undef RCC_CSR_0_LSIRDY
-#undef RCC_PLLSAICFGR_PLLSAIP
-#undef RCC_APB1ENR_0_UART5EN
-#undef RCC_APBENR1_TIM6EN
-#undef RCC_AHBENR_2_TOUCHEN
-#undef RCC_MAP0_AHB3RSTSETR
-#undef RCC_PLLSYSCFGR_1
-#undef RCC_APB2LPENR_1_EXTITLPEN
-#undef RCC_CCIPR2_0_SAI2SEL
-#undef RCC_CFGR_0_STOPKERWUCK
-#undef RCC_AHBENR_1_CRCEN
-#undef RCC_APB1RSTR_0_I2C2RST
-#undef RCC_CFGR_0_MCO1PRE
-#undef RCC_MAP0_MP_GRSTCSETR
-#undef RCC_AHB1LPENR_1_FLITFLPEN
-#undef RCC_CFGR_4_MCO1PRE2
-#undef RCC_APB2LPENR_0_HRTIMLPEN
-#undef RCC_CR_3_RTCPRE0
-#undef RCC_PLLCFGR_3
-#undef RCC_MAP0_AHB6RSTCLRR
-#undef RCC_CIFR_1
-#undef RCC_MAP3_APB1RSTR
-#undef RCC_AHBLPENR_0_GPIOHLPEN
-#undef RCC_MAP1_GCR
-#undef RCC_APBSMENR1_UCPD2SMEN
-#undef RCC_APB2ENR_1_SAI1EN
-#undef RCC_MAP7
-#undef RCC_AHB3SMENR_0_SRAM2SMEN
-#undef RCC_AHB2LPENR_0_CAMITFLPEN
-#undef RCC_MAP0_MP_TZAHB6LPENCLRR
-#undef RCC_MAP0_MC_AXIMENCLRR
-#undef RCC_AHB2RSTR_2_HSAHRST
-#undef RCC_AHB2LPENR_0_CRYPTLPEN
-#undef RCC_APB2ENR_0_TIM1EN
-#undef RCC_AHB1ENR_1_CRCEN
-#undef RCC_AHB2LPENR_1_CRYPLPEN
-#undef RCC_AHB2ENR_0_SRAM1EN
-#undef RCC_AHB1RSTR_2
-#undef RCC_MAP3_SSCGR
-#undef RCC_APB2LPENR_0_ADC3LPEN
-#undef RCC_AHBENR_1_IOPHEN
-#undef RCC_CFGR_1_SWS
-#undef RCC_MAP2_APB1RSTR2
-#undef RCC_APB1RSTR_0_SPI3RST
-#undef RCC_AHB2SMENR_0_SDMMC1SMEN
-#undef RCC_DCKCFGR_0_PLLIS2DIVQ
-#undef RCC_CICR_3
-#undef RCC_CICR_0_PLL2RDYC
-#undef RCC_PLLSYSCFGR_0_PLLSYSP
-#undef RCC_APB2RSTR_1_TIM10RST
-#undef RCC_AHB1ENR_2_DMAMUXEN
-#undef RCC_APB1LPENR_0_SPDIFRXLPEN
-#undef RCC_MAP0_PLL4CSGR
-#undef RCC_MAP0_MP_APRSTCR
-#undef RCC_CSR_0_LSI2RDY
-#undef RCC_AHB3ENR_0_HSEMEN
-#undef RCC_AHB2RSTR_0_SDMMC2RST
-#undef RCC_APB1RSTR1_0_TIM6RST
-#undef RCC_MAP0_MP_AXIMLPENCLRR
-#undef RCC_AHB2RSTR_2_CRYPRST
-#undef RCC_CIER_1_MSIRDYIE
-#undef RCC_MAP0_MC_AXIMENSETR
-#undef RCC_GCR_BOOT_C1
-#undef RCC_APB2RSTR_0_SAI1RST
-#undef RCC_APB2ENR_1_SDAD2EN
-#undef RCC_MAP3_CIR
+#undef RCC_APB1ENR_0_I2C3EN
 #undef RCC_AHBENR_1_GPIOPFEN
-#undef RCC_AHB3RSTR_1
-#undef RCC_AHB3SMENR_1
-#undef RCC_CFGR2_ADC34PRES
-#undef RCC_CIER_0_PLL2RDYIE
-#undef RCC_PLLSAICFGR_PLLSAIM
-#undef RCC_CFGR_1_PPRE1
-#undef RCC_CIR_0_PLLSAIRDYIE
-#undef RCC_CFGR_0_MCO2PRE
+#undef RCC_MAP0_MP_MLAHBENCLRR
+#undef RCC_AHB2SMENR_1
+#undef RCC_CFGR_2
+#undef RCC_MAP0_PLL4CFGR2
+#undef RCC_APB2ENR_0_SAI3EN
+#undef RCC_APB1SMENR1_0_I2C2SMEN
+#undef RCC_BDCR_1_LSECSSD
+#undef RCC_CR_0_RC48ON
+#undef RCC_MAP2_APB2SMENR
+#undef RCC_CSR_0_LSI2ON
+#undef RCC_PLLCFGR_2_PLLQ
+#undef RCC_AHB1ENR_1_GPIOCEN
+#undef RCC_MAP0_MP_AHB2ENCLRR
+#undef RCC_APB1RSTR1_1_USBDRST
+#undef RCC_APB2LPENR_0_SAI3LPEN
+#undef RCC_ICSCR_1_MSITRIM
+#undef RCC_DCKCFGR2_0_FMPI2C1SEL
+#undef RCC_MAP0_MP_APB4LPENCLRR
 #undef RCC_AHB3RSTR_2_QSPIRST
-#undef RCC_MAP6
-#undef RCC_CR_2
-#undef RCC_PLLCFGR_2_PLLN2
-#undef RCC_AHBLPENR_0_DMA1LPEN
-#undef RCC_APB2ENR_0_ADC1EN
-#undef RCC_MAP4_APBRSTR1
-#undef RCC_MAP0_MC_AHB4ENSETR
-#undef RCC_APB1LPENR_0_TIM13LPEN
+#undef RCC_AHB2ENR_2_AES1EN
+#undef RCC_AHBENR_1_MIFEN
+#undef RCC_MAP1_PLL1DIVR
+#undef RCC_AHB3ENR_0_AES2EN
+#undef RCC_AHB2RSTR_0_RNGRST
+#undef RCC_DCKCFGR_0_SAI1BSRC
+#undef RCC_APB2ENR_0_SPI4EN
+#undef RCC_MAP1_D1CFGR
+#undef RCC_CCIPR_2_CECSEL
+#undef RCC_MAP0_PLL3CR
+#undef RCC_MAP4_AHBRSTR
+#undef RCC_MAP3_CIR
+#undef RCC_APB1SMENR_USART5SMEN
+#undef RCC_MAP0_PLL1CSGR
+#undef RCC_CR_1_HSIKERON
+#undef RCC_MAP0_MP_AHB5ENSETR
+#undef RCC_AHB2RSTR_1_GPIOARST
+#undef RCC_CR_0_HSIDIVF
+#undef RCC_PLLCFGR_2_PLLM4
+#undef RCC_CFGR_5_PLLDIV
+#undef RCC_APB1RSTR1_0_I2C2RST
+#undef RCC_APB2LPENR_1_EXTITLPEN
+#undef RCC_CCIPR_0_I2C2SEL
+#undef RCC_APB2SMENR_0_TIM17SMEN
+#undef RCC_MAP0_PLL4FRACR
+#undef RCC_MAP4_IOPENR
+#undef RCC_CSR_0_LPWRSTF
+#undef RCC_AHB1LPENR_1_USB2OTGLPEN
+#undef RCC_MAP0_APB1RSTSETR
+#undef RCC_APBRSTR1_TIM7RST
+#undef RCC_APB2ENR_2_TIM9EN
+#undef RCC_MAP0_STGENCKSELR
+#undef RCC_MAP0_PLL1CFGR1
+#undef RCC_APB1RSTR_0_UART2RST
+#undef RCC_APB2ENR_0_DSIEN
+#undef RCC_MAP3_APB2LPENR
+#undef RCC_CCIPR_1_LPUART1SEL1
+#undef RCC_APB1ENR2_DFSDMEN
+#undef RCC_APB1LPENR_0_UART7LPEN
+#undef RCC_DCKCFGR2_0_CECSEL
+#undef RCC_CR_0_HSIASFS
+#undef RCC_APB2SMENR_0_TIM1SMEN
+#undef RCC_AHB3ENR_2_QSPIEN
+#undef RCC_AHBRSTR_2_RNGRST
+#undef RCC_APB1LPENR_0_TIM4LPEN
+#undef RCC_APB1RSTR_1_USBRST
+#undef RCC_PLLCFGR_2_PLLR
+#undef RCC_CFGR_0_MCO1SEL
+#undef RCC_AHB1RSTR_2
+#undef RCC_APB1RSTR_0_SPI2RST
+#undef RCC_AHB2SMENR_0_GPIOESMEN
+#undef RCC_CFGR3_0_TIM1SW
+#undef RCC_APB2SMENR_0_TIM16SMEN
+#undef RCC_PLLCFGR_1
+#undef RCC_APB2RSTR_1_SYSCFGRST
+#undef RCC_APB1LPENR_1_USART5LPEN
+#undef RCC_AHB1LPENR_0_USB1OTGHSULPILPEN
+#undef RCC_CSR_1_RTCSEL
+#undef RCC_MAP1_C1_AHB3ENR
+#undef RCC_AHB1RSTR_0_FLASHRST
+#undef RCC_CFGR_1_PPRE2
+#undef RCC_APB1ENR1_0_SP3EN
+#undef RCC_AHB2ENR_2_DCMIEN
+#undef RCC_AHB2SMENR_0_SRAM3SMEN
+#undef RCC_AHB2SMENR_2
+#undef RCC_CR_0_PLL3RDY
+#undef RCC_MAP0_PLL2CFGR2
+#undef RCC_APB2ENR_2_TIM20EN
+#undef RCC_AHB2RSTR_0_CRYPTRST
+#undef RCC_AHBRSTR_0_DMA2RST
+#undef RCC_PLLCFGR_2_PLLN4
+#undef RCC_CR_1_HSION
+#undef RCC_APB1RSTR_2_DAC3RST
+#undef RCC_APBRSTR1_UCPD1RST
+#undef RCC_CICR_1
+#undef RCC_ICSCR_2_HSICAL
+#undef RCC_AHB1RSTR_1
+#undef RCC_AHBRSTR_0_IOPDRST
+#undef RCC_APB1ENR_1_SPDIFEN
+#undef RCC_APB2LPENR_0_DFSDM1LPEN
+#undef RCC_CFGR3_1
+#undef RCC_CR_3_MSION
+#undef RCC_MAP0_MP_AHB6ENSETR
+#undef RCC_MAP0_RNG1CKSELR
+#undef RCC_AHB2RSTR_1_ADC12RST
+#undef RCC_CRRCR_4
+#undef RCC_APB1RSTR_0_I2C2RST
+#undef RCC_CSR_1_LSI1ON
+#undef RCC_AHB3ENR_1_PKAEN
+#undef RCC_AHB1LPENR_0_GPIOGLPEN
+#undef RCC_MAP0_SPI6CKSELR
+#undef RCC_CIFR_2_PLLSYSRDYF
+#undef RCC_AHB1ENR_0_ADC12EN
 #undef RCC_CFGR_2_SWS1
-#undef RCC_APB2RSTR_0_USBPHYCRST
-#undef RCC_MAP0_PLL2CFGR1
-#undef RCC_CIFR_2_HSI48RDYF
-#undef RCC_IOPENR_IOPHEN
-#undef RCC_APB2SMENR_0_TIM15SMEN
-#undef RCC_AHB3SMENR_0_PKASMEN
-#undef RCC_CFGR_3_PPRE22
-#undef RCC_AHBRSTR_0_GPIOHRST
-#undef RCC_CFGR_5_PLLSRC
-#undef RCC_APB1SMENR1_0_OPAMPSMEN
-#undef RCC_AHB2SMENR_2_HASH1SMEN
-#undef RCC_APB1RSTR_0_TIM13RST
+#undef RCC_PLLSAI2CFGR_PLLSAI2Q
+#undef RCC_AHB2RSTR_2
+#undef RCC_APB1RSTR_0_UART5RST
+#undef RCC_DCKCFGR2_1_LPTIM1SEL
+#undef RCC_AHB1ENR_1_DMA2DEN
+#undef RCC_AHB2LPENR_2_AESLPEN
+#undef RCC_CCIPR_1_USART2SEL0
+#undef RCC_CFGR_1_PPRE1
+#undef RCC_CCIPR_0_CLK48SEL
+#undef RCC_APB1LPENR_0_I2C3LPEN
+#undef RCC_MAP0_MC_AHB6ENCLRR
+#undef RCC_MAP0_MC_APB1LPENCLRR
+#undef RCC_PLLCFGR_0_PLLPDIV
+#undef RCC_AHB1SMENR_0_CRCSMEN
+#undef RCC_MAP0_OCENCLRR
+#undef RCC_MAP0_AHB2RSTSETR
+#undef RCC_CR_1_PLLRDY
+#undef RCC_AHB2ENR_0_ADCEN
+#undef RCC_APB2RSTR_1_SART10RST
+#undef RCC_CIR_2_LSECSSIE
+#undef RCC_CSR_0_LSECSSD
+#undef RCC_MAP1_C1_AHB2ENR
+#undef RCC_APB1ENR1_0_TIM7EN
+#undef RCC_MAP0_MC_AHB3ENSETR
+#undef RCC_APB1RSTR_0_UART7RST
+#undef RCC_AHBENR_0_IOPFEN
+#undef RCC_PLLCFGR_0_PLL3VCOSEL
+#undef RCC_CFGR_3_PPRE10
+#undef RCC_AHB3LPENR_0_FLITFLPEN
+#undef RCC_DCKCFGR_0_LPTIMER1SEL
+#undef RCC_APB1ENR_0_UART8ENR
+#undef RCC_APB2RSTR_3
+#undef RCC_APB2LPENR_1_DFSDMLPEN
+#undef RCC_CFGR_0_MCO1PRE
+#undef RCC_CIER_0_LSIRDYIE
+#undef RCC_AHB1ENR_1_DTCMRAMEN
+#undef RCC_CIER_0_HSIRDYIE
+#undef RCC_APB2RSTR_1_TIM8RST
+#undef RCC_APB2SMENR_0_LTDCSMEN
+#undef RCC_AHB3RSTR_1_QSPIRST
+#undef RCC_APB1SMENR1_1_USART1SMEN
+#undef RCC_CR_1_MSIRANGE
+#undef RCC_MAP0_FDCANCKSELR
+#undef RCC_PLLCFGR_1_PLLM2
+#undef RCC_MAP1_AHB3RSTR
+#undef RCC_MAP0_CPERCKSELR
+#undef RCC_MAP5_CCIPR
+#undef RCC_AHB2SMENR_0_GPIOFSMEN
+#undef RCC_PLLCFGR_0_PLL1FRACEN
+#undef RCC_CFGR_0
+#undef RCC_AHB2RSTR_1
+#undef RCC_APB1ENR_1_USBEN
+#undef RCC_AHB1ENR_0_ETH1RXEN
+#undef RCC_MAP4_APB2ENR
+#undef RCC_CIFR_1_HSI48RDYF
+#undef RCC_AHB1LPENR_1_USB1OTGLPEN
+#undef RCC_AHB1RSTR_0_DMAMUX1RST
+#undef RCC_MAP1_C1_APB1HLPENR
+#undef RCC_APB2SMENR_0_TIM20SMEN
+#undef RCC_APB1SMENR1_0_TIM5SMEN
+#undef RCC_AHBRSTR_0_GPIOFRST
+#undef RCC_APB1SMENR1_0_CRSSMEN
+#undef RCC_CSR_1_RTCRST
+#undef RCC_AHB1ENR_2_FLITFEN
+#undef RCC_APB1ENR2_LPTIM2EN
+#undef RCC_MAP3_AHBENR
+#undef RCC_AHB2LPENR_2_FSMCLPEN
+#undef RCC_AHB3RSTR_0_FMCRST
+#undef RCC_APB1ENR_4
+#undef RCC_AHB2ENR_0_RNGEN
+#undef RCC_DCKCFGR_1_I2SSRC
+#undef RCC_APB1ENR_2_LPTIMER1EN
+#undef RCC_APB1RSTR1_0_CAN2RST
+#undef RCC_PLLCFGR_4_PLLQEN
+#undef RCC_AHBENR_0_FLASHEN
+#undef RCC_MAP0_MC_APB2ENCLRR
+#undef RCC_AHB2ENR_1_ADC12EN
+#undef RCC_AHB3SMENR_0_OCTOSPI2
+#undef RCC_APB2ENR_2_SDMMC2EN
+#undef RCC_AHB3SMENR_0_FLASHSMEN
+#undef RCC_CFGR_0_MCO2SEL
+#undef RCC_MAP0_BR_RSTSCLRR
+#undef RCC_APB2SMENR_0_SPI4SMEN
+#undef RCC_MAP1_GCR
+#undef RCC_CR_1_MSIRDY
+#undef RCC_PLLSAI1CFGR_0_PLLSAI1PDIV
+#undef RCC_AHB2ENR_2
+#undef RCC_APB1ENR1_0_TIM4EN
+#undef RCC_MAP3_PLLI2SCFGR
+#undef RCC_AHB2RSTR_0_DAC4RST
+#undef RCC_APB1SMENR1_0_TIM4SMEN
+#undef RCC_MAP0_MC_APB4ENCLRR
+#undef RCC_AHB1ENR_2_DMAMUXEN
+#undef RCC_APBSMENR1_USART4SMEN
+#undef RCC_APB1RSTR_0_SPI3RST
+#undef RCC_CCIPR_1_RNGDIV
+#undef RCC_APB2LPENR_0_SYSCFGLPEN
+#undef RCC_AHBENR_0_GPIOPGEN
+#undef RCC_CFGR_2_MCO2EN
+#undef RCC_AHB2ENR_2_RNGEN
+#undef RCC_AHB2SMENR_2_AES1SMEN
+#undef RCC_AHBENR_0_FLITFEN
+#undef RCC_APB2ENR_0_TIM17EN
+#undef RCC_AHB1RSTR_0_DMA2DRST
+#undef RCC_AHB1LPENR_0_DMA2DLPEN
+#undef RCC_APB1RSTR_2_CRSRST
+#undef RCC_MAP0_RCK3SELR
+#undef RCC_AHB3ENR_0_QSPIEN
+#undef RCC_MAP2_AHB3RSTR
+#undef RCC_APB1LPENR_0_SPI3LPEN
+#undef RCC_CSR_0_LSI2TRIMOK
+#undef RCC_APBRSTR1_DAC1RST
+#undef RCC_PLLCFGR_1_PLLQEN
+#undef RCC_AHB1LPENR_0_GPIOELPEN
+#undef RCC_PLLCFGR_0_PLL1RGE
+#undef RCC_PLLCFGR_2_PLLM5
+#undef RCC_C1_AHB1ENR_0_USB1OTGHSULPIEN
+#undef RCC_PLLCFGR_2_PLLN1
+#undef RCC_CR_3_HSIDIV
+#undef RCC_CSR_1_BORRSTF
+#undef RCC_APB2LPENR_0_USART6LPEN
+#undef RCC_AHB3ENR_0_IPCCEN
+#undef RCC_ICSCR_1
+#undef RCC_AHB2ENR_1_GPIOAEN
+#undef RCC_MAP2_PLLSAI2CFGR
+#undef RCC_CCIPR_0
+#undef RCC_CIER_0_HSI48RDYIE
+#undef RCC_MAP0_MC_AHB6LPENSETR
+#undef RCC_CFGR_4_MCO1PRE2
+#undef RCC_AHB2ENR_0_SRAM2EN
+#undef RCC_PLLCFGR_1_PLLP
+#undef RCC_PLLCFGR_3_PLLN
+#undef RCC_CR_0_CSION
+#undef RCC_APB1SMENR1_0_CAN2SMEN
+#undef RCC_BDCR_1
+#undef RCC_CCIPR2_1_I2C4SEL_0
+#undef RCC_DCKCFGR2_0_I2C3SEL
+#undef RCC_APB1RSTR_2_TIM18RST
+#undef RCC_APB2RSTR_0_SYSCFGRST
+#undef RCC_MAP0_PLL3CFGR2
+#undef RCC_PLLCFGR_0_DIVQ1EN
+#undef RCC_AHB1ENR_0_CRCEN
+#undef RCC_MAP0_TIMG1PRER
+#undef RCC_APB1RSTR1_0_DAC1RST
+#undef RCC_CIR_0_PLLI2SRDYIE
+#undef RCC_CICR_0_HSERDYC
+#undef RCC_MAP1_AHB2RSTR
+#undef RCC_CR_2_PLLSYSON
+#undef RCC_CSR_0_WWDGRSTF
+#undef RCC_CFGR_5
+#undef RCC_MAP0_MP_APB2ENCLRR
+#undef RCC_CCIPR_1_HSI48MSEL
+#undef RCC_C1_AHB1ENR_0_USB2ULPIEN
+#undef RCC_APBRSTR1_USART3RST
+#undef RCC_AHB3RSTR_0_SDMMC1RST
+#undef RCC_AHBENR_1_GPIOPCEN
+#undef RCC_APB2LPENR_2
+#undef RCC_APB2LPENR_1_SDIOLPEN
+#undef RCC_APB1LPENR_0_TIM14LPEN
+#undef RCC_CIER_1
+#undef RCC_CIFR_2_RC48RDYF
+#undef RCC_APB2RSTR_0_TIM1RST
+#undef RCC_AHBENR_0_GPIOPHEN
+#undef RCC_AHBENR_1_DMA1EN
+#undef RCC_AHB1RSTR_1_GPIOARST
+#undef RCC_PLLSAI1CFGR_0_PLLSAI1M
+#undef RCC_MAP0_MC_APB5ENSETR
+#undef RCC_CSR_0_FWRSTF
+#undef RCC_AHB2LPENR_0_SRAM3LPEN
+#undef RCC_AHB2ENR_2_CRYPEN
+#undef RCC_AHB3RSTR_0_AES2RST
+#undef RCC_CSICFGR_0
+#undef RCC_AHB1ENR_1_USB1ULPIEN
+#undef RCC_BDCR_0_RTCSRC
+#undef RCC_AHB1ENR_0_ETH1TXEN
+#undef RCC_CIER_0_LSI2RDYIE
+#undef RCC_APB1RSTR1_1_FDCANRST
+#undef RCC_AHB1ENR_1_DMA2EN
+#undef RCC_AHBENR_1_FLITFEN
+#undef RCC_AHB1RSTR_0_RNGRST
+#undef RCC_APB1SMENR1_1_USART2SMEN
+#undef RCC_APB1RSTR_0_TIM5RST
+#undef RCC_PLLSYSCFGR_0_PLLSYSPDIV
+#undef RCC_AHBRSTR_2
+#undef RCC_APB1ENR_1_DAC2EN
+#undef RCC_AHB1LPENR_1_DMA1LPEN
+#undef RCC_CCIPR_0_ADCSEL
+#undef RCC_AHBSMENR_0_AESSMEN
+#undef RCC_MAP2_APB2ENR
+#undef RCC_AHB1ENR_2_ETHMACTXEN
+#undef RCC_AHBSMENR_1_RNGSMEN
+#undef RCC_CICR_0_LSIRDYC
+#undef RCC_APB2ENR_2_SDAD3EN
+#undef RCC_CFGR_0_SW
+#undef RCC_MAP2_APB1RSTR2
+#undef RCC_AHBRSTR_0_IOPERST
+#undef RCC_AHB2LPENR_0_SDMMC2LPEN
+#undef RCC_APB1RSTR_1
+#undef RCC_CFGR_3_PPRE20
+#undef RCC_MAP5_CFGR2
+#undef RCC_MAP1_PLLCKSELR
+#undef RCC_APB2ENR_1_TIM8EN
+#undef RCC_CFGR_2_PPRE1
+#undef RCC_CFGR_0_STOPKERWUCK
+#undef RCC_MAP0_I2C35CKSELR
+#undef RCC_APB1RSTR1_1_I2C3
+#undef RCC_CFGR3_0_UART5SW
+#undef RCC_APB2SMENR_1_DFSDMSMEN
+#undef RCC_BDCR_1_LSECSSON
+#undef RCC_AHB2LPENR_0_RNGLPEN
+#undef RCC_CIFR_2_HSI16RDYF
+#undef RCC_APB2ENR_3_DBGEN
+#undef RCC_MAP0_MC_AHB3LPENCLRR
+#undef RCC_AHB2SMENR_0_AESSMEN
+#undef RCC_APB1RSTR1_1
+#undef RCC_CICR_1_PLLRDYC
+#undef RCC_APB1RSTR_0_LPTIM1RST
+#undef RCC_DCKCFGR_1_PLLI2SDIVQ
+#undef RCC_MAP0_UART78CKSELR
+#undef RCC_APB2RSTR_2
+#undef RCC_CCIPR_2
+#undef RCC_APB1RSTR1_0_TIM5RST
+#undef RCC_APB1ENR_3
+#undef RCC_MAP1_C1_APB4LPENR
+#undef RCC_AHBENR_0_DMA2EN
+#undef RCC_MAP1_D2CCIP1R
+#undef RCC_AHB2SMENR_0_ADCFSSMEN
+#undef RCC_BDCR_1_RTCSRC
+#undef RCC_CICR_0_PLL1RDYC
+#undef RCC_MAP0_RCK4SELR
+#undef RCC_CFGR_2_HPRE3
+#undef RCC_MAP0_MP_TZAHB6ENSETR
+#undef RCC_AHB2SMENR_0_DAC4SMEN
+#undef RCC_MAP1_C1_AHB4LPENR
+#undef RCC_AHBENR_2_GPIOPAEN
+#undef RCC_AHB1LPENR_1_DMA2LPEN
+#undef RCC_APB1LPENR_1_I2CFMP1LPEN
+#undef RCC_ICSCR_4
+#undef RCC_APB1RSTR1_1_USBFSRST
+#undef RCC_APB2SMENR_0_SYSCFGSMEN
+#undef RCC_MAP3_APB2RSTR
+#undef RCC_MAP0_MP_AHB3ENCLRR
+#undef RCC_CFGR_0_MCO2PRE
+#undef RCC_APB1RSTR_0_TIM3RST
+#undef RCC_MAP0_SDMMC12CKSELR
+#undef RCC_CFGR_4_USBPRE
+#undef RCC_APB1ENR_1_UART8EN
+#undef RCC_APBSMENR1_TIM6SMEN
+#undef RCC_MAP1_C1_APB1HENR
+#undef RCC_CFGR_2_MCO1EN
+#undef RCC_CCIPR_0_SAI2SEL
+#undef RCC_CFGR_4_MCO1PRE1
+#undef RCC_MAP0_MC_AHB5LPENCLRR
+#undef RCC_AHB2ENR_0_OTGFSEN
+#undef RCC_MAP0_TZAHB6RSTCLRR
+#undef RCC_CR_2_HSIRDY
+#undef RCC_CFGR_3_MCO20
+#undef RCC_MAP0_AHB4RSTSETR
+#undef RCC_CFGR_4_ADCPRE
+#undef RCC_APB1ENR1_0_OPAMPEN
+#undef RCC_APB2RSTR_0_TIM8RST
+#undef RCC_AHB2ENR_0
+#undef RCC_APB1ENR1_0_TIM3EN
+#undef RCC_AHBENR_1_CRCEN
+#undef RCC_APB2RSTR_2_HRTIM1RST
+#undef RCC_MAP0_MC_AHB3ENCLRR
+#undef RCC_AHB2RSTR_0_DAC2RST
+#undef RCC_MAP3_AHB1LPENR
+#undef RCC_DCKCFGR2_1_SDIOSEL
+#undef RCC_CFGR_2_PPRE1F
+#undef RCC_MAP0_RCK12SELR
+#undef RCC_AHB2ENR_0_SDMMC2EN
+#undef RCC_APB2ENR_0_DFSDM1EN
 #undef RCC_MAP0_APB3RSTCLRR
-#undef RCC_MAP0_SDMMC3CKSELR
-#undef RCC_CFGR3_1_ADCSW
-#undef RCC_MAP1_CSR
-#undef RCC_CR_0_HSIKERON
-#undef RCC_APB1RSTR2_I2C4RST
-#undef RCC_APB1LPENR_0_CECLPEN
-#undef RCC_APB1SMENR2_SWPMI1SMEN
-#undef RCC_AHBENR_0_FSMCEN
+#undef RCC_MAP2_APB2RSTR
+#undef RCC_APBENR2_TIM15EN
+#undef RCC_APB1RSTR_1_USART2RST
+#undef RCC_PLLCFGR_1_PLLREN
+#undef RCC_APB2ENR_0_USART1EN
+#undef RCC_ICSCR_3_MSICAL
+#undef RCC_AHBENR_0_AESEN
+#undef RCC_AHBENR_0_IOPEEN
+#undef RCC_AHB2RSTR_0_GPIOCRST
+#undef RCC_AHB2ENR_0_HASHEN
+#undef RCC_MAP0_MC_APB1LPENSETR
+#undef RCC_APB1ENR1_1_USBF
+#undef RCC_MAP5_APB1ENR
+#undef RCC_AHB1RSTR_0_CRCRST
+#undef RCC_APB1RSTR_2_LPUART12RST
+#undef RCC_MAP0_MC_AHB6LPENCLRR
+#undef RCC_CR_0_D1CKRDY
+#undef RCC_AHBRSTR_1_RNGRST
+#undef RCC_MAP0_SAI3CKSELR
+#undef RCC_DCKCFGR2_0_LPTIM1SEL
+#undef RCC_AHB1RSTR_1_DMA2RST
+#undef RCC_AHB2RSTR_0_GPIODRST
+#undef RCC_CSR_0_IWDGRSTF
+#undef RCC_APB2RSTR_0_SAI3RST
+#undef RCC_APB2LPENR_0_SPI5LPEN
+#undef RCC_MAP0_MCO2CFGR
+#undef RCC_MAP0_MP_AHB4LPENCLRR
+#undef RCC_CR_0_PLL2RDY
+#undef RCC_MAP0_MP_AHB3LPENCLRR
+#undef RCC_CSR_0_RMVF
+#undef RCC_DCKCFGR2_0
+#undef RCC_AHB2SMENR_2_HASH1SMEN
+#undef RCC_APB1LPENR_1_RTCAPBLPEN
 
+#endif
 
 #endif //__SOOL_CORE_RCC_H
