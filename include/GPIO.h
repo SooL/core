@@ -585,7 +585,7 @@ namespace sool {
 				const uintptr_t myaddr;
 				inline const uintptr_t get_addr() {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() {return reinterpret_cast<const uintptr_t>(this);};
 			private:
 				GPIO() = delete;
 			#endif

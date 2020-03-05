@@ -6296,6 +6296,8 @@ namespace sool {
 			
 				USART& operator<<(const uint16_t value);
 			
+				void send(char* value);
+			
 				USART& operator>>(uint8_t &variable);
 			
 				USART& operator>>(uint16_t &variable);
@@ -7000,7 +7002,7 @@ namespace sool {
 		template<typename tmpl>
 		inline void USART<tmpl>::disable_clock() volatile
 		{
-			get_clock_enable_reg(rget_addr())
+			get_clock_enable_reg(get_addr())
 					&= ~get_clock_enable_bit(get_addr());
 		}
 		
@@ -7054,6 +7056,7 @@ namespace sool {
 			return *this;
 		}
 		
+		
 		template<typename tmpl>
 		inline USART<tmpl>& USART<tmpl>::operator<<(const uint16_t value)
 		{
@@ -7061,8 +7064,27 @@ namespace sool {
 			DR = value;
 		#else
 			TDR = value;
-			//TODO send
 		#endif
+			return *this;
+		}
+		
+		
+		template<typename tmpl>
+		void USART<tmpl>::send(char* value)
+		{
+			int pos = 0;
+			while(value[pos])
+			{
+				while(! is_tx_empty())
+						asm("nop");
+		#ifdef USART_DR
+				DR = value[pos];
+		#else
+				TDR = value[pos];
+		#endif
+				pos ++;
+			}
+		
 			return *this;
 		}
 		
@@ -7076,6 +7098,8 @@ namespace sool {
 		#endif
 			return *this;
 		}
+		
+		
 		
 		template<typename tmpl>
 		inline USART<tmpl>& USART<tmpl>::operator>>(uint16_t &variable)
