@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-03-01T00:46:37.941532
+//Generated 2020-03-22T22:03:50.065391
 
 #ifndef __SOOL_CORE_GPIO_H
 #define __SOOL_CORE_GPIO_H
@@ -585,7 +585,7 @@ namespace sool {
 				const uintptr_t myaddr;
 				inline const uintptr_t get_addr() {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<const uintptr_t>(this);};
+				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				GPIO() = delete;
 			#endif
@@ -594,6 +594,7 @@ namespace sool {
 			//##################################################################################################
 			private:
 				static constexpr uint32_t get_clock_enable_bit(const uintptr_t addr);
+				inline constexpr volatile Reg32_t& get_clock_enable_reg(const uintptr_t addr);
 			
 			public:
 				static constexpr const Pin pin(unsigned int id);
@@ -804,65 +805,92 @@ namespace sool {
 #if	defined(STM32MP1     )
 #define GPIOA_BASE_ADDR ((uint32_t)0x50002000U)
 #define GPIO_GPIOA
+#define GPIOA_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x50003000U)
 #define GPIO_GPIOB
+#define GPIOB_TMPL
 #define GPIOC_BASE_ADDR ((uint32_t)0x50004000U)
 #define GPIO_GPIOC
+#define GPIOC_TMPL
 #define GPIOD_BASE_ADDR ((uint32_t)0x50005000U)
 #define GPIO_GPIOD
+#define GPIOD_TMPL
 #define GPIOE_BASE_ADDR ((uint32_t)0x50006000U)
 #define GPIO_GPIOE
+#define GPIOE_TMPL
 #define GPIOF_BASE_ADDR ((uint32_t)0x50007000U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #define GPIOG_BASE_ADDR ((uint32_t)0x50008000U)
 #define GPIO_GPIOG
+#define GPIOG_TMPL
 #define GPIOH_BASE_ADDR ((uint32_t)0x50009000U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #define GPIOI_BASE_ADDR ((uint32_t)0x5000a000U)
 #define GPIO_GPIOI
+#define GPIOI_TMPL
 #define GPIOJ_BASE_ADDR ((uint32_t)0x5000b000U)
 #define GPIO_GPIOJ
+#define GPIOJ_TMPL
 #define GPIOK_BASE_ADDR ((uint32_t)0x5000c000U)
 #define GPIO_GPIOK
+#define GPIOK_TMPL
 #define GPIOZ_BASE_ADDR ((uint32_t)0x54004000U)
 #define GPIO_GPIOZ
+#define GPIOZ_TMPL
 #endif
 
 #if	defined(STM32H7      )
 #define GPIOA_BASE_ADDR ((uint32_t)0x58020000U)
 #define GPIO_GPIOA
+#define GPIOA_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x58020400U)
 #define GPIO_GPIOB
+#define GPIOB_TMPL
 #define GPIOC_BASE_ADDR ((uint32_t)0x58020800U)
 #define GPIO_GPIOC
+#define GPIOC_TMPL
 #define GPIOD_BASE_ADDR ((uint32_t)0x58020c00U)
 #define GPIO_GPIOD
+#define GPIOD_TMPL
 #define GPIOE_BASE_ADDR ((uint32_t)0x58021000U)
 #define GPIO_GPIOE
+#define GPIOE_TMPL
 #define GPIOG_BASE_ADDR ((uint32_t)0x58021800U)
 #define GPIO_GPIOG
+#define GPIOG_TMPL
 #define GPIOH_BASE_ADDR ((uint32_t)0x58021c00U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #define GPIOI_BASE_ADDR ((uint32_t)0x58022000U)
 #define GPIO_GPIOI
+#define GPIOI_TMPL
 #define GPIOJ_BASE_ADDR ((uint32_t)0x58022400U)
 #define GPIO_GPIOJ
+#define GPIOJ_TMPL
 #define GPIOK_BASE_ADDR ((uint32_t)0x58022800U)
 #define GPIO_GPIOK
+#define GPIOK_TMPL
 #define GPIOF_BASE_ADDR ((uint32_t)0x58021400U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
     defined(STM32WB      )
 #define GPIOA_BASE_ADDR ((uint32_t)0x48000000U)
 #define GPIO_GPIOA
+#define GPIOA_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x48000400U)
 #define GPIO_GPIOB
+#define GPIOB_TMPL
 #define GPIOC_BASE_ADDR ((uint32_t)0x48000800U)
 #define GPIO_GPIOC
+#define GPIOC_TMPL
 #define GPIOD_BASE_ADDR ((uint32_t)0x48000c00U)
 #define GPIO_GPIOD
+#define GPIOD_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32F031x6  ) || defined(STM32F038xx  ) || \
@@ -877,6 +905,7 @@ namespace sool {
     defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define GPIOE_BASE_ADDR ((uint32_t)0x48001000U)
 #define GPIO_GPIOE
+#define GPIOE_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L431xx  ) || \
@@ -886,6 +915,7 @@ namespace sool {
     defined(STM32L4S9xx  )
 #define GPIOF_BASE_ADDR ((uint32_t)0x48001400U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F302xE  ) || defined(STM32F303xE  ) || defined(STM32L431xx  ) || \
@@ -895,11 +925,13 @@ namespace sool {
     defined(STM32L4S9xx  )
 #define GPIOG_BASE_ADDR ((uint32_t)0x48001800U)
 #define GPIO_GPIOG
+#define GPIOG_TMPL
 #endif
 
 #if	defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F302xE  ) || defined(STM32F303xE  )
 #define GPIOH_BASE_ADDR ((uint32_t)0x48001c00U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #endif
 
 #if	defined(STM32L476xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
@@ -907,6 +939,7 @@ namespace sool {
     defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define GPIOI_BASE_ADDR ((uint32_t)0x48002000U)
 #define GPIO_GPIOI
+#define GPIOI_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
@@ -916,15 +949,19 @@ namespace sool {
     defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define GPIOD_BASE_ADDR ((uint32_t)0x40020c00U)
 #define GPIO_GPIOD
+#define GPIOD_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32L1      )
 #define GPIOC_BASE_ADDR ((uint32_t)0x40020800U)
 #define GPIO_GPIOC
+#define GPIOC_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x40020400U)
 #define GPIO_GPIOB
+#define GPIOB_TMPL
 #define GPIOA_BASE_ADDR ((uint32_t)0x40020000U)
 #define GPIO_GPIOA
+#define GPIOA_TMPL
 #endif
 
 #if	defined(STM32F429xx  ) || defined(STM32F439xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F745xx  ) || \
@@ -932,8 +969,10 @@ namespace sool {
     defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
 #define GPIOK_BASE_ADDR ((uint32_t)0x40022800U)
 #define GPIO_GPIOK
+#define GPIOK_TMPL
 #define GPIOJ_BASE_ADDR ((uint32_t)0x40022400U)
 #define GPIO_GPIOJ
+#define GPIOJ_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || \
@@ -941,11 +980,13 @@ namespace sool {
     defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define GPIOI_BASE_ADDR ((uint32_t)0x40022000U)
 #define GPIO_GPIOI
+#define GPIOI_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
 #define GPIOH_BASE_ADDR ((uint32_t)0x40021c00U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || \
@@ -954,8 +995,10 @@ namespace sool {
     defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define GPIOG_BASE_ADDR ((uint32_t)0x40021800U)
 #define GPIO_GPIOG
+#define GPIOG_TMPL
 #define GPIOF_BASE_ADDR ((uint32_t)0x40021400U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
@@ -967,27 +1010,34 @@ namespace sool {
     defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define GPIOE_BASE_ADDR ((uint32_t)0x40021000U)
 #define GPIO_GPIOE
+#define GPIOE_TMPL
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32L0      )
 #define GPIOA_BASE_ADDR ((uint32_t)0x50000000U)
 #define GPIO_GPIOA
+#define GPIOA_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x50000400U)
 #define GPIO_GPIOB
+#define GPIOB_TMPL
 #define GPIOC_BASE_ADDR ((uint32_t)0x50000800U)
 #define GPIO_GPIOC
+#define GPIOC_TMPL
 #define GPIOD_BASE_ADDR ((uint32_t)0x50000c00U)
 #define GPIO_GPIOD
+#define GPIOD_TMPL
 #endif
 
 #if	defined(STM32G0      )
 #define GPIOF_BASE_ADDR ((uint32_t)0x50001400U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #endif
 
 #if	defined(STM32L0      )
 #define GPIOH_BASE_ADDR ((uint32_t)0x50001c00U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #endif
 
 #if	defined(STM32L010x4  ) || defined(STM32L010x6  ) || defined(STM32L010x8  ) || defined(STM32L010xB  ) || defined(STM32L011xx  ) || \
@@ -995,14 +1045,17 @@ namespace sool {
     defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define GPIOE_BASE_ADDR ((uint32_t)0x50001000U)
 #define GPIO_GPIOE
+#define GPIOE_TMPL
 #endif
 
 #if	defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || \
     defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define GPIOF_BASE_ADDR ((uint32_t)0x40021800U)
 #define GPIO_GPIOF
+#define GPIOF_TMPL
 #define GPIOG_BASE_ADDR ((uint32_t)0x40021c00U)
 #define GPIO_GPIOG
+#define GPIOG_TMPL
 #endif
 
 #if	defined(STM32L151xB  ) || defined(STM32L151xBA ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || \
@@ -1010,17 +1063,22 @@ namespace sool {
     defined(STM32L152xD  ) || defined(STM32L152xE  )
 #define GPIOH_BASE_ADDR ((uint32_t)0x40021400U)
 #define GPIO_GPIOH
+#define GPIOH_TMPL
 #endif
 
 #if	defined(STM32W1      )
 #define GPIOA_BASE_ADDR ((uint32_t)0x4000b000U)
 #define GPIO_OLD_GPIOA
+#define GPIOA_TMPL
 #define GPIOB_BASE_ADDR ((uint32_t)0x4000b400U)
 #define GPIO_OLD_GPIOB
+#define GPIOB_TMPL
 #define GPIOC_BASE_ADDR ((uint32_t)0x4000b800U)
 #define GPIO_OLD_GPIOC
+#define GPIOC_TMPL
 #define GPIO_DBG_BASE_ADDR ((uint32_t)0x40004028U)
 #define GPIO_DBG_GPIO_DBG
+#define GPIO_DBG_TMPL
 #endif
 
 
@@ -1029,7 +1087,6 @@ namespace sool {
 		#if defined(GPIO_GPIOA) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOA = new class GPIO(GPIOA_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOA = reinterpret_cast<class GPIO* const>(GPIOA_BASE_ADDR);
 			#endif
@@ -1038,7 +1095,6 @@ namespace sool {
 		#if defined(GPIO_GPIOB) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOB = new class GPIO(GPIOB_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOB = reinterpret_cast<class GPIO* const>(GPIOB_BASE_ADDR);
 			#endif
@@ -1047,7 +1103,6 @@ namespace sool {
 		#if defined(GPIO_GPIOC) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOC = new class GPIO(GPIOC_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOC = reinterpret_cast<class GPIO* const>(GPIOC_BASE_ADDR);
 			#endif
@@ -1056,7 +1111,6 @@ namespace sool {
 		#if defined(GPIOD_BASE_ADDR) && defined(GPIO_GPIOD) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOD = new class GPIO(GPIOD_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOD = reinterpret_cast<class GPIO* const>(GPIOD_BASE_ADDR);
 			#endif
@@ -1065,7 +1119,6 @@ namespace sool {
 		#if defined(GPIOE_BASE_ADDR) && defined(GPIO_GPIOE) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOE = new class GPIO(GPIOE_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOE = reinterpret_cast<class GPIO* const>(GPIOE_BASE_ADDR);
 			#endif
@@ -1074,7 +1127,6 @@ namespace sool {
 		#if defined(GPIOF_BASE_ADDR) && defined(GPIO_GPIOF) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOF = new class GPIO(GPIOF_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOF = reinterpret_cast<class GPIO* const>(GPIOF_BASE_ADDR);
 			#endif
@@ -1083,7 +1135,6 @@ namespace sool {
 		#if defined(GPIOG_BASE_ADDR) && defined(GPIO_GPIOG) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOG = new class GPIO(GPIOG_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOG = reinterpret_cast<class GPIO* const>(GPIOG_BASE_ADDR);
 			#endif
@@ -1092,7 +1143,6 @@ namespace sool {
 		#if defined(GPIOH_BASE_ADDR) && defined(GPIO_GPIOH) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOH = new class GPIO(GPIOH_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOH = reinterpret_cast<class GPIO* const>(GPIOH_BASE_ADDR);
 			#endif
@@ -1101,7 +1151,6 @@ namespace sool {
 		#if defined(GPIOI_BASE_ADDR) && defined(GPIO_GPIOI) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOI = new class GPIO(GPIOI_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOI = reinterpret_cast<class GPIO* const>(GPIOI_BASE_ADDR);
 			#endif
@@ -1110,7 +1159,6 @@ namespace sool {
 		#if defined(GPIOJ_BASE_ADDR) && defined(GPIO_GPIOJ) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOJ = new class GPIO(GPIOJ_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOJ = reinterpret_cast<class GPIO* const>(GPIOJ_BASE_ADDR);
 			#endif
@@ -1119,7 +1167,6 @@ namespace sool {
 		#if defined(GPIOK_BASE_ADDR) && defined(GPIO_GPIOK) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOK = new class GPIO(GPIOK_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOK = reinterpret_cast<class GPIO* const>(GPIOK_BASE_ADDR);
 			#endif
@@ -1128,7 +1175,6 @@ namespace sool {
 		#if defined(GPIOZ_BASE_ADDR) && defined(GPIO_GPIOZ) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO * const GPIOZ = new class GPIO(GPIOZ_BASE_ADDR);
-
 			#else
 				volatile class GPIO * const GPIOZ = reinterpret_cast<class GPIO* const>(GPIOZ_BASE_ADDR);
 			#endif
@@ -1139,7 +1185,6 @@ namespace sool {
 		#if defined(GPIO_OLD_GPIOA) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO_OLD * const GPIOA = new class GPIO_OLD(GPIOA_BASE_ADDR);
-
 			#else
 				volatile class GPIO_OLD * const GPIOA = reinterpret_cast<class GPIO_OLD* const>(GPIOA_BASE_ADDR);
 			#endif
@@ -1148,7 +1193,6 @@ namespace sool {
 		#if defined(GPIO_OLD_GPIOB) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO_OLD * const GPIOB = new class GPIO_OLD(GPIOB_BASE_ADDR);
-
 			#else
 				volatile class GPIO_OLD * const GPIOB = reinterpret_cast<class GPIO_OLD* const>(GPIOB_BASE_ADDR);
 			#endif
@@ -1157,7 +1201,6 @@ namespace sool {
 		#if defined(GPIO_OLD_GPIOC) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO_OLD * const GPIOC = new class GPIO_OLD(GPIOC_BASE_ADDR);
-
 			#else
 				volatile class GPIO_OLD * const GPIOC = reinterpret_cast<class GPIO_OLD* const>(GPIOC_BASE_ADDR);
 			#endif
@@ -1168,7 +1211,6 @@ namespace sool {
 		#if defined(GPIO_DBG_GPIO_DBG) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class GPIO_DBG * const GPIO_DBG = new class GPIO_DBG(GPIO_DBG_BASE_ADDR);
-
 			#else
 				volatile class GPIO_DBG * const GPIO_DBG = reinterpret_cast<class GPIO_DBG* const>(GPIO_DBG_BASE_ADDR);
 			#endif
@@ -1255,65 +1297,379 @@ namespace sool {
 			return static_cast<GPIO::Pin>(1 << pin_num);
 		}
 		
+		inline constexpr volatile Reg32_t& GPIO::get_clock_enable_reg(const uintptr_t addr)
+		{
+			switch (addr)
+			{
+				//Output for GPIOAEN
+		#ifdef GPIOA_BASE_ADDR
+				case GPIOA_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIOBEN
+		#ifdef GPIOB_BASE_ADDR
+				case GPIOB_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIOCEN
+		#ifdef GPIOC_BASE_ADDR
+				case GPIOC_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIODEN
+		#ifdef GPIOD_BASE_ADDR
+				case GPIOD_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIOEEN
+		#ifdef GPIOE_BASE_ADDR
+				case GPIOE_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIOGEN
+		#ifdef GPIOG_BASE_ADDR
+				case GPIOG_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+				#endif
+		#endif
+				//Output for GPIOHEN
+		#ifdef GPIOH_BASE_ADDR
+				case GPIOH_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+				//Output for GPIOIEN
+		#ifdef GPIOI_BASE_ADDR
+				case GPIOI_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+				#endif
+		#endif
+				//Output for GPIOJEN
+		#ifdef GPIOJ_BASE_ADDR
+				case GPIOJ_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+				#endif
+		#endif
+				//Output for GPIOKEN
+		#ifdef GPIOK_BASE_ADDR
+				case GPIOK_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+				#endif
+		#endif
+				//Output for GPIOFEN
+		#ifdef GPIOF_BASE_ADDR
+				case GPIOF_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					      defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+					      defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					      defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					      defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					      defined(STM32F469xx  ) || defined(STM32F479xx  )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      )
+						return RCC->AHBENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					      defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB1ENR;
+					#elif defined(STM32G0      ) || defined(STM32L0      )
+						return RCC->IOPENR;
+				#endif
+		#endif
+			}
+		}
 		inline constexpr uint32_t GPIO::get_clock_enable_bit(const uintptr_t addr)
 		{
-		#if defined(STM32F0     ) || defined(STM32F3     )
-			unsigned int offset = 17u;
-		#else
-			unsigned int offset = 0u;
-		#endif
-			switch (addr) {
+			switch (addr)
+			{
+				//Output for GPIOAEN
 		#ifdef GPIOA_BASE_ADDR
-				case GPIOA_BASE_ADDR: return 1u << (offset + 0);
+				case GPIOA_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || \
+					    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || \
+					    defined(STM32WB      )
+						return 1 << 0;
+					#elif defined(STM32F0      ) || defined(STM32F3      )
+						return 1 << 17;
+				#endif
 		#endif
+				//Output for GPIOBEN
 		#ifdef GPIOB_BASE_ADDR
-				case GPIOB_BASE_ADDR: return 1u << (offset + 1);
+				case GPIOB_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || \
+					    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || \
+					    defined(STM32WB      )
+						return 1 << 1;
+					#elif defined(STM32F0      ) || defined(STM32F3      )
+						return 1 << 18;
+				#endif
 		#endif
+				//Output for GPIOCEN
 		#ifdef GPIOC_BASE_ADDR
-				case GPIOC_BASE_ADDR: return 1u << (offset + 2);
+				case GPIOC_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || \
+					    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || \
+					    defined(STM32WB      )
+						return 1 << 2;
+					#elif defined(STM32F0      ) || defined(STM32F3      )
+						return 1 << 19;
+				#endif
 		#endif
+				//Output for GPIODEN
 		#ifdef GPIOD_BASE_ADDR
-				case GPIOD_BASE_ADDR: return 1u << (offset + 3);
+				case GPIOD_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32WB      ) || defined(STM32F401xC  ) || \
+					    defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+					    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+					    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+					    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L431xx  ) || \
+					    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+					    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+					    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+					    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+					    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+						return 1 << 3;
+					#elif defined(STM32F3      ) || defined(STM32F031x6  ) || defined(STM32F038xx  ) || defined(STM32F042x6  ) || defined(STM32F048xx  ) || defined(STM32F051x8  ) || defined(STM32F058xx  ) || defined(STM32F071xB  ) || defined(STM32F072xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || defined(STM32F098xx  )
+						return 1 << 20;
+				#endif
 		#endif
+				//Output for GPIOEEN
 		#ifdef GPIOE_BASE_ADDR
-				case GPIOE_BASE_ADDR: return 1u << (offset + 4);
+				case GPIOE_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					    defined(STM32WB      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || \
+					    defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || \
+					    defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || \
+					    defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
+					    defined(STM32F479xx  ) || defined(STM32L010x4  ) || defined(STM32L010x6  ) || defined(STM32L010x8  ) || defined(STM32L010xB  ) || \
+					    defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || \
+					    defined(STM32L081xx  ) || defined(STM32L151xB  ) || defined(STM32L151xBA ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || \
+					    defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xBA ) || defined(STM32L152xC  ) || \
+					    defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+					    defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || \
+					    defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
+					    defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || \
+					    defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
+					    defined(STM32L4S9xx  )
+						return 1 << 4;
+					#elif defined(STM32F301x8  ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303xC  ) || defined(STM32F303xE  ) || defined(STM32F318xx  ) || defined(STM32F328xx  ) || defined(STM32F358xx  ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+						return 1 << 21;
+				#endif
 		#endif
-		#ifdef GPIOF_BASE_ADDR
-				case GPIOF_BASE_ADDR: return 1u << (offset + 5);
-		#endif
+				//Output for GPIOGEN
 		#ifdef GPIOG_BASE_ADDR
-				case GPIOG_BASE_ADDR: return 1u << (offset + 6);
+				case GPIOG_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
+					    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+					    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+					    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+					    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
+					    defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || \
+					    defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
+					    defined(STM32L4S9xx  )
+						return 1 << 6;
+					#elif defined(STM32F302xE  ) || defined(STM32F303xE  )
+						return 1 << 23;
+					#elif defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+						return 1 << 7;
+				#endif
 		#endif
+				//Output for GPIOHEN
 		#ifdef GPIOH_BASE_ADDR
-				case GPIOH_BASE_ADDR: return 1u << (offset + 7);
+				case GPIOH_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
+					    defined(STM32L4      ) || defined(STM32WB      )
+						return 1 << 7;
+					#elif defined(STM32F302xE  ) || defined(STM32F303xE  )
+						return 1 << 16;
+					#elif defined(STM32L151xB  ) || defined(STM32L151xBA ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xBA ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+						return 1 << 5;
+				#endif
 		#endif
+				//Output for GPIOIEN
 		#ifdef GPIOI_BASE_ADDR
-				case GPIOI_BASE_ADDR: return 1u << (offset + 8);
+				case GPIOI_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || \
+					    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+					    defined(STM32F439xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L476xx  ) || defined(STM32L486xx  ) || \
+					    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+					    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+						return 1 << 8;
+				#endif
 		#endif
+				//Output for GPIOJEN
 		#ifdef GPIOJ_BASE_ADDR
-				case GPIOJ_BASE_ADDR: return 1u << (offset + 9);
+				case GPIOJ_BASE_ADDR :
+					#if defined(STM32H7      ) || defined(STM32F429xx  ) || defined(STM32F439xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || \
+					    defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
+					    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
+						return 1 << 9;
+				#endif
 		#endif
+				//Output for GPIOKEN
 		#ifdef GPIOK_BASE_ADDR
-				case GPIOK_BASE_ADDR: return 1u << (offset + 10);
+				case GPIOK_BASE_ADDR :
+					#if defined(STM32H7      ) || defined(STM32F429xx  ) || defined(STM32F439xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || \
+					    defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
+					    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
+						return 1 << 10;
+				#endif
 		#endif
-				default:
-					return 0;
+				//Output for GPIOFEN
+		#ifdef GPIOF_BASE_ADDR
+				case GPIOF_BASE_ADDR :
+					#if defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
+					    defined(STM32H7      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+					    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+					    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+					    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+					    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+					    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+					    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+						return 1 << 5;
+					#elif defined(STM32F0      ) || defined(STM32F3      )
+						return 1 << 22;
+					#elif defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || defined(STM32L152xE  )
+						return 1 << 6;
+				#endif
+		#endif
 			}
 		}
 		
+		
+		
 		inline void GPIO::enable_clock() volatile
 		{
-			const unsigned int bit = GPIO::get_clock_enable_bit(get_addr());
-		
-		#if defined(STM32F2     ) || defined(STM32F4     ) || defined(STM32F7     )
-			RCC->AHB1ENR |= bit;
-		#elif defined(STM32L4     ) || defined(STM32L4P    )
-			RCC->AHB2ENR |= bit;
-		#elif defined(STM32F0     ) || defined(STM32F3     ) || defined(STM32L1     )
-			RCC->AHBENR |= bit;
-		#elif defined(RCC_AHB4ENR)
-			RCC->AHB4ENR |= bit;
-		#endif
+			get_clock_enable_reg(get_addr()) |= get_clock_enable_bit(get_addr());
 		}
 		
 		inline void GPIO::disable_clock() volatile
@@ -1848,30 +2204,43 @@ namespace sool {
 		
 	};
 };
-#undef PERIPH_GPIO_OLD
-#undef GPIO_GPIOZ
-#undef PERIPH_GPIO
-#undef GPIO_GPIOI
-#undef GPIO_GPIOK
+#undef GPIOF_TMPL
+#undef GPIO_OLD_GPIOC
+#undef GPIO_GPIOH
 #undef GPIO_OLD_GPIOA
+#undef GPIO_MAP0_VERR
+#undef GPIOH_TMPL
+#undef PERIPH_GPIO
+#undef GPIO_GPIOK
+#undef GPIO_OLD_GPIOB
 #undef GPIO_GPIOJ
-#undef GPIO_MAP1_BRR
+#undef GPIOC_TMPL
+#undef GPIOA_TMPL
 #undef GPIO_DBG_GPIO_DBG
 #undef GPIO_GPIOC
-#undef GPIO_GPIOE
 #undef GPIO_MAP1_ASCR
-#undef GPIO_GPIOA
-#undef GPIO_MAP0_VERR
-#undef GPIO_GPIOG
-#undef GPIO_MAP0_IPIDR
-#undef GPIO_GPIOB
-#undef GPIO_OLD_GPIOB
-#undef GPIO_GPIOH
-#undef GPIO_OLD_GPIOC
-#undef GPIO_GPIOD
-#undef GPIO_GPIOF
+#undef GPIOK_TMPL
+#undef GPIOB_TMPL
 #undef GPIO_MAP0_SIDR
+#undef GPIO_MAP1_BRR
+#undef GPIOI_TMPL
+#undef GPIO_GPIOF
+#undef GPIOE_TMPL
+#undef GPIOG_TMPL
+#undef PERIPH_GPIO_OLD
 #undef PERIPH_GPIO_DBG
+#undef GPIO_GPIOB
+#undef GPIO_GPIOI
+#undef GPIO_GPIOZ
+#undef GPIOZ_TMPL
+#undef GPIO_GPIOD
+#undef GPIO_DBG_TMPL
+#undef GPIOD_TMPL
+#undef GPIO_GPIOG
+#undef GPIOJ_TMPL
+#undef GPIO_GPIOA
+#undef GPIO_GPIOE
+#undef GPIO_MAP0_IPIDR
 
 
 #endif //__SOOL_CORE_GPIO_H
