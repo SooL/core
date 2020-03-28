@@ -79,14 +79,6 @@
 
 #ifdef STM32F3
 
-#ifndef HSE_VALUE  // External oscillator frequency in Hz
-#define HSE_VALUE    ((uint32_t)8000000)
-#endif
-
-#ifndef HSI_VALUE) // Internal oscillator frequency in Hz
-#define HSI_VALUE    ((uint32_t)8000000)
-#endif
-
 // Uncomment the following line if you need to relocate your vector Table in Internal SRAM.
 // #define VECT_TAB_SRAM
 #define VECT_TAB_OFFSET  0x0 // Vector Table base offset field. Must be a multiple of 0x200.

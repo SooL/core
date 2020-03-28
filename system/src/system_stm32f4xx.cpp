@@ -57,14 +57,6 @@
 
 #ifdef STM32F4
 
-#if !defined  (HSE_VALUE)
-#define HSE_VALUE    ((uint32_t)25000000) // Default value of the External oscillator in Hz
-#endif
-
-#if !defined  (HSI_VALUE)
-#define HSI_VALUE    ((uint32_t)16000000) // Value of the Internal oscillator in Hz
-#endif
-
 /************************* Miscellaneous Configuration ************************/
 // Uncomment the following line if you need to use external SRAM or SDRAM as data memory
 #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)\
@@ -134,7 +126,7 @@ static void _SystemInit(void)
 #ifdef VECT_TAB_SRAM
   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; // Vector Table Relocation in Internal SRAM
 #else
-  SCB->VTOR = FLASH_BASE_ADDR | VECT_TAB_OFFSET; // Vector Table Relocation in Internal FLASH
+  SCB->VTOR = 0x08000000 | VECT_TAB_OFFSET; // Vector Table Relocation in Internal FLASH
 #endif
 }
 extern "C" {

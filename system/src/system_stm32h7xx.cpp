@@ -56,18 +56,6 @@
 
 #ifdef STM32H7
 
-#ifndef HSE_VALUE // External oscillator frequency, in Hz
-#define HSE_VALUE    ((uint32_t)25000000)
-#endif
-
-#ifndef CSI_VALUE // Internal oscillator frequency in Hz
-#define CSI_VALUE    ((uint32_t)4000000)
-#endif
-
-#ifndef HSI_VALUE // Internal oscillator frequency in Hz
-#define HSI_VALUE    ((uint32_t)64000000)
-#endif
-
 /************************* Miscellaneous Configuration ************************/
 // Uncomment one of the following lines if you need to use external SRAM or SDRAM
 // mounted on EVAL board as data memory
