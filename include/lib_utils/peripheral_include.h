@@ -48,6 +48,10 @@ namespace sool
 {
 	namespace core
 	{
+//######################################################################################################################
+//#                                                     RegBase_t                                                      #
+//######################################################################################################################
+
 		template<typename T>
 		struct RegBase_t
 		{
@@ -82,38 +86,49 @@ namespace sool
 		typedef RegBase_t<uint32_t> Reg32_t;
 		typedef RegBase_t<uint64_t> Reg64_t;
 
-		template<typename T, typename item_T>
-		struct ArrayRegBase_t : public RegBase_t<T>
-		{
-			using RegBase_t<T>::operator=;
+//######################################################################################################################
+//#                                                   ArrayRegBase_t                                                   #
+//######################################################################################################################
 
-			inline volatile item_T &operator[](int i) volatile;
+		template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
+		struct ArrayRegBase_t
+		{
+		    inline volatile item_T &operator[](int i) volatile;
 		};
-
-		template<typename T, typename item_T>
-		volatile item_T &ArrayRegBase_t<T, item_T>::operator[](int i) volatile
+		template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
+		volatile item_T &ArrayRegBase_t<item_T, array_length, offset, space>::operator[](int i) volatile
 		{
-			assert(i * sizeof(item_T) < sizeof(T));
-			return *(((item_T *) this) + i);
+			assert(i < array_length);
+			return *(item_T *) (((void *) this) + offset + i * (sizeof(item_T)+space));
 		}
 
-		template<typename item_T, unsigned int offset, unsigned int item_size, unsigned int array_size>
-		struct BigArrayReg_t
+//######################################################################################################################
+//#                                                SmallArrayRegBase_t                                                 #
+//######################################################################################################################
+
+		template<typename T, typename item_T>
+		struct SmallArrayRegBase_t : public RegBase_t<T>, public ArrayRegBase_t<item_T, sizeof(T)/sizeof(item_T),0,0>
+		{
+			using RegBase_t<T>::operator=;
+		};
+
+//######################################################################################################################
+//#                                                   BigArrayReg_t                                                    #
+//######################################################################################################################
+
+		template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
+		struct BigArrayReg_t : public ArrayRegBase_t<item_T, array_size, offset, space>
 		{
 		private:
 			uint32_t : (array_size * item_size + offset) * 8;
-		public:
-			inline volatile item_T &operator[](int i) volatile;
 		};
-
-		template<typename item_T, unsigned int offset, unsigned int item_size, unsigned int array_size>
-		volatile item_T &BigArrayReg_t<item_T, offset, item_size, array_size>::operator[](int i) volatile
-		{
-			assert(i < array_size);
-			return *(item_T *) (((void *) this) + i * item_size + offset);
-		}
 	}
 }
+
+//######################################################################################################################
+//#                                                  SETUP OPERATORS                                                   #
+//######################################################################################################################
+
 #define _SOOL_SETUP_REG_OPERATORS(regType, unsignedType, signedType)    \
 /*
 inline const unsignedType operator+(const regType& a, signedType b) { return static_cast<unsignedType>(a)+b; } \
