@@ -17,13 +17,16 @@
  */
 
 
-//Generated 2020-03-22T22:03:49.993630
+//Generated 2020-05-07T21:15:37.920432
 
 #ifndef __SOOL_CORE_RCC_H
 #define __SOOL_CORE_RCC_H
 #include "lib_utils/peripheral_include.h"
 
 
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
+    defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
+    defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32MP1     ) || defined(STM32WB      )
 #if	defined(STM32MP1     )
 #define RCC_TZCR
 #define RCC_OCENSETR
@@ -703,11 +706,6 @@
 #define RCC_CFGR_2_HPREF HPREF
 #define RCC_CFGR_2_PPRE1F PPRE1F
 #define RCC_CFGR_3_PPRE2F PPRE2F
-#define RCC_PLLCFGR_2_PLLQ PLLQ
-#define RCC_PLLCFGR_2_PLLREN PLLREN
-#define RCC_PLLCFGR_2_PLLR PLLR
-#define RCC_PLLCFGR_4_PLLP PLLP
-#define RCC_PLLCFGR_4_PLLQEN PLLQEN
 #define RCC_CIER_0_LSI2RDYIE LSI2RDYIE
 #define RCC_CIER_1_LSI1RDYIE LSI1RDYIE
 #define RCC_CIFR_0_LSI2RDYF LSI2RDYF
@@ -750,7 +748,7 @@
 #define RCC_AHB3SMENR_0_FLASHSMEN FLASHSMEN
 #define RCC_APB1SMENR1_1_CRSMEN CRSMEN
 #define RCC_APB1SMENR1_2
-#define RCC_CCIPR_1_RNGSEL RNGSEL
+#define RCC_CCIPR_2_RNGSEL RNGSEL
 #define RCC_SMPSCR
 #define RCC_HSECR
 #define RCC_EXTCFGR
@@ -787,11 +785,6 @@
 #define RCC_CFGR_2_HPREF
 #define RCC_CFGR_2_PPRE1F
 #define RCC_CFGR_3_PPRE2F
-#define RCC_PLLCFGR_2_PLLQ
-#define RCC_PLLCFGR_2_PLLREN
-#define RCC_PLLCFGR_2_PLLR
-#define RCC_PLLCFGR_4_PLLP
-#define RCC_PLLCFGR_4_PLLQEN
 #define RCC_CIER_0_LSI2RDYIE
 #define RCC_CIER_1_LSI1RDYIE
 #define RCC_CIFR_0_LSI2RDYF
@@ -831,7 +824,7 @@
 #define RCC_AHB3SMENR_0_SRAM2SMEN
 #define RCC_AHB3SMENR_0_FLASHSMEN
 #define RCC_APB1SMENR1_1_CRSMEN
-#define RCC_CCIPR_1_RNGSEL
+#define RCC_CCIPR_2_RNGSEL
 #define RCC_MAP5_SMPSCR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP5_APB3RSTR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP5_HSECR __SOOL_PERIPH_PADDING_4
@@ -863,9 +856,12 @@
 
 #if	defined(STM32G0      ) || defined(STM32L4      ) || defined(STM32WB      )
 #define RCC_BDCR_0_LSCOEN LSCOEN
-#define RCC_CCIPR_0
+#define RCC_PLLCFGR_1_PLLN PLLN
+#define RCC_CCIPR_0_LPTIM2SEL LPTIM2SEL
 #else
 #define RCC_BDCR_0_LSCOEN
+#define RCC_PLLCFGR_1_PLLN
+#define RCC_CCIPR_0_LPTIM2SEL
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      )
@@ -1298,6 +1294,14 @@
 #define RCC_CR_2_PLLSYSON PLLSYSON
 #define RCC_CR_2_PLLSYSRDY PLLSYSRDY
 #define RCC_CRRCR_3
+#define RCC_PLLCFGR_1_PLLSYSR PLLSYSR
+#define RCC_PLLCFGR_1_PLLSYSPDIV PLLSYSPDIV
+#define RCC_PLLCFGR_2_PLLSYSQEN PLLSYSQEN
+#define RCC_PLLCFGR_3_PLLSYSM PLLSYSM
+#define RCC_PLLCFGR_3_PLLSYSN PLLSYSN
+#define RCC_PLLCFGR_3_PLLSYSP PLLSYSP
+#define RCC_PLLCFGR_3_PLLSYSQ PLLSYSQ
+#define RCC_PLLCFGR_3_PLLSYSREN PLLSYSREN
 #define RCC_CIER_1_RC48RDYIE RC48RDYIE
 #define RCC_CIFR_2_RC48RDYF RC48RDYF
 #define RCC_CICR_2_RC48RDYC RC48RDYC
@@ -1355,21 +1359,23 @@
 #define RCC_APB2SMENR_0_SPI4SMEN SPI4SMEN
 #define RCC_APB2SMENR_0_TIM20SMEN TIM20SMEN
 #define RCC_APB2SMENR_1_HRTIMERSMEN HRTIMERSMEN
+#define RCC_CCIPR_0_ADC345SEL ADC345SEL
+#define RCC_CCIPR_1_SAISEL SAISEL
+#define RCC_CCIPR_1_SPISEL_ SPISEL_
+#define RCC_CCIPR_1_FDCANSEL FDCANSEL
 #define RCC_CCIPR2_1_QUADSPISEL QUADSPISEL
-#define RCC_PLLSYSCFGR_0_PLLSYSM PLLSYSM
-#define RCC_PLLSYSCFGR_0_PLLSYSN PLLSYSN
-#define RCC_PLLSYSCFGR_0_PLLSYSP PLLSYSP
-#define RCC_PLLSYSCFGR_0_PLLSYSQEN PLLSYSQEN
-#define RCC_PLLSYSCFGR_0_PLLSYSQ PLLSYSQ
-#define RCC_PLLSYSCFGR_0_PLLSYSREN PLLSYSREN
-#define RCC_PLLSYSCFGR_0_PLLSYSR PLLSYSR
-#define RCC_PLLSYSCFGR_0_PLLSYSPDIV PLLSYSPDIV
-#define RCC_CCIPR1
-#define RCC_MAP4_CCIPR1 CCIPR1_t CCIPR1
 #else
 #define RCC_BDCR_1_LSCCOEN
 #define RCC_CR_2_PLLSYSON
 #define RCC_CR_2_PLLSYSRDY
+#define RCC_PLLCFGR_1_PLLSYSR
+#define RCC_PLLCFGR_1_PLLSYSPDIV
+#define RCC_PLLCFGR_2_PLLSYSQEN
+#define RCC_PLLCFGR_3_PLLSYSM
+#define RCC_PLLCFGR_3_PLLSYSN
+#define RCC_PLLCFGR_3_PLLSYSP
+#define RCC_PLLCFGR_3_PLLSYSQ
+#define RCC_PLLCFGR_3_PLLSYSREN
 #define RCC_CIER_1_RC48RDYIE
 #define RCC_CIFR_2_RC48RDYF
 #define RCC_CICR_2_RC48RDYC
@@ -1426,16 +1432,11 @@
 #define RCC_APB2SMENR_0_SPI4SMEN
 #define RCC_APB2SMENR_0_TIM20SMEN
 #define RCC_APB2SMENR_1_HRTIMERSMEN
+#define RCC_CCIPR_0_ADC345SEL
+#define RCC_CCIPR_1_SAISEL
+#define RCC_CCIPR_1_SPISEL_
+#define RCC_CCIPR_1_FDCANSEL
 #define RCC_CCIPR2_1_QUADSPISEL
-#define RCC_PLLSYSCFGR_0_PLLSYSM
-#define RCC_PLLSYSCFGR_0_PLLSYSN
-#define RCC_PLLSYSCFGR_0_PLLSYSP
-#define RCC_PLLSYSCFGR_0_PLLSYSQEN
-#define RCC_PLLSYSCFGR_0_PLLSYSQ
-#define RCC_PLLSYSCFGR_0_PLLSYSREN
-#define RCC_PLLSYSCFGR_0_PLLSYSR
-#define RCC_PLLSYSCFGR_0_PLLSYSPDIV
-#define RCC_MAP4_CCIPR1 __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
@@ -1489,9 +1490,6 @@
 #define RCC_CR_1_MSIRDY MSIRDY
 #define RCC_CR_1_MSIPLLEN MSIPLLEN
 #define RCC_CR_1_MSIRANGE MSIRANGE
-#define RCC_PLLCFGR_1_PLLSRC PLLSRC
-#define RCC_PLLCFGR_1_PLLN PLLN
-#define RCC_PLLCFGR_1_PLLPEN PLLPEN
 #define RCC_CIER_1_MSIRDYIE MSIRDYIE
 #define RCC_CIER_1_PLLRDYIE PLLRDYIE
 #define RCC_CIFR_1_MSIRDYF MSIRDYF
@@ -1515,20 +1513,12 @@
 #define RCC_AHB2SMENR_0_GPIOHSMEN GPIOHSMEN
 #define RCC_AHB2SMENR_0_ADCFSSMEN ADCFSSMEN
 #define RCC_APB1SMENR2_LPTIM2SMEN LPTIM2SMEN
-#define RCC_CCIPR_0_I2C3SEL I2C3SEL
-#define RCC_CCIPR_0_CLK48SEL CLK48SEL
-#define RCC_CCIPR_0_ADCSEL ADCSEL
-#define RCC_MAP2_PLLCFGR PLLCFGR_t PLLCFGR
-#define RCC_MAP2_CCIPR CCIPR_t CCIPR
 #else
 #define RCC_CR_0_HSIASFS
 #define RCC_CR_1_MSION
 #define RCC_CR_1_MSIRDY
 #define RCC_CR_1_MSIPLLEN
 #define RCC_CR_1_MSIRANGE
-#define RCC_PLLCFGR_1_PLLSRC
-#define RCC_PLLCFGR_1_PLLN
-#define RCC_PLLCFGR_1_PLLPEN
 #define RCC_CIER_1_MSIRDYIE
 #define RCC_CIER_1_PLLRDYIE
 #define RCC_CIFR_1_MSIRDYF
@@ -1552,11 +1542,6 @@
 #define RCC_AHB2SMENR_0_GPIOHSMEN
 #define RCC_AHB2SMENR_0_ADCFSSMEN
 #define RCC_APB1SMENR2_LPTIM2SMEN
-#define RCC_CCIPR_0_I2C3SEL
-#define RCC_CCIPR_0_CLK48SEL
-#define RCC_CCIPR_0_ADCSEL
-#define RCC_MAP2_PLLCFGR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP2_CCIPR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32L1      )
@@ -1597,13 +1582,10 @@
 #define RCC_AHBRSTR_0_FLITFRST FLITFRST
 #define RCC_AHBRSTR_1_GPIOARST GPIOARST
 #define RCC_AHBLPENR
-#define RCC_MAP1_APB1ENR APB1ENR_t APB1ENR
 #define RCC_MAP3_AHBENR AHBENR_t AHBENR
-#define RCC_MAP4_AHBRSTR AHBRSTR_t AHBRSTR
-#define RCC_MAP4_APB2RSTR APB2RSTR_t APB2RSTR
-#define RCC_MAP4_APB1RSTR APB1RSTR_t APB1RSTR
-#define RCC_MAP4_APB2ENR APB2ENR_t APB2ENR
-#define RCC_MAP4_AHBLPENR AHBLPENR_t AHBLPENR
+#define RCC_MAP6_AHBRSTR AHBRSTR_t AHBRSTR
+#define RCC_MAP6_APB2RSTR APB2RSTR_t APB2RSTR
+#define RCC_MAP6_APB1RSTR APB1RSTR_t APB1RSTR
 #define RCC_MAP7
 #else
 #define RCC_CR_0_RTCPRE1
@@ -1638,13 +1620,10 @@
 #define RCC_AHBRSTR_0_GPIODRST
 #define RCC_AHBRSTR_0_FLITFRST
 #define RCC_AHBRSTR_1_GPIOARST
-#define RCC_MAP1_APB1ENR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP3_AHBENR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP4_AHBRSTR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP4_APB2RSTR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP4_APB1RSTR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP4_APB2ENR __SOOL_PERIPH_PADDING_4
-#define RCC_MAP4_AHBLPENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_AHBRSTR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB2RSTR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB1RSTR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
@@ -1675,8 +1654,6 @@
 #define RCC_APB1ENR1_0_OPAMPEN OPAMPEN
 #define RCC_AHB2SMENR_0_RNGSMEN RNGSMEN
 #define RCC_APB1SMENR1_0_OPAMPSMEN OPAMPSMEN
-#define RCC_CCIPR_0_USART3SEL USART3SEL
-#define RCC_CCIPR_0_I2C2SEL I2C2SEL
 #else
 #define RCC_CR_1_MSIRGSEL
 #define RCC_PLLCFGR_0_PLLR
@@ -1693,17 +1670,18 @@
 #define RCC_APB1ENR1_0_OPAMPEN
 #define RCC_AHB2SMENR_0_RNGSMEN
 #define RCC_APB1SMENR1_0_OPAMPSMEN
-#define RCC_CCIPR_0_USART3SEL
-#define RCC_CCIPR_0_I2C2SEL
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32WB      )
 #define RCC_CR_1_HSION HSION
 #define RCC_CR_1_HSIKERON HSIKERON
 #define RCC_CR_1_HSIRDY HSIRDY
+#define RCC_PLLCFGR_1
 #define RCC_CIER_1
 #define RCC_CIFR_1
 #define RCC_CICR_1
+#define RCC_CCIPR_0
+#define RCC_MAP2_PLLCFGR PLLCFGR_t PLLCFGR
 #define RCC_MAP2_CIER CIER_t CIER
 #define RCC_MAP2_CIFR CIFR_t CIFR
 #define RCC_MAP2_CICR CICR_t CICR
@@ -1711,6 +1689,7 @@
 #define RCC_CR_1_HSION
 #define RCC_CR_1_HSIKERON
 #define RCC_CR_1_HSIRDY
+#define RCC_MAP2_PLLCFGR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_CIER __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_CIFR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_CICR __SOOL_PERIPH_PADDING_4
@@ -1776,7 +1755,23 @@
 #define RCC_AHBSMENR_1
 #define RCC_IOPSMEN
 #define RCC_APB1SMENR
-#define RCC_MAP6
+#define RCC_MAP3_IOPENR IOPENR_t IOPENR
+#define RCC_MAP4_CFGR CFGR_t CFGR
+#define RCC_MAP4_CIER CIER_t CIER
+#define RCC_MAP4_CIFR CIFR_t CIFR
+#define RCC_MAP4_CICR CICR_t CICR
+#define RCC_MAP4_IOPRSTR IOPRSTR_t IOPRSTR
+#define RCC_MAP4_AHBRSTR AHBRSTR_t AHBRSTR
+#define RCC_MAP4_APB1RSTR APB1RSTR_t APB1RSTR
+#define RCC_MAP6_AHBENR AHBENR_t AHBENR
+#define RCC_MAP6_APB2ENR APB2ENR_t APB2ENR
+#define RCC_MAP6_APB1ENR APB1ENR_t APB1ENR
+#define RCC_MAP6_IOPSMEN IOPSMEN_t IOPSMEN
+#define RCC_MAP6_AHBSMENR AHBSMENR_t AHBSMENR
+#define RCC_MAP6_APB2SMENR APB2SMENR_t APB2SMENR
+#define RCC_MAP6_APB1SMENR APB1SMENR_t APB1SMENR
+#define RCC_MAP6_CCIPR CCIPR_t CCIPR
+#define RCC_MAP6_CSR CSR_t CSR
 #else
 #define RCC_CR_1_RTCPRE
 #define RCC_CR_2_HSI16ON
@@ -1831,6 +1826,23 @@
 #define RCC_IOPRSTR_IOPHRST
 #define RCC_IOPENR_0_IOPHEN
 #define RCC_IOPENR_1_GPIOHEN
+#define RCC_MAP3_IOPENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_CFGR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_CIER __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_CIFR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_CICR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_IOPRSTR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_AHBRSTR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_APB1RSTR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_AHBENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB2ENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB1ENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_IOPSMEN __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_AHBSMENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB2SMENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_APB1SMENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_CCIPR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP6_CSR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
@@ -1880,8 +1892,6 @@
 #define RCC_PLLSAI2CFGR
 #define RCC_AHB2SMENR_0_OTGFSSMEN OTGFSSMEN
 #define RCC_APB2SMENR_0_SAI2SMEN SAI2SMEN
-#define RCC_CCIPR_0_UART4SEL UART4SEL
-#define RCC_CCIPR_0_UART5SEL UART5SEL
 #define RCC_CCIPR_0_SAI2SEL SAI2SEL
 #define RCC_MAP2_PLLSAI2CFGR PLLSAI2CFGR_t PLLSAI2CFGR
 #else
@@ -1896,8 +1906,6 @@
 #define RCC_APB2ENR_1_SAI2EN
 #define RCC_AHB2SMENR_0_OTGFSSMEN
 #define RCC_APB2SMENR_0_SAI2SMEN
-#define RCC_CCIPR_0_UART4SEL
-#define RCC_CCIPR_0_UART5SEL
 #define RCC_CCIPR_0_SAI2SEL
 #define RCC_MAP2_PLLSAI2CFGR __SOOL_PERIPH_PADDING_4
 #endif
@@ -2051,6 +2059,7 @@
 #define RCC_ICSCR_2_MSIRANGE MSIRANGE
 #define RCC_ICSCR_3_MSICAL MSICAL
 #define RCC_ICSCR_3_MSITRIM MSITRIM
+#define RCC_MAP6
 #else
 #define RCC_CR_3_MSION
 #define RCC_CR_3_MSIRDY
@@ -2071,10 +2080,10 @@
 #define RCC_CSR_2_PWRRSTF PWRRSTF
 #define RCC_ICSCR_3_HSITRIM HSITRIM
 #define RCC_CCIPR_1_I2S2SEL I2S2SEL
-#define RCC_CCIPR_1_TIM1SEL TIM1SEL
+#define RCC_CCIPR_1_RNGSEL RNGSEL
 #define RCC_CCIPR_1_RNGDIV RNGDIV
-#define RCC_CCIPR_2
-#define RCC_PLLSYSCFGR_1
+#define RCC_CCIPR_2_TIM1SEL TIM1SEL
+#define RCC_CCIPR_3
 #define RCC_AHBENR_0_FLASHEN FLASHEN
 #define RCC_AHBENR_0_AESEN AESEN
 #define RCC_AHBENR_2_RNGEN RNGEN
@@ -2115,8 +2124,9 @@
 #define RCC_CSR_2_PWRRSTF
 #define RCC_ICSCR_3_HSITRIM
 #define RCC_CCIPR_1_I2S2SEL
-#define RCC_CCIPR_1_TIM1SEL
+#define RCC_CCIPR_1_RNGSEL
 #define RCC_CCIPR_1_RNGDIV
+#define RCC_CCIPR_2_TIM1SEL
 #define RCC_AHBENR_0_FLASHEN
 #define RCC_AHBENR_0_AESEN
 #define RCC_AHBENR_2_RNGEN
@@ -2214,7 +2224,7 @@
 #define RCC_CICR_2_HSI48RDYC HSI48RDYC
 #define RCC_APB2RSTR_1_TM12RST TM12RST
 #define RCC_APB2ENR_3_MIFIEN MIFIEN
-#define RCC_CCIPR_1_HSI48MSEL HSI48MSEL
+#define RCC_CCIPR_2_HSI48MSEL HSI48MSEL
 #define RCC_APB1RSTR_2_LPUART12RST LPUART12RST
 #define RCC_AHBENR_3_TOUCHEN TOUCHEN
 #define RCC_AHBENR_3_RNGEN RNGEN
@@ -2231,7 +2241,7 @@
 #define RCC_CICR_2_HSI48RDYC
 #define RCC_APB2RSTR_1_TM12RST
 #define RCC_APB2ENR_3_MIFIEN
-#define RCC_CCIPR_1_HSI48MSEL
+#define RCC_CCIPR_2_HSI48MSEL
 #define RCC_APB1RSTR_2_LPUART12RST
 #define RCC_AHBENR_3_TOUCHEN
 #define RCC_AHBENR_3_RNGEN
@@ -2387,7 +2397,6 @@
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32WB      )
 #define RCC_CFGR_2
-#define RCC_PLLCFGR_2
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
@@ -2399,61 +2408,19 @@
 #define RCC_CFGR_2_SW1 SW1
 #define RCC_CFGR_2_SWS0 SWS0
 #define RCC_CFGR_2_SWS1 SWS1
-#define RCC_PLLCFGR_0_PLLN6 PLLN6
-#define RCC_PLLCFGR_0_PLLN7 PLLN7
-#define RCC_PLLCFGR_0_PLLN8 PLLN8
-#define RCC_PLLCFGR_1_PLLM2 PLLM2
-#define RCC_PLLCFGR_1_PLLM3 PLLM3
-#define RCC_PLLCFGR_1_PLLQ1 PLLQ1
-#define RCC_PLLCFGR_1_PLLQ2 PLLQ2
-#define RCC_PLLCFGR_1_PLLQ3 PLLQ3
-#define RCC_PLLCFGR_2_PLLM0 PLLM0
-#define RCC_PLLCFGR_2_PLLM1 PLLM1
-#define RCC_PLLCFGR_2_PLLM4 PLLM4
-#define RCC_PLLCFGR_2_PLLM5 PLLM5
-#define RCC_PLLCFGR_2_PLLN0 PLLN0
-#define RCC_PLLCFGR_2_PLLN1 PLLN1
-#define RCC_PLLCFGR_2_PLLN2 PLLN2
-#define RCC_PLLCFGR_2_PLLN3 PLLN3
-#define RCC_PLLCFGR_2_PLLN4 PLLN4
-#define RCC_PLLCFGR_2_PLLN5 PLLN5
-#define RCC_PLLCFGR_2_PLLP0 PLLP0
-#define RCC_PLLCFGR_2_PLLP1 PLLP1
-#define RCC_PLLCFGR_2_PLLQ0 PLLQ0
 #else
 #define RCC_CFGR_2_SW0
 #define RCC_CFGR_2_SW1
 #define RCC_CFGR_2_SWS0
 #define RCC_CFGR_2_SWS1
-#define RCC_PLLCFGR_0_PLLN6
-#define RCC_PLLCFGR_0_PLLN7
-#define RCC_PLLCFGR_0_PLLN8
-#define RCC_PLLCFGR_1_PLLM2
-#define RCC_PLLCFGR_1_PLLM3
-#define RCC_PLLCFGR_1_PLLQ1
-#define RCC_PLLCFGR_1_PLLQ2
-#define RCC_PLLCFGR_1_PLLQ3
-#define RCC_PLLCFGR_2_PLLM0
-#define RCC_PLLCFGR_2_PLLM1
-#define RCC_PLLCFGR_2_PLLM4
-#define RCC_PLLCFGR_2_PLLM5
-#define RCC_PLLCFGR_2_PLLN0
-#define RCC_PLLCFGR_2_PLLN1
-#define RCC_PLLCFGR_2_PLLN2
-#define RCC_PLLCFGR_2_PLLN3
-#define RCC_PLLCFGR_2_PLLN4
-#define RCC_PLLCFGR_2_PLLN5
-#define RCC_PLLCFGR_2_PLLP0
-#define RCC_PLLCFGR_2_PLLP1
-#define RCC_PLLCFGR_2_PLLQ0
 #endif
 
 #if	defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  )
 #define RCC_CFGR_2_MCO1EN MCO1EN
 #define RCC_CFGR_2_MCO2EN MCO2EN
-#define RCC_PLLCFGR_3_PLLR1 PLLR1
-#define RCC_PLLCFGR_3_PLLR2 PLLR2
-#define RCC_PLLCFGR_3_PLLR3 PLLR3
+#define RCC_PLLCFGR_4_PLLR1 PLLR1
+#define RCC_PLLCFGR_4_PLLR2 PLLR2
+#define RCC_PLLCFGR_4_PLLR3 PLLR3
 #define RCC_AHB1RSTR_0_RNGRST RNGRST
 #define RCC_AHB1ENR_0_RNGEN RNGEN
 #define RCC_APB2ENR_0_EXTITEN EXTITEN
@@ -2466,9 +2433,9 @@
 #else
 #define RCC_CFGR_2_MCO1EN
 #define RCC_CFGR_2_MCO2EN
-#define RCC_PLLCFGR_3_PLLR1
-#define RCC_PLLCFGR_3_PLLR2
-#define RCC_PLLCFGR_3_PLLR3
+#define RCC_PLLCFGR_4_PLLR1
+#define RCC_PLLCFGR_4_PLLR2
+#define RCC_PLLCFGR_4_PLLR3
 #define RCC_AHB1RSTR_0_RNGRST
 #define RCC_AHB1ENR_0_RNGEN
 #define RCC_APB2ENR_0_EXTITEN
@@ -2683,16 +2650,12 @@
 #define RCC_CFGR_5_PLLSRC
 #endif
 
-#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L4      ) || \
-    defined(STM32WB      )
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32G4      ) || \
+    defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32WB      )
 #define RCC_PLLCFGR
 #endif
 
-#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L4      ) || defined(STM32F401xC  ) || \
-    defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
-    defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
-    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
-    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
+#if	defined(STM32H7      ) || defined(STM32L4      )
 #define RCC_PLLCFGR_0
 #endif
 
@@ -2704,10 +2667,6 @@
 #define RCC_PLLCFGR_0_PLLPDIV PLLPDIV
 #else
 #define RCC_PLLCFGR_0_PLLPDIV
-#endif
-
-#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32L4      ) || defined(STM32WB      )
-#define RCC_PLLCFGR_1
 #endif
 
 #if	defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
@@ -2783,14 +2742,19 @@
 #define RCC_CCIPR2_0_OSPISEL
 #endif
 
-#if	defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
-#define RCC_PLLCFGR_1_PLLR PLLR
+#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      )
+#define RCC_PLLCFGR_2
+#define RCC_CSR_1_WDGRSTF WDGRSTF
 #else
-#define RCC_PLLCFGR_1_PLLR
+#define RCC_CSR_1_WDGRSTF
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
+#define RCC_PLLCFGR_2_PLLM PLLM
+#define RCC_PLLCFGR_2_PLLN PLLN
+#define RCC_PLLCFGR_2_PLLP PLLP
 #define RCC_PLLCFGR_2_PLLSRC PLLSRC
+#define RCC_PLLCFGR_2_PLLQ PLLQ
 #define RCC_CSR_1_BORRSTF BORRSTF
 #define RCC_AHB1RSTR_0_GPIOHRST GPIOHRST
 #define RCC_AHB1RSTR_1_GPIOARST GPIOARST
@@ -2840,7 +2804,11 @@
 #define RCC_MAP3_APB2LPENR APB2LPENR_t APB2LPENR
 #define RCC_MAP3_SSCGR SSCGR_t SSCGR
 #else
+#define RCC_PLLCFGR_2_PLLM
+#define RCC_PLLCFGR_2_PLLN
+#define RCC_PLLCFGR_2_PLLP
 #define RCC_PLLCFGR_2_PLLSRC
+#define RCC_PLLCFGR_2_PLLQ
 #define RCC_CSR_1_BORRSTF
 #define RCC_AHB1RSTR_0_GPIOHRST
 #define RCC_AHB1RSTR_1_GPIOARST
@@ -2890,43 +2858,45 @@
 #define RCC_MAP3_SSCGR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if	defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#if	defined(STM32F413xx  ) || defined(STM32F423xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define RCC_PLLCFGR_2_PLLR PLLR
+#else
+#define RCC_PLLCFGR_2_PLLR
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      )
 #define RCC_PLLCFGR_3
 #endif
 
-#if	defined(STM32F469xx  ) || defined(STM32F479xx  )
-#define RCC_PLLCFGR_3_PLLM PLLM
-#define RCC_PLLCFGR_3_PLLN PLLN
-#define RCC_PLLCFGR_3_PLLP PLLP
+#if	defined(STM32G0      ) || defined(STM32WB      )
 #define RCC_PLLCFGR_3_PLLQ PLLQ
-#define RCC_APB2LPENR_0_DSILPEN DSILPEN
-#define RCC_DCKCFGR_0_PLLIS2DIVQ PLLIS2DIVQ
-#define RCC_DCKCFGR_0_MSEL MSEL
-#define RCC_DCKCFGR_0_SDMMCSEL SDMMCSEL
-#define RCC_DCKCFGR_0_DSISEL DSISEL
+#define RCC_PLLCFGR_3_PLLREN PLLREN
+#define RCC_PLLCFGR_3_PLLR PLLR
+#define RCC_PLLCFGR_4_PLLP PLLP
+#define RCC_PLLCFGR_4_PLLQEN PLLQEN
 #else
-#define RCC_PLLCFGR_3_PLLM
-#define RCC_PLLCFGR_3_PLLN
-#define RCC_PLLCFGR_3_PLLP
 #define RCC_PLLCFGR_3_PLLQ
-#define RCC_APB2LPENR_0_DSILPEN
-#define RCC_DCKCFGR_0_PLLIS2DIVQ
-#define RCC_DCKCFGR_0_MSEL
-#define RCC_DCKCFGR_0_SDMMCSEL
-#define RCC_DCKCFGR_0_DSISEL
+#define RCC_PLLCFGR_3_PLLREN
+#define RCC_PLLCFGR_3_PLLR
+#define RCC_PLLCFGR_4_PLLP
+#define RCC_PLLCFGR_4_PLLQEN
 #endif
 
-#if	defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
-    defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || \
-    defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
-    defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  )
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  )
 #define RCC_PLLCFGR_4
-#define RCC_AHB3RSTR_2_QSPIRST QSPIRST
-#define RCC_AHB3ENR_2_QSPIEN QSPIEN
-#define RCC_AHB3SMENR_1
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  )
+#define RCC_PLLCFGR_4_PLLM PLLM
 #else
-#define RCC_AHB3RSTR_2_QSPIRST
-#define RCC_AHB3ENR_2_QSPIEN
+#define RCC_PLLCFGR_4_PLLM
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32L0      ) || \
@@ -2995,13 +2965,10 @@
 #define RCC_CIER_2_PLLSYSRDYIE PLLSYSRDYIE
 #define RCC_CIFR_2_PLLSYSRDYF PLLSYSRDYF
 #define RCC_CICR_2_PLLSYSRDYC PLLSYSRDYC
-#define RCC_PLLSYSCFGR
-#define RCC_MAP4_PLLSYSCFGR PLLSYSCFGR_t PLLSYSCFGR
 #else
 #define RCC_CIER_2_PLLSYSRDYIE
 #define RCC_CIFR_2_PLLSYSRDYF
 #define RCC_CICR_2_PLLSYSRDYC
-#define RCC_MAP4_PLLSYSCFGR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32L4      )
@@ -3094,6 +3061,9 @@
 #define RCC_APB1SMENR2
 #define RCC_APB2SMENR_0_TIM1SMEN TIM1SMEN
 #define RCC_APB2SMENR_0_TIM16SMEN TIM16SMEN
+#define RCC_CCIPR_0_I2C3SEL I2C3SEL
+#define RCC_CCIPR_0_CLK48SEL CLK48SEL
+#define RCC_CCIPR_0_ADCSEL ADCSEL
 #define RCC_MAP0_AHB3ENR AHB3ENR_t AHB3ENR
 #define RCC_MAP2_AHB1RSTR AHB1RSTR_t AHB1RSTR
 #define RCC_MAP2_AHB2RSTR AHB2RSTR_t AHB2RSTR
@@ -3112,6 +3082,7 @@
 #define RCC_MAP2_APB1SMENR1 APB1SMENR1_t APB1SMENR1
 #define RCC_MAP2_APB1SMENR2 APB1SMENR2_t APB1SMENR2
 #define RCC_MAP2_APB2SMENR APB2SMENR_t APB2SMENR
+#define RCC_MAP2_CCIPR CCIPR_t CCIPR
 #define RCC_MAP2_BDCR BDCR_t BDCR
 #define RCC_MAP2_CSR CSR_t CSR
 #else
@@ -3124,6 +3095,9 @@
 #define RCC_AHB2ENR_1_GPIOAEN
 #define RCC_APB2SMENR_0_TIM1SMEN
 #define RCC_APB2SMENR_0_TIM16SMEN
+#define RCC_CCIPR_0_I2C3SEL
+#define RCC_CCIPR_0_CLK48SEL
+#define RCC_CCIPR_0_ADCSEL
 #define RCC_MAP0_AHB3ENR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_AHB1RSTR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_AHB2RSTR __SOOL_PERIPH_PADDING_4
@@ -3142,6 +3116,7 @@
 #define RCC_MAP2_APB1SMENR1 __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_APB1SMENR2 __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_APB2SMENR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP2_CCIPR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_BDCR __SOOL_PERIPH_PADDING_4
 #define RCC_MAP2_CSR __SOOL_PERIPH_PADDING_4
 #endif
@@ -3187,12 +3162,6 @@
 #define RCC_APB1ENR
 #else
 #define RCC_CSR_1_PORRSTF
-#endif
-
-#if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      )
-#define RCC_CSR_1_WDGRSTF WDGRSTF
-#else
-#define RCC_CSR_1_WDGRSTF
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F3      ) || defined(STM32F4      ) || defined(STM32F7      ) || \
@@ -3283,6 +3252,18 @@
 #else
 #define RCC_AHB3RSTR_2_FSMCRST
 #define RCC_AHB3ENR_2_FSMCEN
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+    defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || \
+    defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
+    defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  )
+#define RCC_AHB3RSTR_2_QSPIRST QSPIRST
+#define RCC_AHB3ENR_2_QSPIEN QSPIEN
+#define RCC_AHB3SMENR_1
+#else
+#define RCC_AHB3RSTR_2_QSPIRST
+#define RCC_AHB3ENR_2_QSPIEN
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
@@ -3589,6 +3570,8 @@
 #define RCC_APB1SMENR1_0_UART4SMEN UART4SMEN
 #define RCC_APB1SMENR1_0_UART5SMEN UART5SMEN
 #define RCC_APB2SMENR_0_TIM8SMEN TIM8SMEN
+#define RCC_CCIPR_0_UART4SEL UART4SEL
+#define RCC_CCIPR_0_UART5SEL UART5SEL
 #else
 #define RCC_AHB2RSTR_1_GPIOFRST
 #define RCC_AHB2RSTR_1_GPIOGRST
@@ -3609,6 +3592,8 @@
 #define RCC_APB1SMENR1_0_UART4SMEN
 #define RCC_APB1SMENR1_0_UART5SMEN
 #define RCC_APB2SMENR_0_TIM8SMEN
+#define RCC_CCIPR_0_UART4SEL
+#define RCC_CCIPR_0_UART5SEL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || defined(STM32F405xx  ) || \
@@ -3699,7 +3684,7 @@
 #define RCC_DCKCFGR2_0_LPTIM1SEL LPTIM1SEL
 #define RCC_DCKCFGR2_0_SDMMC1SEL SDMMC1SEL
 #define RCC_DCKCFGR2_0_SDMMC2SEL SDMMC2SEL
-#define RCC_MAP2_DCKCFGR1 DCKCFGR1_t DCKCFGR1
+#define RCC_MAP4_DCKCFGR1 DCKCFGR1_t DCKCFGR1
 #define RCC_MAP4_DCKCFGR2 DCKCFGR2_t DCKCFGR2
 #else
 #define RCC_APB2RSTR_0_SDMMC2RST
@@ -3725,7 +3710,7 @@
 #define RCC_DCKCFGR2_0_LPTIM1SEL
 #define RCC_DCKCFGR2_0_SDMMC1SEL
 #define RCC_DCKCFGR2_0_SDMMC2SEL
-#define RCC_MAP2_DCKCFGR1 __SOOL_PERIPH_PADDING_4
+#define RCC_MAP4_DCKCFGR1 __SOOL_PERIPH_PADDING_4
 #define RCC_MAP4_DCKCFGR2 __SOOL_PERIPH_PADDING_4
 #endif
 
@@ -3884,7 +3869,7 @@
 #define RCC_APB1ENR2_SWPMI1EN SWPMI1EN
 #define RCC_APB1SMENR2_SWPMI1SMEN SWPMI1SMEN
 #define RCC_APB2SMENR_0_SDMMCSMEN SDMMCSMEN
-#define RCC_CCIPR_0_SWPMI1SEL SWPMI1SEL
+#define RCC_CCIPR_1_SWPMI1SEL SWPMI1SEL
 #else
 #define RCC_APB2RSTR_0_SDMMCRST
 #define RCC_APB2ENR_1_SDMMCEN
@@ -3892,7 +3877,7 @@
 #define RCC_APB1ENR2_SWPMI1EN
 #define RCC_APB1SMENR2_SWPMI1SMEN
 #define RCC_APB2SMENR_0_SDMMCSMEN
-#define RCC_CCIPR_0_SWPMI1SEL
+#define RCC_CCIPR_1_SWPMI1SEL
 #endif
 
 #if	defined(STM32F7      )
@@ -4348,6 +4333,20 @@
 #define RCC_APB2LPENR_0_SPI4LPEN
 #endif
 
+#if	defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define RCC_APB2LPENR_0_DSILPEN DSILPEN
+#define RCC_DCKCFGR_0_PLLIS2DIVQ PLLIS2DIVQ
+#define RCC_DCKCFGR_0_MSEL MSEL
+#define RCC_DCKCFGR_0_SDMMCSEL SDMMCSEL
+#define RCC_DCKCFGR_0_DSISEL DSISEL
+#else
+#define RCC_APB2LPENR_0_DSILPEN
+#define RCC_DCKCFGR_0_PLLIS2DIVQ
+#define RCC_DCKCFGR_0_MSEL
+#define RCC_DCKCFGR_0_SDMMCSEL
+#define RCC_DCKCFGR_0_DSISEL
+#endif
+
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32L1      )
 #define RCC_APB2LPENR_1
 #define RCC_APB1LPENR
@@ -4448,6 +4447,8 @@
 #define RCC_APB1SMENR1_0_I2C2SMEN I2C2SMEN
 #define RCC_APB1SMENR1_0_PWRSMEN PWRSMEN
 #define RCC_APB2SMENR_0_TIM15SMEN TIM15SMEN
+#define RCC_CCIPR_0_USART3SEL USART3SEL
+#define RCC_CCIPR_0_I2C2SEL I2C2SEL
 #else
 #define RCC_APB1RSTR1_0_TIM6RST
 #define RCC_APB1RSTR1_0_USART2RST
@@ -4463,6 +4464,8 @@
 #define RCC_APB1SMENR1_0_I2C2SMEN
 #define RCC_APB1SMENR1_0_PWRSMEN
 #define RCC_APB2SMENR_0_TIM15SMEN
+#define RCC_CCIPR_0_USART3SEL
+#define RCC_CCIPR_0_I2C2SEL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
@@ -4702,30 +4705,40 @@
 #if	defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
     defined(STM32L4A6xx  )
 #define RCC_APB2SMENR_1_DFSDMSMEN DFSDMSMEN
-#define RCC_CCIPR_0_DFSDMSEL DFSDMSEL
+#define RCC_CCIPR_1_DFSDMSEL DFSDMSEL
 #else
 #define RCC_APB2SMENR_1_DFSDMSMEN
-#define RCC_CCIPR_0_DFSDMSEL
+#define RCC_CCIPR_1_DFSDMSEL
 #endif
 
-#if	defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      )
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L0      ) || defined(STM32L4      ) || \
+    defined(STM32WB      )
 #define RCC_CCIPR
 #endif
 
-#if	defined(STM32L4      ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
+#if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || \
+    defined(STM32G081xx  )
 #define RCC_CCIPR_0_USART2SEL USART2SEL
 #else
 #define RCC_CCIPR_0_USART2SEL
 #endif
 
-#if	defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32WB      ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
-    defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L0      ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || \
+    defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  )
 #define RCC_CCIPR_1
 #endif
 
+#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32L051xx  ) || defined(STM32L052xx  ) || defined(STM32L053xx  ) || \
+    defined(STM32L062xx  ) || defined(STM32L063xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L082xx  ) || \
+    defined(STM32L083xx  )
+#define RCC_CCIPR_2
+#endif
+
 #if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
-#define RCC_CCIPR_1_TIM15SEL TIM15SEL
 #define RCC_CCIPR_2_CECSEL CECSEL
+#define RCC_CCIPR_2_TIM15SEL TIM15SEL
 #define RCC_APBRSTR1_TIM6RST TIM6RST
 #define RCC_APBRSTR1_TIM7RST TIM7RST
 #define RCC_APBRSTR1_USART3RST USART3RST
@@ -4754,8 +4767,8 @@
 #define RCC_APBSMENR1_DAC1SMEN DAC1SMEN
 #define RCC_APBSMENR2_TIM15SMEN TIM15SMEN
 #else
-#define RCC_CCIPR_1_TIM15SEL
 #define RCC_CCIPR_2_CECSEL
+#define RCC_CCIPR_2_TIM15SEL
 #define RCC_APBRSTR1_TIM6RST
 #define RCC_APBRSTR1_TIM7RST
 #define RCC_APBRSTR1_USART3RST
@@ -5429,9 +5442,9 @@
 #if	defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F413xx  ) || defined(STM32F423xx  ) || \
     defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define RCC_DCKCFGR
-#define RCC_MAP4_DCKCFGR DCKCFGR_t DCKCFGR
+#define RCC_MAP2_DCKCFGR DCKCFGR_t DCKCFGR
 #else
-#define RCC_MAP4_DCKCFGR __SOOL_PERIPH_PADDING_4
+#define RCC_MAP2_DCKCFGR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
@@ -5695,11 +5708,8 @@
 #define RCC_MAP3_APB2RSTR __SOOL_PERIPH_PADDING_4
 #endif
 
-#if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
-    defined(STM32L1      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F413xx  ) || \
-    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || \
-    defined(STM32F479xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || \
-    defined(STM32F733xx  )
+#if	defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32F722xx  ) || \
+    defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
 #define RCC_MAP4
 #endif
 
@@ -8147,10 +8157,7 @@ namespace sool {
 						uint32_t RCC_PLLCFGR_0_PLL3FRACEN : 1; /// PLL3 fractional latch enable
 						uint32_t RCC_PLLCFGR_0_PLL3VCOSEL : 1; /// PLL3 VCO selection
 						uint32_t RCC_PLLCFGR_0_PLL3RGE : 2; /// PLL3 input frequency range
-						uint32_t RCC_PLLCFGR_0_PLLN6 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_0_PLLN7 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_0_PLLN8 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t                  : 1;
+						uint32_t                  : 4;
 						uint32_t RCC_PLLCFGR_0_DIVP1EN : 1; /// PLL1 DIVP divider output enable
 						uint32_t RCC_PLLCFGR_0_DIVQ1EN : 1; /// PLL1 DIVQ divider output enable
 						uint32_t RCC_PLLCFGR_0_DIVR1EN : 1; /// PLL1 DIVR divider output enable
@@ -8167,77 +8174,70 @@ namespace sool {
 					#ifdef RCC_PLLCFGR_1
 					struct
 					{
-						uint32_t RCC_PLLCFGR_1_PLLSRC : 2; /// Main PLL, PLLSAI1 and PLLSAI2 entry clock source
-						uint32_t RCC_PLLCFGR_1_PLLM2 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
-						uint32_t RCC_PLLCFGR_1_PLLM3 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
+						uint32_t PLLSRC           : 2; /// Main PLL, PLLSAI1 and PLLSAI2 entry clock source
+						uint32_t                  : 2;
 						uint32_t RCC_PLLCFGR_1_PLLM : 4; /// Division factor for the main PLL and audio PLL (PLLSAI1 and PLLSAI2) input clock
 						uint32_t RCC_PLLCFGR_1_PLLN : 7; /// Main PLL multiplication factor for VCO
 						uint32_t                  : 1;
-						uint32_t RCC_PLLCFGR_1_PLLPEN : 1; /// Main PLL PLLSAI3CLK output enable
+						uint32_t PLLPEN           : 1; /// Main PLL PLLSAI3CLK output enable
 						uint32_t RCC_PLLCFGR_1_PLLP : 1; /// Main PLL division factor for PLLSAI3CLK (SAI1 and SAI2 clock)
 						uint32_t                  : 2;
 						uint32_t RCC_PLLCFGR_1_PLLQEN : 1; /// Main PLL PLLUSB1CLK output enable
 						uint32_t RCC_PLLCFGR_1_PLLQ : 2; /// Main PLL division factor for PLLUSB1CLK(48 MHz clock)
 						uint32_t                  : 1;
 						uint32_t RCC_PLLCFGR_1_PLLREN : 1; /// Main PLL PLLCLK output enable
-						uint32_t RCC_PLLCFGR_1_PLLQ1 : 1; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
-						uint32_t RCC_PLLCFGR_1_PLLQ2 : 1; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
-						uint32_t RCC_PLLCFGR_1_PLLQ3 : 1; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
-						uint32_t RCC_PLLCFGR_1_PLLR : 3; /// Main PLL division factor for DSI clock
-						uint32_t                  : 1;
+						uint32_t RCC_PLLCFGR_1_PLLSYSR : 2; /// Main PLL division factor for PLLCLK (system clock)
+						uint32_t RCC_PLLCFGR_1_PLLSYSPDIV : 5; /// Main PLL division factor for PLLSAI2CLK
 					};
 					#endif
 					#ifdef RCC_PLLCFGR_2
 					struct
 					{
-						uint32_t RCC_PLLCFGR_2_PLLM0 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
-						uint32_t RCC_PLLCFGR_2_PLLM1 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
+						uint32_t RCC_PLLCFGR_2_PLLM : 6; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
+						uint32_t RCC_PLLCFGR_2_PLLN : 9; /// Main PLL (PLL) multiplication factor for VCO
+						uint32_t                  : 1;
+						uint32_t RCC_PLLCFGR_2_PLLP : 2; /// Main PLL (PLL) division factor for main system clock
 						uint32_t                  : 2;
-						uint32_t RCC_PLLCFGR_2_PLLM4 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
-						uint32_t RCC_PLLCFGR_2_PLLM5 : 1; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
-						uint32_t RCC_PLLCFGR_2_PLLN0 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_2_PLLN1 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_2_PLLN2 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_2_PLLN3 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_2_PLLN4 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t RCC_PLLCFGR_2_PLLN5 : 1; /// Main PLL (PLL) multiplication factor for VCO
-						uint32_t                  : 4;
-						uint32_t RCC_PLLCFGR_2_PLLP0 : 1; /// Main PLL (PLL) division factor for main system clock
-						uint32_t RCC_PLLCFGR_2_PLLP1 : 1; /// Main PLL (PLL) division factor for main system clock
-						uint32_t                  : 4;
+						uint32_t RCC_PLLCFGR_2_PLLSYSQEN : 1; /// Main PLL PLLUSB1CLK output enable
+						uint32_t                  : 1;
 						uint32_t RCC_PLLCFGR_2_PLLSRC : 1; /// Main PLL(PLL) and audio PLL (PLLI2S) entry clock source
 						uint32_t                  : 1;
-						uint32_t RCC_PLLCFGR_2_PLLQ0 : 1; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
-						uint32_t RCC_PLLCFGR_2_PLLQ : 3; /// Main PLLSYS division factor Q for PLLSYSUSBCLK
-						uint32_t RCC_PLLCFGR_2_PLLREN : 1; /// Main PLLSYSR PLLCLK output enable
-						uint32_t RCC_PLLCFGR_2_PLLR : 3; /// Main PLLSYS division factor R for SYSCLK (system clock)
+						uint32_t RCC_PLLCFGR_2_PLLQ : 4; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
+						uint32_t RCC_PLLCFGR_2_PLLR : 3; /// Main PLL division factor for DSI clock
+						uint32_t                  : 1;
 					};
 					#endif
 					#ifdef RCC_PLLCFGR_3
 					struct
 					{
-						uint32_t RCC_PLLCFGR_3_PLLM : 6; /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
-						uint32_t RCC_PLLCFGR_3_PLLN : 9; /// Main PLL (PLL) multiplication factor for VCO
+						uint32_t                  : 4;
+						uint32_t RCC_PLLCFGR_3_PLLSYSM : 4; /// Division factor for the main PLL and audio PLL (PLLSAI1 and PLLSAI2) input clock
+						uint32_t RCC_PLLCFGR_3_PLLSYSN : 7; /// Main PLL multiplication factor for VCO
+						uint32_t                  : 2;
+						uint32_t RCC_PLLCFGR_3_PLLSYSP : 1; /// Main PLL division factor for PLLSAI3CLK (SAI1 and SAI2 clock)
+						uint32_t                  : 3;
+						uint32_t RCC_PLLCFGR_3_PLLSYSQ : 2; /// Main PLL division factor for PLLUSB1CLK(48 MHz clock)
 						uint32_t                  : 1;
-						uint32_t RCC_PLLCFGR_3_PLLP : 2; /// Main PLL (PLL) division factor for main system clock
-						uint32_t                  : 6;
-						uint32_t RCC_PLLCFGR_3_PLLQ : 4; /// Main PLL (PLL) division factor for USB OTG FS, SDIO and random number generator clocks
-						uint32_t RCC_PLLCFGR_3_PLLR1 : 1;
-						uint32_t RCC_PLLCFGR_3_PLLR2 : 1;
-						uint32_t RCC_PLLCFGR_3_PLLR3 : 1;
-						uint32_t                  : 1;
+						uint32_t RCC_PLLCFGR_3_PLLSYSREN : 1; /// Main PLL PLLCLK output enable
+						uint32_t RCC_PLLCFGR_3_PLLQ : 3; /// Main PLLSYS division factor Q for PLLSYSUSBCLK
+						uint32_t RCC_PLLCFGR_3_PLLREN : 1; /// Main PLLSYSR PLLCLK output enable
+						uint32_t RCC_PLLCFGR_3_PLLR : 3; /// Main PLLSYS division factor R for SYSCLK (system clock)
 					};
 					#endif
 					#ifdef RCC_PLLCFGR_4
 					struct
 					{
 						uint32_t                  : 4;
-						uint32_t PLLM             : 3; /// Division factor for the main PLL and audio PLL (PLLSAI1 and PLLSAI2) input clock
+						uint32_t RCC_PLLCFGR_4_PLLM : 3; /// Division factor for the main PLL and audio PLL (PLLSAI1 and PLLSAI2) input clock
 						uint32_t                  : 10;
 						uint32_t RCC_PLLCFGR_4_PLLP : 5; /// Main PLL division factor P for PPLSYSSAICLK
 						uint32_t                  : 2;
 						uint32_t RCC_PLLCFGR_4_PLLQEN : 1; /// Main PLLSYSQ output enable
-						uint32_t                  : 7;
+						uint32_t                  : 3;
+						uint32_t RCC_PLLCFGR_4_PLLR1 : 1;
+						uint32_t RCC_PLLCFGR_4_PLLR2 : 1;
+						uint32_t RCC_PLLCFGR_4_PLLR3 : 1;
+						uint32_t                  : 1;
 					};
 					#endif
 				};
@@ -10698,7 +10698,7 @@ namespace sool {
 			};
 			#endif
 			#ifdef RCC_CCIPR
-			struct CCIPR_t: public Reg32_t /// Peripherals independent clock configuration register
+			struct CCIPR_t: public Reg32_t /// CCIPR
 			{
 				using Reg32_t::operator=;
 				union
@@ -10716,13 +10716,12 @@ namespace sool {
 						uint32_t RCC_CCIPR_0_I2C2SEL : 2; /// I2C2 clock source selection
 						uint32_t RCC_CCIPR_0_I2C3SEL : 2; /// I2C3 clock source selection
 						uint32_t LPTIM1SEL        : 2; /// Low power timer 1 clock source selection
-						uint32_t LPTIM2SEL        : 2; /// Low power timer 2 clock source selection
+						uint32_t RCC_CCIPR_0_LPTIM2SEL : 2; /// Low power timer 2 clock source selection
 						uint32_t RCC_CCIPR_0_SAI1SEL : 2; /// SAI1 clock source selection
 						uint32_t RCC_CCIPR_0_SAI2SEL : 2; /// SAI2 clock source selection
 						uint32_t RCC_CCIPR_0_CLK48SEL : 2; /// 48 MHz clock source selection
 						uint32_t RCC_CCIPR_0_ADCSEL : 2; /// ADCs clock source selection
-						uint32_t RCC_CCIPR_0_SWPMI1SEL : 1; /// SWPMI1 clock source selection
-						uint32_t RCC_CCIPR_0_DFSDMSEL : 1; /// DFSDM clock source selection
+						uint32_t RCC_CCIPR_0_ADC345SEL : 2; /// ADC3/4/5 clock source selection
 					};
 					#endif
 					#ifdef RCC_CCIPR_1
@@ -10744,15 +10743,13 @@ namespace sool {
 						uint32_t RCC_CCIPR_1_I2C3SEL1 : 1; /// I2C3 clock source selection bits
 						uint32_t RCC_CCIPR_1_LPTIM1SEL0 : 1;
 						uint32_t RCC_CCIPR_1_LPTIM1SEL1 : 1; /// Low Power Timer clock source selection bits
-						uint32_t                  : 2;
-						uint32_t RCC_CCIPR_1_TIM1SEL : 1; /// TIM1 clock source selection
-						uint32_t                  : 1;
-						uint32_t RCC_CCIPR_1_TIM15SEL : 1; /// TIM15 clock source selection
-						uint32_t                  : 1;
-						uint32_t RCC_CCIPR_1_HSI48MSEL : 1; /// 48 MHz HSI48 clock source selection bit
-						uint32_t                  : 1;
-						uint32_t RCC_CCIPR_1_RNGDIV : 2; /// Division factor of RNG clock divider
+						uint32_t RCC_CCIPR_1_SAISEL : 2; /// Low power timer 2 clock source selection
+						uint32_t RCC_CCIPR_1_SPISEL_ : 2; /// SAI1 clock source selection
+						uint32_t RCC_CCIPR_1_FDCANSEL : 2; /// SAI2 clock source selection
 						uint32_t RCC_CCIPR_1_RNGSEL : 2; /// RNG clock source selection
+						uint32_t RCC_CCIPR_1_RNGDIV : 2; /// Division factor of RNG clock divider
+						uint32_t RCC_CCIPR_1_SWPMI1SEL : 1; /// SWPMI1 clock source selection
+						uint32_t RCC_CCIPR_1_DFSDMSEL : 1; /// DFSDM clock source selection
 					};
 					#endif
 					#ifdef RCC_CCIPR_2
@@ -10760,9 +10757,20 @@ namespace sool {
 					{
 						uint32_t                  : 6;
 						uint32_t RCC_CCIPR_2_CECSEL : 1; /// HDMI CEC clock source selection
-						uint32_t                  : 19;
-						uint32_t RNGSEL           : 2; /// RNG clock source selection
-						uint32_t                  : 2;
+						uint32_t                  : 15;
+						uint32_t RCC_CCIPR_2_TIM1SEL : 1; /// TIM1 clock source selection
+						uint32_t                  : 1;
+						uint32_t RCC_CCIPR_2_TIM15SEL : 1; /// TIM15 clock source selection
+						uint32_t                  : 1;
+						uint32_t RCC_CCIPR_2_HSI48MSEL : 1; /// 48 MHz HSI48 clock source selection bit
+						uint32_t                  : 3;
+						uint32_t RCC_CCIPR_2_RNGSEL : 2; /// RNG clock source selection
+					};
+					#endif
+					#ifdef RCC_CCIPR_3
+					struct
+					{
+						uint32_t                  : 30;
 						uint32_t ADCSEL           : 2; /// ADCs clock source selection
 					};
 					#endif
@@ -11271,72 +11279,6 @@ namespace sool {
 				uint32_t CK48MSEL         : 1; /// 48MHz clock source selection
 				uint32_t SDMMCSEL         : 1; /// SDMMC clock source selection
 				uint32_t                  : 3;
-				
-			};
-			#endif
-			#ifdef RCC_PLLSYSCFGR
-			struct PLLSYSCFGR_t: public Reg32_t /// PLL configuration register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					struct
-					{
-						uint32_t PLLSRC           : 2; /// Main PLL, PLLSAI1 and PLLSAI2 entry clock source
-						uint32_t                  : 2;
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSM : 4; /// Division factor for the main PLL and audio PLL (PLLSAI1 and PLLSAI2) input clock
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSN : 7; /// Main PLL multiplication factor for VCO
-						uint32_t                  : 1;
-						uint32_t PLLPEN           : 1; /// Main PLL PLLSAI3CLK output enable
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSP : 1; /// Main PLL division factor for PLLSAI3CLK (SAI1 and SAI2 clock)
-						uint32_t                  : 2;
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSQEN : 1; /// Main PLL PLLUSB1CLK output enable
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSQ : 2; /// Main PLL division factor for PLLUSB1CLK(48 MHz clock)
-						uint32_t                  : 1;
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSREN : 1; /// Main PLL PLLCLK output enable
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSR : 2; /// Main PLL division factor for PLLCLK (system clock)
-						uint32_t RCC_PLLSYSCFGR_0_PLLSYSPDIV : 5; /// Main PLL division factor for PLLSAI2CLK
-					};
-					#ifdef RCC_PLLSYSCFGR_1
-					struct
-					{
-						uint32_t                  : 4;
-						uint32_t PLLM             : 3; /// Division factor M of the PLL input clock divider
-						uint32_t                  : 1;
-						uint32_t PLLN             : 7; /// PLL frequency multiplication factor N
-						uint32_t                  : 2;
-						uint32_t PLLP             : 5; /// PLL VCO division factor P for PLLPCLK clock output
-						uint32_t                  : 2;
-						uint32_t PLLQEN           : 1; /// PLLQCLK clock output enable
-						uint32_t PLLQ             : 3; /// PLL VCO division factor Q for PLLQCLK clock output
-						uint32_t PLLREN           : 1; /// PLLRCLK clock output enable
-						uint32_t PLLR             : 3; /// PLL VCO division factor R for PLLRCLK clock output
-					};
-					#endif
-				};
-				
-			};
-			#endif
-			#ifdef RCC_CCIPR1
-			struct CCIPR1_t: public Reg32_t /// CCIPR
-			{
-				using Reg32_t::operator=;
-				uint32_t USART1SEL        : 2; /// USART1 clock source selection
-				uint32_t USART2SEL        : 2; /// USART2 clock source selection
-				uint32_t USART3SEL        : 2; /// USART3 clock source selection
-				uint32_t UART4SEL         : 2; /// UART4 clock source selection
-				uint32_t UART5SEL         : 2; /// UART5 clock source selection
-				uint32_t LPUART1SEL       : 2; /// LPUART1 clock source selection
-				uint32_t I2C1SEL          : 2; /// I2C1 clock source selection
-				uint32_t I2C2SEL          : 2; /// I2C2 clock source selection
-				uint32_t I2C3SEL          : 2; /// I2C3 clock source selection
-				uint32_t LPTIM1SEL        : 2; /// Low power timer 1 clock source selection
-				uint32_t SAISEL           : 2; /// Low power timer 2 clock source selection
-				uint32_t SPISEL_          : 2; /// SAI1 clock source selection
-				uint32_t FDCANSEL         : 2; /// SAI2 clock source selection
-				uint32_t CLK48SEL         : 2; /// 48 MHz clock source selection
-				uint32_t ADCSEL           : 2; /// ADCs clock source selection
-				uint32_t ADC345SEL        : 2; /// ADC3/4/5 clock source selection
 				
 			};
 			#endif
@@ -12500,7 +12442,7 @@ namespace sool {
 					RCC_MAP1_D1CFGR; /// RCC Domain 1 Clock Configuration Register
 					RCC_MAP1_D2CFGR; /// RCC Domain 2 Clock Configuration Register
 					RCC_MAP1_D3CFGR; /// RCC Domain 3 Clock Configuration Register
-					RCC_MAP1_APB1ENR; /// APB1 peripheral clock enable register
+					__SOOL_PERIPH_PADDING_4;
 					RCC_MAP1_PLLCKSELR; /// RCC PLLs Clock Source Selection Register
 					RCC_MAP1_PLLCFGR; /// RCC PLLs Configuration Register
 					RCC_MAP1_PLL1DIVR; /// RCC PLL1 Dividers Configuration Register
@@ -12618,8 +12560,8 @@ namespace sool {
 					RCC_MAP2_APB1SMENR2; /// APB1 peripheral clocks enable in Sleep and Stop modes register 2
 					RCC_MAP2_APB2SMENR; /// CPU2 APB2SMENR
 					__SOOL_PERIPH_PADDING_4;
-					RCC_MAP2_CCIPR; /// Peripherals independent clock configuration register
-					RCC_MAP2_DCKCFGR1; /// dedicated clocks configuration register
+					RCC_MAP2_CCIPR; /// CCIPR
+					RCC_MAP2_DCKCFGR; /// Dedicated Clock Configuration Register
 					RCC_MAP2_BDCR; /// This register is used to control the LSE function. Wait states are inserted in case of successive write accesses to this register. The number of wait states may be up to 7 cycles of AHB4 clock.After a system reset, the register RCC_BDCR is write-protected. In order to modify this register, the DBP bit in the PWR control register 1 (PWR_CR1) has to be set to . Bits of RCC_BDCR register are only reset after a backup domain reset: nreset_vsw (see Section1.3.5: Backup domain reset). Any other internal or external reset will not have any effect on these bits.This register is located into the VSW domain. If TZEN = , this register can only be modified in secure mode.
 					RCC_MAP2_CSR; /// RCC Clock Control and Status Register
 					RCC_MAP2_CRRCR; /// Clock recovery RC register
@@ -12659,7 +12601,8 @@ namespace sool {
 					RCC_MAP3_AHBENR; /// AHB peripheral clock enable register
 					RCC_MAP3_APB1RSTR; /// APB1 peripheral reset register
 					RCC_MAP3_APB2RSTR; /// APB2 peripheral reset register
-					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_4;
+					RCC_MAP3_IOPENR; /// GPIO clock enable register
 					RCC_MAP3_AHB1ENR; /// AHB1 peripheral clock register
 					RCC_MAP3_AHB2ENR; /// AHB2 peripheral clock enable register
 					RCC_MAP3_AHB3ENR; /// AHB3 peripheral clock enable register
@@ -12695,14 +12638,14 @@ namespace sool {
 				{
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
-					RCC_MAP4_PLLSYSCFGR; /// PLL configuration register
+					RCC_MAP4_CFGR; /// Clock configuration register
+					RCC_MAP4_CIER; /// Clock interrupt enable register
+					RCC_MAP4_CIFR; /// Clock interrupt flag register
+					RCC_MAP4_CICR; /// Clock interrupt clear register
+					RCC_MAP4_IOPRSTR; /// GPIO reset register
 					RCC_MAP4_AHBRSTR; /// AHB peripheral reset register
-					RCC_MAP4_APB2RSTR; /// APB2 peripheral reset register
-					RCC_MAP4_APB1RSTR; /// APB1 peripheral reset register
-					__SOOL_PERIPH_PADDING_4;
-					RCC_MAP4_APB2ENR; /// APB2 peripheral clock enable register
 					RCC_MAP4_CSR; /// Control/status register (RCC_CSR)
-					RCC_MAP4_AHBLPENR; /// AHB peripheral clock enable in low power mode register
+					RCC_MAP4_APB1RSTR; /// APB1 peripheral reset register
 					RCC_MAP4_APBRSTR1; /// APB peripheral reset register 1
 					RCC_MAP4_APBRSTR2; /// APB peripheral reset register 2
 					RCC_MAP4_IOPENR; /// GPIO clock enable register
@@ -12712,10 +12655,10 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_16;
 					RCC_MAP4_BDCR; /// RTC domain control register
+					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_32;
-					RCC_MAP4_CCIPR1; /// CCIPR
-					RCC_MAP4_DCKCFGR; /// Dedicated Clock Configuration Register
+					RCC_MAP4_DCKCFGR1; /// dedicated clocks configuration register
 					RCC_MAP4_DCKCFGR2; /// dedicated clocks configuration register
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
@@ -12797,26 +12740,21 @@ namespace sool {
 				#ifdef RCC_MAP6
 				struct
 				{
+					__SOOL_PERIPH_PADDING_16;
+					RCC_MAP6_AHBRSTR; /// AHB peripheral reset register
+					RCC_MAP6_APB2RSTR; /// APB2 peripheral reset register
+					RCC_MAP6_APB1RSTR; /// APB1 peripheral reset register
 					__SOOL_PERIPH_PADDING_4;
-					__SOOL_PERIPH_PADDING_8;
-					CFGR_t CFGR; /// Clock configuration register
-					CIER_t CIER; /// Clock interrupt enable register
-					CIFR_t CIFR; /// Clock interrupt flag register
-					CICR_t CICR; /// Clock interrupt clear register
-					IOPRSTR_t IOPRSTR; /// GPIO reset register
-					AHBRSTR_t AHBRSTR; /// AHB peripheral reset register
-					__SOOL_PERIPH_PADDING_4;
-					APB1RSTR_t APB1RSTR; /// APB1 peripheral reset register
-					IOPENR_t IOPENR; /// GPIO clock enable register
-					AHBENR_t AHBENR; /// AHB peripheral clock enable register
-					APB2ENR_t APB2ENR; /// APB2 peripheral clock enable register
-					APB1ENR_t APB1ENR; /// APB1 peripheral clock enable register
-					IOPSMEN_t IOPSMEN; /// GPIO clock enable in sleep mode register
-					AHBSMENR_t AHBSMENR; /// AHB peripheral clock enable in sleep mode register
-					APB2SMENR_t APB2SMENR; /// APB2 peripheral clock enable in sleep mode register
-					APB1SMENR_t APB1SMENR; /// APB1 peripheral clock enable in sleep mode register
-					CCIPR_t CCIPR; /// Clock configuration register
-					CSR_t CSR; /// Control and status register
+					__SOOL_PERIPH_PADDING_16;
+					RCC_MAP6_AHBENR; /// AHB peripheral clock enable register
+					RCC_MAP6_APB2ENR; /// APB2 peripheral clock enable register
+					RCC_MAP6_APB1ENR; /// APB1 peripheral clock enable register
+					RCC_MAP6_IOPSMEN; /// GPIO clock enable in sleep mode register
+					RCC_MAP6_AHBSMENR; /// AHB peripheral clock enable in sleep mode register
+					RCC_MAP6_APB2SMENR; /// APB2 peripheral clock enable in sleep mode register
+					RCC_MAP6_APB1SMENR; /// APB1 peripheral clock enable in sleep mode register
+					RCC_MAP6_CCIPR; /// Clock configuration register
+					RCC_MAP6_CSR; /// Control and status register
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_32;
@@ -12830,9 +12768,10 @@ namespace sool {
 				#ifdef RCC_MAP7
 				struct
 				{
-					__SOOL_PERIPH_PADDING_4;
-					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_32;
+					APB2ENR_t APB2ENR; /// APB2 peripheral clock enable register
+					APB1ENR_t APB1ENR; /// APB1 peripheral clock enable register
+					AHBLPENR_t AHBLPENR; /// AHB peripheral clock enable in low power mode register
 					APB2LPENR_t APB2LPENR; /// APB2 peripheral clock enable in low power mode register
 					APB1LPENR_t APB1LPENR; /// APB1 peripheral clock enable in low power mode register
 					CSR_t CSR; /// Control/status register
@@ -12850,9 +12789,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				RCC(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				RCC() = delete;
 			#endif
@@ -12897,1881 +12836,1878 @@ namespace sool {
 		
 	};
 };
-#undef RCC_APB1RSTR_1_WWDRST
-#undef RCC_APB1RSTR_2_COMPRST
-#undef RCC_APB1ENR_0_I2C4EN
-#undef RCC_PLLCFGR_2_PLLN2
-#undef RCC_AHBENR_0_IOPCEN
-#undef RCC_APB1LPENR_1_CAN3LPEN
-#undef RCC_APB1ENR1_0_LCDEN
-#undef RCC_MAP0_MC_APB1LPENSETR
-#undef RCC_MAP2_AHB1ENR
-#undef RCC_MAP0_MPCKDIVR
-#undef RCC_CICR_0_PLL3RDYC
-#undef RCC_MAP0_RNG1CKSELR
-#undef RCC_MAP0_MP_AHB6LPENCLRR
-#undef RCC_MAP5_CFGR2
-#undef RCC_MAP5_DCKCFGR2
-#undef RCC_MAP1_CRRCR
-#undef RCC_AHBENR_0_AESEN
-#undef RCC_APB1ENR_3_CRSEN
-#undef RCC_MAP0_MC_AHB3ENSETR
-#undef RCC_CFGR_0
-#undef RCC_MAP0_AHB3ENR
-#undef RCC_MAP0_HSICFGR
-#undef RCC_MAP4_CCIPR1
-#undef RCC_MAP0_PLL2FRACR
-#undef RCC_MAP1_CSICFGR
-#undef RCC_MAP1_C1_APB1HENR
-#undef RCC_APB2RSTR_1_USART1RST
-#undef RCC_MAP5_APBENR1
-#undef RCC_APB2RSTR_0_SAI2RST
-#undef RCC_MAP0_MP_APB5LPENCLRR
-#undef RCC_AHB3RSTR_2_FSMCRST
-#undef RCC_AHB3RSTR_0_CPURST
-#undef RCC_APB2SMENR_0_TIM15SMEN
-#undef RCC_C1_AHB1ENR_0_USB2OTGHSEN
-#undef RCC_PLLCFGR_2_PLLP1
-#undef RCC_MAP0_MP_AHB3LPENSETR
-#undef RCC_CSR_0_OBLRSTF
-#undef RCC_CIFR_1_CSSF
-#undef RCC_APB2ENR_1_SYSCFGEN
-#undef RCC_AHB3LPENR_1_QSPILPEN
-#undef RCC_APBSMENR2_TIM15SMEN
-#undef RCC_APB2RSTR_0_USART1RST
-#undef RCC_APB2RSTR_3
-#undef RCC_DCKCFGR_0_PLLSAIDIVR
-#undef RCC_MAP3_AHB1LPENR
-#undef RCC_AHBENR_3_TOUCHEN
-#undef RCC_AHB1RSTR_2
-#undef RCC_APB1SMENR1_0_TIM6SMEN
-#undef RCC_CIFR_0_LSECSSF
-#undef RCC_AHB1ENR_0_RNGEN
-#undef RCC_MAP0_STGENCKSELR
-#undef RCC_MAP5_HSECR
-#undef RCC_MAP1_PLL3DIVR
-#undef RCC_MAP0_MC_APB3ENSETR
-#undef RCC_DCKCFGR2_0_UART3SEL
-#undef RCC_CFGR_1_I2SSRC
-#undef RCC_AHB2ENR_1_RNGEN
-#undef RCC_CIER_1_PLLRDYIE
-#undef RCC_CR_0_RC48RDY
-#undef RCC_MAP5_APB1ENR
-#undef RCC_CSR_2
-#undef RCC_AHB1ENR_1_GPIOBEN
-#undef RCC_MAP1_CSR
-#undef RCC_AHB1ENR_2_FLITFEN
-#undef RCC_AHB2ENR_0_HASHEN
-#undef RCC_AHB2ENR_1_GPIOEEN
-#undef RCC_AHB1LPENR_0_ETH1RXLPEN
-#undef RCC_AHB3ENR_1_QSPIEN
-#undef RCC_APB2RSTR_0_SDMMC2RST
-#undef RCC_MAP3_AHB3RSTR
-#undef RCC_AHB2RSTR_1_DAC1RST_
-#undef RCC_APB1SMENR1_1_I2C3SMEN_3
-#undef RCC_AHB1RSTR_2_FLITFRST_
-#undef RCC_CICR_1_PLLRDYC
-#undef RCC_MAP4_APB2ENR
-#undef RCC_AHB3SMENR_0_SRAM2SMEN
-#undef RCC_MAP5_C2APB1SMENR2
-#undef RCC_CFGR_2_MCO1EN
-#undef RCC_MAP0_AHB3RSTSETR
-#undef RCC_MAP0_PLL3CSGR
-#undef RCC_APB1ENR_2_I2C3EN
-#undef RCC_DCKCFGR_1_SAI2SRC
-#undef RCC_CIER_2_HSI16RDYIE
-#undef RCC_CFGR_0_MCO2PRE
-#undef RCC_AHB3RSTR_0_MDMARST
-#undef RCC_MAP2_C1_AHB3LPENR
-#undef RCC_MAP0_MC_AHB4LPENSETR
-#undef RCC_PLLCFGR_0_PLLN7
-#undef RCC_PLLI2SCFGR_2
-#undef RCC_AHB1RSTR_0_OTGHSRST
-#undef RCC_MAP2_APB1ENR1
-#undef RCC_PLLCFGR_1_PLLM
-#undef RCC_CFGR_2_SWS0
-#undef RCC_CCIPR_0_I2C3SEL
-#undef RCC_AHBENR_0_TSCEN
-#undef RCC_CR_0_HSEPRE
-#undef RCC_MAP0_MP_APB5ENSETR
-#undef RCC_MAP0_APB3RSTSETR
-#undef RCC_APB1RSTR_0_CECRST
-#undef RCC_MAP0_MP_APB2ENSETR
-#undef RCC_MAP0_MP_AHB5LPENSETR
-#undef RCC_CIER_1_PLLSAI1RDYIE
-#undef RCC_APB1ENR_0_CAN1EN
-#undef RCC_AHB1LPENR_0_OTGHSULPILPEN
-#undef RCC_APB1LPENR_0_LPTIM1LPEN
-#undef RCC_CSR_2_FIREWALLRSTF
-#undef RCC_AHBENR_3_RNGEN
-#undef RCC_APB2ENR_1_ADCEN
-#undef RCC_APB1SMENR1_1_USART2SMEN
-#undef RCC_APB2ENR_0_ADC2EN
-#undef RCC_APB2RSTR_3_SDAD1RST
-#undef RCC_APB2LPENR_0_SAI2LPEN
-#undef RCC_APB2ENR_0_TIM17EN
-#undef RCC_MAP0_SAI4CKSELR
-#undef RCC_MAP0_AHB4RSTCLRR
-#undef RCC_APB2RSTR_0_USBPHYCRST
-#undef RCC_APB1ENR_1_RTCAPB
-#undef RCC_APB2LPENR_0_SDMMC1LPEN
-#undef RCC_MAP1_D3AMR
-#undef RCC_AHB2RSTR_0_DAC4RST
-#undef RCC_BDCR_1_RTCSRC
-#undef RCC_MAP1_AHB1ENR
-#undef RCC_APB2LPENR_0_ADC3LPEN
-#undef RCC_APB1SMENR1_0_CRSSMEN
-#undef RCC_CR_0_HSIKERON
-#undef RCC_APB2RSTR_2_DFSDMRST
-#undef RCC_CFGR_1_MCO21
-#undef RCC_APB2ENR_0_ADC1EN
-#undef RCC_APB1RSTR_2_CECRST
-#undef RCC_CFGR_2_MCO1PRE
-#undef RCC_AHB3SMENR_0_RNGSMEN
-#undef RCC_MAP1_CIFR
-#undef RCC_MAP2_AHB2ENR
-#undef RCC_PLLSAI1CFGR_0_PLLSAI1PDIV
-#undef RCC_MAP1_HSICFGR
-#undef RCC_AHB1SMENR_0_CORDICSMEN
-#undef RCC_AHB2RSTR_1_RNGRST
-#undef RCC_MAP0_MC_AHB4ENCLRR
-#undef RCC_PLLSAICFGR_PLLSAIR
-#undef RCC_APB3RSTR_DSIRST
-#undef RCC_AHB1RSTR_1_GPIOARST
-#undef RCC_AHBENR_1_MIFEN
-#undef RCC_APB1LPENR_1_USART5LPEN
-#undef RCC_APB2ENR_3
-#undef RCC_PLLI2SCFGR_0_PLLI2SM
-#undef RCC_APB1RSTR_1
-#undef RCC_MAP0_PLL4CSGR
-#undef RCC_AHB1RSTR_1_MATRIXRST
-#undef RCC_AHB1RSTR_0_DMA2RST
-#undef RCC_APB2SMENR_0_DSISMEN
-#undef RCC_CSR_2_LSERDY
-#undef RCC_CIFR_2
 #undef RCC_AHB1ENR_1_GPIOAEN
-#undef RCC_MAP1
-#undef RCC_APB2ENR_2_TIM11EN
-#undef RCC_CRRCR_1
-#undef RCC_APB1RSTR_1_USBRST
-#undef RCC_AHB2ENR_0_SRAM3EN
-#undef RCC_PLLCFGR_2_PLLSRC
-#undef RCC_MAP2_BDCR
-#undef RCC_APB2LPENR_0_ADC2LPEN
-#undef RCC_AHB2ENR_0_GPIOBEN
-#undef RCC_PLLSAI2CFGR_PLLSAI2QEN
-#undef RCC_AHB3ENR_0_RNGEN
-#undef RCC_MAP1_C1_APB1HLPENR
-#undef RCC_CCIPR_1_USART2SEL0
-#undef RCC_AHBRSTR_0_CRCRST
-#undef RCC_APB2SMENR_0_SPI4SMEN
-#undef RCC_APB1RSTR1_0_CAN2RST
-#undef RCC_APB1RSTR_0_UART8RST
-#undef RCC_AHBRSTR_2_DMA1RST
-#undef RCC_APB2SMENR_0_TIM1SMEN
-#undef RCC_MAP0_DSICKSELR
-#undef RCC_APB1ENR_0_TIM3EN
-#undef RCC_MAP0_C1_AHB3ENR
-#undef RCC_CRRCR_4
-#undef RCC_AHBRSTR_0_IOPFRST
-#undef RCC_MAP0_BDCR
-#undef RCC_APB1RSTR1_0_SPI3RST
-#undef RCC_APB1ENR_0_RTCAPBEN
-#undef RCC_AHBENR_2_GPIOCEN
 #undef RCC_MAP1_AHB2LPENR
-#undef RCC_AHB1SMENR_0_TSCSMEN
-#undef RCC_AHB3ENR_0_OSPI2EN
-#undef RCC_APB1SMENR_USBSMEN
-#undef RCC_CICR_1_PLLSAI1RDYC
-#undef RCC_APB1ENR_0_TIM6EN
-#undef RCC_APB2SMENR_0_SYSCFGSMEN
-#undef RCC_AHB2ENR_2_RNGEN
-#undef RCC_AHB3RSTR_0_QSPIRST
-#undef RCC_AHB2ENR_1_GPIOGEN
-#undef RCC_MAP1_C1_AHB2LPENR
-#undef RCC_MAP1_C1_AHB4ENR
-#undef RCC_APB1RSTR1_0_TIM5RST
-#undef RCC_MAP0_MP_AHB4ENSETR
-#undef RCC_APB2ENR_0_USART6EN
-#undef RCC_MAP0_SDMMC12CKSELR
-#undef RCC_APBSMENR1_TIM7SMEN
-#undef RCC_APB2ENR_1_SAI2EN
-#undef RCC_MAP0_UART35CKSELR
-#undef RCC_CIER_1_RC48RDYIE
-#undef RCC_AHB1ENR_1_CORDICEN
-#undef RCC_AHBRSTR_0_GPIOCRST
+#undef RCC_MAP6_IOPSMEN
 #undef RCC_AHB2RSTR_2_HASH1RST
-#undef RCC_AHBENR_0_DMAEN
-#undef RCC_AHB1LPENR_1_SRAM2LPEN
-#undef RCC_APB1LPENR_2
-#undef RCC_AHB2RSTR_0_DAC3RST
-#undef RCC_MAP6
-#undef RCC_APB1ENR_2_LPTIMER1EN
-#undef RCC_AHBENR_3_DMAEN
-#undef RCC_AHB1RSTR_0_CRCRST
-#undef RCC_CCIPR_1_LPUART1SEL0
-#undef RCC_APB1SMENR_LCDSMEN
-#undef RCC_AHB3RSTR_1
-#undef RCC_MAP1_RSR
-#undef RCC_AHB2RSTR_2_HSAHRST
-#undef RCC_MAP0_MC_APB4ENCLRR
-#undef RCC_CIFR_1_PLLSAI2RDYF
-#undef RCC_CFGR_1_RTCPRE
-#undef RCC_AHB1RSTR_0_GPIOGRST
-#undef RCC_AHB1LPENR_0_ADC12LPEN
-#undef RCC_MAP0_MP_AHB6ENCLRR
-#undef RCC_AHB3RSTR_0_AES2RST
-#undef RCC_MAP0_MP_RSTSR
-#undef RCC_CCIPR2_1_QUADSPISEL
-#undef RCC_MAP1_D1CFGR
-#undef RCC_MAP0_MC_APB5ENSETR
-#undef RCC_MAP0_MP_AHB2LPENSETR
-#undef RCC_APB1RSTR1_1_FDCANRST
-#undef RCC_PLLCFGR_0_DIVR3EN
-#undef RCC_MAP1_APB3ENR
-#undef RCC_DCKCFGR2_0_LPTIM1SEL
-#undef RCC_AHB2SMENR_2
-#undef RCC_APB1LPENR_0_I2C3LPEN
-#undef RCC_APB2ENR_1_FIREWALLEN
-#undef RCC_CICR_0_HSECSSC
-#undef RCC_D3AMR_1
-#undef RCC_CCIPR2_0_DSISEL
-#undef RCC_APB1RSTR_0_I2C2RST
-#undef RCC_MAP2_CRRCR
-#undef RCC_APB1RSTR_1_USART4RST
-#undef RCC_APB2RSTR_0_SPI4RST
-#undef RCC_APB2RSTR_0_TIM15RST
-#undef RCC_APB1SMENR1_0_USART2SMEN
-#undef RCC_APB1RSTR_2_CRSRST
-#undef RCC_DCKCFGR2_0
-#undef RCC_CFGR_1_PPRE21
-#undef RCC_CR_1_CSSON
-#undef RCC_APBRSTR1_CECRST
-#undef RCC_MAP0_APB2DIVR
-#undef RCC_MAP0_AHB3RSTCLRR
-#undef RCC_AHBENR_0_SRAMEN
-#undef RCC_APB1SMENR1_1
-#undef RCC_AHB1LPENR_0_ETH1MACLPEN
-#undef RCC_CICR_2_PLLSYSRDYC
-#undef RCC_MAP0_MP_APB2ENCLRR
-#undef RCC_APB1RSTR2_LPTIM2RST
-#undef RCC_MAP0_PLL4CFGR2
-#undef RCC_AHB2RSTR_1_ADC12RST
-#undef RCC_AHBSMENR_0_FLASHSMEN
-#undef RCC_CFGR_4_MCO1PRE1
-#undef RCC_APB2ENR_1_SDMMCEN
-#undef RCC_AHB2ENR_0_AESEN
-#undef RCC_DCKCFGR2_0_CECSEL
-#undef RCC_AHBRSTR_0_ADC34RST
-#undef RCC_PLLCFGR_0_DIVP3EN
-#undef RCC_APB1RSTR1_1_USART4RST
-#undef RCC_APBSMENR1_USART4SMEN
-#undef RCC_AHB2ENR_0_SDMMC2EN
-#undef RCC_MAP0_SPI2S1CKSELR
-#undef RCC_MAP0_MP_AHB2LPENCLRR
-#undef RCC_PLLCFGR_1_PLLN
-#undef RCC_CFGR_2_PPRE2
-#undef RCC_APB1RSTR1_1_CRSRST
-#undef RCC_MAP0_MP_APB4ENCLRR
-#undef RCC_MAP0_MP_TZAHB6ENSETR
-#undef RCC_MAP0_PLL3CFGR2
-#undef RCC_CSR_0_RTCRST
-#undef RCC_APB1ENR1_0_DAC1EN
-#undef RCC_CIER_0_HSIRDYIE
-#undef RCC_AHB1ENR_0_FLASHEN
-#undef RCC_CICR_1_CSSC
-#undef RCC_CR_1_RTCPRE
-#undef RCC_AHB1ENR_0_OTGHSEN
-#undef RCC_ICSCR_0
-#undef RCC_APB2RSTR_1_TIM9RST
-#undef RCC_APB2RSTR_0_LTDCRST
-#undef RCC_MAP1_APB4RSTR
-#undef RCC_APB2RSTR_2_HRTIM1RST
-#undef RCC_AHB1SMENR_0_CRCSMEN
-#undef RCC_MAP5_APB2RSTR
-#undef RCC_APB1SMENR_TIM3SMEN
-#undef RCC_CFGR_2_RTCPRE4
-#undef RCC_MAP0_APB1RSTSETR
-#undef RCC_CSR_1_PORRSTF
-#undef RCC_ICSCR_2_HSITRIM
-#undef RCC_PLLCFGR_0_PLL2RGE
-#undef RCC_CICR_1_PLLSAI2RDYC
-#undef RCC_MAP0_UART24CKSELR
-#undef RCC_MAP0_BR_RSTSCLRR
-#undef RCC_CFGR_2
-#undef RCC_CIFR_2_RC48RDYF
-#undef RCC_MAP5_CIR
-#undef RCC_BDCR_3
-#undef RCC_CIFR_0_PLL3RDYF
-#undef RCC_CFGR_5_HPRE
-#undef RCC_MAP0_CSICFGR
-#undef RCC_AHB2ENR_2_CRYPEN
-#undef RCC_APB1ENR1_1
-#undef RCC_AHB2RSTR_0_RNGRST
-#undef RCC_MAP0_UART6CKSELR
-#undef RCC_CSR_1_RTCEN
-#undef RCC_APB2LPENR_0_TIM9LPEN
-#undef RCC_MAP0_SIDR
-#undef RCC_MAP1_AHB4LPENR
-#undef RCC_BDCR_0_RTCSRC
-#undef RCC_PLLCFGR_2_PLLR
-#undef RCC_CR_1_HSIKERON
-#undef RCC_AHB2LPENR_1_CRYPLPEN
-#undef RCC_AHB1RSTR_2_DMAMUXRST
-#undef RCC_CFGR_2_PPRE1
-#undef RCC_MAP1_APB2ENR
-#undef RCC_MAP2_C1_AHB1ENR
-#undef RCC_AHB1ENR_0_DMA1EN
-#undef RCC_MAP5_C2APB2ENR
-#undef RCC_APB2ENR_0_DSIEN
-#undef RCC_CFGR3_0_I2C2SW
-#undef RCC_APB1ENR1_0_I2C3EN
-#undef RCC_APB1RSTR1_0_OPAMPRST
-#undef RCC_MAP3_AHB3ENR
-#undef RCC_APB2ENR_1_TIM11EN
-#undef RCC_CCIPR_1_I2C1SEL0
-#undef RCC_MAP1_BDCR
-#undef RCC_MAP2_PLLSAI2CFGR
-#undef RCC_AHB2ENR_2_HASH1EN
-#undef RCC_CFGR3_0_UART4SW
-#undef RCC_MAP0_OCENSETR
-#undef RCC_AHBRSTR_1_IOPHRST
-#undef RCC_CFGR_3_MCOSEL
-#undef RCC_MAP2_AHB1SMENR
-#undef RCC_APB2RSTR_0_TIM1RST
-#undef RCC_CR_1
-#undef RCC_MAP2_APB1ENR2
-#undef RCC_AHB2RSTR_2_CRYPRST
-#undef RCC_CCIPR_1_I2C3SEL0
-#undef RCC_AHB1ENR_1_USB1ULPIEN
-#undef RCC_AHB2LPENR_2_AESLPEN
-#undef RCC_CR_0_D2CKRDY
-#undef RCC_MAP0_MP_AHB2ENSETR
-#undef RCC_AHB2SMENR_0_GPIOGSMEN
-#undef RCC_PLLCFGR_0_DIVQ3EN
-#undef RCC_APB2SMENR_1_DBGSMEN
-#undef RCC_AHB1LPENR_0_GPIOGLPEN
-#undef RCC_APB2ENR_1_USART1EN
-#undef RCC_APB1ENR1_1_USART1EN
-#undef RCC_APB1LPENR_0_TIM12LPEN
-#undef RCC_MAP2_APB1RSTR1
-#undef RCC_AHB3ENR_1_PKAEN
-#undef RCC_BDCR_1_LSECSSON
-#undef RCC_APBSMENR1_USART3SMEN
-#undef RCC_CFGR_1_PPRE2
-#undef RCC_MAP5
-#undef RCC_MAP0_VERR
-#undef RCC_MAP0_PLL2CSGR
-#undef RCC_AHB2SMENR_0_OSPIMSMEN
-#undef RCC_MAP0_ICSCR
-#undef RCC_APB1ENR1_1_FDCANEN
-#undef RCC_CFGR_1_PPRE1
-#undef RCC_AHB2RSTR_0_DCMIRST
-#undef RCC_AHB3ENR_0_IPCCEN
-#undef RCC_CR_2_HSI16ON
-#undef RCC_AHB2SMENR_0_OTGFSSMEN
-#undef RCC_APB1LPENR_1_RTCAPBLPEN
-#undef RCC_APB1RSTR1_0_USART3RST
-#undef RCC_MAP1_APB4LPENR
-#undef RCC_CR_0_CSION
-#undef RCC_CSR_1_LSI2BW
-#undef RCC_AHB3LPENR_1_FLASHLPEN
-#undef RCC_APB2RSTR_0_HRTIMRST
-#undef RCC_AHB1ENR_0_DMAMUX1EN
-#undef RCC_APB2ENR_0_TIM1EN
-#undef RCC_MAP4_AHBENR
-#undef RCC_AHB3RSTR_0_QUADSPI1RST
-#undef RCC_APB2ENR_1_TIM10EN
-#undef RCC_MAP1_APB1LLPENR
-#undef RCC_APB2SMENR_0_TIM21SMEN
-#undef RCC_MAP1_AHB4RSTR
-#undef RCC_MAP5_APBENR2
-#undef RCC_APB1ENR1_0_OPAMPEN
-#undef RCC_CFGR_2_MCO11
-#undef RCC_CFGR_2_MCO2
-#undef RCC_AHB1ENR_1_DMA2EN
-#undef RCC_CFGR_5_MCO
-#undef RCC_CRRCR_2
-#undef RCC_CRRCR_2_HSI48CAL
-#undef RCC_AHBRSTR_0_IOPBRST
-#undef RCC_APB1SMENR1_1_CRSMEN
-#undef RCC_MAP0_MP_APB4LPENCLRR
-#undef RCC_MAP0_MP_APB1LPENCLRR
-#undef RCC_MAP0_MC_AHB3LPENCLRR
-#undef RCC_AHBENR_0_IOPAEN
-#undef RCC_AHB2LPENR_0_QSPILPEN
-#undef RCC_APB2LPENR_0_SPI4LPEN
-#undef RCC_APBENR1_CECEN
-#undef RCC_PLLCFGR_2_PLLN1
-#undef RCC_AHBRSTR_0_GPIOHRST
-#undef RCC_BDCR_1_LSEDRV
-#undef RCC_MAP2_AHB1RSTR
-#undef RCC_AHBRSTR_0_GPIOBRST
-#undef RCC_AHB3ENR_0_JPGDECEN
-#undef RCC_APB2RSTR_0_SAI1RST
-#undef RCC_PLLCFGR_1_PLLREN
-#undef RCC_AHB2ENR_1_GPIOAEN
-#undef RCC_AHB1RSTR_1_DMA1RST
-#undef RCC_PLLCFGR_1_PLLQ1
-#undef RCC_GCR_BOOT_C2
-#undef RCC_AHB3ENR_0_DMA2DEN
-#undef RCC_MAP0_MC_AHB6ENSETR
-#undef RCC_APB2RSTR_2_TIM22RST
-#undef RCC_AHB1LPENR_1_GPIOFLPEN
-#undef RCC_APB1ENR_1_UART7EN
-#undef RCC_APB2LPENR_0_TIM10LPEN
-#undef RCC_APB1LENR_1
-#undef RCC_CIFR_2_PLLSYSRDYF
-#undef RCC_ICSCR_3_HSI16CAL
-#undef RCC_CCIPR2_0_SAI1SEL
-#undef RCC_APB1RSTR_0_TIM13RST
-#undef RCC_APB1RSTR_1_I2CFMP1RST
-#undef RCC_CSR_2_PWRRSTF
-#undef RCC_MAP1_AHB3ENR
-#undef RCC_MAP0_MC_APB3LPENCLRR
-#undef RCC_CFGR_3_ADCPRE
-#undef RCC_PLLI2SCFGR_1
-#undef RCC_AHB1LPENR_1_DMA1LPEN
-#undef RCC_APB1ENR_0_LPTMI1EN
-#undef RCC_AHB1LPENR_0_GPIOELPEN
-#undef RCC_PLLCFGR_0_PLLR
-#undef RCC_AHB1LPENR_0_BKPSRAMLPEN
-#undef RCC_CCIPR_0_SWPMI1SEL
-#undef RCC_AHBRSTR_0_ADC12RST
-#undef RCC_BDCR_0_LSERDY
-#undef RCC_CFGR_3_USBPRES
-#undef RCC_CR_2_HSITRIM
-#undef RCC_APB1SMENR2_USBPDSMEN
-#undef RCC_AHB1LPENR_1_FLITFLPEN
-#undef RCC_APB1RSTR_0_SPI3RST
-#undef RCC_AHB1RSTR_0_RNGRST
-#undef RCC_CCIPR_1_USART1SEL1
-#undef RCC_PLLCFGR_3_PLLR3
-#undef RCC_CR_0_HSIASFS
-#undef RCC_APB1ENR2_I2C4EN
-#undef RCC_APB2LPENR_2
-#undef RCC_APB1RSTR1_1_USBDRST
-#undef RCC_MAP3_APB1RSTR
-#undef RCC_AHB2SMENR_0_GPIOESMEN
-#undef RCC_MAP2_IOPRSTR
-#undef RCC_APB1RSTR_0_LPTIM1RST
-#undef RCC_APB1LPENR_0_I2C4LPEN
-#undef RCC_AHB3ENR_1_FMCEN
-#undef RCC_MAP0_MC_AHB5LPENCLRR
-#undef RCC_DCKCFGR2_2
-#undef RCC_PLLCFGR_0_DIVP1EN
-#undef RCC_CSR_1_PADRSTF
-#undef RCC_AHBRSTR_2_TOUCHRST
-#undef RCC_CCIPR_1_USART4SEL
-#undef RCC_MAP1_APB3RSTR
-#undef RCC_CSR_0_SFTRSTF
-#undef RCC_APB1ENR_0_TIM4EN
-#undef RCC_MAP2_PLLSAI1CFGR
-#undef RCC_MAP0_AHB2RSTCLRR
-#undef RCC_CFGR_2_SW1
-#undef RCC_AHB1LPENR_0_USB2ULPILPEN
-#undef RCC_APB1ENR_0_TIM2EN
-#undef RCC_IOPRSTR_IOPFRST
-#undef RCC_APB2ENR_0_TIM16EN
-#undef RCC_CIFR_1_HSI48RDYF
-#undef RCC_CSR_0_MSISRANGE
-#undef RCC_CSR_1_CSSLSED
-#undef RCC_AHB2RSTR_0_ADCRST
-#undef RCC_PLLCFGR_0_PLLN6
-#undef RCC_APB1ENR_0_SPDIFRXEN
-#undef RCC_APB2ENR_1_SDAD2EN
-#undef RCC_IOPENR_1_GPIOHEN
-#undef RCC_MAP0_I2C4CKSELR
-#undef RCC_CIFR_1
-#undef RCC_AHB1SMENR_0_GFXMMUSMEN
-#undef RCC_PLLCFGR_2_PLLP0
-#undef RCC_AHB1LPENR_0_DMA2DLPEN
-#undef RCC_CFGR_2_PPRE1F
-#undef RCC_AHB3LPENR_2
-#undef RCC_AHB1ENR_1_GPIOIEN
-#undef RCC_MAP1_C1_AHB1ENR
-#undef RCC_APB2ENR_3_SDAD1EN
-#undef RCC_MAP3_APB1ENR
-#undef RCC_APB1ENR2_SWPMI1EN
-#undef RCC_APB2LPENR_0_USART6LPEN
-#undef RCC_ICSCR_1_HSITRIM
-#undef RCC_DCKCFGR2_0_FMPI2C1SEL
-#undef RCC_MAP2_APB1SMENR2
-#undef RCC_CCIPR_1_RNGDIV
-#undef RCC_APB1ENR_3_CECEN
-#undef RCC_AHB1ENR_0_DMA2EN
-#undef RCC_AHB2ENR_0_GPIOHEN
-#undef RCC_CSR_0_FWRSTF
-#undef RCC_MAP0_MP_MLAHBENSETR
-#undef RCC_MAP0_MP_GRSTCSETR
-#undef RCC_CR_1_PLLSAI2ON
-#undef RCC_APB1ENR2_USBPDEN
-#undef RCC_AHB3ENR_2_FSMCEN
-#undef RCC_APBENR1_UCPD1EN
-#undef RCC_CFGR_5_PLLDIV
-#undef RCC_CR_0_PLL1ON
-#undef RCC_CCIPR_1_USART1SEL0
-#undef RCC_APB1LPENR_0_USART3LPEN
-#undef RCC_MAP0_RCK12SELR
-#undef RCC_APB1RSTR_0_TIM12RST
-#undef RCC_CR_1_MSIRANGE
-#undef RCC_DCKCFGR2_0_SDMMC1SEL
-#undef RCC_MAP0_LPTIM23CKSELR
-#undef RCC_CR_2_PLLI2SON
-#undef RCC_DCKCFGR_0_SAI1BSRC
-#undef RCC_APB2RSTR_0_TIM16RST
-#undef RCC_MAP0_AHB6RSTSETR
-#undef RCC_CR_0_PLL3ON
-#undef RCC_MAP2_APB1RSTR2
-#undef RCC_DCKCFGR2_0_SDMMC2SEL
-#undef RCC_APB1SMENR1_0_DAC1SMEN
-#undef RCC_AHBLPENR_0_GPIOGLPEN
-#undef RCC_MAP1_CIER
-#undef RCC_CFGR_2_HPRE0
-#undef RCC_APB2LPENR_0_SDMMC2LPEN
-#undef RCC_CCIPR_1_I2C1SEL1
-#undef RCC_APB1RSTR_0_UART4RST
-#undef RCC_MAP0_MP_GCR
-#undef RCC_APB2LPENR_1_DFSDMLPEN
-#undef RCC_CCIPR_1_HSI48MSEL
-#undef RCC_APBENR1_UCPD2EN
-#undef RCC_MAP5_AHBRSTR
-#undef RCC_MAP0_MC_APB4ENSETR
-#undef RCC_MAP0_MP_APB4LPENSETR
-#undef RCC_AHB2ENR_0_RNGEN
-#undef RCC_APB1RSTR1_0_UART5RST
-#undef RCC_MAP1_AHB2ENR
-#undef RCC_APB2RSTR_1_TIM20RST
-#undef RCC_APB2ENR_3_MIFIEN
-#undef RCC_AHB1RSTR_0_ETH1MACRST
-#undef RCC_CSR_1_RTCRST
-#undef RCC_AHB2RSTR_2_RNGRST
-#undef RCC_APB2SMENR_0_TIM22SMEN
-#undef RCC_MAP1_CICR
-#undef RCC_APB2RSTR_1_TIM1RST
-#undef RCC_APB2LPENR_0_HRTIMLPEN
-#undef RCC_AHBENR_0_IOPGEN
-#undef RCC_AHBLPENR_0_DMA2LPEN
-#undef RCC_PLLCFGR_0_DIVQ1EN
-#undef RCC_AHB2RSTR_0_DAC2RST
-#undef RCC_AHB2LPENR_0_SRAM1LPEN
-#undef RCC_CIFR_2_HSI48RDYF
-#undef RCC_APB1ENR2_DFSDMEN
-#undef RCC_CFGR_0_STOPKERWUCK
-#undef RCC_PLLCFGR_2_PLLN4
-#undef RCC_MAP0_ETHCKSELR
-#undef RCC_CR_3_RTCPRE0
-#undef RCC_CSR_0_BORRSTF
-#undef RCC_CR_3_HSI16DIVEN
-#undef RCC_AHB3ENR_0_QUADSPI1EN
-#undef RCC_AHB2SMENR_0_GPIOHSMEN
-#undef RCC_AHBRSTR_0_GPIOERST
-#undef RCC_APB1ENR1_0_TIM7EN
-#undef RCC_HSICFGR_0
-#undef RCC_AHBRSTR_1_RNGRST
-#undef RCC_MAP1_PLL3FRACR
-#undef RCC_AHB1LPENR_0_GPIOHLPEN
-#undef RCC_APB2LPENR_1_SYSCFGLPEN
-#undef RCC_MAP2_AHB3RSTR
-#undef RCC_MAP2_CFGR
-#undef RCC_MAP0_MC_AHB2LPENCLRR
-#undef RCC_MAP1_C1_AHB2ENR
-#undef RCC_MAP0_MC_AXIMLPENCLRR
-#undef RCC_MAP2_APB1SMENR1
-#undef RCC_MAP2_CIER
-#undef RCC_AHBLPENR_0_DMA1LPEN
-#undef RCC_CR_0_HSION
-#undef RCC_AHB1ENR_1_GPIOCEN
-#undef RCC_AHB2RSTR_0
-#undef RCC_APB1LPENR_1_COMPLPEN
-#undef RCC_AHB2SMENR_0_HASHSMEN
-#undef RCC_APB2SMENR_1
-#undef RCC_BDCR_0_LSEBYP
-#undef RCC_APB2LPENR_1_TIM10LPEN
-#undef RCC_MAP0_PLL2CFGR1
-#undef RCC_AHBLPENR_1
-#undef RCC_APB1LPENR_1_SPDIFLPEN
-#undef RCC_CCIPR_1_LPTIM1SEL0
-#undef RCC_AHB1ENR_0_ETH1RXEN
-#undef RCC_PLLCFGR_0_PLL1VCOSEL
-#undef RCC_MAP0_PLL3CFGR1
-#undef RCC_APB1RSTR_0_TIM7RST
-#undef RCC_PLLSYSCFGR_0_PLLSYSN
-#undef RCC_MAP1_PLL2DIVR
-#undef RCC_AHB1LPENR_0_GPIODLPEN
-#undef RCC_AHB2RSTR_0_GPIOIRST
-#undef RCC_PLLCFGR_2_PLLM5
-#undef RCC_DCKCFGR2_0_UART5SEL
-#undef RCC_CFGR_2_HPREF
-#undef RCC_AHB1RSTR_1_ETHMACRST
-#undef RCC_MAP0_MCO2CFGR
-#undef RCC_APB2SMENR_0_TIM8SMEN
-#undef RCC_PLLCFGR_0
-#undef RCC_AHB3RSTR_0_FLASHRST
-#undef RCC_CIR_2_LSECSSIE
-#undef RCC_MAP1_C1_AHB3LPENR
-#undef RCC_AHB2SMENR_2_AES1SMEN
-#undef RCC_APB2LPENR_1_USART1LPEN
-#undef RCC_CR_0_PLL2ON
-#undef RCC_GCR_WW2RSC
-#undef RCC_ICSCR_3_HSITRIM
-#undef RCC_AHB1ENR_0_GPIOGEN
-#undef RCC_APB2ENR_0_TIM15EN
-#undef RCC_APB1RSTR1_0_USART2RST
-#undef RCC_CCIPR_2_CECSEL
-#undef RCC_MAP0_MP_AHB5ENSETR
-#undef RCC_AHB1ENR_1_FMACEN
-#undef RCC_AHB2LPENR_0_OTGFSLPEN
-#undef RCC_MAP0_PWRLPDLYCR
-#undef RCC_AHBSMENR_1_TOUCHSMEN
-#undef RCC_APB1LPENR_0_UART7LPEN
-#undef RCC_MAP0_MP_APB2LPENCLRR
-#undef RCC_PLLCFGR_0_DIVR1EN
-#undef RCC_AHBRSTR_0_FLASHRST
-#undef RCC_CIER_2
-#undef RCC_AHB1SMENR_0_DMA2DSMEN
-#undef RCC_APB1LPENR_1_I2CFMP1LPEN
-#undef RCC_APB1RSTR_1_I2C3RST
-#undef RCC_APB2LPENR_0_TIM8LPEN
-#undef RCC_MAP5_EXTCFGR
-#undef RCC_MAP1_D2CFGR
-#undef RCC_CFGR_5_SDPRE
-#undef RCC_MAP0_SAI2CKSELR
-#undef RCC_PLLCFGR_0_PLL3FRACEN
-#undef RCC_AHBENR_0_GPIOHEN
-#undef RCC_BDCR_0_LSCOSEL
-#undef RCC_CSR_0_PINRSTF
-#undef RCC_APB1ENR_0_UART7ENR
-#undef RCC_CSR_0_WWDGRSTF
-#undef RCC_AHBRSTR_2
-#undef RCC_APB2LPENR_1
-#undef RCC_APB1RSTR_0_TIM3RST
-#undef RCC_AHBENR_1_GPIOAEN
-#undef RCC_MAP0_MP_MLAHBLPENCLRR
-#undef RCC_PLLSAICFGR_PLLSAIM
-#undef RCC_MAP3_DKCFGR2
-#undef RCC_MAP2_AHB3SMENR
-#undef RCC_DCKCFGR2_1_LPTIM1SEL
-#undef RCC_APB1ENR1_1_SPI3EN
-#undef RCC_CR_1_MSION
-#undef RCC_CCIPR_0_ADCSEL
-#undef RCC_BDCR_2_RTCSEL
-#undef RCC_APB2ENR_0_SAI1EN
-#undef RCC_APBENR1_TIM6EN
-#undef RCC_AHB2RSTR_2_AES1RST
-#undef RCC_CSR_1_RTCSEL
-#undef RCC_AHB2SMENR_0_SRAM2SMEN
-#undef RCC_APB1SMENR1_0_UART5SMEN
-#undef RCC_CCIPR_1_TIM15SEL
-#undef RCC_APB1ENR_0_UART5EN
-#undef RCC_AHB1RSTR_0_DMA2DRST
-#undef RCC_AHB3RSTR_0
-#undef RCC_APB1SMENR1_0_RTCAPBSMEN
-#undef RCC_APB2ENR_0_SDMMC1EN
-#undef RCC_CIR_2_LSECSSF
-#undef RCC_APB1ENR1_0_SPI2EN
-#undef RCC_AHB1LPENR_1_SRAM1LPEN
-#undef RCC_APBSMENR1_DAC1SMEN
-#undef RCC_IOPENR_0_IOPHEN
-#undef RCC_AHB3RSTR_0_IPCCRST
-#undef RCC_AHB1ENR_0_USB1OTGHSULPIEN
-#undef RCC_BDCR_0_LSECSSD_
-#undef RCC_AHBSMENR_1_RNGSMEN
-#undef RCC_AHB2ENR_1_HASHEN
-#undef RCC_APB1RSTR_0_UART5RST
-#undef RCC_MAP0_MP_AHB4LPENSETR
-#undef RCC_APB2ENR_2_SPI4ENR
-#undef RCC_AHB3RSTR_0_HSEMRST
-#undef RCC_AHB1RSTR_1_DMA2DRST
-#undef RCC_MAP0_MC_AHB2LPENSETR
-#undef RCC_AHBRSTR_0_DMA2RST
-#undef RCC_PLLSYSCFGR_0_PLLSYSM
-#undef RCC_AHB2RSTR_1
-#undef RCC_AHB1ENR_1_CRCEN
-#undef RCC_CIFR_0_PLL1RDYF
-#undef RCC_MAP0_MP_APB3LPENSETR
-#undef RCC_APB1LPENR_0_CECLPEN
-#undef RCC_BDCR_0_RTCEN
-#undef RCC_APB2ENR_2_TIM20EN
-#undef RCC_AHB1SMENR_0_FLASHSMEN
-#undef RCC_CR_0_CSIKERON
-#undef RCC_ICSCR_3
-#undef RCC_APB2RSTR_0_DFSDM1RST
-#undef RCC_AHB2RSTR_1_CRYPTRST
-#undef RCC_CR_1_MSIRGSEL
-#undef RCC_APB1LPENR_0_UART8LPEN
-#undef RCC_MAP0_MP_IWDGFZCLRR
-#undef RCC_MAP0_MP_TZAHB6LPENCLRR
-#undef RCC_MAP1_D2CCIP1R
-#undef RCC_CR_3_HSI16DIVF
-#undef RCC_APB2LPENR_0_SYSCFGLPEN
-#undef RCC_CIFR_0_HSERDYF
-#undef RCC_APB1ENR1_0_CAN1EN
-#undef RCC_AHB1LPENR_0_AXILPEN
-#undef RCC_APB1LPENR_1_LPTIMER1LPEN
-#undef RCC_APB1RSTR1_0_CRSRST
-#undef RCC_CIR_0_PLLI2SRDYIE
-#undef RCC_MAP0_AXIDIVR
-#undef RCC_CIER_2_PLLSYSRDYIE
-#undef RCC_CSR_1_WDGRSTF
-#undef RCC_CRRCR_3
-#undef RCC_APB1ENR_1_SPDIFEN
-#undef RCC_MAP5_APB2ENR
-#undef RCC_AHB1RSTR_1_CRCRST
-#undef RCC_CCIPR2_0_DFSDMSEL
-#undef RCC_CFGR_2_HPRE2
-#undef RCC_BDCR_0_LSCOEN
-#undef RCC_CR_0_HSIDIVF
-#undef RCC_APB1ENR1_0_RTCAPBEN
-#undef RCC_AHB1ENR_1_GPIOFEN
-#undef RCC_APB1RSTR_0_SPDIFRXRST
-#undef RCC_APB1SMENR1_1_CRSSMEN
-#undef RCC_APB1LENR_0_WWDG2EN
-#undef RCC_AHB1ENR_0_OTGHSULPIEN
-#undef RCC_APBENR1_TIM7EN
-#undef RCC_AHB2RSTR_1_ADC345RST_
-#undef RCC_AHB2RSTR_0_OSPIMRST
-#undef RCC_MAP3_APB2ENR
-#undef RCC_APB2RSTR_0_USART6RST
-#undef RCC_AHB2ENR_0_GPIOCEN
-#undef RCC_MAP0_MP_APB5ENCLRR
-#undef RCC_MAP2_CICR
-#undef RCC_MAP0_MC_AHB5ENSETR
-#undef RCC_AHB3ENR_0_QSPIEN
-#undef RCC_AHB1ENR_2_ETHMACRXEN
-#undef RCC_AHB2ENR_0_SDMMC1EN
-#undef RCC_MAP0_CECCKSELR
-#undef RCC_BDCR_0_LSEDRV
-#undef RCC_APB1SMENR_DACSMEN
-#undef RCC_AHB3RSTR_1_FMCRST
-#undef RCC_CIR_0_PLLSAIRDYF
-#undef RCC_MAP5_C2AHB3SMENR
-#undef RCC_CR_0_HSIRDY
-#undef RCC_CR_2_HSICAL
-#undef RCC_ICSCR_2
-#undef RCC_APB1ENR_0_UART4EN
-#undef RCC_APB2RSTR_0_TIM8RST
-#undef RCC_APB1SMENR1_0_SP3SMEN
-#undef RCC_APB1ENR_0_UART8ENR
-#undef RCC_MAP0_PLL1CFGR2
-#undef RCC_APB2LPENR_0_ADC1LPEN
-#undef RCC_APB1SMENR1_0_OPAMPSMEN
-#undef RCC_APB2ENR_1_TIM9EN
-#undef RCC_MAP0_CPERCKSELR
-#undef RCC_IOPRSTR_IOPHRST
-#undef RCC_APB1SMENR_USART5SMEN
-#undef RCC_AHB3RSTR_2_QSPIRST
-#undef RCC_APB1SMENR1_0_USART3SMEN
-#undef RCC_PLLSAI1CFGR_0
-#undef RCC_APB1RSTR_0_TIM2RST
-#undef RCC_DCKCFGR2_0_I2C3SEL
-#undef RCC_CFGR_0_SW
-#undef RCC_APB1ENR1_0_I2C2EN
-#undef RCC_MAP1_CFGR
-#undef RCC_CIER_0_PLL3RDYIE
-#undef RCC_APB2RSTR_0_TIM21RST
-#undef RCC_MAP1_C1_AHB4LPENR
-#undef RCC_CICR_1_LSI1RDYC
-#undef RCC_APB1ENR1_0_TIM5EN
-#undef RCC_AHBLPENR_0_GPIOHLPEN
-#undef RCC_CFGR_4_ADCPRE
-#undef RCC_DCKCFGR_1_PLLI2SDIVQ
-#undef RCC_CR_0_PLL2RDY
-#undef RCC_MAP0_MP_APB1ENSETR
-#undef RCC_AHBSMENR_0_AESSMEN
-#undef RCC_PLLSYSCFGR_1
-#undef RCC_APB2SMENR_0_DFSDM1SMEN
-#undef RCC_AHBENR_0_ADC34EN
-#undef RCC_MAP0_MC_AXIMENCLRR
-#undef RCC_AHB2ENR_0_CAMITFEN
-#undef RCC_APB1LPENR_0_SPDIFRXLPEN
-#undef RCC_AHB2ENR_0_DAC4
-#undef RCC_APB2LPENR_0_TIM17LPEN
-#undef RCC_MAP1_D3CCIPR
-#undef RCC_APB2LPENR_0_TIM16LPEN
-#undef RCC_APBRSTR1_UCPD1RST
-#undef RCC_APB1ENR_1_DAC1EN
-#undef RCC_CIFR_0_HSIRDYF
-#undef RCC_APB1ENR_1_USART5EN
-#undef RCC_IOPENR_1_GPIOFEN
-#undef RCC_AHBSMENR_0_CRYPSMEN
-#undef RCC_CFGR2_ADC12PRES
-#undef RCC_MAP0_SPI45CKSELR
-#undef RCC_APB1ENR_3
-#undef RCC_CR_0_D1CKRDY
-#undef RCC_MAP5_APBSMENR2
-#undef RCC_MAP0_MC_AHB4LPENCLRR
-#undef RCC_AHB3SMENR_0_FLASHSMEN
-#undef RCC_CIR_1
-#undef RCC_MAP5_C2AHB1ENR
-#undef RCC_MAP3_SSCGR
-#undef RCC_APB2ENR_0_EXTITEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSPDIV
-#undef RCC_AHBENR_2_GPIOHEN
-#undef RCC_BDCR_1_VSWRST
-#undef RCC_CCIPR_2
-#undef RCC_CCIPR_0_USART2SEL
-#undef RCC_MAP0_MP_AHB6LPENSETR
-#undef RCC_CFGR_0_RTCPRE0
-#undef RCC_PLLCFGR_3_PLLM
-#undef RCC_DCKCFGR_0_DSISEL
-#undef RCC_DCKCFGR_1_SAI1SRC
-#undef RCC_CFGR_1_MCOSEL
-#undef RCC_AHB3ENR_2_QSPIEN
-#undef RCC_CCIPR_1_RNGSEL
-#undef RCC_APB2LPENR_1_ADC1LPEN
-#undef RCC_MAP7
-#undef RCC_PLLCFGR_0_PLLN8
-#undef RCC_PLLCFGR_3_PLLR1
-#undef RCC_APB2RSTR_0_TIM19RST
-#undef RCC_PLLCFGR_2_PLLREN
-#undef RCC_CICR_2_HSI48RDYC
-#undef RCC_APB2LPENR_0_SAI1LPEN
-#undef RCC_APBRSTR1_TIM7RST
-#undef RCC_AHBENR_2_GPIOEEN
-#undef RCC_MAP3_AHB1ENR
-#undef RCC_CRRCR_0
-#undef RCC_CR_3_HSIDIV
-#undef RCC_MAP0_QSPICKSELR
-#undef RCC_MAP0_PLL3FRACR
-#undef RCC_MAP0_FMCCKSELR
-#undef RCC_BDCR_1_LSECSSD
-#undef RCC_CIFR_3
-#undef RCC_CSR_0_LSION
-#undef RCC_APB2ENR_0_SAI2EN
-#undef RCC_MAP0_APB4DIVR
-#undef RCC_MAP0_MP_BOOTCR
-#undef RCC_AHB2ENR_1
-#undef RCC_APB1RSTR1_0_CAN1RST
-#undef RCC_CICR_0_HSIRDYC
-#undef RCC_CICR_2_HSI16RDYC
-#undef RCC_PLLCFGR_4_PLLQEN
-#undef RCC_CCIPR_1
-#undef RCC_APB1SMENR2_SWPMI1SMEN
-#undef RCC_AHB1ENR_0_DMA2DEN
-#undef RCC_AHB2LPENR_1
-#undef RCC_CFGR3_0_USART2SW
-#undef RCC_MAP0_MC_RSTSCLRR
-#undef RCC_CIFR_1_PLLRDYF
-#undef RCC_MAP3_AHB2LPENR
-#undef RCC_APBSMENR1_CECSMEN
-#undef RCC_CCIPR_1_USART2SEL1
-#undef RCC_MAP4_IOPENR
-#undef RCC_APB2SMENR_0_SAI1SMEN
-#undef RCC_APBENR2_TIM15EN
-#undef RCC_AHBSMENR_1
-#undef RCC_MAP0_MP_APB3ENSETR
-#undef RCC_APB1RSTR1_1_USART1RST
-#undef RCC_MAP1_AHB3LPENR
-#undef RCC_AHBENR_0_GPIODEN
-#undef RCC_APB1ENR_0_I2C2EN
-#undef RCC_APB2RSTR_0_SAI3RST
-#undef RCC_CSR_2_LSEDRV
-#undef RCC_CCIPR_0
-#undef RCC_AHB1LPENR_0_RNGLPEN
-#undef RCC_AHB1ENR_2_ETHMACEN
-#undef RCC_CFGR_2_MCO10
-#undef RCC_APB1RSTR_0_TIM5RST
-#undef RCC_APB1RSTR_0_UART2RST
-#undef RCC_AHB1ENR_0_USB2OTGHSEN
-#undef RCC_MAP3_AHBENR
-#undef RCC_MAP0_RCK4SELR
-#undef RCC_APB1ENR_2_LPTIM1EN
-#undef RCC_MAP1_C1_APB2ENR
-#undef RCC_APB2RSTR_0_DSIRST
-#undef RCC_AHB2LPENR_0_SRAM3LPEN
-#undef RCC_CR_0_PLL1RDY
-#undef RCC_MAP1_AHB4ENR
-#undef RCC_MAP4_DCKCFGR2
-#undef RCC_APB2RSTR_0_TIM17RST
-#undef RCC_AHB2ENR_1_OTGFSEN
-#undef RCC_AHB3SMENR_0_AES2SMEN
-#undef RCC_APB2RSTR_1_SAI2RST
-#undef RCC_MAP2
-#undef RCC_CFGR_4_PLLMUL
-#undef RCC_MAP5_C2AHB2ENR
-#undef RCC_PLLSYSCFGR_0_PLLSYSP
-#undef RCC_APB1RSTR_1_SPDIFRST
-#undef RCC_APB1RSTR_1_CANRST
-#undef RCC_MAP5_CFGR
-#undef RCC_ICSCR_1
-#undef RCC_DCKCFGR2_0_UART8SEL
-#undef RCC_MAP2_CCIPR
-#undef RCC_APB1RSTR1_1_I2C3
-#undef RCC_MAP0_DBGCFGR
-#undef RCC_DCKCFGR2_0_I2C1SEL
-#undef RCC_AHB1ENR_0_ARTEN
-#undef RCC_CSICFGR_0
-#undef RCC_MAP1_APB1ENR
-#undef RCC_AHB3ENR_0_HSEMEN
-#undef RCC_MAP0_TZCR
-#undef RCC_AHB1LPENR_1_GPIOALPEN
-#undef RCC_APB2ENR_1
-#undef RCC_CSICFGR_1
-#undef RCC_AHB1LPENR_1_GPIOBLPEN
-#undef RCC_AHBLPENR_0_GPIOFLPEN
-#undef RCC_APB1SMENR1_0_TIM7SMEN
-#undef RCC_APBRSTR2_TIM15RST
-#undef RCC_APB1ENR1_0_TIM3EN
-#undef RCC_APB1RSTR1_1
-#undef RCC_APB2LPENR_0_EXTITEN
-#undef RCC_APB2ENR_0_SPI4EN
-#undef RCC_APB2SMENR_0_TIM20SMEN
-#undef RCC_PLLCFGR_2_PLLQ0
-#undef RCC_APB1ENR_1_UART8EN
-#undef RCC_AHBENR_1_IOPHEN
-#undef RCC_AHB1RSTR_0_TSCRST
-#undef RCC_CFGR_3_PPRE10
-#undef RCC_AHB1ENR_1_GFXMMUEN
-#undef RCC_DCKCFGR2_0_UART2SEL
-#undef RCC_PLLI2SCFGR_0_PLLI2SSRC
-#undef RCC_PLLCFGR_0_PLL3RGE
-#undef RCC_CIFR_0_LSIRDYF
-#undef RCC_CR_1_MSIPLLEN
-#undef RCC_CFGR_1_MCO2PRE0
-#undef RCC_CFGR_1_MCO1
-#undef RCC_DCKCFGR_0_SDMMCSEL
-#undef RCC_AHB2SMENR_0_DAC4SMEN
-#undef RCC_AHBRSTR_1_CRYPRST
-#undef RCC_PLLSAI1CFGR_0_PLLSAI1M
-#undef RCC_CICR_0_HSERDYC
-#undef RCC_APB1ENR1_1_USBF
-#undef RCC_AHB2ENR_0_SRAM2EN
-#undef RCC_MAP2_APB2ENR
-#undef RCC_D3CFGR_0
-#undef RCC_CIER_1_LSI1RDYIE
-#undef RCC_AHB2ENR_0_DAC2
-#undef RCC_APB2LPENR_1_SDIOLPEN
-#undef RCC_APB2ENR_0_TIM21EN
-#undef RCC_MAP0_AHB4RSTSETR
-#undef RCC_APB2SMENR_0_SAI2SMEN
-#undef RCC_MAP5_APB3RSTR
-#undef RCC_AHB1RSTR_0_ADC12RST
-#undef RCC_APB1ENR1_0_TIM6EN
-#undef RCC_APB2RSTR_0_SDMMCRST
-#undef RCC_APB1LPENR_0_TIM7LPEN
-#undef RCC_MAP4_PLLSYSCFGR
-#undef RCC_APB2ENR_1_SPI5ENR
-#undef RCC_APB1SMENR1_0_I2C2SMEN
-#undef RCC_AHB1ENR_0_ETH1TXEN
-#undef RCC_CIR_0_PLLI2SRDYC
-#undef RCC_APB2LPENR_0_LTDCLPEN
-#undef RCC_AHB1LPENR_0_DTCMLPEN
-#undef RCC_CR_3_MSIRDY
-#undef RCC_AHB1ENR_2_ETHMACTXEN
-#undef RCC_IOPSMEN_IOPESMEN
-#undef RCC_APB1RSTR2_I2C4RST
-#undef RCC_APB2ENR_0_LTDCEN
-#undef RCC_APB2RSTR_1_ADCRST
-#undef RCC_APB1RSTR_2_DAC3RST
-#undef RCC_AHBENR_2_DMA1EN
-#undef RCC_BDCR_2
-#undef RCC_CR_2
-#undef RCC_APB2RSTR_2_TIM9RST
-#undef RCC_APB2ENR_2
-#undef RCC_APB2ENR_0_USART1EN
-#undef RCC_CSR_1_RMVF
-#undef RCC_CR_1_PLLON
-#undef RCC_DCKCFGR_0_MSEL
-#undef RCC_MAP0_SAI3CKSELR
-#undef RCC_APB1ENR1_2
-#undef RCC_PLLCFGR_0_PLL2VCOSEL
-#undef RCC_BDCR_1
-#undef RCC_APB1LPENR_1_USART4LPEN
-#undef RCC_CFGR_4_USBPRE
-#undef RCC_CCIPR2_0_PLLSAI2DIVR
-#undef RCC_AHB2RSTR_0_OTGFSRST
-#undef RCC_APB1SMENR1_0_TIM5SMEN
-#undef RCC_MAP0_MC_MLAHBLPENSETR
-#undef RCC_CFGR_0_MCO2SEL
-#undef RCC_CICR_2
-#undef RCC_CR_2_PLLSYSON
-#undef RCC_AHB3RSTR_0_OSPI2RST
-#undef RCC_APB2ENR_2_DBGMCUEN
-#undef RCC_AHB1LPENR_0_DMA2LPEN
-#undef RCC_MAP0_MC_AHB3LPENSETR
-#undef RCC_APB2ENR_2_SDIOEN
-#undef RCC_AHBENR_2
-#undef RCC_MAP2_AHB2SMENR
-#undef RCC_APB3ENR_DSIEN
-#undef RCC_PLLCFGR_0_DIVR2EN
-#undef RCC_APB2ENR_1_TIM22EN
-#undef RCC_AHB1ENR_0_USB2OTGHSULPIEN
-#undef RCC_AHB3ENR_1
-#undef RCC_APB2RSTR_1_TIM8RST
-#undef RCC_MAP5_C2AHB2SMENR
-#undef RCC_APB1ENR_0_SPI2EN
-#undef RCC_AHB2ENR_0_ADCEN
-#undef RCC_CSR_0_LSI2RDY
-#undef RCC_CFGR_0_MCO1PRE
-#undef RCC_MAP0_MC_AHB6LPENCLRR
-#undef RCC_APB2RSTR_1_TIM10RST
-#undef RCC_AHB2LPENR_2
-#undef RCC_AHBENR_2_GPIOBEN
-#undef RCC_BDCR_0_LSECSSON
-#undef RCC_DCKCFGR_1_I2SSRC
-#undef RCC_AHB1SMENR_1
-#undef RCC_MAP0_MC_AXIMLPENSETR
-#undef RCC_APB1ENR1_1_USBDEN
-#undef RCC_APB1SMENR2_I2C4SMEN
-#undef RCC_MAP0_MP_CIER
-#undef RCC_MAP1_APB1HLPENR
-#undef RCC_MAP1_D2CCIP2R
-#undef RCC_AHB3ENR_0_MDMAEN
-#undef RCC_AHB2RSTR_0_GPIODRST
-#undef RCC_MAP0_LPTIM45CKSELR
-#undef RCC_MAP1_C1_APB4ENR
-#undef RCC_MAP0_MP_APB3ENCLRR
-#undef RCC_CR_0_HSECSSON
-#undef RCC_AHBENR_1_GPIOCEN
-#undef RCC_IOPENR_1_GPIOEEN
-#undef RCC_MAP0_MC_APB5ENCLRR
-#undef RCC_AHBENR_0_FLASHEN
-#undef RCC_APB1LRSTR_1
-#undef RCC_AHB1RSTR_0_FLASHRST
-#undef RCC_CCIPR2_1
-#undef RCC_APB1LPENR_0_CAN2LPEN
-#undef RCC_CIFR_2_PLLRDYF
-#undef RCC_AHB2RSTR_0_GPIOHRST
-#undef RCC_MAP5_AHBSMENR
-#undef RCC_MAP0_MP_CIFR
-#undef RCC_APB1RSTR_0_I2C3RST
-#undef RCC_AHB1LPENR_0_ARTLPEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSREN
-#undef RCC_CFGR_0_SWS
-#undef RCC_MAP0_MP_AHB3LPENCLRR
-#undef RCC_MAP1_C1_RSR
-#undef RCC_MAP1_PLLCFGR
-#undef RCC_MAP0_MC_APB1ENCLRR
-#undef RCC_APB1RSTR1_0_LCDRST
-#undef RCC_CFGR_3_MCO2PRE2
-#undef RCC_PLLCFGR_4
-#undef RCC_AHBRSTR_0_DMARST
-#undef RCC_MAP0_MP_TZAHB6ENCLRR
-#undef RCC_AHB1RSTR_0_GPIOKRST
-#undef RCC_MAP0_UART78CKSELR
-#undef RCC_CCIPR_1_I2S2SEL
-#undef RCC_CSR_0_LSI2ON
-#undef RCC_AHB2RSTR_2_DCMIRST
-#undef RCC_PLLCFGR_2
-#undef RCC_CSR_0_RMVF
-#undef RCC_CCIPR_1_I2C3SEL1
-#undef RCC_AHB2RSTR_0_SDMMC2RST
-#undef RCC_PLLCFGR_1_PLLR
-#undef RCC_ICSCR_3_MSITRIM
-#undef RCC_APB2RSTR_1_SYSCFGRST
-#undef RCC_AHB2RSTR_0_SDMMC1RST
-#undef RCC_CFGR2_ADC34PRES
-#undef RCC_AHB2SMENR_0_AESSMEN
-#undef RCC_MAP0_MC_APB2ENCLRR
 #undef RCC_APB1ENR1_1_SPI1EN
-#undef RCC_AHB3RSTR_2
-#undef RCC_AHBENR_2_GPIOFEN
-#undef RCC_MAP0_RTCDIVR
-#undef RCC_PLLCFGR_1_PLLQ3
-#undef RCC_MAP2_APB2RSTR
-#undef RCC_AHBENR_2_RNGEN
-#undef RCC_PLLCFGR_2_PLLN0
-#undef RCC_CFGR_1_STOPWUCK
-#undef RCC_APB1ENR_2_CAN3EN
-#undef RCC_PLLCFGR_2_PLLN5
-#undef RCC_AHB1LPENR_1_USB2OTGHSULPILPEN
-#undef RCC_MAP0_MC_MLAHBLPENCLRR
-#undef RCC_AHB1RSTR_1_GPIOIRST
-#undef RCC_MAP3_CIR
-#undef RCC_APB1RSTR1_0_TIM7RST
-#undef RCC_CCIPR_0_CLK48SEL
-#undef RCC_APB1RSTR_3_LCDRST
-#undef RCC_AHB1SMENR_0_DMAMUX1SMEN
-#undef RCC_CCIPR2_0
-#undef RCC_CFGR_1_HPRE
-#undef RCC_APB2ENR_0_TIM8EN
-#undef RCC_APB1ENR1_0_SP3EN
-#undef RCC_AHB1LPENR_0_SRAM3LPEN
-#undef RCC_MAP0_APB2RSTCLRR
-#undef RCC_AHB2ENR_0_DCMIEN
-#undef RCC_AHBSMENR_0_RNGSMEN
-#undef RCC_MAP0_TIMG1PRER
-#undef RCC_CIER_0_CSIRDYIE
-#undef RCC_APB2RSTR_0_SYSCFGRST
-#undef RCC_CFGR_3_PLLNODIV
-#undef RCC_APB2RSTR_2
-#undef RCC_AHBRSTR_0_GPIODRST
-#undef RCC_CFGR_1_SWS
-#undef RCC_APB1LPENR_0_TIM14LPEN
-#undef RCC_MAP2_C1_APB1LENR
-#undef RCC_AHBSMENR_1_CRYPTSMEN
-#undef RCC_AHBRSTR_2_RNGRST
-#undef RCC_APB2RSTR_1_SAI1RST
-#undef RCC_GCR_BOOT_C1
-#undef RCC_MAP0_MC_APB2ENSETR
-#undef RCC_APB1ENR_1
-#undef RCC_AHBENR_0_DMA2EN
-#undef RCC_CCIPR_0_I2C2SEL
-#undef RCC_APB2ENR_0_HRTIMEN
-#undef RCC_MAP1_AHB3RSTR
-#undef RCC_MAP2_PLLCFGR
-#undef RCC_CCIPR_0_UART4SEL
-#undef RCC_APB1SMENR_I2C3SMEN
-#undef RCC_MAP2_AHB2RSTR
-#undef RCC_MAP0_FDCANCKSELR
-#undef RCC_AHB2LPENR_2_FSMCLPEN
-#undef RCC_APB1SMENR1_0_LCDSMEN
-#undef RCC_APB1ENR_1_CANEN
-#undef RCC_DCKCFGR2_1
-#undef RCC_AHBENR_0_IOPEEN
-#undef RCC_MAP0_MP_MLAHBLPENSETR
-#undef RCC_APB1ENR_0_I2C3EN
-#undef RCC_APB2LPENR_0_SPI5LPEN
-#undef RCC_CICR_0_LSECSSC
-#undef RCC_MAP5_C2APB1SMENR1
-#undef RCC_PLLSYSCFGR_0_PLLSYSQ
-#undef RCC_CFGR_0_MCO1SEL
-#undef RCC_MAP2_CCIPR2
-#undef RCC_MAP0_AHB5RSTSETR
-#undef RCC_APB1ENR_1_TIM3EN
-#undef RCC_CFGR_3_PPRE22
-#undef RCC_MAP4_AHBRSTR
-#undef RCC_AHB2SMENR_2_HASH1SMEN
-#undef RCC_APB2LPENR_1_TIM9LPEN
-#undef RCC_AHB2RSTR_3
-#undef RCC_AHB2SMENR_0_DCMISMEN
-#undef RCC_APB1SMENR1_0_PWRSMEN
-#undef RCC_APB1LPENR_1_USBLPEN
-#undef RCC_APB1ENR1_0_USART3EN
-#undef RCC_MAP0_MP_SREQCLRR
-#undef RCC_PLLCFGR_0_PLL3VCOSEL
-#undef RCC_MAP5_CKGATENR
-#undef RCC_MAP0_MP_AHB4ENCLRR
-#undef RCC_AHB2RSTR_1_GPIOFRST
-#undef RCC_APBENR1_USART3EN
-#undef RCC_APB2SMENR_1_HRTIMERSMEN
-#undef RCC_APB2ENR_1_DFSDM1EN
-#undef RCC_CFGR_2_SWS1
-#undef RCC_AHB2LPENR_0_SDMMC2LPEN
-#undef RCC_APB2RSTR_1_HRTIM1RST
-#undef RCC_AHB2LPENR_0_SRAM2LPEN
-#undef RCC_AHB2ENR_0_OSPIMEN
-#undef RCC_MAP0_SPI2S23CKSELR
-#undef RCC_PLLCFGR_1_PLLP
-#undef RCC_CSR_0_IWDGRSTF
-#undef RCC_APB1ENR_0_TIM12EN
-#undef RCC_APB1LRSTR_0_HDMICECRST
-#undef RCC_APB1ENR_2
-#undef RCC_CIER_0_PLL1RDYIE
-#undef RCC_CFGR_3_PPRE12
-#undef RCC_MAP5_BDCR
-#undef RCC_APB1RSTR_3_CRCRST
-#undef RCC_AHB3LPENR_1_FMCLPEN
-#undef RCC_AHB1ENR_1_DMA2DEN
-#undef RCC_AHB1ENR_1
-#undef RCC_AHB2RSTR_1_GPIOERST
-#undef RCC_APB1ENR1_0_UART4EN
-#undef RCC_DCKCFGR_1
-#undef RCC_AHB1ENR_0_USB1OTGHEN
-#undef RCC_APB1RSTR_0_TIM4RST
-#undef RCC_ICSCR_1_MSITRIM
-#undef RCC_MAP0_APB3DIVR
-#undef RCC_MAP4_APB2RSTR
-#undef RCC_MAP0_MP_APB1ENCLRR
-#undef RCC_AHB1SMENR_0_FMACSMEN
-#undef RCC_AHB3LPENR_0_FLITFLPEN
-#undef RCC_APB1SMENR1_0_TIM4SMEN
-#undef RCC_AHB1ENR_0_GPIODEN
-#undef RCC_CSR_0_RFWKPSEL
-#undef RCC_MAP0
-#undef RCC_CFGR_0_HRTIMSEL
-#undef RCC_CICR_1_HSI48RDYC
-#undef RCC_AHB2ENR_1_DAC1
-#undef RCC_AHB1LPENR_0_GPIOJLPEN
-#undef RCC_APB2LPENR_0_DSILPEN
-#undef RCC_PLLCFGR_1_PLLPEN
-#undef RCC_APB1SMENR1_1_USART1SMEN
-#undef RCC_AHB1RSTR_1_GPIOFRST
-#undef RCC_APB2ENR_3_DBGEN
-#undef RCC_DCKCFGR_0_I2S1SRC
-#undef RCC_APB1SMENR1_1_USBFSSMEN
-#undef RCC_MAP0_MC_AHB6ENCLRR
-#undef RCC_MAP0_MP_AHB4LPENCLRR
-#undef RCC_DCKCFGR2_0_UART7SEL
-#undef RCC_AHB1RSTR_1_GPIOCRST
-#undef RCC_MAP0_PLL2CR
-#undef RCC_MAP4_DCKCFGR
-#undef RCC_AHB2SMENR_0_CRYPTSMEN
-#undef RCC_MAP0_APB4RSTCLRR
-#undef RCC_AHB3RSTR_1_PKARST
-#undef RCC_AHB2ENR_0_GPIOIEN
-#undef RCC_AHB1ENR_0_CRCEN
-#undef RCC_AHB1LPENR_0_USB1OTGHSULPILPEN
-#undef RCC_TMPL
-#undef RCC_APB2ENR_0_DFSDM2EN
-#undef RCC_MAP1_D3CFGR
-#undef RCC_CFGR3_1
-#undef RCC_MAP0_PLL1FRACR
-#undef RCC_AHBENR_1_GPIOEEN
-#undef RCC_APB1ENR1_0_TIM4EN
-#undef RCC_MAP4_AHBLPENR
-#undef RCC_APB1RSTR_1_LPTIMER1RST
-#undef RCC_APB2LPENR_0_TIM15LPEN
-#undef RCC_APB2RSTR_0_SPI5RST
-#undef RCC_CR_1_PLLSAI1ON
-#undef RCC_APB1ENR_1_LPUART1EN
-#undef RCC_CR_3_CSSON
-#undef RCC_APB1ENR_0_TIM5EN
-#undef RCC_APB2LPENR_0_SAI3LPEN
-#undef RCC_AHB3SMENR_0_OCTOSPI2
-#undef RCC_MAP5_CR2
-#undef RCC_AHBRSTR_0_TSCRST
-#undef RCC_APB1LPENR_0_TIM4LPEN
-#undef RCC_AHB2SMENR_0_SRAM3SMEN
-#undef RCC_PLLSAICFGR_PLLSAIP
-#undef RCC_APB2ENR_0_SYSCFGEN
-#undef RCC_AHB2RSTR_2
-#undef RCC_APB2LPENR_0_USART9LPEN
-#undef RCC_APB1LPENR_0_CAN1LPEN
-#undef RCC_MAP0_MP_APB1LPENSETR
-#undef RCC_MAP0_MC_APB4LPENCLRR
-#undef RCC_CICR_0_PLL2RDYC
-#undef RCC_APB2ENR_2_DFSDMEN
-#undef RCC_PLLCFGR_0_PLL1FRACEN
-#undef RCC_APB2RSTR_1_DFSDM1RST
-#undef RCC_APB1RSTR_1_DAC2RST
-#undef RCC_CR_0_CSIRDY
-#undef RCC_MAP1_PLL1DIVR
-#undef RCC_PLLCFGR_0_PLL2FRACEN
-#undef RCC_CR_0_RTCPRE1
-#undef RCC_MAP4_IOPSMENR
-#undef RCC_AHB1ENR_0_CCMDATARAMEN
-#undef RCC_CSR_1_LSI1ON
-#undef RCC_ICSCR_2_HSICAL0
-#undef RCC_CFGR_2_RTCPRE2
-#undef RCC_CIER_0_LSI2RDYIE
-#undef RCC_APB1RSTR1_0_TIM6RST
-#undef RCC_MAP5_CFGR3
-#undef RCC_AHB1RSTR_0_USB1OTGRST
-#undef RCC_AHB3RSTR_1_QSPIRST
-#undef RCC_MAP0_PLL4CR
-#undef RCC_AHB1ENR_0_GPIOJEN
-#undef RCC_MAP0_AHB5RSTCLRR
-#undef RCC_CR_1_HSIKERDY
-#undef RCC_APB2LPENR_0_USART1LPEN
-#undef RCC_APB1SMENR1_0_CAN1SMEN
-#undef RCC_CIFR_1_MSIRDYF
-#undef RCC_MAP0_IDR
-#undef RCC_CSR_2_LSEBYP
-#undef RCC_MAP0_MP_AHB3ENSETR
-#undef RCC_APB2ENR_2_TIM9EN
-#undef RCC_AHB1LPENR_1_DMA2LPEN
-#undef RCC_MAP0_APB4RSTSETR
-#undef RCC_MAP1_GCR
-#undef RCC_APB2LPENR_0_DFSDM2LPEN
-#undef RCC_APB1RSTR_2
-#undef RCC_MAP0_USBCKSELR
-#undef RCC_AHB2LPENR_0_HASHLPEN
-#undef RCC_MAP0_MC_APB5LPENCLRR
-#undef RCC_CSR_0_LSI2TRIMEN
-#undef RCC_CIER_2_PLLRDYIE
-#undef RCC_AHB1RSTR_0_GPIOHRST
-#undef RCC_MAP0_MC_AHB2ENSETR
-#undef RCC_CFGR_2_MCO2PRE
-#undef RCC_PLLCFGR_0_DIVQ2EN
-#undef RCC_APB2ENR_0_TIM19EN
-#undef RCC_MAP0_LPTIM1CKSELR
-#undef RCC_CICR_0_HSE_ready_Interrupt_Clear
-#undef RCC_APB1RSTR_0_DACRST
-#undef RCC_APB1ENR_1_LPTIM1EN
-#undef RCC_MAP1_C1_APB3ENR
-#undef RCC_MAP0_MSSCKSELR
-#undef RCC_PLLCFGR_0_PLL1RGE
-#undef RCC_AHB2SMENR_1
-#undef RCC_CSR_2_LSEON
-#undef RCC_CFGR_3_PLLXTPRE
-#undef RCC_AHB1RSTR_0_USB2OTGRST
-#undef RCC_AHBENR_0_ADC12EN
-#undef RCC_AHB2RSTR_1_HASHRST
-#undef RCC_APB2ENR_2_SDAD3EN
-#undef RCC_CFGR_3_PPRE2F
-#undef RCC_APB3LPENR_DSILPEN
-#undef RCC_AHBENR_1_GPIOGEN
-#undef RCC_CFGR_2_RTCPRE3
-#undef RCC_CFGR_3_MCO20
-#undef RCC_AHB2RSTR_1_GPIOGRST
-#undef RCC_APB2RSTR_1_SPI4RST
-#undef RCC_AHB1ENR_2_BKPSRAMEN
-#undef RCC_APBRSTR1_USART3RST
-#undef RCC_MAP5_C2APB1ENR1
-#undef RCC_CSR_0_LSECSSD
-#undef RCC_MAP5_AHBENR
-#undef RCC_PLLCFGR_1_PLLQEN
-#undef RCC_CIFR_2_CSSLSEF
-#undef RCC_AHB3SMENR_0_FMCSMEN
-#undef RCC_AHB1ENR_0_GPIOEEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSR
-#undef RCC_CSR_0_CSSLSEON
-#undef RCC_CCIPR2_0_ADFSDMSEL
-#undef RCC_CFGR_0_TIMPRE
-#undef RCC_AHB2ENR_0_SRAM1EN
-#undef RCC_APBENR1_DAC1EN
-#undef RCC_MAP5_C2APB1ENR2
-#undef RCC_MAP5_APB1RSTR
-#undef RCC_APBSMENR1_UCPD1SMEN
-#undef RCC_MAP1_APB2RSTR
-#undef RCC_APB1LPENR_0_RTCAPBEN
-#undef RCC_CFGR3_0_HRTIM1SW
-#undef RCC_MAP5_C2APB3ENR
-#undef RCC_MAP0_SPDIFCKSELR
-#undef RCC_APB1ENR_3_TIM18EN
-#undef RCC_AHB1SMENR_1_DMAMUXSMEN
-#undef RCC_APB2ENR_2_SDMMC2EN
-#undef RCC_CFGR_4_MCOF
-#undef RCC_CR_1_HSION
-#undef RCC_APB2ENR_2_ADC1EN
-#undef RCC_CCIPR_1_LPTIM1SEL1
-#undef RCC_APB2ENR_1_SPI4EN
-#undef RCC_AHBRSTR_0_IOPDRST
-#undef RCC_APB2SMENR_0_LTDCSMEN
-#undef RCC_APB3RSTR_RFRST
-#undef RCC_MAP0_TIMG2PRER
-#undef RCC_MAP1_AHB1LPENR
-#undef RCC_APB2RSTR_0_DFSDM2RST
-#undef RCC_CIER_1_PLLSAI2RDYIE
-#undef RCC_CFGR_2_MCO2EN
-#undef RCC_MAP3_AHB2RSTR
-#undef RCC_IOPENR_0_IOPEEN
-#undef RCC_AHBENR_1_GPIODEN
-#undef RCC_MAP0_RNG2CKSELR
-#undef RCC_MAP0_MC_AXIMENSETR
-#undef RCC_MAP2_AHB3ENR
-#undef RCC_DCKCFGR_0_LPTIMER1SEL
-#undef RCC_APB2RSTR_0_ADCRST
-#undef RCC_APB1RSTR_3_I2C3
-#undef RCC_AHB2ENR_0_DAC3
-#undef RCC_MAP4_APBRSTR1
-#undef RCC_C1_AHB1ENR_0_USB2ULPIEN
-#undef RCC_APB1RSTR_0_SPI2RST
-#undef RCC_APB1RSTR_1_DAC1RST
-#undef RCC_APB1ENR_0_TIM7EN
-#undef RCC_MAP0_MP_IWDGFZSETR
-#undef RCC_AHB1RSTR_0_GPIODRST
-#undef RCC_CICR_0_LSI2RDYC
-#undef RCC_AHB3ENR_0_AES2EN
-#undef RCC_MAP1_APB1LRSTR
-#undef RCC_APB1LPENR_0_TIM5LPEN
-#undef RCC_CR_2_PLLSAIRDY
-#undef RCC_AHBRSTR_1
-#undef RCC_APB3RSTR_LTDCRST
-#undef RCC_AHB3RSTR_0_DMA2DRST
-#undef RCC_AHB2LPENR_0_CAMITFLPEN
-#undef RCC_PLLCFGR_2_PLLM1
-#undef RCC_AHB1ENR_2_DMAMUXEN
-#undef RCC_AHB2SMENR_0_RNGSMEN
-#undef RCC_MAP1_C1_APB4LPENR
-#undef RCC_AHB1LPENR_0_USB2OTGHSLPEN
-#undef RCC_AHB2ENR_0
-#undef RCC_CIFR_1_LSI1RDYF
-#undef RCC_MAP2_C1_AHB1LPENR
-#undef RCC_APB2ENR_1_SAI1EN
-#undef RCC_MAP0_MC_APB4LPENSETR
-#undef RCC_MAP0_MP_SREQSETR
-#undef RCC_APB2RSTR_2_SDIORST
-#undef RCC_APB2RSTR_0_ADC1RST
-#undef RCC_CSR_1_LSIIWDGLP
-#undef RCC_ICSCR_2_HSI16TRIM
-#undef RCC_CICR_2_HSECSSC
-#undef RCC_MAP0_SAI1CKSELR
-#undef RCC_CIR_0_PLLI2SRDYF
-#undef RCC_APB2SMENR_0_SDMMCSMEN
-#undef RCC_MAP0_MP_AHB6ENSETR
-#undef RCC_CR_0_RC48ON
-#undef RCC_D3CFGR_1
-#undef RCC_MAP4_CSR
-#undef RCC_MAP2_CIFR
-#undef RCC_APB1LPENR_0_UART5LPEN
-#undef RCC_AHB3SMENR_0
-#undef RCC_AHBENR_0_FSMCEN
-#undef RCC_MAP0_MC_APB2LPENCLRR
-#undef RCC_AHB1ENR_1_TSCEN
-#undef RCC_AHB2LPENR_0_RNGLPEN
-#undef RCC_MAP2_DCKCFGR1
-#undef RCC_CIR_0_PLLSAIRDYIE
-#undef RCC_AHB3LPENR_0
-#undef RCC_APB2ENR_0_SPI5EN
-#undef RCC_APB1ENR_2_USBRST
-#undef RCC_PLLCFGR_3_PLLQ
-#undef RCC_APB1ENR_0_TIM14EN
-#undef RCC_CIFR_2_HSECSSF
-#undef RCC_CICR_2_RC48RDYC
-#undef RCC_APB1LPENR_0_TIM13LPEN
-#undef RCC_AHB2ENR_2
-#undef RCC_CR_1_PLLSAI1RDY
-#undef RCC_PLLCFGR_1_PLLM2
-#undef RCC_APB1SMENR_USART4SMEN
-#undef RCC_AHB1ENR_0_GPIOKEN
-#undef RCC_MAP0_SPI6CKSELR
-#undef RCC_MAP1_C1_AHB3ENR
-#undef RCC_CIR_2_LSECSSC
-#undef RCC_CR_2_CSSLSEON
-#undef RCC_PLLI2SCFGR_0_PLLI2SP
-#undef RCC_MAP3_APB2RSTR
-#undef RCC_DCKCFGR2_1_SDIOSEL
-#undef RCC_PLLCFGR_0_DIVP2EN
-#undef RCC_AHB1RSTR_1
-#undef RCC_PLLCFGR_2_PLLQ
-#undef RCC_APB2LPENR_0_DFSDM1LPEN
-#undef RCC_APB1ENR_1_CEC
-#undef RCC_APB1RSTR_2_TIM18RST
-#undef RCC_MAP1_PLL2FRACR
-#undef RCC_APB1RSTR_2_LPUART1RST
-#undef RCC_CCIPR_0_UART5SEL
-#undef RCC_CR_3_HSI16OUTEN
-#undef RCC_AHBRSTR_0_FLITFRST
-#undef RCC_CCIPR_1_TIM1SEL
-#undef RCC_CIER_3
-#undef RCC_CIER_0_LSECSSIE
-#undef RCC_DCKCFGR_0_PLLSAIDIVQ
-#undef RCC_MAP4_BDCR
-#undef RCC_APB2ENR_1_HRTIM1EN
-#undef RCC_PLLCFGR_2_PLLN3
-#undef RCC_APB1LPENR_0_TIM6LPEN
-#undef RCC_DCKCFGR2_2_CKSDIOSEL
-#undef RCC_APB1RSTR1_0_TIM4RST
-#undef RCC_PLLCFGR_4_PLLP
-#undef RCC_AHB1ENR_1_DMA1EN
-#undef RCC_APB1RSTR1_1_USBFSRST
-#undef RCC_DCKCFGR2_0_UART6SEL
-#undef RCC_APB1ENR_2_DAC3EN
-#undef RCC_CIFR_0_HSECSSF
-#undef RCC_CR_1_HSIRDY
-#undef RCC_AHB1LPENR_0_CRCLPEN
-#undef RCC_APB1RSTR_1_USART3RST
-#undef RCC_APB1ENR_1_I2CFMP1EN
-#undef RCC_APB2RSTR_1_TM11RST
-#undef RCC_APB2RSTR_0_SDMMC1RST
-#undef RCC_CSR_1
-#undef RCC_AHB2ENR_2_DCMIEN
-#undef RCC_MAP0_MP_APB2LPENSETR
-#undef RCC_CIER_1
-#undef RCC_AHB1LPENR_0_ETH1TXLPEN
-#undef RCC_MAP2_APB2SMENR
-#undef RCC_PLLCFGR_2_PLLM4
-#undef RCC_AHB2RSTR_0_CAMITFRST
-#undef RCC_AHB2SMENR_0_GPIOFSMEN
-#undef RCC_AHB2RSTR_1_GPIOARST
-#undef RCC_APB2RSTR_0_TM10RST
-#undef RCC_PLLSAI1CFGR_1
-#undef RCC_AHB2SMENR_0_SDMMC1SMEN
-#undef RCC_CIER_0_LSIRDYIE
-#undef RCC_CFGR_4
-#undef RCC_MAP0_OCENCLRR
-#undef RCC_MAP0_RDLSICR
-#undef RCC_AHB2RSTR_0_HASHRST
-#undef RCC_APB1ENR_0_CAN2EN
-#undef RCC_MAP0_MC_APB3ENCLRR
-#undef RCC_MAP1_C1_APB2LPENR
-#undef RCC_PLLCFGR_1_PLLQ
-#undef RCC_MAP0_MC_APB5LPENSETR
-#undef RCC_MAP3_AHB3LPENR
-#undef RCC_AHB2LPENR_0_CRYPTLPEN
-#undef RCC_MAP4_APBRSTR2
-#undef RCC_PLLSAI2CFGR_PLLSAI2PDIV
-#undef RCC_MAP0_MCO1CFGR
-#undef RCC_DCKCFGR2_0_UART1SEL
-#undef RCC_MAP1_APB3LPENR
-#undef RCC_CFGR_4_MCO1PRE0
-#undef RCC_APBRSTR1_UCPD2RST
-#undef RCC_MAP0_MP_AHB5ENCLRR
-#undef RCC_APB1LPENR_1
-#undef RCC_MAP0_UART1CKSELR
-#undef RCC_MAP0_MP_AXIMLPENSETR
-#undef RCC_AHB2ENR_1_ADC345EN
-#undef RCC_MAP1_AHB1RSTR
-#undef RCC_MAP0_ADCCKSELR
-#undef RCC_AHB3SMENR_1
-#undef RCC_CKGATENR_EVTCL_CKEN
-#undef RCC_DCKCFGR2_1_SPDIFSEL
-#undef RCC_APB2RSTR_1_TM12RST
-#undef RCC_MAP0_MP_APB3LPENCLRR
-#undef RCC_CICR_2_CSSLSEC
-#undef RCC_MAP5_C2APB3SMENR
-#undef RCC_APB2RSTR_2_SDAD3RST
-#undef RCC_APB1RSTR_2_LPUART12RST
-#undef RCC_CICR_3
-#undef RCC_CFGR_3
-#undef RCC_CFGR_4_MCO1PRE2
-#undef RCC_APB2ENR_1_TIM1EN
-#undef RCC_MAP0_PLL4CFGR1
-#undef RCC_CCIPR_0_SAI2SEL
-#undef RCC_AHB1LPENR_0_DMA1LPEN
-#undef RCC_BDCR_0_VSWRST
-#undef RCC_APB1SMENR2_LPTIM2SMEN
-#undef RCC_CICR_2_PLLRDYC
-#undef RCC_CR_2_PLLSAION
-#undef RCC_PLLSAI2CFGR_PLLSAI2M
-#undef RCC_PLLI2SCFGR_0
-#undef RCC_AHB2ENR_0_OTGFSEN
-#undef RCC_CFGR_2_HPRE3
-#undef RCC_MAP0_APB1RSTCLRR
-#undef RCC_AHB3ENR_2
-#undef RCC_AHB3RSTR_0_SDMMC1RST
-#undef RCC_CSR_3
-#undef RCC_CR_3
-#undef RCC_MAP0_PLL2CFGR2
-#undef RCC_MAP0_MP_APB5LPENSETR
-#undef RCC_APB1ENR2_LPTIM2EN
-#undef RCC_AHBRSTR_0_GPIOGRST
-#undef RCC_CSR_0_RTCEN
-#undef RCC_CFGR3_0_USBSW
-#undef RCC_AHBRSTR_0_IOPERST
-#undef RCC_MAP0_MP_AXIMLPENCLRR
-#undef RCC_APB1RSTR_0_I2C4RST
-#undef RCC_DCKCFGR2_0_I2C2SEL
-#undef RCC_MAP3_PLLCFGR
-#undef RCC_AHB3ENR_0_FLASHEN
-#undef RCC_APB1SMENR1_1_FDCANSMEN
-#undef RCC_APB1ENR_1_USBEN
-#undef RCC_APB1SMENR1_0_UART4SMEN
-#undef RCC_AHB1RSTR_0_ARTRST
-#undef RCC_AHB1ENR_1_USB2OTGEN
-#undef RCC_MAP3
-#undef RCC_MAP5_SMPSCR
-#undef RCC_CIER_0_HSI48RDYIE
-#undef RCC_CFGR3_0_I2C3SW
-#undef RCC_CR_2_PLLSYSRDY
-#undef RCC_AHBENR_1_DMA2EN
-#undef RCC_AHB1ENR_0_ADC12EN
-#undef RCC_CFGR_1_MCOPRE
-#undef RCC_AHB1ENR_0_USB2ULPIEN
-#undef RCC_CFGR_0_RTCPRE
-#undef RCC_CCIPR_0_USART3SEL
-#undef RCC_MAP0_MC_AHB6LPENSETR
-#undef RCC_AHB1LPENR_0_OTGHSLPEN
-#undef RCC_C1_AHB1ENR_1
-#undef RCC_MAP0_MC_APB2LPENSETR
-#undef RCC_CR_3_MSION
-#undef RCC_ICSCR_2_MSIRANGE
-#undef RCC_MAP4
-#undef RCC_MAP0_TZAHB6RSTCLRR
-#undef RCC_AHBRSTR_0_IOPCRST
-#undef RCC_CIER_0_HSERDYIE
-#undef RCC_AHB1LPENR_0_GPIOKLPEN
-#undef RCC_MAP0_SDMMC3CKSELR
-#undef RCC_AHB1SMENR_1_CRCSMEN
-#undef RCC_MAP0_MC_AHB2ENCLRR
-#undef RCC_APB1RSTR_1_LPTIM1RST
-#undef RCC_APB1LPENR_0_UART4LPEN
-#undef RCC_AHB1LPENR_1_USB1ULPILPEN
-#undef RCC_CCIPR2_0_SDMMCSEL
-#undef RCC_MAP0_PLL4FRACR
-#undef RCC_APB2ENR_0_FWEN
-#undef RCC_DCKCFGR_0_SAI1ASRC
-#undef RCC_APB1RSTR_0_CAN2RST
-#undef RCC_CFGR_3_MCO2PRE1
-#undef RCC_AHBENR_1_GPIOBEN
-#undef RCC_MAP3_PLLSAICFGR
-#undef RCC_APB2ENR_0_SAI3EN
-#undef RCC_CICR_0_RC48RDYC
-#undef RCC_APB2RSTR_3_DBGRST
-#undef RCC_PLLSAI2CFGR_PLLSAI2Q
-#undef RCC_MAP0_MP_APRSTSR
-#undef RCC_CIER_1_MSIRDYIE
-#undef RCC_MAP1_C1_APB1LENR
-#undef RCC_CSR_0_LSI2TRIMOK
-#undef RCC_APB2RSTR_1
-#undef RCC_MAP3_DKCFGR1
-#undef RCC_CIFR_0_RC48RDYF
-#undef RCC_CSR_0_RFRSTS
-#undef RCC_MAP0_MC_MLAHBENSETR
-#undef RCC_APB1ENR1_0_UART5EN
-#undef RCC_APB1ENR1_0_CRSEN
-#undef RCC_MAP5_APBSMENR1
-#undef RCC_MAP0_PLL1CR
-#undef RCC_APB2ENR_0_USBPHYCEN
-#undef RCC_MAP0_OCRDYR
-#undef RCC_MAP3_APB2LPENR
-#undef RCC_APB1LPENR_0_TIM3LPEN
-#undef RCC_DCKCFGR2_2_I2C4SEL
-#undef RCC_CIFR_2_HSI16RDYF
-#undef RCC_APB1ENR_4
-#undef RCC_APB1ENR1_1_CRSEN
-#undef RCC_ICSCR_4
-#undef RCC_APB1ENR1_1_I2C3
-#undef RCC_APB2RSTR_1_SART10RST
-#undef RCC_CFGR3_0_TIM1SW
-#undef RCC_D3AMR_0_BKPSRAMAMEN
-#undef RCC_MAP1_APB2LPENR
-#undef RCC_MAP5_CCIPR
-#undef RCC_PLLCFGR_2_PLLM0
-#undef RCC_CICR_1_MSIRDYC
-#undef RCC_AHBRSTR_3
-#undef RCC_MAP0_MPCKSELR
-#undef RCC_CFGR3_0_USART3SW
-#undef RCC_PLLCFGR_3_PLLN
-#undef RCC_PLLCFGR_0_PLLPDIV
-#undef RCC_APB2RSTR_0_SPI6RST
-#undef RCC_CR_2_HSIRDY
-#undef RCC_APB1SMENR1_2
-#undef RCC_DCKCFGR2_0_UART4SEL
-#undef RCC_APB2ENR_0_SPI6ENR
-#undef RCC_APB1ENR_0_DACEN
-#undef RCC_APB1ENR_1_USART4EN
-#undef RCC_APB1RSTR2_USBPDRST
-#undef RCC_CFGR_1_SW
-#undef RCC_APB1ENR_0_USART3EN
-#undef RCC_CFGR3_0_TIM8SW
-#undef RCC_MAP0_MC_AHB5ENCLRR
-#undef RCC_MAP1_C1_APB1LLPENR
-#undef RCC_APBSMENR1_UCPD2SMEN
-#undef RCC_CICR_0_LSIRDYC
-#undef RCC_MAP1_APB1HENR
-#undef RCC_CFGR_2_HPRE1
-#undef RCC_BDCR_1_LSCOSEL
-#undef RCC_MAP0_MP_AHB2ENCLRR
-#undef RCC_AHB2ENR_0_GPIODEN
-#undef RCC_APBRSTR1_DAC1RST
-#undef RCC_MAP0_APB5RSTCLRR
-#undef RCC_DCKCFGR_1_I2S2SRC
-#undef RCC_AHBRSTR_0_GPIOFRST
-#undef RCC_AHB1RSTR_0_GPIOJRST
-#undef RCC_AHB3ENR_0
-#undef RCC_AHBENR_0_IOPBEN
-#undef RCC_CIR_0_PLLSAIRDYC
-#undef RCC_IOPRSTR_IOPERST
-#undef RCC_MAP0_MCUDIVR
-#undef RCC_AHB1LPENR_1_USB1OTGLPEN
-#undef RCC_PLLCFGR_1_PLLQ2
-#undef RCC_AHB2ENR_1_CRYPTEN
-#undef RCC_MAP0_PLL3CR
-#undef RCC_APB1RSTR1_0_UART4RST
-#undef RCC_CFGR_3_PPRE11
-#undef RCC_APB1LPENR_0_SPI3LPEN
-#undef RCC_AHB1LPENR_1_USB2OTGLPEN
-#undef RCC_DCKCFGR_0_PLLIS2DIVQ
-#undef RCC_APBRSTR1_USART4RST
-#undef RCC_MAP0_MP_AHB3ENCLRR
-#undef RCC_AHBENR_3
-#undef RCC_CSR_1_LSI1RDY
-#undef RCC_MAP0_MP_APRSTCR
-#undef RCC_CIFR_0_PLL2RDYF
-#undef RCC_CFGR_0_STOPWUCK
-#undef RCC_MAP0_APB2RSTSETR
-#undef RCC_C1_AHB1ENR_0_USB1OTGHSEN
-#undef RCC_MAP5_C2AHB1SMENR
-#undef RCC_CCIPR_0_DFSDMSEL
-#undef RCC_AHB2RSTR_0_GPIOBRST
-#undef RCC_BDCR_2_BDRST
-#undef RCC_BDCR_1_LSCCOEN
-#undef RCC_CFGR_3_PLLSRC
-#undef RCC_APB1SMENR1_0_TIM3SMEN
-#undef RCC_APB1ENR_1_DAC2EN
-#undef RCC_CFGR_5
-#undef RCC_APB2ENR_1_HRTIMEREN
-#undef RCC_MAP3_APB1LPENR
-#undef RCC_MAP0_AHB2RSTSETR
-#undef RCC_CIER_2_CSSLSE
-#undef RCC_CIR_2
-#undef RCC_AHBENR_0_IOPDEN
-#undef RCC_MAP0_APB5DIVR
-#undef RCC_CFGR_3_PPRE20
-#undef RCC_APB2RSTR_2_DBGMCURST
-#undef RCC_AHB2ENR_0_CRYPTEN
-#undef RCC_AHBENR_1_DMA1EN
-#undef RCC_CIFR_0_CSIRDY
-#undef RCC_CCIPR_0_SAI1SEL
-#undef RCC_AHB1ENR_1_DTCMRAMEN
-#undef RCC_AHB1ENR_2
-#undef RCC_CFGR_0_RTCPRE1
-#undef RCC_MAP1_APB1LENR
-#undef RCC_ICSCR_2_HSICAL
-#undef RCC_AHB1ENR_1_ETHMACPTPEN
-#undef RCC_CFGR_5_PPRE
-#undef RCC_MAP0_MC_APB1ENSETR
-#undef RCC_MAP0_MP_AHB5LPENCLRR
-#undef RCC_MAP0_MC_AHB5LPENSETR
-#undef RCC_AHB2RSTR_0_CRYPTRST
-#undef RCC_IOPENR_0_IOPFEN
-#undef RCC_AHB3ENR_0_FMCEN
-#undef RCC_AHB1LPENR_0_GPIOCLPEN
-#undef RCC_DCKCFGR_0_CKDFSDM1ASEL
-#undef RCC_APB1ENR_3_COMPEN
 #undef RCC_MAP0_APB1DIVR
-#undef RCC_APB1LPENR_0_DACLPEN
-#undef RCC_APB2SMENR_1_DFSDMSMEN
-#undef RCC_MAP1_PLL1FRACR
-#undef RCC_CICR_1
-#undef RCC_PLLCFGR_1_PLLSRC
-#undef RCC_AHBRSTR_1_GPIOARST
-#undef RCC_AHB3RSTR_0_JPGDECRST
-#undef RCC_MAP0_MP_APB4ENSETR
-#undef RCC_CR_1_PLLSAI2RDY
-#undef RCC_AHB1ENR_0_ETH1MACEN
-#undef RCC_CR_0_PLL3RDY
-#undef RCC_MAP3_AHB1RSTR
-#undef RCC_APB2SMENR_0_TIM16SMEN
-#undef RCC_CSR_0_LPWRSTF
-#undef RCC_MAP0_MC_AHB4ENSETR
-#undef RCC_APB2ENR_0_ADC3EN
-#undef RCC_CCIPR2_0_OSPISEL
-#undef RCC_APB1RSTR_0_TIM6RST
-#undef RCC_MAP0_MC_CIER
-#undef RCC_PLLCFGR_3_PLLP
-#undef RCC_AHB1RSTR_0_DMA1RST
-#undef RCC_APB1RSTR_1_USART5RST
-#undef RCC_CIFR_0_LSI2RDYF
-#undef RCC_CCIPR2_1_I2C4SEL_1
-#undef RCC_PLLCFGR_1_PLLM3
-#undef RCC_AHBRSTR_0_IOPGRST
-#undef RCC_AHB3RSTR_0_FMCRST
-#undef RCC_MAP1_APB1HRSTR
-#undef RCC_MAP0_I2C12CKSELR
-#undef RCC_AHB3LPENR_1
-#undef RCC_APB2LPENR_1_EXTITLPEN
-#undef RCC_AHBENR_1_FLITFEN
-#undef RCC_APB1ENR_0_SPI3EN
-#undef RCC_BDCR_0_LSECSSD
-#undef RCC_MAP5_C2APB2SMENR
-#undef RCC_HSICFGR_1
-#undef RCC_MAP1_D1CCIPR
-#undef RCC_MAP0_MC_APB1LPENCLRR
-#undef RCC_CR_0_HSIDIV
-#undef RCC_APB2ENR_1_TIM8EN
-#undef RCC_APB1SMENR1_0_CAN2SMEN
-#undef RCC_ICSCR_1_MSICAL
-#undef RCC_APB1LLPENR_WWDG2LPEN
-#undef RCC_APB2SMENR_0_ADCSMEN
-#undef RCC_CFGR_5_PLLSRC
-#undef RCC_APB1ENR1_0_PWREN
-#undef RCC_D1CCIPR_DSISEL
-#undef RCC_CSR_0_LSIRDY
-#undef RCC_MAP0_MC_MLAHBENCLRR
-#undef RCC_AHB1RSTR_1_GPIOBRST
-#undef RCC_AHB2ENR_3
-#undef RCC_CCIPR2_0_SAI2SEL
-#undef RCC_MAP0_PLL1CFGR1
-#undef RCC_ICSCR_3_MSICAL
-#undef RCC_CSR_1_LPWRRSTF
-#undef RCC_CFGR_2_SW0
-#undef RCC_CR_3_HSI16KERON
-#undef RCC_APB1RSTR1_0_DAC1RST
-#undef RCC_AHBENR_0_GPIOGEN
-#undef RCC_APB2LPENR_0_TIM1LPEN
-#undef RCC_PLLSYSCFGR_0_PLLSYSQEN
-#undef RCC_MAP0_PLL1CSGR
-#undef RCC_AHB1RSTR_1_CORDICRST
-#undef RCC_AHB2RSTR_1_OTGFSRST
-#undef RCC_MAP1_AHB2RSTR
-#undef RCC_APB1RSTR_0_WWDGRST
-#undef RCC_APB1RSTR_1_USART2RST
-#undef RCC_APB1RSTR_1_CAN3RST
-#undef RCC_AHBRSTR_0_FSMCRST
-#undef RCC_AHBENR_0_IOPFEN
-#undef RCC_APB1ENR1_0_USART2EN
-#undef RCC_AHB1ENR_0_GPIOHEN
-#undef RCC_AHB2SMENR_0_ADCFSSMEN
+#undef RCC_CFGR_3_PPRE10
+#undef RCC_AHB1RSTR_0_GPIOHRST
+#undef RCC_AHB1ENR_1
+#undef RCC_MAP1_D2CCIP2R
+#undef RCC_APBSMENR1_USART3SMEN
+#undef RCC_APB1ENR_3_TIM18EN
+#undef RCC_MAP0_MP_AHB5ENSETR
+#undef RCC_CR_0_CSION
+#undef RCC_APB2ENR_0_TIM1EN
+#undef RCC_AHB1ENR_2
+#undef RCC_CIFR_0_PLL2RDYF
+#undef RCC_APB1ENR_0_SPI2EN
+#undef RCC_APB1ENR_1_CANEN
+#undef RCC_DCKCFGR2_0
+#undef RCC_APB1LPENR_1_SPDIFLPEN
+#undef RCC_CFGR3_0_I2C2SW
+#undef RCC_CFGR_3_PLLSRC
+#undef RCC_BDCR_1_LSEDRV
+#undef RCC_MAP0_SAI4CKSELR
+#undef RCC_AHB1ENR_1_TSCEN
+#undef RCC_ICSCR_4
+#undef RCC_CR_3_MSION
+#undef RCC_CCIPR_3
+#undef RCC_APB1ENR1_0_RTCAPBEN
+#undef RCC_ICSCR_2_HSI16TRIM
+#undef RCC_CIER_0_LSECSSIE
+#undef RCC_MAP0_PLL2CFGR1
+#undef RCC_MAP0_MP_APB2LPENCLRR
+#undef RCC_MAP0_AHB5RSTCLRR
+#undef RCC_APB1RSTR_0_I2C2RST
+#undef RCC_AHB3RSTR_0_CPURST
+#undef RCC_APB2ENR_1_SDMMCEN
+#undef RCC_MAP1_BDCR
+#undef RCC_MAP0_I2C35CKSELR
+#undef RCC_MAP3_PLLCFGR
+#undef RCC_MAP4_APBRSTR1
+#undef RCC_APB2LPENR_0_SAI1LPEN
+#undef RCC_CIR_0_PLLSAIRDYIE
+#undef RCC_APB2ENR_0_USART1EN
+#undef RCC_CSR_0_RTCRST
+#undef RCC_APB1RSTR2_SWPMI1RST
+#undef RCC_MAP0_PLL3CFGR2
+#undef RCC_APB1SMENR1_0_CAN1SMEN
+#undef RCC_MAP1_APB2LPENR
 #undef RCC_AHB3ENR_0_SDMMC1EN
-#undef RCC_CR_2_HSI16RDYF
-#undef RCC_APB2LPENR_1_USART10LPEN
-#undef RCC_AHBRSTR_0_AESRST
-#undef RCC_MAP5_CSR
-#undef RCC_CICR_0_PLL1RDYC
-#undef RCC_APB1ENR_0_CECEN
-#undef RCC_AHBENR_0_FLITFEN
-#undef RCC_APB2RSTR_1_SDAD2RST
-#undef RCC_PLLCFGR_3
-#undef RCC_APB2RSTR_1_TIM11RST
-#undef RCC_PLLCFGR_1
-#undef RCC_MAP3_AHB2ENR
-#undef RCC_CCIPR2_1_I2C4SEL_0
-#undef RCC_MAP0_AHB6RSTCLRR
-#undef RCC_MAP4_APB1RSTR
+#undef RCC_CFGR_4_PLLMUL
+#undef RCC_MAP0_MC_MLAHBENCLRR
+#undef RCC_CSICFGR_0
 #undef RCC_AHB1RSTR_0_GFXMMURST
-#undef RCC_MAP1_PLLCKSELR
-#undef RCC_CFGR3_0_UART5SW
-#undef RCC_MAP0_TZAHB6RSTSETR
-#undef RCC_CFGR_4_PPRE
-#undef RCC_BDCR_0_LSEMOD
-#undef RCC_AHBLPENR_0_GPIOELPEN
-#undef RCC_APB2LPENR_1_TIM11LPEN
-#undef RCC_MAP0_MP_TZAHB6LPENSETR
+#undef RCC_APB1RSTR_0_UART2RST
+#undef RCC_MAP0_SDMMC3CKSELR
+#undef RCC_APB2ENR_1_TIM10EN
+#undef RCC_APB2ENR_2_TIM11EN
+#undef RCC_MAP2_PLLSAI1CFGR
+#undef RCC_AHB3ENR_0_DMA2DEN
+#undef RCC_CIER_2_HSI16RDYIE
+#undef RCC_APB2LPENR_0_SDMMC1LPEN
+#undef RCC_APBSMENR1_TIM7SMEN
+#undef RCC_APB1ENR_1_UART7EN
+#undef RCC_APB1ENR1_0_TIM6EN
+#undef RCC_CRRCR_0
+#undef RCC_CCIPR_1_USART4SEL
+#undef RCC_CSR_1_RTCRST
+#undef RCC_APB1LPENR_0_SPDIFRXLPEN
+#undef RCC_APB2RSTR_1_TM11RST
+#undef RCC_CR_1_PLLSAI2ON
+#undef RCC_AHB1LPENR_1_GPIOFLPEN
+#undef RCC_AHBENR_1_GPIODEN
+#undef RCC_DCKCFGR2_0_UART1SEL
+#undef RCC_APB2ENR_1_SPI4EN
+#undef RCC_AHB1RSTR_0_DMA1RST
+#undef RCC_AHB1LPENR_0_BKPSRAMLPEN
+#undef RCC_MAP1_C1_AHB4LPENR
+#undef RCC_MAP5_APBENR2
+#undef RCC_APB1RSTR_1_I2CFMP1RST
+#undef RCC_APB2LPENR_1
+#undef RCC_APB2SMENR_0_DFSDM1SMEN
+#undef RCC_AHB2RSTR_1_ADC12RST
+#undef RCC_APB2ENR_2_DFSDMEN
+#undef RCC_APB1ENR_0_TIM5EN
+#undef RCC_APB1ENR_1_LPUART1EN
+#undef RCC_AHBLPENR_0_DMA2LPEN
+#undef RCC_APB2LPENR_1_TIM9LPEN
+#undef RCC_APB2RSTR_0_SDMMC2RST
+#undef RCC_CICR_0_PLL2RDYC
+#undef RCC_CFGR_2_MCO2PRE
+#undef RCC_MAP1_D3CFGR
+#undef RCC_CCIPR_0_CLK48SEL
+#undef RCC_MAP5_C2APB1SMENR1
+#undef RCC_CSR_0_CSSLSEON
+#undef RCC_AHB1RSTR_0_ADC12RST
+#undef RCC_MAP0_MP_GRSTCSETR
+#undef RCC_APB1SMENR1_0_TIM7SMEN
+#undef RCC_MAP0
+#undef RCC_AHB2ENR_1_ADC12EN
+#undef RCC_AHB2LPENR_2_AESLPEN
+#undef RCC_MAP0_MC_AXIMLPENCLRR
+#undef RCC_AHB1LPENR_0_DMA2LPEN
+#undef RCC_CFGR_2_SW1
+#undef RCC_AHB3SMENR_0_RNGSMEN
+#undef RCC_CFGR_2_MCO2
+#undef RCC_APB1ENR_2
+#undef RCC_APB1SMENR_TIM3SMEN
+#undef RCC_AHB2ENR_2_AES1EN
+#undef RCC_MAP1_C1_AHB4ENR
+#undef RCC_CFGR3_0_TIM1SW
+#undef RCC_APB2RSTR_0_USART6RST
+#undef RCC_AHB3SMENR_0_QUADSPI1SMEN
+#undef RCC_CSR_1_LSI1RDY
+#undef RCC_AHB2ENR_1_DAC1
+#undef RCC_MAP1_C1_AHB2LPENR
+#undef RCC_APB2ENR_2_TIM20EN
+#undef RCC_APB1ENR_0_UART8ENR
+#undef RCC_D3CFGR_0
+#undef RCC_AHBRSTR_0_AESRST
+#undef RCC_CICR_1_LSI1RDYC
+#undef RCC_AHB2ENR_0_GPIODEN
+#undef RCC_CRRCR_1
+#undef RCC_MAP0_MC_AHB2ENSETR
+#undef RCC_MAP4_CSR
+#undef RCC_CSR_0_LSI2TRIMEN
+#undef RCC_AHB1LPENR_0_ETH1TXLPEN
+#undef RCC_APBRSTR1_DAC1RST
+#undef RCC_MAP0_MC_MLAHBLPENCLRR
+#undef RCC_MAP0_MPCKDIVR
+#undef RCC_CFGR_2_HPRE2
+#undef RCC_CSR_2_PWRRSTF
+#undef RCC_AHBENR_1_GPIOCEN
+#undef RCC_MAP5_C2APB1SMENR2
+#undef RCC_MAP2_APB1SMENR1
+#undef RCC_APB2RSTR_0_LTDCRST
+#undef RCC_APB1RSTR_1_WWDRST
+#undef RCC_APB2ENR_1_SPI5ENR
+#undef RCC_AHB2SMENR_0_GPIOHSMEN
+#undef RCC_APB1RSTR_1_USART4RST
+#undef RCC_AHB1LPENR_0_GPIODLPEN
+#undef RCC_AHB3RSTR_1
+#undef RCC_APB2ENR_0_SPI5EN
+#undef RCC_CCIPR2_1_I2C4SEL_1
+#undef RCC_APB1RSTR1_1_USBDRST
+#undef RCC_DCKCFGR_0_CKDFSDM1ASEL
+#undef RCC_CR_0_CSIRDY
+#undef RCC_APB1RSTR2_I2C4RST
+#undef RCC_AHBENR_1_CRCEN
 #undef RCC_APB1SMENR_TIM7SMEN
+#undef RCC_AHB1LPENR_0_GPIOHLPEN
 #undef RCC_CIFR_1_PLLSAI1RDYF
-#undef RCC_MAP3_PLLI2SCFGR
-#undef RCC_AHB1ENR_1_USB1OTGEN
-#undef RCC_AHBRSTR_0_IOPARST
-#undef RCC_AHB3RSTR_0_RNGRST
+#undef RCC_MAP1_C1_AHB3ENR
+#undef RCC_CR_1_CSSON
+#undef RCC_APB1SMENR_USART5SMEN
+#undef RCC_APB2LPENR_1_SYSCFGLPEN
+#undef RCC_MAP0_MP_AHB5LPENSETR
+#undef RCC_DCKCFGR2_0_UART4SEL
+#undef RCC_MAP3
+#undef RCC_MAP5_AHBSMENR
+#undef RCC_APB1ENR_1
+#undef RCC_MAP0_AHB6RSTCLRR
+#undef RCC_AHB3LPENR_1_FMCLPEN
+#undef RCC_APB2ENR_0_ADC1EN
+#undef RCC_AHBENR_0_GPIOGEN
+#undef RCC_MAP0_UART35CKSELR
+#undef RCC_PLLCFGR_0_DIVQ3EN
+#undef RCC_MAP6_CSR
+#undef RCC_GCR_BOOT_C1
+#undef RCC_APB1RSTR_2_CRSRST
+#undef RCC_BDCR_0_LSECSSD_
+#undef RCC_MAP0_MP_AHB4LPENCLRR
+#undef RCC_AHB1RSTR_0_GPIOGRST
+#undef RCC_APB2ENR_1_TIM9EN
+#undef RCC_MAP5_APBSMENR1
+#undef RCC_APB2ENR_1_SAI1EN
+#undef RCC_PLLCFGR_4_PLLM
+#undef RCC_CR_1_MSIRANGE
+#undef RCC_CFGR_3_USBPRES
+#undef RCC_CR_1_HSIRDY
+#undef RCC_APB1SMENR_LCDSMEN
+#undef RCC_CIER_0_HSERDYIE
+#undef RCC_MAP2_AHB3SMENR
+#undef RCC_CSR_3
+#undef RCC_CR_1
+#undef RCC_PLLCFGR_2_PLLQ
+#undef RCC_CFGR_3
+#undef RCC_APB2RSTR_0_DFSDM1RST
+#undef RCC_BDCR_0_LSCOSEL
+#undef RCC_CCIPR_1_USART2SEL1
+#undef RCC_MAP0_MC_RSTSCLRR
+#undef RCC_CR_3_MSIRDY
+#undef RCC_AHB1RSTR_0_GPIODRST
+#undef RCC_DCKCFGR2_0_LPTIM1SEL
+#undef RCC_AHB1SMENR_1
+#undef RCC_PLLSAICFGR_PLLSAIP
+#undef RCC_MAP4
+#undef RCC_AHB2ENR_0_SRAM2EN
+#undef RCC_MAP3_APB2LPENR
+#undef RCC_MAP2_CCIPR
+#undef RCC_CIFR_2_PLLRDYF
+#undef RCC_AHBENR_0_FSMCEN
+#undef RCC_APB2LPENR_0_TIM17LPEN
+#undef RCC_APB1ENR1_0_CRSEN
+#undef RCC_CICR_2_PLLSYSRDYC
+#undef RCC_AHB2LPENR_0_SDMMC2LPEN
+#undef RCC_MAP2_APB2RSTR
+#undef RCC_APB1RSTR1_0_DAC1RST
+#undef RCC_AHB1SMENR_0_CRCSMEN
+#undef RCC_BDCR_0_RTCSRC
+#undef RCC_DCKCFGR2_1_I2CFMP1SEL
+#undef RCC_CIER_0_HSI48RDYIE
+#undef RCC_AHB2RSTR_2_AES1RST
+#undef RCC_APB1ENR1_1_USART1EN
+#undef RCC_AHBRSTR_0_FLASHRST
+#undef RCC_APB2ENR_0_SAI1EN
+#undef RCC_APB1RSTR_3_LCDRST
+#undef RCC_AHB2ENR_1_CRYPTEN
+#undef RCC_MAP5_C2APB2SMENR
+#undef RCC_AHB3RSTR_2_FSMCRST
+#undef RCC_MAP6_APB1ENR
+#undef RCC_AHB3LPENR_1_FLASHLPEN
+#undef RCC_CR_0_PLL2ON
 #undef RCC_AHB1LPENR_2
-#undef RCC_CFGR3_1_ADCSW
+#undef RCC_CSR_2_LSEON
+#undef RCC_CR_0_HSIRDY
+#undef RCC_MAP2_IOPRSTR
+#undef RCC_CFGR_5_PPRE
+#undef RCC_CRRCR_4
+#undef RCC_APB1RSTR1_1
+#undef RCC_CR_2_PLLI2SON
+#undef RCC_AHB2LPENR_0_SRAM2LPEN
+#undef RCC_PLLCFGR_0_PLL3VCOSEL
+#undef RCC_APB2LPENR_1_USART1LPEN
+#undef RCC_APB2LPENR_0_USART6LPEN
+#undef RCC_MAP0_APB3DIVR
+#undef RCC_CSR_2_LSERDY
+#undef RCC_AHB1ENR_1_USB1OTGEN
+#undef RCC_MAP0_MC_APB2ENSETR
+#undef RCC_APB2ENR_2_SDAD3EN
+#undef RCC_MAP0_MP_AHB6ENCLRR
+#undef RCC_CIER_1
+#undef RCC_MAP2_C1_AHB1ENR
+#undef RCC_MAP1_C1_APB1LLPENR
+#undef RCC_APB1RSTR1_1_USBFSRST
+#undef RCC_APB1RSTR_1_USART2RST
+#undef RCC_CSR_0_LSIRDY
+#undef RCC_MAP4_APB1RSTR
+#undef RCC_AHB2SMENR_0_SDMMC1SMEN
+#undef RCC_APB2RSTR_0_TIM17RST
+#undef RCC_AHB1ENR_0_USB2OTGHSEN
+#undef RCC_APB2ENR_0_DFSDM2EN
+#undef RCC_MAP0_MC_AHB3ENSETR
+#undef RCC_APB1RSTR_1_USART5RST
+#undef RCC_MAP5_EXTCFGR
+#undef RCC_MAP0_MC_MLAHBENSETR
+#undef RCC_AHB2ENR_0_SRAM3EN
+#undef RCC_MAP1_CIER
+#undef RCC_CFGR_1_MCO1
+#undef RCC_APB2ENR_0_SPI6ENR
+#undef RCC_APB2LPENR_2
+#undef RCC_AHB3ENR_0_OSPI2EN
+#undef RCC_MAP1_APB4LPENR
+#undef RCC_CFGR_4_PPRE
+#undef RCC_MAP0_MC_AHB4ENCLRR
+#undef RCC_APB2RSTR_0_SPI4RST
+#undef RCC_AHBENR_2_RNGEN
+#undef RCC_AHBENR_1_DMA1EN
+#undef RCC_AHB1RSTR_0_DMA2DRST
+#undef RCC_MAP0_APB2RSTSETR
+#undef RCC_MAP2_CSR
+#undef RCC_APB1RSTR_0_CAN1RST
+#undef RCC_MAP4_CFGR
+#undef RCC_CIFR_0_RC48RDYF
+#undef RCC_PLLCFGR_2_PLLR
+#undef RCC_AHB1SMENR_1_CRCSMEN
+#undef RCC_CIFR_1_PLLSAI2RDYF
+#undef RCC_MAP0_MP_APB1ENSETR
+#undef RCC_CIFR_1_CSSF
+#undef RCC_AHB2RSTR_0_DCMIRST
+#undef RCC_AHBENR_0_IOPAEN
+#undef RCC_MAP0_MP_AHB3ENSETR
+#undef RCC_AHB2LPENR_0_SRAM3LPEN
+#undef RCC_CFGR3_0_TIM8SW
+#undef RCC_AHB2SMENR_0_DAC4SMEN
+#undef RCC_MAP0_MP_AHB4LPENSETR
+#undef RCC_AHB2LPENR_0_HASHLPEN
+#undef RCC_AHB2SMENR_0_SRAM2SMEN
+#undef RCC_MAP0_MC_AHB3LPENCLRR
+#undef RCC_APB1LPENR_0_UART7LPEN
+#undef RCC_MAP1_AHB2RSTR
+#undef RCC_DCKCFGR2_0_UART2SEL
+#undef RCC_APB3LPENR_DSILPEN
+#undef RCC_AHB1ENR_0_GPIOKEN
+#undef RCC_DCKCFGR_0_SAI1ASRC
+#undef RCC_C1_AHB1ENR_1
+#undef RCC_APB1LENR_0_HDMICECEN
+#undef RCC_MAP0_LPTIM1CKSELR
+#undef RCC_MAP0_MC_AHB2LPENCLRR
+#undef RCC_MAP5_APB3RSTR
+#undef RCC_AHB1SMENR_0_FMACSMEN
+#undef RCC_PLLCFGR_4_PLLQEN
+#undef RCC_MAP2_APB2ENR
+#undef RCC_AHB2LPENR_2_FSMCLPEN
+#undef RCC_ICSCR_3_HSITRIM
+#undef RCC_AHB1LPENR_0_RNGLPEN
+#undef RCC_APB1ENR_0_USART3EN
+#undef RCC_MAP5_C2APB1ENR1
+#undef RCC_CSR_1
+#undef RCC_MAP0_I2C4CKSELR
+#undef RCC_MAP0_MP_APB4LPENCLRR
+#undef RCC_APB2ENR_0_DFSDM1EN
+#undef RCC_MAP0_OCENCLRR
+#undef RCC_CFGR_0_MCO2SEL
+#undef RCC_AHB1ENR_0_USB1OTGHSULPIEN
+#undef RCC_APB2RSTR_1_TM12RST
+#undef RCC_AHB1ENR_1_DTCMRAMEN
+#undef RCC_APB1RSTR_0_CAN2RST
+#undef RCC_MAP0_UART6CKSELR
+#undef RCC_MAP0_SPI2S23CKSELR
+#undef RCC_AHB1LPENR_0_GPIOCLPEN
+#undef RCC_AHB2SMENR_0_GPIOFSMEN
+#undef RCC_AHB1RSTR_0_DMA2RST
+#undef RCC_CFGR_3_MCO2PRE1
+#undef RCC_APB2LPENR_0_TIM8LPEN
+#undef RCC_APB2RSTR_3_DBGRST
+#undef RCC_TMPL
+#undef RCC_AHBRSTR_0_GPIOGRST
+#undef RCC_AHB1ENR_1_USB1ULPIEN
+#undef RCC_MAP1_AHB4RSTR
+#undef RCC_APB1ENR_1_TIM3EN
+#undef RCC_AHB1RSTR_0_OTGHSRST
+#undef RCC_AHB2ENR_0_SDMMC1EN
+#undef RCC_MAP0_APB4RSTCLRR
+#undef RCC_APB1SMENR1_0_USART2SMEN
+#undef RCC_DCKCFGR2_1
+#undef RCC_APB2ENR_3
+#undef RCC_AHBLPENR_0_GPIOGLPEN
+#undef RCC_APB2RSTR_0_SAI3RST
+#undef RCC_MAP6_APB1SMENR
+#undef RCC_AHBLPENR_0_DMA1LPEN
+#undef RCC_APB1ENR_4
+#undef RCC_AHBENR_2_GPIOEEN
+#undef RCC_MAP0_IDR
+#undef RCC_CFGR_2_MCO11
+#undef RCC_AHB1LPENR_0_DMA2DLPEN
+#undef RCC_APB2ENR_0_ADC3EN
+#undef RCC_AHBENR_1_CRYPEN
+#undef RCC_AHB1RSTR_1_GPIOBRST
+#undef RCC_AHB1ENR_0_GPIOGEN
+#undef RCC_MAP0_MP_IWDGFZCLRR
+#undef RCC_MAP5_APB2ENR
+#undef RCC_MAP0_ETHCKSELR
+#undef RCC_APB1LPENR_0_TIM6LPEN
+#undef RCC_CCIPR_1_I2C3SEL0
+#undef RCC_CSR_0_LPWRSTF
+#undef RCC_AHB2ENR_1_HASHEN
+#undef RCC_AHB3ENR_1
+#undef RCC_APB1RSTR_1
+#undef RCC_PLLCFGR_4_PLLR2
+#undef RCC_APB1LPENR_1_USART5LPEN
+#undef RCC_APBENR1_USART4EN
+#undef RCC_APBSMENR1_TIM6SMEN
+#undef RCC_CCIPR_0
+#undef RCC_D3CFGR_1
+#undef RCC_APB2LPENR_0_SPI5LPEN
+#undef RCC_CSR_0_LSI2TRIMOK
+#undef RCC_APB1RSTR1_1_I2C3
 #undef RCC_AHB2RSTR_0_GPIOCRST
 #undef RCC_BDCR_0_RTCCKEN
-#undef RCC_MAP0_ASSCKSELR
-#undef RCC_CIER_0_RC48RDYIE
-#undef RCC_CFGR_1
-#undef RCC_MAP0_RCK3SELR
-#undef RCC_MAP0_I2C35CKSELR
-#undef RCC_C1_AHB1ENR_0_USB1OTGHSULPIEN
-#undef RCC_AHB2ENR_2_AES1EN
-#undef RCC_AHB1LPENR_1
-#undef RCC_APB2ENR_0_TIM10EN
 #undef RCC_CR_2_PLLI2SRDY
-#undef RCC_CSR_1_BORRSTF
-#undef RCC_ICSCR_1_HSICAL
-#undef RCC_APB1RSTR1_0_TIM3RST
-#undef RCC_AHB3SMENR_0_QUADSPI1SMEN
-#undef RCC_MAP0_MC_APB3LPENSETR
-#undef RCC_AHB3SMENR_0_PKASMEN
-#undef RCC_AHB1RSTR_1_DMA2RST
-#undef RCC_APB1LPENR_0_TIM2LPEN
-#undef RCC_MAP0_MC_CIFR
-#undef RCC_AHB2ENR_1_ADC12EN
-#undef RCC_AHBENR_0_CRCEN
-#undef RCC_AHB2RSTR_0_AESRST
-#undef RCC_APB1RSTR1_0_I2C2RST
-#undef RCC_CR_1_MSIRDY
-#undef RCC_APB1RSTR_0_TIM14RST
-#undef RCC_APB1RSTR_0_UART3RST
-#undef RCC_AHB1LPENR_0_GPIOILPEN
-#undef RCC_MAP2_CSR
-#undef RCC_MAP0_MP_MLAHBENCLRR
-#undef RCC_MAP5_C2AHB3ENR
-#undef RCC_AHBRSTR_1_MIFRST
-#undef RCC_AHBENR_1_GPIOFEN
-#undef RCC_APB1RSTR1_0_PWRRST
-#undef RCC_APB1LENR_0_HDMICECEN
-#undef RCC_CR_1_PLLRDY
-#undef RCC_MAP1_C1_APB3LPENR
-#undef RCC_APB1RSTR2_SWPMI1RST
-#undef RCC_APB2ENR_0_DFSDM1EN
-#undef RCC_APB1RSTR_0_CAN1RST
-#undef RCC_AHBENR_1_CRCEN
-#undef RCC_C1_AHB1ENR_0_ARTEN
-#undef RCC_APB1RSTR_3
-#undef RCC_APB1ENR1_0_CAN2EN
-#undef RCC_AHB2ENR_1_GPIOFEN
-#undef RCC_APB2SMENR_0_TIM17SMEN
-#undef RCC_APB1ENR_0_TIM13EN
-#undef RCC_MAP0_DDRITFCR
-#undef RCC_AHB2SMENR_0_GPIOISMEN
-#undef RCC_AHBENR_1_CRYPEN
-#undef RCC_APB2RSTR_0_USART9RST
+#undef RCC_APB2ENR_2_SDMMC2EN
+#undef RCC_APB1ENR_0_CECEN
+#undef RCC_AHBRSTR_3
+#undef RCC_MAP1_C1_APB1HLPENR
+#undef RCC_PLLI2SCFGR_0_PLLI2SM
+#undef RCC_APB2LPENR_1_EXTITLPEN
+#undef RCC_APB1RSTR_1_USBRST
+#undef RCC_MAP0_MP_AHB2LPENSETR
+#undef RCC_MAP0_MP_APB4ENCLRR
+#undef RCC_CFGR_3_PLLXTPRE
+#undef RCC_MAP1_D2CCIP1R
+#undef RCC_MAP0_MC_AHB3LPENSETR
+#undef RCC_MAP1_CSR
+#undef RCC_APB1ENR_3_CRSEN
+#undef RCC_MAP0_MP_CIFR
+#undef RCC_MAP0_LPTIM23CKSELR
+#undef RCC_CICR_0_HSE_ready_Interrupt_Clear
+#undef RCC_PLLCFGR_0_PLL1RGE
+#undef RCC_AHB2RSTR_2_CRYPRST
+#undef RCC_APB1RSTR_0_TIM2RST
+#undef RCC_APB1LPENR_0_SPI3LPEN
+#undef RCC_MAP0_MC_APB2LPENSETR
+#undef RCC_AHB1ENR_0_DMA2EN
+#undef RCC_AHB3ENR_0_RNGEN
+#undef RCC_APB1RSTR_0_WWDGRST
+#undef RCC_APB1RSTR_0_SPI3RST
+#undef RCC_APB2SMENR_0_TIM8SMEN
+#undef RCC_APB1SMENR1_1
+#undef RCC_BDCR_0_LSEMOD
+#undef RCC_MAP5_C2APB3ENR
 #undef RCC_MAP0_MC_AHB3ENCLRR
-#undef RCC_APBENR1_USART4EN
-#undef RCC_AHBENR_2_GPIOAEN
-#undef RCC_CIER_0_PLL2RDYIE
-#undef RCC_AHB1LPENR_0_USB1OTGHSLPEN
-#undef RCC_DCKCFGR2_1_I2CFMP1SEL
+#undef RCC_MAP1_D2CFGR
+#undef RCC_APB1SMENR1_1_FDCANSMEN
+#undef RCC_MAP5_CCIPR
+#undef RCC_CFGR_1_RTCPRE
+#undef RCC_CSR_0_BORRSTF
+#undef RCC_AHB2RSTR_0_GPIOBRST
+#undef RCC_MAP0_APB5RSTCLRR
+#undef RCC_MAP1_GCR
+#undef RCC_AHB2SMENR_0_GPIOISMEN
+#undef RCC_AHB3RSTR_1_PKARST
+#undef RCC_DCKCFGR2_0_I2C1SEL
+#undef RCC_AHB1SMENR_0_GFXMMUSMEN
+#undef RCC_APB2RSTR_0_SDMMC1RST
+#undef RCC_MAP5_AHBENR
 #undef RCC_MAP0_APB5RSTSETR
-#undef RCC_APB1RSTR1_0_I2C3RST
-#undef RCC_PLLCFGR_3_PLLR2
-#undef RCC_APBRSTR1_TIM6RST
-#undef RCC_APB1RSTR_0_UART7RST
-#undef RCC_MAP0_APB3RSTCLRR
+#undef RCC_CIFR_2_RC48RDYF
+#undef RCC_AHB1ENR_1_GPIOBEN
+#undef RCC_APB1ENR1_0_USART2EN
+#undef RCC_MAP0_PLL2FRACR
+#undef RCC_APB1ENR_0_UART5EN
+#undef RCC_MAP3_APB2RSTR
+#undef RCC_CICR_1_PLLSAI2RDYC
+#undef RCC_APB2ENR_0_EXTITEN
+#undef RCC_CIER_0_RC48RDYIE
+#undef RCC_MAP0_BR_RSTSCLRR
+#undef RCC_APB2RSTR_2_HRTIM1RST
+#undef RCC_AHB2RSTR_0_CRYPTRST
+#undef RCC_MAP0_AHB2RSTSETR
+#undef RCC_APB2RSTR_1_TIM10RST
+#undef RCC_PLLCFGR_3_PLLSYSQ
+#undef RCC_APB1ENR1_0_CAN2EN
+#undef RCC_MAP2_C1_AHB3LPENR
+#undef RCC_APB1SMENR1_0_TIM5SMEN
+#undef RCC_APB2LPENR_0_SPI4LPEN
+#undef RCC_APB1RSTR_1_CANRST
+#undef RCC_APB2RSTR_1_TIM11RST
+#undef RCC_APB1ENR_0_CAN2EN
+#undef RCC_APB1SMENR1_0_PWRSMEN
+#undef RCC_ICSCR_2_HSICAL0
+#undef RCC_AHB2ENR_2_RNGEN
+#undef RCC_CR_2_HSIRDY
+#undef RCC_APB1RSTR1_1_CRSRST
+#undef RCC_CSICFGR_1
+#undef RCC_APB1RSTR_3
+#undef RCC_AHB2ENR_0_SDMMC2EN
+#undef RCC_AHB1ENR_0_ARTEN
+#undef RCC_AHBRSTR_0_GPIOBRST
+#undef RCC_AHB2ENR_0_GPIOCEN
+#undef RCC_AHBRSTR_0_TSCRST
+#undef RCC_AHB1ENR_2_ETHMACTXEN
+#undef RCC_AHB2ENR_0
+#undef RCC_APB1ENR_1_LPTIM1EN
+#undef RCC_MAP1_C1_APB3LPENR
+#undef RCC_CIR_2
+#undef RCC_APB1RSTR_0_TIM4RST
+#undef RCC_AHB1RSTR_0_GPIOJRST
+#undef RCC_APB2RSTR_1_TIM1RST
+#undef RCC_AHB2SMENR_0_GPIOGSMEN
+#undef RCC_CIER_0_PLL3RDYIE
+#undef RCC_MAP0_MCO1CFGR
+#undef RCC_APB2RSTR_2_SDAD3RST
+#undef RCC_PLLI2SCFGR_0_PLLI2SSRC
+#undef RCC_CCIPR_1_LPTIM1SEL0
+#undef RCC_APB2RSTR_3
+#undef RCC_CICR_1
+#undef RCC_APB1ENR1_0_TIM7EN
+#undef RCC_MAP0_MP_AHB2ENSETR
+#undef RCC_APB2LPENR_0_DSILPEN
+#undef RCC_CCIPR_0_USART2SEL
+#undef RCC_MAP0_FDCANCKSELR
+#undef RCC_CIER_1_PLLSAI1RDYIE
+#undef RCC_CFGR_2_RTCPRE3
+#undef RCC_CSR_2_LSEBYP
+#undef RCC_MAP0_DDRITFCR
+#undef RCC_AHB1LPENR_1_FLITFLPEN
+#undef RCC_CIFR_0_LSIRDYF
+#undef RCC_APB1ENR2_SWPMI1EN
+#undef RCC_MAP0_AHB5RSTSETR
+#undef RCC_CFGR_2_PPRE2
+#undef RCC_AHBRSTR_0_IOPARST
+#undef RCC_APB2ENR_1_TIM1EN
+#undef RCC_MAP5
+#undef RCC_MAP2_C1_APB1LENR
+#undef RCC_MAP1_C1_APB1HENR
+#undef RCC_AHB2ENR_0_DCMIEN
+#undef RCC_AHBSMENR_0_AESSMEN
+#undef RCC_AHB2LPENR_0_RNGLPEN
+#undef RCC_MAP0_MSSCKSELR
+#undef RCC_MAP2_PLLSAI2CFGR
+#undef RCC_APB1RSTR1_0_USART2RST
+#undef RCC_APB2SMENR_0_TIM21SMEN
+#undef RCC_MAP0_APB1RSTCLRR
+#undef RCC_MAP0_QSPICKSELR
+#undef RCC_AHBENR_0_FLITFEN
+#undef RCC_CR_3_HSI16OUTEN
+#undef RCC_APB1ENR_2_I2C3EN
+#undef RCC_MAP0_MC_APB1ENCLRR
+#undef RCC_APB1RSTR_0_TIM14RST
+#undef RCC_MAP0_MC_CIFR
+#undef RCC_PLLCFGR_3_PLLQ
+#undef RCC_APB1LPENR_0_TIM5LPEN
+#undef RCC_AHB2SMENR_0_HASHSMEN
+#undef RCC_APB1RSTR_1_DAC2RST
+#undef RCC_APB3ENR_DSIEN
+#undef RCC_APBSMENR1_USART4SMEN
+#undef RCC_MAP0_MC_APB3ENSETR
+#undef RCC_AHBRSTR_0_IOPGRST
+#undef RCC_APB1RSTR1_1_USART4RST
+#undef RCC_AHB2SMENR_0_SRAM3SMEN
+#undef RCC_C1_AHB1ENR_0_USB2ULPIEN
+#undef RCC_MAP0_MP_AXIMLPENSETR
+#undef RCC_BDCR_1_LSCCOEN
+#undef RCC_CCIPR2_0_OSPISEL
+#undef RCC_MAP1_AHB4ENR
+#undef RCC_AHB2RSTR_1_CRYPTRST
+#undef RCC_PLLCFGR_0_DIVP2EN
+#undef RCC_APB1ENR_1_USBEN
+#undef RCC_CIFR_1_MSIRDYF
+#undef RCC_CFGR_2_SWS1
+#undef RCC_MAP5_APB1RSTR
 #undef RCC_MAP1_APB4ENR
+#undef RCC_APB1RSTR_1_I2C3RST
+#undef RCC_PLLCFGR_0_PLL3FRACEN
+#undef RCC_AHB3SMENR_0_OCTOSPI2
+#undef RCC_CR_1_HSIKERON
+#undef RCC_MAP1_AHB3ENR
+#undef RCC_AHB1RSTR_1_ETHMACRST
+#undef RCC_MAP0_MP_AHB6ENSETR
+#undef RCC_AHB2RSTR_2_DCMIRST
+#undef RCC_AHB1RSTR_0_USB2OTGRST
+#undef RCC_PLLCFGR_0_PLL2FRACEN
+#undef RCC_MAP0_RTCDIVR
+#undef RCC_AHBENR_0_DMAEN
+#undef RCC_BDCR_0_LSECSSON
+#undef RCC_CFGR_2_MCO1PRE
+#undef RCC_MAP0_MP_BOOTCR
+#undef RCC_APB2ENR_0_LTDCEN
+#undef RCC_AHB1RSTR_1_DMA1RST
+#undef RCC_CSR_0_RFRSTS
+#undef RCC_APB2ENR_1_DFSDM1EN
+#undef RCC_CCIPR_0_UART4SEL
+#undef RCC_MAP0_MP_APB1LPENCLRR
+#undef RCC_MAP0_PLL1CR
+#undef RCC_APB1RSTR_0_I2C3RST
+#undef RCC_APB1ENR_3_COMPEN
+#undef RCC_MAP1_C1_APB4ENR
+#undef RCC_PLLSAI1CFGR_0_PLLSAI1M
+#undef RCC_MAP0_AHB4RSTSETR
+#undef RCC_PLLI2SCFGR_1
+#undef RCC_MAP0_MP_TZAHB6ENSETR
+#undef RCC_APB1ENR_0_UART4EN
+#undef RCC_CFGR3_0_UART4SW
+#undef RCC_APB2RSTR_0_SPI6RST
+#undef RCC_APBRSTR1_USART3RST
+#undef RCC_CFGR_5_MCO
+#undef RCC_CR_0_RTCPRE1
+#undef RCC_MAP1_AHB2ENR
+#undef RCC_AHB1RSTR_0_RNGRST
+#undef RCC_CR_1_PLLRDY
+#undef RCC_CFGR_2_HPRE1
+#undef RCC_AHB1ENR_2_DMAMUXEN
+#undef RCC_AHB1ENR_0_ETH1MACEN
+#undef RCC_CICR_2_CSSLSEC
+#undef RCC_DCKCFGR2_1_LPTIM1SEL
+#undef RCC_IOPENR_0_IOPFEN
+#undef RCC_MAP2_APB1ENR1
+#undef RCC_MAP2_APB1SMENR2
+#undef RCC_AHB2ENR_0_DAC2
+#undef RCC_MAP5_SMPSCR
+#undef RCC_AHBSMENR_1
+#undef RCC_AHB1ENR_0_USB2OTGHSULPIEN
+#undef RCC_MAP0_RNG2CKSELR
+#undef RCC_BDCR_0_VSWRST
+#undef RCC_CICR_2_RC48RDYC
+#undef RCC_MAP0_MP_APB5LPENSETR
+#undef RCC_CIER_2_PLLSYSRDYIE
+#undef RCC_CFGR_5_SDPRE
+#undef RCC_MAP0_BDCR
+#undef RCC_MAP0_MP_AHB2LPENCLRR
+#undef RCC_CCIPR_1_SWPMI1SEL
+#undef RCC_MAP0_MP_TZAHB6LPENCLRR
+#undef RCC_AHB2RSTR_2_HSAHRST
+#undef RCC_APB1RSTR_2_CECRST
+#undef RCC_AHBRSTR_0_ADC12RST
+#undef RCC_MAP0_MP_AHB6LPENSETR
+#undef RCC_CCIPR_1_I2C1SEL0
+#undef RCC_CR_2
+#undef RCC_MAP1_APB3ENR
+#undef RCC_APB1RSTR1_1_USART1RST
+#undef RCC_MAP0_MCO2CFGR
+#undef RCC_MAP0_OCRDYR
+#undef RCC_AHBRSTR_0_CRCRST
+#undef RCC_MAP4_DCKCFGR1
+#undef RCC_APB1RSTR_0_SPDIFRXRST
+#undef RCC_AHBRSTR_0_IOPBRST
+#undef RCC_APB2SMENR_0_SAI1SMEN
+#undef RCC_PLLCFGR_1_PLLSYSR
+#undef RCC_APB2ENR_3_SDAD1EN
+#undef RCC_AHBENR_1_IOPHEN
+#undef RCC_AHB1ENR_0_DMA2DEN
+#undef RCC_APB1ENR1_0_DAC1EN
+#undef RCC_CIFR_1_PLLRDYF
+#undef RCC_AHBRSTR_1_MIFRST
+#undef RCC_CR_1_PLLSAI1RDY
+#undef RCC_AHBSMENR_0_CRYPSMEN
+#undef RCC_AHBSMENR_1_RNGSMEN
+#undef RCC_APB1SMENR1_0_CAN2SMEN
+#undef RCC_AHB1LPENR_0_OTGHSLPEN
+#undef RCC_CSR_1_LSIIWDGLP
+#undef RCC_MAP0_TZAHB6RSTCLRR
+#undef RCC_MAP0_MC_APB5LPENCLRR
 #undef RCC_CCIPR_1_LPUART1SEL1
-#undef RCC_APBSMENR1_TIM6SMEN
-#undef RCC_AHB1RSTR_0_DMAMUX1RST
-#undef RCC_APB2LPENR_0_SPI6LPEN
+#undef RCC_DCKCFGR2_0_UART6SEL
+#undef RCC_APB2RSTR_1_SART10RST
+#undef RCC_CIR_0_PLLI2SRDYIE
+#undef RCC_CSR_0_SFTRSTF
+#undef RCC_MAP0_MC_AHB4LPENCLRR
+#undef RCC_AHBENR_3_RNGEN
+#undef RCC_AHB1RSTR_1_GPIOFRST
+#undef RCC_APB1LPENR_0_UART5LPEN
+#undef RCC_AHB2LPENR_0_QSPILPEN
+#undef RCC_APB2ENR_1_USART1EN
+#undef RCC_APB2SMENR_0_DSISMEN
+#undef RCC_MAP1_PLL1DIVR
+#undef RCC_APBRSTR1_TIM7RST
+#undef RCC_CFGR_2_RTCPRE4
+#undef RCC_AHB2ENR_1_ADC345EN
+#undef RCC_MAP3_APB1ENR
+#undef RCC_MAP1_PLL3FRACR
+#undef RCC_BDCR_0_LSEDRV
+#undef RCC_AHB1SMENR_1_DMAMUXSMEN
+#undef RCC_MAP4_APBRSTR2
+#undef RCC_AHB2ENR_0_CAMITFEN
+#undef RCC_MAP0_RCK4SELR
+#undef RCC_APB1SMENR_USART4SMEN
+#undef RCC_CR_1_PLLON
+#undef RCC_APB1ENR1_1_FDCANEN
+#undef RCC_APB1RSTR_0_UART4RST
+#undef RCC_CFGR3_0_USART3SW
+#undef RCC_APBRSTR1_UCPD1RST
+#undef RCC_MAP0_SPDIFCKSELR
+#undef RCC_MAP0_MP_AHB3ENCLRR
+#undef RCC_CFGR_2_MCO1EN
+#undef RCC_APB2ENR_0_ADC2EN
+#undef RCC_DCKCFGR2_0_I2C3SEL
+#undef RCC_CICR_2_HSECSSC
+#undef RCC_APB1ENR1_0_UART5EN
+#undef RCC_APB1RSTR_2_LPUART1RST
+#undef RCC_APB1SMENR1_0_LCDSMEN
+#undef RCC_MAP0_MC_APB1ENSETR
+#undef RCC_APB1ENR_3
+#undef RCC_IOPENR_0_IOPHEN
+#undef RCC_MAP0_MC_MLAHBLPENSETR
+#undef RCC_CR_2_PLLSYSON
+#undef RCC_MAP0_PLL2CSGR
+#undef RCC_AHB1ENR_0_GPIODEN
+#undef RCC_MAP0_MP_MLAHBLPENCLRR
+#undef RCC_AHBRSTR_0_GPIOERST
+#undef RCC_PLLCFGR_0_PLLPDIV
+#undef RCC_MAP0_PLL2CFGR2
+#undef RCC_APB1ENR1_1_USBDEN
+#undef RCC_MAP4_CICR
+#undef RCC_DCKCFGR2_2_I2C4SEL
+#undef RCC_MAP0_MP_SREQCLRR
+#undef RCC_AHB2ENR_1_GPIOEEN
+#undef RCC_MAP1_CIFR
+#undef RCC_IOPRSTR_IOPFRST
+#undef RCC_CIER_1_PLLRDYIE
+#undef RCC_CCIPR_1_USART1SEL0
+#undef RCC_MAP0_MP_AHB2ENCLRR
+#undef RCC_APB1SMENR2_LPTIM2SMEN
+#undef RCC_AHB3RSTR_0_HSEMRST
+#undef RCC_CFGR_0_HRTIMSEL
+#undef RCC_MAP1_C1_RSR
+#undef RCC_CSR_0_RTCEN
+#undef RCC_AHB1ENR_0_GPIOEEN
+#undef RCC_MAP0_TIMG1PRER
+#undef RCC_AHBENR_1_MIFEN
+#undef RCC_AHB2LPENR_2
+#undef RCC_APB2LPENR_0_LTDCLPEN
+#undef RCC_APB2ENR_0_SPI4EN
+#undef RCC_CCIPR2_1_I2C4SEL_0
+#undef RCC_APB1ENR1_0_I2C3EN
+#undef RCC_CSR_0_IWDGRSTF
+#undef RCC_MAP0_MP_AHB3LPENCLRR
+#undef RCC_AHBSMENR_0_FLASHSMEN
+#undef RCC_APB1LPENR_0_I2C3LPEN
+#undef RCC_AHB1LPENR_0_GPIOKLPEN
+#undef RCC_CCIPR_1_DFSDMSEL
+#undef RCC_APB2SMENR_0_TIM20SMEN
+#undef RCC_CFGR_5_PLLSRC
+#undef RCC_CFGR_2_HPRE0
+#undef RCC_CR_0_PLL1ON
+#undef RCC_BDCR_0_RTCEN
+#undef RCC_CIFR_0_CSIRDY
+#undef RCC_CIFR_0_PLL3RDYF
+#undef RCC_MAP5_CFGR2
+#undef RCC_CSR_0_MSISRANGE
+#undef RCC_AHB2ENR_2_HASH1EN
+#undef RCC_APB1ENR1_0_TIM4EN
+#undef RCC_DCKCFGR_1_PLLI2SDIVQ
+#undef RCC_CIER_2_CSSLSE
+#undef RCC_APB1RSTR_2_TIM18RST
+#undef RCC_CIFR_0_HSECSSF
+#undef RCC_MAP0_AHB3RSTCLRR
+#undef RCC_APB1RSTR_3_CRCRST
+#undef RCC_CSR_0_WWDGRSTF
+#undef RCC_AHB2ENR_0_AESEN
+#undef RCC_CICR_0_LSI2RDYC
+#undef RCC_CR_0_PLL3RDY
+#undef RCC_PLLCFGR_2_PLLN
+#undef RCC_MAP0_PWRLPDLYCR
+#undef RCC_AHB3LPENR_1_QSPILPEN
+#undef RCC_AHB1LPENR_0_GPIOGLPEN
+#undef RCC_APB2RSTR_2_DBGMCURST
+#undef RCC_CIFR_0_LSI2RDYF
+#undef RCC_APB1SMENR1_0_OPAMPSMEN
+#undef RCC_AHB2ENR_0_GPIOIEN
+#undef RCC_MAP4_DCKCFGR2
+#undef RCC_CFGR3_1
+#undef RCC_DCKCFGR2_0_CECSEL
+#undef RCC_AHB1RSTR_1_CORDICRST
+#undef RCC_MAP0_APB5DIVR
+#undef RCC_PLLCFGR_0_DIVQ1EN
+#undef RCC_APB1SMENR1_1_CRSSMEN
+#undef RCC_PLLCFGR_1
+#undef RCC_AHB1RSTR_1_GPIOIRST
+#undef RCC_CR_2_CSSLSEON
+#undef RCC_APB1LPENR_1_LPTIMER1LPEN
+#undef RCC_DCKCFGR_0_PLLSAIDIVR
+#undef RCC_MAP5_DCKCFGR2
+#undef RCC_CR_3_HSIDIV
+#undef RCC_APB2LPENR_1_DFSDMLPEN
+#undef RCC_CSR_0_LSI2RDY
+#undef RCC_AHB1RSTR_0_ETH1MACRST
+#undef RCC_MAP0_APB3RSTCLRR
+#undef RCC_CR_3_CSSON
+#undef RCC_APB1ENR1_1
+#undef RCC_APB1SMENR1_0_TIM4SMEN
+#undef RCC_MAP0_MC_AXIMENCLRR
+#undef RCC_APB1SMENR1_0_CRSSMEN
+#undef RCC_CFGR_2_SWS0
+#undef RCC_APB2RSTR_1_TIM20RST
+#undef RCC_MAP0_SPI45CKSELR
+#undef RCC_PLLCFGR_1_PLLP
+#undef RCC_APB2RSTR_1_HRTIM1RST
+#undef RCC_PLLCFGR_3
+#undef RCC_DCKCFGR2_0_UART7SEL
+#undef RCC_MAP0_MP_APB2LPENSETR
+#undef RCC_CR_0_HSIDIV
+#undef RCC_MAP2_CIER
+#undef RCC_MAP5_APB2RSTR
+#undef RCC_MAP3_AHB2ENR
+#undef RCC_APB1LPENR_0_TIM4LPEN
+#undef RCC_AHBLPENR_0_GPIOHLPEN
+#undef RCC_MAP1_CRRCR
+#undef RCC_CCIPR_0_ADC345SEL
 #undef RCC_MAP1_C1_AHB1LPENR
-#undef RCC_AHB1RSTR_0_GPIOERST
+#undef RCC_AHB1RSTR_1
+#undef RCC_AHB1ENR_0_RNGEN
+#undef RCC_MAP3_AHB1RSTR
+#undef RCC_APB1RSTR_0_UART3RST
+#undef RCC_AHB1LPENR_1_GPIOALPEN
+#undef RCC_AHBRSTR_2_RNGRST
+#undef RCC_APB1LPENR_0_DACLPEN
+#undef RCC_MAP1_PLLCKSELR
+#undef RCC_BDCR_2_RTCSEL
+#undef RCC_AHB1RSTR_0_CRCRST
+#undef RCC_CICR_2_HSI48RDYC
+#undef RCC_APB2RSTR_0_USBPHYCRST
+#undef RCC_CFGR_0_STOPWUCK
+#undef RCC_CIFR_1
+#undef RCC_MAP5_APBSMENR2
+#undef RCC_CR_1_HSION
+#undef RCC_AHB1RSTR_0_GPIOKRST
+#undef RCC_AHBSMENR_0_RNGSMEN
+#undef RCC_CR_0_PLL3ON
+#undef RCC_AHBRSTR_0_DMARST
+#undef RCC_AHBSMENR_1_TOUCHSMEN
+#undef RCC_CCIPR_2_TIM15SEL
+#undef RCC_APB2SMENR_0_SAI2SMEN
+#undef RCC_MAP1_APB2ENR
+#undef RCC_MAP1_C1_APB2LPENR
+#undef RCC_ICSCR_1_HSICAL
+#undef RCC_CFGR_1_PPRE21
+#undef RCC_CCIPR_1_RNGSEL
+#undef RCC_AHB1LPENR_0_ADC12LPEN
+#undef RCC_AHB2ENR_1_GPIOAEN
+#undef RCC_APBSMENR2_TIM15SMEN
+#undef RCC_CCIPR_2_CECSEL
+#undef RCC_APB1ENR_0_TIM6EN
+#undef RCC_MAP0_AHB6RSTSETR
+#undef RCC_MAP6
+#undef RCC_AHB3RSTR_0_IPCCRST
+#undef RCC_CCIPR_1_SAISEL
+#undef RCC_APB1ENR_0_UART7ENR
+#undef RCC_CFGR_3_PLLNODIV
+#undef RCC_CFGR_1_MCO21
+#undef RCC_CFGR_4_MCOF
+#undef RCC_APB2ENR_0_USART6EN
+#undef RCC_AHB3ENR_0_FLASHEN
+#undef RCC_APB2ENR_0_FWEN
+#undef RCC_MAP0_ADCCKSELR
+#undef RCC_CR_0_PLL1RDY
+#undef RCC_CIER_1_RC48RDYIE
+#undef RCC_CR_0_HSEPRE
+#undef RCC_CCIPR_2
+#undef RCC_AHB2RSTR_0_DAC3RST
+#undef RCC_MAP0_APB4RSTSETR
+#undef RCC_AHB2SMENR_0_GPIOESMEN
+#undef RCC_APB2RSTR_1_SPI4RST
+#undef RCC_AHB2ENR_0_DAC4
+#undef RCC_PLLCFGR_0_PLL2VCOSEL
+#undef RCC_APB2SMENR_1_DBGSMEN
+#undef RCC_PLLCFGR_2_PLLM
+#undef RCC_APB2RSTR_0_SYSCFGRST
+#undef RCC_AHB2SMENR_0_CRYPTSMEN
+#undef RCC_CCIPR_1
+#undef RCC_CIER_3
+#undef RCC_AHB1LPENR_0_SRAM3LPEN
+#undef RCC_AHB3ENR_0_QSPIEN
+#undef RCC_MAP3_APB1RSTR
+#undef RCC_AHB1ENR_0_ADC12EN
+#undef RCC_CSR_0_LSECSSD
+#undef RCC_BDCR_1_LSECSSON
+#undef RCC_CSR_1_CSSLSED
+#undef RCC_MAP0_I2C12CKSELR
+#undef RCC_MAP1_AHB1RSTR
+#undef RCC_APB2ENR_0_TIM10EN
+#undef RCC_MAP0_PLL4CSGR
+#undef RCC_ICSCR_3_MSITRIM
+#undef RCC_BDCR_2_BDRST
+#undef RCC_MAP1_AHB3RSTR
+#undef RCC_CCIPR_1_LPTIM1SEL1
+#undef RCC_MAP0_TZAHB6RSTSETR
+#undef RCC_AHB3ENR_0_MDMAEN
+#undef RCC_CSR_0_OBLRSTF
+#undef RCC_AHB1LPENR_0_OTGHSULPILPEN
+#undef RCC_PLLSAI1CFGR_0_PLLSAI1PDIV
+#undef RCC_APB1RSTR1_0_UART4RST
+#undef RCC_APB1ENR_0_TIM13EN
 #undef RCC_CIER_2_HSI48RDYIE
+#undef RCC_APB1LPENR_0_I2C4LPEN
+#undef RCC_MAP0_MP_TZAHB6ENCLRR
+#undef RCC_APB2ENR_0_TIM21EN
+#undef RCC_MAP1_C1_APB4LPENR
+#undef RCC_CIER_0_LSIRDYIE
+#undef RCC_MAP0_MC_APB1LPENCLRR
+#undef RCC_CR_0_RC48ON
+#undef RCC_AHB1ENR_0_ETH1TXEN
+#undef RCC_AHB3SMENR_0_PKASMEN
+#undef RCC_MAP5_C2APB2ENR
+#undef RCC_AHB2ENR_0_HASHEN
+#undef RCC_AHB2RSTR_0_AESRST
+#undef RCC_AHB3ENR_0
+#undef RCC_CIR_0_PLLSAIRDYF
+#undef RCC_MAP3_DKCFGR2
+#undef RCC_AHB1ENR_1_CORDICEN
+#undef RCC_APB1RSTR1_1_FDCANRST
+#undef RCC_MAP2
+#undef RCC_MAP0_MC_AHB5LPENCLRR
+#undef RCC_PLLCFGR_1_PLLSYSPDIV
+#undef RCC_CIFR_2_PLLSYSRDYF
+#undef RCC_APB1RSTR_1_DAC1RST
+#undef RCC_AHB1SMENR_0_DMAMUX1SMEN
+#undef RCC_APB2SMENR_0_TIM22SMEN
+#undef RCC_MAP6_APB2ENR
+#undef RCC_CIFR_2_CSSLSEF
+#undef RCC_DCKCFGR_0_I2S1SRC
+#undef RCC_APB2ENR_1_SAI2EN
+#undef RCC_CFGR_1_STOPWUCK
+#undef RCC_APB1ENR_2_CAN3EN
+#undef RCC_APB2SMENR_0_SDMMCSMEN
+#undef RCC_AHB1ENR_0_CCMDATARAMEN
+#undef RCC_APB1ENR_0_CAN1EN
+#undef RCC_AHB1ENR_0_FLASHEN
+#undef RCC_MAP1_C1_AHB3LPENR
+#undef RCC_D3AMR_0_BKPSRAMAMEN
+#undef RCC_AHB1LPENR_0_ARTLPEN
+#undef RCC_AHB2RSTR_1_GPIOARST
+#undef RCC_AHB2RSTR_0_ADCRST
+#undef RCC_APB2RSTR_0_TIM15RST
+#undef RCC_APB1ENR1_0_SP3EN
+#undef RCC_MAP2_CRRCR
+#undef RCC_D3AMR_1
+#undef RCC_APB1ENR1_0_OPAMPEN
+#undef RCC_AHBENR_0_ADC34EN
+#undef RCC_MAP5_CSR
+#undef RCC_PLLCFGR_2_PLLSRC
+#undef RCC_IOPENR_0_IOPEEN
+#undef RCC_BDCR_0_LSCOEN
+#undef RCC_APB1ENR_0_SPI3EN
+#undef RCC_MAP1_APB1HENR
+#undef RCC_CFGR_1_SWS
+#undef RCC_APB2ENR_0_TIM17EN
+#undef RCC_CSR_1_LSI1ON
+#undef RCC_AHB1LPENR_1_USB1OTGLPEN
+#undef RCC_APB1ENR_0_SPDIFRXEN
+#undef RCC_AHBRSTR_1_IOPHRST
+#undef RCC_MAP1_APB1LRSTR
+#undef RCC_AHB2ENR_3
+#undef RCC_BDCR_0_LSERDY
+#undef RCC_APB1RSTR_2_COMPRST
+#undef RCC_AHBRSTR_0_IOPFRST
+#undef RCC_CFGR_2_HPRE3
+#undef RCC_AHB1LPENR_0_CRCLPEN
+#undef RCC_APB1LPENR_0_CECLPEN
+#undef RCC_AHB1RSTR_0_ARTRST
+#undef RCC_MAP0_MP_CIER
+#undef RCC_MAP0_PLL4CR
+#undef RCC_MAP0_VERR
+#undef RCC_APB1SMENR1_0_UART5SMEN
+#undef RCC_MAP1_PLL2FRACR
+#undef RCC_MAP0_MC_AHB5ENCLRR
+#undef RCC_MAP0_USBCKSELR
+#undef RCC_APB2LPENR_0_TIM9LPEN
+#undef RCC_APB2LPENR_0_SPI6LPEN
+#undef RCC_AHB1LPENR_0_DMA1LPEN
+#undef RCC_CICR_1_PLLSAI1RDYC
+#undef RCC_ICSCR_1
+#undef RCC_APB1RSTR1_0_TIM4RST
+#undef RCC_AHB2SMENR_2_HASH1SMEN
+#undef RCC_AHB1ENR_0_DMA1EN
+#undef RCC_APB2ENR_1
+#undef RCC_APB1RSTR1_0_TIM6RST
+#undef RCC_CIER_1_LSI1RDYIE
+#undef RCC_PLLCFGR_3_PLLSYSREN
+#undef RCC_APB1RSTR_0_I2C4RST
+#undef RCC_MAP2_CFGR
+#undef RCC_CIR_2_LSECSSIE
+#undef RCC_PLLSAI2CFGR_PLLSAI2QEN
+#undef RCC_AHB2ENR_1_OTGFSEN
+#undef RCC_APB2ENR_2_DBGMCUEN
+#undef RCC_CR_0_D1CKRDY
+#undef RCC_APB2RSTR_1_SYSCFGRST
+#undef RCC_APB2ENR_1_TIM22EN
+#undef RCC_AHBENR_0_IOPFEN
+#undef RCC_APB1SMENR1_0_I2C2SMEN
+#undef RCC_APB1ENR2_DFSDMEN
+#undef RCC_AHB1ENR_0_ETH1RXEN
+#undef RCC_CRRCR_2
+#undef RCC_APB2RSTR_1_SAI2RST
+#undef RCC_IOPRSTR_IOPHRST
+#undef RCC_AHB3ENR_0_IPCCEN
+#undef RCC_CICR_2_PLLRDYC
+#undef RCC_CFGR_3_PPRE2F
+#undef RCC_AHB3LPENR_0
+#undef RCC_CCIPR_1_LPUART1SEL0
+#undef RCC_CR_2_HSI16RDYF
+#undef RCC_CR_3_HSI16KERON
+#undef RCC_AHBRSTR_1_RNGRST
+#undef RCC_ICSCR_2
+#undef RCC_CICR_0_PLL1RDYC
+#undef RCC_DCKCFGR2_1_SDIOSEL
+#undef RCC_MAP0_MC_APB4LPENSETR
+#undef RCC_AHB1RSTR_2
+#undef RCC_ICSCR_3_HSI16CAL
+#undef RCC_AHB1SMENR_0_FLASHSMEN
+#undef RCC_APB1RSTR2_USBPDRST
+#undef RCC_APB2RSTR_0_SAI2RST
+#undef RCC_MAP3_AHB1LPENR
+#undef RCC_IOPRSTR_IOPERST
+#undef RCC_MAP2_AHB3ENR
+#undef RCC_CIR_1
+#undef RCC_CCIPR_1_I2C3SEL1
+#undef RCC_MAP2_APB1RSTR1
+#undef RCC_APB2ENR_1_HRTIM1EN
+#undef RCC_APB2RSTR_0_TIM21RST
+#undef RCC_AHBRSTR_0_FSMCRST
+#undef RCC_APB1RSTR1_0_USART3RST
+#undef RCC_CSR_2_LSEDRV
+#undef RCC_CFGR_2_PPRE1F
+#undef RCC_MAP0_TIMG2PRER
+#undef RCC_HSICFGR_1
+#undef RCC_CIFR_1_LSI1RDYF
+#undef RCC_ICSCR_0
+#undef RCC_DCKCFGR_1_I2SSRC
+#undef RCC_AHBENR_2_GPIOHEN
+#undef RCC_CFGR_0_MCO2PRE
+#undef RCC_APB2ENR_1_FIREWALLEN
+#undef RCC_MAP2_AHB2ENR
+#undef RCC_APB1RSTR_1_SPDIFRST
+#undef RCC_CSR_0_FWRSTF
+#undef RCC_AHB2ENR_2_DCMIEN
+#undef RCC_MAP0_MC_AXIMENSETR
+#undef RCC_AHB3RSTR_0_RNGRST
+#undef RCC_APB1RSTR_2_LPUART12RST
+#undef RCC_APB1SMENR1_0_RTCAPBSMEN
+#undef RCC_IOPENR_1_GPIOFEN
+#undef RCC_MAP0_MP_AHB5LPENCLRR
+#undef RCC_AHB2RSTR_0_GPIOHRST
+#undef RCC_AHBSMENR_1_CRYPTSMEN
+#undef RCC_APB1LPENR_1_CAN3LPEN
+#undef RCC_APB2RSTR_2
+#undef RCC_CCIPR_1_FDCANSEL
+#undef RCC_DCKCFGR2_2_CKSDIOSEL
+#undef RCC_MAP0_MP_APB4LPENSETR
+#undef RCC_CFGR3_0_HRTIM1SW
+#undef RCC_DCKCFGR_0_PLLSAIDIVQ
+#undef RCC_MAP1_APB1HRSTR
+#undef RCC_CR_2_PLLSAIRDY
+#undef RCC_MAP0_PLL3CSGR
+#undef RCC_PLLCFGR_3_PLLSYSP
+#undef RCC_PLLSAI1CFGR_1
+#undef RCC_MAP0_MP_MLAHBENCLRR
+#undef RCC_AHBENR_2_GPIOBEN
+#undef RCC_APB2ENR_1_HRTIMEREN
+#undef RCC_AHBRSTR_0_IOPDRST
+#undef RCC_CFGR3_0_UART5SW
+#undef RCC_APB2RSTR_1_DFSDM1RST
+#undef RCC_MAP0_APB2RSTCLRR
+#undef RCC_APB2RSTR_0_DSIRST
+#undef RCC_AHBENR_1_GPIOEEN
+#undef RCC_APB1ENR1_2
+#undef RCC_APB2LPENR_0_EXTITEN
+#undef RCC_APB1ENR_2_LPTIM1EN
+#undef RCC_MAP5_BDCR
+#undef RCC_MAP2_APB1RSTR2
+#undef RCC_APB1ENR_0_TIM7EN
+#undef RCC_AHB3SMENR_0_SRAM2SMEN
+#undef RCC_AHBENR_3_DMAEN
+#undef RCC_CFGR_0_MCO1PRE
+#undef RCC_GCR_WW2RSC
+#undef RCC_MAP2_CIFR
+#undef RCC_MAP3_APB1LPENR
+#undef RCC_APB2ENR_2_ADC1EN
+#undef RCC_APB2SMENR_0_ADCSMEN
+#undef RCC_APB1RSTR1_0_TIM3RST
+#undef RCC_APB2RSTR_0_SDMMCRST
+#undef RCC_APB1ENR_0_DACEN
+#undef RCC_CFGR_3_MCO2PRE2
+#undef RCC_APB2SMENR_0_TIM16SMEN
+#undef RCC_AHB1RSTR_0_FLASHRST
+#undef RCC_AHBRSTR_2_DMA1RST
+#undef RCC_APB2SMENR_0_SYSCFGSMEN
+#undef RCC_CFGR2_ADC12PRES
+#undef RCC_AHB3ENR_2_QSPIEN
+#undef RCC_CR_0_CSIKERON
+#undef RCC_CSR_2
+#undef RCC_AHB2SMENR_1
+#undef RCC_MAP1_APB1LLPENR
+#undef RCC_MAP2_BDCR
+#undef RCC_MAP5_C2APB3SMENR
+#undef RCC_AHB1ENR_2_FLITFEN
+#undef RCC_CIER_2_PLLRDYIE
+#undef RCC_AHB3RSTR_2_QSPIRST
+#undef RCC_APB1LPENR_0_TIM3LPEN
+#undef RCC_CCIPR_0_I2C2SEL
+#undef RCC_MAP1_HSICFGR
+#undef RCC_APB2SMENR_1
+#undef RCC_CCIPR2_0
+#undef RCC_AHB3LPENR_1
+#undef RCC_MAP2_CICR
+#undef RCC_AHB2RSTR_0_OTGFSRST
+#undef RCC_MAP0_MC_APB2ENCLRR
+#undef RCC_AHB1ENR_1_USB2OTGEN
+#undef RCC_MAP6_AHBRSTR
+#undef RCC_AHB1ENR_1_FMACEN
+#undef RCC_MAP0_CECCKSELR
+#undef RCC_ICSCR_3_MSICAL
+#undef RCC_AHB2RSTR_2
+#undef RCC_MAP0_SIDR
+#undef RCC_APB2RSTR_1
+#undef RCC_APB1ENR1_1_SPI3EN
+#undef RCC_APB1ENR_0_TIM2EN
+#undef RCC_AHB1SMENR_0_CORDICSMEN
+#undef RCC_AHB3ENR_1_PKAEN
+#undef RCC_MAP0_FMCCKSELR
+#undef RCC_AHB3RSTR_0_SDMMC1RST
+#undef RCC_CIR_0_PLLI2SRDYC
+#undef RCC_AHB3RSTR_0
+#undef RCC_DCKCFGR2_0_SDMMC2SEL
+#undef RCC_AHB2ENR_0_RNGEN
+#undef RCC_PLLCFGR_3_PLLR
+#undef RCC_APB1RSTR_0_TIM3RST
+#undef RCC_CR_0_PLL2RDY
+#undef RCC_MAP0_MP_APRSTSR
+#undef RCC_MAP1_APB3RSTR
+#undef RCC_AHB1ENR_1_DMA2EN
+#undef RCC_MAP6_AHBSMENR
+#undef RCC_AHBENR_0_FLASHEN
+#undef RCC_AHB2ENR_0_SRAM1EN
+#undef RCC_CIER_0_CSIRDYIE
+#undef RCC_AHB1ENR_1_DMA2DEN
+#undef RCC_MAP0_PLL1CFGR2
+#undef RCC_AHBENR_0_IOPEEN
+#undef RCC_APB1ENR_1_RTCAPB
+#undef RCC_APB1SMENR1_0_DAC1SMEN
+#undef RCC_MAP0_MC_AHB4LPENSETR
+#undef RCC_AHBENR_1_GPIOGEN
+#undef RCC_APBENR1_CECEN
+#undef RCC_MAP1_PLLCFGR
+#undef RCC_APB2RSTR_0_USART9RST
+#undef RCC_APB1RSTR1_0_I2C2RST
+#undef RCC_AHB3ENR_2_FSMCEN
+#undef RCC_AHB1ENR_1_ETHMACPTPEN
+#undef RCC_ICSCR_2_HSITRIM
+#undef RCC_AHB3RSTR_0_FLASHRST
+#undef RCC_CICR_2_HSI16RDYC
+#undef RCC_APB2ENR_1_SYSCFGEN
+#undef RCC_APB1ENR_0_I2C2EN
+#undef RCC_DCKCFGR_1_SAI2SRC
+#undef RCC_BDCR_1_LSECSSD
+#undef RCC_AHB2RSTR_0_DAC4RST
+#undef RCC_CIFR_2_HSI48RDYF
+#undef RCC_MAP0_AHB3ENR
+#undef RCC_MAP0_OCENSETR
+#undef RCC_CFGR_3_MCO20
+#undef RCC_MAP0_MP_AXIMLPENCLRR
+#undef RCC_DCKCFGR2_0_I2C2SEL
+#undef RCC_CFGR_5
+#undef RCC_APB2RSTR_0_ADC1RST
+#undef RCC_MAP3_APB2ENR
+#undef RCC_APB1RSTR1_0_CAN1RST
+#undef RCC_AHB2RSTR_1_OTGFSRST
+#undef RCC_APB1LENR_1
+#undef RCC_MAP0_PLL4CFGR2
+#undef RCC_BDCR_3
+#undef RCC_AHB2ENR_0_OTGFSEN
+#undef RCC_CSR_1_BORRSTF
+#undef RCC_CICR_1_HSI48RDYC
+#undef RCC_APB1SMENR_USBSMEN
+#undef RCC_AHB1LPENR_1_GPIOBLPEN
+#undef RCC_APB1ENR_2_USBRST
+#undef RCC_APB2RSTR_2_DFSDMRST
+#undef RCC_CFGR2_ADC34PRES
+#undef RCC_MAP0_AHB3RSTSETR
+#undef RCC_CIER_1_MSIRDYIE
+#undef RCC_AHB1ENR_1_GPIOCEN
+#undef RCC_AHB1RSTR_1_CRCRST
+#undef RCC_MAP5_CFGR
+#undef RCC_APB1LPENR_0_USART3LPEN
+#undef RCC_AHB1LPENR_1_USB2OTGHSULPILPEN
+#undef RCC_MAP0_RNG1CKSELR
+#undef RCC_MAP1_APB1LENR
+#undef RCC_APB2ENR_0_USBPHYCEN
+#undef RCC_MAP0_PLL3CR
+#undef RCC_MAP0_MC_AHB6ENSETR
+#undef RCC_MAP0_MP_APB5ENCLRR
+#undef RCC_CSR_1_LSI2BW
+#undef RCC_APB1LPENR_0_TIM14LPEN
+#undef RCC_APB2RSTR_0_TIM8RST
+#undef RCC_MAP0_CPERCKSELR
+#undef RCC_APB1ENR_1_UART8EN
+#undef RCC_MAP0_AHB2RSTCLRR
+#undef RCC_APB1RSTR1_0_CAN2RST
+#undef RCC_MAP0_MP_AHB4ENCLRR
+#undef RCC_MAP5_C2AHB3ENR
+#undef RCC_APB2LPENR_0_ADC3LPEN
+#undef RCC_MAP0_MC_APB1LPENSETR
+#undef RCC_MAP1_CICR
+#undef RCC_APB1SMENR1_1_I2C3SMEN_3
+#undef RCC_MAP3_PLLI2SCFGR
+#undef RCC_MAP1
+#undef RCC_APB1ENR1_1_CRSEN
+#undef RCC_DCKCFGR2_0_SDMMC1SEL
+#undef RCC_AHBRSTR_1_CRYPRST
+#undef RCC_MAP3_AHB3ENR
+#undef RCC_CFGR_1
+#undef RCC_CCIPR2_0_PLLSAI2DIVR
+#undef RCC_APB1RSTR_1_USART3RST
+#undef RCC_MAP2_CCIPR2
+#undef RCC_MAP0_MCUDIVR
+#undef RCC_CFGR_3_ADCPRE
+#undef RCC_MAP4_IOPRSTR
+#undef RCC_PLLCFGR_0
+#undef RCC_APB1RSTR_0_DACRST
+#undef RCC_MAP0_MC_APB3LPENSETR
+#undef RCC_MAP2_APB1ENR2
+#undef RCC_CIFR_2
+#undef RCC_AHBENR_2_GPIOAEN
+#undef RCC_APB1RSTR1_0_SPI3RST
+#undef RCC_CFGR_0_RTCPRE1
+#undef RCC_APB1ENR1_1_USBF
+#undef RCC_AHBRSTR_0_FLITFRST
+#undef RCC_MAP1_C1_APB2ENR
+#undef RCC_MAP4_BDCR
+#undef RCC_MAP0_MP_GCR
+#undef RCC_PLLCFGR_0_PLL1VCOSEL
+#undef RCC_AHB1SMENR_0_TSCSMEN
+#undef RCC_AHB2LPENR_0_CAMITFLPEN
+#undef RCC_PLLSAICFGR_PLLSAIM
+#undef RCC_GCR_BOOT_C2
+#undef RCC_CR_2_PLLSAION
+#undef RCC_AHBENR_3_TOUCHEN
+#undef RCC_CICR_2
+#undef RCC_APBENR1_UCPD1EN
+#undef RCC_MAP0_PLL2CR
+#undef RCC_CFGR_4_ADCPRE
+#undef RCC_MAP1_PLL1FRACR
+#undef RCC_MAP1_AHB1LPENR
+#undef RCC_CFGR_5_PLLDIV
+#undef RCC_MAP0_HSICFGR
+#undef RCC_AHB1LPENR_0_ETH1MACLPEN
+#undef RCC_CFGR_2_RTCPRE2
+#undef RCC_MAP0_PLL4FRACR
+#undef RCC_AHB2ENR_1
+#undef RCC_PLLI2SCFGR_0_PLLI2SP
+#undef RCC_AHBENR_0_DMA2EN
+#undef RCC_APB3RSTR_DSIRST
+#undef RCC_CFGR_1_MCOPRE
+#undef RCC_CICR_1_CSSC
+#undef RCC_APB2LPENR_0_TIM15LPEN
+#undef RCC_AHB3RSTR_0_QSPIRST
+#undef RCC_AHB3LPENR_0_FLITFLPEN
+#undef RCC_AHBENR_0_IOPGEN
+#undef RCC_CR_0_HSIASFS
+#undef RCC_MAP2_AHB2SMENR
+#undef RCC_MAP0_MP_TZAHB6LPENSETR
+#undef RCC_AHB3LPENR_2
+#undef RCC_AHB2SMENR_0_AESSMEN
+#undef RCC_AHB3RSTR_0_FMCRST
+#undef RCC_PLLCFGR_1_PLLQ
+#undef RCC_CFGR_3_MCOSEL
+#undef RCC_CCIPR_2_RNGSEL
+#undef RCC_CIFR_0_HSERDYF
+#undef RCC_APB2ENR_3_DBGEN
+#undef RCC_APB2RSTR_3_SDAD1RST
+#undef RCC_AHB1RSTR_1_GPIOCRST
+#undef RCC_AHB1ENR_1_DMA1EN
+#undef RCC_ICSCR_1_MSITRIM
+#undef RCC_MAP2_AHB2RSTR
+#undef RCC_D1CCIPR_DSISEL
+#undef RCC_MAP3_CIR
+#undef RCC_MAP1_AHB1ENR
+#undef RCC_AHBRSTR_0_IOPCRST
+#undef RCC_APB2ENR_2
+#undef RCC_APB2RSTR_1_USART1RST
+#undef RCC_APB2ENR_1_TIM8EN
+#undef RCC_CFGR_0_MCO1SEL
+#undef RCC_MAP5_HSECR
+#undef RCC_MAP1_CFGR
+#undef RCC_MAP1_APB4RSTR
+#undef RCC_MAP3_AHB2LPENR
+#undef RCC_MAP1_C1_APB1LENR
+#undef RCC_MAP4_AHBRSTR
+#undef RCC_AHBENR_0_ADC12EN
+#undef RCC_APB1RSTR_0_CECRST
+#undef RCC_CFGR3_0_USART2SW
+#undef RCC_CICR_1_MSIRDYC
+#undef RCC_MAP2_AHB1ENR
+#undef RCC_CFGR_2_PPRE1
+#undef RCC_CIFR_0_LSECSSF
+#undef RCC_CFGR_1_SW
+#undef RCC_AHB2SMENR_0_ADCFSSMEN
+#undef RCC_AHBENR_0_IOPCEN
+#undef RCC_APB1RSTR2_LPTIM2RST
+#undef RCC_APB1ENR_0_TIM14EN
+#undef RCC_MAP0_MP_AHB5ENCLRR
+#undef RCC_PLLCFGR_4_PLLR1
+#undef RCC_MAP1_D1CFGR
+#undef RCC_AHBRSTR_0_GPIOFRST
+#undef RCC_CFGR_4_MCO1PRE2
+#undef RCC_APB1ENR1_0_LCDEN
+#undef RCC_MAP0_PLL3FRACR
+#undef RCC_AHB3ENR_0_QUADSPI1EN
+#undef RCC_APB2ENR_0_TIM19EN
+#undef RCC_CFGR_0_SWS
+#undef RCC_AHB3RSTR_0_AES2RST
+#undef RCC_APB1SMENR1_1_CRSMEN
+#undef RCC_AHB2ENR_1_GPIOFEN
+#undef RCC_MAP0_MC_AHB6LPENSETR
+#undef RCC_APB2RSTR_1_ADCRST
+#undef RCC_AHBRSTR_2
+#undef RCC_MAP0_PLL1FRACR
+#undef RCC_MAP0_UART78CKSELR
+#undef RCC_BDCR_0_LSECSSD
+#undef RCC_APB2ENR_0_SAI3EN
+#undef RCC_APB1RSTR_0_UART5RST
+#undef RCC_APB1RSTR_2_DAC3RST
+#undef RCC_CCIPR_1_I2C1SEL1
+#undef RCC_APB1RSTR_3_I2C3
+#undef RCC_MAP6_APB1RSTR
+#undef RCC_MAP3_AHB1ENR
+#undef RCC_APBSMENR1_UCPD1SMEN
+#undef RCC_APB1LPENR_0_UART4LPEN
+#undef RCC_APB2LPENR_1_SDIOLPEN
+#undef RCC_CFGR_0_STOPKERWUCK
+#undef RCC_AHB3ENR_2
+#undef RCC_AHB2SMENR_2_AES1SMEN
+#undef RCC_APB1LPENR_1_I2CFMP1LPEN
+#undef RCC_APB1ENR1_0_UART4EN
+#undef RCC_CIR_0_PLLI2SRDYF
+#undef RCC_CFGR3_1_ADCSW
+#undef RCC_PLLCFGR_4_PLLP
+#undef RCC_APBENR1_DAC1EN
+#undef RCC_MAP0_RCK3SELR
+#undef RCC_CR_1_MSIRDY
+#undef RCC_CR_2_HSI16ON
+#undef RCC_CCIPR_1_I2S2SEL
+#undef RCC_APB1ENR_0_TIM12EN
+#undef RCC_CIFR_1_HSI48RDYF
+#undef RCC_MAP0_MP_RSTSR
+#undef RCC_APB1RSTR_0_TIM7RST
+#undef RCC_MAP5_CKGATENR
+#undef RCC_AHB2RSTR_1_RNGRST
+#undef RCC_AHB2RSTR_3
+#undef RCC_PLLCFGR_2_PLLP
+#undef RCC_APB1LPENR_2
+#undef RCC_AHB2RSTR_1_GPIOFRST
+#undef RCC_CFGR_4_MCO1PRE1
+#undef RCC_CCIPR_1_SPISEL_
+#undef RCC_AHBRSTR_0_DMA2RST
+#undef RCC_MAP5_C2AHB2SMENR
+#undef RCC_MAP0_MC_CIER
+#undef RCC_CR_1_RTCPRE
+#undef RCC_APB2RSTR_1_TIM9RST
+#undef RCC_MAP2_AHB1RSTR
+#undef RCC_AHB2ENR_0_OSPIMEN
+#undef RCC_MAP1_AHB4LPENR
+#undef RCC_CR_3_RTCPRE0
+#undef RCC_AHBENR_1_GPIOBEN
+#undef RCC_AHB2LPENR_1
+#undef RCC_CICR_0_RC48RDYC
+#undef RCC_CICR_0_LSIRDYC
+#undef RCC_AHB1RSTR_0_DMAMUX1RST
+#undef RCC_MAP0_APB4DIVR
+#undef RCC_APB1LPENR_1
+#undef RCC_PLLCFGR_3_PLLSYSN
+#undef RCC_MAP3_AHBENR
+#undef RCC_AHBLPENR_0_GPIOELPEN
+#undef RCC_MAP0_ASSCKSELR
+#undef RCC_AHBENR_0_TSCEN
+#undef RCC_APB1LPENR_1_USART4LPEN
+#undef RCC_CR_3_HSI16DIVF
+#undef RCC_CSR_1_PADRSTF
+#undef RCC_APB1LPENR_0_LPTIM1LPEN
+#undef RCC_AHB3RSTR_0_JPGDECRST
+#undef RCC_CSR_1_WDGRSTF
+#undef RCC_AHB3SMENR_0_FMCSMEN
+#undef RCC_MAP1_D1CCIPR
+#undef RCC_APBENR1_USART3EN
+#undef RCC_BDCR_2
+#undef RCC_MAP0_PLL4CFGR1
+#undef RCC_AHBRSTR_0_GPIODRST
+#undef RCC_CFGR_2
+#undef RCC_APB2ENR_0_DSIEN
+#undef RCC_CSR_0_RMVF
+#undef RCC_APB1ENR_0_I2C4EN
+#undef RCC_CCIPR_2_HSI48MSEL
+#undef RCC_MAP0_MC_AHB5ENSETR
+#undef RCC_APB1LPENR_0_CAN1LPEN
+#undef RCC_AHB2LPENR_0_CRYPTLPEN
+#undef RCC_AHB3ENR_0_JPGDECEN
+#undef RCC_APB2ENR_1_ADCEN
+#undef RCC_MAP1_APB3LPENR
+#undef RCC_CR_3
+#undef RCC_MAP3_AHB3LPENR
+#undef RCC_APB1RSTR1_0_LCDRST
+#undef RCC_APB2SMENR_0_SPI4SMEN
+#undef RCC_AHB2RSTR_0
+#undef RCC_CIR_2_LSECSSC
+#undef RCC_APB1ENR1_0_TIM5EN
+#undef RCC_MAP6_APB2RSTR
+#undef RCC_AHB2RSTR_0_HASHRST
+#undef RCC_CIR_0_PLLSAIRDYC
+#undef RCC_DCKCFGR2_0_FMPI2C1SEL
+#undef RCC_MAP0_CSICFGR
+#undef RCC_CR_0_RC48RDY
+#undef RCC_MAP0_MP_APB3ENSETR
+#undef RCC_MAP0_AXIDIVR
+#undef RCC_MAP0_MC_APB3LPENCLRR
+#undef RCC_DCKCFGR_0_PLLIS2DIVQ
+#undef RCC_PLLCFGR_2
+#undef RCC_AHB2RSTR_0_OSPIMRST
+#undef RCC_CICR_0_HSIRDYC
+#undef RCC_APB2SMENR_1_DFSDMSMEN
+#undef RCC_APB2LPENR_0_DFSDM2LPEN
+#undef RCC_APB1ENR_0_TIM4EN
+#undef RCC_CIER_0_LSI2RDYIE
+#undef RCC_AHB3ENR_0_AES2EN
+#undef RCC_APB1RSTR1_0_TIM7RST
+#undef RCC_APB1RSTR1_0_I2C3RST
+#undef RCC_APB2LPENR_0_SDMMC2LPEN
+#undef RCC_CICR_0_HSERDYC
+#undef RCC_AHB2RSTR_0_SDMMC1RST
+#undef RCC_APB2LPENR_1_USART10LPEN
+#undef RCC_ICSCR_1_HSITRIM
+#undef RCC_APB2RSTR_0_TM10RST
+#undef RCC_APB1ENR_1_CEC
+#undef RCC_APB1RSTR_0_UART8RST
+#undef RCC_MAP4_IOPENR
+#undef RCC_APBRSTR1_USART4RST
+#undef RCC_PLLCFGR_0_PLL1FRACEN
+#undef RCC_APB2RSTR_0_TIM19RST
+#undef RCC_CIFR_3
+#undef RCC_CCIPR_2_TIM1SEL
+#undef RCC_APB1RSTR_0_TIM6RST
+#undef RCC_AHB1LPENR_0_AXILPEN
+#undef RCC_AHB2RSTR_0_RNGRST
+#undef RCC_MAP0_MP_APB5ENSETR
+#undef RCC_AHBENR_0_GPIOHEN
+#undef RCC_PLLCFGR_1_PLLN
+#undef RCC_MAP0_MC_AHB4ENSETR
+#undef RCC_AHBENR_1_GPIOAEN
+#undef RCC_MAP1_PLL3DIVR
+#undef RCC_APB2LPENR_1_TIM11LPEN
+#undef RCC_MAP5_AHBRSTR
+#undef RCC_AHB2RSTR_0_GPIOIRST
+#undef RCC_CIFR_2_HSECSSF
+#undef RCC_CSR_1_LPWRRSTF
+#undef RCC_AHB2LPENR_0_SRAM1LPEN
+#undef RCC_APB2ENR_1_SDAD2EN
+#undef RCC_CCIPR2_0_DFSDMSEL
+#undef RCC_MAP0_MP_SREQSETR
+#undef RCC_AHB2ENR_1_GPIOGEN
+#undef RCC_APBENR1_TIM6EN
+#undef RCC_APB1ENR_0_I2C3EN
+#undef RCC_APB2RSTR_0_SPI5RST
+#undef RCC_APB1SMENR1_2
+#undef RCC_CR_0_HSECSSON
+#undef RCC_AHB1ENR_0_GPIOHEN
+#undef RCC_AHB2ENR_0_GPIOBEN
+#undef RCC_AHB2ENR_1_RNGEN
+#undef RCC_AHB2ENR_2_CRYPEN
+#undef RCC_MAP1_CSICFGR
+#undef RCC_CR_0_HSIDIVF
+#undef RCC_AHB1LPENR_0_DTCMLPEN
+#undef RCC_APB2ENR_2_SPI4ENR
+#undef RCC_AHB2RSTR_1_DAC1RST_
+#undef RCC_CIER_0_PLL1RDYIE
+#undef RCC_MAP0_MP_APB4ENSETR
+#undef RCC_MAP0_MC_AHB2LPENSETR
+#undef RCC_APB1RSTR_1_LPTIMER1RST
+#undef RCC_CSR_0_LSION
+#undef RCC_APB1RSTR_2
+#undef RCC_CFGR_1_PPRE2
+#undef RCC_MAP2_AHB3RSTR
+#undef RCC_MAP6_APB2SMENR
+#undef RCC_AHBENR_0_SRAMEN
+#undef RCC_CFGR_4_USBPRE
+#undef RCC_CCIPR2_1
+#undef RCC_APB2SMENR_0_TIM17SMEN
+#undef RCC_CCIPR_0_SAI1SEL
+#undef RCC_MAP0_APB3RSTSETR
+#undef RCC_AHB1ENR_2_ETHMACRXEN
+#undef RCC_PLLCFGR_0_PLL3RGE
+#undef RCC_APB1LPENR_0_CAN2LPEN
+#undef RCC_MAP5_C2APB1ENR2
+#undef RCC_APB1ENR_0_LPTMI1EN
+#undef RCC_MAP0_MC_APB2LPENCLRR
+#undef RCC_CFGR_3_PPRE12
+#undef RCC_AHB2LPENR_1_CRYPLPEN
+#undef RCC_CR_3_HSI16DIVEN
+#undef RCC_CFGR_1_I2SSRC
+#undef RCC_AHB2ENR_2
+#undef RCC_APB1SMENR1_1_USART1SMEN
+#undef RCC_MAP0_MC_APB3ENCLRR
+#undef RCC_DCKCFGR2_0_UART3SEL
+#undef RCC_MAP0_C1_AHB3ENR
+#undef RCC_AHB1RSTR_0_GPIOERST
+#undef RCC_AHBENR_2
+#undef RCC_MAP0_DSICKSELR
+#undef RCC_PLLCFGR_4_PLLR3
+#undef RCC_DCKCFGR_0_SDMMCSEL
+#undef RCC_AHB1LPENR_0_GPIOJLPEN
+#undef RCC_MAP0_MC_APB5ENCLRR
+#undef RCC_PLLCFGR_0_PLL2RGE
+#undef RCC_CCIPR2_0_SDMMCSEL
+#undef RCC_CR_1_MSION
+#undef RCC_PLLCFGR_3_PLLREN
+#undef RCC_MAP0_PLL3CFGR1
+#undef RCC_MAP0_STGENCKSELR
+#undef RCC_APB2ENR_2_SDIOEN
+#undef RCC_CIFR_2_HSI16RDYF
+#undef RCC_APB1SMENR1_1_USBFSSMEN
+#undef RCC_MAP6_CCIPR
+#undef RCC_APB2RSTR_2_SDIORST
+#undef RCC_PLLSAI2CFGR_PLLSAI2Q
+#undef RCC_APB2SMENR_1_HRTIMERSMEN
+#undef RCC_BDCR_1_VSWRST
+#undef RCC_AHB1RSTR_0_USB1OTGRST
+#undef RCC_AHB2RSTR_2_RNGRST
+#undef RCC_CIFR_0_HSIRDYF
+#undef RCC_AHB1LPENR_1_SRAM1LPEN
+#undef RCC_AHB2RSTR_0_GPIODRST
+#undef RCC_APB2RSTR_0_DFSDM2RST
+#undef RCC_DCKCFGR2_2
+#undef RCC_MAP0_UART1CKSELR
+#undef RCC_APB1RSTR1_0_TIM5RST
+#undef RCC_AHB2SMENR_0_OSPIMSMEN
+#undef RCC_AHB3RSTR_0_DMA2DRST
+#undef RCC_AHB1ENR_0_USB1OTGHEN
+#undef RCC_APB2LPENR_1_ADC1LPEN
+#undef RCC_AHB3ENR_0_FMCEN
+#undef RCC_AHBENR_0_AESEN
+#undef RCC_APBENR1_TIM7EN
+#undef RCC_APB1RSTR_0_SPI2RST
+#undef RCC_CKGATENR_EVTCL_CKEN
+#undef RCC_C1_AHB1ENR_0_USB1OTGHSULPIEN
+#undef RCC_APB2ENR_1_TIM11EN
+#undef RCC_MAP0_DBGCFGR
+#undef RCC_AHBENR_0_IOPBEN
+#undef RCC_AHB1RSTR_2_FLITFRST_
+#undef RCC_MAP0_SPI6CKSELR
+#undef RCC_CIER_0_PLL2RDYIE
+#undef RCC_DCKCFGR_0_LPTIMER1SEL
+#undef RCC_APB1RSTR1_0_PWRRST
+#undef RCC_APB1LRSTR_0_HDMICECRST
+#undef RCC_AHB1ENR_0_DMAMUX1EN
+#undef RCC_CFGR_1_HPRE
+#undef RCC_APB1RSTR_0_TIM5RST
+#undef RCC_CR_1_MSIPLLEN
+#undef RCC_IOPSMEN_IOPESMEN
+#undef RCC_CFGR_4
+#undef RCC_MAP1_RSR
+#undef RCC_AHB2RSTR_1
+#undef RCC_CICR_0_HSECSSC
+#undef RCC_DCKCFGR_1
+#undef RCC_MAP0_LPTIM45CKSELR
+#undef RCC_APB2ENR_0_SAI2EN
+#undef RCC_DCKCFGR_1_I2S2SRC
+#undef RCC_IOPENR_1_GPIOHEN
+#undef RCC_CCIPR_0_USART3SEL
+#undef RCC_MAP5_APBENR1
+#undef RCC_AHB3RSTR_1_QSPIRST
+#undef RCC_AHB1LPENR_1
+#undef RCC_AHB3RSTR_0_OSPI2RST
+#undef RCC_APB1ENR_1_SPDIFEN
+#undef RCC_AHB1LPENR_1_USB2OTGLPEN
+#undef RCC_MAP0_MP_APRSTCR
+#undef RCC_APB1LPENR_1_RTCAPBLPEN
+#undef RCC_APB1LPENR_0_UART8LPEN
+#undef RCC_PLLCFGR_0_DIVQ2EN
+#undef RCC_CICR_1_PLLRDYC
+#undef RCC_APB2LPENR_0_USART1LPEN
+#undef RCC_AHBRSTR_0_IOPERST
+#undef RCC_CFGR_0_TIMPRE
+#undef RCC_MAP5_CFGR3
+#undef RCC_AHB1RSTR_1_DMA2RST
+#undef RCC_APB2LPENR_0_ADC2LPEN
+#undef RCC_APB1RSTR_0_TIM12RST
+#undef RCC_MAP0_MP_APB2ENCLRR
+#undef RCC_AHB1RSTR_1_GPIOARST
+#undef RCC_MAP0_APB2DIVR
+#undef RCC_CFGR_0_RTCPRE
+#undef RCC_AHB1LPENR_1_DMA2LPEN
+#undef RCC_APB1ENR1_0_I2C2EN
+#undef RCC_APB1SMENR1_0_TIM3SMEN
+#undef RCC_APB1RSTR1_0_OPAMPRST
+#undef RCC_AHB1ENR_2_BKPSRAMEN
+#undef RCC_MAP0_MP_APB1LPENSETR
+#undef RCC_AHB1LPENR_0_ETH1RXLPEN
+#undef RCC_AHB2SMENR_0_OTGFSSMEN
+#undef RCC_PLLI2SCFGR_0
+#undef RCC_APB1SMENR1_0_SP3SMEN
+#undef RCC_MAP3_AHB3RSTR
+#undef RCC_CIER_0_HSIRDYIE
+#undef RCC_AHB2RSTR_0_DAC2RST
+#undef RCC_CSR_1_RTCSEL
+#undef RCC_AHB3SMENR_0
+#undef RCC_MAP3_PLLSAICFGR
+#undef RCC_AHBLPENR_0_GPIOFLPEN
+#undef RCC_AHB1ENR_1_CRCEN
+#undef RCC_AHB1ENR_0_USB2ULPIEN
+#undef RCC_AHBENR_0_CRCEN
+#undef RCC_APB1ENR2_USBPDEN
+#undef RCC_CR_1_HSIKERDY
+#undef RCC_DCKCFGR2_0_UART5SEL
+#undef RCC_APB2LPENR_0_SAI3LPEN
+#undef RCC_APB2LPENR_0_ADC1LPEN
+#undef RCC_AHB2ENR_0_DAC3
+#undef RCC_MAP5_C2AHB1SMENR
+#undef RCC_CFGR_0_RTCPRE0
+#undef RCC_AHB1ENR_1_GPIOIEN
+#undef RCC_CCIPR_1_USART1SEL1
+#undef RCC_MAP5_APB1ENR
+#undef RCC_APBRSTR1_UCPD2RST
+#undef RCC_AHBENR_0_IOPDEN
+#undef RCC_CFGR_3_PPRE11
+#undef RCC_MAP2_AHB1SMENR
+#undef RCC_CR_1_MSIRGSEL
+#undef RCC_MAP0_PLL1CFGR1
+#undef RCC_MAP0_SPI2S1CKSELR
+#undef RCC_MAP0_SAI2CKSELR
+#undef RCC_APB3RSTR_RFRST
+#undef RCC_CRRCR_3
+#undef RCC_CFGR_1_MCO2PRE0
+#undef RCC_AHBENR_1_FLITFEN
+#undef RCC_MAP3_AHB2RSTR
+#undef RCC_MAP2_C1_AHB1LPENR
+#undef RCC_APB2LPENR_0_TIM1LPEN
+#undef RCC_MAP5_C2AHB1ENR
+#undef RCC_AHB1RSTR_2_DMAMUXRST
+#undef RCC_APB2LPENR_0_TIM16LPEN
+#undef RCC_DCKCFGR_0_DSISEL
+#undef RCC_APB1ENR_1_USART4EN
+#undef RCC_CR_1_PLLSAI1ON
+#undef RCC_AHB1ENR_0_OTGHSEN
+#undef RCC_CIFR_0_PLL1RDYF
+#undef RCC_APB1SMENR1_0_UART4SMEN
+#undef RCC_MAP0_MP_APB3LPENSETR
+#undef RCC_CSR_0_LSI2ON
+#undef RCC_AHB2RSTR_0_SDMMC2RST
+#undef RCC_CR_2_PLLSYSRDY
+#undef RCC_APB2RSTR_1_SDAD2RST
+#undef RCC_MAP0_MP_APB1ENCLRR
+#undef RCC_APB2ENR_0_TIM16EN
+#undef RCC_APB2ENR_0_TIM15EN
+#undef RCC_APB2RSTR_1_SAI1RST
+#undef RCC_MAP0_RCK12SELR
+#undef RCC_AHBENR_2_GPIOCEN
+#undef RCC_APB1LLPENR_WWDG2LPEN
+#undef RCC_MAP1_AHB3LPENR
+#undef RCC_AHB1LPENR_0_USB1OTGHSULPILPEN
+#undef RCC_MAP0_APB1RSTSETR
+#undef RCC_DCKCFGR2_0_UART8SEL
+#undef RCC_PLLCFGR_0_DIVR2EN
+#undef RCC_MAP0_SDMMC12CKSELR
+#undef RCC_MAP0_RDLSICR
+#undef RCC_APB2ENR_0_TIM8EN
+#undef RCC_APB2ENR_3_MIFIEN
+#undef RCC_AHB3ENR_1_FMCEN
+#undef RCC_CCIPR_0_I2C3SEL
+#undef RCC_CCIPR_0_LPTIM2SEL
+#undef RCC_AHB1RSTR_1_MATRIXRST
+#undef RCC_MAP0_MP_AHB4ENSETR
+#undef RCC_MAP4_IOPSMENR
+#undef RCC_AHBRSTR_0_GPIOHRST
+#undef RCC_DCKCFGR_0_MSEL
+#undef RCC_APB2ENR_0_SYSCFGEN
+#undef RCC_MAP1_C1_AHB2ENR
+#undef RCC_APB2RSTR_2_TIM22RST
+#undef RCC_AHB3ENR_0_HSEMEN
+#undef RCC_AHBLPENR_1
+#undef RCC_CCIPR2_0_SAI2SEL
+#undef RCC_AHB1SMENR_0_DMA2DSMEN
+#undef RCC_AHB1ENR_1_GFXMMUEN
+#undef RCC_MAP0_MP_AHB6LPENCLRR
+#undef RCC_DCKCFGR_0_SAI1BSRC
+#undef RCC_APB1SMENR_DACSMEN
+#undef RCC_MAP5_CR2
+#undef RCC_PLLSAI2CFGR_PLLSAI2M
+#undef RCC_PLLSAI1CFGR_0
+#undef RCC_CFGR_2_HPREF
+#undef RCC_MAP0_TZCR
+#undef RCC_CFGR_3_PPRE20
+#undef RCC_APB1RSTR1_0_CRSRST
+#undef RCC_PLLCFGR_0_DIVR1EN
+#undef RCC_PLLCFGR_0_DIVP1EN
+#undef RCC_APB1RSTR_1_LPTIM1RST
+#undef RCC_APB1ENR_2_DAC3EN
+#undef RCC_MAP2_APB2SMENR
+#undef RCC_APB1SMENR1_0_USART3SMEN
+#undef RCC_MAP7
+#undef RCC_APBRSTR1_CECRST
+#undef RCC_CCIPR_1_RNGDIV
+#undef RCC_APB1SMENR1_0_TIM6SMEN
+#undef RCC_APB1ENR1_0_PWREN
+#undef RCC_CR_0_D2CKRDY
+#undef RCC_CFGR_2_MCO10
+#undef RCC_MAP0_SAI1CKSELR
+#undef RCC_PLLCFGR_3_PLLSYSM
+#undef RCC_MAP0_MP_APB5LPENCLRR
+#undef RCC_CCIPR2_0_SAI1SEL
+#undef RCC_APB2RSTR_0_USART1RST
+#undef RCC_AHB2RSTR_0_CAMITFRST
+#undef RCC_CSR_1_PORRSTF
+#undef RCC_MAP0_MC_AHB6ENCLRR
+#undef RCC_AHB2RSTR_1_ADC345RST_
+#undef RCC_CFGR_1_PPRE1
+#undef RCC_APB2LPENR_0_USART9LPEN
+#undef RCC_APB2SMENR_0_TIM1SMEN
+#undef RCC_PLLCFGR_4
+#undef RCC_DCKCFGR_1_SAI1SRC
+#undef RCC_APB1LPENR_0_TIM7LPEN
+#undef RCC_PLLCFGR_1_PLLREN
+#undef RCC_CFGR3_0_I2C3SW
+#undef RCC_MAP2_DCKCFGR
+#undef RCC_APB2LPENR_0_DFSDM1LPEN
+#undef RCC_APB2RSTR_0_TIM1RST
+#undef RCC_APB1ENR_2_LPTIMER1EN
+#undef RCC_CR_2_HSICAL
+#undef RCC_APB1ENR_3_CECEN
+#undef RCC_AHB1ENR_0_CRCEN
+#undef RCC_APB1LENR_0_WWDG2EN
+#undef RCC_IOPENR_1_GPIOEEN
+#undef RCC_CIER_2
+#undef RCC_PLLCFGR_1_PLLQEN
+#undef RCC_MAP0_MP_APB3ENCLRR
+#undef RCC_MAP3_SSCGR
+#undef RCC_AHB1RSTR_1_DMA2DRST
+#undef RCC_APB2ENR_0_SDMMC1EN
+#undef RCC_MAP1_D3AMR
+#undef RCC_CSR_2_FIREWALLRSTF
+#undef RCC_AHB2SMENR_0_RNGSMEN
+#undef RCC_CSR_0_PINRSTF
+#undef RCC_MAP0_ICSCR
+#undef RCC_AHB3ENR_1_QSPIEN
+#undef RCC_APBENR1_UCPD2EN
+#undef RCC_APBSMENR1_CECSMEN
+#undef RCC_MAP1_APB2RSTR
+#undef RCC_APB1LPENR_1_USBLPEN
+#undef RCC_AHB2RSTR_1_GPIOERST
+#undef RCC_AHB1ENR_0_OTGHSULPIEN
+#undef RCC_ICSCR_3
+#undef RCC_MAP1_PLL2DIVR
+#undef RCC_CFGR_0
+#undef RCC_MAP0_MP_APB3LPENCLRR
+#undef RCC_APBRSTR2_TIM15RST
+#undef RCC_AHB3RSTR_0_QUADSPI1RST
+#undef RCC_APB2RSTR_1_TIM8RST
+#undef RCC_APB2RSTR_0_HRTIMRST
+#undef RCC_MAP0_MC_APB4ENCLRR
+#undef RCC_BDCR_0_LSEBYP
+#undef RCC_CICR_0_PLL3RDYC
+#undef RCC_PLLCFGR_0_DIVR3EN
+#undef RCC_APB1SMENR_I2C3SMEN
+#undef RCC_APB2RSTR_0_ADCRST
+#undef RCC_APB2LPENR_0_HRTIMLPEN
+#undef RCC_APB1ENR_1_USART5EN
+#undef RCC_AHBENR_0_GPIODEN
+#undef RCC_CFGR_1_MCOSEL
+#undef RCC_CFGR_2_MCO2EN
+#undef RCC_APB1ENR1_0_SPI2EN
+#undef RCC_APBSMENR1_DAC1SMEN
+#undef RCC_CCIPR2_0_ADFSDMSEL
+#undef RCC_APB1ENR_1_DAC1EN
+#undef RCC_APB1RSTR_0_UART7RST
+#undef RCC_APB2RSTR_0_SAI1RST
+#undef RCC_AHB2RSTR_1_HASHRST
+#undef RCC_MAP2_PLLCFGR
+#undef RCC_HSICFGR_0
+#undef RCC_APB1ENR_0_TIM3EN
+#undef RCC_CIR_2_LSECSSF
+#undef RCC_APB1RSTR1_0_UART5RST
+#undef RCC_APB1SMENR2_SWPMI1SMEN
+#undef RCC_MAP3_IOPENR
+#undef RCC_BDCR_1_LSCOSEL
+#undef RCC_APB1ENR_1_DAC2EN
+#undef RCC_MAP0_MC_APB5ENSETR
+#undef RCC_APB1RSTR_1_CAN3RST
+#undef RCC_APB3RSTR_LTDCRST
+#undef RCC_APB1SMENR2_USBPDSMEN
+#undef RCC_AHB3RSTR_1_FMCRST
+#undef RCC_CICR_3
+#undef RCC_AHB1LPENR_1_SRAM2LPEN
+#undef RCC_CRRCR_2_HSI48CAL
+#undef RCC_CFGR3_0_USBSW
+#undef RCC_MAP6_AHBENR
+#undef RCC_MAP1_C1_AHB1ENR
+#undef RCC_MAP5_C2AHB3SMENR
+#undef RCC_APB2RSTR_0_TIM16RST
+#undef RCC_MAP1_D3CCIPR
+#undef RCC_AHBENR_1_GPIOFEN
+#undef RCC_PLLCFGR_1_PLLM
+#undef RCC_AHBRSTR_1
+#undef RCC_APB2SMENR_0_TIM15SMEN
+#undef RCC_CFGR_3_PPRE22
+#undef RCC_AHB1LPENR_1_USB1ULPILPEN
+#undef RCC_MAP0_MP_MLAHBENSETR
+#undef RCC_AHB3RSTR_0_MDMARST
+#undef RCC_AHB1LPENR_0_USB2ULPILPEN
+#undef RCC_MAP0_AHB4RSTCLRR
+#undef RCC_CIER_1_PLLSAI2RDYIE
+#undef RCC_APB1SMENR2_I2C4SMEN
+#undef RCC_MAP3_DKCFGR1
+#undef RCC_C1_AHB1ENR_0_ARTEN
+#undef RCC_AHB1ENR_0_GPIOJEN
+#undef RCC_CCIPR_1_USART2SEL0
+#undef RCC_MAP0_MC_AHB5LPENSETR
+#undef RCC_BDCR_1_RTCSRC
+#undef RCC_MAP5_C2AHB2ENR
+#undef RCC_CCIPR_0_SAI2SEL
+#undef RCC_AHBRSTR_1_GPIOARST
+#undef RCC_AHBRSTR_2_TOUCHRST
+#undef RCC_MAP1_C1_APB3ENR
+#undef RCC_APB1ENR1_0_TIM3EN
+#undef RCC_MAP1_APB1HLPENR
+#undef RCC_CSR_1_RTCEN
+#undef RCC_AHB1LPENR_1_DMA1LPEN
+#undef RCC_APBSMENR1_UCPD2SMEN
+#undef RCC_MAP0_MP_AHB3LPENSETR
+#undef RCC_APB1LRSTR_1
+#undef RCC_APB1RSTR_0_TIM13RST
+#undef RCC_PLLCFGR_2_PLLSYSQEN
+#undef RCC_APBENR2_TIM15EN
+#undef RCC_APB2ENR_2_TIM9EN
+#undef RCC_MAP0_MC_APB4ENSETR
+#undef RCC_APB1LPENR_0_TIM13LPEN
+#undef RCC_CICR_0_LSECSSC
+#undef RCC_AHB3SMENR_1
+#undef RCC_AHB2ENR_0_ADCEN
+#undef RCC_APB2LPENR_0_TIM10LPEN
+#undef RCC_CSR_1_RMVF
+#undef RCC_CSR_0_RFWKPSEL
+#undef RCC_PLLI2SCFGR_2
+#undef RCC_MAP0_MC_AHB6LPENCLRR
+#undef RCC_C1_AHB1ENR_0_USB1OTGHSEN
+#undef RCC_BDCR_1
+#undef RCC_APB2RSTR_2_TIM9RST
+#undef RCC_PLLCFGR_0_PLLR
+#undef RCC_AHB2LPENR_0_OTGFSLPEN
+#undef RCC_MAP0_MC_APB4LPENCLRR
+#undef RCC_APB1LPENR_0_RTCAPBEN
+#undef RCC_MAP0_UART24CKSELR
+#undef RCC_AHB2SMENR_2
+#undef RCC_ICSCR_2_MSIRANGE
+#undef RCC_APB2LPENR_1_TIM10LPEN
+#undef RCC_APB1SMENR1_1_USART2SMEN
+#undef RCC_AHBENR_1_DMA2EN
+#undef RCC_AHBENR_2_DMA1EN
+#undef RCC_AHB1LPENR_0_USB2OTGHSLPEN
+#undef RCC_MAP4_CIFR
+#undef RCC_AHB1LPENR_0_GPIOELPEN
+#undef RCC_CFGR_5_HPRE
+#undef RCC_PLLCFGR_0_DIVP3EN
+#undef RCC_CR_0_HSION
+#undef RCC_MAP0_MC_AHB2ENCLRR
+#undef RCC_AHB3RSTR_2
+#undef RCC_CCIPR2_0_DSISEL
+#undef RCC_AHB2ENR_0_CRYPTEN
+#undef RCC_APB2ENR_0_HRTIMEN
+#undef RCC_AHBENR_2_GPIOFEN
+#undef RCC_MAP5_CIR
+#undef RCC_AHB2ENR_0_GPIOHEN
+#undef RCC_AHBENR_3
+#undef RCC_APB1RSTR_0_LPTIM1RST
+#undef RCC_MAP0_PLL1CSGR
+#undef RCC_AHB2RSTR_1_GPIOGRST
+#undef RCC_PLLSAICFGR_PLLSAIR
+#undef RCC_CFGR_4_MCO1PRE0
+#undef RCC_CCIPR_0_UART5SEL
+#undef RCC_AHBRSTR_0_GPIOCRST
+#undef RCC_APB1ENR2_LPTIM2EN
+#undef RCC_C1_AHB1ENR_0_USB2OTGHSEN
+#undef RCC_MAP4_CIER
+#undef RCC_ICSCR_2_HSICAL
+#undef RCC_MAP0_MC_APB5LPENSETR
+#undef RCC_AHB1RSTR_0_TSCRST
+#undef RCC_DCKCFGR2_1_SPDIFSEL
+#undef RCC_MAP0_MP_APB2ENSETR
+#undef RCC_AHB1LPENR_0_GPIOILPEN
+#undef RCC_APB1LPENR_0_TIM2LPEN
+#undef RCC_AHB3SMENR_0_FLASHSMEN
+#undef RCC_CCIPR_0_ADCSEL
+#undef RCC_CR_1_PLLSAI2RDY
+#undef RCC_MAP0_MP_MLAHBLPENSETR
+#undef RCC_MAP0_SAI3CKSELR
+#undef RCC_APB1LPENR_0_TIM12LPEN
+#undef RCC_APB1ENR1_0_CAN1EN
+#undef RCC_AHB1ENR_2_ETHMACEN
+#undef RCC_APB2LPENR_0_SAI2LPEN
+#undef RCC_APBRSTR1_TIM6RST
+#undef RCC_APB1ENR_0_RTCAPBEN
+#undef RCC_APB2SMENR_0_LTDCSMEN
+#undef RCC_AHB3SMENR_0_AES2SMEN
+#undef RCC_APB2LPENR_0_SYSCFGLPEN
+#undef RCC_AHB1ENR_1_GPIOFEN
+#undef RCC_AHB2SMENR_0_DCMISMEN
+#undef RCC_PLLSAI2CFGR_PLLSAI2PDIV
+#undef RCC_AHB1LPENR_0_USB1OTGHSLPEN
+#undef RCC_MAP0_MPCKSELR
+#undef RCC_APB1ENR1_1_I2C3
+#undef RCC_MAP4_AHBENR
+#undef RCC_APB1ENR2_I2C4EN
+#undef RCC_ICSCR_1_MSICAL
+#undef RCC_MAP0_MP_IWDGFZSETR
+#undef RCC_APB1ENR_1_I2CFMP1EN
+#undef RCC_CR_0_HSIKERON
+#undef RCC_AHBRSTR_0_ADC34RST
+#undef RCC_CCIPR2_1_QUADSPISEL
+#undef RCC_APB1ENR1_0_USART3EN
+#undef RCC_MAP0_MC_AXIMLPENSETR
+#undef RCC_CFGR_2_SW0
+#undef RCC_CFGR_0_SW
+#undef RCC_APB1LPENR_1_COMPLPEN
+#undef RCC_CR_2_HSITRIM
 
+#endif
 
 #endif //__SOOL_CORE_RCC_H

@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-03-01T00:46:38.124290
+//Generated 2020-05-07T21:15:38.065219
 
 #ifndef __SOOL_CORE_TIM_H
 #define __SOOL_CORE_TIM_H
@@ -36,28 +36,19 @@
 #define PERIPH_TIM_GENERAL_1
 #endif
 
-#if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
-#define TIM_GENERAL_1_CR1_0
-#define TIM_GENERAL_1_CR1_1
-#define TIM_GENERAL_1_CNT_0
-#define TIM_GENERAL_1_CNT_1
-#define TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
-#endif
-
-#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
-    defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F373xC  ) || \
-    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
-    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
-#define TIM_GENERAL_1_CR1_2
-#endif
-
-#if	defined(STM32G0      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || \
-    defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
-    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || \
-    defined(STM32L412xx  ) || defined(STM32L422xx  )
-#define TIM_GENERAL_1_CR1_2_UIFREMAP UIFREMAP
+#if	defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_CR1_UIFREMAP UIFREMAP
+#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3 OC1M_3
+#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3 OC2M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3 OC3M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3 OC4M_3
 #else
-#define TIM_GENERAL_1_CR1_2_UIFREMAP
+#define TIM_GENERAL_1_CR1_UIFREMAP
+#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
+#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
+#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
 #endif
 
 #if	defined(STM32G0      ) || defined(STM32L1      ) || defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
@@ -114,8 +105,8 @@
 #define TIM_GENERAL_1_CCMR2_Output_0_CC4S CC4S
 #define TIM_GENERAL_1_CCR1
 #define TIM_GENERAL_1_CCR3
-#define TIM_GENERAL_1_MAP1_CCR1 tmpl::CCR1_t CCR1
-#define TIM_GENERAL_1_MAP1_CCR3 tmpl::CCR3_t CCR3
+#define TIM_GENERAL_1_MAP1_CCR1 typename tmpl::CCR1_t CCR1
+#define TIM_GENERAL_1_MAP1_CCR3 typename tmpl::CCR3_t CCR3
 #else
 #define TIM_GENERAL_1_CCMR1_Output_0_CC2S
 #define TIM_GENERAL_1_CCMR2_Output_0_CC4S
@@ -123,23 +114,10 @@
 #define TIM_GENERAL_1_MAP1_CCR3 __SOOL_PERIPH_PADDING_4
 #endif
 
-#if	defined(STM32G0      ) || defined(STM32H7      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
-    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
-#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3 OC1M_3
-#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3 OC2M_3
-#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3 OC3M_3
-#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3 OC4M_3
-#else
-#define TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
-#define TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
-#define TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
-#define TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
-#endif
-
 #if	defined(STM32L1      )
 #define TIM_GENERAL_1_CCMR1_Output_1
 #define TIM_GENERAL_1_CCMR2_Output_1_CC4S CC4S
-#define TIM_GENERAL_1_CNT_3_CNT CNT
+#define TIM_GENERAL_1_CNT_2_CNT CNT
 #define TIM_GENERAL_1_ARR_3
 #define TIM_GENERAL_1_CCR2_3
 #define TIM_GENERAL_1_CCR4_3
@@ -153,7 +131,7 @@
 #define TIM_GENERAL_4_OR_2
 #else
 #define TIM_GENERAL_1_CCMR2_Output_1_CC4S
-#define TIM_GENERAL_1_CNT_3_CNT
+#define TIM_GENERAL_1_CNT_2_CNT
 #define TIM_GENERAL_1_MAP3_CCR1 __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_1_MAP3_CCR3 __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_4_CCMR1_Output_0_OC1CE
@@ -194,10 +172,41 @@
 #define TIM_GENERAL_1_CCMR2_Output_1
 #endif
 
+#if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_CNT_0
+#endif
+
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
-    defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || \
-    defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || \
-    defined(STM32H755xx_CORE_CM7)
+    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_GENERAL_1_CNT_1
+#define TIM_GENERAL_1_ARR_0
+#define TIM_GENERAL_1_CCR1_0
+#define TIM_GENERAL_1_CCR2_0
+#define TIM_GENERAL_1_CCR3_0
+#define TIM_GENERAL_1_CCR4_0
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM_GENERAL_1_CNT_1_CNT_H CNT_H
+#else
+#define TIM_GENERAL_1_CNT_1_CNT_H
+#endif
+
+#if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  )
+#define TIM_GENERAL_1_CNT_1_CNT_31 CNT_31
+#else
+#define TIM_GENERAL_1_CNT_1_CNT_31
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
+    defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
+    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || \
+    defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM_GENERAL_1_CNT_2
 #endif
 
@@ -214,16 +223,23 @@
 #define TIM_GENERAL_1_CNT_2_CNT_H
 #endif
 
-#if	defined(STM32L1      ) || defined(STM32WB      )
+#if	defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  )
 #define TIM_GENERAL_1_CNT_3
+#define TIM_GENERAL_1_OR2_1
+#endif
+
+#if	defined(STM32L412xx  ) || defined(STM32L422xx  )
+#define TIM_GENERAL_1_CNT_3_CNT_M CNT_M
+#define TIM_GENERAL_1_OR1_2
+#define TIM_GENERAL_2_CR2_1
+#else
+#define TIM_GENERAL_1_CNT_3_CNT_M
 #endif
 
 #if	defined(STM32WB      )
-#define TIM_GENERAL_1_CNT_3_CNT_H CNT_H
 #define TIM_GENERAL_1_CNT_3_UIFCPY UIFCPY
 #define TIM_GENERAL_1_OR_4
-#define TIM_GENERAL_1_AF
-#define TIM_GENERAL_1_MAP3_AF AF_t AF
+#define TIM_GENERAL_1_MAP3_AF typename tmpl::OR2_t AF
 #define TIM_ADVANCED_CCMR1_Input_1_C1F C1F
 #define TIM_ADVANCED_CCMR2_Input_1_C3PSC C3PSC
 #define TIM_ADVANCED_OR
@@ -231,7 +247,6 @@
 #define TIM_GENERAL_3_CR1_1
 #define TIM_GENERAL_3_CR1_2
 #define TIM_GENERAL_3_DIER_1
-#define TIM_GENERAL_3_OR
 #define TIM_GENERAL_3_MAP0_CCER CCER_t CCER
 #define TIM_GENERAL_3_MAP0_CNT CNT_t CNT
 #define TIM_GENERAL_3_MAP0_PSC PSC_t PSC
@@ -239,16 +254,15 @@
 #define TIM_GENERAL_3_MAP0_RCR RCR_t RCR
 #define TIM_GENERAL_3_MAP0_CCR1 CCR1_t CCR1
 #define TIM_GENERAL_3_MAP0_BDTR BDTR_t BDTR
-#define TIM_GENERAL_3_MAP0_OR OR_t OR
-#define TIM_GENERAL_3_MAP1_DIER tmpl::CR1_t DIER
+#define TIM_GENERAL_3_MAP1_DIER typename tmpl::CR1_t DIER
 #define TIM_GENERAL_3_MAP2
-#define TIM_GENERAL_3_MAP3_DIER tmpl::DIER_t DIER
+#define TIM_GENERAL_3_MAP3_DIER typename tmpl::DIER_t DIER
 #define TIM_GENERAL_3_MAP3_SR SR_t SR
 #define TIM_GENERAL_3_MAP3_EGR EGR_t EGR
 #define TIM_GENERAL_3_MAP3_CCMR1_Output CCMR1_Output_t CCMR1_Output
-#define TIM_GENERAL_3_MAP3_AF1 tmpl::CR1_t AF1
+#define TIM_GENERAL_3_MAP3_OR typename tmpl::OR_t OR
+#define TIM_GENERAL_3_MAP3_AF1 typename tmpl::CR1_t AF1
 #else
-#define TIM_GENERAL_1_CNT_3_CNT_H
 #define TIM_GENERAL_1_CNT_3_UIFCPY
 #define TIM_GENERAL_1_MAP3_AF __SOOL_PERIPH_PADDING_4
 #define TIM_ADVANCED_CCMR1_Input_1_C1F
@@ -261,12 +275,12 @@
 #define TIM_GENERAL_3_MAP0_RCR __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP0_CCR1 __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP0_BDTR __SOOL_PERIPH_PADDING_4
-#define TIM_GENERAL_3_MAP0_OR __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP1_DIER __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP3_DIER __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP3_SR __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP3_EGR __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP3_CCMR1_Output __SOOL_PERIPH_PADDING_4
+#define TIM_GENERAL_3_MAP3_OR __SOOL_PERIPH_PADDING_4
 #define TIM_GENERAL_3_MAP3_AF1 __SOOL_PERIPH_PADDING_4
 #endif
 
@@ -283,22 +297,6 @@
 #define TIM_GENERAL_1_CCR3_2
 #define TIM_GENERAL_1_CCR4_1
 #define TIM_GENERAL_1_CCR4_2
-#endif
-
-#if	defined(STM32L412xx  ) || defined(STM32L422xx  )
-#define TIM_GENERAL_1_CNT_6
-#define TIM_GENERAL_1_OR1_2
-#define TIM_GENERAL_1_OR2_1
-#define TIM_GENERAL_2_CR2_1
-#endif
-
-#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || \
-    defined(STM32H7      ) || defined(STM32L0      ) || defined(STM32L4      ) || defined(STM32WB      )
-#define TIM_GENERAL_1_ARR_0
-#define TIM_GENERAL_1_CCR1_0
-#define TIM_GENERAL_1_CCR2_0
-#define TIM_GENERAL_1_CCR3_0
-#define TIM_GENERAL_1_CCR4_0
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || \
@@ -334,7 +332,7 @@
     defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM_GENERAL_1_OR
-#define TIM_GENERAL_1_MAP1_OR tmpl::OR_t OR
+#define TIM_GENERAL_1_MAP1_OR typename tmpl::OR_t OR
 #else
 #define TIM_GENERAL_1_MAP1_OR __SOOL_PERIPH_PADDING_4
 #endif
@@ -397,7 +395,7 @@
     defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || \
     defined(STM32L412xx  ) || defined(STM32L422xx  )
 #define TIM_GENERAL_1_OR1
-#define TIM_GENERAL_1_MAP0_OR1 tmpl::OR1_t OR1
+#define TIM_GENERAL_1_MAP0_OR1 typename tmpl::OR1_t OR1
 #else
 #define TIM_GENERAL_1_MAP0_OR1 __SOOL_PERIPH_PADDING_4
 #endif
@@ -456,21 +454,26 @@
 #define TIM_GENERAL_6_MAP1_TISEL __SOOL_PERIPH_PADDING_4
 #endif
 
-#if	defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
-    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32L412xx  ) || \
-    defined(STM32L422xx  )
+#if	defined(STM32WB      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
+    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  )
 #define TIM_GENERAL_1_OR2
-#define TIM_GENERAL_1_MAP0_OR2 tmpl::OR2_t OR2
-#else
-#define TIM_GENERAL_1_MAP0_OR2 __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F2      )
 #define TIM_GENERAL_1_TIMx_OR
 #define TIM_GENERAL_1_MAP2
-#define TIM_GENERAL_1_MAP3_TIM2_OR tmpl::TIMx_OR_t TIM2_OR
+#define TIM_GENERAL_1_MAP3_TIM2_OR typename tmpl::TIMx_OR_t TIM2_OR
 #else
 #define TIM_GENERAL_1_MAP3_TIM2_OR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || \
+    defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32L412xx  ) || \
+    defined(STM32L422xx  )
+#define TIM_GENERAL_1_MAP0_OR2 typename tmpl::OR2_t OR2
+#else
+#define TIM_GENERAL_1_MAP0_OR2 __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32L1      ) || defined(STM32WB      )
@@ -886,6 +889,7 @@
     defined(STM32L4      ) || defined(STM32WB      )
 #define TIM_ADVANCED_CCMR3_Output
 #define TIM_ADVANCED_CCR5
+#define TIM_ADVANCED_CxR6
 #endif
 
 #if	defined(STM32F7      ) || defined(STM32H7      )
@@ -917,14 +921,6 @@
 #define TIM_ADVANCED_CCMR3_Output_2
 #endif
 
-#if	defined(STM32H7      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
-    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
-#define TIM_ADVANCED_CRR6
-#define TIM_ADVANCED_MAP1_CRR6 CRR6_t CRR6
-#else
-#define TIM_ADVANCED_MAP1_CRR6 __SOOL_PERIPH_PADDING_4
-#endif
-
 #if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || defined(STM32WB      )
 #define TIM_ADVANCED_AF1
 #define TIM_ADVANCED_AF2
@@ -952,7 +948,7 @@
 
 #if	defined(STM32G0      ) || defined(STM32L4      )
 #define TIM_ADVANCED_OR1
-#define TIM_ADVANCED_MAP1_OR1 tmpl::OR1_t OR1
+#define TIM_ADVANCED_MAP1_OR1 typename tmpl::OR1_t OR1
 #else
 #define TIM_ADVANCED_MAP1_OR1 __SOOL_PERIPH_PADDING_4
 #endif
@@ -961,46 +957,27 @@
     defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM_ADVANCED_OR1_0
-#define TIM_ADVANCED_OR1_1
+#define TIM_ADVANCED_OR1_1_ETR_ADC2_RMP ETR_ADC2_RMP
 #define TIM_ADVANCED_OR2_0
-#define TIM_ADVANCED_OR2_1
+#define TIM_ADVANCED_OR2_1_BKDFBK2E BKDFBK2E
 #define TIM_ADVANCED_OR3_0
-#define TIM_ADVANCED_OR3_1
+#define TIM_ADVANCED_OR3_1_BK2DFBK3E BK2DFBK3E
 #define TIM_ADVANCED_TIM_ADVANCED_tmpl_0
-#define TIM_ADVANCED_TIM_ADVANCED_tmpl_1
-#endif
-
-#if	defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
-    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
-    defined(STM32L471xx  )
-#define TIM_ADVANCED_OR1_2
-#define TIM_ADVANCED_OR2_2
-#define TIM_ADVANCED_OR3_2
-#endif
-
-#if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
-    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
-#define TIM_ADVANCED_OR1_2_ETR_ADC3_RMP ETR_ADC3_RMP
-#define TIM_ADVANCED_OR3_2_BK2DFBK0E BK2DFBK0E
 #else
-#define TIM_ADVANCED_OR1_2_ETR_ADC3_RMP
-#define TIM_ADVANCED_OR3_2_BK2DFBK0E
-#endif
-
-#if	defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || defined(STM32WB      ) || \
-    defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
-#define TIM_ADVANCED_CCR6
+#define TIM_ADVANCED_OR1_1_ETR_ADC2_RMP
+#define TIM_ADVANCED_OR2_1_BKDFBK2E
+#define TIM_ADVANCED_OR3_1_BK2DFBK3E
 #endif
 
 #if	defined(STM32L4      )
+#define TIM_ADVANCED_OR1_1
 #define TIM_ADVANCED_OR2
 #define TIM_ADVANCED_OR3
-#define TIM_ADVANCED_MAP0_OR2 tmpl::OR2_t OR2
-#define TIM_ADVANCED_MAP0_OR3 tmpl::OR3_t OR3
-#define TIM_GENERAL_3_OR1
+#define TIM_ADVANCED_MAP0_OR2 typename tmpl::OR2_t OR2
+#define TIM_ADVANCED_MAP0_OR3 typename tmpl::OR3_t OR3
 #define TIM_GENERAL_3_OR2
-#define TIM_GENERAL_3_MAP1_OR1 tmpl::OR1_t OR1
-#define TIM_GENERAL_3_MAP1_OR2 tmpl::OR2_t OR2
+#define TIM_GENERAL_3_MAP1_OR1 typename tmpl::OR_t OR1
+#define TIM_GENERAL_3_MAP1_OR2 typename tmpl::OR2_t OR2
 #else
 #define TIM_ADVANCED_MAP0_OR2 __SOOL_PERIPH_PADDING_4
 #define TIM_ADVANCED_MAP0_OR3 __SOOL_PERIPH_PADDING_4
@@ -1008,9 +985,31 @@
 #define TIM_GENERAL_3_MAP1_OR2 __SOOL_PERIPH_PADDING_4
 #endif
 
+#if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM_ADVANCED_OR1_1_ETR_ADC3_RMP ETR_ADC3_RMP
+#else
+#define TIM_ADVANCED_OR1_1_ETR_ADC3_RMP
+#endif
+
+#if	defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  )
+#define TIM_ADVANCED_OR1_2
+#define TIM_ADVANCED_OR2_2
+#endif
+
+#if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM_ADVANCED_OR3_2
+#endif
+
 #if	defined(STM32G0      ) || defined(STM32L4      ) || defined(STM32WB      ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
     defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  )
-#define TIM_ADVANCED_MAP0_CCR6 CCR6_t CCR6
+#define TIM_ADVANCED_MAP0_CCR6 CxR6_t CCR6
 #else
 #define TIM_ADVANCED_MAP0_CCR6 __SOOL_PERIPH_PADDING_4
 #endif
@@ -1032,6 +1031,13 @@
 #define TIM_ADVANCED_MAP1_CCR5 __SOOL_PERIPH_PADDING_4
 #endif
 
+#if	defined(STM32H7      ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || \
+    defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  )
+#define TIM_ADVANCED_MAP1_CRR6 CxR6_t CRR6
+#else
+#define TIM_ADVANCED_MAP1_CRR6 __SOOL_PERIPH_PADDING_4
+#endif
+
 #if	defined(STM32H7      ) || defined(STM32G030xx  ) || defined(STM32G031xx  ) || defined(STM32G041xx  )
 #define TIM_ADVANCED_MAP1_TISEL TISEL_t TISEL
 #else
@@ -1047,7 +1053,7 @@
     defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
 #define TIM_GENERAL_3_CR1_0
 #define TIM_GENERAL_3_DIER_0
-#define TIM_GENERAL_3_MAP0_DIER tmpl::DIER_t DIER
+#define TIM_GENERAL_3_MAP0_DIER typename tmpl::DIER_t DIER
 #else
 #define TIM_GENERAL_3_MAP0_DIER __SOOL_PERIPH_PADDING_4
 #endif
@@ -1121,17 +1127,25 @@
 #define TIM_GENERAL_3_MAP1_DMAR __SOOL_PERIPH_PADDING_4
 #endif
 
+#if	defined(STM32L4      ) || defined(STM32WB      )
+#define TIM_GENERAL_3_OR
+#endif
+
 #if	defined(STM32L433xx  ) || defined(STM32L443xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || \
     defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || \
     defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
     defined(STM32L4S9xx  )
-#define TIM_GENERAL_3_OR1_0
+#define TIM_GENERAL_3_OR_0
 #define TIM_GENERAL_3_OR2_0
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
+#define TIM_GENERAL_3_OR_1
 #endif
 
 #if	defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L442xx  ) || \
     defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
-#define TIM_GENERAL_3_OR1_1
 #define TIM_GENERAL_3_OR2_1
 #define TIM_GENERAL_2_OR1
 #define TIM_GENERAL_2_OR2
@@ -1147,7 +1161,6 @@
     defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
     defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
-#define TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
 #endif
 
 #if	defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F412Cx  ) || \
@@ -1186,15 +1199,13 @@
 #define TIM_GENERAL_6_CCMR1_Input
 #define TIM_GENERAL_6_CCER
 #define TIM_GENERAL_6_CNT
-#define TIM_GENERAL_6_PSC
-#define TIM_GENERAL_6_ARR
 #define TIM_GENERAL_6_CCR1
 #define TIM_GENERAL_6_MAP0
-#define TIM_GENERAL_6_MAP1_CCMR1_Input tmpl::CCMR1_Input_t CCMR1_Input
+#define TIM_GENERAL_6_MAP1_CCMR1_Input typename tmpl::CCMR1_Input_t CCMR1_Input
 #define TIM_GENERAL_6_MAP1_CCER CCER_t CCER
 #define TIM_GENERAL_6_MAP1_CNT CNT_t CNT
-#define TIM_GENERAL_6_MAP1_PSC PSC_t PSC
-#define TIM_GENERAL_6_MAP1_ARR ARR_t ARR
+#define TIM_GENERAL_6_MAP1_PSC xPSC_t PSC
+#define TIM_GENERAL_6_MAP1_ARR xARR_t ARR
 #define TIM_GENERAL_6_MAP1_CCR1 CCR1_t CCR1
 #else
 #define TIM_GENERAL_6_MAP1_CCMR1_Input __SOOL_PERIPH_PADDING_4
@@ -1214,18 +1225,11 @@
 #define TIM_GENERAL_6_CCMR1_Output_OC1M_3
 #endif
 
-#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32L1      ) || \
-    defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
-    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || \
-    defined(STM32F411xE  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
-    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
-#define TIM_GENERAL_6_CCMR1_Input_0
-#endif
-
 #if	defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
-    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F415xx  ) || \
-    defined(STM32F417xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
-    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
+    defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM_GENERAL_6_CCMR1_Input_0_ICPCS ICPCS
 #else
 #define TIM_GENERAL_6_CCMR1_Input_0_ICPCS
@@ -1239,8 +1243,6 @@
 #if	defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
     defined(STM32F423xx  )
 #define TIM_GENERAL_6_CCMR1_Input_2
-#define TIM_GENERAL_6_CCMR1_Input_3
-#define TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
 #endif
 
 #if	defined(STM32F7      )
@@ -1252,7 +1254,7 @@
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32L1      )
 #define TIM_GENERAL_6_OR
-#define TIM_GENERAL_6_MAP1_OR tmpl::OR_t OR
+#define TIM_GENERAL_6_MAP1_OR typename tmpl::OR_t OR
 #else
 #define TIM_GENERAL_6_MAP1_OR __SOOL_PERIPH_PADDING_4
 #endif
@@ -1286,8 +1288,6 @@
 #define TIM_GENERAL_6_TIMx_CCMR2_Output
 #define TIM_GENERAL_6_TIMx_CCER
 #define TIM_GENERAL_6_TIMx_CNT
-#define TIM_GENERAL_6_TIMx_PSC
-#define TIM_GENERAL_6_TIMx_ARR
 #define TIM_GENERAL_6_TIMx_CCRx
 #define TIM_GENERAL_6_TIM1_OR
 #define TIM_GENERAL_6_TIM2_OR
@@ -1443,7 +1443,6 @@
 #define TIM_GENERAL_4_OR_0
 #define TIM_GENERAL_4_OR_1
 #define TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
-#define TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
 #else
 #define TIM_GENERAL_4_CR1_0_DIR
 #define TIM_GENERAL_4_CR1_0_CMS
@@ -1492,7 +1491,7 @@
 #define TIM_GENERAL_4_CCMR1_Input_1_IC1F IC1F
 #define TIM_GENERAL_4_CCMR1_Input_1_IC2F IC2F
 #define TIM_GENERAL_4_OR
-#define TIM_GENERAL_4_MAP1_OR tmpl::OR_t OR
+#define TIM_GENERAL_4_MAP1_OR typename tmpl::OR_t OR
 #else
 #define TIM_GENERAL_4_CCMR1_Input_1_IC1F
 #define TIM_GENERAL_4_CCMR1_Input_1_IC2F
@@ -1502,48 +1501,8 @@
 namespace sool {
 	namespace core {
 		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
-		struct TIM_GENERAL_1_tmpl_0 /// fields used by TIM2, TIM14 
+		struct TIM_GENERAL_1_tmpl_0 /// fields used by TIM2, TIM12, TIM13 
 		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_1_CR1_0
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t UIFREMAP         : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CR1_2
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
 			struct CNT_t: public Reg32_t /// counter
 			{
 				using Reg32_t::operator=;
@@ -1552,23 +1511,30 @@ namespace sool {
 					#ifdef TIM_GENERAL_1_CNT_0
 					struct
 					{
+						uint32_t                  : 31;
+						uint32_t UIFCPY           : 1;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_1
+					struct
+					{
 						uint32_t CNT_L            : 16; /// low counter value
-						uint32_t CNT_H            : 15; /// High counter value
-						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_H : 15; /// High counter value
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_31 : 1; /// UIFCPY
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_2
 					struct
 					{
-						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t TIM_GENERAL_1_CNT_2_CNT : 16; /// TIM2 counter
 						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_3
 					struct
 					{
-						uint32_t TIM_GENERAL_1_CNT_3_CNT : 16; /// TIM2 counter
-						uint32_t TIM_GENERAL_1_CNT_3_CNT_H : 15; /// High counter value (TIM2 only)
+						uint32_t                  : 16;
+						uint32_t TIM_GENERAL_1_CNT_3_CNT_M : 15; /// Most significant part counter value
 						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
 					};
 					#endif
@@ -1577,14 +1543,6 @@ namespace sool {
 					{
 						uint32_t CNTL             : 16; /// Low counter value
 						uint32_t CNTH             : 16; /// High counter value
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CNT_6
-					struct
-					{
-						uint32_t                  : 16;
-						uint32_t CNT_M            : 15; /// Most significant part counter value
-						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
 					};
 					#endif
 				};
@@ -1836,48 +1794,8 @@ namespace sool {
 		};
 		#endif
 		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
-		struct TIM_GENERAL_1_tmpl_1 /// fields used by TIM19, TIM3, TIM4 
+		struct TIM_GENERAL_1_tmpl_1 /// fields used by TIM3, TIM19, TIM4 
 		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_1_CR1_0
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t UIFREMAP         : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CR1_2
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
 			struct CNT_t: public Reg32_t /// counter
 			{
 				using Reg32_t::operator=;
@@ -1886,24 +1804,23 @@ namespace sool {
 					#ifdef TIM_GENERAL_1_CNT_0
 					struct
 					{
+						uint32_t                  : 31;
+						uint32_t UIFCPY           : 1;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_1
+					struct
+					{
 						uint32_t CNT_L            : 16; /// low counter value
-						uint32_t CNT_H            : 15; /// High counter value
-						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_H : 15; /// High counter value
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_31 : 1; /// UIFCPY
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_2
 					struct
 					{
-						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t TIM_GENERAL_1_CNT_2_CNT : 16; /// TIM2 counter
 						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CNT_3
-					struct
-					{
-						uint32_t TIM_GENERAL_1_CNT_3_CNT : 16; /// TIM2 counter
-						uint32_t TIM_GENERAL_1_CNT_3_CNT_H : 15; /// High counter value (TIM2 only)
-						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_5
@@ -2112,46 +2029,6 @@ namespace sool {
 		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
 		struct TIM_GENERAL_1_tmpl_2 /// fields used by TIM5 
 		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_1_CR1_0
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t UIFREMAP         : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CR1_2
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
 			struct CNT_t: public Reg32_t /// counter
 			{
 				using Reg32_t::operator=;
@@ -2160,24 +2037,23 @@ namespace sool {
 					#ifdef TIM_GENERAL_1_CNT_0
 					struct
 					{
+						uint32_t                  : 31;
+						uint32_t UIFCPY           : 1;
+					};
+					#endif
+					#ifdef TIM_GENERAL_1_CNT_1
+					struct
+					{
 						uint32_t CNT_L            : 16; /// low counter value
-						uint32_t CNT_H            : 15; /// High counter value
-						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_H : 15; /// High counter value
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_31 : 1; /// UIFCPY
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_2
 					struct
 					{
-						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t TIM_GENERAL_1_CNT_2_CNT : 16; /// TIM2 counter
 						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CNT_3
-					struct
-					{
-						uint32_t TIM_GENERAL_1_CNT_3_CNT : 16; /// TIM2 counter
-						uint32_t TIM_GENERAL_1_CNT_3_CNT_H : 15; /// High counter value (TIM2 only)
-						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_4
@@ -2373,48 +2249,8 @@ namespace sool {
 			#endif
 		};
 		#endif
-		#ifdef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
-		struct TIM_GENERAL_1_tmpl_3 /// fields used by TIM12, TIM13 
+		struct TIM_GENERAL_1_tmpl_default /// default template for TIM_GENERAL_1 
 		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_1_CR1_1
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t                  : 3;
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t UIFREMAP         : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CR1_2
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t DIR              : 1; /// Direction
-						uint32_t CMS              : 2; /// Center-aligned mode selection
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
 			struct CNT_t: public Reg32_t /// counter
 			{
 				using Reg32_t::operator=;
@@ -2424,135 +2260,23 @@ namespace sool {
 					struct
 					{
 						uint32_t CNT_L            : 16; /// low counter value
-						uint32_t CNT_H            : 15; /// High counter value
-						uint32_t UIFCPY           : 1;
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_H : 15; /// High counter value
+						uint32_t TIM_GENERAL_1_CNT_1_CNT_31 : 1; /// UIFCPY
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_2
 					struct
 					{
-						uint32_t CNT_L            : 16; /// low counter value
-						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
-					};
-					#endif
-				};
-				
-			};
-			struct ARR_t: public Reg32_t /// auto-reload register
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_ARR_0
-				struct
-				{
-					uint32_t ARR_L            : 16; /// Low Auto-reload value
-					uint32_t ARR_H            : 16; /// High Auto-reload value
-				};
-				#endif
-				
-			};
-			#ifdef TIM_GENERAL_1_CCR1
-			struct CCR1_t: public Reg32_t /// capture/compare register 1
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_CCR1_0
-				struct
-				{
-					uint32_t CCR1_L           : 16; /// Low Capture/Compare 1 value
-					uint32_t CCR1_H           : 16; /// High Capture/Compare 1 value
-				};
-				#endif
-				
-			};
-			#endif
-			struct CCR2_t: public Reg32_t /// capture/compare register 2
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_CCR2_0
-				struct
-				{
-					uint32_t CCR2_L           : 16; /// Low Capture/Compare 2 value
-					uint32_t CCR2_H           : 16; /// High Capture/Compare 2 value
-				};
-				#endif
-				
-			};
-			#ifdef TIM_GENERAL_1_CCR3
-			struct CCR3_t: public Reg32_t /// capture/compare register 3
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_CCR3_0
-				struct
-				{
-					uint32_t CCR3_L           : 16; /// Low Capture/Compare value
-					uint32_t CCR3_H           : 16; /// High Capture/Compare value
-				};
-				#endif
-				
-			};
-			#endif
-			struct CCR4_t: public Reg32_t /// capture/compare register 4
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_CCR4_0
-				struct
-				{
-					uint32_t CCR4_L           : 16; /// Low Capture/Compare value
-					uint32_t CCR4_H           : 16; /// High Capture/Compare value
-				};
-				#endif
-				
-			};
-		};
-		#endif
-		struct TIM_GENERAL_1_tmpl_default /// default template for TIM_GENERAL_1 
-		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_1_CR1_2
-				struct
-				{
-					uint32_t CEN              : 1; /// Counter enable
-					uint32_t UDIS             : 1; /// Update disable
-					uint32_t URS              : 1; /// Update request source
-					uint32_t OPM              : 1; /// One-pulse mode
-					uint32_t DIR              : 1; /// Direction
-					uint32_t CMS              : 2; /// Center-aligned mode selection
-					uint32_t ARPE             : 1; /// Auto-reload preload enable
-					uint32_t CKD              : 2; /// Clock division
-					uint32_t                  : 1;
-					uint32_t TIM_GENERAL_1_CR1_2_UIFREMAP : 1; /// UIF status bit remapping
-					uint32_t                  : 20;
-				};
-				#endif
-				
-			};
-			struct CNT_t: public Reg32_t /// counter
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_1_CNT_2
-					struct
-					{
-						uint32_t CNT_L            : 16; /// low counter value
+						uint32_t TIM_GENERAL_1_CNT_2_CNT : 16; /// TIM2 counter
 						uint32_t TIM_GENERAL_1_CNT_2_CNT_H : 16; /// High counter value
 					};
 					#endif
 					#ifdef TIM_GENERAL_1_CNT_3
 					struct
 					{
-						uint32_t TIM_GENERAL_1_CNT_3_CNT : 16; /// TIM2 counter
-						uint32_t TIM_GENERAL_1_CNT_3_CNT_H : 15; /// High counter value (TIM2 only)
-						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
-					};
-					#endif
-					#ifdef TIM_GENERAL_1_CNT_6
-					struct
-					{
 						uint32_t                  : 16;
-						uint32_t CNT_M            : 15; /// Most significant part counter value
-						uint32_t CNT_31           : 1; /// Value depends on IUFREMAP in TIMx_CR1.
+						uint32_t TIM_GENERAL_1_CNT_3_CNT_M : 15; /// Most significant part counter value
+						uint32_t TIM_GENERAL_1_CNT_3_UIFCPY : 1; /// Value depends on IUFREMAP in TIM2_CR1.
 					};
 					#endif
 				};
@@ -2736,7 +2460,14 @@ namespace sool {
 					struct
 					{
 						uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
-						uint32_t ETR_ADC3_RMP     : 2; /// External trigger remap on ADC3 analog watchdog
+						uint32_t                  : 30;
+					};
+					#endif
+					#ifdef TIM_ADVANCED_OR1_1
+					struct
+					{
+						uint32_t TIM_ADVANCED_OR1_1_ETR_ADC2_RMP : 2; /// External trigger remap on ADC2 analog watchdog
+						uint32_t TIM_ADVANCED_OR1_1_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
 						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
 						uint32_t                  : 27;
 					};
@@ -2745,9 +2476,7 @@ namespace sool {
 					struct
 					{
 						uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
-						uint32_t TIM_ADVANCED_OR1_2_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
-						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
-						uint32_t                  : 27;
+						uint32_t                  : 30;
 					};
 					#endif
 					#ifdef TIM_ADVANCED_OR1_3
@@ -2770,11 +2499,18 @@ namespace sool {
 					#ifdef TIM_ADVANCED_OR2_0
 					struct
 					{
+						uint32_t                  : 8;
+						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
+						uint32_t                  : 23;
+					};
+					#endif
+					struct
+					{
 						uint32_t BKINE            : 1; /// BRK BKIN input enable
 						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
 						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
 						uint32_t                  : 5;
-						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
+						uint32_t TIM_ADVANCED_OR2_1_BKDFBK2E : 1; /// BRK DFSDM_BREAK2 enable
 						uint32_t BKINP            : 1; /// BRK BKIN input polarity
 						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
 						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
@@ -2782,21 +2518,12 @@ namespace sool {
 						uint32_t ETRSEL           : 3; /// ETR source selection
 						uint32_t                  : 15;
 					};
-					#endif
 					#ifdef TIM_ADVANCED_OR2_2
 					struct
 					{
-						uint32_t BKINE            : 1; /// BRK BKIN input enable
-						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-						uint32_t                  : 5;
+						uint32_t                  : 8;
 						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
-						uint32_t BKINP            : 1; /// BRK BKIN input polarity
-						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
-						uint32_t                  : 2;
-						uint32_t ETRSEL           : 3; /// ETR source selection
-						uint32_t                  : 15;
+						uint32_t                  : 23;
 					};
 					#endif
 				};
@@ -2812,142 +2539,29 @@ namespace sool {
 					#ifdef TIM_ADVANCED_OR3_0
 					struct
 					{
-						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
-						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
-						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
-						uint32_t                  : 5;
+						uint32_t                  : 8;
 						uint32_t BK2DFBK0E        : 1; /// BRK2 DFSDM_BREAK0 enable
+						uint32_t                  : 23;
+					};
+					#endif
+					struct
+					{
+						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
+						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+						uint32_t                  : 5;
+						uint32_t TIM_ADVANCED_OR3_1_BK2DFBK3E : 1; /// BRK2 DFSDM_BREAK3 enable
 						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
 						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
 						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
 						uint32_t                  : 20;
 					};
-					#endif
 					#ifdef TIM_ADVANCED_OR3_2
 					struct
 					{
-						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
-						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
-						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
-						uint32_t                  : 5;
-						uint32_t TIM_ADVANCED_OR3_2_BK2DFBK0E : 1; /// BRK2 DFSDM_BREAK0 enable
-						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
-						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
-						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-		};
-		#endif
-		#ifdef TIM_ADVANCED_TIM_ADVANCED_tmpl_1
-		struct TIM_ADVANCED_tmpl_1 /// fields used by TIM8 
-		{
-			#ifdef TIM_ADVANCED_OR1
-			struct OR1_t: public Reg32_t /// DMA address for full transfer
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_ADVANCED_OR1_1
-					struct
-					{
-						uint32_t ETR_ADC2_RMP     : 2; /// External trigger remap on ADC2 analog watchdog
-						uint32_t ETR_ADC3_RMP     : 2; /// External trigger remap on ADC3 analog watchdog
-						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
-						uint32_t                  : 27;
-					};
-					#endif
-					#ifdef TIM_ADVANCED_OR1_2
-					struct
-					{
-						uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
-						uint32_t TIM_ADVANCED_OR1_2_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
-						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
-						uint32_t                  : 27;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-			#ifdef TIM_ADVANCED_OR2
-			struct OR2_t: public Reg32_t /// DMA address for full transfer
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_ADVANCED_OR2_1
-					struct
-					{
-						uint32_t BKINE            : 1; /// BRK BKIN input enable
-						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-						uint32_t                  : 5;
-						uint32_t BKDFBK2E         : 1; /// BRK DFSDM_BREAK2 enable
-						uint32_t BKINP            : 1; /// BRK BKIN input polarity
-						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
-						uint32_t                  : 2;
-						uint32_t ETRSEL           : 3; /// ETR source selection
-						uint32_t                  : 15;
-					};
-					#endif
-					#ifdef TIM_ADVANCED_OR2_2
-					struct
-					{
-						uint32_t BKINE            : 1; /// BRK BKIN input enable
-						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-						uint32_t                  : 5;
-						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
-						uint32_t BKINP            : 1; /// BRK BKIN input polarity
-						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
-						uint32_t                  : 2;
-						uint32_t ETRSEL           : 3; /// ETR source selection
-						uint32_t                  : 15;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-			#ifdef TIM_ADVANCED_OR3
-			struct OR3_t: public Reg32_t /// DMA address for full transfer
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_ADVANCED_OR3_1
-					struct
-					{
-						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
-						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
-						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
-						uint32_t                  : 5;
-						uint32_t BK2DFBK3E        : 1; /// BRK2 DFSDM_BREAK3 enable
-						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
-						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
-						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_ADVANCED_OR3_2
-					struct
-					{
-						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
-						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
-						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
-						uint32_t                  : 5;
-						uint32_t TIM_ADVANCED_OR3_2_BK2DFBK0E : 1; /// BRK2 DFSDM_BREAK0 enable
-						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
-						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
-						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
-						uint32_t                  : 20;
+						uint32_t                  : 8;
+						uint32_t BK2DFBK0E        : 1; /// BRK2 DFSDM_BREAK0 enable
+						uint32_t                  : 23;
 					};
 					#endif
 				};
@@ -2964,13 +2578,20 @@ namespace sool {
 				using Reg32_t::operator=;
 				union
 				{
+					#ifdef TIM_ADVANCED_OR1_1
+					struct
+					{
+						uint32_t TIM_ADVANCED_OR1_1_ETR_ADC2_RMP : 2; /// External trigger remap on ADC2 analog watchdog
+						uint32_t TIM_ADVANCED_OR1_1_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
+						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
+						uint32_t                  : 27;
+					};
+					#endif
 					#ifdef TIM_ADVANCED_OR1_2
 					struct
 					{
 						uint32_t ETR_ADC1_RMP     : 2; /// External trigger remap on ADC1 analog watchdog
-						uint32_t TIM_ADVANCED_OR1_2_ETR_ADC3_RMP : 2; /// External trigger remap on ADC3 analog watchdog
-						uint32_t TI1_RMP          : 1; /// Input Capture 1 remap
-						uint32_t                  : 27;
+						uint32_t                  : 30;
 					};
 					#endif
 					#ifdef TIM_ADVANCED_OR1_3
@@ -2988,22 +2609,31 @@ namespace sool {
 			struct OR2_t: public Reg32_t /// DMA address for full transfer
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_ADVANCED_OR2_2
-				struct
+				union
 				{
-					uint32_t BKINE            : 1; /// BRK BKIN input enable
-					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-					uint32_t                  : 5;
-					uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
-					uint32_t BKINP            : 1; /// BRK BKIN input polarity
-					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
-					uint32_t                  : 2;
-					uint32_t ETRSEL           : 3; /// ETR source selection
-					uint32_t                  : 15;
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t                  : 5;
+						uint32_t TIM_ADVANCED_OR2_1_BKDFBK2E : 1; /// BRK DFSDM_BREAK2 enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarity
+						uint32_t                  : 2;
+						uint32_t ETRSEL           : 3; /// ETR source selection
+						uint32_t                  : 15;
+					};
+					#ifdef TIM_ADVANCED_OR2_2
+					struct
+					{
+						uint32_t                  : 8;
+						uint32_t BKDFBK0E         : 1; /// BRK DFSDM_BREAK0 enable
+						uint32_t                  : 23;
+					};
+					#endif
 				};
-				#endif
 				
 			};
 			#endif
@@ -3011,26 +2641,35 @@ namespace sool {
 			struct OR3_t: public Reg32_t /// DMA address for full transfer
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_ADVANCED_OR3_2
-				struct
+				union
 				{
-					uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
-					uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
-					uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
-					uint32_t                  : 5;
-					uint32_t TIM_ADVANCED_OR3_2_BK2DFBK0E : 1; /// BRK2 DFSDM_BREAK0 enable
-					uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
-					uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
-					uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
-					uint32_t                  : 20;
+					struct
+					{
+						uint32_t BK2INE           : 1; /// BRK2 BKIN input enable
+						uint32_t BK2CMP1E         : 1; /// BRK2 COMP1 enable
+						uint32_t BK2CMP2E         : 1; /// BRK2 COMP2 enable
+						uint32_t                  : 5;
+						uint32_t TIM_ADVANCED_OR3_1_BK2DFBK3E : 1; /// BRK2 DFSDM_BREAK3 enable
+						uint32_t BK2INP           : 1; /// BRK2 BKIN input polarity
+						uint32_t BK2CMP1P         : 1; /// BRK2 COMP1 input polarity
+						uint32_t BK2CMP2P         : 1; /// BRK2 COMP2 input polarity
+						uint32_t                  : 20;
+					};
+					#ifdef TIM_ADVANCED_OR3_2
+					struct
+					{
+						uint32_t                  : 8;
+						uint32_t BK2DFBK0E        : 1; /// BRK2 DFSDM_BREAK0 enable
+						uint32_t                  : 23;
+					};
+					#endif
 				};
-				#endif
 				
 			};
 			#endif
 		};
 		#ifdef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
-		struct TIM_GENERAL_3_tmpl_0 /// fields used by TIM16 
+		struct TIM_GENERAL_3_tmpl_0 /// fields used by TIM17, TIM16 
 		{
 			struct CR1_t: public Reg32_t /// control register 1
 			{
@@ -3064,119 +2703,6 @@ namespace sool {
 						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
 						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
 						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
-			struct DIER_t: public Reg32_t /// DMA/Interrupt enable register
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_3_DIER_0
-				struct
-				{
-					uint32_t UIE              : 1; /// Update interrupt enable
-					uint32_t CC1IE            : 1; /// Capture/Compare 1 interrupt enable
-					uint32_t                  : 3;
-					uint32_t COMIE            : 1; /// COM interrupt enable
-					uint32_t TIM_GENERAL_3_DIER_0_TIE : 1; /// Trigger interrupt enable
-					uint32_t BIE              : 1; /// Break interrupt enable
-					uint32_t UDE              : 1; /// Update DMA request enable
-					uint32_t CC1DE            : 1; /// Capture/Compare 1 DMA request enable
-					uint32_t                  : 3;
-					uint32_t TIM_GENERAL_3_DIER_0_COMDE : 1; /// COM DMA request enable
-					uint32_t TIM_GENERAL_3_DIER_0_TDE : 1; /// Trigger DMA request enable
-					uint32_t                  : 17;
-				};
-				#endif
-				
-			};
-			#ifdef TIM_GENERAL_3_OR1
-			struct OR1_t: public Reg32_t /// TIM16 option register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_3_OR1_0
-					struct
-					{
-						uint32_t TI1_RMP          : 2; /// Input capture 1 remap
-						uint32_t                  : 30;
-					};
-					#endif
-					#ifdef TIM_GENERAL_3_OR1_1
-					struct
-					{
-						uint32_t TI1_RMP          : 2; /// Input capture 1 remap
-						uint32_t                  : 30;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-			#ifdef TIM_GENERAL_3_OR2
-			struct OR2_t: public Reg32_t /// TIM17 option register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_3_OR2_0
-					struct
-					{
-						uint32_t BKINE            : 1; /// BRK BKIN input enable
-						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-						uint32_t                  : 5;
-						uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
-						uint32_t BKINP            : 1; /// BRK BKIN input polarity
-						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
-						uint32_t                  : 20;
-					};
-					#endif
-					#ifdef TIM_GENERAL_3_OR2_1
-					struct
-					{
-						uint32_t BKINE            : 1; /// BRK BKIN input enable
-						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-						uint32_t                  : 5;
-						uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
-						uint32_t BKINP            : 1; /// BRK BKIN input polarity
-						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
-						uint32_t                  : 20;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-		};
-		#endif
-		#ifdef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
-		struct TIM_GENERAL_3_tmpl_1 /// fields used by TIM17 
-		{
-			struct CR1_t: public Reg32_t /// control register 1
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_3_CR1_0
-					struct
-					{
-						uint32_t CEN              : 1; /// Counter enable
-						uint32_t UDIS             : 1; /// Update disable
-						uint32_t URS              : 1; /// Update request source
-						uint32_t OPM              : 1; /// One-pulse mode
-						uint32_t                  : 3;
-						uint32_t ARPE             : 1; /// Auto-reload preload enable
-						uint32_t CKD              : 2; /// Clock division
-						uint32_t                  : 1;
-						uint32_t TIM_GENERAL_3_CR1_0_UIFREMAP : 1; /// UIF status bit remapping
-						uint32_t TIM_GENERAL_3_CR1_0_DITHEN : 1; /// Dithering Enable
-						uint32_t                  : 19;
 					};
 					#endif
 					#ifdef TIM_GENERAL_3_CR1_2
@@ -3235,17 +2761,27 @@ namespace sool {
 				};
 				
 			};
-			#ifdef TIM_GENERAL_3_OR1
-			struct OR1_t: public Reg32_t /// TIM16 option register 1
+			#ifdef TIM_GENERAL_3_OR
+			struct OR_t: public Reg32_t /// TIM16 option register 1
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_3_OR1_0
-				struct
+				union
 				{
-					uint32_t TI1_RMP          : 2; /// Input capture 1 remap
-					uint32_t                  : 30;
+					#ifdef TIM_GENERAL_3_OR_0
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+						uint32_t                  : 30;
+					};
+					#endif
+					#ifdef TIM_GENERAL_3_OR_1
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// Input capture 1 remap
+						uint32_t                  : 30;
+					};
+					#endif
 				};
-				#endif
 				
 			};
 			#endif
@@ -3253,20 +2789,37 @@ namespace sool {
 			struct OR2_t: public Reg32_t /// TIM17 option register 1
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_3_OR2_0
-				struct
+				union
 				{
-					uint32_t BKINE            : 1; /// BRK BKIN input enable
-					uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
-					uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
-					uint32_t                  : 5;
-					uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
-					uint32_t BKINP            : 1; /// BRK BKIN input polarity
-					uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
-					uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
-					uint32_t                  : 20;
+					#ifdef TIM_GENERAL_3_OR2_0
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t                  : 5;
+						uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+						uint32_t                  : 20;
+					};
+					#endif
+					#ifdef TIM_GENERAL_3_OR2_1
+					struct
+					{
+						uint32_t BKINE            : 1; /// BRK BKIN input enable
+						uint32_t BKCMP1E          : 1; /// BRK COMP1 enable
+						uint32_t BKCMP2E          : 1; /// BRK COMP2 enable
+						uint32_t                  : 5;
+						uint32_t BKDFBK1E         : 1; /// BRK DFSDM_BREAK1 enable
+						uint32_t BKINP            : 1; /// BRK BKIN input polarity
+						uint32_t BKCMP1P          : 1; /// BRK COMP1 input polarity
+						uint32_t BKCMP2P          : 1; /// BRK COMP2 input polarit
+						uint32_t                  : 20;
+					};
+					#endif
 				};
-				#endif
 				
 			};
 			#endif
@@ -3317,11 +2870,11 @@ namespace sool {
 				#endif
 				
 			};
-			#ifdef TIM_GENERAL_3_OR1
-			struct OR1_t: public Reg32_t /// TIM16 option register 1
+			#ifdef TIM_GENERAL_3_OR
+			struct OR_t: public Reg32_t /// TIM16 option register 1
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_3_OR1_1
+				#ifdef TIM_GENERAL_3_OR_1
 				struct
 				{
 					uint32_t TI1_RMP          : 2; /// Input capture 1 remap
@@ -3354,7 +2907,7 @@ namespace sool {
 			#endif
 		};
 		#ifdef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
-		struct TIM_GENERAL_6_tmpl_0 /// fields used by TIM11, TIM1, TIM10, TIM2 
+		struct TIM_GENERAL_6_tmpl_0 /// fields used by TIM1, TIM11, TIM2, TIM10, TIM13, TIM14 
 		{
 			#ifdef TIM_GENERAL_6_CCMR1_Input
 			struct CCMR1_Input_t: public Reg32_t /// capture/compare mode register 1 (input mode)
@@ -3362,7 +2915,6 @@ namespace sool {
 				using Reg32_t::operator=;
 				union
 				{
-					#ifdef TIM_GENERAL_6_CCMR1_Input_0
 					struct
 					{
 						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
@@ -3370,7 +2922,6 @@ namespace sool {
 						uint32_t IC1F             : 4; /// Input capture 1 filter
 						uint32_t                  : 24;
 					};
-					#endif
 					#ifdef TIM_GENERAL_6_CCMR1_Input_1
 					struct
 					{
@@ -3382,10 +2933,9 @@ namespace sool {
 					#ifdef TIM_GENERAL_6_CCMR1_Input_2
 					struct
 					{
-						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
-						uint32_t ICPCS            : 2; /// Input capture 1 prescaler
-						uint32_t IC1F             : 4; /// Input capture 1 filter
-						uint32_t                  : 24;
+						uint32_t                  : 2;
+						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
+						uint32_t                  : 28;
 					};
 					#endif
 				};
@@ -3451,71 +3001,6 @@ namespace sool {
 			#endif
 		};
 		#endif
-		#ifdef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
-		struct TIM_GENERAL_6_tmpl_1 /// fields used by TIM14, TIM13 
-		{
-			#ifdef TIM_GENERAL_6_CCMR1_Input
-			struct CCMR1_Input_t: public Reg32_t /// capture/compare mode register 1 (input mode)
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_6_CCMR1_Input_0
-					struct
-					{
-						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
-						uint32_t TIM_GENERAL_6_CCMR1_Input_0_ICPCS : 2; /// Input capture 1 prescaler
-						uint32_t IC1F             : 4; /// Input capture 1 filter
-						uint32_t                  : 24;
-					};
-					#endif
-					#ifdef TIM_GENERAL_6_CCMR1_Input_1
-					struct
-					{
-						uint32_t                  : 2;
-						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
-						uint32_t                  : 28;
-					};
-					#endif
-					#ifdef TIM_GENERAL_6_CCMR1_Input_3
-					struct
-					{
-						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
-						uint32_t IC1PSC           : 2; /// Input capture 1 prescaler
-						uint32_t IC1F             : 4; /// Input capture 1 filter
-						uint32_t                  : 24;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-			#ifdef TIM_GENERAL_6_OR
-			struct OR_t: public Reg32_t /// option register
-			{
-				using Reg32_t::operator=;
-				union
-				{
-					#ifdef TIM_GENERAL_6_OR_0
-					struct
-					{
-						uint32_t TI1_RMP          : 2; /// TIM11 Input 1 remapping capability
-						uint32_t                  : 30;
-					};
-					#endif
-					#ifdef TIM_GENERAL_6_OR_2
-					struct
-					{
-						uint32_t RMP              : 2; /// Input 1 remapping capability
-						uint32_t                  : 30;
-					};
-					#endif
-				};
-				
-			};
-			#endif
-		};
-		#endif
 		struct TIM_GENERAL_6_tmpl_default /// default template for TIM_GENERAL_6 
 		{
 			#ifdef TIM_GENERAL_6_CCMR1_Input
@@ -3524,7 +3009,6 @@ namespace sool {
 				using Reg32_t::operator=;
 				union
 				{
-					#ifdef TIM_GENERAL_6_CCMR1_Input_0
 					struct
 					{
 						uint32_t CC1S             : 2; /// Capture/Compare 1 selection
@@ -3532,7 +3016,6 @@ namespace sool {
 						uint32_t IC1F             : 4; /// Input capture 1 filter
 						uint32_t                  : 24;
 					};
-					#endif
 					#ifdef TIM_GENERAL_6_CCMR1_Input_1
 					struct
 					{
@@ -3577,35 +3060,26 @@ namespace sool {
 			struct OR_t: public Reg32_t /// TIM21 option register
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_4_OR_0
-				struct
+				union
 				{
-					uint32_t ETR_RMP          : 2; /// Timer21 ETR remap
-					uint32_t TI1_RMP          : 3; /// Timer21 TI1
-					uint32_t TI2_RMP          : 1; /// Timer21 TI2
-					uint32_t                  : 26;
+					#ifdef TIM_GENERAL_4_OR_0
+					struct
+					{
+						uint32_t                  : 2;
+						uint32_t TI1_RMP          : 3; /// Timer21 TI1
+						uint32_t TI2_RMP          : 1; /// Timer21 TI2
+						uint32_t                  : 26;
+					};
+					#endif
+					#ifdef TIM_GENERAL_4_OR_1
+					struct
+					{
+						uint32_t ETR_RMP          : 2; /// Timer22 ETR remap
+						uint32_t TI1_RMP          : 2; /// Timer22 TI1
+						uint32_t                  : 28;
+					};
+					#endif
 				};
-				#endif
-				
-			};
-			#endif
-		};
-		#endif
-		#ifdef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
-		struct TIM_GENERAL_4_tmpl_1 /// fields used by TIM22 
-		{
-			#ifdef TIM_GENERAL_4_OR
-			struct OR_t: public Reg32_t /// TIM21 option register
-			{
-				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_4_OR_1
-				struct
-				{
-					uint32_t ETR_RMP          : 2; /// Timer22 ETR remap
-					uint32_t TI1_RMP          : 2; /// Timer22 TI1
-					uint32_t                  : 28;
-				};
-				#endif
 				
 			};
 			#endif
@@ -3617,13 +3091,24 @@ namespace sool {
 			struct OR_t: public Reg32_t /// TIM21 option register
 			{
 				using Reg32_t::operator=;
-				#ifdef TIM_GENERAL_4_OR_2
-				struct
+				union
 				{
-					uint32_t TI1_RMP          : 2; /// TIM9 Input 1 remapping capability
-					uint32_t                  : 30;
+					#ifdef TIM_GENERAL_4_OR_1
+					struct
+					{
+						uint32_t ETR_RMP          : 2; /// Timer22 ETR remap
+						uint32_t TI1_RMP          : 2; /// Timer22 TI1
+						uint32_t                  : 28;
+					};
+					#endif
+					#ifdef TIM_GENERAL_4_OR_2
+					struct
+					{
+						uint32_t TI1_RMP          : 2; /// TIM9 Input 1 remapping capability
+						uint32_t                  : 30;
+					};
+					#endif
 				};
-				#endif
 				
 			};
 			#endif
@@ -3634,6 +3119,22 @@ namespace sool {
 		{
 		public:
 			
+			struct CR1_t: public Reg32_t /// control register 1
+			{
+				using Reg32_t::operator=;
+				uint32_t CEN              : 1; /// Counter enable
+				uint32_t UDIS             : 1; /// Update disable
+				uint32_t URS              : 1; /// Update request source
+				uint32_t OPM              : 1; /// One-pulse mode
+				uint32_t DIR              : 1; /// Direction
+				uint32_t CMS              : 2; /// Center-aligned mode selection
+				uint32_t ARPE             : 1; /// Auto-reload preload enable
+				uint32_t CKD              : 2; /// Clock division
+				uint32_t                  : 1;
+				uint32_t TIM_GENERAL_1_CR1_UIFREMAP : 1; /// UIF status bit remapping
+				uint32_t                  : 20;
+				
+			};
 			struct CR2_t: public Reg32_t /// control register 2
 			{
 				using Reg32_t::operator=;
@@ -3906,16 +3407,6 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_GENERAL_1_AF
-			struct AF_t: public Reg32_t /// TIM2 alternate function option register 1
-			{
-				using Reg32_t::operator=;
-				uint32_t                  : 14;
-				uint32_t ETRSEL           : 3; /// External trigger source selection
-				uint32_t                  : 15;
-				
-			};
-			#endif
 			#ifdef TIM_GENERAL_1_CCRx
 			struct CCRx_t: public Reg32_t /// capture/compare register 1
 			{
@@ -3929,7 +3420,7 @@ namespace sool {
 			{
 				struct
 				{
-					tmpl::CR1_t CR1; /// control register 1
+					CR1_t CR1; /// control register 1
 					CR2_t CR2; /// control register 2
 					SMCR_t SMCR; /// slave mode control register
 					DIER_t DIER; /// DMA/Interrupt enable register
@@ -3952,14 +3443,14 @@ namespace sool {
 					CCMR1_Input_t CCMR1_Input; /// capture/compare mode register 1 (input mode)
 					CCMR2_Output_t CCMR2_Output; /// capture/compare mode register 2 (output mode)
 					CCER_t CCER; /// capture/compare enable register
-					tmpl::CNT_t CNT; /// counter
+					typename tmpl::CNT_t CNT; /// counter
 					PSC_t PSC; /// prescaler
-					tmpl::ARR_t ARR; /// auto-reload register
+					typename tmpl::ARR_t ARR; /// auto-reload register
 					__SOOL_PERIPH_PADDING_4;
 					TIM_GENERAL_1_MAP1_CCR1; /// capture/compare register 1
-					tmpl::CCR2_t CCR2; /// capture/compare register 2
+					typename tmpl::CCR2_t CCR2; /// capture/compare register 2
 					TIM_GENERAL_1_MAP1_CCR3; /// capture/compare register 3
-					tmpl::CCR4_t CCR4; /// capture/compare register 4
+					typename tmpl::CCR4_t CCR4; /// capture/compare register 4
 					__SOOL_PERIPH_PADDING_4;
 					DCR_t DCR; /// DMA control register
 					DMAR_t DMAR; /// DMA address for full transfer
@@ -3975,7 +3466,7 @@ namespace sool {
 				{
 					__SOOL_PERIPH_PADDING_16;
 					__SOOL_PERIPH_PADDING_64;
-					tmpl::TIMx_OR_t TIM5_OR; /// TIM5 option register
+					typename tmpl::TIMx_OR_t TIM5_OR; /// TIM5 option register
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_16;
 				};
@@ -4002,9 +3493,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_1(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_1() = delete;
 			#endif
@@ -4099,9 +3590,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_BASIC(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_BASIC() = delete;
 			#endif
@@ -4626,8 +4117,8 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_ADVANCED_CRR6
-			struct CRR6_t: public Reg32_t /// capture/compare register 6
+			#ifdef TIM_ADVANCED_CxR6
+			struct CxR6_t: public Reg32_t /// capture/compare register 6
 			{
 				using Reg32_t::operator=;
 				uint32_t CCR6             : 16; /// Capture/Compare 6 value
@@ -4747,15 +4238,6 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_ADVANCED_CCR6
-			struct CCR6_t: public Reg32_t /// capture/compare register 4
-			{
-				using Reg32_t::operator=;
-				uint32_t CCR6             : 16; /// Capture/Compare value
-				uint32_t                  : 16;
-				
-			};
-			#endif
 			#ifdef TIM_ADVANCED_DTR2
 			struct DTR2_t: public Reg32_t /// timer Deadtime Register 2
 			{
@@ -4862,7 +4344,7 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_64;
-					CCR6_t CCR6; /// capture/compare register 4
+					CxR6_t CCR6; /// capture/compare register 4
 					CCMR3_Output_t CCMR3_Output; /// capture/compare mode register 2 (output mode)
 					DTR2_t DTR2; /// timer Deadtime Register 2
 					ECR_t ECR; /// DMA control register
@@ -4883,9 +4365,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_ADVANCED(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_ADVANCED() = delete;
 			#endif
@@ -5120,20 +4602,11 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_GENERAL_3_OR
-			struct OR_t: public Reg32_t /// TIM16 option register 1
-			{
-				using Reg32_t::operator=;
-				uint32_t TI1_RMP          : 2; /// Input capture 1 remap
-				uint32_t                  : 30;
-				
-			};
-			#endif
 			union
 			{
 				struct
 				{
-					tmpl::CR1_t CR1; /// control register 1
+					typename tmpl::CR1_t CR1; /// control register 1
 					CR2_t CR2; /// control register 2
 					__SOOL_PERIPH_PADDING_4;
 					TIM_GENERAL_3_MAP0_DIER; /// DMA/Interrupt enable register
@@ -5148,10 +4621,7 @@ namespace sool {
 					TIM_GENERAL_3_MAP0_CCR1; /// capture/compare register 1
 					TIM_GENERAL_3_MAP0_BDTR; /// break and dead-time register
 					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_16;
-					TIM_GENERAL_3_MAP0_OR; /// TIM16 option register 1
-					__SOOL_PERIPH_PADDING_4;
-					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_32;
 					TIM_GENERAL_3_MAP0_AF1; /// TIM alternate function option register 1
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_16;
@@ -5203,8 +4673,8 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_32;
 					DCR_t DCR; /// DMA control register
 					DMAR_t DMAR; /// DMA address for full transfer
-					OR_t OR; /// TIM16 option register 1
-					tmpl::DIER_t AF1; /// TIM17 option register 1
+					typename tmpl::OR_t OR; /// TIM16 option register 1
+					typename tmpl::DIER_t AF1; /// TIM17 option register 1
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
 					__SOOL_PERIPH_PADDING_16;
@@ -5222,7 +4692,11 @@ namespace sool {
 					TIM_GENERAL_3_MAP3_EGR; /// event generation register
 					TIM_GENERAL_3_MAP3_CCMR1_Output; /// capture/compare mode register (output mode)
 					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					TIM_GENERAL_3_MAP3_OR; /// TIM16 option register 1
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
 					TIM_GENERAL_3_MAP3_AF1; /// TIM17 option register 1
 					__SOOL_PERIPH_PADDING_4;
 					TIM_GENERAL_3_MAP3_TISEL; /// input selection register
@@ -5239,9 +4713,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_3(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_3() = delete;
 			#endif
@@ -5442,9 +4916,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_5(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_5() = delete;
 			#endif
@@ -5543,24 +5017,20 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_GENERAL_6_PSC
-			struct PSC_t: public Reg32_t /// prescaler
+			struct xPSC_t: public Reg32_t /// prescaler
 			{
 				using Reg32_t::operator=;
 				uint32_t PSC              : 16; /// Prescaler value
 				uint32_t                  : 16;
 				
 			};
-			#endif
-			#ifdef TIM_GENERAL_6_ARR
-			struct ARR_t: public Reg32_t /// auto-reload register
+			struct xARR_t: public Reg32_t /// auto-reload register
 			{
 				using Reg32_t::operator=;
 				uint32_t ARR              : 16; /// Auto-reload value
 				uint32_t                  : 16;
 				
 			};
-			#endif
 			#ifdef TIM_GENERAL_6_CCR1
 			struct CCR1_t: public Reg32_t /// capture/compare register 1
 			{
@@ -5803,24 +5273,6 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef TIM_GENERAL_6_TIMx_PSC
-			struct TIMx_PSC_t: public Reg32_t /// TIM prescaler register
-			{
-				using Reg32_t::operator=;
-				uint32_t PSC              : 16;
-				uint32_t                  : 16;
-				
-			};
-			#endif
-			#ifdef TIM_GENERAL_6_TIMx_ARR
-			struct TIMx_ARR_t: public Reg32_t /// TIM auto-reload register
-			{
-				using Reg32_t::operator=;
-				uint32_t ARR              : 16;
-				uint32_t                  : 16;
-				
-			};
-			#endif
 			#ifdef TIM_GENERAL_6_TIMx_CCRx
 			struct TIMx_CCRx_t: public Reg32_t /// IM capture/compare register 1
 			{
@@ -5913,16 +5365,15 @@ namespace sool {
 					TIMx_CCMR2_Output_t TIM1_CCMR2_Output; /// capture/compare mode register 2 (output mode)
 					TIMx_CCER_t TIM1_CCER; /// TIM capture/compare enable register
 					TIMx_CNT_t TIM1_CNT; /// TIM counter register
-					TIMx_PSC_t TIM1_PSC; /// TIM prescaler register
-					TIMx_ARR_t TIM1_ARR; /// TIM auto-reload register
 					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
 					TIMx_CCRx_t TIM1_CCR1; /// IM capture/compare register 1
 					TIMx_CCRx_t TIM1_CCR2; /// TIM capture/compare register 2
 					TIMx_CCRx_t TIM1_CCR3; /// TIM capture/compare register 3
 					TIMx_CCRx_t TIM1_CCR4; /// TIM capture/compare register 4
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
-					tmpl::TIM1_OR_t TIM1_OR; /// TIM option register
+					typename tmpl::TIM1_OR_t TIM1_OR; /// TIM option register
 					__SOOL_PERIPH_PADDING_64;
 					__SOOL_PERIPH_PADDING_128;
 					__SOOL_PERIPH_PADDING_256;
@@ -5945,14 +5396,25 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_32;
 					TIMx_IER_t TIM2_IER; /// TIM Interrupt Enable Register
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
 					__SOOL_PERIPH_PADDING_128;
 					__SOOL_PERIPH_PADDING_256;
 					__SOOL_PERIPH_PADDING_512;
 					__SOOL_PERIPH_PADDING_1024;
-					__SOOL_PERIPH_PADDING_16384;
+					__SOOL_PERIPH_PADDING_4096;
+					__SOOL_PERIPH_PADDING_8192;
+					xPSC_t TIM1_PSC; /// TIM prescaler register
+					xARR_t TIM1_ARR; /// TIM auto-reload register
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					__SOOL_PERIPH_PADDING_1024;
+					__SOOL_PERIPH_PADDING_2048;
 					TIMx_CR1_t TIM2_CR1; /// control register 1
 					TIMx_CR2_t TIM2_CR2; /// control register 1
 					TIMx_SMCR_t TIM2_SMCR; /// TIM slave Mode Control register
@@ -5962,8 +5424,8 @@ namespace sool {
 					TIMx_CCMR2_Output_t TIM2_CCMR2_Output; /// capture/compare mode register 2 (output mode)
 					TIMx_CCER_t TIM2_CCER; /// TIM capture/compare enable register
 					TIMx_CNT_t TIM2_CNT; /// TIM counter register
-					TIMx_PSC_t TIM2_PSC; /// TIM prescaler register
-					TIMx_ARR_t TIM2_ARR; /// TIM auto-reload register
+					xPSC_t TIM2_PSC; /// TIM prescaler register
+					xARR_t TIM2_ARR; /// TIM auto-reload register
 					__SOOL_PERIPH_PADDING_4;
 					TIMx_CCRx_t TIM2_CCR1; /// TIM capture/compare register 1
 					TIMx_CCRx_t TIM2_CCR2; /// TIM capture/compare register 2
@@ -5971,7 +5433,7 @@ namespace sool {
 					TIMx_CCRx_t TIM2_CCR4; /// TIM capture/compare register 4
 					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
-					tmpl::TIM2_OR_t TIM2_OR; /// TIM option register
+					typename tmpl::TIM2_OR_t TIM2_OR; /// TIM option register
 				};
 				#endif
 			};
@@ -5979,9 +5441,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_6(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_6() = delete;
 			#endif
@@ -6403,9 +5865,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_2(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_2() = delete;
 			#endif
@@ -6653,9 +6115,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				TIM_GENERAL_4(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				TIM_GENERAL_4() = delete;
 			#endif
@@ -6690,9 +6152,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				MAC_TIM(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				MAC_TIM() = delete;
 			#endif
@@ -6711,7 +6173,23 @@ namespace sool {
     defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM2_BASE_ADDR ((uint32_t)0x40000000U)
 #define TIM_GENERAL_1_TIM2
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
+    defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || \
+    defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
 #define TIM2_TMPL TIM_GENERAL_1_tmpl_0
+#endif
+
+#if	defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32L4      ) || defined(STM32WB      ) || \
+    defined(STM32F031x6  ) || defined(STM32F038xx  ) || defined(STM32F042x6  ) || defined(STM32F048xx  ) || defined(STM32F051x8  ) || \
+    defined(STM32F058xx  ) || defined(STM32F071xB  ) || defined(STM32F072xB  ) || defined(STM32F078xx  ) || defined(STM32F091xC  ) || \
+    defined(STM32F098xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || \
+    defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
+#define TIM2_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32H7      ) || \
@@ -6728,7 +6206,31 @@ namespace sool {
     defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM3_BASE_ADDR ((uint32_t)0x40000400U)
 #define TIM_GENERAL_1_TIM3
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F745xx  ) || defined(STM32F746xx  ) || \
+    defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || defined(STM32F767xx  ) || defined(STM32F769xx  ) || \
+    defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || \
+    defined(STM32H757xx_CORE_CM7)
 #define TIM3_TMPL TIM_GENERAL_1_tmpl_1
+#define TIM4_TMPL TIM_GENERAL_1_tmpl_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32G0      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || \
+    defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || \
+    defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || \
+    defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || \
+    defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F722xx  ) || \
+    defined(STM32F723xx  ) || defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H742xx  ) || \
+    defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || \
+    defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || \
+    defined(STM32L041xx  ) || defined(STM32L071xx  ) || defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L081xx  ) || \
+    defined(STM32L082xx  ) || defined(STM32L083xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L442xx  ) || \
+    defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM3_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32L1      ) || defined(STM32F373xC  ) || \
@@ -6742,7 +6244,20 @@ namespace sool {
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM4_BASE_ADDR ((uint32_t)0x40000800U)
 #define TIM_GENERAL_1_TIM4
-#define TIM4_TMPL TIM_GENERAL_1_tmpl_1
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32L1      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
+    defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || defined(STM32F730xx  ) || \
+    defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || \
+    defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7) || \
+    defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM4_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      ) || defined(STM32F373xC  ) || \
@@ -6754,19 +6269,50 @@ namespace sool {
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM5_BASE_ADDR ((uint32_t)0x40000c00U)
 #define TIM_GENERAL_1_TIM5
+#endif
+
+#if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || \
+    defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || \
+    defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
+    defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || \
+    defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  ) || defined(STM32F722xx  ) || defined(STM32F723xx  ) || \
+    defined(STM32F730xx  ) || defined(STM32F732xx  ) || defined(STM32F733xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || \
+    defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
 #define TIM5_TMPL TIM_GENERAL_1_tmpl_2
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  ) || defined(STM32F745xx  ) || \
+    defined(STM32F746xx  ) || defined(STM32F750xx  ) || defined(STM32F756xx  ) || defined(STM32F765xx  ) || defined(STM32F767xx  ) || \
+    defined(STM32F769xx  ) || defined(STM32F777xx  ) || defined(STM32F779xx  ) || defined(STM32H742xx  ) || defined(STM32H743xx  ) || \
+    defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || \
+    defined(STM32H755xx_CORE_CM7) || defined(STM32L151xB  ) || defined(STM32L151xC  ) || defined(STM32L151xCA ) || defined(STM32L151xD  ) || \
+    defined(STM32L151xE  ) || defined(STM32L152xB  ) || defined(STM32L152xC  ) || defined(STM32L152xCA ) || defined(STM32L152xD  ) || \
+    defined(STM32L152xE  ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
+    defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || \
+    defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || \
+    defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM5_TMPL
 #endif
 
 #if	defined(STM32H7      )
 #define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
 #define TIM_GENERAL_1_TIM12
-#define TIM12_TMPL TIM_GENERAL_1_tmpl_3
 #define TIM13_BASE_ADDR ((uint32_t)0x40001c00U)
 #define TIM_GENERAL_1_TIM13
-#define TIM13_TMPL TIM_GENERAL_1_tmpl_3
 #define TIM14_BASE_ADDR ((uint32_t)0x40002000U)
 #define TIM_GENERAL_1_TIM14
-#define TIM14_TMPL TIM_GENERAL_1_tmpl_0
+#define TIM14_TMPL
+#endif
+
+#if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
+#define TIM12_TMPL TIM_GENERAL_1_tmpl_0
+#define TIM13_TMPL TIM_GENERAL_1_tmpl_0
+#endif
+
+#if	defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || \
+    defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
+#define TIM12_TMPL
+#define TIM13_TMPL
 #endif
 
 #if	defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
@@ -6775,6 +6321,7 @@ namespace sool {
 #define TIM19_TMPL TIM_GENERAL_1_tmpl_1
 #define TIM18_BASE_ADDR ((uint32_t)0x40009c00U)
 #define TIM_BASIC_TIM18
+#define TIM18_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
@@ -6789,6 +6336,7 @@ namespace sool {
     defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define TIM6_BASE_ADDR ((uint32_t)0x40001000U)
 #define TIM_BASIC_TIM6
+#define TIM6_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G4      ) || defined(STM32GB      ) || \
@@ -6804,12 +6352,14 @@ namespace sool {
     defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM7_BASE_ADDR ((uint32_t)0x40001400U)
 #define TIM_BASIC_TIM7
+#define TIM7_TMPL
 #endif
 
 #if	defined(STM32L011xx  ) || defined(STM32L021xx  ) || defined(STM32L031xx  ) || defined(STM32L041xx  ) || defined(STM32L071xx  ) || \
     defined(STM32L072xx  ) || defined(STM32L073xx  ) || defined(STM32L081xx  ) || defined(STM32L082xx  ) || defined(STM32L083xx  )
 #define TIM7_BASE_ADDR ((uint32_t)0x40000c00U)
 #define TIM_BASIC_TIM7
+#define TIM7_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      ) || defined(STM32H7      )
@@ -6825,7 +6375,19 @@ namespace sool {
     defined(STM32WB      )
 #define TIM1_BASE_ADDR ((uint32_t)0x40012c00U)
 #define TIM_ADVANCED_TIM1
+#endif
+
+#if	defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || \
+    defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || \
+    defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM1_TMPL TIM_ADVANCED_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || \
+    defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || \
+    defined(STM32L442xx  ) || defined(STM32L443xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  )
+#define TIM1_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  ) || \
@@ -6834,26 +6396,31 @@ namespace sool {
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM8_BASE_ADDR ((uint32_t)0x40013400U)
 #define TIM_ADVANCED_TIM8
-#define TIM8_TMPL TIM_ADVANCED_tmpl_1
+#define TIM8_TMPL
 #endif
 
 #if	defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define TIM20_BASE_ADDR ((uint32_t)0x40015000U)
 #define TIM_ADVANCED_TIM20
+#define TIM20_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      )
 #define TIM2_BASE_ADDR ((uint32_t)0x40000000U)
 #define TIM_ADVANCED_TIM2
+#define TIM2_TMPL
 #define TIM3_BASE_ADDR ((uint32_t)0x40000400U)
 #define TIM_ADVANCED_TIM3
+#define TIM3_TMPL
 #define TIM4_BASE_ADDR ((uint32_t)0x40000800U)
 #define TIM_ADVANCED_TIM4
+#define TIM4_TMPL
 #endif
 
 #if	defined(STM32G471xx  ) || defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define TIM5_BASE_ADDR ((uint32_t)0x40000c00U)
 #define TIM_ADVANCED_TIM5
+#define TIM5_TMPL
 #endif
 
 #if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  ) || defined(STM32L433xx  ) || defined(STM32L443xx  ) || \
@@ -6862,13 +6429,27 @@ namespace sool {
     defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM15_BASE_ADDR ((uint32_t)0x40014000U)
 #define TIM_GENERAL_3_TIM15
+#define TIM15_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32L4      ) || \
     defined(STM32WB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
 #define TIM16_BASE_ADDR ((uint32_t)0x40014400U)
 #define TIM_GENERAL_3_TIM16
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32L433xx  ) || defined(STM32L443xx  ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || \
+    defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
+    defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || \
+    defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM16_TMPL TIM_GENERAL_3_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L431xx  ) || \
+    defined(STM32L432xx  ) || defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || \
+    defined(STM32L471xx  )
+#define TIM16_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32WB      ) || \
@@ -6878,7 +6459,17 @@ namespace sool {
     defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define TIM17_BASE_ADDR ((uint32_t)0x40014800U)
 #define TIM_GENERAL_3_TIM17
-#define TIM17_TMPL TIM_GENERAL_3_tmpl_1
+#endif
+
+#if	defined(STM32WB      ) || defined(STM32L475xx  ) || defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || \
+    defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || defined(STM32L4R5xx  ) || \
+    defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
+#define TIM17_TMPL TIM_GENERAL_3_tmpl_0
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM17_TMPL
 #endif
 
 #if	defined(STM32L431xx  ) || defined(STM32L451xx  ) || defined(STM32L471xx  )
@@ -6890,6 +6481,7 @@ namespace sool {
 #if	defined(STM32F7      ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM9_BASE_ADDR ((uint32_t)0x40014000U)
 #define TIM_GENERAL_5_TIM9
+#define TIM9_TMPL
 #endif
 
 #if	defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || defined(STM32F412Cx  ) || \
@@ -6897,6 +6489,7 @@ namespace sool {
     defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
 #define TIM_GENERAL_5_TIM12
+#define TIM12_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || \
@@ -6906,13 +6499,27 @@ namespace sool {
     defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM10_BASE_ADDR ((uint32_t)0x40014400U)
 #define TIM_GENERAL_6_TIM10
+#endif
+
+#if	defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F411xE  ) || \
+    defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || defined(STM32F412Zx  ) || defined(STM32F413xx  ) || \
+    defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || defined(STM32F427xx  ) || defined(STM32F429xx  ) || \
+    defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM10_TMPL TIM_GENERAL_6_tmpl_0
+#define TIM11_TMPL TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      )
+#define TIM10_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
 #define TIM11_BASE_ADDR ((uint32_t)0x40014800U)
 #define TIM_GENERAL_6_TIM11
-#define TIM11_TMPL TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || defined(STM32F410Tx  )
+#define TIM11_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  ) || \
@@ -6922,7 +6529,18 @@ namespace sool {
     defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM13_BASE_ADDR ((uint32_t)0x40001c00U)
 #define TIM_GENERAL_6_TIM13
-#define TIM13_TMPL TIM_GENERAL_6_tmpl_1
+#endif
+
+#if	defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F412Cx  ) || defined(STM32F412Rx  ) || defined(STM32F412Vx  ) || \
+    defined(STM32F412Zx  ) || defined(STM32F413xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F423xx  ) || \
+    defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  ) || \
+    defined(STM32F469xx  ) || defined(STM32F479xx  )
+#define TIM13_TMPL TIM_GENERAL_6_tmpl_0
+#define TIM14_TMPL TIM_GENERAL_6_tmpl_0
+#endif
+
+#if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM13_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32F373xC  ) || \
@@ -6932,7 +6550,11 @@ namespace sool {
     defined(STM32F439xx  ) || defined(STM32F446xx  ) || defined(STM32F469xx  ) || defined(STM32F479xx  )
 #define TIM14_BASE_ADDR ((uint32_t)0x40002000U)
 #define TIM_GENERAL_6_TIM14
-#define TIM14_TMPL TIM_GENERAL_6_tmpl_1
+#endif
+
+#if	defined(STM32F0      ) || defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32G0      ) || defined(STM32F373xC  ) || \
+    defined(STM32F378xx  ) || defined(STM32F398xx  )
+#define TIM14_TMPL
 #endif
 
 #if	defined(STM32L1      )
@@ -6944,6 +6566,7 @@ namespace sool {
 #define TIM11_TMPL
 #define TIM9_BASE_ADDR ((uint32_t)0x40010800U)
 #define TIM_GENERAL_4_TIM9
+#define TIM9_TMPL
 #endif
 
 #if	defined(STM32W1      )
@@ -6955,6 +6578,7 @@ namespace sool {
 #define TIM2_TMPL TIM_GENERAL_6_tmpl_0
 #define MAC_TIM_BASE_ADDR ((uint32_t)0x40002038U)
 #define MAC_TIM_MAC_TIM
+#define MAC_TIM_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F373xC  ) || defined(STM32F378xx  ) || \
@@ -6962,6 +6586,7 @@ namespace sool {
     defined(STM32L442xx  ) || defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  )
 #define TIM15_BASE_ADDR ((uint32_t)0x40014000U)
 #define TIM_GENERAL_2_TIM15
+#define TIM15_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || \
@@ -6971,12 +6596,14 @@ namespace sool {
     defined(STM32F439xx  ) || defined(STM32F446xx  )
 #define TIM9_BASE_ADDR ((uint32_t)0x40014000U)
 #define TIM_GENERAL_4_TIM9
+#define TIM9_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || \
     defined(STM32F427xx  ) || defined(STM32F429xx  ) || defined(STM32F437xx  ) || defined(STM32F439xx  ) || defined(STM32F446xx  )
 #define TIM12_BASE_ADDR ((uint32_t)0x40001800U)
 #define TIM_GENERAL_4_TIM12
+#define TIM12_TMPL
 #endif
 
 #if	defined(STM32L0      )
@@ -6985,7 +6612,7 @@ namespace sool {
 #define TIM21_TMPL TIM_GENERAL_4_tmpl_0
 #define TIM22_BASE_ADDR ((uint32_t)0x40011400U)
 #define TIM_GENERAL_4_TIM22
-#define TIM22_TMPL TIM_GENERAL_4_tmpl_1
+#define TIM22_TMPL
 #endif
 
 
@@ -6993,73 +6620,65 @@ namespace sool {
 
 		#if defined(TIM12_BASE_ADDR) && defined(TIM_GENERAL_1_TIM12) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM12 = new class TIM_GENERAL_1(TIM12_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM12 = new class TIM_GENERAL_1<>(TIM12_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM12_TMPL> * const TIM12 = reinterpret_cast<class TIM_GENERAL_1<TIM12_TMPL>* const>(TIM12_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM12 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM12_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM13_BASE_ADDR) && defined(TIM_GENERAL_1_TIM13) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM13 = new class TIM_GENERAL_1(TIM13_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM13 = new class TIM_GENERAL_1<>(TIM13_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM13_TMPL> * const TIM13 = reinterpret_cast<class TIM_GENERAL_1<TIM13_TMPL>* const>(TIM13_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM13 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM13_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM14_BASE_ADDR) && defined(TIM_GENERAL_1_TIM14) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM14 = new class TIM_GENERAL_1(TIM14_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM14 = new class TIM_GENERAL_1<>(TIM14_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM14_TMPL> * const TIM14 = reinterpret_cast<class TIM_GENERAL_1<TIM14_TMPL>* const>(TIM14_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM14 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM14_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM19_BASE_ADDR) && defined(TIM_GENERAL_1_TIM19) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM19 = new class TIM_GENERAL_1(TIM19_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM19 = new class TIM_GENERAL_1<>(TIM19_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM19_TMPL> * const TIM19 = reinterpret_cast<class TIM_GENERAL_1<TIM19_TMPL>* const>(TIM19_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM19 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM19_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM2_BASE_ADDR) && defined(TIM_GENERAL_1_TIM2) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM2 = new class TIM_GENERAL_1(TIM2_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM2 = new class TIM_GENERAL_1<>(TIM2_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM2_TMPL> * const TIM2 = reinterpret_cast<class TIM_GENERAL_1<TIM2_TMPL>* const>(TIM2_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM2 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM3_BASE_ADDR) && defined(TIM_GENERAL_1_TIM3) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM3 = new class TIM_GENERAL_1(TIM3_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM3 = new class TIM_GENERAL_1<>(TIM3_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM3_TMPL> * const TIM3 = reinterpret_cast<class TIM_GENERAL_1<TIM3_TMPL>* const>(TIM3_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM3 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM3_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM4_BASE_ADDR) && defined(TIM_GENERAL_1_TIM4) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM4 = new class TIM_GENERAL_1(TIM4_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM4 = new class TIM_GENERAL_1<>(TIM4_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM4_TMPL> * const TIM4 = reinterpret_cast<class TIM_GENERAL_1<TIM4_TMPL>* const>(TIM4_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM4 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM4_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM5_BASE_ADDR) && defined(TIM_GENERAL_1_TIM5) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_1 * const TIM5 = new class TIM_GENERAL_1(TIM5_BASE_ADDR);
-
+				volatile class TIM_GENERAL_1<> * const TIM5 = new class TIM_GENERAL_1<>(TIM5_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_1<TIM5_TMPL> * const TIM5 = reinterpret_cast<class TIM_GENERAL_1<TIM5_TMPL>* const>(TIM5_BASE_ADDR);
+				volatile class TIM_GENERAL_1<> * const TIM5 = reinterpret_cast<class TIM_GENERAL_1<>* const>(TIM5_BASE_ADDR);
 			#endif
 		#endif
 
@@ -7068,7 +6687,6 @@ namespace sool {
 		#if defined(TIM_BASIC_TIM6) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_BASIC * const TIM6 = new class TIM_BASIC(TIM6_BASE_ADDR);
-
 			#else
 				volatile class TIM_BASIC * const TIM6 = reinterpret_cast<class TIM_BASIC* const>(TIM6_BASE_ADDR);
 			#endif
@@ -7077,7 +6695,6 @@ namespace sool {
 		#if defined(TIM18_BASE_ADDR) && defined(TIM_BASIC_TIM18) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_BASIC * const TIM18 = new class TIM_BASIC(TIM18_BASE_ADDR);
-
 			#else
 				volatile class TIM_BASIC * const TIM18 = reinterpret_cast<class TIM_BASIC* const>(TIM18_BASE_ADDR);
 			#endif
@@ -7086,7 +6703,6 @@ namespace sool {
 		#if defined(TIM7_BASE_ADDR) && defined(TIM_BASIC_TIM7) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_BASIC * const TIM7 = new class TIM_BASIC(TIM7_BASE_ADDR);
-
 			#else
 				volatile class TIM_BASIC * const TIM7 = reinterpret_cast<class TIM_BASIC* const>(TIM7_BASE_ADDR);
 			#endif
@@ -7096,17 +6712,15 @@ namespace sool {
 
 		#if defined(TIM_ADVANCED_TIM1) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM1 = new class TIM_ADVANCED(TIM1_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM1 = new class TIM_ADVANCED<>(TIM1_BASE_ADDR);
 			#else
-				volatile class TIM_ADVANCED<TIM1_TMPL> * const TIM1 = reinterpret_cast<class TIM_ADVANCED<TIM1_TMPL>* const>(TIM1_BASE_ADDR);
+				volatile class TIM_ADVANCED<> * const TIM1 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM2_BASE_ADDR) && defined(TIM_ADVANCED_TIM2) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM2 = new class TIM_ADVANCED(TIM2_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM2 = new class TIM_ADVANCED<>(TIM2_BASE_ADDR);
 			#else
 				volatile class TIM_ADVANCED<> * const TIM2 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM2_BASE_ADDR);
 			#endif
@@ -7114,8 +6728,7 @@ namespace sool {
 
 		#if defined(TIM20_BASE_ADDR) && defined(TIM_ADVANCED_TIM20) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM20 = new class TIM_ADVANCED(TIM20_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM20 = new class TIM_ADVANCED<>(TIM20_BASE_ADDR);
 			#else
 				volatile class TIM_ADVANCED<> * const TIM20 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM20_BASE_ADDR);
 			#endif
@@ -7123,8 +6736,7 @@ namespace sool {
 
 		#if defined(TIM3_BASE_ADDR) && defined(TIM_ADVANCED_TIM3) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM3 = new class TIM_ADVANCED(TIM3_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM3 = new class TIM_ADVANCED<>(TIM3_BASE_ADDR);
 			#else
 				volatile class TIM_ADVANCED<> * const TIM3 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM3_BASE_ADDR);
 			#endif
@@ -7132,8 +6744,7 @@ namespace sool {
 
 		#if defined(TIM4_BASE_ADDR) && defined(TIM_ADVANCED_TIM4) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM4 = new class TIM_ADVANCED(TIM4_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM4 = new class TIM_ADVANCED<>(TIM4_BASE_ADDR);
 			#else
 				volatile class TIM_ADVANCED<> * const TIM4 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM4_BASE_ADDR);
 			#endif
@@ -7141,8 +6752,7 @@ namespace sool {
 
 		#if defined(TIM5_BASE_ADDR) && defined(TIM_ADVANCED_TIM5) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM5 = new class TIM_ADVANCED(TIM5_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM5 = new class TIM_ADVANCED<>(TIM5_BASE_ADDR);
 			#else
 				volatile class TIM_ADVANCED<> * const TIM5 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM5_BASE_ADDR);
 			#endif
@@ -7150,10 +6760,9 @@ namespace sool {
 
 		#if defined(TIM8_BASE_ADDR) && defined(TIM_ADVANCED_TIM8) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_ADVANCED * const TIM8 = new class TIM_ADVANCED(TIM8_BASE_ADDR);
-
+				volatile class TIM_ADVANCED<> * const TIM8 = new class TIM_ADVANCED<>(TIM8_BASE_ADDR);
 			#else
-				volatile class TIM_ADVANCED<TIM8_TMPL> * const TIM8 = reinterpret_cast<class TIM_ADVANCED<TIM8_TMPL>* const>(TIM8_BASE_ADDR);
+				volatile class TIM_ADVANCED<> * const TIM8 = reinterpret_cast<class TIM_ADVANCED<>* const>(TIM8_BASE_ADDR);
 			#endif
 		#endif
 
@@ -7161,17 +6770,15 @@ namespace sool {
 
 		#if defined(TIM_GENERAL_3_TIM16) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_3 * const TIM16 = new class TIM_GENERAL_3(TIM16_BASE_ADDR);
-
+				volatile class TIM_GENERAL_3<> * const TIM16 = new class TIM_GENERAL_3<>(TIM16_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_3<TIM16_TMPL> * const TIM16 = reinterpret_cast<class TIM_GENERAL_3<TIM16_TMPL>* const>(TIM16_BASE_ADDR);
+				volatile class TIM_GENERAL_3<> * const TIM16 = reinterpret_cast<class TIM_GENERAL_3<>* const>(TIM16_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM15_BASE_ADDR) && defined(TIM_GENERAL_3_TIM15) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_3 * const TIM15 = new class TIM_GENERAL_3(TIM15_BASE_ADDR);
-
+				volatile class TIM_GENERAL_3<> * const TIM15 = new class TIM_GENERAL_3<>(TIM15_BASE_ADDR);
 			#else
 				volatile class TIM_GENERAL_3<> * const TIM15 = reinterpret_cast<class TIM_GENERAL_3<>* const>(TIM15_BASE_ADDR);
 			#endif
@@ -7179,10 +6786,9 @@ namespace sool {
 
 		#if defined(TIM17_BASE_ADDR) && defined(TIM_GENERAL_3_TIM17) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_3 * const TIM17 = new class TIM_GENERAL_3(TIM17_BASE_ADDR);
-
+				volatile class TIM_GENERAL_3<> * const TIM17 = new class TIM_GENERAL_3<>(TIM17_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_3<TIM17_TMPL> * const TIM17 = reinterpret_cast<class TIM_GENERAL_3<TIM17_TMPL>* const>(TIM17_BASE_ADDR);
+				volatile class TIM_GENERAL_3<> * const TIM17 = reinterpret_cast<class TIM_GENERAL_3<>* const>(TIM17_BASE_ADDR);
 			#endif
 		#endif
 
@@ -7191,7 +6797,6 @@ namespace sool {
 		#if defined(TIM_GENERAL_5_TIM12) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_GENERAL_5 * const TIM12 = new class TIM_GENERAL_5(TIM12_BASE_ADDR);
-
 			#else
 				volatile class TIM_GENERAL_5 * const TIM12 = reinterpret_cast<class TIM_GENERAL_5* const>(TIM12_BASE_ADDR);
 			#endif
@@ -7200,7 +6805,6 @@ namespace sool {
 		#if defined(TIM9_BASE_ADDR) && defined(TIM_GENERAL_5_TIM9) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_GENERAL_5 * const TIM9 = new class TIM_GENERAL_5(TIM9_BASE_ADDR);
-
 			#else
 				volatile class TIM_GENERAL_5 * const TIM9 = reinterpret_cast<class TIM_GENERAL_5* const>(TIM9_BASE_ADDR);
 			#endif
@@ -7210,55 +6814,49 @@ namespace sool {
 
 		#if defined(TIM1_BASE_ADDR) && defined(TIM_GENERAL_6_TIM1) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM1 = new class TIM_GENERAL_6(TIM1_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM1 = new class TIM_GENERAL_6<>(TIM1_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM1_TMPL> * const TIM1 = reinterpret_cast<class TIM_GENERAL_6<TIM1_TMPL>* const>(TIM1_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM1 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM1_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM10_BASE_ADDR) && defined(TIM_GENERAL_6_TIM10) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM10 = new class TIM_GENERAL_6(TIM10_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM10 = new class TIM_GENERAL_6<>(TIM10_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM10_TMPL> * const TIM10 = reinterpret_cast<class TIM_GENERAL_6<TIM10_TMPL>* const>(TIM10_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM10 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM10_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM11_BASE_ADDR) && defined(TIM_GENERAL_6_TIM11) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM11 = new class TIM_GENERAL_6(TIM11_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM11 = new class TIM_GENERAL_6<>(TIM11_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM11_TMPL> * const TIM11 = reinterpret_cast<class TIM_GENERAL_6<TIM11_TMPL>* const>(TIM11_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM11 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM11_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM13_BASE_ADDR) && defined(TIM_GENERAL_6_TIM13) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM13 = new class TIM_GENERAL_6(TIM13_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM13 = new class TIM_GENERAL_6<>(TIM13_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM13_TMPL> * const TIM13 = reinterpret_cast<class TIM_GENERAL_6<TIM13_TMPL>* const>(TIM13_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM13 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM13_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM14_BASE_ADDR) && defined(TIM_GENERAL_6_TIM14) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM14 = new class TIM_GENERAL_6(TIM14_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM14 = new class TIM_GENERAL_6<>(TIM14_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM14_TMPL> * const TIM14 = reinterpret_cast<class TIM_GENERAL_6<TIM14_TMPL>* const>(TIM14_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM14 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM14_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM2_BASE_ADDR) && defined(TIM_GENERAL_6_TIM2) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_6 * const TIM2 = new class TIM_GENERAL_6(TIM2_BASE_ADDR);
-
+				volatile class TIM_GENERAL_6<> * const TIM2 = new class TIM_GENERAL_6<>(TIM2_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_6<TIM2_TMPL> * const TIM2 = reinterpret_cast<class TIM_GENERAL_6<TIM2_TMPL>* const>(TIM2_BASE_ADDR);
+				volatile class TIM_GENERAL_6<> * const TIM2 = reinterpret_cast<class TIM_GENERAL_6<>* const>(TIM2_BASE_ADDR);
 			#endif
 		#endif
 
@@ -7267,7 +6865,6 @@ namespace sool {
 		#if defined(TIM_GENERAL_2_TIM15) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class TIM_GENERAL_2 * const TIM15 = new class TIM_GENERAL_2(TIM15_BASE_ADDR);
-
 			#else
 				volatile class TIM_GENERAL_2 * const TIM15 = reinterpret_cast<class TIM_GENERAL_2* const>(TIM15_BASE_ADDR);
 			#endif
@@ -7277,8 +6874,7 @@ namespace sool {
 
 		#if defined(TIM12_BASE_ADDR) && defined(TIM_GENERAL_4_TIM12) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_4 * const TIM12 = new class TIM_GENERAL_4(TIM12_BASE_ADDR);
-
+				volatile class TIM_GENERAL_4<> * const TIM12 = new class TIM_GENERAL_4<>(TIM12_BASE_ADDR);
 			#else
 				volatile class TIM_GENERAL_4<> * const TIM12 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM12_BASE_ADDR);
 			#endif
@@ -7286,26 +6882,23 @@ namespace sool {
 
 		#if defined(TIM21_BASE_ADDR) && defined(TIM_GENERAL_4_TIM21) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_4 * const TIM21 = new class TIM_GENERAL_4(TIM21_BASE_ADDR);
-
+				volatile class TIM_GENERAL_4<> * const TIM21 = new class TIM_GENERAL_4<>(TIM21_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_4<TIM21_TMPL> * const TIM21 = reinterpret_cast<class TIM_GENERAL_4<TIM21_TMPL>* const>(TIM21_BASE_ADDR);
+				volatile class TIM_GENERAL_4<> * const TIM21 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM21_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM22_BASE_ADDR) && defined(TIM_GENERAL_4_TIM22) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_4 * const TIM22 = new class TIM_GENERAL_4(TIM22_BASE_ADDR);
-
+				volatile class TIM_GENERAL_4<> * const TIM22 = new class TIM_GENERAL_4<>(TIM22_BASE_ADDR);
 			#else
-				volatile class TIM_GENERAL_4<TIM22_TMPL> * const TIM22 = reinterpret_cast<class TIM_GENERAL_4<TIM22_TMPL>* const>(TIM22_BASE_ADDR);
+				volatile class TIM_GENERAL_4<> * const TIM22 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM22_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(TIM9_BASE_ADDR) && defined(TIM_GENERAL_4_TIM9) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class TIM_GENERAL_4 * const TIM9 = new class TIM_GENERAL_4(TIM9_BASE_ADDR);
-
+				volatile class TIM_GENERAL_4<> * const TIM9 = new class TIM_GENERAL_4<>(TIM9_BASE_ADDR);
 			#else
 				volatile class TIM_GENERAL_4<> * const TIM9 = reinterpret_cast<class TIM_GENERAL_4<>* const>(TIM9_BASE_ADDR);
 			#endif
@@ -7316,7 +6909,6 @@ namespace sool {
 		#if defined(MAC_TIM_MAC_TIM) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class MAC_TIM * const MAC_TIM = new class MAC_TIM(MAC_TIM_BASE_ADDR);
-
 			#else
 				volatile class MAC_TIM * const MAC_TIM = reinterpret_cast<class MAC_TIM* const>(MAC_TIM_BASE_ADDR);
 			#endif
@@ -7325,469 +6917,467 @@ namespace sool {
 		
 	};
 };
-#undef PERIPH_TIM_GENERAL_6
-#undef TIM_ADVANCED_CCMR1_Input_1_OC2M
-#undef TIM_GENERAL_3_MAP1_DMAR
-#undef TIM_GENERAL_1_TIM3
-#undef TIM_ADVANCED_CCMR2_Output_0_OC3M_3
-#undef TIM_GENERAL_4_CCMR1_Input_1_IC1F
-#undef TIM_GENERAL_2_MAP0_OR2
-#undef TIM4_TMPL
-#undef TIM16_TMPL
-#undef TIM_GENERAL_4_TIM21
-#undef TIM_ADVANCED_MAP1_AF2
-#undef TIM3_TMPL
-#undef TIM_GENERAL_4_SMCR_ETF
-#undef TIM_GENERAL_3_MAP0_CCER
-#undef TIM_ADVANCED_BDTR_BK2P
-#undef TIM_GENERAL_1_TIM2
-#undef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
-#undef TIM_ADVANCED_CR2_MMS_3
-#undef TIM_ADVANCED_SR_B2IF
-#undef TIM_GENERAL_1_ARR_3
-#undef TIM_GENERAL_1_OR_2
-#undef TIM_GENERAL_1_OR1_0
-#undef TIM_GENERAL_3_AF1_BKDFBK1E
-#undef TIM_ADVANCED_CCMR2_Input_1_OC4M
-#undef TIM_GENERAL_1_ARR_1
-#undef TIM_GENERAL_1_MAP3_TIM2_OR
-#undef TIM_GENERAL_1_TIM14
-#undef TIM_ADVANCED_AF1_0_BKCMP4E
-#undef MAC_TIM_MAC_TIM
-#undef TIM_GENERAL_6_CCMR1_Input_2
-#undef TIM_GENERAL_1_OR2_0
-#undef TIM_GENERAL_1_OR1_3
-#undef TIM_ADVANCED_SR_DIRF
-#undef TIM_GENERAL_1_CNT_3_CNT
-#undef TIM_ADVANCED_OR1_1
-#undef TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
-#undef TIM_GENERAL_1_CCR4_1
-#undef TIM_ADVANCED_CCMR2_Input_1_OC3CE
-#undef TIM_GENERAL_3_BDTR_BKF
-#undef TIM_ADVANCED_SR_TERRF
-#undef TIM_BASIC_CR1_DITHEN
-#undef TIM_ADVANCED_CCMR1_Input_1_ICPSC
-#undef TIM_GENERAL_6_SMCR_0
-#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
-#undef TIM_GENERAL_1_CCR2_0
-#undef TIM_ADVANCED_MAP1_CRR6
-#undef TIM_GENERAL_2_MAP1_DMAR
-#undef TIM_ADVANCED_TIM3
-#undef TIM_ADVANCED_DIER_DIRIE
-#undef TIM_GENERAL_1_CCR3_0
-#undef TIM_GENERAL_4_SMCR_ECE
-#undef TIM_ADVANCED_MAP0_OR
-#undef TIM_ADVANCED_CCMR1_Input_0_IC2F
-#undef TIM_GENERAL_1_MAP1_CCR1
-#undef TIM_GENERAL_1_OR_1
-#undef TIM_GENERAL_3_AF1_BKCMP6E
-#undef TIM_GENERAL_3_MAP1_AF2
-#undef TIM_GENERAL_1_CCMR1_Output_1
-#undef TIM_ADVANCED_AF1_0_BKCMP3P
-#undef TIM_ADVANCED_AF2_0_BK2CMP6E
-#undef TIM_ADVANCED_AF1_0_BKCMP5E
-#undef TIM11_TMPL
-#undef TIM_ADVANCED_BDTR_BK2E
-#undef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
-#undef TIM_GENERAL_1_MAP3_CCR1
-#undef TIM_GENERAL_1_SMCR_TS_4_3
-#undef TIM_GENERAL_1_MAP1_TISEL
-#undef TIM_GENERAL_6_MAP1_ARR
-#undef TIM_ADVANCED_SMCR_0_TS
-#undef TIM_ADVANCED_CCMR2_Output_1
-#undef TIM_ADVANCED_MAP1_OR1
-#undef TIM_GENERAL_1_CCR1_1
-#undef TIM_ADVANCED_TIM5
-#undef TIM_ADVANCED_CCMR2_Input_1_OC4CE
-#undef TIM_GENERAL_6_MAP1_SMCR
-#undef TIM_GENERAL_1_OR_0_IT4_RMP
-#undef TIM_GENERAL_3_SR_TIF
-#undef TIM_GENERAL_1_TIM19
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M_3
-#undef TIM_ADVANCED_CR2_OIS5
-#undef TIM_GENERAL_3_MAP1_DCR
-#undef PERIPH_TIM_BASIC
-#undef TIM_GENERAL_3_TIM16
-#undef TIM_ADVANCED_CCMR2_Input_1_OC4FE
-#undef TIM_ADVANCED_AF2_0_BK2CMP5E
-#undef TIM_ADVANCED_CCMR1_Output_OC1M_3
-#undef TIM_GENERAL_3_DMAR_0
-#undef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_1
-#undef TIM1_TMPL
-#undef TIM_ADVANCED_CCMR1_Input_1
-#undef TIM_GENERAL_4_TIM22
-#undef TIM_GENERAL_3_MAP0_DMAR
-#undef TIM_ADVANCED_TIM1
-#undef TIM_ADVANCED_CCMR1_Input_2
-#undef TIM_GENERAL_1_CCMR2_Output_1
-#undef TIM_GENERAL_1_DIER_COMDE
-#undef TIM_GENERAL_2_SMCR_0_TS_4_3
-#undef TIM_GENERAL_2_MAP1_AF1
-#undef TIM_GENERAL_3_MAP0_OR
 #undef TIM_GENERAL_3_MAP0_AF1
-#undef TIM_GENERAL_3_CR1_2
-#undef PERIPH_TIM_ADVANCED
-#undef TIM_ADVANCED_MAP1_CCMR3_Output
-#undef TIM_GENERAL_6_CCMR1_Input_3
-#undef TIM_GENERAL_2_CCER_CC2NP
-#undef TIM_GENERAL_2_MAP0_DCR
-#undef TIM_ADVANCED_CCMR1_Input_2_OC1M
-#undef TIM_ADVANCED_SR_IERRF
-#undef TIM_ADVANCED_OR3_1
-#undef TIM_GENERAL_3_DIER_0_TDE
-#undef TIM_GENERAL_1_TIM5
-#undef TIM_ADVANCED_MAP1_TISEL
-#undef TIM_ADVANCED_CCMR2_Input_0_IC4F
-#undef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
-#undef TIM_GENERAL_6_MAP2
-#undef TIM_GENERAL_4_CCMR1_Input_0_IC2PCS
-#undef TIM_GENERAL_2_MAP1_DCR
-#undef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_1
-#undef TIM_GENERAL_4_CR1_0_CMS
-#undef TIM_ADVANCED_TIM4
-#undef TIM_GENERAL_1_SMCR_SMS_3
-#undef TIM_ADVANCED_SR_IDXF
-#undef TIM_GENERAL_1_ARR_0
-#undef TIM_BASIC_CNT_UIFCPY
-#undef TIM_ADVANCED_CCMR1_Input_0_IC2PCS
-#undef TIM_ADVANCED_CR2_MMS2
-#undef TIM_GENERAL_3_CR1_1
-#undef TIM_GENERAL_2_MAP1_DTR2
-#undef TIM_ADVANCED_BDTR_BK2DSRM
-#undef TIM_GENERAL_6_MAP1_CCMR1_Input
-#undef TIM_GENERAL_6_MAP1_OR
-#undef PERIPH_TIM_GENERAL_1
-#undef TIM_GENERAL_1_CNT_3_UIFCPY
-#undef TIM_GENERAL_2_MAP1_OR1
-#undef TIM_GENERAL_3_AF1_BKCMP3E
-#undef TIM_ADVANCED_SR_CC5IF
-#undef TIM_GENERAL_2_CR2_0_MMS
-#undef TIM_GENERAL_3_MAP1_DIER
-#undef TIM_ADVANCED_AF1_0_BKDF1BK0E
-#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
-#undef TIM_GENERAL_1_ARR_2
-#undef TIM_ADVANCED_TIM_ADVANCED_tmpl_1
-#undef TIM_GENERAL_2_DMAR_1
-#undef TIM_GENERAL_4_CCMR1_Input_0_IC1F
-#undef TIM_GENERAL_6_TIM11
-#undef TIM_GENERAL_4_CCMR1_Output_0_OC2CE
-#undef TIM_GENERAL_3_MAP1_TISEL
-#undef TIM_ADVANCED_OR2_2
-#undef TIM_GENERAL_2_DMAR_0
-#undef TIM_ADVANCED_AF1_1
-#undef TIM_GENERAL_2_CCER_CC2P
-#undef TIM13_TMPL
-#undef TIM_GENERAL_1_CCMR1_Input_0_IC2PCS
-#undef TIM_ADVANCED_AF2_0_OCRSEL
-#undef TIM_GENERAL_1_CR1_1
-#undef TIM_GENERAL_4_SMCR_ETP
-#undef TIM_GENERAL_3_OR1_1
-#undef TIM_ADVANCED_CCER_CC6P
-#undef TIM_ADVANCED_CCMR2_Input_0_IC3PSC
-#undef TIM_ADVANCED_OR1_0
-#undef TIM_BASIC_TIM6
-#undef TIM_ADVANCED_CCMR2_Input_1_OC4PE
-#undef TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
-#undef TIM_GENERAL_1_CR1_2
-#undef TIM_ADVANCED_AF2_0_BK2DF1BK1E
-#undef TIM_GENERAL_3_MAP3_TISEL
-#undef TIM_ADVANCED_CCMR2_Input_1_OC3M
-#undef TIM_GENERAL_6_SMCR_1
-#undef TIM_GENERAL_3_EGR_TG
-#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
-#undef TIM_GENERAL_6_OR_0
-#undef TIM_GENERAL_2_DIER_COMDE
-#undef TIM_GENERAL_1_MAP2
-#undef TIM_ADVANCED_CCMR1_Input_1_C1F
-#undef TIM_GENERAL_3_BDTR_BKBID
-#undef TIM_GENERAL_3_DIER_0
-#undef TIM_GENERAL_5_CCMR1_Input_1
-#undef TIM_GENERAL_2_CR1_DITHEN
-#undef TIM_GENERAL_3_MAP1_OR2
-#undef TIM_GENERAL_2_EGR_CC2G
-#undef TIM_GENERAL_6_CR1_UIFREMAP
-#undef TIM_GENERAL_4_MAP1_OR
-#undef TIM_GENERAL_4_CCMR1_Input_1_IC2PSC
-#undef TIM_GENERAL_2_CCER_CC2E
-#undef TIM_GENERAL_1_OR1_1
-#undef TIM_ADVANCED_SMCR_0_SMS_3
-#undef TIM_GENERAL_1_CCR1_2
-#undef TIM_GENERAL_3_CR1_0_UIFREMAP
-#undef TIM_GENERAL_1_CCR2_2
-#undef TIM_ADVANCED_TIM8
-#undef TIM_ADVANCED_RCR_0
-#undef TIM_ADVANCED_SR_SBIF
-#undef TIM_GENERAL_6_CCMR1_Output_OC1CE
-#undef TIM12_TMPL
-#undef TIM_GENERAL_3_MAP3
-#undef TIM_GENERAL_6_TIM1
-#undef TIM_GENERAL_2_CCMR1_Output_1
-#undef TIM_ADVANCED_AF2_1
-#undef TIM17_TMPL
-#undef TIM_GENERAL_4_CR1_0_DIR
-#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_3
-#undef TIM_GENERAL_6_MAP1_TISEL
-#undef TIM_GENERAL_1_MAP1_OR
-#undef TIM_ADVANCED_CR2_OIS4N
-#undef TIM_ADVANCED_SR_CC6IF
-#undef TIM_GENERAL_3_AF1_BKCMP4P
-#undef TIM_GENERAL_3_CR1_0_DITHEN
-#undef TIM_GENERAL_3_MAP2
-#undef TIM_ADVANCED_CCER_CC5P
-#undef TIM2_TMPL
-#undef TIM_GENERAL_5_TIM12
-#undef TIM_GENERAL_3_DIER_1
-#undef TIM_ADVANCED_CCMR1_Input_0_ICPCS
-#undef TIM_ADVANCED_AF2_0_BK2CMP4P
-#undef TIM_ADVANCED_CCMR3_Output_0_OC6M3
-#undef TIM_ADVANCED_AF1_0_BKCMP4P
-#undef TIM_GENERAL_1_TIM4
-#undef TIM_GENERAL_3_CNT_UIFCPY
-#undef TIM_GENERAL_3_MAP0_DIER
-#undef TIM_GENERAL_3_CCMR1_Output_0_OC1M_2
-#undef TIM_GENERAL_1_MAP1_AF1
-#undef TIM_GENERAL_1_MAP1_CCR3
-#undef TIM_ADVANCED_DIER_TERRIE
-#undef TIM_GENERAL_1_CCR2_3
-#undef PERIPH_TIM_GENERAL_3
-#undef TIM_GENERAL_2_SMCR_1
-#undef TIM_GENERAL_1_SMCR_OCCS
-#undef TIM_GENERAL_1_TIM12
-#undef TIM_ADVANCED_BDTR_BK2F
-#undef TIM_ADVANCED_TISEL_0
-#undef TIM_ADVANCED_CCMR2_Output_0_OC4M_4
-#undef TIM_GENERAL_3_AF1_BKCMP3P
-#undef TIM_GENERAL_6_CCMR1_Input_0
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC2FE
-#undef TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output
-#undef TIM_ADVANCED_AF2_0_BK2CMP4E
-#undef TIM_GENERAL_1_MAP3_CCR3
-#undef TIM_GENERAL_4_CCMR1_Output_1
-#undef TIM_ADVANCED_AF1_0_BKCMP3E
-#undef TIM_GENERAL_1_DMAR_1
-#undef TIM_GENERAL_6_CR1_OPM
-#undef TIM_ADVANCED_SMCR_0_TS_4_3
-#undef TIM_GENERAL_3_MAP1_DTR2
-#undef TIM_ADVANCED_SMCR_0_SMSPS
-#undef TIM_ADVANCED_CCMR3_Output_0_OC5M3
-#undef TIM_GENERAL_6_TIM14
-#undef TIM_GENERAL_5_CCMR1_Output_OC2M_3
-#undef TIM_GENERAL_1_OR_0_TI4_RMP
-#undef TIM_GENERAL_3_TIM17
-#undef TIM_GENERAL_1_CCMR1_Output_0_CC2S
-#undef TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input
-#undef TIM_ADVANCED_CCMR1_Input_3
-#undef TIM_ADVANCED_AF2_0_BK2CMP3P
-#undef TIM_ADVANCED_OR2_1
-#undef TIM_GENERAL_1_CCMR2_Output_1_CC4S
-#undef TIM_GENERAL_1_CNT_4
-#undef TIM_ADVANCED_CCMR1_Input_0_IC1F
-#undef TIM_GENERAL_1_CNT_3_CNT_H
-#undef TIM_GENERAL_3_MAP3_EGR
-#undef TIM_GENERAL_6_MAP1_PSC
-#undef TIM_ADVANCED_EGR_B2G
-#undef TIM_GENERAL_1_CNT_3
-#undef TIM_ADVANCED_BDTR_BKDSRM
-#undef TIM_GENERAL_1_CCMR1_Input_0_ICPCS
-#undef TIM_ADVANCED_MAP1_DCR
-#undef TIM_GENERAL_2_CCMR1_Input_CC2S
-#undef TIM_ADVANCED_CCMR2_Input_1
-#undef TIM_ADVANCED_CCMR3_Output_1
-#undef TIM_ADVANCED_AF2_1_BK2DFBK0E
-#undef TIM_GENERAL_2_BDTR_BKBID
-#undef TIM_ADVANCED_MAP0_CCR5
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M
-#undef TIM_ADVANCED_TIM_ADVANCED_tmpl_0
-#undef TIM_GENERAL_3_DIER_0_COMDE
-#undef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_1
-#undef TIM22_TMPL
-#undef TIM_ADVANCED_MAP0_CCR6
-#undef TIM_GENERAL_4_CCMR1_Input_1_IC1PSC
-#undef TIM_ADVANCED_CR2_OIS6
-#undef TIM_ADVANCED_MAP0_OR3
-#undef TIM_ADVANCED_MAP2
-#undef TIM_GENERAL_1_MAP0_OR2
-#undef TIM_GENERAL_6_MAP1_TIM1_ISR
-#undef TIM_GENERAL_4_CCMR1_Output_0_CC2S
-#undef TIM_GENERAL_1_CNT_1
-#undef TIM_GENERAL_1_CNT_2
-#undef TIM_ADVANCED_MAP1_CCR5
-#undef TIM_GENERAL_4_CR1_0_OPM
-#undef TIM_GENERAL_1_DIER_TDE
-#undef TIM_ADVANCED_CR1_UIFREMAP
-#undef TIM_GENERAL_2_CR1_UIFREMAP
-#undef TIM_ADVANCED_OR1_2_ETR_ADC3_RMP
-#undef TIM_GENERAL_2_CCMR1_Input_IC2PSC
-#undef TIM_GENERAL_3_MAP3_CCMR1_Output
-#undef TIM_GENERAL_1_CCR3_1
-#undef TIM_GENERAL_2_CCMR1_Input_IC2F
-#undef TIM_GENERAL_2_CR2_1
-#undef TIM14_TMPL
-#undef TIM19_TMPL
-#undef TIM_ADVANCED_CCMR1_Input_2_OC2PE
-#undef TIM_ADVANCED_OR1_2
-#undef TIM_ADVANCED_BDTR_BK2ID
-#undef TIM_GENERAL_6_MAP3
-#undef TIM_GENERAL_6_TIM13
-#undef TIM_ADVANCED_AF1_0_BKCMP7E
-#undef TIM_GENERAL_1_TISEL_TI4SEL
-#undef TIM_GENERAL_3_MAP0_PSC
-#undef TIM_ADVANCED_AF2_0_BK2INE
-#undef TIM_ADVANCED_SMCR_0_SMSPE
-#undef TIM_GENERAL_2_MAP1_TISEL
-#undef TIM_GENERAL_4_CR1_1
-#undef TIM_ADVANCED_DIER_IDXIE
-#undef TIM_ADVANCED_DMAR_1
-#undef TIM_GENERAL_4_MAP1_CCER
-#undef TIM_GENERAL_3_AF1_BKCMP4E
-#undef TIM_GENERAL_1_TISEL_TI3SEL
-#undef TIM_GENERAL_1_CCR2_1
-#undef TIM_ADVANCED_SMCR_1
-#undef TIM_ADVANCED_RCR_1
-#undef TIM_GENERAL_3_BDTR_BKDSRM
-#undef TIM5_TMPL
-#undef TIM_GENERAL_1_CCR3_2
-#undef TIM_ADVANCED_AF2_0_BK2CMP7E
-#undef TIM_GENERAL_6_CCMR1_Input_0_ICPCS
-#undef TIM_GENERAL_3_MAP0_CNT
-#undef TIM_GENERAL_1_CCR4_2
-#undef TIM_ADVANCED_MAP1_DMAR
-#undef TIM_ADVANCED_CCMR2_Input_1_C3PSC
-#undef TIM_ADVANCED_MAP0_OR2
-#undef TIM_GENERAL_3_OR2_1
-#undef TIM_GENERAL_2_DIER_CC2DE
-#undef TIM_ADVANCED_SMCR_0_OCCS
-#undef TIM_ADVANCED_CR1_DITHEN
-#undef TIM_ADVANCED_AF1_0_ETRSEL
-#undef TIM_GENERAL_4_OR_0
-#undef TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3
-#undef TIM_GENERAL_6_CCMR1_Output_OC1M_3
-#undef TIM_BASIC_TIM18
-#undef TIM_GENERAL_2_CCMR1_Output_0_CC2S
-#undef TIM_BASIC_TIM7
-#undef TIM_GENERAL_6_OR_1
-#undef TIM_GENERAL_6_OR_2
-#undef TIM_GENERAL_2_TIM15
-#undef TIM_GENERAL_1_CCR1_0
-#undef TIM_GENERAL_1_OR_0
-#undef TIM_GENERAL_1_OR_0_ETR_RMP
-#undef TIM_GENERAL_3_MAP0_ARR
-#undef PERIPH_TIM_GENERAL_5
-#undef TIM_GENERAL_5_CCMR1_Input_0_ICPCS
-#undef TIM_GENERAL_1_MAP3
-#undef TIM_GENERAL_3_OR2_0
-#undef TIM_GENERAL_4_CCMR1_Input_1_IC2F
-#undef TIM_ADVANCED_AF1_0_BKCMP6E
-#undef TIM_GENERAL_2_BDTR_BKF
-#undef TIM_ADVANCED_AF2_1_BKINE
-#undef TIM_GENERAL_2_SR_CC2IF
-#undef TIM_GENERAL_3_TIM15
-#undef TIM_GENERAL_3_MAP3_SR
-#undef TIM_ADVANCED_CCER_CC5E
-#undef TIM_GENERAL_1_CCR4_0
-#undef TIM_GENERAL_1_CNT_6
-#undef TIM_GENERAL_6_MAP1_CCER
-#undef TIM_GENERAL_5_CCMR1_Output_OC1M_3
-#undef TIM_ADVANCED_TIM2
-#undef TIM_ADVANCED_DIER_IERRIE
-#undef TIM_GENERAL_2_BDTR_BKDSRM
-#undef TIM_GENERAL_3_MAP1_OR1
-#undef TIM_GENERAL_3_MAP0_RCR
-#undef TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
-#undef TIM_GENERAL_2_CR2_0_OIS2
-#undef TIM_GENERAL_5_CCMR1_Input_0_IC2PCS
-#undef TIM_GENERAL_4_CCMR1_Input_0_ICPCS
-#undef TIM_ADVANCED_OR2_0
-#undef TIM_GENERAL_6_MAP1_CNT
-#undef TIM_GENERAL_3_AF1_BKCMP7E
-#undef TIM_GENERAL_3_MAP0_CCR1
-#undef TIM_ADVANCED_CCER_CC4NP
-#undef TIM_ADVANCED_OR3_2
-#undef TIM_GENERAL_4_SMCR_ETPS
-#undef TIM_GENERAL_1_OR_3
-#undef TIM_ADVANCED_CCMR1_Input_1_IC2PSC
-#undef TIM_ADVANCED_CCMR3_Output_2
-#undef TIM_GENERAL_3_OR1_0
-#undef TIM_ADVANCED_TIM20
-#undef TIM_GENERAL_6_MAP1_CCR1
-#undef PERIPH_TIM_GENERAL_4
-#undef TIM_ADVANCED_CCMR2_Input_0_IC4PSC
-#undef TIM_GENERAL_6_TIM2
-#undef TIM_ADVANCED_DMAR_0
-#undef TIM_GENERAL_4_OR_2
-#undef TIM_GENERAL_2_DIER_CC2IE
-#undef TIM_ADVANCED_CCMR1_Input_4
-#undef TIM_GENERAL_1_CCMR2_Output_0_O24CE
-#undef TIM_GENERAL_1_CR1_0
-#undef TIM_GENERAL_3_DMAR_1
-#undef TIM_GENERAL_2_CR2_0_TI1S
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC1M_3
-#undef TIM8_TMPL
-#undef TIM_GENERAL_4_TIM9
-#undef TIM_GENERAL_3_AF1_BKCMP5E
-#undef TIM_GENERAL_4_CCMR1_Input_1
-#undef TIM_GENERAL_1_OR1_2
-#undef TIM_GENERAL_6_CNT_UIFCPY
-#undef TIM_GENERAL_3_CR1_0
-#undef TIM_ADVANCED_CNT_UIFCPY
-#undef TIM_ADVANCED_CCMR1_Input_1_OC2CE
-#undef TIM_GENERAL_6_TIM10
-#undef TIM_ADVANCED_CCER_CC6E
-#undef TIM_GENERAL_4_CCMR1_Output_0_OC1CE
-#undef TIM_ADVANCED_BDTR_BKBID
-#undef TIM_ADVANCED_CCMR1_Input_2_OC1CE
-#undef TIM_ADVANCED_AF2_0_BK2CMP3E
-#undef TIM_ADVANCED_CCMR2_Input_0_IC3F
-#undef TIM_ADVANCED_CCER_CC4NE
-#undef TIM10_TMPL
-#undef TIM_GENERAL_1_CCMR1_Input_1
-#undef TIM_GENERAL_2_MAP1_AF2
-#undef TIM_GENERAL_5_TIM9
-#undef TIM_GENERAL_3_CCMR1_Output_1
-#undef TIM_GENERAL_3_DIER_0_TIE
-#undef TIM_GENERAL_1_CR1_2_UIFREMAP
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC2PE
-#undef TIM_GENERAL_4_TIM12
-#undef TIM_GENERAL_1_CNT_0
-#undef TIM_GENERAL_2_CNT_UIFCPY
-#undef TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
-#undef TIM_GENERAL_3_MAP3_DIER
-#undef TIM_GENERAL_2_CCMR1_Output_0_OC1CE
-#undef TIM_GENERAL_4_OR_1
-#undef TIM_GENERAL_2_MAP0_DMAR
-#undef TIM_ADVANCED_CCMR1_Input_2_IC1PSC
-#undef TIM_GENERAL_2_SR_CC2OF
-#undef TIM_GENERAL_1_OR2_1
-#undef TIM_ADVANCED_CCMR1_Input_2_OC2FE
-#undef TIM21_TMPL
-#undef TIM_GENERAL_1_OR_4
-#undef PERIPH_TIM_GENERAL_2
-#undef TIM_GENERAL_1_CNT_5
-#undef TIM_GENERAL_6_CCMR1_Input_1
-#undef TIM_GENERAL_3_MAP3_AF1
-#undef TIM_GENERAL_1_MAP3_AF
 #undef TIM_GENERAL_3_MAP0_DCR
-#undef TIM_GENERAL_1_MAP0_OR1
-#undef TIM_GENERAL_5_CCMR1_Input_0_IC2F
-#undef TIM_GENERAL_2_SMCR_0_SMS_3
-#undef TIM_GENERAL_4_CCMR1_Input_0_IC2F
-#undef PERIPH_MAC_TIM
-#undef TIM_ADVANCED_CCMR2_Input_2
-#undef TIM_GENERAL_1_CNT_2_CNT_H
-#undef TIM_GENERAL_1_DMAR_0
-#undef TIM_GENERAL_1_CCMR2_Output_0_CC4S
-#undef TIM_ADVANCED_OR1_3
-#undef TIM_BASIC_CR1_UIFREMAP
-#undef TIM_ADVANCED_BDTR_BKF
-#undef TIM_ADVANCED_MAP1_AF1
-#undef TIM_GENERAL_1_TIM13
-#undef TIM_ADVANCED_OR3_2_BK2DFBK0E
-#undef TIM_ADVANCED_TISEL_1
-#undef TIM_GENERAL_1_CCR4_3
-#undef TIM_ADVANCED_OR3_0
-#undef TIM_GENERAL_3_MAP0_BDTR
-#undef TIM_ADVANCED_CCMR1_Output_OC2M_3
+#undef TIM_ADVANCED_DIER_IDXIE
+#undef TIM8_TMPL
+#undef TIM_GENERAL_3_DIER_1
+#undef MAC_TIM_MAC_TIM
+#undef TIM_ADVANCED_RCR_1
+#undef TIM_ADVANCED_MAP1_CCMR3_Output
+#undef TIM_GENERAL_2_CCMR1_Output_0_CC2S
+#undef TIM_GENERAL_1_OR_2
+#undef TIM_ADVANCED_AF2_0_BK2CMP7E
+#undef TIM_GENERAL_2_MAP1_AF1
+#undef TIM_GENERAL_6_TIM10
+#undef TIM_ADVANCED_OR1_0
+#undef TIM_GENERAL_6_TIM1
+#undef TIM_GENERAL_4_CR1_1
+#undef TIM_ADVANCED_CCMR1_Input_2
+#undef TIM_GENERAL_3_OR_0
+#undef TIM_GENERAL_1_OR1_1
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC2PSC
+#undef TIM_GENERAL_2_CR2_0_MMS
+#undef TIM_ADVANCED_AF1_0_BKCMP3P
+#undef TIM_ADVANCED_AF2_0_BK2CMP3E
+#undef TIM_ADVANCED_CCMR1_Input_2_OC2FE
+#undef TIM_GENERAL_1_CCR4_1
+#undef TIM_GENERAL_3_CR1_0
+#undef TIM_GENERAL_1_CNT_0
+#undef TIM_ADVANCED_DIER_TERRIE
+#undef TIM_GENERAL_1_CR1_UIFREMAP
+#undef TIM_ADVANCED_SR_B2IF
+#undef TIM18_TMPL
+#undef TIM20_TMPL
 #undef TIM_GENERAL_6_MAP0
+#undef TIM_GENERAL_4_TIM12
+#undef TIM1_TMPL
+#undef TIM21_TMPL
+#undef TIM_ADVANCED_SR_CC6IF
+#undef TIM_GENERAL_1_SMCR_TS_4_3
+#undef TIM_GENERAL_1_OR2_0
+#undef TIM_ADVANCED_CCER_CC5E
+#undef TIM_GENERAL_4_MAP1_CCER
+#undef TIM_GENERAL_1_CCMR2_Output_0_CC4S
+#undef TIM_ADVANCED_SMCR_0_SMS_3
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC2F
+#undef TIM_GENERAL_1_TIM19
+#undef TIM22_TMPL
+#undef TIM_GENERAL_2_CCER_CC2P
+#undef TIM_GENERAL_1_CNT_1_CNT_31
+#undef TIM_ADVANCED_SMCR_0_TS
+#undef TIM_GENERAL_1_ARR_1
+#undef TIM_GENERAL_1_CCR3_1
+#undef TIM_GENERAL_2_DIER_COMDE
+#undef TIM_GENERAL_6_TIM2
+#undef TIM_GENERAL_6_MAP2
+#undef TIM_GENERAL_3_CR1_0_DITHEN
+#undef TIM_GENERAL_3_MAP1_DCR
+#undef TIM_ADVANCED_CCMR3_Output_0_OC5M3
+#undef TIM12_TMPL
+#undef TIM_GENERAL_3_MAP1_DIER
+#undef TIM_GENERAL_5_CCMR1_Input_1
+#undef TIM6_TMPL
+#undef TIM_ADVANCED_MAP1_DMAR
+#undef TIM_GENERAL_4_TIM_GENERAL_4_tmpl_0
+#undef TIM_GENERAL_1_OR_1
+#undef TIM_ADVANCED_CCMR2_Input_0_IC3PSC
+#undef TIM_ADVANCED_AF1_0_BKCMP5E
+#undef TIM_ADVANCED_SMCR_0_OCCS
+#undef TIM_GENERAL_6_MAP1_TIM1_CCMR2_Input
+#undef TIM_ADVANCED_CCMR2_Output_1
+#undef TIM_GENERAL_2_MAP0_OR2
+#undef MAC_TIM_TMPL
+#undef TIM_ADVANCED_MAP1_DCR
+#undef TIM_ADVANCED_AF1_0_ETRSEL
+#undef TIM_GENERAL_1_CCMR1_Output_1
+#undef TIM_ADVANCED_MAP1_AF1
+#undef TIM_ADVANCED_OR2_1_BKDFBK2E
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4M
+#undef TIM_ADVANCED_AF2_0_BK2INE
+#undef TIM_GENERAL_2_SR_CC2IF
+#undef TIM_ADVANCED_OR2_2
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_2
+#undef TIM_GENERAL_4_SMCR_ECE
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M
+#undef TIM9_TMPL
+#undef TIM_GENERAL_1_MAP3_CCR1
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4CE
+#undef TIM_GENERAL_1_CNT_2_CNT_H
+#undef TIM_GENERAL_2_MAP1_DCR
+#undef TIM_GENERAL_3_OR_1
+#undef TIM_GENERAL_1_CCMR1_Input_1
+#undef TIM_GENERAL_1_TIM5
+#undef TIM_GENERAL_1_CCR2_3
+#undef TIM_GENERAL_3_MAP0_DIER
+#undef TIM_GENERAL_1_CCMR1_Input_0_ICPCS
+#undef TIM_ADVANCED_CR2_OIS6
+#undef TIM_GENERAL_3_EGR_TG
+#undef TIM_GENERAL_1_DIER_TDE
+#undef TIM_GENERAL_2_CR2_0_OIS2
+#undef TIM_GENERAL_1_CNT_3_UIFCPY
+#undef TIM_BASIC_TIM18
+#undef TIM_GENERAL_2_MAP0_DCR
+#undef TIM_GENERAL_3_TIM17
+#undef TIM_ADVANCED_CCMR2_Input_1_OC3M
+#undef TIM_ADVANCED_AF2_0_BK2DF1BK1E
+#undef TIM_GENERAL_1_CCR3_2
+#undef TIM_ADVANCED_CCMR1_Input_1_OC2M
+#undef TIM_GENERAL_6_CCMR1_Input_2
+#undef TIM_ADVANCED_CCMR1_Input_1_OC2CE
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC1CE
+#undef TIM_GENERAL_1_MAP2
+#undef TIM_ADVANCED_CCMR2_Input_0_IC4PSC
+#undef TIM_GENERAL_5_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_1_SMCR_SMS_3
+#undef TIM_ADVANCED_DMAR_1
+#undef TIM_GENERAL_1_CCR4_0
+#undef TIM_ADVANCED_CCMR1_Input_1_IC2PSC
+#undef TIM_GENERAL_2_SR_CC2OF
+#undef TIM_GENERAL_3_OR2_0
+#undef TIM_ADVANCED_BDTR_BKBID
+#undef TIM_GENERAL_2_CNT_UIFCPY
+#undef TIM_ADVANCED_AF2_0_BK2CMP3P
+#undef TIM_ADVANCED_MAP2
+#undef TIM_GENERAL_3_CR1_2
+#undef TIM_GENERAL_3_BDTR_BKDSRM
+#undef TIM_GENERAL_6_MAP1_OR
+#undef TIM_GENERAL_1_CCMR2_Output_0_OC4M_3
+#undef TIM_GENERAL_1_MAP3_CCR3
+#undef TIM_GENERAL_3_MAP3_EGR
+#undef PERIPH_TIM_GENERAL_6
+#undef TIM_GENERAL_1_TIM12
+#undef TIM_GENERAL_1_TIM3
+#undef TIM_ADVANCED_SR_TERRF
+#undef TIM2_TMPL
+#undef TIM_GENERAL_1_MAP1_CCR3
+#undef TIM_ADVANCED_SR_SBIF
+#undef TIM_ADVANCED_AF1_0_BKCMP3E
+#undef TIM_GENERAL_2_SMCR_0_TS_4_3
+#undef TIM19_TMPL
+#undef TIM_GENERAL_1_CNT_2
+#undef TIM_ADVANCED_AF1_0_BKCMP4E
+#undef TIM_ADVANCED_MAP0_OR3
+#undef TIM_ADVANCED_CCMR2_Input_2
+#undef TIM_ADVANCED_CCMR2_Input_0_IC4F
+#undef TIM_GENERAL_6_CCMR1_Input_1
+#undef TIM_GENERAL_1_OR1_0
+#undef TIM_ADVANCED_AF1_1
+#undef TIM_GENERAL_2_CCMR1_Output_1
+#undef TIM_ADVANCED_OR3_0
+#undef TIM_ADVANCED_OR3_1_BK2DFBK3E
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2FE
+#undef TIM_GENERAL_6_TIM_GENERAL_6_tmpl_0
+#undef TIM_GENERAL_6_SMCR_1
+#undef TIM_ADVANCED_CCER_CC6P
+#undef TIM_GENERAL_1_TISEL_TI4SEL
+#undef TIM_GENERAL_4_OR_0
+#undef TIM_ADVANCED_CR2_MMS2
+#undef TIM_ADVANCED_EGR_B2G
+#undef TIM_GENERAL_3_MAP3_AF1
+#undef TIM_GENERAL_3_AF1_BKCMP4E
+#undef TIM_ADVANCED_TIM1
+#undef TIM_GENERAL_6_MAP1_ARR
+#undef TIM_GENERAL_3_TIM15
+#undef TIM_ADVANCED_SR_IERRF
+#undef TIM_GENERAL_3_CR1_0_UIFREMAP
+#undef TIM_ADVANCED_CCMR1_Input_2_OC1M
+#undef TIM_GENERAL_4_CCMR1_Output_1
+#undef TIM_ADVANCED_CCMR2_Output_0_OC3M_3
+#undef TIM5_TMPL
+#undef TIM_GENERAL_1_ARR_0
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC1F
+#undef TIM_ADVANCED_BDTR_BK2F
+#undef TIM_GENERAL_1_TIM4
+#undef TIM_ADVANCED_OR1_1_ETR_ADC3_RMP
+#undef TIM14_TMPL
+#undef TIM_ADVANCED_CCER_CC4NP
+#undef TIM_GENERAL_1_SMCR_OCCS
+#undef TIM_GENERAL_3_MAP1_AF2
+#undef PERIPH_TIM_GENERAL_1
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC1M_3
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4FE
+#undef TIM_GENERAL_5_TIM9
+#undef TIM_GENERAL_2_DIER_CC2IE
+#undef TIM_ADVANCED_CR2_OIS4N
+#undef TIM_GENERAL_2_CR1_DITHEN
+#undef TIM_GENERAL_6_CR1_OPM
+#undef TIM_ADVANCED_MAP1_TISEL
+#undef TIM_ADVANCED_BDTR_BK2E
+#undef TIM_ADVANCED_BDTR_BK2P
+#undef TIM_GENERAL_1_CCMR1_Output_0_OC1M_3
+#undef TIM_ADVANCED_SR_DIRF
+#undef TIM_ADVANCED_MAP1_AF2
+#undef TIM_ADVANCED_SR_CC5IF
+#undef TIM_ADVANCED_TIM5
+#undef TIM_GENERAL_4_CCMR1_Output_0_CC2S
+#undef TIM_ADVANCED_CCMR2_Input_0_IC3F
+#undef TIM_GENERAL_4_CCMR1_Output_0_OC1CE
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_1
+#undef TIM_GENERAL_2_SMCR_0_SMS_3
+#undef TIM_GENERAL_1_CCR3_0
+#undef TIM4_TMPL
+#undef TIM_BASIC_CNT_UIFCPY
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2M_3
+#undef TIM_GENERAL_2_MAP1_DMAR
+#undef TIM_GENERAL_2_CCER_CC2E
+#undef PERIPH_TIM_GENERAL_5
+#undef TIM_ADVANCED_BDTR_BKF
+#undef TIM_GENERAL_2_BDTR_BKF
+#undef TIM_GENERAL_1_OR_0_ETR_RMP
+#undef TIM_GENERAL_2_CCMR1_Input_CC2S
+#undef TIM11_TMPL
+#undef TIM_ADVANCED_AF1_0_BKCMP7E
+#undef TIM_GENERAL_3_MAP0_BDTR
+#undef TIM_ADVANCED_TIM20
+#undef TIM_ADVANCED_CCMR1_Input_4
+#undef TIM_GENERAL_1_OR_0_TI4_RMP
+#undef TIM_ADVANCED_SMCR_0_TS_4_3
+#undef TIM_GENERAL_4_SMCR_ETPS
+#undef TIM_ADVANCED_CCMR1_Input_0_IC1F
+#undef TIM_GENERAL_1_CCMR1_Output_0_CC2S
+#undef TIM_GENERAL_2_MAP1_OR1
+#undef TIM_ADVANCED_CCMR1_Input_2_OC2PE
+#undef TIM_GENERAL_1_TIM14
+#undef TIM_GENERAL_1_CCR4_3
+#undef TIM_GENERAL_3_MAP3_SR
+#undef TIM_GENERAL_3_DIER_0_TIE
+#undef TIM_GENERAL_4_CCMR1_Input_0_ICPCS
+#undef TIM_ADVANCED_CCMR1_Input_0_IC2F
+#undef PERIPH_TIM_GENERAL_2
+#undef TIM_ADVANCED_SMCR_0_SMSPS
+#undef TIM_GENERAL_3_MAP1_OR2
+#undef TIM_GENERAL_1_MAP3_TIM2_OR
+#undef TIM_ADVANCED_AF2_0_BK2CMP4P
+#undef TIM_GENERAL_3_CNT_UIFCPY
+#undef TIM16_TMPL
+#undef TIM_ADVANCED_DIER_IERRIE
+#undef TIM_GENERAL_3_CR1_1
+#undef TIM17_TMPL
+#undef TIM_GENERAL_4_OR_1
+#undef TIM_GENERAL_2_TIM15
+#undef TIM_ADVANCED_CCMR2_Input_1_C3PSC
+#undef TIM_GENERAL_3_MAP3_CCMR1_Output
+#undef TIM_GENERAL_3_MAP1_DTR2
+#undef TIM_ADVANCED_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_4_CCMR1_Output_0_OC2CE
+#undef TIM_ADVANCED_CR2_OIS5
+#undef TIM_ADVANCED_DMAR_0
+#undef TIM_GENERAL_3_MAP0_CCR1
+#undef TIM_GENERAL_6_CCMR1_Output_OC1M_3
+#undef TIM_ADVANCED_CCMR1_Input_0_ICPCS
+#undef TIM_GENERAL_3_CCMR1_Output_1
+#undef TIM_ADVANCED_AF2_0_OCRSEL
+#undef TIM_ADVANCED_AF1_0_BKCMP4P
+#undef TIM_ADVANCED_OR3_2
+#undef TIM_GENERAL_6_CCMR1_Input_0_ICPCS
+#undef TIM_ADVANCED_CCMR2_Output_0_OC4M_4
+#undef TIM_GENERAL_1_CCMR2_Output_0_OC3M_3
+#undef TIM_ADVANCED_CCMR1_Input_1_C1F
+#undef TIM_ADVANCED_OR1_3
+#undef TIM_GENERAL_3_AF1_BKCMP7E
+#undef TIM_ADVANCED_TISEL_1
+#undef TIM10_TMPL
+#undef TIM_GENERAL_6_TIM13
+#undef TIM_GENERAL_6_OR_1
+#undef TIM_ADVANCED_TIM4
+#undef TIM_GENERAL_2_BDTR_BKBID
+#undef TIM_ADVANCED_CCMR3_Output_0_OC6M3
+#undef TIM_ADVANCED_MAP0_CCR6
+#undef TIM_GENERAL_3_MAP0_RCR
+#undef TIM_GENERAL_3_AF1_BKCMP6E
+#undef TIM_GENERAL_6_MAP1_TIM1_CCMR1_Output
+#undef TIM_GENERAL_2_MAP1_DTR2
+#undef TIM_GENERAL_3_MAP0_DMAR
+#undef TIM_ADVANCED_OR2_0
+#undef TIM_GENERAL_3_AF1_BKCMP3E
+#undef TIM_GENERAL_3_AF1_BKCMP3P
+#undef TIM_ADVANCED_CCMR1_Input_1_ICPSC
+#undef TIM_GENERAL_1_MAP3
+#undef TIM_ADVANCED_CCMR1_Output_OC2M_3
+#undef TIM_ADVANCED_OR1_1
+#undef TIM_GENERAL_6_MAP1_TISEL
+#undef TIM_ADVANCED_CR2_MMS_3
+#undef TIM_GENERAL_1_CNT_5
+#undef TIM_GENERAL_5_CCMR1_Output_OC2M_3
+#undef PERIPH_TIM_GENERAL_3
+#undef TIM_GENERAL_3_DMAR_0
+#undef TIM_GENERAL_1_CCR1_2
+#undef TIM_GENERAL_3_MAP3_OR
+#undef TIM_GENERAL_3_TIM_GENERAL_3_tmpl_0
+#undef TIM_ADVANCED_CCMR1_Output_OC1M_3
+#undef TIM_GENERAL_1_MAP1_OR
+#undef TIM_ADVANCED_OR1_1_ETR_ADC2_RMP
+#undef TIM_GENERAL_3_CCMR1_Output_0_OC1M_2
+#undef TIM15_TMPL
+#undef TIM_ADVANCED_AF2_0_BK2CMP6E
+#undef TIM_GENERAL_3_MAP1_DMAR
+#undef TIM_GENERAL_2_CCER_CC2NP
+#undef TIM_GENERAL_1_DMAR_1
+#undef TIM_GENERAL_3_AF1_BKDFBK1E
+#undef TIM_GENERAL_3_MAP0_CNT
+#undef TIM_GENERAL_6_CNT_UIFCPY
+#undef TIM_GENERAL_3_OR2_1
+#undef TIM_GENERAL_6_MAP3
+#undef TIM_GENERAL_3_TIM16
+#undef TIM_GENERAL_2_DIER_CC2DE
+#undef TIM_ADVANCED_CR1_UIFREMAP
+#undef TIM_ADVANCED_TISEL_0
+#undef TIM_GENERAL_1_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_1_CCMR1_Output_0_OC2M_3
+#undef PERIPH_MAC_TIM
+#undef TIM_GENERAL_6_MAP1_CCMR1_Input
+#undef TIM_GENERAL_3_MAP0_CCER
+#undef TIM_GENERAL_2_CCMR1_Output_0_OC2PE
+#undef TIM_GENERAL_3_MAP1_TISEL
+#undef TIM_GENERAL_4_SMCR_ETP
+#undef TIM_GENERAL_1_TIM13
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC1F
+#undef TIM_ADVANCED_DIER_DIRIE
+#undef TIM_ADVANCED_CCER_CC6E
+#undef TIM_GENERAL_4_OR_2
+#undef TIM_GENERAL_1_DMAR_0
+#undef TIM_ADVANCED_CCMR3_Output_1
+#undef TIM_ADVANCED_CNT_UIFCPY
+#undef TIM_GENERAL_6_MAP1_CNT
+#undef TIM_ADVANCED_AF2_1
+#undef TIM_GENERAL_2_EGR_CC2G
+#undef TIM7_TMPL
+#undef TIM_GENERAL_4_CCMR1_Input_0_IC2PCS
+#undef TIM_GENERAL_1_MAP1_AF1
+#undef TIM_ADVANCED_CCMR3_Output_1_OC5M_bit3
+#undef TIM_ADVANCED_MAP0_OR
+#undef TIM_GENERAL_3_MAP1_OR1
+#undef TIM_GENERAL_1_TIM2
+#undef TIM_ADVANCED_AF1_0_BKDF1BK0E
+#undef TIM_ADVANCED_SMCR_1
+#undef TIM_GENERAL_3_DIER_0_TDE
+#undef TIM_GENERAL_1_ARR_2
+#undef TIM_ADVANCED_CCMR1_Input_2_IC1PSC
+#undef TIM_GENERAL_1_OR_4
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC1PSC
+#undef TIM_GENERAL_1_CNT_1_CNT_H
+#undef TIM_GENERAL_3_MAP0_ARR
+#undef PERIPH_TIM_GENERAL_4
+#undef TIM_GENERAL_3_SR_TIF
+#undef TIM_GENERAL_1_MAP1_CCR1
+#undef TIM_GENERAL_1_TISEL_TI3SEL
+#undef TIM_BASIC_CR1_UIFREMAP
+#undef TIM_GENERAL_3_MAP3_TISEL
+#undef TIM_GENERAL_3_AF1_BKCMP5E
+#undef TIM_GENERAL_6_MAP1_CCER
+#undef TIM_GENERAL_6_TIM11
+#undef TIM_GENERAL_1_CCR2_2
+#undef TIM_GENERAL_2_DMAR_0
+#undef TIM_ADVANCED_CCMR3_Output_2
+#undef TIM_ADVANCED_SR_IDXF
+#undef TIM_ADVANCED_BDTR_BK2DSRM
+#undef TIM_GENERAL_3_MAP2
+#undef TIM_GENERAL_3_BDTR_BKF
+#undef TIM_GENERAL_1_DIER_COMDE
+#undef TIM_GENERAL_1_OR2_1
+#undef TIM_GENERAL_3_DIER_0
+#undef TIM_ADVANCED_RCR_0
+#undef TIM_GENERAL_6_MAP1_SMCR
+#undef TIM_GENERAL_1_MAP1_TISEL
+#undef TIM_GENERAL_3_DMAR_1
+#undef TIM_GENERAL_2_CCMR1_Input_IC2F
+#undef TIM_ADVANCED_BDTR_BKDSRM
+#undef TIM_GENERAL_1_OR1_2
+#undef TIM_GENERAL_1_CNT_4
+#undef TIM_GENERAL_1_CCR1_1
+#undef TIM_ADVANCED_AF1_0_BKCMP6E
+#undef TIM_GENERAL_1_CCR4_2
+#undef TIM_GENERAL_1_CCMR2_Output_0_O24CE
+#undef TIM_GENERAL_1_OR_0
+#undef TIM_ADVANCED_TIM_ADVANCED_tmpl_0
+#undef TIM_ADVANCED_TIM3
+#undef TIM_ADVANCED_CCER_CC5P
+#undef TIM_ADVANCED_SMCR_0_SMSPE
+#undef TIM_GENERAL_1_CCR1_0
+#undef TIM_GENERAL_1_CNT_3
+#undef TIM_GENERAL_6_MAP1_PSC
+#undef TIM_GENERAL_2_MAP0_DMAR
+#undef TIM_GENERAL_4_TIM9
+#undef TIM_GENERAL_3_AF1_BKCMP4P
+#undef TIM_GENERAL_2_DMAR_1
+#undef TIM_GENERAL_6_OR_2
+#undef TIM_GENERAL_5_TIM12
+#undef TIM_ADVANCED_CCMR1_Input_2_OC1CE
+#undef TIM_GENERAL_1_MAP0_OR2
+#undef TIM_GENERAL_2_CR2_1
+#undef TIM_ADVANCED_MAP0_OR2
+#undef TIM3_TMPL
+#undef TIM_GENERAL_1_CNT_1
+#undef PERIPH_TIM_BASIC
+#undef TIM_GENERAL_2_CR2_0_TI1S
+#undef TIM_GENERAL_6_CCMR1_Output_OC1CE
+#undef TIM_GENERAL_1_OR1_3
+#undef TIM_GENERAL_4_CR1_0_DIR
+#undef TIM_ADVANCED_CCMR1_Input_3
+#undef TIM_GENERAL_3_MAP3_DIER
+#undef TIM_GENERAL_1_CCR2_1
+#undef TIM_GENERAL_2_SMCR_1
+#undef TIM_GENERAL_1_MAP3_AF
+#undef TIM_ADVANCED_MAP1_CCR5
+#undef TIM_GENERAL_2_CCMR1_Input_IC2PSC
+#undef TIM_ADVANCED_OR1_2
+#undef TIM_ADVANCED_CCMR2_Input_1_OC4PE
+#undef PERIPH_TIM_ADVANCED
+#undef TIM_GENERAL_4_CR1_0_CMS
+#undef TIM_GENERAL_1_OR_0_IT4_RMP
+#undef TIM_BASIC_TIM6
+#undef TIM_GENERAL_5_CCMR1_Input_0_IC2PCS
+#undef TIM_BASIC_TIM7
+#undef TIM13_TMPL
+#undef TIM_GENERAL_5_CCMR1_Input_0_IC2F
+#undef TIM_ADVANCED_AF2_0_BK2CMP4E
+#undef TIM_GENERAL_2_CR1_UIFREMAP
+#undef TIM_GENERAL_2_BDTR_BKDSRM
+#undef TIM_GENERAL_4_CCMR1_Input_1
+#undef TIM_GENERAL_3_MAP0_PSC
+#undef TIM_ADVANCED_CCMR1_Input_1
+#undef TIM_GENERAL_4_TIM21
+#undef TIM_GENERAL_5_CCMR1_Output_OC1M_3
+#undef TIM_GENERAL_4_CR1_0_OPM
+#undef TIM_ADVANCED_AF2_1_BK2DFBK0E
+#undef TIM_GENERAL_6_TIM14
+#undef TIM_GENERAL_2_MAP1_TISEL
+#undef TIM_GENERAL_6_CR1_UIFREMAP
+#undef TIM_ADVANCED_BDTR_BK2ID
+#undef TIM_ADVANCED_CCMR2_Input_1
+#undef TIM_GENERAL_4_SMCR_ETF
+#undef TIM_GENERAL_1_ARR_3
+#undef TIM_GENERAL_4_TIM22
+#undef TIM_ADVANCED_CR1_DITHEN
+#undef TIM_GENERAL_3_BDTR_BKBID
+#undef TIM_ADVANCED_AF2_0_BK2CMP5E
+#undef TIM_GENERAL_6_SMCR_0
+#undef TIM_ADVANCED_CCER_CC4NE
+#undef TIM_GENERAL_1_CCMR2_Output_1
+#undef TIM_GENERAL_1_OR_3
+#undef TIM_ADVANCED_TIM8
+#undef TIM_BASIC_CR1_DITHEN
+#undef TIM_GENERAL_1_CNT_3_CNT_M
+#undef TIM_GENERAL_1_MAP0_OR1
+#undef TIM_GENERAL_2_MAP1_AF2
+#undef TIM_GENERAL_1_CCR2_0
+#undef TIM_GENERAL_1_TIM_GENERAL_1_tmpl_0
+#undef TIM_GENERAL_6_MAP1_CCR1
+#undef TIM_ADVANCED_MAP0_CCR5
+#undef TIM_GENERAL_1_CCMR2_Output_1_CC4S
+#undef TIM_ADVANCED_MAP1_OR1
+#undef TIM_GENERAL_4_CCMR1_Input_1_IC2F
+#undef TIM_ADVANCED_CCMR2_Input_1_OC3CE
+#undef TIM_GENERAL_3_MAP3
+#undef TIM_ADVANCED_TIM2
+#undef TIM_GENERAL_6_MAP1_TIM1_ISR
+#undef TIM_GENERAL_6_OR_0
+#undef TIM_GENERAL_1_CNT_2_CNT
+#undef TIM_ADVANCED_MAP1_CRR6
+#undef TIM_ADVANCED_AF2_1_BKINE
+#undef TIM_GENERAL_4_MAP1_OR
+#undef TIM_GENERAL_3_DIER_0_COMDE
 
 #endif
 
