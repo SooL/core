@@ -17,7 +17,7 @@
  */
 
 
-//Generated 2020-03-01T00:46:38.014996
+//Generated 2020-05-08T21:45:07.733283
 
 #ifndef __SOOL_CORE_ADC_H
 #define __SOOL_CORE_ADC_H
@@ -618,11 +618,21 @@
 
 #if	defined(STM32MP1     )
 #define ADC_PCSEL_0
+#define ADC_IPIDR_0
 #define ADC_OR
-#define ADC_MAP0_OR tmpl::OR_t OR
+#define ADC_MAP0_OR typename tmpl::OR_t OR
 #define ADC_ADC_tmpl_0
+#define ADC_Common_VERR
+#define ADC_Common_IPIDR
+#define ADC_Common_SIDR
+#define ADC_Common_MAP0_VERR VERR_t VERR
+#define ADC_Common_MAP0_IPIDR IPIDR_t IPIDR
+#define ADC_Common_MAP0_SIDR SIDR_t SIDR
 #else
 #define ADC_MAP0_OR __SOOL_PERIPH_PADDING_4
+#define ADC_Common_MAP0_VERR __SOOL_PERIPH_PADDING_4
+#define ADC_Common_MAP0_IPIDR __SOOL_PERIPH_PADDING_4
+#define ADC_Common_MAP0_SIDR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32H7      )
@@ -947,6 +957,45 @@
 #define ADC_DIFSEL_1_DIFSEL_0
 #endif
 
+#if	defined(STM32MP1     ) || defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
+#define ADC_VERR
+#define ADC_IPIDR
+#define ADC_SIDR
+#define ADC_MAP0_VERR VERR_t VERR
+#define ADC_MAP0_IPIDR IPIDR_t IPIDR
+#define ADC_MAP0_SIDR SIDR_t SIDR
+#else
+#define ADC_MAP0_VERR __SOOL_PERIPH_PADDING_4
+#define ADC_MAP0_IPIDR __SOOL_PERIPH_PADDING_4
+#define ADC_MAP0_SIDR __SOOL_PERIPH_PADDING_4
+#endif
+
+#if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
+#define ADC_IPIDR_1
+#define ADC_HWCFGR6
+#define ADC_HWCFGR5
+#define ADC_HWCFGR4
+#define ADC_HWCFGR3
+#define ADC_HWCFGR2
+#define ADC_HWCFGR1
+#define ADC_HWCFGR0
+#define ADC_MAP4_HWCFGR6 HWCFGR6_t HWCFGR6
+#define ADC_MAP4_HWCFGR5 HWCFGR5_t HWCFGR5
+#define ADC_MAP4_HWCFGR4 HWCFGR4_t HWCFGR4
+#define ADC_MAP4_HWCFGR3 HWCFGR3_t HWCFGR3
+#define ADC_MAP4_HWCFGR2 HWCFGR2_t HWCFGR2
+#define ADC_MAP4_HWCFGR1 HWCFGR1_t HWCFGR1
+#define ADC_MAP4_HWCFGR0 HWCFGR0_t HWCFGR0
+#else
+#define ADC_MAP4_HWCFGR6 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR5 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR4 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR3 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR2 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR1 __SOOL_PERIPH_PADDING_4
+#define ADC_MAP4_HWCFGR0 __SOOL_PERIPH_PADDING_4
+#endif
+
 #if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32WB      ) || defined(STM32F413xx  ) || \
     defined(STM32F423xx  ) || defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H750xx  ) || defined(STM32H757xx_CORE_CM4) || \
     defined(STM32H757xx_CORE_CM7) || defined(STM32L412xx  ) || defined(STM32L422xx  )
@@ -1120,40 +1169,6 @@
 #define ADC_SMPR
 #define ADC_CHSELR
 #define ADC_MAP3
-#endif
-
-#if	defined(STM32G070xx  ) || defined(STM32G071xx  ) || defined(STM32G081xx  )
-#define ADC_HWCFGR6
-#define ADC_HWCFGR5
-#define ADC_HWCFGR4
-#define ADC_HWCFGR3
-#define ADC_HWCFGR2
-#define ADC_HWCFGR1
-#define ADC_HWCFGR0
-#define ADC_VERR
-#define ADC_IPIDR
-#define ADC_SIDR
-#define ADC_MAP4_HWCFGR6 HWCFGR6_t HWCFGR6
-#define ADC_MAP4_HWCFGR5 HWCFGR5_t HWCFGR5
-#define ADC_MAP4_HWCFGR4 HWCFGR4_t HWCFGR4
-#define ADC_MAP4_HWCFGR3 HWCFGR3_t HWCFGR3
-#define ADC_MAP4_HWCFGR2 HWCFGR2_t HWCFGR2
-#define ADC_MAP4_HWCFGR1 HWCFGR1_t HWCFGR1
-#define ADC_MAP4_HWCFGR0 HWCFGR0_t HWCFGR0
-#define ADC_MAP4_VERR VERR_t VERR
-#define ADC_MAP4_IPIDR IPIDR_t IPIDR
-#define ADC_MAP4_SIDR SIDR_t SIDR
-#else
-#define ADC_MAP4_HWCFGR6 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR5 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR4 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR3 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR2 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR1 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_HWCFGR0 __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_VERR __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_IPIDR __SOOL_PERIPH_PADDING_4
-#define ADC_MAP4_SIDR __SOOL_PERIPH_PADDING_4
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32H7      ) || \
@@ -2565,6 +2580,46 @@ namespace sool {
 				
 			};
 			#endif
+			#ifdef ADC_VERR
+			struct VERR_t: public Reg32_t /// ADC version register
+			{
+				using Reg32_t::operator=;
+				uint32_t MINREV           : 4; /// Minor Revision number
+				uint32_t MAJREV           : 4; /// Major Revision number
+				uint32_t                  : 24;
+				
+			};
+			#endif
+			#ifdef ADC_IPIDR
+			struct IPIDR_t: public Reg32_t /// ADC identification register
+			{
+				using Reg32_t::operator=;
+				union
+				{
+					#ifdef ADC_IPIDR_0
+					struct
+					{
+						uint32_t ID               : 32;
+					};
+					#endif
+					#ifdef ADC_IPIDR_1
+					struct
+					{
+						uint32_t IPID             : 32; /// IP Identification
+					};
+					#endif
+				};
+				
+			};
+			#endif
+			#ifdef ADC_SIDR
+			struct SIDR_t: public Reg32_t /// ADC size identification register
+			{
+				using Reg32_t::operator=;
+				uint32_t SID              : 32; /// Size Identification
+				
+			};
+			#endif
 			#ifdef ADC_CCR
 			struct CCR_t: public Reg32_t /// ADC common control register
 			{
@@ -3183,32 +3238,6 @@ namespace sool {
 				
 			};
 			#endif
-			#ifdef ADC_VERR
-			struct VERR_t: public Reg32_t /// EXTI IP Version register
-			{
-				using Reg32_t::operator=;
-				uint32_t MINREV           : 4; /// Minor Revision number
-				uint32_t MAJREV           : 4; /// Major Revision number
-				uint32_t                  : 24;
-				
-			};
-			#endif
-			#ifdef ADC_IPIDR
-			struct IPIDR_t: public Reg32_t /// EXTI Identification register
-			{
-				using Reg32_t::operator=;
-				uint32_t IPID             : 32; /// IP Identification
-				
-			};
-			#endif
-			#ifdef ADC_SIDR
-			struct SIDR_t: public Reg32_t /// EXTI Size ID register
-			{
-				using Reg32_t::operator=;
-				uint32_t SID              : 32; /// Size Identification
-				
-			};
-			#endif
 			#ifdef ADC_SQR5
 			struct SQR5_t: public Reg32_t /// regular sequence register 5
 			{
@@ -3351,9 +3380,15 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_32;
 					__SOOL_PERIPH_PADDING_512;
 					ADC_MAP0_CCR; /// ADC common control register
-					__SOOL_PERIPH_PADDING_4;
 					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
+					__SOOL_PERIPH_PADDING_128;
+					ADC_MAP0_VERR; /// ADC version register
+					ADC_MAP0_IPIDR; /// ADC identification register
+					ADC_MAP0_SIDR; /// ADC size identification register
+					__SOOL_PERIPH_PADDING_8;
+					__SOOL_PERIPH_PADDING_16;
 					__SOOL_PERIPH_PADDING_1024;
 					__SOOL_PERIPH_PADDING_8192;
 				};
@@ -3477,11 +3512,8 @@ namespace sool {
 					ADC_MAP4_HWCFGR2; /// Hardware Configuration Register
 					ADC_MAP4_HWCFGR1; /// Hardware Configuration Register
 					ADC_MAP4_HWCFGR0; /// Hardware Configuration Register
-					ADC_MAP4_VERR; /// EXTI IP Version register
-					ADC_MAP4_IPIDR; /// EXTI Identification register
-					ADC_MAP4_SIDR; /// EXTI Size ID register
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_32;
 					__SOOL_PERIPH_PADDING_1024;
 					__SOOL_PERIPH_PADDING_8192;
 				};
@@ -3526,12 +3558,28 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				ADC(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				ADC() = delete;
 			#endif
+			private:
+			static constexpr uint32_t get_clock_enable_bit(const uintptr_t addr);
+			static constexpr volatile Reg32_t& get_clock_enable_reg(const uintptr_t addr);
+			
+			public:
+			void enable_clock() volatile;
+			
+			void disable_clock() volatile;
+			
+			bool is_clock_enabled() const volatile;
+			
+			#ifdef ADC_SQR1
+			void set_acquisition_sequence_length(const unsigned int length) volatile;
+			#endif
+			
+			void set_sequence_value(const unsigned int position, const unsigned int channel) volatile;
 			
 		};
 		#ifdef PERIPH_ADC_Common
@@ -3691,6 +3739,32 @@ namespace sool {
 			{
 				using Reg32_t::operator=;
 				uint32_t RDATA_ALT        : 32; /// Regular data of the master/slave alternated ADCs
+				
+			};
+			#endif
+			#ifdef ADC_Common_VERR
+			struct VERR_t: public Reg32_t /// ADC version register
+			{
+				using Reg32_t::operator=;
+				uint32_t MINREV           : 4;
+				uint32_t MAJREV           : 4;
+				uint32_t                  : 24;
+				
+			};
+			#endif
+			#ifdef ADC_Common_IPIDR
+			struct IPIDR_t: public Reg32_t /// ADC identification register
+			{
+				using Reg32_t::operator=;
+				uint32_t ID               : 32;
+				
+			};
+			#endif
+			#ifdef ADC_Common_SIDR
+			struct SIDR_t: public Reg32_t /// ADC size identification register
+			{
+				using Reg32_t::operator=;
+				uint32_t SID              : 32;
 				
 			};
 			#endif
@@ -4074,10 +4148,14 @@ namespace sool {
 					ADC_Common_MAP0_CCR; /// ADC common control register
 					ADC_Common_MAP0_CDR; /// ADC common regular data register for dual and triple modes
 					ADC_Common_MAP0_CDR2; /// ADC common regular data register for dual and triple modes
-					__SOOL_PERIPH_PADDING_8;
-					__SOOL_PERIPH_PADDING_16;
 					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_64;
 					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
+					ADC_Common_MAP0_VERR; /// ADC version register
+					ADC_Common_MAP0_IPIDR; /// ADC identification register
+					ADC_Common_MAP0_SIDR; /// ADC size identification register
 				};
 				#ifdef ADC_Common_MAP1
 				struct
@@ -4121,6 +4199,11 @@ namespace sool {
 					DIFSEL_t DIFSEL; /// ADC channel differential or single-ended mode selection register
 					CALFACT_t CALFACT; /// ADC calibration factors register
 					CALFACT2_t CALFACT2; /// ADC Calibration Factor register 2
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
 				};
 				#endif
 				#ifdef ADC_Common_MAP2
@@ -4129,8 +4212,13 @@ namespace sool {
 					__SOOL_PERIPH_PADDING_4;
 					CCR_t CCR; /// ADC common control register
 					ADC_Common_MAP2_CDR; /// ADC common regular data register for dual and triple modes
+					__SOOL_PERIPH_PADDING_4;
+					__SOOL_PERIPH_PADDING_16;
+					__SOOL_PERIPH_PADDING_32;
 					__SOOL_PERIPH_PADDING_64;
 					__SOOL_PERIPH_PADDING_128;
+					__SOOL_PERIPH_PADDING_256;
+					__SOOL_PERIPH_PADDING_512;
 				};
 				#endif
 			};
@@ -4138,9 +4226,9 @@ namespace sool {
 			#if __SOOL_DEBUG_NOPHY
 				ADC_Common(uintptr_t addr) : myaddr(addr){};
 				const uintptr_t myaddr;
-				inline const uintptr_t get_addr() {return myaddr;};
+				inline const uintptr_t get_addr() const volatile {return myaddr;};
 			#else
-				inline const uintptr_t get_addr() {return reinterpret_cast<uintptr_t>(this);};
+				inline const uintptr_t get_addr() const volatile {return reinterpret_cast<uintptr_t>(this);};
 			private:
 				ADC_Common() = delete;
 			#endif
@@ -4150,35 +4238,43 @@ namespace sool {
 
 #if	defined(STM32MP1     )
 #define ADC1_BASE_ADDR ((uint32_t)0x48003000U)
+#define ADC1_TMPL
 #define ADC2_BASE_ADDR ((uint32_t)0x48003100U)
 #define ADC2_TMPL ADC_tmpl_0
 #define ADC12_Common_BASE_ADDR ((uint32_t)0x48003300U)
 #define ADC_Common_ADC12_Common
+#define ADC12_Common_TMPL
 #endif
 
 #if	defined(STM32H7      )
 #define ADC3_BASE_ADDR ((uint32_t)0x58026000U)
+#define ADC3_TMPL
 #endif
 
 #if	defined(STM32H742xx  ) || defined(STM32H743xx  ) || defined(STM32H745xx_CORE_CM4) || defined(STM32H745xx_CORE_CM7) || defined(STM32H750xx  ) || \
     defined(STM32H753xx  ) || defined(STM32H755xx_CORE_CM4) || defined(STM32H755xx_CORE_CM7)
 #define ADC1_BASE_ADDR ((uint32_t)0x40022000U)
+#define ADC1_TMPL
 #define ADC2_BASE_ADDR ((uint32_t)0x40022100U)
 #define ADC2_TMPL
 #define ADC3_Common_BASE_ADDR ((uint32_t)0x58026300U)
 #define ADC_Common_ADC3_Common
+#define ADC3_Common_TMPL
 #define ADC12_Common_BASE_ADDR ((uint32_t)0x40022300U)
 #define ADC_Common_ADC12_Common
+#define ADC12_Common_TMPL
 #endif
 
 #if	defined(STM32WB      ) || defined(STM32L412xx  ) || defined(STM32L422xx  ) || defined(STM32L4P5xx  ) || defined(STM32L4Q5xx  ) || \
     defined(STM32L4R5xx  ) || defined(STM32L4R7xx  ) || defined(STM32L4R9xx  ) || defined(STM32L4S5xx  ) || defined(STM32L4S7xx  ) || \
     defined(STM32L4S9xx  )
 #define ADC_BASE_ADDR ((uint32_t)0x50040000U)
+#define ADC_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
 #define ADC1_BASE_ADDR ((uint32_t)0x40012000U)
+#define ADC1_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F7      ) || defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || \
@@ -4187,12 +4283,14 @@ namespace sool {
 #define ADC2_BASE_ADDR ((uint32_t)0x40012100U)
 #define ADC2_TMPL
 #define ADC3_BASE_ADDR ((uint32_t)0x40012200U)
+#define ADC3_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F301x8  ) || defined(STM32F302x8  ) || defined(STM32F302xC  ) || \
     defined(STM32F302xE  ) || defined(STM32F303x8  ) || defined(STM32F303xC  ) || defined(STM32F303xE  ) || defined(STM32F318xx  ) || \
     defined(STM32F328xx  ) || defined(STM32F334x8  ) || defined(STM32F358xx  )
 #define ADC1_BASE_ADDR ((uint32_t)0x50000000U)
+#define ADC1_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303x8  ) || \
@@ -4204,38 +4302,46 @@ namespace sool {
 #if	defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303xC  ) || defined(STM32F303xE  ) || defined(STM32F358xx  ) || \
     defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define ADC4_BASE_ADDR ((uint32_t)0x50000500U)
+#define ADC4_TMPL
 #endif
 
 #if	defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303xC  ) || defined(STM32F303xE  ) || defined(STM32F358xx  ) || \
     defined(STM32G471xx  ) || defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define ADC3_BASE_ADDR ((uint32_t)0x50000400U)
+#define ADC3_TMPL
 #endif
 
 #if	defined(STM32G473xx  ) || defined(STM32G474xx  ) || defined(STM32G484xx  )
 #define ADC5_BASE_ADDR ((uint32_t)0x50000600U)
+#define ADC5_TMPL
 #endif
 
 #if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
     defined(STM32L451xx  ) || defined(STM32L452xx  ) || defined(STM32L462xx  ) || defined(STM32L471xx  ) || defined(STM32L475xx  ) || \
     defined(STM32L476xx  ) || defined(STM32L485xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  )
 #define ADC1_BASE_ADDR ((uint32_t)0x50040000U)
+#define ADC1_TMPL
 #define ADC2_BASE_ADDR ((uint32_t)0x50040100U)
 #define ADC2_TMPL
 #define ADC3_BASE_ADDR ((uint32_t)0x50040200U)
+#define ADC3_TMPL
 #endif
 
 #if	defined(STM32F0      ) || defined(STM32G0      ) || defined(STM32L0      ) || defined(STM32L1      ) || defined(STM32F373xC  ) || \
     defined(STM32F378xx  ) || defined(STM32F398xx  )
 #define ADC_BASE_ADDR ((uint32_t)0x40012400U)
+#define ADC_TMPL
 #endif
 
 #if	defined(STM32W1      )
 #define ADC_BASE_ADDR ((uint32_t)0x4000a810U)
+#define ADC_TMPL
 #endif
 
 #if	defined(STM32H747xx_CORE_CM4) || defined(STM32H747xx_CORE_CM7) || defined(STM32H757xx_CORE_CM4) || defined(STM32H757xx_CORE_CM7)
 #define ADC1_2_BASE_ADDR ((uint32_t)0x40022000U)
 #define ADC_Common_ADC1_2
+#define ADC1_2_TMPL
 #endif
 
 #if	defined(STM32L476xx  ) || defined(STM32L486xx  ) || defined(STM32L496xx  ) || defined(STM32L4A6xx  ) || defined(STM32L4P5xx  ) || \
@@ -4243,17 +4349,20 @@ namespace sool {
     defined(STM32L4S7xx  ) || defined(STM32L4S9xx  )
 #define ADC_Common_BASE_ADDR ((uint32_t)0x50040300U)
 #define ADC_Common_ADC_Common
+#define ADC_Common_TMPL
 #endif
 
 #if	defined(STM32GB      ) || defined(STM32G431xx  ) || defined(STM32G441xx  ) || defined(STM32G473xx  ) || defined(STM32G474xx  ) || \
     defined(STM32G484xx  )
 #define ADC12_Common_BASE_ADDR ((uint32_t)0x50000200U)
 #define ADC_Common_ADC12_Common
+#define ADC12_Common_TMPL
 #endif
 
 #if	defined(STM32G4      ) || defined(STM32GB      )
 #define ADC345_Common_BASE_ADDR ((uint32_t)0x50000700U)
 #define ADC_Common_ADC345_Common
+#define ADC345_Common_TMPL
 #endif
 
 #if	defined(STM32F405xx  ) || defined(STM32F407xx  ) || defined(STM32F415xx  ) || defined(STM32F417xx  ) || defined(STM32F427xx  ) || \
@@ -4263,6 +4372,7 @@ namespace sool {
     defined(STM32F765xx  )
 #define C_ADC_BASE_ADDR ((uint32_t)0x40012300U)
 #define ADC_Common_C_ADC
+#define C_ADC_TMPL
 #endif
 
 #if	defined(STM32F2      ) || defined(STM32F401xC  ) || defined(STM32F401xE  ) || defined(STM32F410Cx  ) || defined(STM32F410Rx  ) || \
@@ -4270,6 +4380,7 @@ namespace sool {
     defined(STM32F412Zx  )
 #define ADC_Common_BASE_ADDR ((uint32_t)0x40012300U)
 #define ADC_Common_ADC_Common
+#define ADC_Common_TMPL
 #endif
 
 #if	defined(STM32L431xx  ) || defined(STM32L432xx  ) || defined(STM32L433xx  ) || defined(STM32L442xx  ) || defined(STM32L443xx  ) || \
@@ -4277,11 +4388,13 @@ namespace sool {
     defined(STM32L485xx  )
 #define ADC123_Common_BASE_ADDR ((uint32_t)0x50040300U)
 #define ADC_Common_ADC123_Common
+#define ADC123_Common_TMPL
 #endif
 
 #if	defined(STM32G471xx  )
 #define ADC12_Common_BASE_ADDR ((uint32_t)0x50000300U)
 #define ADC_Common_ADC12_Common
+#define ADC12_Common_TMPL
 #endif
 
 #if	defined(STM32F301x8  ) || defined(STM32F302x8  ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303x8  ) || \
@@ -4289,17 +4402,20 @@ namespace sool {
     defined(STM32F358xx  )
 #define ADC1_2_BASE_ADDR ((uint32_t)0x50000300U)
 #define ADC_Common_ADC1_2
+#define ADC1_2_TMPL
 #endif
 
 #if	defined(STM32F301x8  ) || defined(STM32F302x8  ) || defined(STM32F302xC  ) || defined(STM32F302xE  ) || defined(STM32F303xC  ) || \
     defined(STM32F303xE  ) || defined(STM32F318xx  ) || defined(STM32F328xx  ) || defined(STM32F358xx  )
 #define ADC3_4_BASE_ADDR ((uint32_t)0x50000700U)
 #define ADC_Common_ADC3_4
+#define ADC3_4_TMPL
 #endif
 
 #if	defined(STM32L1      )
 #define C_ADC_BASE_ADDR ((uint32_t)0x40012700U)
 #define ADC_Common_C_ADC
+#define C_ADC_TMPL
 #endif
 
 
@@ -4307,8 +4423,7 @@ namespace sool {
 
 		#if defined(ADC_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC = new class ADC(ADC_BASE_ADDR);
-
+				volatile class ADC<> * const ADC = new class ADC<>(ADC_BASE_ADDR);
 			#else
 				volatile class ADC<> * const ADC = reinterpret_cast<class ADC<>* const>(ADC_BASE_ADDR);
 			#endif
@@ -4316,8 +4431,7 @@ namespace sool {
 
 		#if defined(ADC1_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC1 = new class ADC(ADC1_BASE_ADDR);
-
+				volatile class ADC<> * const ADC1 = new class ADC<>(ADC1_BASE_ADDR);
 			#else
 				volatile class ADC<> * const ADC1 = reinterpret_cast<class ADC<>* const>(ADC1_BASE_ADDR);
 			#endif
@@ -4325,17 +4439,15 @@ namespace sool {
 
 		#if defined(ADC2_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC2 = new class ADC(ADC2_BASE_ADDR);
-
+				volatile class ADC<> * const ADC2 = new class ADC<>(ADC2_BASE_ADDR);
 			#else
-				volatile class ADC<ADC2_TMPL> * const ADC2 = reinterpret_cast<class ADC<ADC2_TMPL>* const>(ADC2_BASE_ADDR);
+				volatile class ADC<> * const ADC2 = reinterpret_cast<class ADC<>* const>(ADC2_BASE_ADDR);
 			#endif
 		#endif
 
 		#if defined(ADC3_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC3 = new class ADC(ADC3_BASE_ADDR);
-
+				volatile class ADC<> * const ADC3 = new class ADC<>(ADC3_BASE_ADDR);
 			#else
 				volatile class ADC<> * const ADC3 = reinterpret_cast<class ADC<>* const>(ADC3_BASE_ADDR);
 			#endif
@@ -4343,8 +4455,7 @@ namespace sool {
 
 		#if defined(ADC4_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC4 = new class ADC(ADC4_BASE_ADDR);
-
+				volatile class ADC<> * const ADC4 = new class ADC<>(ADC4_BASE_ADDR);
 			#else
 				volatile class ADC<> * const ADC4 = reinterpret_cast<class ADC<>* const>(ADC4_BASE_ADDR);
 			#endif
@@ -4352,8 +4463,7 @@ namespace sool {
 
 		#if defined(ADC5_BASE_ADDR) 
 			#if __SOOL_DEBUG_NOPHY
-				volatile class ADC * const ADC5 = new class ADC(ADC5_BASE_ADDR);
-
+				volatile class ADC<> * const ADC5 = new class ADC<>(ADC5_BASE_ADDR);
 			#else
 				volatile class ADC<> * const ADC5 = reinterpret_cast<class ADC<>* const>(ADC5_BASE_ADDR);
 			#endif
@@ -4364,7 +4474,6 @@ namespace sool {
 		#if defined(ADC123_Common_BASE_ADDR) && defined(ADC_Common_ADC123_Common) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC123_Common = new class ADC_Common(ADC123_Common_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC123_Common = reinterpret_cast<class ADC_Common* const>(ADC123_Common_BASE_ADDR);
 			#endif
@@ -4373,7 +4482,6 @@ namespace sool {
 		#if defined(ADC12_Common_BASE_ADDR) && defined(ADC_Common_ADC12_Common) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC12_Common = new class ADC_Common(ADC12_Common_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC12_Common = reinterpret_cast<class ADC_Common* const>(ADC12_Common_BASE_ADDR);
 			#endif
@@ -4382,7 +4490,6 @@ namespace sool {
 		#if defined(ADC1_2_BASE_ADDR) && defined(ADC_Common_ADC1_2) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC1_2 = new class ADC_Common(ADC1_2_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC1_2 = reinterpret_cast<class ADC_Common* const>(ADC1_2_BASE_ADDR);
 			#endif
@@ -4391,7 +4498,6 @@ namespace sool {
 		#if defined(ADC345_Common_BASE_ADDR) && defined(ADC_Common_ADC345_Common) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC345_Common = new class ADC_Common(ADC345_Common_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC345_Common = reinterpret_cast<class ADC_Common* const>(ADC345_Common_BASE_ADDR);
 			#endif
@@ -4400,7 +4506,6 @@ namespace sool {
 		#if defined(ADC3_4_BASE_ADDR) && defined(ADC_Common_ADC3_4) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC3_4 = new class ADC_Common(ADC3_4_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC3_4 = reinterpret_cast<class ADC_Common* const>(ADC3_4_BASE_ADDR);
 			#endif
@@ -4409,7 +4514,6 @@ namespace sool {
 		#if defined(ADC3_Common_BASE_ADDR) && defined(ADC_Common_ADC3_Common) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC3_Common = new class ADC_Common(ADC3_Common_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC3_Common = reinterpret_cast<class ADC_Common* const>(ADC3_Common_BASE_ADDR);
 			#endif
@@ -4418,7 +4522,6 @@ namespace sool {
 		#if defined(ADC_Common_BASE_ADDR) && defined(ADC_Common_ADC_Common) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const ADC_Common = new class ADC_Common(ADC_Common_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const ADC_Common = reinterpret_cast<class ADC_Common* const>(ADC_Common_BASE_ADDR);
 			#endif
@@ -4427,458 +4530,591 @@ namespace sool {
 		#if defined(C_ADC_BASE_ADDR) && defined(ADC_Common_C_ADC) 
 			#if __SOOL_DEBUG_NOPHY
 				volatile class ADC_Common * const C_ADC = new class ADC_Common(C_ADC_BASE_ADDR);
-
 			#else
 				volatile class ADC_Common * const C_ADC = reinterpret_cast<class ADC_Common* const>(C_ADC_BASE_ADDR);
 			#endif
 		#endif
 		
 		
+		
+		template<typename T>
+		inline constexpr volatile Reg32_t& ADC<T>::get_clock_enable_reg(const uintptr_t addr)
+		{
+			switch (addr)
+			{
+				//Output for ADC3EN
+		#ifdef ADC3_BASE_ADDR
+				case ADC3_BASE_ADDR :
+					#if defined(STM32H7      )
+						return RCC->AHB4ENR;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
+						return RCC->APB2ENR;
+					#endif
+		#endif
+				//Output for ADCEN
+		#ifdef ADC_BASE_ADDR
+				case ADC_BASE_ADDR :
+					#if defined(STM32L4      ) || defined(STM32WB      )
+						return RCC->AHB2ENR;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32L0      )
+						return RCC->APB2ENR;
+					#elif defined(STM32G0      )
+						return RCC->APBENR2;
+					#endif
+		#endif
+				//Output for ADC1EN
+		#ifdef ADC1_BASE_ADDR
+				case ADC1_BASE_ADDR :
+					#if 1
+						return RCC->APB2ENR;
+					#endif
+		#endif
+				//Output for ADC2EN
+		#ifdef ADC2_BASE_ADDR
+				case ADC2_BASE_ADDR :
+					#if 1
+						return RCC->APB2ENR;
+					#endif
+		#endif
+			}
+		}
+		template<typename T>
+		inline constexpr uint32_t ADC<T>::get_clock_enable_bit(const uintptr_t addr)
+		{
+			switch (addr)
+			{
+				//Output for ADC3EN
+		#ifdef ADC3_BASE_ADDR
+				case ADC3_BASE_ADDR :
+					#if defined(STM32H7      )
+						return 1 << 24;
+					#elif defined(STM32F2      ) || defined(STM32F4      ) || defined(STM32F7      )
+						return 1 << 10;
+					#endif
+		#endif
+				//Output for ADCEN
+		#ifdef ADC_BASE_ADDR
+				case ADC_BASE_ADDR :
+					#if defined(STM32L4      ) || defined(STM32WB      )
+						return 1 << 13;
+					#elif defined(STM32F0      ) || defined(STM32F3      ) || defined(STM32L0      )
+						return 1 << 9;
+					#elif defined(STM32G0      )
+						return 1 << 20;
+					#endif
+		#endif
+				//Output for ADC1EN
+		#ifdef ADC1_BASE_ADDR
+				case ADC1_BASE_ADDR :
+					#if 1
+						return 1 << 8;
+					#endif
+		#endif
+				//Output for ADC2EN
+		#ifdef ADC2_BASE_ADDR
+				case ADC2_BASE_ADDR :
+					#if 1
+						return 1 << 9;
+					#endif
+		#endif
+			}
+		}
+		
+		template<typename T>
+		inline void ADC<T>::enable_clock() volatile
+		{
+			get_clock_enable_reg(get_addr())
+					|= get_clock_enable_bit(get_addr());
+		}
+		template<typename T>
+		inline void ADC<T>::disable_clock() volatile
+		{
+			get_clock_enable_reg(get_addr())
+					&= ~get_clock_enable_bit(get_addr());
+		}
+		template<typename T>
+		inline bool ADC<T>::is_clock_enabled() const volatile
+		{
+			return (get_clock_enable_reg(reinterpret_cast<const uint32_t>(this))
+					& get_clock_enable_bit(reinterpret_cast<const uint32_t>(this)))
+				   == get_clock_enable_bit(reinterpret_cast<const uint32_t>(this));
+		}
+		
+		#ifdef ADC_SQR1
+		template<typename T>
+		inline void ADC<T>::set_acquisition_sequence_length(const unsigned int length) volatile
+		{
+			SQR1.L = length;
+		};
+		#endif
+		
+		
+		
+		
+		
 	};
 };
-#undef ADC_AWD3CR_3
-#undef ADC_DIFSEL_1_DIFSEL_16_18
-#undef ADC_CFGR1_0_AUTDLY
-#undef ADC_Common_ADC3_Common
-#undef ADC_MAP5_DR
-#undef ADC_SQR2_2
-#undef ADC_Common_C_ADC
-#undef ADC_SQR4_0_SQ11
-#undef ADC_IER_0_JEOCIE
-#undef ADC_SQR1_1_SQ14
-#undef ADC_CFGR_2
-#undef ADC_SQR1_2_SQ26
-#undef ADC_ISR_0_AWD2
-#undef ADC_CFGR_2_ALIGN_5
-#undef ADC_MAP4_JOFR1
-#undef ADC_MAP0_OFR3
-#undef ADC_IER_0_AWD1IE
-#undef ADC_CCR_1_VBATE
-#undef ADC_CFGR2_0_JOVSE
-#undef ADC_MAP5_LTR
-#undef ADC_Common_CSR_0_JEOS_SLV
-#undef ADC_Common_MAP0_CDR
-#undef ADC_CFGR1_0_AWDSGL
-#undef ADC_CR_0_SMP
-#undef ADC_MAP0_CR
-#undef ADC_OFRx_0_OFFSET1
-#undef ADC_CR_0_LINCALRDYW1
-#undef ADC_MAP1_SMPR2
-#undef ADC_CALFACT_2
-#undef ADC_ISR_0_JQOVF
-#undef ADC_CFGR1_0_AWDEN
-#undef ADC_MAP5
-#undef ADC_CFGR2_1_GCOMP
-#undef ADC_CR_0_ADVREGEN
-#undef ADC_MAP2_JDR1
-#undef ADC_DIFSEL_1
-#undef ADC_Common_CSR_1_OVR1
-#undef ADC_Common_ADC3_4
-#undef ADC_CFGR_1_DMAEN
-#undef ADC_CFGR2_0_RSHIFT2
-#undef ADC_CR_0_ADSTP
-#undef ADC_DIFSEL_1_DIFSEL_1_15
-#undef ADC_Common_MAP2
-#undef ADC_Common_CSR_1_JEOC2
-#undef ADC_CR_0_ADSTART
-#undef ADC_JDR4_1
-#undef ADC_Common_CSR_1_ADONS1
-#undef ADC_MAP5_JDR3
-#undef ADC_IER_0_JQOVFIE
-#undef ADC_MAP4_CHSELR_1
-#undef ADC_MAP4_AWD1TR
-#undef ADC_SQR1_1_L
-#undef ADC_Common_CCR_1_DDS
-#undef ADC_MAP2_HTR
-#undef ADC_SQR3_1
-#undef ADC_MAP0_AWD3CR
-#undef ADC_ADC_tmpl_0
-#undef ADC_Common_MAP2_CDR
-#undef ADC_TR1_AWDFILT
-#undef ADC_CFGR2_1_JITOFF_D2
-#undef ADC_ISR_0_AWD3
-#undef ADC_MAP0_ISR
-#undef ADC_Common_CSR_0_AWD1_MST
-#undef ADC_Common_CSR_1_JEOC3
-#undef ADC_MAP2
-#undef ADC_MAP2_JSQR
-#undef ADC_ISR_0
-#undef ADC_CR_0_ADCALDIF
-#undef ADC_MAP0_LTR2
-#undef ADC_CFGR2_1_OVSE
-#undef ADC_SQR4_0_SQ15
-#undef ADC_CR_0_LINCALRDYW5
-#undef ADC_MAP5_SQR5
-#undef ADC_MAP1_CCR
-#undef ADC_DR_4
-#undef ADC_Common_CSR_0_EOSMP_SLV
-#undef ADC_CR_0_ADCAL
-#undef ADC_MAP0_LHTR1
-#undef ADC_SQR4_1
-#undef ADC_MAP0_IER
-#undef ADC_SQR3_0
-#undef ADC_CR_0_JADSTART
-#undef ADC_IER_1_AWDIE
-#undef ADC_CFGR2_0_OSR
-#undef ADC_CR2_1_JSWSTART
-#undef ADC_Common_CCR_2
-#undef ADC_Common_CCR_0_VBATEN
-#undef ADC_Common_CSR_0_ADRDY_MST
-#undef ADC_CFGR1_0_CHSELRMOD
-#undef ADC_MAP4_JOFR2
-#undef ADC_PCSEL_1
-#undef ADC_MAP0_CFGR
-#undef ADC_DR_3
-#undef ADC_MAP1_DIFSEL
-#undef ADC_IER_0_CCRDYIE
-#undef ADC_SMPR2_0_SMP19
-#undef ADC_CR2_0_EXTEN
-#undef ADC_MAP4
-#undef ADC_CR1_OVRIE
-#undef ADC_Common_CSR_0_OVR2
-#undef ADC_CFGR2_0_TROVS
-#undef ADC_JSQR_0_JSQ2
-#undef ADC_Common_CSR_0_OVR_SLV
-#undef ADC_MAP1_OFR1
-#undef ADC_Common_CSR_0_EOS_SLV
-#undef ADC_MAP5_CR
-#undef ADC_MAP2_CR2
-#undef ADC_SR_ADONS
-#undef ADC_MAP2_SQR2
-#undef ADC_Common_CCR_0_DAMDF
-#undef ADC_MAP5_GAINR
-#undef ADC_CFGR_1_AUTOFF
-#undef ADC_CFGR_2_DFSDMCFG
-#undef ADC_MAP1_TR1
-#undef ADC_MAP0_SMPR2
-#undef ADC_SQR1_1_SQ15
-#undef ADC_CFGR_0_JQDIS
-#undef ADC_MAP4_IER
-#undef ADC_SQR1_2_SQ27
-#undef ADC_SMPR_1
-#undef ADC_CCR_0_CKMODE
-#undef ADC_MAP2_JOFR2
-#undef ADC_MAP4_HWCFGR3
-#undef ADC_MAP0_DR
-#undef ADC_Common_CSR_1_JSTRT1
-#undef ADC_SMPR_0_SMPSEL
-#undef ADC_JSQR_0_JSQ3
-#undef ADC_MAP4_HWCFGR0
-#undef ADC_CFGR2_0_SMPTRIG
-#undef ADC_DIFSEL_0
-#undef ADC_MAP1
-#undef PERIPH_ADC_Common
-#undef ADC_MAP0_SMPR1
-#undef ADC_SMPR1_0_SMPPLUS
-#undef ADC_CR_0_ADEN
-#undef ADC_CCR_2_VLCDEN
-#undef ADC_AWD2CR_0
-#undef ADC_JDR4_0
-#undef ADC_MAP0_CALFACT
-#undef ADC_CFGR2_0
-#undef ADC_MAP5_DMAMSAR
-#undef ADC_MAP1_TR3
-#undef ADC_CSR_0_JSTRT1
-#undef ADC_Common_ADC123_Common
-#undef ADC_MAP0_SQR2
-#undef ADC_MAP1_OFR4
-#undef ADC_Common_MAP1
-#undef ADC_JSQR_0_JEXTSEL
-#undef ADC_Common_CSR_0
-#undef ADC_CHSELR_0
-#undef ADC_MAP0_JDR3
-#undef ADC_CFGR2_1
-#undef ADC_MAP3
-#undef ADC_CSR_0_JEOS_MST
-#undef ADC_MAP2_SMPR2
-#undef ADC_CR2_0_CAL
-#undef ADC_CCR_0_TSEN
-#undef ADC_MAP5_JOFR3
-#undef ADC_MAP4_HWCFGR5
-#undef ADC_IER_1_DMABFIE
-#undef ADC_MAP2_JOFR3
-#undef ADC_CR2_0_TSVREFE
-#undef ADC_MAP5_SMPR0
-#undef ADC_Common_CCR_0_VREFEN
-#undef ADC_CFGR_0_EXTSEL
-#undef ADC_MAP2_DR
-#undef ADC_MAP1_CALFACT
-#undef ADC_Common_CCR_0_DELAY
-#undef ADC_OFRx_1
-#undef ADC_SQR4_0_SQ12
-#undef ADC_CFGR2_0_RSHIFT4
-#undef ADC_SQR2_0
-#undef ADC_CR_0_ADDIS
-#undef ADC_Common_CCR_0_DMACFG
-#undef ADC_IER_1_SATIE
-#undef ADC_JDR1_1
-#undef ADC_Common_CSR_0_STRT2
-#undef ADC_CR1_PDD
-#undef ADC_MAP5_JSQR
-#undef ADC_CSR_1
-#undef ADC_MAP2_GCOMP
-#undef ADC_Common_CCR_0_TSEN
-#undef ADC_Common_CDR_0
-#undef ADC_CFGR_0_DMNGT
-#undef ADC_MAP2_SQR1
-#undef ADC_MAP2_JOFR1
-#undef ADC_CR2_1_JEXTSEL
-#undef ADC_AWD3CR_4
-#undef ADC_ISR_1_DMABF
-#undef ADC_CCR_0_LFMEN
-#undef ADC_CSR_0_JEOC1
-#undef ADC_CCR_0_PRESC
-#undef ADC_MAP0_LTR1
-#undef ADC_ISR_0_EOCAL
-#undef ADC_MAP0_SQR3
-#undef ADC_CFGR_1_DMACFG
-#undef ADC_JSQR_0_JSQ1
-#undef ADC_Common_CSR_0_AWD2_SLV
-#undef ADC_JDR3_1
-#undef ADC_JSQR_0_JEXTEN
-#undef ADC_CFGR2_0_BULB
-#undef ADC_Common_CSR_0_JEOC_MST
-#undef ADC_Common_ADC_Common
-#undef ADC_SMPRx_0
-#undef ADC_CFGR2_2
-#undef ADC_CFGR_1_RES
-#undef ADC_MAP0_PCSEL
-#undef ADC_AWD2CR_2
-#undef ADC_Common_CSR_1
-#undef ADC_CR_0_ADCALLIN
-#undef ADC_MAP1_OFR2
-#undef ADC_PCSEL_0
-#undef ADC_Common_MAP0_CSR
-#undef ADC_CFGR2_0_ROVSE
-#undef ADC_SMPR1_1_SMP18
-#undef ADC_MAP4_AWD2TR
-#undef ADC_CFGR2_1_SWTRIG
-#undef ADC_CSR_0_OVR1
-#undef ADC_JSQR_0_JSQ4
-#undef ADC_ISR_0_JEOS
-#undef ADC_MAP2_JDR3
-#undef ADC_MAP0_OFR4
-#undef ADC_Common_CCR_1_MULT
-#undef ADC_ISR_0_CCRDY
-#undef ADC_CFGR2_1_LFTRIG
-#undef ADC_CR2_0_JSWSTART
-#undef ADC_ISR_0_AWD1
-#undef ADC_SQR1_2_SQ13
-#undef ADC_CR2_0_JEXTSEL
-#undef ADC_Common_CCR_1_CH17SEL
-#undef ADC_IER_0_JEOSIE
-#undef ADC_MAP0_JSQR
-#undef ADC_SQR4_0_SQ10
-#undef ADC_Common_CSR_1_ADDRDY_MST
-#undef ADC_SMPR1_1
-#undef ADC_CR_0_DEEPPWD
-#undef ADC_CR_0_HVSELN
-#undef ADC_MAP2_JOFR4
-#undef ADC_Common_CSR_0_EOC_SLV
-#undef ADC_Common_CCR_2_DMA
-#undef ADC_AWD2CR_3
-#undef ADC_Common_CSR_0_AWD2_MST
-#undef ADC_CR2_0_DELS
-#undef ADC_MAP4_HWCFGR4
-#undef ADC_ISR_0_JEOC
-#undef ADC_MAP5_OFFSETR
-#undef ADC_JDR3_0
-#undef ADC_CR1_RES
-#undef ADC_MAP4_SIDR
-#undef ADC_MAP5_DMASR
-#undef ADC_CCR_0_VBATEN
-#undef ADC_MAP5_DMACR
-#undef ADC_MAP0_OR
-#undef ADC_SQR1_3
-#undef ADC_MAP0_HTR3
-#undef ADC_Common_CSR_0_AWD3_SLV
-#undef ADC_CR_1
-#undef ADC_MAP5_DMACNDTR
-#undef ADC_CSR_0_EOC1
-#undef ADC_JDR1_0
-#undef ADC_CR2_0_SWSTART
-#undef ADC_CSR_0_AWD2_MST
-#undef ADC_MAP4_HWCFGR2
-#undef ADC_CR_2
-#undef ADC_MAP5_DMAMNAR
-#undef ADC_Common_CCR_1_VBATE
-#undef ADC_Common_CSR_0_ADRDY_SLV
-#undef ADC_MAP5_HTR
-#undef ADC_DR_1
-#undef ADC_SMPR_0_SMP2
-#undef ADC_Common_CSR_0_EOS_MST
-#undef ADC_Common_CSR_1_EOC2
-#undef ADC_Common_CSR_1_JEOC1
-#undef ADC_MAP1_OFR3
-#undef ADC_CR_0_JADSTP
-#undef ADC_Common_CSR_1_STRT3
-#undef ADC_MAP0_OFR2
-#undef ADC_CFGR2_0_OVSR
-#undef ADC_MAP0_JDR2
-#undef ADC_MAP5_JDR1
-#undef ADC_CR2_0_RSTCAL
-#undef ADC_SQR1_0
-#undef ADC_Common_CCR_1_ADCPRE
-#undef ADC_CCR_0
-#undef ADC_CR1_PDI
-#undef ADC_MAP4_HWCFGR6
-#undef ADC_CFGR2_0_LSHIFT
-#undef ADC_CFGR_1_ALIGN
-#undef ADC_Common_CSR_1_EOC1
-#undef ADC_SR_JCNR
-#undef ADC_CSR_0_AWD1
-#undef ADC_DIFSEL_1_DIFSEL_0
-#undef ADC_Common_CSR_1_AWD2
-#undef ADC_CCR_2_CH17SEL
-#undef ADC_DR_2
-#undef ADC_IER_1
-#undef ADC_CR_0_LINCALRDYW3
-#undef ADC_CR_1_BOOST
-#undef ADC_JSQR_2
-#undef ADC_Common_CSR_0_AWD3_MST
-#undef ADC_MAP0
-#undef ADC_Common_ADC12_Common
-#undef ADC2_TMPL
-#undef ADC_MAP4_SMPR3
-#undef ADC_CR2_0_JEXTTRIG
-#undef ADC_SQR1_2_SQ28
-#undef ADC_Common_ADC345_Common
-#undef ADC_CR2_0_DDS
-#undef ADC_ISR_1_AWD
-#undef ADC_MAP5_JDR2
-#undef ADC_SMPR2_0
-#undef ADC_IER_0_EOCALIE
-#undef ADC_SR_OVR
-#undef ADC_Common_CSR_0_JQOVF_MST
-#undef ADC_CFGR_1_EXTSEL
-#undef ADC_SQR1_1
-#undef ADC_Common_CSR_0_AWD1_SLV
-#undef ADC_CFGR2_1_JITOFF_D4
-#undef ADC_CCR_1_CH18SEL
-#undef ADC_Common_CCR_1_MDMA
-#undef ADC_CR2_1_SWSTART
-#undef ADC_MAP4_IPIDR
 #undef ADC_CR2_1_EXTSEL
-#undef ADC_MAP0_OFR1
-#undef ADC_CR_0_HVSELP
-#undef ADC_AWD3CR_0
-#undef ADC_JDR2_0
-#undef ADC_DIFSEL_2
-#undef ADC_AWD3CR_2
-#undef ADC_CFGR2_1_TOVS
-#undef ADC_MAP2_LTR
-#undef ADC_Common_CDR_1
-#undef ADC_SMPR2_1
-#undef ADC_CR2_0_EOCS
-#undef ADC_MAP0_HTR2
-#undef ADC_Common_CSR_1_STRT1
-#undef ADC_Common_ADC1_2
-#undef ADC_MAP2_CCR
-#undef ADC_CR_1_CLK
-#undef ADC_CCR_2
-#undef ADC_JSQR_0
-#undef ADC_DR_0
-#undef ADC_ISR_1_SAT
-#undef ADC_Common_CCR_1_CH18SEL
-#undef ADC_CCR_1_TSVREFE
-#undef ADC_Common_CSR_1_AWD3
-#undef ADC_SQR4_0_SQ16
-#undef ADC_AWD2CR_1
-#undef ADC_ISR_1_DMAOVF
-#undef ADC_MAP1_SMPR1
-#undef ADC_CALFACT_0
-#undef ADC_Common_MAP0_CDR2
-#undef ADC_SMPRx_1
-#undef ADC_MAP0_CFGR2
-#undef ADC_MAP4_VERR
-#undef ADC_IER_0_AWD2IE
-#undef ADC_MAP0_AWD2CR
-#undef ADC_CR_1_ADON
-#undef ADC_Common_CSR_0_JQOVF_SLV
-#undef ADC_Common_CSR_1_OVR3
-#undef ADC_MAP0_SQR4
-#undef ADC_SMPR_0_SMPR
-#undef ADC_CFGR1_0_AWDCH
-#undef ADC_IER_1_DMABHFIE
-#undef ADC_CFGR2_0_RSHIFT3
-#undef ADC_Common_CCR_0_DUAL
-#undef ADC_MAP2_JDR4
-#undef ADC_CR_0_BOOST
-#undef ADC_MAP5_JOFR4
-#undef ADC_Common_CSR_0_EOC_MST
-#undef ADC_MAP4_AWD3TR
-#undef ADC_SQR1_1_SQ16
-#undef ADC_CR2_1
-#undef ADC_CALFACT_1
-#undef ADC_SQR1_0_L3
-#undef ADC_JSQR_1
-#undef ADC_DR_5
-#undef ADC_MAP2_CSR
-#undef ADC_MAP1_TR2
-#undef ADC_CSR_0_STRT1
-#undef ADC_MAP0_CCR
-#undef ADC_Common_CCR_0_CKMODE
-#undef ADC_MAP2_SMPR1
-#undef ADC_CFGR_1
-#undef ADC_CFGR1_1
-#undef ADC_Common_CSR_2
-#undef ADC_CHSELR_1
-#undef ADC_CSR_0_AWD3_MST
-#undef ADC_MAP5_DMANDTR
-#undef ADC_Common_CSR_0_EOSMP_MST
-#undef ADC_MAP0_DIFSEL
-#undef ADC_IER_1_DMAOVFIE
-#undef ADC_Common_CSR_1_JSTRT3
-#undef ADC_SQR1_2
-#undef ADC_CFGR_0_RES
-#undef ADC_MAP4_HWCFGR1
-#undef ADC_Common_CCR_0_PRESC
-#undef ADC_MAP0_LTR3
-#undef ADC_CCR_1
-#undef ADC_CR2_0_JEXTEN
-#undef ADC_CR2_1_CFG
-#undef ADC_CR_0_LINCALRDYW2
-#undef ADC_CFGR_0_ALIGN
-#undef ADC_CSR_0_AWD1_MST
-#undef ADC_CR_0_LINCALRDYW4
-#undef ADC_CR_1_CHSELN
-#undef ADC_Common_CCR_0
-#undef ADC_SQR2_1
-#undef ADC_SR_RCNR
-#undef ADC_Common_CSR_0_JEOS_MST
-#undef ADC_SMPR1_0
-#undef ADC_OFRx_0_SSATE
-#undef ADC_AWD3CR_1
-#undef ADC_CR2_0_EXTSEL
-#undef ADC_JDR2_1
-#undef ADC_CFGR2_0_ROVSM
-#undef ADC_IER_0
-#undef ADC_Common_CSR_0_JSTRT2
-#undef ADC_MAP1_SR
 #undef ADC_Common_MAP0_CCR
-#undef ADC_Common_CCR_1
-#undef ADC_CSR_0_JQOVF_MST
-#undef ADC_MAP0_CALFACT2
-#undef ADC_Common_CSR_0_OVR_MST
-#undef ADC_SQR3_2
-#undef ADC_MAP3_TR
-#undef ADC_MAP0_JDR4
-#undef ADC_CFGR2_0_RSHIFT1
+#undef ADC5_TMPL
+#undef ADC_JDR3_0
+#undef ADC_CR_1_ADON
+#undef ADC_AWD3CR_4
+#undef ADC_MAP0_DR
+#undef ADC_Common_CSR_0_AWD2_MST
+#undef ADC_AWD3CR_3
+#undef ADC_CFGR2_0_ROVSM
+#undef ADC_MAP0_CFGR2
+#undef ADC_Common_ADC1_2
+#undef ADC_DIFSEL_1
+#undef ADC_Common_CSR_0_OVR_SLV
+#undef ADC_JSQR_0_JSQ2
+#undef ADC_MAP4_JOFR2
+#undef ADC_AWD3CR_2
+#undef ADC_CR2_0_RSTCAL
+#undef ADC_CFGR2_0_RSHIFT2
+#undef ADC_SQR1_0_L3
+#undef ADC_AWD3CR_0
+#undef ADC_Common_CCR_1_ADCPRE
+#undef ADC_IER_0_AWD2IE
+#undef ADC_MAP2_JOFR2
+#undef ADC_MAP5_DMAMSAR
+#undef ADC_MAP4_HWCFGR0
+#undef ADC_MAP0_SQR4
+#undef ADC_IER_0_CCRDYIE
+#undef ADC_MAP1_SR
+#undef ADC_MAP4
+#undef ADC_MAP0_SQR3
+#undef ADC_Common_TMPL
+#undef ADC_MAP4_HWCFGR6
+#undef ADC_MAP0
+#undef ADC_OFRx_0_OFFSET1
+#undef ADC_IER_1_DMABHFIE
+#undef ADC_TR1_AWDFILT
+#undef ADC_CR_0_LINCALRDYW5
+#undef ADC_MAP0_LHTR1
+#undef ADC_CR_0_BOOST
+#undef ADC_CFGR2_0_RSHIFT4
+#undef ADC_MAP0_DIFSEL
+#undef ADC_MAP5_JOFR4
+#undef ADC_DR_4
+#undef ADC_AWD2CR_1
+#undef ADC_Common_CSR_0_EOC_MST
+#undef ADC_CCR_1
 #undef ADC_Common_CSR_1_EOC3
-#undef ADC_Common_CSR_0_JEOC_SLV
-#undef ADC_CR2_1_EXTTRIG
-#undef ADC_IER_0_AWD3IE
-#undef ADC_MAP2_JDR2
-#undef ADC_SMPR1_0_SMP0
-#undef ADC_ISR_1
-#undef ADC_MAP1_CR1
-#undef ADC_MAP0_SQR1
-#undef ADC_MAP5_JDR4
-#undef ADC_CCR_1_ADCPRE
+#undef ADC_IER_0_AWD1IE
+#undef ADC_MAP0_LTR1
+#undef ADC_MAP1_TR3
+#undef ADC_CR_1
+#undef ADC_MAP0_LTR3
+#undef ADC_MAP0_IER
+#undef ADC_AWD3CR_1
+#undef ADC_CSR_0_AWD2_MST
+#undef ADC_CR_0_ADSTP
+#undef ADC_CR_0_LINCALRDYW4
+#undef ADC_CFGR2_0_TROVS
+#undef ADC_CFGR_0_ALIGN
+#undef ADC_MAP5_SMPR0
+#undef ADC_MAP0_VERR
+#undef ADC_Common_CCR_0_DMACFG
+#undef ADC_JDR4_1
+#undef ADC_CR_1_CLK
+#undef ADC_SQR1_1
+#undef ADC_MAP5_DMACNDTR
+#undef ADC_MAP1_SMPR2
+#undef ADC_AWD2CR_0
+#undef ADC_CFGR2_1_JITOFF_D2
+#undef ADC_MAP2_LTR
+#undef ADC_IPIDR_0
+#undef ADC_MAP4_JOFR1
+#undef ADC_MAP5_LTR
+#undef ADC_MAP4_HWCFGR4
+#undef ADC_Common_CSR_1_ADDRDY_MST
+#undef ADC_Common_MAP2
+#undef ADC_Common_MAP1
+#undef ADC_MAP2_SQR2
+#undef ADC_Common_CCR_1_CH18SEL
+#undef ADC_MAP2_SMPR2
+#undef ADC_CR2_0_JEXTEN
+#undef ADC_CFGR_1_AUTOFF
+#undef ADC_MAP5_SQR5
+#undef ADC_MAP1_TR2
+#undef ADC_MAP2_SQR1
+#undef ADC_Common_CCR_2_DMA
+#undef ADC_CR_0_ADVREGEN
+#undef ADC_Common_CCR_1_CH17SEL
+#undef ADC_CR_0_HVSELP
+#undef ADC_Common_CSR_0_JEOS_SLV
+#undef ADC_CR2_0_EXTSEL
+#undef ADC_MAP5_HTR
+#undef ADC_ISR_0_JQOVF
+#undef ADC_ISR_1_DMABF
+#undef ADC_SQR1_1_L
+#undef ADC_CR_0_ADEN
+#undef ADC_CR2_0_DELS
+#undef ADC_IER_1_AWDIE
+#undef ADC_OFRx_0_SSATE
+#undef ADC_MAP0_SMPR1
+#undef ADC_SQR1_2_SQ26
+#undef ADC_SQR4_0_SQ15
+#undef ADC_ADC_tmpl_0
+#undef ADC_CFGR_1_RES
+#undef ADC_MAP4_AWD3TR
+#undef ADC_Common_CSR_0_AWD3_MST
+#undef ADC_SQR1_1_SQ15
+#undef ADC_CFGR_1_DMAEN
+#undef ADC_SMPRx_1
+#undef ADC_MAP4_HWCFGR5
 #undef ADC_ISR_1_DMABHF
+#undef ADC_MAP0_JSQR
+#undef ADC345_Common_TMPL
+#undef ADC_MAP2_JDR2
+#undef ADC_CCR_0_PRESC
+#undef ADC_DIFSEL_2
+#undef ADC_JDR2_1
+#undef ADC_MAP5_DMAMNAR
+#undef ADC_ISR_0_EOCAL
+#undef ADC_MAP4_CHSELR_1
+#undef ADC_CFGR2_0_RSHIFT3
+#undef ADC_MAP5_JDR2
+#undef ADC_CCR_0_VBATEN
+#undef ADC_CFGR1_0_AUTDLY
+#undef ADC_CCR_1_CH18SEL
+#undef ADC_Common_CSR_2
+#undef ADC_PCSEL_0
+#undef ADC_CR1_PDI
+#undef ADC_CR_0_ADCALLIN
+#undef ADC_CSR_0_JEOC1
+#undef ADC_Common_CCR_0_DAMDF
+#undef ADC_JSQR_0_JSQ1
+#undef ADC_CR1_PDD
+#undef ADC_MAP4_IER
+#undef PERIPH_ADC_Common
+#undef ADC_CR_0_ADDIS
+#undef ADC_DR_0
+#undef ADC_SQR1_0
+#undef ADC_CSR_0_EOC1
+#undef ADC_Common_CSR_0_AWD1_MST
+#undef ADC_CR2_1_EXTTRIG
+#undef ADC_DIFSEL_1_DIFSEL_1_15
+#undef ADC_Common_CSR_0_AWD2_SLV
+#undef ADC_Common_CSR_0_EOS_SLV
+#undef ADC_MAP5_JSQR
+#undef ADC_DIFSEL_1_DIFSEL_0
+#undef ADC_CFGR_2_ALIGN_5
+#undef ADC_Common_MAP0_SIDR
+#undef ADC_MAP4_AWD1TR
+#undef ADC_DR_1
+#undef ADC_CSR_1
+#undef ADC_CFGR_0_EXTSEL
+#undef ADC_Common_C_ADC
+#undef ADC_CR_0_LINCALRDYW2
+#undef ADC_SMPR1_0_SMPPLUS
+#undef ADC_Common_CCR_1
+#undef ADC_Common_CCR_0_DUAL
+#undef ADC_SQR1_2_SQ27
+#undef ADC_Common_CSR_0_EOS_MST
+#undef ADC_CFGR_0_RES
+#undef ADC_MAP0_JDR2
+#undef ADC_IER_0_AWD3IE
+#undef ADC_MAP0_SMPR2
+#undef ADC_CCR_0
+#undef ADC1_TMPL
+#undef ADC_Common_MAP0_CDR
 #undef ADC_CR_0_LINCALRDYW6
+#undef ADC_CCR_2_VLCDEN
+#undef ADC_AWD2CR_2
+#undef ADC_CFGR2_0_SMPTRIG
+#undef ADC_SMPR2_1
+#undef ADC_CFGR1_0_CHSELRMOD
+#undef ADC_JSQR_0_JEXTSEL
+#undef ADC_CR2_0_TSVREFE
+#undef ADC_CFGR1_1
+#undef ADC_CR_0_LINCALRDYW3
+#undef ADC_OFRx_1
+#undef ADC_Common_CSR_0_OVR2
+#undef ADC_MAP5
+#undef ADC_SR_RCNR
+#undef ADC_MAP0_OFR3
+#undef ADC_Common_CSR_0_ADRDY_MST
+#undef ADC_SQR4_0_SQ16
+#undef ADC_MAP0_CR
+#undef ADC_CCR_2
+#undef ADC_Common_CSR_0_JEOC_MST
+#undef ADC_MAP0_CALFACT
+#undef ADC_MAP0_AWD3CR
+#undef ADC_MAP2_JSQR
+#undef ADC_ISR_0_JEOC
+#undef ADC_MAP5_JDR4
+#undef ADC_Common_ADC345_Common
+#undef ADC_Common_CSR_1_JSTRT3
+#undef ADC_CR_0_JADSTART
+#undef ADC_MAP1_TR1
+#undef ADC_CFGR2_1_JITOFF_D4
+#undef ADC_JDR1_1
+#undef ADC_SMPR1_1
 #undef ADC_MAP2_SQR3
+#undef ADC_IER_0_JEOSIE
+#undef ADC_MAP4_HWCFGR1
+#undef ADC_IER_0_JQOVFIE
+#undef ADC_CR_0_ADCAL
+#undef ADC_Common_CSR_0_EOC_SLV
+#undef ADC_CR_0_ADCALDIF
+#undef ADC_MAP0_SIDR
+#undef ADC_CFGR_1
+#undef ADC_MAP0_LTR2
+#undef ADC_CFGR1_0_AWDCH
+#undef ADC_DIFSEL_1_DIFSEL_16_18
+#undef ADC_Common_CSR_0_JSTRT2
+#undef ADC_CR_0_LINCALRDYW1
+#undef ADC_CCR_2_CH17SEL
+#undef ADC_MAP1
+#undef ADC_CR2_1
+#undef ADC_SMPR_1
+#undef ADC_CHSELR_0
+#undef ADC_JSQR_0_JSQ4
+#undef ADC_SMPR1_0
+#undef ADC_Common_CSR_1_EOC1
+#undef ADC_Common_CSR_1_OVR1
+#undef ADC_CR1_OVRIE
+#undef ADC_Common_CCR_0_VREFEN
+#undef ADC_Common_CSR_0_JQOVF_SLV
+#undef ADC_MAP4_SMPR3
+#undef ADC_CCR_0_CKMODE
+#undef ADC_Common_CSR_1_JEOC3
+#undef ADC_ISR_1_AWD
+#undef ADC_ISR_0_AWD2
+#undef ADC_IER_1_DMAOVFIE
+#undef ADC_Common_CSR_0_AWD3_SLV
+#undef ADC_MAP2_JDR3
+#undef ADC_CR2_1_CFG
+#undef ADC_SR_JCNR
+#undef ADC_MAP1_OFR2
+#undef ADC_ISR_0_AWD1
+#undef ADC_Common_CSR_1_OVR3
+#undef ADC123_Common_TMPL
+#undef ADC_CR2_1_JSWSTART
+#undef ADC_Common_CCR_0_VBATEN
+#undef ADC_MAP2_HTR
+#undef ADC_CSR_0_AWD3_MST
+#undef ADC_MAP0_HTR3
+#undef ADC_CR_0_DEEPPWD
+#undef ADC_IER_0_JEOCIE
+#undef ADC_CR2_0_CAL
+#undef ADC_Common_MAP0_VERR
+#undef ADC_SQR4_1
+#undef ADC_MAP2_SMPR1
+#undef ADC2_TMPL
+#undef ADC_IER_0_EOCALIE
+#undef ADC_MAP5_JDR3
 #undef ADC_MAP0_JDR1
+#undef ADC_MAP2_CCR
+#undef ADC_MAP0_AWD2CR
+#undef ADC_SQR1_1_SQ16
+#undef ADC_CFGR2_2
+#undef ADC_SQR1_3
+#undef ADC_Common_CCR_0_TSEN
+#undef C_ADC_TMPL
+#undef ADC_TMPL
+#undef ADC_SQR3_1
+#undef ADC1_2_TMPL
+#undef ADC_CSR_0_JSTRT1
+#undef ADC_MAP0_ISR
+#undef ADC_ISR_0_JEOS
+#undef ADC_CFGR2_1
+#undef ADC_IER_0
+#undef ADC_CFGR2_0_OVSR
+#undef ADC_CSR_0_AWD1
+#undef ADC_CFGR2_0_LSHIFT
+#undef ADC_MAP5_DMANDTR
+#undef ADC_SMPR2_0_SMP19
+#undef ADC_ISR_1_SAT
+#undef ADC_JSQR_0
+#undef ADC_JSQR_1
+#undef ADC_CFGR2_1_LFTRIG
+#undef ADC_MAP5_GAINR
+#undef ADC_MAP1_SMPR1
+#undef ADC_ISR_1_DMAOVF
+#undef ADC_CFGR_1_ALIGN
+#undef ADC_CFGR2_1_GCOMP
+#undef ADC_AWD2CR_3
+#undef ADC_Common_CSR_1_ADONS1
+#undef ADC_Common_CSR_0_JEOC_SLV
+#undef ADC_MAP2_JOFR1
+#undef ADC_MAP4_HWCFGR2
+#undef ADC_JDR1_0
+#undef ADC_Common_CSR_1_STRT3
+#undef ADC_CFGR2_0_JOVSE
+#undef ADC_CFGR2_1_TOVS
+#undef ADC_MAP0_OFR2
+#undef ADC_JSQR_0_JEXTEN
+#undef ADC_MAP2_JDR1
+#undef ADC_SMPRx_0
+#undef ADC_SMPR_0_SMPSEL
+#undef ADC_DR_2
+#undef ADC12_Common_TMPL
+#undef ADC_CSR_0_AWD1_MST
+#undef ADC_MAP5_DR
+#undef ADC_DR_3
+#undef ADC_MAP1_OFR4
+#undef ADC_CR2_0_JSWSTART
+#undef ADC_MAP2
+#undef ADC3_TMPL
+#undef ADC_CFGR2_0_ROVSE
+#undef ADC_SQR1_1_SQ14
+#undef ADC_MAP0_CCR
+#undef ADC_PCSEL_1
+#undef ADC_ISR_0_CCRDY
+#undef ADC_MAP2_JOFR4
+#undef ADC_JSQR_0_JSQ3
+#undef ADC_MAP5_JDR1
+#undef ADC_IPIDR_1
+#undef ADC_Common_CCR_0_DELAY
+#undef ADC_CALFACT_2
+#undef ADC_MAP2_DR
+#undef ADC_CALFACT_0
+#undef ADC_CFGR_2
+#undef ADC_SQR4_0_SQ10
+#undef ADC_CSR_0_JQOVF_MST
+#undef ADC_Common_CSR_0_OVR_MST
+#undef ADC_MAP4_HWCFGR3
+#undef ADC_Common_CSR_1_AWD2
+#undef ADC_Common_CCR_1_DDS
+#undef ADC_Common_CSR_1
+#undef ADC_MAP0_CFGR
+#undef ADC_Common_CCR_1_MDMA
+#undef ADC_JDR4_0
+#undef ADC_DR_5
+#undef ADC_Common_CCR_1_MULT
+#undef ADC_CCR_1_TSVREFE
+#undef ADC_Common_CCR_0
+#undef ADC_MAP5_DMASR
+#undef ADC_Common_CSR_0_EOSMP_MST
+#undef ADC_Common_CSR_0_ADRDY_SLV
+#undef ADC_CR_2
+#undef ADC_IER_1
+#undef ADC_SQR1_2_SQ28
+#undef ADC_JDR2_0
+#undef ADC_Common_CSR_0_EOSMP_SLV
+#undef ADC_MAP3
+#undef ADC_IER_1_SATIE
+#undef ADC_CFGR2_0_OSR
+#undef ADC_SMPR1_0_SMP0
+#undef ADC_MAP2_JOFR3
+#undef ADC_CCR_0_TSEN
+#undef ADC_Common_CSR_0_JEOS_MST
+#undef ADC_CR_0_HVSELN
+#undef ADC_SQR1_2_SQ13
+#undef ADC_MAP0_SQR2
+#undef ADC_CALFACT_1
+#undef ADC_Common_CDR_1
+#undef ADC_CFGR2_0
+#undef ADC_MAP0_CALFACT2
+#undef ADC_SQR4_0_SQ12
+#undef ADC_CSR_0_JEOS_MST
+#undef ADC_MAP5_JOFR3
+#undef ADC_IER_1_DMABFIE
+#undef ADC_CFGR_1_EXTSEL
+#undef ADC_MAP2_CSR
+#undef ADC_SMPR2_0
+#undef ADC_Common_CSR_0
+#undef ADC_CSR_0_OVR1
+#undef ADC_CR1_RES
+#undef ADC_CCR_1_VBATE
+#undef ADC_CR_1_CHSELN
+#undef ADC_Common_CSR_0_AWD1_SLV
+#undef ADC_CCR_0_LFMEN
+#undef ADC_MAP1_DIFSEL
+#undef ADC_MAP0_JDR4
+#undef ADC_CFGR1_0_AWDSGL
+#undef ADC_MAP2_CR2
+#undef ADC_CFGR2_0_BULB
+#undef ADC_Common_ADC3_4
+#undef ADC_MAP1_CCR
+#undef ADC_MAP1_OFR3
+#undef ADC_Common_ADC123_Common
+#undef ADC3_4_TMPL
+#undef ADC_SR_ADONS
+#undef ADC_SQR2_1
+#undef ADC_ISR_1
+#undef ADC_DIFSEL_0
+#undef ADC_MAP2_GCOMP
+#undef ADC_Common_CSR_1_AWD3
+#undef ADC_MAP0_SQR1
+#undef ADC_Common_CCR_1_VBATE
+#undef ADC_Common_CSR_0_STRT2
+#undef ADC_MAP4_AWD2TR
+#undef ADC_JSQR_2
+#undef ADC_MAP0_PCSEL
+#undef ADC_SMPR_0_SMPR
+#undef ADC_CR_0_JADSTP
+#undef ADC_SQR1_2
+#undef ADC_CFGR_0_JQDIS
+#undef ADC_Common_CCR_2
+#undef ADC_CSR_0_STRT1
+#undef ADC_ISR_0_AWD3
+#undef ADC_Common_MAP0_CSR
+#undef ADC_Common_CCR_0_PRESC
+#undef ADC_SMPR1_1_SMP18
+#undef ADC_MAP1_CALFACT
+#undef ADC_CR_1_BOOST
+#undef ADC_Common_CSR_1_JEOC2
+#undef ADC_CFGR1_0_AWDEN
+#undef ADC_Common_MAP2_CDR
+#undef ADC_CR2_1_JEXTSEL
+#undef ADC_Common_CSR_0_JQOVF_MST
+#undef ADC_SMPR_0_SMP2
+#undef ADC_CFGR_2_DFSDMCFG
+#undef ADC_SQR2_2
+#undef ADC_CR_0_SMP
+#undef ADC_CR2_0_SWSTART
+#undef ADC_CR_0_ADSTART
+#undef ADC_Common_ADC12_Common
+#undef ADC_SQR3_0
+#undef ADC_MAP1_OFR1
+#undef ADC_SQR2_0
+#undef ADC_Common_MAP0_IPIDR
+#undef ADC_MAP0_JDR3
+#undef ADC_CCR_1_ADCPRE
+#undef ADC_MAP5_OFFSETR
+#undef ADC_SQR3_2
+#undef ADC_CR2_0_JEXTSEL
+#undef ADC_Common_ADC3_Common
+#undef ADC_CHSELR_1
+#undef ADC_MAP0_OFR4
+#undef ADC_Common_ADC_Common
+#undef ADC_MAP0_HTR2
+#undef ADC_MAP0_OFR1
+#undef ADC_MAP3_TR
+#undef ADC_SR_OVR
+#undef ADC_Common_CCR_0_CKMODE
+#undef ADC_Common_CSR_1_JEOC1
+#undef ADC_CFGR_1_DMACFG
+#undef ADC_MAP5_CR
+#undef ADC_SQR4_0_SQ11
+#undef ADC_CR2_0_EXTEN
+#undef ADC4_TMPL
+#undef ADC_ISR_0
+#undef ADC_CR2_0_JEXTTRIG
+#undef ADC_Common_MAP0_CDR2
+#undef ADC_Common_CDR_0
+#undef ADC_MAP1_CR1
+#undef ADC_CR2_1_SWSTART
+#undef ADC_Common_CSR_1_EOC2
+#undef ADC_MAP0_IPIDR
+#undef ADC_Common_CSR_1_STRT1
+#undef ADC_CR2_0_EOCS
+#undef ADC_CFGR2_1_SWTRIG
+#undef ADC_CFGR2_1_OVSE
+#undef ADC_CFGR_0_DMNGT
+#undef ADC_JDR3_1
+#undef ADC_CR2_0_DDS
+#undef ADC_MAP0_OR
+#undef ADC3_Common_TMPL
+#undef ADC_CFGR2_0_RSHIFT1
+#undef ADC_MAP2_JDR4
+#undef ADC_Common_CSR_1_JSTRT1
+#undef ADC_MAP5_DMACR
 
 
 #endif //__SOOL_CORE_ADC_H
