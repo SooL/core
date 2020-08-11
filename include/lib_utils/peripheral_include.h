@@ -28,6 +28,7 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-compare"
 
+#define __SOOL_PERIPH_PADDING_16384 __SOOL_PERIPH_PADDING_8192 __SOOL_PERIPH_PADDING_8192
 #define __SOOL_PERIPH_PADDING_8192 __SOOL_PERIPH_PADDING_4096 __SOOL_PERIPH_PADDING_4096
 #define __SOOL_PERIPH_PADDING_4096 __SOOL_PERIPH_PADDING_2048 __SOOL_PERIPH_PADDING_2048
 #define __SOOL_PERIPH_PADDING_2048 __SOOL_PERIPH_PADDING_1024 __SOOL_PERIPH_PADDING_1024
@@ -95,12 +96,13 @@ namespace sool
 		{
 		    inline volatile item_T &operator[](int i) volatile;
 		};
-		template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
+
+		/*template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
 		volatile item_T &ArrayRegBase_t<item_T, array_length, offset, space>::operator[](int i) volatile
 		{
 			assert(i < array_length);
 			return *(item_T *) (((void *) this) + offset + i * (sizeof(item_T)+space));
-		}
+		}*/
 
 //######################################################################################################################
 //#                                                SmallArrayRegBase_t                                                 #
@@ -116,12 +118,12 @@ namespace sool
 //#                                                   BigArrayReg_t                                                    #
 //######################################################################################################################
 
-		template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
-		struct BigArrayReg_t : public ArrayRegBase_t<item_T, array_size, offset, space>
+		/*template<typename item_T, unsigned int array_length, unsigned int offset=0, unsigned int space=0>
+		struct BigArrayReg_t : public ArrayRegBase_t<item_T, array_length, offset, space>
 		{
 		private:
-			uint32_t : (array_size * item_size + offset) * 8;
-		};
+			uint32_t : (array_length * item_size + offset) * 8;
+		};*/
 	}
 }
 
