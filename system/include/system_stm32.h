@@ -76,6 +76,12 @@
 #	endif
 #elif defined(STM32F7)
 #define CORTEX_M7
+#	ifndef HSE_VALUE // External oscillator frequency in Hz
+#		define HSE_VALUE    ((uint32_t)8000000)
+#	endif
+#	ifndef HSI_VALUE // Internal oscillator frequency in Hz
+#		define HSI_VALUE    ((uint32_t)16000000)
+#	endif
 #elif defined(STM32H7)
 #	define CORTEX_M7
 #	ifndef HSE_VALUE // External oscillator frequency in Hz
@@ -129,7 +135,7 @@
 #elif defined(CORTEX_M4)
 #include "../cmsis/core_cm4.h"
 #elif defined(CORTEX_M7)
-#include "../cmsis/core_cm4.h"
+#include "../cmsis/core_cm7.h"
 #endif
 
 //#############################################################################
@@ -163,3 +169,4 @@ void SystemCoreClockUpdate(void);
 #endif //__SYSTEM_STM32F0XX_H
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
