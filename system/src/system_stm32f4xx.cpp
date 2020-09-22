@@ -181,50 +181,50 @@ extern "C" {
   */
 void SystemCoreClockUpdate(void)
 {
-	using namespace sool::core;
-  uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
-
-  // Get SYSCLK source -------------------------------------------------------
-  tmp = RCC->CFGR.SWS;
-
-  switch (tmp)
-  {
-	case 0:  // HSI used as system clock source
-	  SystemCoreClock = HSI_VALUE;
-	  break;
-	case 1:  // HSE used as system clock source
-	  SystemCoreClock = HSE_VALUE;
-	  break;
-	case 2:  // PLL used as system clock source
-
-	  // PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N
-	  // SYSCLK = PLL_VCO / PLL_P
-	  pllsource = RCC->PLLCFGR.PLLSRC;
-	  pllm = RCC->PLLCFGR.PLLM;
-
-	  if (pllsource != 0)
-	  {
-		// HSE used as PLL clock source
-		pllvco = (HSE_VALUE / pllm) * (RCC->PLLCFGR.PLLN);
-	  }
-	  else
-	  {
-		// HSI used as PLL clock source
-		pllvco = (HSI_VALUE / pllm) * (RCC->PLLCFGR.PLLN);
-	  }
-
-	  pllp = ((RCC->PLLCFGR.PLLP) + 1 ) *2;
-	  SystemCoreClock = pllvco/pllp;
-	  break;
-	default:
-	  SystemCoreClock = HSI_VALUE;
-	  break;
-  }
-  // Compute HCLK frequency --------------------------------------------------
-  // Get HCLK prescaler
-  tmp = AHBPrescTable[RCC->CFGR.HPRE];
-  // HCLK frequency
-  SystemCoreClock >>= tmp;
+//	using namespace sool::core;
+//  uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
+//
+//  // Get SYSCLK source -------------------------------------------------------
+//  tmp = RCC->CFGR.SWS;
+//
+//  switch (tmp)
+//  {
+//	case 0:  // HSI used as system clock source
+//	  SystemCoreClock = HSI_VALUE;
+//	  break;
+//	case 1:  // HSE used as system clock source
+//	  SystemCoreClock = HSE_VALUE;
+//	  break;
+//	case 2:  // PLL used as system clock source
+//
+//	  // PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N
+//	  // SYSCLK = PLL_VCO / PLL_P
+//	  pllsource = RCC->PLLCFGR.PLLSRC;
+//	  pllm = RCC->PLLCFGR.PLLM;
+//
+//	  if (pllsource != 0)
+//	  {
+//		// HSE used as PLL clock source
+//		pllvco = (HSE_VALUE / pllm) * (RCC->PLLCFGR.PLLN);
+//	  }
+//	  else
+//	  {
+//		// HSI used as PLL clock source
+//		pllvco = (HSI_VALUE / pllm) * (RCC->PLLCFGR.PLLN);
+//	  }
+//
+//	  pllp = ((RCC->PLLCFGR.PLLP) + 1 ) *2;
+//	  SystemCoreClock = pllvco/pllp;
+//	  break;
+//	default:
+//	  SystemCoreClock = HSI_VALUE;
+//	  break;
+//  }
+//  // Compute HCLK frequency --------------------------------------------------
+//  // Get HCLK prescaler
+//  tmp = AHBPrescTable[RCC->CFGR.HPRE];
+//  // HCLK frequency
+//  SystemCoreClock >>= tmp;
 }
 
 #if defined (DATA_IN_ExtSRAM) && defined (DATA_IN_ExtSDRAM)
