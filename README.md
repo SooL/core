@@ -1,3 +1,5 @@
+ [![Gitter chat](https://badges.gitter.im/SooL/community.png)](https://gitter.im/SooL/community)
+
 # SooL Core Files
 This repository hosts the "core" files of the _STM32 Object Oriented Library_ aka _SooL_.
 Those files will allows usual low level manipulations for almost all registers of all peripherals.
