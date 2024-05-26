@@ -113,8 +113,9 @@
 #include "../../include/FLASH.h"
 
 #ifdef STM32L4
-
-#define FLASH_BASE ((uint32_t)0x40022000U)
+// Kept for history purpose, not sure what is exactly this address.
+// #define FLASH_BASE ((uint32_t)0x40022000U)
+#define FLASH_BASE ((uint32_t)0x08000000U)
 
 //Uncomment the following line if you need to relocate your vector Table in Internal SRAM.
 // #define VECT_TAB_SRAM
